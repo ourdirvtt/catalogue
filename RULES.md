@@ -31,7 +31,7 @@ Permis, à condition de porter l'étiquette `nsfw`. Un contenu adulte sans cette
 
 Un créateur sans compte GitHub peut partager un système qu'il a fait dans l'appli Ourdir (bouton « Partager au catalogue »). Le service `partage.ourdir.fr` héberge alors le fichier sous `catalogue.ourdir.fr/v2/partages/` et ouvre la pull request à sa place ; les mêmes contrôles et les mêmes règles s'appliquent, le paquet est listé en **Communautaire**.
 
-- **Limites** : systèmes et thèmes de table ; 10 Mo par fichier, 100 Mo par clé d'éditeur ; 5 partages par jour et par clé, 20 par adresse IP ; une version publiée n'est jamais remplacée (on en publie une nouvelle).
+- **Limites** : systèmes, thèmes de table et traductions (1 Mo) ; 10 Mo par fichier, 100 Mo par clé d'éditeur ; 5 partages par jour et par clé, 20 par adresse IP ; une version publiée n'est jamais remplacée (on en publie une nouvelle).
 - **Clé d'éditeur** : créée dans l'appli, distincte de l'identité de joueur. Elle seule peut publier une nouvelle version d'un paquet : sauvegarde-la.
 - **E-mail de secours** : rattaché à ta clé (la première adresse vérifiée l'est d'office), il te rend tes paquets si tu la perds. Dans l'appli, « J'ai perdu ma clé » crée une nouvelle clé ; au bout de **7 jours**, si l'ancienne clé n'a pas annulé, le service signe le remplacement et la CI le publie. La demande est publique dès le premier jour (pull request `successions/…`) et une alerte part à l'adresse ; l'appli qui détient encore l'ancienne clé l'affiche aussi. Les versions déjà publiées restent valides. L'adresse est gardée tant que la clé sert.
 - **Changer de clé** avec l'ancienne en main : immédiat, signé par l'ancienne clé. Une clé Ourdir, officielle ou de vendeur ne change que par le mainteneur (signalement@ourdir.fr), qui peut aussi rendre la main à qui a perdu et sa clé et son adresse.
@@ -74,7 +74,7 @@ Allowed, with the `nsfw` tag. Adult content without it is removed.
 
 A creator without a GitHub account can share a system they made in the Ourdir app ("Share to the catalogue" button). The `partage.ourdir.fr` service then hosts the file under `catalogue.ourdir.fr/v2/partages/` and opens the pull request for them; the same checks and rules apply, and the package is listed as **Community**.
 
-- **Limits**: systems and table themes; 10 MB per file, 100 MB per publisher key; 5 shares a day per key, 20 per IP address; a published version is never replaced (publish a new one).
+- **Limits**: systems, table themes and translations (1 MB); 10 MB per file, 100 MB per publisher key; 5 shares a day per key, 20 per IP address; a published version is never replaced (publish a new one).
 - **Publisher key**: made in the app, separate from the player identity. Only it can publish a new version of a package: back it up.
 - **Recovery e-mail**: tied to your key (the first address you verify is, by default), it gives your packages back if you lose the key. In the app, "I lost my key" makes a new key; after **7 days**, unless the old key cancelled, the service signs the replacement and the CI publishes it. The request is public from day one (a `successions/…` pull request), an alert goes to the address, and an app still holding the old key shows it too. Versions already published stay valid. The address is kept while the key is in use.
 - **Changing key** with the old one at hand: immediate, signed by the old key. An Ourdir, official or seller key is changed by the maintainer only (signalement@ourdir.fr), who can also give access back to someone who lost both key and address.

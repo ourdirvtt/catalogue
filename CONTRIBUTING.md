@@ -2,9 +2,9 @@
 
 *English below.*
 
-Types ouverts pour l'instant : **module**, **système** et **thème de table**. Les compendiums, packs de cartes, aventures et traductions arrivent plus tard. Un thème est un fichier `.ourdir-theme.json` fait avec l'éditeur de thèmes d'Ourdir (page **Thèmes**, « Exporter ») : il se signe et se soumet comme un système (`entry <fichier> … --key <clé.json>`), et la CI le lit avec les mêmes règles que l'appli (listes fermées, lisibilité).
+Types ouverts pour l'instant : **module**, **système**, **thème de table** et **traduction d'Ourdir**. Les compendiums, packs de cartes et aventures arrivent plus tard. Une traduction est un fichier `.ourdir-translation.json` fait depuis le modèle d'Ourdir (Paramètres → Traductions, « Exporter le modèle ») : elle se signe et se soumet comme un thème, et la CI la lit avec les règles de l'appli (texte seul, mêmes variables que l'anglais) et exige 80 % des textes d'Ourdir. Un thème est un fichier `.ourdir-theme.json` fait avec l'éditeur de thèmes d'Ourdir (page **Thèmes**, « Exporter ») : il se signe et se soumet comme un système (`entry <fichier> … --key <clé.json>`), et la CI le lit avec les mêmes règles que l'appli (listes fermées, lisibilité).
 
-Tu n'as pas GitHub ? Pour un système ou un thème fait dans l'appli Ourdir : page **Systèmes de jeu** ou **Thèmes**, bouton « Partager au catalogue ». L'appli signe, envoie et suit le contrôle pour toi (voir [RULES.md](RULES.md#partager-depuis-lappli)).
+Tu n'as pas GitHub ? Pour un système, un thème ou une traduction faits dans l'appli Ourdir : page **Systèmes de jeu** ou **Thèmes**, ou Paramètres → Traductions, bouton « Partager au catalogue ». L'appli signe, envoie et suit le contrôle pour toi (voir [RULES.md](RULES.md#partager-depuis-lappli)).
 
 Tout se fait avec l'outil de ce dépôt, `tools/verifier.js` (Node 20 ou plus, aucune installation) : clone le dépôt, ou télécharge ce seul fichier.
 
@@ -50,9 +50,9 @@ Lis aussi les [règles](RULES.md).
 
 # Submitting a package
 
-Open kinds for now: **module**, **system** and **table theme**. Compendiums, map packs, adventures and translations come later. A theme is an `.ourdir-theme.json` file made with Ourdir's theme editor (**Themes** page, "Export"): it is signed and submitted like a system (`entry <file> … --key <key.json>`), and the CI reads it with the app's own rules (closed lists, readability).
+Open kinds for now: **module**, **system**, **table theme** and **Ourdir translation**. Compendiums, map packs and adventures come later. A translation is an `.ourdir-translation.json` file made from Ourdir's template (Settings → Translations, "Export the template"): it is signed and submitted like a theme, and the CI reads it with the app's rules (text only, the English text's variables) and asks for 80 % of Ourdir's texts. A theme is an `.ourdir-theme.json` file made with Ourdir's theme editor (**Themes** page, "Export"): it is signed and submitted like a system (`entry <file> … --key <key.json>`), and the CI reads it with the app's own rules (closed lists, readability).
 
-No GitHub account? For a system or a theme made in the Ourdir app: **Game systems** or **Themes** page, "Share to the catalogue" button. The app signs, uploads and follows the checks for you (see [RULES.md](RULES.md#sharing-from-the-app)).
+No GitHub account? For a system, a theme or a translation made in the Ourdir app: **Game systems** or **Themes** page, or Settings → Translations, "Share to the catalogue" button. The app signs, uploads and follows the checks for you (see [RULES.md](RULES.md#sharing-from-the-app)).
 
 Everything is done with this repository's tool, `tools/verifier.js` (Node 20+, nothing to install).
 
