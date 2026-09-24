@@ -1,9 +1,9 @@
 {
-  "body": "{\"v\":1,\"key\":\"OPzq-l7s_DwGVxphHNcUAP0D8cDf3Lir75V6_M8MX58\",\"serial\":1,\"notBefore\":\"2026-09-24T18:25:15.811Z\",\"notAfter\":\"2027-09-24T18:25:15.811Z\"}",
+  "body": "{\"v\":1,\"key\":\"OPzq-l7s_DwGVxphHNcUAP0D8cDf3Lir75V6_M8MX58\",\"serial\":2,\"notBefore\":\"2026-09-24T19:08:03.474Z\",\"notAfter\":\"2027-09-24T19:08:03.474Z\"}",
   "sig": {
     "v": 1,
     "publicKey": "KBaCpKbPgvAru43xQK9J3_tS4DogWci9ElZ8XK6d-5o",
-    "signature": "-h1G-yAsNDZ7pX01ugED0EkWFL4vX4xwOX-oMlAbrasESHTIhCtnLeF3eiCi2_qD-jNysY5en1tJvduvHDzRBw",
-    "signedAt": "2026-09-24T18:25:15.811Z"
+    "signature": "X6ajC5_eWXfHgsQDfJpBqCTg5yJbPB1F0xUkAsz8iu6jIJjLZqw4kb-LV0Dx8EWTWUDmvz3uOzc_UuZW2kEeAg",
+    "signedAt": "2026-09-24T19:08:03.474Z"
   }
 }
