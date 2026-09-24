@@ -9,7 +9,8 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  actions: read
+  # to start publish after a merge: a merge made with this job's token triggers no workflow by itself
+  actions: write
 jobs:
   merge:
     if: github.event.workflow_run.event == 'pull_request'
@@ -44,4 +45,5 @@ jobs:
           echo "$DECISION"
           if [ "$DECISION" = "merge" ]; then
             gh pr merge "$PR" --repo "$REPO" --squash --match-head-commit "$CHECKED_SHA"
+            gh workflow run publish.yml --repo "$REPO" --ref main
           fi
