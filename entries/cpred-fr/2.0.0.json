@@ -1,0 +1,27 @@
+{
+  "v": 1,
+  "id": "cpred-fr",
+  "version": "2.0.0",
+  "kind": "system",
+  "name": "Fiche Cyberpunk RED (non officielle)",
+  "url": "https://github.com/ourdirvtt/catalogue/releases/download/cpred-2.0.0/fiche-cyberpunk-red-fr.json",
+  "size": 523059,
+  "sha256": "aa5b895d8d406199fab8067c203b084f597092ea9c7dbe3ace34f5515e41312d",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "signature": "9PxLZvQDLcDjezj5ngfSa_fYa6qTjMj34k3Y3WYW6KnBuVWEOje8I9gKoLF4eZq2808Y962k4iwlRbzqYWVUBw",
+  "permissions": [],
+  "license": "Homebrew Content Policy (R. Talsorian Games)",
+  "summary": "Fiche de personnage non officielle pour Cyberpunk RED, en français : jauges, compétences du livre, armes, cybermatériel, trois skins.",
+  "description": "",
+  "tags": [
+    "cyberpunk",
+    "fiche"
+  ],
+  "languages": [
+    "fr"
+  ],
+  "access": "free"
+}
