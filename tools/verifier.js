@@ -4137,11 +4137,15 @@ var publishSequence = (now) => Math.floor(now.getTime() / 1e3);
 var safe = (s) => String(s).replace(/[`\r\n]+/g, " ").replace(/@/g, "@\u200B").slice(0, 300);
 function renderReport(r) {
   const lines = ["### Contr\xF4le du catalogue / Catalogue check", ""];
-  lines.push(r.ok ? "\u2714 Tout est bon : la soumission va \xEAtre fusionn\xE9e. / All good: it will be merged." : "\u2718 La soumission est refus\xE9e pour l\u2019instant. / The submission is refused for now.");
+  const waiting = !r.ok && !r.policy.length && r.results.length > 0 && r.results.every((e) => e.ok || e.waiting);
+  const until = r.results.find((e) => e.waiting)?.waiting ?? "";
+  lines.push(
+    r.ok ? "\u2714 Tout est bon : la soumission va \xEAtre fusionn\xE9e. / All good: it will be merged." : waiting ? `\u23F3 En attente jusqu\u2019au ${safe(until.slice(0, 10))} : ce remplacement de cl\xE9 sera sign\xE9 puis fusionn\xE9 automatiquement, sauf annulation. / Waiting until ${safe(until.slice(0, 10))}: this key replacement will be signed and merged automatically, unless cancelled.` : "\u2718 La soumission est refus\xE9e pour l\u2019instant. / The submission is refused for now."
+  );
   lines.push("");
   for (const p of r.policy.slice(0, 10)) lines.push("- \u2718 " + safe(p));
   for (const e of r.results.slice(0, 10)) {
-    lines.push(`- ${e.ok ? "\u2714" : "\u2718"} ${safe(e.file)}${e.ok ? "" : " : " + e.errors.slice(0, 4).map(safe).join(" ; ")}`);
+    lines.push(`- ${e.ok ? "\u2714" : e.waiting ? "\u23F3" : "\u2718"} ${safe(e.file)}${e.ok ? "" : " : " + e.errors.slice(0, 4).map(safe).join(" ; ")}`);
   }
   lines.push("", "R\xE8gles : RULES.md \xB7 Guide : CONTRIBUTING.md");
   return lines.join("\n");
@@ -4208,6 +4212,7 @@ function checkSuccessionFile(file, text, repoDir, now) {
   const p = parseSuccession(text);
   if (!p.ok) return { file, ok: false, errors: [p.reason] };
   if (!where || where[1] !== p.s.from) return { file, ok: false, errors: ["Le fichier doit porter le nom de l\u2019ancienne cl\xE9 : successions/<ancienne cl\xE9>.json."] };
+  if (!p.file.sig) return { file, ok: false, errors: [`Sign\xE9 au plus t\xF4t le ${p.s.notBefore.slice(0, 10)}, si personne ne l\u2019annule.`], waiting: p.s.notBefore };
   const c = checkSuccession(p, { rootKeys: repoRootKeys(repoDir), tiers: readTiers(repoDir), now, currentDelegation: true });
   if (!c.ok) return { file, ok: false, errors: [c.reason] };
   const before = repoChain(repoDir, now);
