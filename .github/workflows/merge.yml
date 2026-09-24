@@ -1,0 +1,47 @@
+# Posts the check's report and merges a submission that passed. It may write, so it takes nothing from the pull
+# request but data it verifies with GitHub itself: the pull request's number (an integer), its current head commit,
+# the list of its files. The merge also names the commit that was checked (--match-head-commit).
+name: merge
+on:
+  workflow_run:
+    workflows: [check]
+    types: [completed]
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+jobs:
+  merge:
+    if: github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          name: check-result
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+          path: result
+      - name: Comment, then merge if allowed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          CHECKED_SHA: ${{ github.event.workflow_run.head_sha }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+        run: |
+          PR="$(head -c 12 result/pr-number.txt | tr -dc '0-9')"
+          [ -n "$PR" ] || { echo "no pull request number"; exit 1; }
+          HEAD_SHA="$(gh api "repos/$REPO/pulls/$PR" --jq .head.sha)"
+          gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '[.[] | {filename, status}]' | jq -s 'add' > files.json
+          head -c 20000 result/report.md > body.md
+          gh pr comment "$PR" --repo "$REPO" --body-file body.md
+          DECISION="$(node tools/verifier.js merge-decision --conclusion "$CONCLUSION" --checked-sha "$CHECKED_SHA" --head-sha "$HEAD_SHA" --files files.json)"
+          echo "$DECISION"
+          if [ "$DECISION" = "merge" ]; then
+            gh pr merge "$PR" --repo "$REPO" --squash --match-head-commit "$CHECKED_SHA"
+          fi

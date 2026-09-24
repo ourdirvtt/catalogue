@@ -1,0 +1,52 @@
+# Publishes the catalogue to R2: after each merge on main, every night (then every creator-hosted file is fetched
+# again), and on demand. The CI's key signs the index; the root key never comes here.
+name: publish
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: publish
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: auto
+      AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+      AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
+      R2: s3://ourdir-catalogue/v2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: What is already published
+        run: |
+          mkdir -p hosted
+          aws s3 sync "$R2/packages" hosted --endpoint-url "${{ secrets.R2_ENDPOINT }}" --only-show-errors
+          aws s3 cp "$R2/index.json" previous-index.json --endpoint-url "${{ secrets.R2_ENDPOINT }}" --only-show-errors || true
+      - name: Build and sign
+        env:
+          CATALOG_CI_KEY: ${{ secrets.CATALOG_CI_KEY }}
+        run: node tools/verifier.js publish --repo . --hosted hosted --out public --links "${{ github.event_name == 'schedule' && 'all' || 'new' }}" --previous previous-index.json --broken broken.json --pin "$(tr -d '[:space:]' < root.pub)"
+      - name: Upload
+        run: |
+          if [ -d public/packages ]; then aws s3 sync public/packages "$R2/packages" --endpoint-url "${{ secrets.R2_ENDPOINT }}" --only-show-errors; fi
+          for f in delegation.json tiers.json tiers.json.sig index.json index.json.sig; do
+            if [ -f "public/$f" ]; then aws s3 cp "public/$f" "$R2/$f" --endpoint-url "${{ secrets.R2_ENDPOINT }}" --cache-control "max-age=300" --only-show-errors; fi
+          done
+      - name: Broken links
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node tools/verifier.js issues --broken broken.json --mode "${{ github.event_name == 'schedule' && 'all' || 'new' }}" --repo-name "${{ github.repository }}"

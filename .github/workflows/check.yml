@@ -1,0 +1,42 @@
+# Checks a submission. No secret, read-only: GitHub gives neither to a pull request from a fork, and this job needs none.
+# The tools come from main; the pull request's files are fetched into pr/ and only read, never run.
+name: check
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: pr
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Files of the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --paginate "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files" --jq '[.[] | {filename, status}]' | jq -s 'add' > files.json
+      - name: Check
+        run: node base/tools/verifier.js check --repo base --pr pr --files files.json --report report.json --markdown report.md
+      - name: Keep the result for the merge step
+        if: always()
+        run: echo "${{ github.event.pull_request.number }}" > pr-number.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: check-result
+          path: |
+            report.md
+            pr-number.txt
+          retention-days: 7

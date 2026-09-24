@@ -1,0 +1,9 @@
+{
+  "body": "{\"v\":1,\"key\":\"epx_KsIIyPe74uNI0CulCK64uWmo0tNr4sf_c9aR5Q0\",\"serial\":1,\"notBefore\":\"2026-09-24T15:20:48.709Z\",\"notAfter\":\"2026-12-23T15:20:48.709Z\"}",
+  "sig": {
+    "v": 1,
+    "publicKey": "KBaCpKbPgvAru43xQK9J3_tS4DogWci9ElZ8XK6d-5o",
+    "signature": "qzcPknRum5nGyPu_zT4Wn-A8kpzaXqSoTtPVV3D0k4ChfWgSrEcNkpO88dB-R1VB4V_BCm2byPgxdWk2Z9VPBg",
+    "signedAt": "2026-09-24T15:20:48.709Z"
+  }
+}

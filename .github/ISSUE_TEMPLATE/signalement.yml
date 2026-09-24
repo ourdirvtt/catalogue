@@ -1,0 +1,35 @@
+name: Signaler un contenu / Report content
+description: Un paquet enfreint les règles (droits d'auteur, code malveillant, contenu illégal…) / A package breaks the rules.
+title: "Signalement : "
+labels: [signalement]
+body:
+  - type: input
+    id: paquet
+    attributes:
+      label: Paquet (identifiant) / Package id
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+  - type: dropdown
+    id: raison
+    attributes:
+      label: Raison / Reason
+      options:
+        - Droits d'auteur (contenu copié) / Copyright
+        - Code malveillant ou collecte de données / Malware or data collection
+        - Usurpation (marque, éditeur, personne) / Impersonation
+        - Contenu illégal / Illegal content
+        - Contenu adulte sans l'étiquette nsfw / Adult content without the nsfw tag
+        - Autre / Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Détails / Details
+      description: Ce qui pose problème ; pour le droit d'auteur, ce qui a été copié et d'où. / What is wrong; for copyright, what was copied and from where.
+    validations:
+      required: true

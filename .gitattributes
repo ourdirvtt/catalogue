@@ -1,0 +1,2 @@
+# Signed files are signed byte for byte: git must never touch their line endings (nor anything else here).
+* -text
