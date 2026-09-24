@@ -1,0 +1,26 @@
+{
+  "v": 1,
+  "id": "ourdir-es",
+  "version": "1.0.0",
+  "kind": "translation",
+  "name": "Traducción «Ourdir» español",
+  "url": "https://catalogue.ourdir.fr/v2/partages/ourdir-es/1.0.0.ourdir-translation.json",
+  "size": 190555,
+  "sha256": "14387a39dc75e73d73674451746da1b28ec6c95b8fcd228c3df84f656ac55aeb",
+  "publisher": {
+    "name": "Talep",
+    "key": "HqAxfszWwKwBvbmN40udBqtgKQEcPyw72Cyc2R6_0JM"
+  },
+  "signature": "fHqfHLpCdTO5sC9YVwS5RVSiVNJMjp3NHYNx7-jkqb5O7_AHVG3OOIVnqqx89jNa0QEjEZRmUFeXRPyamJweAg",
+  "permissions": [],
+  "license": "CC-BY-4.0",
+  "summary": "Traducción de «Ourdir» al español",
+  "description": "100%",
+  "tags": [
+    "ourdir"
+  ],
+  "languages": [
+    "es"
+  ],
+  "access": "free"
+}
