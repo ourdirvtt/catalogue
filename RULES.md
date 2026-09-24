@@ -27,10 +27,17 @@ Permis, à condition de porter l'étiquette `nsfw`. Un contenu adulte sans cette
 - Sur GitHub : [formulaire de signalement](../../issues/new?template=signalement.yml).
 - Sans compte GitHub : **signalement@ourdir.fr**.
 
-## Données conservées
+## Partager depuis l'appli
 
-- Pour une soumission par pull request : ce que GitHub montre publiquement (compte, historique) et la clé publique de l'éditeur.
-- Pour un envoi depuis l'appli Ourdir (bientôt) : l'adresse e-mail vérifiée, la clé publique et l'adresse IP de l'envoi, conservées un an, comme la loi le demande à un hébergeur (LCEN). Elles ne servent qu'à répondre à une réquisition judiciaire ou à traiter un signalement.
+Un créateur sans compte GitHub peut partager un système qu'il a fait dans l'appli Ourdir (bouton « Partager au catalogue »). Le service `partage.ourdir.fr` héberge alors le fichier sous `catalogue.ourdir.fr/v2/partages/` et ouvre la pull request à sa place ; les mêmes contrôles et les mêmes règles s'appliquent, le paquet est listé en **Communautaire**.
+
+- **Limites** : systèmes seulement ; 10 Mo par fichier, 100 Mo par clé d'éditeur ; 5 partages par jour et par clé, 20 par adresse IP ; une version publiée n'est jamais remplacée (on en publie une nouvelle).
+- **Clé d'éditeur** : créée dans l'appli, distincte de l'identité de joueur. Elle seule peut publier une nouvelle version d'un paquet. Perdue, elle ne se remplace pas : sauvegarde-la.
+- **Données conservées** : l'adresse e-mail vérifiée (jamais publiée), la clé publique et l'adresse IP de chaque envoi, **un an**, comme la loi le demande à un hébergeur (LCEN). Elles ne servent qu'à répondre à une réquisition judiciaire ou à traiter un signalement. Le fichier d'un partage refusé ou fermé est effacé au bout de 7 jours.
+- **Sous-traitants** : Cloudflare (service et hébergement des fichiers), Brevo (envoi du code par e-mail), GitHub (pull request et historique publics).
+- **Accès, suppression** : écrire à **signalement@ourdir.fr** depuis l'adresse concernée. Un paquet publié se retire de la même façon.
+
+- Pour une soumission par pull request directe : on garde ce que GitHub montre publiquement (compte, historique) et la clé publique de l'éditeur.
 
 ---
 
@@ -61,7 +68,14 @@ Allowed, with the `nsfw` tag. Adult content without it is removed.
 - On GitHub: [report form](../../issues/new?template=signalement.yml).
 - Without a GitHub account: **signalement@ourdir.fr**.
 
-## Data kept
+## Sharing from the app
 
-- For a pull request: what GitHub shows publicly (account, history) and the publisher's public key.
-- For an upload from the Ourdir app (soon): the verified e-mail address, the public key and the upload's IP address, kept for one year as French law requires of a host (LCEN). They are only used to answer a court order or to handle a report.
+A creator without a GitHub account can share a system they made in the Ourdir app ("Share to the catalogue" button). The `partage.ourdir.fr` service then hosts the file under `catalogue.ourdir.fr/v2/partages/` and opens the pull request for them; the same checks and rules apply, and the package is listed as **Community**.
+
+- **Limits**: systems only; 10 MB per file, 100 MB per publisher key; 5 shares a day per key, 20 per IP address; a published version is never replaced (publish a new one).
+- **Publisher key**: made in the app, separate from the player identity. Only it can publish a new version of a package. If lost, it cannot be replaced: back it up.
+- **Data kept**: the verified e-mail address (never published), the public key and each upload's IP address, for **one year**, as French law requires of a host (LCEN). They are only used to answer a court order or to handle a report. The file of a refused or closed share is erased after 7 days.
+- **Processors**: Cloudflare (service and file hosting), Brevo (sending the e-mail code), GitHub (public pull request and history).
+- **Access, erasure**: write to **signalement@ourdir.fr** from the address concerned. A published package is removed the same way.
+
+- For a direct pull request: we keep what GitHub shows publicly (account, history) and the publisher's public key.
