@@ -43,7 +43,7 @@ jobs:
       - name: Upload
         run: |
           if [ -d public/packages ]; then aws s3 sync public/packages "$R2/packages" --endpoint-url "${{ secrets.R2_ENDPOINT }}" --only-show-errors; fi
-          for f in delegation.json tiers.json tiers.json.sig index.json index.json.sig; do
+          for f in delegation.json recovery-delegation.json tiers.json tiers.json.sig index.json index.json.sig; do
             if [ -f "public/$f" ]; then aws s3 cp "public/$f" "$R2/$f" --endpoint-url "${{ secrets.R2_ENDPOINT }}" --cache-control "max-age=300" --only-show-errors; fi
           done
       - name: Broken links
