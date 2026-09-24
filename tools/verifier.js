@@ -2485,6 +2485,439 @@ var require_builder_core = __commonJS({
   }
 });
 
+// apps/desktop/renderer/theme-core.js
+var require_theme_core = __commonJS({
+  "apps/desktop/renderer/theme-core.js"(exports2, module2) {
+    "use strict";
+    (function(root, factory) {
+      if (typeof module2 === "object" && module2.exports) module2.exports = factory(require_builder_theme());
+      else root.TTTableTheme = factory(root.TTBuilderTheme);
+    })(typeof self !== "undefined" ? self : exports2, function(Theme) {
+      "use strict";
+      var FORMAT = "ourdir-theme";
+      var MAX_BYTES = 65536;
+      var ID_RE3 = /^[a-z0-9][a-z0-9-]{1,39}$/;
+      var VERSION_RE3 = /^\d+\.\d+\.\d+$/;
+      var COLOR_RE = /^#[0-9a-f]{6}$/;
+      var BUILTIN = ["metier", "fantasy", "cyberpunk", "espace", "horreur", "noir"];
+      var COLOR_KEYS = [
+        { k: "void", label: "Fond profond" },
+        { k: "bg", label: "Fond" },
+        { k: "panel", label: "Panneaux" },
+        { k: "panel2", label: "Panneaux en creux" },
+        { k: "line", label: "Filets" },
+        { k: "text", label: "Texte" },
+        { k: "muted", label: "Texte att\xE9nu\xE9" },
+        { k: "accent", label: "Accent (le fil)" },
+        { k: "accent2", label: "Accent secondaire" },
+        { k: "ok", label: "R\xE9ussite" },
+        { k: "warn", label: "Attention" },
+        { k: "bad", label: "Danger" },
+        { k: "paper", label: "Papier (fiches, jets)" },
+        { k: "paperInk", label: "Encre sur le papier" }
+      ];
+      var FONT_KEYS = Object.keys(Theme.FONTS).filter(function(k) {
+        return !!Theme.FONTS[k].family;
+      });
+      var CHOICES = {
+        corners: { vifs: 0, doux: 6, ronds: 12 },
+        cut: { aucune: 0, legere: 6, marquee: 10 },
+        tabs: ["droits", "coupes"],
+        knots: ["ronds", "losanges", "carres"],
+        glow: ["aucun", "doux", "neon"],
+        texture: ["aucune", "tissage", "lignes", "papier"],
+        grain: [0, 1, 2, 3],
+        filter: ["none", "vignette", "neon", "scan", "dread", "noir"]
+      };
+      var MINIMA = { "text-bg": 4.5, "text-panel": 4.5, "muted-panel": 3, "ink-paper": 4.5 };
+      var TOP = ["format", "v", "id", "name", "version", "author", "license", "description", "base", "colors", "fonts", "shape", "effects", "filter"];
+      var isObj5 = function(v) {
+        return v !== null && typeof v === "object" && !Array.isArray(v);
+      };
+      var has = function(list2, v) {
+        return list2.indexOf(v) >= 0;
+      };
+      var strictKeys = function(o, allowed, where, out) {
+        Object.keys(o).forEach(function(k) {
+          if (!has(allowed, k)) out.push(where + " : champ inconnu \xAB " + String(k).slice(0, 30) + " \xBB.");
+        });
+      };
+      function validate(d) {
+        var out = [];
+        if (!isObj5(d)) return ["Ce n\u2019est pas un th\xE8me."];
+        strictKeys(d, TOP, "Th\xE8me", out);
+        if (d.format !== FORMAT || d.v !== 1) out.push("Ce fichier n\u2019est pas un th\xE8me Ourdir (format).");
+        if (typeof d.id !== "string" || !ID_RE3.test(d.id)) out.push("Identifiant invalide.");
+        if (typeof d.name !== "string" || d.name.trim().length < 2 || d.name.length > 40) out.push("Nom : 2 \xE0 40 caract\xE8res.");
+        if (typeof d.version !== "string" || !VERSION_RE3.test(d.version)) out.push("Version : x.y.z.");
+        ["author", "license"].forEach(function(k) {
+          if (d[k] !== void 0 && (typeof d[k] !== "string" || d[k].length > 80)) out.push(k + " : 80 caract\xE8res au plus.");
+        });
+        if (d.description !== void 0 && (typeof d.description !== "string" || d.description.length > 300)) out.push("Description : 300 caract\xE8res au plus.");
+        if (!has(BUILTIN, d.base)) out.push("Base : un des th\xE8mes int\xE9gr\xE9s.");
+        if (!isObj5(d.colors)) out.push("Couleurs manquantes.");
+        else {
+          strictKeys(d.colors, COLOR_KEYS.map(function(c) {
+            return c.k;
+          }), "Couleurs", out);
+          COLOR_KEYS.forEach(function(c) {
+            if (typeof d.colors[c.k] !== "string" || !COLOR_RE.test(d.colors[c.k])) out.push("Couleur \xAB " + c.label + " \xBB : #rrggbb (minuscules).");
+          });
+        }
+        if (!isObj5(d.fonts)) out.push("Polices manquantes.");
+        else {
+          strictKeys(d.fonts, ["display", "body", "mono"], "Polices", out);
+          ["display", "body", "mono"].forEach(function(k) {
+            if (!has(FONT_KEYS, d.fonts[k])) out.push("Police \xAB " + k + " \xBB : une police de la biblioth\xE8que.");
+          });
+        }
+        if (!isObj5(d.shape)) out.push("Forme manquante.");
+        else {
+          strictKeys(d.shape, ["corners", "cut", "tabs", "knots"], "Forme", out);
+          if (!has(Object.keys(CHOICES.corners), d.shape.corners)) out.push("Coins : vifs, doux ou ronds.");
+          if (!has(Object.keys(CHOICES.cut), d.shape.cut)) out.push("Coupe : aucune, legere ou marquee.");
+          if (!has(CHOICES.tabs, d.shape.tabs)) out.push("Rubans : droits ou coupes.");
+          if (!has(CHOICES.knots, d.shape.knots)) out.push("Perles : ronds, losanges ou carres.");
+        }
+        if (!isObj5(d.effects)) out.push("Effets manquants.");
+        else {
+          strictKeys(d.effects, ["glow", "texture", "grain", "capitals"], "Effets", out);
+          if (!has(CHOICES.glow, d.effects.glow)) out.push("Halo : aucun, doux ou neon.");
+          if (!has(CHOICES.texture, d.effects.texture)) out.push("Trame : aucune, tissage, lignes ou papier.");
+          if (!has(CHOICES.grain, d.effects.grain)) out.push("Grain : 0 \xE0 3.");
+          if (typeof d.effects.capitals !== "boolean") out.push("Capitales : oui ou non.");
+        }
+        if (!has(CHOICES.filter, d.filter)) out.push("Filtre propos\xE9 : un filtre d\u2019\xE9cran existant.");
+        return out;
+      }
+      function parse(text) {
+        if (typeof text !== "string" || text.length > MAX_BYTES) return { ok: false, errors: ["Th\xE8me trop volumineux (64 Ko au plus)."] };
+        var d;
+        try {
+          d = JSON.parse(text.charCodeAt(0) === 65279 ? text.slice(1) : text);
+        } catch (e) {
+          return { ok: false, errors: ["Ce fichier n\u2019est pas un th\xE8me Ourdir (JSON illisible)."] };
+        }
+        var errors = validate(d);
+        return errors.length ? { ok: false, errors } : { ok: true, doc: d };
+      }
+      var rgbOf = function(hex) {
+        return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)];
+      };
+      var hexOf = function(rgb) {
+        return "#" + rgb.map(function(n) {
+          return ("0" + Math.max(0, Math.min(255, Math.round(n))).toString(16)).slice(-2);
+        }).join("");
+      };
+      var mix = function(a, b, t) {
+        var x = rgbOf(a), y = rgbOf(b);
+        return hexOf([0, 1, 2].map(function(i) {
+          return x[i] + (y[i] - x[i]) * t;
+        }));
+      };
+      var triple = function(hex) {
+        return rgbOf(hex).join(" ");
+      };
+      var rgba = function(hex, a) {
+        var c = rgbOf(hex);
+        return "rgba(" + c[0] + ", " + c[1] + ", " + c[2] + ", " + a + ")";
+      };
+      function luminance(hex) {
+        var c = rgbOf(hex).map(function(n) {
+          n /= 255;
+          return n <= 0.03928 ? n / 12.92 : Math.pow((n + 0.055) / 1.055, 2.4);
+        });
+        return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+      }
+      function ratio(a, b) {
+        var x = luminance(a), y = luminance(b);
+        return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+      }
+      function contrasts(d) {
+        var c = d.colors;
+        var row = function(key, label, fg, bg) {
+          var r = Math.round(ratio(fg, bg) * 100) / 100;
+          return { key, label, ratio: r, min: MINIMA[key], ok: r >= MINIMA[key] };
+        };
+        return [
+          row("text-bg", "Texte sur le fond", c.text, c.bg),
+          row("text-panel", "Texte sur les panneaux", c.text, c.panel),
+          row("muted-panel", "Texte att\xE9nu\xE9 sur les panneaux", c.muted, c.panel),
+          row("ink-paper", "Encre sur le papier", c.paperInk, c.paper)
+        ];
+      }
+      var ADVICE = {
+        "text-bg": "le texte se lit mal sur le fond : \xE9claircis le texte ou fonce le fond",
+        "text-panel": "le texte se lit mal sur les panneaux : \xE9claircis le texte ou fonce les panneaux",
+        "muted-panel": "le texte att\xE9nu\xE9 se lit mal sur les panneaux : \xE9claircis-le",
+        "ink-paper": "l\u2019encre se lit mal sur le papier : fonce l\u2019encre ou \xE9claircis le papier"
+      };
+      function readable(d) {
+        var problems = contrasts(d).filter(function(x) {
+          return !x.ok;
+        }).map(function(x) {
+          return ADVICE[x.key] + " (" + x.ratio + " pour " + x.min + ").";
+        });
+        return { ok: problems.length === 0, problems };
+      }
+      var STARTS = {
+        metier: {
+          colors: { void: "#080a18", bg: "#10132b", panel: "#191e42", panel2: "#222956", line: "#303873", text: "#ece4d0", muted: "#9da0c4", accent: "#e0b64a", accent2: "#b8892a", ok: "#58b09f", warn: "#f0c860", bad: "#d0566a", paper: "#ece4d0", paperInk: "#2b2118" },
+          fonts: { display: "alegreya", body: "alegreya", mono: "jetbrains" },
+          shape: { corners: "doux", cut: "aucune", tabs: "droits", knots: "ronds" },
+          effects: { glow: "aucun", texture: "aucune", grain: 0, capitals: false },
+          filter: "none"
+        },
+        fantasy: {
+          colors: { void: "#14100b", bg: "#1e1710", panel: "#34271a", panel2: "#453421", line: "#6b5232", text: "#e8d9b5", muted: "#b39d78", accent: "#c9962e", accent2: "#7a2a22", ok: "#7ea36a", warn: "#e6b84e", bad: "#b0433a", paper: "#d9c9a1", paperInk: "#2a1d14" },
+          fonts: { display: "fell", body: "alegreya", mono: "jetbrains" },
+          shape: { corners: "doux", cut: "aucune", tabs: "droits", knots: "ronds" },
+          effects: { glow: "aucun", texture: "tissage", grain: 2, capitals: false },
+          filter: "vignette"
+        },
+        cyberpunk: {
+          colors: { void: "#04060c", bg: "#070b14", panel: "#0a1020", panel2: "#111a2f", line: "#1d2947", text: "#eef2ff", muted: "#a3afcf", accent: "#3ff0d2", accent2: "#8270ff", ok: "#4be3a5", warn: "#ffc857", bad: "#ff6b8a", paper: "#0a1020", paperInk: "#eef2ff" },
+          fonts: { display: "barlow", body: "inter", mono: "jetbrains" },
+          shape: { corners: "vifs", cut: "marquee", tabs: "coupes", knots: "losanges" },
+          effects: { glow: "neon", texture: "lignes", grain: 0, capitals: true },
+          filter: "neon"
+        },
+        espace: {
+          colors: { void: "#050d12", bg: "#07131a", panel: "#0d212b", panel2: "#12303d", line: "#1f5566", text: "#dff3f2", muted: "#7fb0b6", accent: "#ffb547", accent2: "#5ee0b8", ok: "#5ee0b8", warn: "#ffd08a", bad: "#ff6a4a", paper: "#0b1c25", paperInk: "#dff3f2" },
+          fonts: { display: "michroma", body: "exo2", mono: "jetbrains" },
+          shape: { corners: "ronds", cut: "aucune", tabs: "coupes", knots: "carres" },
+          effects: { glow: "doux", texture: "lignes", grain: 0, capitals: false },
+          filter: "scan"
+        },
+        horreur: {
+          colors: { void: "#090706", bg: "#0d0a09", panel: "#171210", panel2: "#241a17", line: "#4a2a26", text: "#e4d8c8", muted: "#9a8577", accent: "#a3282b", accent2: "#7d8f5a", ok: "#7d8f5a", warn: "#c9a35a", bad: "#d4362f", paper: "#14100f", paperInk: "#e4d8c8" },
+          fonts: { display: "specialelite", body: "crimson", mono: "jetbrains" },
+          shape: { corners: "doux", cut: "aucune", tabs: "droits", knots: "ronds" },
+          effects: { glow: "aucun", texture: "aucune", grain: 3, capitals: false },
+          filter: "dread"
+        },
+        noir: {
+          colors: { void: "#070707", bg: "#0b0b0c", panel: "#151516", panel2: "#212123", line: "#3a3a3d", text: "#ecebe6", muted: "#9b9a94", accent: "#e8e6df", accent2: "#c8202f", ok: "#b9b7ad", warn: "#d8d6cf", bad: "#c8202f", paper: "#e6e2d5", paperInk: "#151412" },
+          fonts: { display: "playfair", body: "courierprime", mono: "jetbrains" },
+          shape: { corners: "vifs", cut: "aucune", tabs: "droits", knots: "carres" },
+          effects: { glow: "aucun", texture: "aucune", grain: 3, capitals: false },
+          filter: "noir"
+        }
+      };
+      function fromBuiltin(base, o) {
+        var s = o && o.from || STARTS[base] || STARTS.metier;
+        var copy = JSON.parse(JSON.stringify(s));
+        return {
+          format: FORMAT,
+          v: 1,
+          id: o.id,
+          name: o.name,
+          version: "1.0.0",
+          author: "",
+          license: "CC-BY-4.0",
+          description: "",
+          base: has(BUILTIN, base) ? base : o && o.from && o.from.base || "metier",
+          colors: copy.colors,
+          fonts: copy.fonts,
+          shape: copy.shape,
+          effects: copy.effects,
+          filter: copy.filter
+        };
+      }
+      var GLOW = {
+        aucun: function() {
+          return "none";
+        },
+        doux: function(a) {
+          return "0 0 10px " + rgba(a, 0.25);
+        },
+        neon: function(a) {
+          return "0 0 12px " + rgba(a, 0.35) + ", 0 0 2px " + a;
+        }
+      };
+      var TEXTURE = {
+        aucune: function() {
+          return "none";
+        },
+        tissage: function(t) {
+          return "repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.07) 0 2px, transparent 2px 9px), repeating-linear-gradient(90deg, " + rgba(t, 0.02) + " 0 1px, transparent 1px 3px)";
+        },
+        lignes: function() {
+          return "repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px)";
+        },
+        papier: function(t) {
+          return "radial-gradient(" + rgba(t, 0.04) + " 1px, transparent 1px)";
+        }
+      };
+      var KNOTS = { ronds: { radius: "50%", turn: "0deg", size: "40px" }, losanges: { radius: "1px", turn: "45deg", size: "30px" }, carres: { radius: "2px", turn: "0deg", size: "34px" } };
+      function tokens(d) {
+        var c = d.colors, f = d.fonts, sh = d.shape, ef = d.effects;
+        var cut = CHOICES.cut[sh.cut], radius = CHOICES.corners[sh.corners], knot = KNOTS[sh.knots];
+        var onAccent = ratio("#000000", c.accent) >= ratio("#ffffff", c.accent) ? "#000000" : "#ffffff";
+        return {
+          void: c.void,
+          bg: c.bg,
+          panel: c.panel,
+          panel2: c.panel2,
+          line: c.line,
+          lineSoft: mix(c.line, c.bg, 0.3),
+          lineStrong: mix(c.line, c.text, 0.25),
+          text: c.text,
+          muted: c.muted,
+          dim: mix(c.muted, c.bg, 0.3),
+          accent: c.accent,
+          accentDim: mix(c.accent, c.bg, 0.2),
+          accentHi: mix(c.accent, "#ffffff", 0.3),
+          accentDeep: mix(c.accent, c.bg, 0.8),
+          accent2: c.accent2,
+          onAccent,
+          ok: c.ok,
+          warn: c.warn,
+          bad: c.bad,
+          badDeep: mix(c.bad, c.bg, 0.8),
+          paper: c.paper,
+          paper2: mix(c.paper, c.paperInk, 0.06),
+          paperInk: c.paperInk,
+          paperMuted: mix(c.paperInk, c.paper, 0.45),
+          paperLine: mix(c.paperInk, c.paper, 0.7),
+          display: Theme.FONTS[f.display].css,
+          body: Theme.FONTS[f.body].css,
+          mono: Theme.FONTS[f.mono].css,
+          radius: radius + "px",
+          radiusSm: Math.round(radius * 0.66) + "px",
+          cut: cut + "px",
+          tabCut: sh.tabs === "coupes" ? "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)" : "none",
+          glow: GLOW[ef.glow](c.accent),
+          texture: TEXTURE[ef.texture](c.text),
+          grain: String(Math.round(ef.grain * 4) / 100),
+          knot,
+          caps: ef.capitals ? "uppercase" : "none",
+          track: ef.capitals ? "1" : "0"
+        };
+      }
+      function guarded2(css) {
+        if (!Theme.isSafeCss(css)) throw new Error("Le style produit par ce th\xE8me est refus\xE9.");
+        return css;
+      }
+      var pageName = function(id) {
+        return "t-" + id;
+      };
+      function pageCss(d) {
+        var t = tokens(d);
+        var v = [
+          "--loom-void: " + t.void,
+          "--loom-void-rgb: " + triple(t.void),
+          "--loom-bg: " + t.bg,
+          "--loom-deep-rgb: " + triple(t.bg),
+          "--loom-panel: " + rgba(t.panel, 0.95),
+          "--loom-panel-rgb: " + triple(t.panel),
+          "--loom-panel-solid: " + t.panel,
+          "--loom-panel-2: " + t.panel2,
+          "--loom-panel2-rgb: " + triple(t.panel2),
+          "--loom-line: " + t.line,
+          "--loom-line-rgb: " + triple(t.line),
+          "--loom-line-soft: " + t.lineSoft,
+          "--loom-line-strong: " + t.lineStrong,
+          "--loom-grid-rgb: " + triple(mix(t.text, t.bg, 0.25)),
+          "--loom-text: " + t.text,
+          "--loom-muted: " + t.muted,
+          "--loom-dim: " + t.dim,
+          "--loom-accent: " + t.accent,
+          "--loom-accent-rgb: " + triple(t.accent),
+          "--loom-accent-dim: " + t.accentDim,
+          "--loom-accent-hi: " + t.accentHi,
+          "--loom-accent-deep: " + t.accentDeep,
+          "--loom-on-accent: " + t.onAccent,
+          "--loom-accent2: " + t.accent2,
+          "--loom-accent2-rgb: " + triple(t.accent2),
+          "--loom-pink: " + t.bad,
+          "--loom-warn: " + t.warn,
+          "--loom-bad: " + t.bad,
+          "--loom-bad-deep: " + t.badDeep,
+          "--loom-ok: " + t.ok,
+          "--loom-display: " + t.display,
+          "--loom-body: " + t.body,
+          "--loom-mono: " + t.mono,
+          "--loom-caps: " + t.caps,
+          "--loom-track: " + t.track,
+          "--loom-radius: " + t.radius,
+          "--loom-radius-sm: " + t.radiusSm,
+          "--loom-paper: " + t.paper,
+          "--loom-paper-2: " + t.paper2,
+          "--loom-paper-ink: " + t.paperInk,
+          "--loom-paper-muted: " + t.paperMuted,
+          "--loom-paper-line: " + t.paperLine,
+          "--loom-cut: " + t.cut,
+          "--loom-tab-cut: " + t.tabCut,
+          "--loom-edge: 1px solid var(--loom-line)",
+          "--loom-edge-strong: 1px solid var(--loom-line-strong)",
+          "--loom-thread: 2px solid var(--loom-accent)",
+          "--loom-stitch: 1px dashed " + rgba(t.text, 0.22),
+          "--loom-glow: " + t.glow,
+          "--loom-texture: " + t.texture,
+          "--loom-paper-texture: none",
+          "--loom-grain: " + t.grain,
+          "--loom-shadow: 0 14px 40px rgba(0, 0, 0, 0.5)",
+          "--loom-knot-radius: " + t.knot.radius,
+          "--loom-knot-turn: " + t.knot.turn,
+          "--loom-knot-clip: none",
+          "--loom-knot-size: " + t.knot.size,
+          "--loom-over-map: " + t.text,
+          "color-scheme: dark"
+        ];
+        return guarded2('html.loom[data-loom-theme="' + pageName(d.id) + '"] {\n  ' + v.join(";\n  ") + ";\n}\n");
+      }
+      function launcherCss(d) {
+        var t = tokens(d);
+        var v = [
+          "--void: " + t.void,
+          "--bg: " + t.bg,
+          "--panel: " + t.panel,
+          "--panel-2: " + t.panel2,
+          "--text: " + t.text,
+          "--muted: " + t.muted,
+          "--dim: " + t.dim,
+          "--accent: " + t.accent,
+          "--accent-rgb: " + triple(t.accent),
+          "--accent-ink: " + t.onAccent,
+          "--violet: " + t.accent2,
+          "--violet-rgb: " + triple(t.accent2),
+          "--pink: " + t.bad,
+          "--pink-rgb: " + triple(t.bad),
+          "--line: " + t.line,
+          "--line-strong: " + t.lineStrong,
+          "--ok: " + t.ok,
+          "--warn: " + t.warn,
+          "--bad: " + t.bad,
+          "--radius: " + t.radius,
+          "--display: " + t.display,
+          "--body: " + t.body,
+          "--mono: " + t.mono
+        ];
+        return guarded2(':root[data-loom-theme="' + pageName(d.id) + '"] {\n  ' + v.join(";\n  ") + ";\n}\n");
+      }
+      return {
+        FORMAT,
+        MAX_BYTES,
+        ID_RE: ID_RE3,
+        BUILTIN,
+        COLOR_KEYS,
+        FONT_KEYS,
+        CHOICES,
+        MINIMA,
+        parse,
+        validate,
+        contrasts,
+        readable,
+        fromBuiltin,
+        pageCss,
+        launcherCss,
+        pageName
+      };
+    });
+  }
+});
+
 // apps/desktop/verifier/cli.ts
 var import_node_fs6 = __toESM(require("node:fs"));
 var import_node_path6 = __toESM(require("node:path"));
@@ -3449,7 +3882,8 @@ var LIMITS = {
 var KIND_BYTES = {
   module: LIMITS.packageBytes,
   system: LIMITS.systemBytes,
-  theme: 4 * MB,
+  theme: 64 * 1024,
+  // a theme is a small document of values (spec « thèmes de table » §2)
   translation: 4 * MB,
   compendium: 256 * MB,
   maps: 512 * MB,
@@ -4017,7 +4451,7 @@ function verifyPackageFile(bytes, publicKey, signature) {
 }
 
 // apps/desktop/src/catalog/submission.ts
-var OPEN_KINDS = ["module", "system"];
+var OPEN_KINDS = ["module", "system", "theme"];
 var MAX_SUBMISSIONS_PER_PR = 10;
 var SUBMISSION_PATH_RE = /^entries\/([a-z0-9][a-z0-9_-]{1,63})\/(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]{1,30})?)\.json$/;
 var PERM_RE2 = /^[a-z][a-z0-9]*(\.[a-z][a-z0-9]*){1,3}$/;
@@ -4059,6 +4493,7 @@ function parseSubmission(file, text, opts = {}) {
   const publisherName = cleanText(pub.name, LIMITS.name);
   if (!publisherName) errors.push("Nom d\u2019\xE9diteur manquant.");
   if (kind === "system" && typeof raw.signature !== "string") errors.push("Un syst\xE8me doit porter sa signature (node scripts/sign-module.js --system).");
+  if (kind === "theme" && typeof raw.signature !== "string") errors.push("Un th\xE8me doit porter sa signature (tools/verifier.js entry \u2026 --key).");
   const perms = Array.isArray(raw.permissions) ? raw.permissions : [];
   if (perms.length > LIMITS.permissions || !perms.every((p) => typeof p === "string" && PERM_RE2.test(p))) errors.push("Liste de permissions invalide.");
   const license = cleanText(raw.license, LIMITS.name);
@@ -4154,7 +4589,7 @@ function renderReport(r) {
 // apps/desktop/src/catalog/pipeline.ts
 var sha2563 = (b) => import_node_crypto3.default.createHash("sha256").update(b).digest("hex");
 var message = (err) => err instanceof Error ? err.message : String(err);
-var extOf = (kind) => kind === "module" ? "zip" : "ttsystem.json";
+var extOf = (kind) => kind === "module" ? "zip" : kind === "theme" ? "ourdir-theme.json" : "ttsystem.json";
 function fetcher(deps2) {
   if (deps2.fetchBytes) return deps2.fetchBytes;
   return async (url, maxBytes) => {
@@ -4257,6 +4692,15 @@ async function makeSubmission(bytes, o, _deps) {
       };
     });
     ({ id, version, permissions, access, publisher } = info);
+  } else if (JSON.parse(bytes.toString("utf8"))?.format === "ourdir-theme") {
+    kind = "theme";
+    const doc = JSON.parse(bytes.toString("utf8"));
+    if (!o.identity) throw new Error("Un th\xE8me se signe avec la cl\xE9 de son \xE9diteur (--key).");
+    id = String(doc.id);
+    version = String(doc.version);
+    access = "free";
+    publisher = { name: o.publisherName || "\xC9diteur", key: o.identity.publicKey };
+    signature = signPackageFile(bytes, o.identity);
   } else {
     kind = "system";
     const file = JSON.parse(bytes.toString("utf8"));
@@ -4308,6 +4752,22 @@ function checkSystem(bytes, s, deps2) {
   if (invalid) out.push("Syst\xE8me invalide : " + invalid);
   return out;
 }
+function checkTheme(bytes, s, deps2) {
+  if (!verifyPackageFile(bytes, s.publisher.key, s.signature)) return ["La signature du th\xE8me ne correspond pas \xE0 la cl\xE9 de l\u2019\xE9diteur."];
+  if (!deps2.themeCore) return ["Le contr\xF4le des th\xE8mes n\u2019est pas disponible."];
+  const p = deps2.themeCore.parse(bytes.toString("utf8"));
+  if (!p.ok) return ["Th\xE8me invalide : " + p.errors.slice(0, 3).join(" ; ")];
+  const out = [];
+  if (p.doc.id !== s.id || p.doc.version !== s.version) out.push("Le th\xE8me annonce un autre identifiant ou une autre version que la soumission.");
+  const r = deps2.themeCore.readable(p.doc);
+  if (!r.ok) out.push("Th\xE8me peu lisible : " + r.problems[0]);
+  try {
+    deps2.themeCore.pageCss(p.doc);
+  } catch (err) {
+    out.push(message(err));
+  }
+  return out;
+}
 function checkModule(bytes, s) {
   try {
     return withPackage(bytes, (p) => {
@@ -4339,7 +4799,7 @@ async function checkSubmission(file, text, repoDir, deps2) {
   }
   if (bytes.length !== s.size) errors.push(`Taille : ${bytes.length} octets au lieu de ${s.size}.`);
   else if (sha2563(bytes) !== s.sha256) errors.push("Empreinte SHA-256 diff\xE9rente de celle d\xE9clar\xE9e.");
-  else errors.push(...s.kind === "system" ? checkSystem(bytes, s, deps2) : checkModule(bytes, s));
+  else errors.push(...s.kind === "system" ? checkSystem(bytes, s, deps2) : s.kind === "theme" ? checkTheme(bytes, s, deps2) : checkModule(bytes, s));
   return { file, id: s.id, version: s.version, ok: errors.length === 0, errors };
 }
 async function checkPullRequest(o, deps2) {
@@ -4573,6 +5033,7 @@ var readKey = (file) => {
 };
 var port = flag("--loopback-port") ? Number(flag("--loopback-port")) : void 0;
 var deps = {
+  themeCore: require_theme_core(),
   validateSystem: (doc) => {
     const r = core.validate(doc);
     return r.ok ? null : r.errors[0]?.message ?? "erreur inconnue";
