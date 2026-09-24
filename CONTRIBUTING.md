@@ -8,6 +8,8 @@ Tu n'as pas GitHub ? Pour un système fait dans l'appli Ourdir : page **Système
 
 Tout se fait avec l'outil de ce dépôt, `tools/verifier.js` (Node 20 ou plus, aucune installation) : clone le dépôt, ou télécharge ce seul fichier.
 
+**Ta clé** : si tu la perds, tu ne peux plus publier de nouvelle version. Pour la protéger, importe-la une fois dans l'appli Ourdir (Catalogue → *Mes publications* → « Ma clé d'éditeur ») et ajoute un **e-mail de secours** : « J'ai perdu ma clé » te rendra alors tes paquets en 7 jours (voir [RULES.md](RULES.md#partager-depuis-lappli)). Pour changer de clé en gardant l'ancienne, ouvre une pull request `successions/<ancienne clé>.json` signée par elle, ou passe par « Changer de clé » dans l'appli.
+
 ## 1. Signer ton paquet
 
 Une clé d'éditeur prouve que le paquet vient de toi. Crée-la une fois : `node tools/verifier.js gen-key ma-cle.json`. Garde-la secrète, hors de tout dossier de module, et **garde toujours la même** : un identifiant de paquet appartient à la clé qui l'a publié en premier.
@@ -53,6 +55,8 @@ Open kinds for now: **module** and **system**. Themes, compendiums, map packs, a
 No GitHub account? For a system made in the Ourdir app: **Game systems** page, "Share to the catalogue" button. The app signs, uploads and follows the checks for you (see [RULES.md](RULES.md#sharing-from-the-app)).
 
 Everything is done with this repository's tool, `tools/verifier.js` (Node 20+, nothing to install).
+
+**Your key**: lose it and you can no longer publish a new version. To protect it, import it once into the Ourdir app (Catalog → *My publications* → "My publisher key") and add a **recovery e-mail**: "I lost my key" then gives your packages back within 7 days (see [RULES.md](RULES.md#sharing-from-the-app)). To change key while keeping the old one, open a `successions/<old key>.json` pull request signed by it, or use "Change key" in the app.
 
 1. **Sign** your package: create your key once with `node tools/verifier.js gen-key my-key.json` (keep it secret, and always the same one: a package id belongs to the key that first published it). A module: `node tools/verifier.js sign-module <folder> --key my-key.json --name "My name"`, then `node tools/verifier.js pack <folder> --out my-module.zip`. A system is signed in step 3.
 2. **Host** the file over **https** at an address that will not change (a GitHub release is ideal). A published file never changes; publish a new version instead.

@@ -154,7 +154,7 @@ var require_builder_theme = __commonJS({
         var seen = {}, total = 0;
         assets.forEach(function(a) {
           var label = a && typeof a.id === "string" ? "\xAB " + a.id + " \xBB" : "";
-          if (!isObj4(a) || typeof a.id !== "string" || !ASSET_ID_RE.test(a.id)) return errors.push("Identifiant de fichier embarqu\xE9 invalide.");
+          if (!isObj5(a) || typeof a.id !== "string" || !ASSET_ID_RE.test(a.id)) return errors.push("Identifiant de fichier embarqu\xE9 invalide.");
           if (seen[a.id]) return errors.push("Fichier embarqu\xE9 " + label + " en double.");
           seen[a.id] = true;
           var type = ASSET_TYPES[a.mime];
@@ -176,7 +176,7 @@ var require_builder_theme = __commonJS({
       }
       var assetOf = function(assets, id) {
         return (Array.isArray(assets) ? assets : []).filter(function(a) {
-          return isObj4(a) && a.id === id;
+          return isObj5(a) && a.id === id;
         })[0] || null;
       };
       var assetFontId = function(v) {
@@ -185,7 +185,7 @@ var require_builder_theme = __commonJS({
       var dataUrl = function(a) {
         return 'url("data:' + a.mime + ";base64," + a.data + '")';
       };
-      var isObj4 = function(v) {
+      var isObj5 = function(v) {
         return v !== null && typeof v === "object" && !Array.isArray(v);
       };
       var isInt = function(v, r) {
@@ -208,10 +208,10 @@ var require_builder_theme = __commonJS({
       }
       var DEFAULTS = { frame: "none", spacing: "none", stat: { style: "plain" }, gauge: { style: "bar", color: "accent" }, tag: { style: "paper" } };
       function withDefaults(t) {
-        if (!isObj4(t)) return t;
+        if (!isObj5(t)) return t;
         var out = JSON.parse(JSON.stringify(t));
-        if (isObj4(out.shape) && out.shape.frame === void 0) out.shape.frame = DEFAULTS.frame;
-        if (isObj4(out.shape) && out.shape.spacing === void 0) out.shape.spacing = DEFAULTS.spacing;
+        if (isObj5(out.shape) && out.shape.frame === void 0) out.shape.frame = DEFAULTS.frame;
+        if (isObj5(out.shape) && out.shape.spacing === void 0) out.shape.spacing = DEFAULTS.spacing;
         ["stat", "gauge", "tag"].forEach(function(k) {
           if (out[k] === void 0) out[k] = JSON.parse(JSON.stringify(DEFAULTS[k]));
         });
@@ -372,17 +372,17 @@ var require_builder_theme = __commonJS({
       function validateTheme(t, assets) {
         var errors = [];
         if (t === null || t === void 0) return errors;
-        if (!isObj4(t)) return ["Th\xE8me illisible."];
+        if (!isObj5(t)) return ["Th\xE8me illisible."];
         t = withDefaults(t);
         var e = function(m) {
           errors.push(m);
         };
         if (t.name !== void 0 && (typeof t.name !== "string" || t.name.length > 60)) e("Nom de th\xE8me invalide.");
-        if (!isObj4(t.colors)) e("Couleurs manquantes.");
+        if (!isObj5(t.colors)) e("Couleurs manquantes.");
         else COLOR_KEYS.forEach(function(c) {
           if (typeof t.colors[c.k] !== "string" || !HEX.test(t.colors[c.k])) e("Couleur \xAB " + c.label + " \xBB invalide (format #rrggbb).");
         });
-        if (!isObj4(t.fonts)) e("Polices manquantes.");
+        if (!isObj5(t.fonts)) e("Polices manquantes.");
         else {
           var fontOk = function(v) {
             if (FONTS[v]) return true;
@@ -395,7 +395,7 @@ var require_builder_theme = __commonJS({
           if (ENUMS.fonts.headingCase.indexOf(t.fonts.headingCase) < 0) e("Casse des titres invalide.");
           if (!isInt(t.fonts.headingSpacing, RANGES.headingSpacing)) e("Espacement des lettres : " + RANGES.headingSpacing.join(" \xE0 ") + ".");
         }
-        if (!isObj4(t.background)) e("Fond manquant.");
+        if (!isObj5(t.background)) e("Fond manquant.");
         else {
           if (ENUMS.background.kind.indexOf(t.background.kind) < 0) e("Type de fond inconnu.");
           if (typeof t.background.color2 !== "string" || !HEX.test(t.background.color2)) e("Seconde couleur du fond invalide.");
@@ -409,7 +409,7 @@ var require_builder_theme = __commonJS({
             if (!img || img.kind !== "image") e("Choisis une image de fond parmi les fichiers embarqu\xE9s.");
           }
         }
-        if (!isObj4(t.shape)) e("Formes manquantes.");
+        if (!isObj5(t.shape)) e("Formes manquantes.");
         else {
           if (!isInt(t.shape.radius, RANGES.radius)) e("Arrondi : " + RANGES.radius.join(" \xE0 ") + " px.");
           if (!isInt(t.shape.borderWidth, RANGES.borderWidth)) e("\xC9paisseur de bordure : " + RANGES.borderWidth.join(" \xE0 ") + " px.");
@@ -419,16 +419,16 @@ var require_builder_theme = __commonJS({
           if (ENUMS.shape.frame.indexOf(t.shape.frame) < 0) e("Cadre inconnu.");
           if (ENUMS.shape.spacing.indexOf(t.shape.spacing) < 0) e("Espacement inconnu.");
         }
-        if (!isObj4(t.header)) e("Bandeau manquant.");
+        if (!isObj5(t.header)) e("Bandeau manquant.");
         else {
           if (ENUMS.header.style.indexOf(t.header.style) < 0) e("Style de bandeau inconnu.");
           if (ENUMS.header.align.indexOf(t.header.align) < 0) e("Alignement du bandeau invalide.");
         }
-        if (!isObj4(t.fields) || ENUMS.fields.style.indexOf(t.fields.style) < 0) e("Style des champs inconnu.");
+        if (!isObj5(t.fields) || ENUMS.fields.style.indexOf(t.fields.style) < 0) e("Style des champs inconnu.");
         if (ENUMS.titleRule.indexOf(t.titleRule) < 0) e("Ornement des titres inconnu.");
-        if (!isObj4(t.stat) || ENUMS.stat.style.indexOf(t.stat.style) < 0) e("Style des blocs de stat inconnu.");
-        if (!isObj4(t.gauge) || ENUMS.gauge.style.indexOf(t.gauge.style) < 0 || ENUMS.gauge.color.indexOf(t.gauge.color) < 0) e("Style de jauge inconnu.");
-        if (!isObj4(t.tag) || ENUMS.tag.style.indexOf(t.tag.style) < 0) e("Style d\u2019\xE9tiquette de jet inconnu.");
+        if (!isObj5(t.stat) || ENUMS.stat.style.indexOf(t.stat.style) < 0) e("Style des blocs de stat inconnu.");
+        if (!isObj5(t.gauge) || ENUMS.gauge.style.indexOf(t.gauge.style) < 0 || ENUMS.gauge.color.indexOf(t.gauge.color) < 0) e("Style de jauge inconnu.");
+        if (!isObj5(t.tag) || ENUMS.tag.style.indexOf(t.tag.style) < 0) e("Style d\u2019\xE9tiquette de jet inconnu.");
         return errors;
       }
       function rgba(hex, alpha) {
@@ -938,7 +938,7 @@ var require_builder_core = __commonJS({
       };
       function slots(n) {
         if (!n) return [];
-        if (n.className === "Tab") return (Array.isArray(n.tabs) ? n.tabs : []).filter(isObj4).map(function(t) {
+        if (n.className === "Tab") return (Array.isArray(n.tabs) ? n.tabs : []).filter(isObj5).map(function(t) {
           return { list: Array.isArray(t.children) ? t.children : [], key: "tab:" + t.id, tab: t };
         });
         if (n.className === "Repeater") return [{ list: Array.isArray(n.children) ? n.children : [], key: "edit", area: "edit" }, { list: Array.isArray(n.readChildren) ? n.readChildren : [], key: "read", area: "read" }];
@@ -948,7 +948,7 @@ var require_builder_core = __commonJS({
         var out = {};
         function visit(list2) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-            if (!isObj4(n)) return;
+            if (!isObj5(n)) return;
             if (n.className === "NumberInput" && (withComputed || !n.computed) && typeof n.id === "string") out[n.id] = n;
             if (n.className === "Repeater") return;
             slots(n).forEach(function(sl) {
@@ -957,14 +957,14 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj4(v)) visit(v.children);
+          if (isObj5(v)) visit(v.children);
         });
         return out;
       }
       function hasValue(n) {
         return !!(n && (COMPONENTS[n.className].value || n.className === "Label" && n.computed));
       }
-      var isObj4 = function(v) {
+      var isObj5 = function(v) {
         return v !== null && typeof v === "object" && !Array.isArray(v);
       };
       var STR_CTRL = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\u0085\u2028\u2029]/g;
@@ -1295,7 +1295,7 @@ var require_builder_core = __commonJS({
         };
       }
       function upgradeDoc(doc) {
-        if (!isObj4(doc) || !("theme" in doc)) return doc;
+        if (!isObj5(doc) || !("theme" in doc)) return doc;
         var out = Object.assign({}, doc);
         out.skins = doc.theme ? [{ id: "defaut", name: "Par d\xE9faut", theme: doc.theme }] : [];
         delete out.theme;
@@ -1308,12 +1308,12 @@ var require_builder_core = __commonJS({
         var seen = {};
         skins.forEach(function(s, i) {
           var label = "Skin " + (i + 1);
-          if (!isObj4(s)) return err("theme", label + " illisible.");
+          if (!isObj5(s)) return err("theme", label + " illisible.");
           if (typeof s.id !== "string" || !Theme.SKIN_ID_RE.test(s.id)) err("theme", label + " : identifiant invalide (minuscules, chiffres et _, 24 au plus).");
           else if (seen[s.id]) err("theme", "Skin \xAB " + s.id + " \xBB en double.");
           else seen[s.id] = true;
           if (typeof s.name !== "string" || !cleanText2(s.name, 100).trim() || s.name.length > 40) err("theme", label + " : nom vide ou trop long (40 caract\xE8res au plus).");
-          if (!isObj4(s.theme)) return err("theme", label + " : apparence manquante.");
+          if (!isObj5(s.theme)) return err("theme", label + " : apparence manquante.");
           Theme.validateTheme(s.theme, doc.assets).forEach(function(m) {
             err("theme", label + " : " + m);
           });
@@ -1404,7 +1404,7 @@ var require_builder_core = __commonJS({
         var warn = function(id, message2) {
           warnings.push({ id: id || null, message: message2 });
         };
-        if (!isObj4(doc) || doc.v !== 1) {
+        if (!isObj5(doc) || doc.v !== 1) {
           err(null, "Document illisible.");
           return { ok: false, errors, warnings };
         }
@@ -1435,7 +1435,7 @@ var require_builder_core = __commonJS({
         function check(n, depth, parent, scope) {
           count++;
           if (count > maxNodes) return;
-          if (!isObj4(n) || !COMPONENTS[n.className]) {
+          if (!isObj5(n) || !COMPONENTS[n.className]) {
             err(n && n.id, "Composant inconnu : " + (n && n.className));
             return;
           }
@@ -1487,15 +1487,15 @@ var require_builder_core = __commonJS({
             if (tabs.length > LIMITS2.tabs) err(n.id, "Trop d\u2019onglets (" + LIMITS2.tabs + " max).");
             if (n.verticalWidth != null && !(Number.isInteger(n.verticalWidth) && n.verticalWidth >= 1 && n.verticalWidth <= 11)) err(n.id, "La largeur des onglets verticaux va de 1 \xE0 11.");
             tabs.forEach(function(t2) {
-              if (!isObj4(t2) || typeof t2.id !== "string" || !ID_RE3.test(t2.id)) err(n.id, "Cl\xE9 d\u2019onglet invalide.");
+              if (!isObj5(t2) || typeof t2.id !== "string" || !ID_RE3.test(t2.id)) err(n.id, "Cl\xE9 d\u2019onglet invalide.");
               else if (seenTab[t2.id]) err(n.id, "Onglet \xAB " + t2.id + " \xBB en double.");
               else {
                 seenTab[t2.id] = true;
                 if (idOwner[n.id + "__" + t2.id]) err(n.id, "Cl\xE9 \xAB " + n.id + "__" + t2.id + " \xBB d\xE9j\xE0 prise.");
                 idOwner[n.id + "__" + t2.id] = true;
               }
-              if (!isObj4(t2) || typeof t2.label !== "string" || !cleanText2(t2.label, 1e5).trim() || t2.label.length > LIMITS2.tabTitle) err(n.id, "Titre d\u2019onglet vide ou trop long.");
-              if (isObj4(t2) && !Array.isArray(t2.children)) err(n.id, "Contenu d\u2019onglet illisible.");
+              if (!isObj5(t2) || typeof t2.label !== "string" || !cleanText2(t2.label, 1e5).trim() || t2.label.length > LIMITS2.tabTitle) err(n.id, "Titre d\u2019onglet vide ou trop long.");
+              if (isObj5(t2) && !Array.isArray(t2.children)) err(n.id, "Contenu d\u2019onglet illisible.");
             });
           }
           if (n.className === "Repeater") {
@@ -1566,10 +1566,10 @@ var require_builder_core = __commonJS({
               if (opts2.length > LIMITS2.options) err(n.id, "Trop d\u2019options (" + LIMITS2.options + " max).");
               var seen = {};
               opts2.forEach(function(o) {
-                if (!isObj4(o) || typeof o.id !== "string" || !ID_RE3.test(o.id)) err(n.id, "Cl\xE9 d\u2019option invalide.");
+                if (!isObj5(o) || typeof o.id !== "string" || !ID_RE3.test(o.id)) err(n.id, "Cl\xE9 d\u2019option invalide.");
                 else if (seen[o.id]) err(n.id, "Option \xAB " + o.id + " \xBB en double.");
                 else seen[o.id] = true;
-                if (!isObj4(o) || typeof o.label !== "string" || !cleanText2(o.label, 1e5).trim() || o.label.length > LIMITS2.optionLabel) err(n.id, "Libell\xE9 d\u2019option vide ou trop long.");
+                if (!isObj5(o) || typeof o.label !== "string" || !cleanText2(o.label, 1e5).trim() || o.label.length > LIMITS2.optionLabel) err(n.id, "Libell\xE9 d\u2019option vide ou trop long.");
               });
             } else if (!(doc.tables && doc.tables[n.tableId])) err(n.id, "Table \xAB " + n.tableId + " \xBB introuvable.");
           }
@@ -1595,7 +1595,7 @@ var require_builder_core = __commonJS({
         var vars = {};
         if (doc.variables !== void 0 && !Array.isArray(doc.variables)) err(null, "Variables illisibles.");
         (Array.isArray(doc.variables) ? doc.variables : []).forEach(function(v) {
-          if (!isObj4(v) || typeof v.id !== "string" || !ID_RE3.test(v.id)) err(null, "Nom de variable invalide.");
+          if (!isObj5(v) || typeof v.id !== "string" || !ID_RE3.test(v.id)) err(null, "Nom de variable invalide.");
           else if (vars[v.id] !== void 0) err(null, "Variable \xAB " + v.id + " \xBB en double.");
           else {
             vars[v.id] = String(v.value);
@@ -1961,7 +1961,7 @@ var require_builder_core = __commonJS({
         var all = {};
         function visit(list2) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n2) {
-            if (!isObj4(n2)) return;
+            if (!isObj5(n2)) return;
             if (typeof n2.id === "string") all[n2.id] = n2;
             if (n2.className === "Repeater") return;
             slots(n2).forEach(function(sl) {
@@ -1970,11 +1970,11 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj4(v)) visit(v.children);
+          if (isObj5(v)) visit(v.children);
         });
         var variables = {};
         (doc && doc.variables || []).forEach(function(v) {
-          if (isObj4(v) && typeof v.id === "string") variables[v.id] = String(v.value);
+          if (isObj5(v) && typeof v.id === "string") variables[v.id] = String(v.value);
         });
         var nodes = {}, vars = {}, todo = (wanted || []).slice(), guard = 0;
         function reads(formula2) {
@@ -2016,7 +2016,7 @@ var require_builder_core = __commonJS({
         var allNumbers = spendableIds(doc, true);
         function visit(list2, prefix) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-            if (!isObj4(n)) return;
+            if (!isObj5(n)) return;
             if (n.gmOnly === true && COMPONENTS[n.className] && COMPONENTS[n.className].value && typeof n.id === "string") gmOnly.push(prefix + n.id);
             if (n.className === "Label" && !prefix && n.clickable && n.roll && typeof n.spendField === "string" && spendable[n.spendField]) {
               var target = spendable[n.spendField];
@@ -2037,7 +2037,7 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj4(v)) visit(v.children, "");
+          if (isObj5(v)) visit(v.children, "");
         });
         var out = { v: 1 };
         if (gmOnly.length) out.gmOnly = gmOnly.slice(0, 200);
@@ -2266,7 +2266,7 @@ var require_builder_core = __commonJS({
         if (!views.length) throw new Error("Cette fiche n\u2019a pas de vue principale.");
         var src = views[0];
         var unknown = {};
-        var tables = isObj4(system.tables) ? JSON.parse(JSON.stringify(system.tables)) : {};
+        var tables = isObj5(system.tables) ? JSON.parse(JSON.stringify(system.tables)) : {};
         if (Array.isArray(system.tables)) {
           tables = {};
           system.tables.forEach(function(t) {
@@ -3440,6 +3440,7 @@ var LIMITS = {
   permissions: 40,
   revokedKeys: 500,
   revokedPackages: 2e3,
+  successions: 500,
   languages: 12,
   dependencies: 20,
   packageBytes: 256 * MB,
@@ -3619,8 +3620,13 @@ function parseIndex(bytes, opts = {}) {
       }
       const permissions = (Array.isArray(v.permissions) ? v.permissions : []).filter((p) => typeof p === "string" && PERM_RE.test(p)).slice(0, LIMITS.permissions);
       const minApp = typeof v.minApp === "string" && VERSION_RE2.test(v.minApp) ? v.minApp : void 0;
+      const vkey = v.key;
+      if (vkey !== void 0 && !isValidPublicKey(vkey)) {
+        err(`${id} ${version} : cl\xE9 de version invalide.`);
+        continue;
+      }
       seenVersions.add(version);
-      versions.push({ version, sha256: sha2564, size: vsize, url: v.url, publishedAt, permissions, minApp, changelog: cleanText(v.changelog, LIMITS.changelog) || void 0, status });
+      versions.push({ version, sha256: sha2564, size: vsize, url: v.url, publishedAt, permissions, minApp, changelog: cleanText(v.changelog, LIMITS.changelog) || void 0, status, ...vkey ? { key: vkey } : {} });
     }
     if (!versions.length) {
       err(`${id} : aucune version valide.`);
@@ -3661,10 +3667,11 @@ function parseIndex(bytes, opts = {}) {
   const rev = isObj(raw.revoked) ? raw.revoked : {};
   const keys = (Array.isArray(rev.keys) ? rev.keys : []).filter((k) => isValidPublicKey(k)).slice(0, LIMITS.revokedKeys);
   const packages = (Array.isArray(rev.packages) ? rev.packages : []).filter(isObj).filter((p) => typeof p.id === "string" && ID_RE2.test(p.id) && (p.version === void 0 || typeof p.version === "string" && VERSION_RE2.test(p.version))).slice(0, LIMITS.revokedPackages).map((p) => ({ id: p.id, version: p.version }));
+  const successions = (Array.isArray(raw.successions) ? raw.successions : []).filter(isObj).filter((f) => typeof f.body === "string" && f.body.length <= 1024 && (f.sig === null || isObj(f.sig)) && (f.delegation === void 0 || typeof f.delegation === "string" && f.delegation.length <= 4096)).slice(0, LIMITS.successions).map((f) => ({ body: f.body, sig: f.sig, ...typeof f.delegation === "string" ? { delegation: f.delegation } : {} }));
   if (errors.length) return { ok: false, errors };
   return {
     ok: true,
-    index: { format: CATALOG_FORMAT, v: CATALOG_VERSION, sequence, generatedAt, expiresAt, entries, revoked: { keys, packages } }
+    index: { format: CATALOG_FORMAT, v: CATALOG_VERSION, sequence, generatedAt, expiresAt, entries, revoked: { keys, packages }, successions }
   };
 }
 
@@ -3712,7 +3719,7 @@ function checkDelegation(text, rootKeys, now, minSerial = 0, opts = {}) {
     return bad("D\xE9l\xE9gation illisible.");
   }
   if (!isObj2(file) || typeof file.body !== "string" || !isObj2(file.sig)) return bad("D\xE9l\xE9gation invalide.");
-  const v = verifyBytes(Buffer.from(file.body), JSON.stringify(file.sig), rootKeys, DELEGATION_CONTEXT, "la d\xE9l\xE9gation");
+  const v = verifyBytes(Buffer.from(file.body), JSON.stringify(file.sig), rootKeys, opts.context ?? DELEGATION_CONTEXT, "la d\xE9l\xE9gation");
   if (!v.ok) return v;
   let d;
   try {
@@ -3769,13 +3776,13 @@ function checkTiers(bytes, signatureText, rootKeys, now, minSequence = 0) {
   if (p.tiers.sequence < minSequence) return bad("Fichier des niveaux plus ancien qu\u2019un d\xE9j\xE0 vu (retour en arri\xE8re refus\xE9).");
   return p;
 }
-function tierOf(tiers, kind, id, publisherKey, version) {
+function tierOf(tiers, kind, id, publisherKey, version, line = [publisherKey]) {
   if (!tiers) return "community";
   if (tiers.ourdir.includes(publisherKey)) return "ourdir";
   if (tiers.official.some((o) => o.key === publisherKey)) return "official";
   if (kind === "module") {
     if (tiers.validated.versions.some((v) => v.id === id && v.version === version.version && v.sha256 === version.sha256)) return "validated";
-  } else if (tiers.validated.publishers.some((p) => p.key === publisherKey)) {
+  } else if (tiers.validated.publishers.some((p) => line.includes(p.key))) {
     return "validated";
   }
   return "community";
@@ -3783,6 +3790,93 @@ function tierOf(tiers, kind, id, publisherKey, version) {
 function maySell(tiers, publisherKey) {
   if (!tiers) return false;
   return tiers.ourdir.includes(publisherKey) || tiers.official.some((o) => o.key === publisherKey) || tiers.sellers.some((s) => s.key === publisherKey);
+}
+
+// apps/desktop/src/catalog/succession.ts
+var SUCCESSION_CONTEXT = "ourdir-succession/v1";
+var RECOVERY_DELEGATION_CONTEXT = "ourdir-recovery-delegation/v1";
+var RECOVERY_DELEGATION_FILE = "recovery-delegation.json";
+var SUCCESSION_PATH_RE = /^successions\/([A-Za-z0-9_-]{43})\.json$/;
+var EMAIL_DELAY_MS = 7 * 24 * 3600 * 1e3;
+var PR_SLACK_MS = 3600 * 1e3;
+var MAX_CHAIN = 10;
+var MAX_FILE = 8192;
+var isObj3 = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+var bad2 = (reason) => ({ ok: false, reason });
+var delayOf = (how) => how === "email" ? EMAIL_DELAY_MS : 0;
+function parseSuccession(text) {
+  let t = text.toString();
+  if (t.charCodeAt(0) === 65279) t = t.slice(1);
+  if (t.length > MAX_FILE) return bad2("Remplacement de cl\xE9 trop volumineux.");
+  let raw;
+  try {
+    raw = JSON.parse(t);
+  } catch {
+    return bad2("Remplacement de cl\xE9 illisible.");
+  }
+  if (!isObj3(raw) || typeof raw.body !== "string" || raw.body.length > 1024 || !(raw.sig === null || isObj3(raw.sig))) return bad2("Remplacement de cl\xE9 invalide.");
+  if (raw.delegation !== void 0 && (typeof raw.delegation !== "string" || raw.delegation.length > 4096)) return bad2("D\xE9l\xE9gation du remplacement invalide.");
+  let s;
+  try {
+    s = JSON.parse(raw.body);
+  } catch {
+    return bad2("Remplacement de cl\xE9 invalide.");
+  }
+  if (!isObj3(s) || s.v !== 1 || !isValidPublicKey(s.from) || !isValidPublicKey(s.to) || s.from === s.to) return bad2("Remplacement de cl\xE9 invalide (cl\xE9s).");
+  if (s.how !== "cle" && s.how !== "email" && s.how !== "racine") return bad2("Remplacement de cl\xE9 invalide (fa\xE7on).");
+  const req = Date.parse(String(s.requestedAt));
+  const nb = Date.parse(String(s.notBefore));
+  if (!Number.isFinite(req) || !Number.isFinite(nb) || nb < req + delayOf(s.how)) return bad2("Remplacement de cl\xE9 invalide (dates).");
+  const file = { body: raw.body, sig: raw.sig, ...typeof raw.delegation === "string" ? { delegation: raw.delegation } : {} };
+  return { ok: true, file, s: { v: 1, from: s.from, to: s.to, how: s.how, requestedAt: new Date(req).toISOString(), notBefore: new Date(nb).toISOString() } };
+}
+var guarded = (tiers, key) => !!tiers && (tiers.ourdir.includes(key) || tiers.official.some((o) => o.key === key) || tiers.sellers.some((x) => x.key === key));
+function checkSuccession(p, ctx) {
+  const { file, s } = p;
+  if (!file.sig) return bad2(`En attente : ce remplacement sera sign\xE9 au plus t\xF4t le ${s.notBefore}.`);
+  const signedAt = Date.parse(String(file.sig.signedAt));
+  if (!Number.isFinite(signedAt) || signedAt < Date.parse(s.notBefore) || ctx.now < Date.parse(s.notBefore)) return bad2("Remplacement sign\xE9 avant la fin de son d\xE9lai.");
+  if (s.how !== "racine" && guarded(ctx.tiers, s.from)) return bad2("Une cl\xE9 Ourdir, officielle ou de vendeur ne se remplace que par la racine.");
+  let keys;
+  if (s.how === "cle") keys = [s.from];
+  else if (s.how === "racine") keys = ctx.rootKeys;
+  else {
+    if (!file.delegation) return bad2("Remplacement par e-mail sans sa d\xE9l\xE9gation.");
+    const when = checkDelegation(file.delegation, ctx.rootKeys, signedAt, 0, { context: RECOVERY_DELEGATION_CONTEXT });
+    if (!when.ok) return bad2("D\xE9l\xE9gation de r\xE9cup\xE9ration : " + when.reason);
+    if (ctx.currentDelegation) {
+      const today = checkDelegation(file.delegation, ctx.rootKeys, ctx.now, 0, { context: RECOVERY_DELEGATION_CONTEXT });
+      if (!today.ok) return bad2("D\xE9l\xE9gation de r\xE9cup\xE9ration : " + today.reason);
+    }
+    keys = [when.delegation.key];
+  }
+  const v = verifyBytes(Buffer.from(file.body), JSON.stringify(file.sig), keys, SUCCESSION_CONTEXT, "le remplacement de cl\xE9");
+  return v.ok ? { ok: true } : bad2(v.reason);
+}
+function chainOf(list2) {
+  const next = /* @__PURE__ */ new Map();
+  const prev = /* @__PURE__ */ new Map();
+  const problems = [];
+  const head = (k) => {
+    for (let i = 0; i <= MAX_CHAIN + 1 && next.has(k); i++) k = next.get(k);
+    return k;
+  };
+  const line = (k) => {
+    const out = [k];
+    for (let i = 0; i <= MAX_CHAIN + 1 && prev.has(k); i++) out.push(k = prev.get(k));
+    return out;
+  };
+  for (const s of [...list2].sort((x, y) => x.requestedAt.localeCompare(y.requestedAt))) {
+    if (next.has(s.from)) problems.push(`${s.from.slice(0, 12)} : d\xE9j\xE0 remplac\xE9e (fourche refus\xE9e).`);
+    else if (prev.has(s.to)) problems.push(`${s.to.slice(0, 12)} : succ\xE8de d\xE9j\xE0 \xE0 une autre cl\xE9.`);
+    else if (head(s.to) === s.from || line(s.from).includes(s.to)) problems.push(`${s.from.slice(0, 12)} : remplacement en boucle.`);
+    else if (line(s.from).length + line(head(s.to)).length > MAX_CHAIN + 1) problems.push(`${s.from.slice(0, 12)} : cha\xEEne de plus de ${MAX_CHAIN} maillons.`);
+    else {
+      next.set(s.from, s.to);
+      prev.set(s.to, s.from);
+    }
+  }
+  return { next, prev, head, line, problems };
 }
 
 // apps/desktop/src/catalog/client.ts
@@ -3836,7 +3930,9 @@ function build2(root, identity, opts = {}) {
     generatedAt: now.toISOString(),
     expiresAt: new Date(now.getTime() + days * 864e5).toISOString(),
     entries: entries.map((e) => ({ ...e, versions: e.versions.map(({ file, url, ...rest }) => ({ ...rest, url: url ?? file })) })),
-    revoked: readJson(d.revoked, { keys: [], packages: [] })
+    revoked: readJson(d.revoked, { keys: [], packages: [] }),
+    // key replacements the CI kept (spec « clé perdue » §2.4); a maintainer's folder has none
+    successions: readJson(import_node_path3.default.join(root, "successions.json"), [])
   };
   const bytes = Buffer.from(JSON.stringify(index, null, 2) + "\n", "utf8");
   const parsed = parseIndex(bytes, { loopbackPort: opts.loopbackPort });
@@ -3853,7 +3949,7 @@ function build2(root, identity, opts = {}) {
   }
   import_node_fs3.default.writeFileSync(import_node_path3.default.join(d.out, INDEX_FILE), bytes);
   import_node_fs3.default.writeFileSync(import_node_path3.default.join(d.out, SIGNATURE_FILE2), signIndex(bytes, identity, now));
-  for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE]) {
+  for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, RECOVERY_DELEGATION_FILE]) {
     if (import_node_fs3.default.existsSync(import_node_path3.default.join(root, f))) import_node_fs3.default.copyFileSync(import_node_path3.default.join(root, f), import_node_path3.default.join(d.out, f));
   }
   writeJson(d.state, { sequence });
@@ -3926,9 +4022,9 @@ var MAX_SUBMISSIONS_PER_PR = 10;
 var SUBMISSION_PATH_RE = /^entries\/([a-z0-9][a-z0-9_-]{1,63})\/(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]{1,30})?)\.json$/;
 var PERM_RE2 = /^[a-z][a-z0-9]*(\.[a-z][a-z0-9]*){1,3}$/;
 var MAX_SUBMISSION_BYTES = 64 * 1024;
-var isObj3 = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+var isObj4 = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
 function requirement2(v) {
-  if (!isObj3(v) || typeof v.id !== "string" || !ID_RE2.test(v.id)) return null;
+  if (!isObj4(v) || typeof v.id !== "string" || !ID_RE2.test(v.id)) return null;
   if (v.minVersion === void 0) return { id: v.id };
   return typeof v.minVersion === "string" && VERSION_RE2.test(v.minVersion) ? { id: v.id, minVersion: v.minVersion } : null;
 }
@@ -3942,7 +4038,7 @@ function parseSubmission(file, text, opts = {}) {
   } catch {
     return { ok: false, errors: ["Soumission illisible (JSON invalide, ou pas en UTF-8)."] };
   }
-  if (!isObj3(raw) || raw.v !== 1) return { ok: false, errors: ["Soumission invalide (format)."] };
+  if (!isObj4(raw) || raw.v !== 1) return { ok: false, errors: ["Soumission invalide (format)."] };
   const errors = [];
   const [, id, version] = where;
   if (raw.id !== id || raw.version !== version) errors.push("Le nom du fichier ne correspond pas \xE0 l\u2019identifiant et \xE0 la version.");
@@ -3958,7 +4054,7 @@ function parseSubmission(file, text, opts = {}) {
   const size = raw.size;
   if (!(typeof size === "number" && Number.isInteger(size) && size > 0 && size <= cap)) errors.push("Taille invalide.");
   if (typeof raw.sha256 !== "string" || !SHA_RE.test(raw.sha256)) errors.push("Empreinte SHA-256 invalide.");
-  const pub = isObj3(raw.publisher) ? raw.publisher : {};
+  const pub = isObj4(raw.publisher) ? raw.publisher : {};
   if (!isValidPublicKey(pub.key)) errors.push("Cl\xE9 d\u2019\xE9diteur invalide.");
   const publisherName = cleanText(pub.name, LIMITS.name);
   if (!publisherName) errors.push("Nom d\u2019\xE9diteur manquant.");
@@ -4005,18 +4101,21 @@ function parseSubmission(file, text, opts = {}) {
 function filePolicy(changes) {
   if (!changes.length) return ["La pull request n\u2019ajoute aucun fichier."];
   const out = [];
+  if (changes.some((c) => SUCCESSION_PATH_RE.test(c.filename)) && changes.length > 1) out.push("Un remplacement de cl\xE9 voyage seul dans sa pull request.");
   if (changes.length > MAX_SUBMISSIONS_PER_PR) out.push(`Au plus ${MAX_SUBMISSIONS_PER_PR} soumissions par pull request.`);
   for (const c of changes.slice(0, 50)) {
     const name = String(c.filename).slice(0, 120);
-    if (!SUBMISSION_PATH_RE.test(c.filename)) out.push(`\xAB ${name} \xBB : seuls des fichiers entries/<id>/<version>.json peuvent \xEAtre ajout\xE9s ; le reste passe par le mainteneur.`);
+    if (!SUBMISSION_PATH_RE.test(c.filename) && !SUCCESSION_PATH_RE.test(c.filename)) out.push(`\xAB ${name} \xBB : seuls des fichiers entries/<id>/<version>.json (ou un remplacement de cl\xE9 successions/<cl\xE9>.json) peuvent \xEAtre ajout\xE9s ; le reste passe par le mainteneur.`);
     else if (c.status !== "added") out.push(`\xAB ${name} \xBB : on ne modifie ni ne supprime une soumission publi\xE9e (ajoute une nouvelle version).`);
   }
   return out;
 }
-function ownership(sub, existing) {
+function ownership(sub, existing, chain) {
+  const head = (k) => chain ? chain.head(k) : k;
   const same = existing.filter((e) => e.id === sub.id);
   const out = [];
-  if (same.some((e) => e.key !== sub.publisher.key)) out.push(`\xAB ${sub.id} \xBB appartient \xE0 un autre \xE9diteur.`);
+  if (chain && chain.next.has(sub.publisher.key)) out.push("Cette cl\xE9 a \xE9t\xE9 remplac\xE9e par une autre : publie avec ta nouvelle cl\xE9.");
+  else if (same.some((e) => head(e.key) !== sub.publisher.key)) out.push(`\xAB ${sub.id} \xBB appartient \xE0 un autre \xE9diteur.`);
   if (same.some((e) => e.kind !== sub.kind)) out.push(`\xAB ${sub.id} \xBB est d\xE9j\xE0 un autre type de paquet.`);
   if (same.some((e) => e.version === sub.version)) out.push(`La version ${sub.version} de \xAB ${sub.id} \xBB est d\xE9j\xE0 publi\xE9e : les versions ne changent jamais.`);
   return out;
@@ -4026,7 +4125,13 @@ function mergeDecision(o) {
   if (!o.checkedSha || o.checkedSha !== o.headSha) return { merge: false, reason: "La pull request a chang\xE9 depuis le contr\xF4le : il sera refait." };
   const policy = filePolicy(o.changes);
   if (policy.length) return { merge: false, reason: policy.join(" ") };
+  if (o.successionProblem) return { merge: false, reason: o.successionProblem };
   return { merge: true, reason: "Contr\xF4le r\xE9ussi." };
+}
+function successionMergeProblem(s, createdAt, now) {
+  if (now < Date.parse(s.notBefore)) return `Pas avant le ${s.notBefore}.`;
+  if (s.how === "email" && !(Date.parse(createdAt) <= Date.parse(s.requestedAt) + PR_SLACK_MS)) return "La pull request a \xE9t\xE9 ouverte plus d\u2019une heure apr\xE8s la demande : refus\xE9e.";
+  return null;
 }
 var publishSequence = (now) => Math.floor(now.getTime() / 1e3);
 var safe = (s) => String(s).replace(/[`\r\n]+/g, " ").replace(/@/g, "@\u200B").slice(0, 300);
@@ -4074,6 +4179,42 @@ function readTiers(repoDir) {
   if (!import_node_fs4.default.existsSync(f)) return null;
   const p = parseTiers(import_node_fs4.default.readFileSync(f));
   return p.ok ? p.tiers : null;
+}
+function repoRootKeys(repoDir) {
+  const f = import_node_path4.default.join(repoDir, "root.pub");
+  return import_node_fs4.default.existsSync(f) ? import_node_fs4.default.readFileSync(f, "utf8").split(/[\s,]+/).filter(Boolean) : [];
+}
+function readSuccessionFiles(repoDir) {
+  const dir = import_node_path4.default.join(repoDir, "successions");
+  if (!import_node_fs4.default.existsSync(dir)) return [];
+  const out = [];
+  for (const f of import_node_fs4.default.readdirSync(dir).filter((x) => x.endsWith(".json")).sort()) {
+    const p = parseSuccession(import_node_fs4.default.readFileSync(import_node_path4.default.join(dir, f)));
+    if (p.ok && `${p.s.from}.json` === f) out.push(p.file);
+  }
+  return out;
+}
+function repoChain(repoDir, now) {
+  const ctx = { rootKeys: repoRootKeys(repoDir), tiers: readTiers(repoDir), now };
+  const ok = [];
+  for (const f of readSuccessionFiles(repoDir)) {
+    const p = parseSuccession(JSON.stringify(f));
+    if (p.ok && checkSuccession(p, ctx).ok) ok.push(p.s);
+  }
+  return chainOf(ok);
+}
+function checkSuccessionFile(file, text, repoDir, now) {
+  const where = SUCCESSION_PATH_RE.exec(file);
+  const p = parseSuccession(text);
+  if (!p.ok) return { file, ok: false, errors: [p.reason] };
+  if (!where || where[1] !== p.s.from) return { file, ok: false, errors: ["Le fichier doit porter le nom de l\u2019ancienne cl\xE9 : successions/<ancienne cl\xE9>.json."] };
+  const c = checkSuccession(p, { rootKeys: repoRootKeys(repoDir), tiers: readTiers(repoDir), now, currentDelegation: true });
+  if (!c.ok) return { file, ok: false, errors: [c.reason] };
+  const before = repoChain(repoDir, now);
+  const known = [...before.next].map(([from, to]) => ({ v: 1, from, to, how: "cle", requestedAt: "1970-01-01T00:00:00.000Z", notBefore: "1970-01-01T00:00:00.000Z" }));
+  const after = chainOf([...known, p.s]);
+  if (after.problems.length) return { file, ok: false, errors: after.problems };
+  return { file, ok: true, errors: [] };
 }
 function withPackage(bytes, fn) {
   const tmp = import_node_path4.default.join(import_node_os2.default.tmpdir(), `ourdir-check-${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}.zip`);
@@ -4182,7 +4323,7 @@ async function checkSubmission(file, text, repoDir, deps2) {
   const p = parseSubmission(file, text, { loopbackPort: deps2.loopbackPort });
   if (!p.ok) return { file, ok: false, errors: p.errors };
   const s = p.sub;
-  const errors = ownership(s, readSubmissions(repoDir, deps2).map((x) => ({ id: x.id, version: x.version, kind: x.kind, key: x.publisher.key })));
+  const errors = ownership(s, readSubmissions(repoDir, deps2).map((x) => ({ id: x.id, version: x.version, kind: x.kind, key: x.publisher.key })), repoChain(repoDir, Date.now()));
   if (s.access === "licensed" && !maySell(readTiers(repoDir), s.publisher.key)) errors.push("Contenu payant : seuls Ourdir, les \xE9diteurs officiels et les vendeurs agr\xE9\xE9s peuvent vendre.");
   if (errors.length) return { file, id: s.id, version: s.version, ok: false, errors };
   let bytes;
@@ -4201,7 +4342,8 @@ async function checkPullRequest(o, deps2) {
   if (policy.length) return { ok: false, policy, results: [] };
   const results = [];
   for (const c of o.changes) {
-    if (!SUBMISSION_PATH_RE.test(c.filename)) continue;
+    const isSuccession = SUCCESSION_PATH_RE.test(c.filename);
+    if (!SUBMISSION_PATH_RE.test(c.filename) && !isSuccession) continue;
     const full = import_node_path4.default.resolve(o.prDir, c.filename);
     if (!full.startsWith(import_node_path4.default.resolve(o.prDir) + import_node_path4.default.sep)) continue;
     let text;
@@ -4211,7 +4353,7 @@ async function checkPullRequest(o, deps2) {
       results.push({ file: c.filename, ok: false, errors: ["Fichier introuvable dans la pull request."] });
       continue;
     }
-    results.push(await checkSubmission(c.filename, text, o.repoDir, deps2));
+    results.push(isSuccession ? checkSuccessionFile(c.filename, text, o.repoDir, Date.now()) : await checkSubmission(c.filename, text, o.repoDir, deps2));
   }
   return { ok: results.length > 0 && results.every((r) => r.ok), policy: [], results };
 }
@@ -4229,6 +4371,7 @@ async function publishCatalog(o, deps2) {
   const now = o.now ?? /* @__PURE__ */ new Date();
   const fetch2 = fetcher(deps2);
   const tiers = readTiers(o.repoDir);
+  const chain = repoChain(o.repoDir, now.getTime());
   const seen = /* @__PURE__ */ new Map();
   if (o.previousIndex) {
     try {
@@ -4244,7 +4387,7 @@ async function publishCatalog(o, deps2) {
   let external = 0;
   for (const s of readSubmissions(o.repoDir, deps2)) {
     const key = `${s.id}@${s.version}`;
-    const tier = tierOf(tiers, s.kind, s.id, s.publisher.key, s);
+    const tier = tierOf(tiers, s.kind, s.id, s.publisher.key, s, chain.line(s.publisher.key));
     let where;
     if (tier !== "community") {
       const rel = `packages/${s.id}/${s.version}.${extOf(s.kind)}`;
@@ -4288,16 +4431,22 @@ async function publishCatalog(o, deps2) {
       access: s.access,
       store: s.store,
       dependencies: [],
-      publisher: s.publisher
+      // the package belongs to the key at the end of its chain; each version keeps the key that signed it
+      publisher: { name: s.publisher.name, key: chain.head(s.publisher.key) }
     });
-    e.versions.push({ version: s.version, sha256: s.sha256, size: s.size, ...where, publishedAt: seen.get(key) ?? now.toISOString(), permissions: s.permissions, changelog: s.changelog, status: "active" });
+    e.versions.push({ version: s.version, sha256: s.sha256, size: s.size, ...where, publishedAt: seen.get(key) ?? now.toISOString(), permissions: s.permissions, changelog: s.changelog, status: "active", key: s.publisher.key });
     entries.set(s.id, e);
   }
   import_node_fs4.default.mkdirSync(import_node_path4.default.join(work, "entries"), { recursive: true });
   for (const [id, e] of entries) import_node_fs4.default.writeFileSync(import_node_path4.default.join(work, "entries", `${id}.json`), JSON.stringify(e, null, 2));
-  for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, "revoked.json"]) {
+  for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, "revoked.json", RECOVERY_DELEGATION_FILE]) {
     if (import_node_fs4.default.existsSync(import_node_path4.default.join(o.repoDir, f))) import_node_fs4.default.copyFileSync(import_node_path4.default.join(o.repoDir, f), import_node_path4.default.join(work, f));
   }
+  const valid = readSuccessionFiles(o.repoDir).filter((f) => {
+    const p = parseSuccession(JSON.stringify(f));
+    return p.ok && chain.next.get(p.s.from) === p.s.to;
+  });
+  import_node_fs4.default.writeFileSync(import_node_path4.default.join(work, "successions.json"), JSON.stringify(valid));
   const sequence = publishSequence(now);
   build2(work, o.identity, { now, days: 7, sequence, loopbackPort: deps2.loopbackPort });
   const check = verifyPublished(import_node_path4.default.join(work, "public"), o.rootKeys, { now, loopbackPort: deps2.loopbackPort });
@@ -4393,7 +4542,7 @@ var USAGE = [
   '        [--system id[@min]] [--languages fr,en] [--homepage https] [--changelog "..."] [--store https]',
   "        [--out <repository folder>]      writes entries/<id>/<version>.json there (UTF-8)",
   "  check --repo <base> --pr <pr folder> --files <files.json> --report <report.json> --markdown <report.md>",
-  "  merge-decision --conclusion C --checked-sha S --head-sha H --files <files.json>",
+  "  merge-decision --conclusion C --checked-sha S --head-sha H --files <files.json> [--succession <file> --created-at <iso>]",
   "  publish --repo <dir> --hosted <mirror> --out <dir> --links all|new [--previous <index.json>] --broken <broken.json> --pin <root key>",
   "  issues --broken <broken.json> --mode all|new --repo-name owner/name",
   "  sign-system <file> --key <key.json>"
@@ -4481,7 +4630,13 @@ async function main() {
       return;
     }
     case "merge-decision": {
-      const d = mergeDecision({ conclusion: String(flag("--conclusion")), checkedSha: String(flag("--checked-sha") ?? ""), headSha: String(flag("--head-sha") ?? ""), changes: readChanges(need(flag("--files"), "--files")) });
+      const succFile = flag("--succession");
+      let successionProblem = null;
+      if (succFile) {
+        const p = parseSuccession(import_node_fs6.default.readFileSync(succFile));
+        successionProblem = p.ok ? successionMergeProblem(p.s, String(flag("--created-at") ?? ""), Date.now()) : p.reason;
+      }
+      const d = mergeDecision({ conclusion: String(flag("--conclusion")), checkedSha: String(flag("--checked-sha") ?? ""), headSha: String(flag("--head-sha") ?? ""), changes: readChanges(need(flag("--files"), "--files")), successionProblem });
       console.log(d.merge ? "merge" : "skip: " + d.reason);
       return;
     }

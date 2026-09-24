@@ -41,7 +41,14 @@ jobs:
           gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '[.[] | {filename, status}]' | jq -s 'add' > files.json
           head -c 20000 result/report.md > body.md
           gh pr comment "$PR" --repo "$REPO" --body-file body.md
-          DECISION="$(node tools/verifier.js merge-decision --conclusion "$CONCLUSION" --checked-sha "$CHECKED_SHA" --head-sha "$HEAD_SHA" --files files.json)"
+          # a key replacement: its content read from GitHub at the checked commit, and when GitHub says the pull request was opened
+          SUCC="$(jq -r '[.[] | select(.filename | startswith("successions/"))][0].filename // empty' files.json)"
+          EXTRA=()
+          if [ -n "$SUCC" ]; then
+            gh api "repos/$REPO/contents/$SUCC?ref=$HEAD_SHA" --jq .content | base64 -d > succession.json
+            EXTRA=(--succession succession.json --created-at "$(gh api "repos/$REPO/pulls/$PR" --jq .created_at)")
+          fi
+          DECISION="$(node tools/verifier.js merge-decision --conclusion "$CONCLUSION" --checked-sha "$CHECKED_SHA" --head-sha "$HEAD_SHA" --files files.json "${EXTRA[@]}")"
           echo "$DECISION"
           if [ "$DECISION" = "merge" ]; then
             gh pr merge "$PR" --repo "$REPO" --squash --match-head-commit "$CHECKED_SHA"
