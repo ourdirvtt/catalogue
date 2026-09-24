@@ -4,7 +4,7 @@
 
 Types ouverts pour l'instant : **module** et **système**. Les thèmes, compendiums, packs de cartes, aventures et traductions arrivent plus tard.
 
-Tu n'as pas GitHub ? Le bouton « Partager au catalogue » de l'appli Ourdir arrive bientôt.
+Tu n'as pas GitHub ? Pour un système fait dans l'appli Ourdir : page **Systèmes de jeu**, bouton « Partager au catalogue ». L'appli signe, envoie et suit le contrôle pour toi (voir [RULES.md](RULES.md#partager-depuis-lappli)).
 
 Tout se fait avec l'outil de ce dépôt, `tools/verifier.js` (Node 20 ou plus, aucune installation) : clone le dépôt, ou télécharge ce seul fichier.
 
@@ -50,7 +50,7 @@ Lis aussi les [règles](RULES.md).
 
 Open kinds for now: **module** and **system**. Themes, compendiums, map packs, adventures and translations come later.
 
-No GitHub account? The Ourdir app's "Share to the catalogue" button is coming soon.
+No GitHub account? For a system made in the Ourdir app: **Game systems** page, "Share to the catalogue" button. The app signs, uploads and follows the checks for you (see [RULES.md](RULES.md#sharing-from-the-app)).
 
 Everything is done with this repository's tool, `tools/verifier.js` (Node 20+, nothing to install).
 
