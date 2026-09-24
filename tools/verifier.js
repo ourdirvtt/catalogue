@@ -3938,9 +3938,9 @@ function parseSubmission(file, text, opts = {}) {
   if (text.length > MAX_SUBMISSION_BYTES) return { ok: false, errors: ["Soumission trop volumineuse."] };
   let raw;
   try {
-    raw = JSON.parse(text);
+    raw = JSON.parse(text.charCodeAt(0) === 65279 ? text.slice(1) : text);
   } catch {
-    return { ok: false, errors: ["Soumission illisible (JSON invalide)."] };
+    return { ok: false, errors: ["Soumission illisible (JSON invalide, ou pas en UTF-8)."] };
   }
   if (!isObj3(raw) || raw.v !== 1) return { ok: false, errors: ["Soumission invalide (format)."] };
   const errors = [];
@@ -4391,6 +4391,7 @@ var USAGE = [
   "  pack <folder> --out <file.zip>                      zip it, the same bytes on every machine",
   "  entry <package> --url <https> --name N --summary S --license L [--key k.json --publisher-name P] [--tags a,b]",
   '        [--system id[@min]] [--languages fr,en] [--homepage https] [--changelog "..."] [--store https]',
+  "        [--out <repository folder>]      writes entries/<id>/<version>.json there (UTF-8)",
   "  check --repo <base> --pr <pr folder> --files <files.json> --report <report.json> --markdown <report.md>",
   "  merge-decision --conclusion C --checked-sha S --head-sha H --files <files.json>",
   "  publish --repo <dir> --hosted <mirror> --out <dir> --links all|new [--previous <index.json>] --broken <broken.json> --pin <root key>",
@@ -4458,8 +4459,17 @@ async function main() {
         },
         deps
       );
-      console.log(JSON.stringify(sub, null, 2));
-      console.error(`\xC0 enregistrer sous entries/${sub.id}/${sub.version}.json`);
+      const text = JSON.stringify(sub, null, 2) + "\n";
+      const out = flag("--out");
+      if (out) {
+        const target = out.endsWith(".json") ? out : import_node_path6.default.join(out, "entries", sub.id, `${sub.version}.json`);
+        import_node_fs6.default.mkdirSync(import_node_path6.default.dirname(target), { recursive: true });
+        import_node_fs6.default.writeFileSync(target, text, "utf8");
+        console.log(`Soumission \xE9crite : ${target}`);
+      } else {
+        process.stdout.write(text);
+        console.error(`\xC0 enregistrer sous entries/${sub.id}/${sub.version}.json (ou utilise --out <dossier du d\xE9p\xF4t>)`);
+      }
       return;
     }
     case "check": {

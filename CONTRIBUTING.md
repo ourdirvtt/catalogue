@@ -27,7 +27,7 @@ node tools/verifier.js entry mon-paquet.zip --url https://…/mon-paquet.zip --n
 
 Pour un système, ajoute `--key ma-cle.json --publisher-name "Mon nom"` : la signature est calculée et ajoutée.
 
-L'outil affiche le fichier à enregistrer sous `entries/<id>/<version>.json`.
+Lancé depuis ton clone du dépôt, ajoute `--out .` : l'outil écrit lui-même `entries/<id>/<version>.json` (en UTF-8 ; évite `>` dans PowerShell, qui change l'encodage).
 
 ## 4. Ouvrir la pull request
 
@@ -56,7 +56,7 @@ Everything is done with this repository's tool, `tools/verifier.js` (Node 20+, n
 
 1. **Sign** your package: create your key once with `node tools/verifier.js gen-key my-key.json` (keep it secret, and always the same one: a package id belongs to the key that first published it). A module: `node tools/verifier.js sign-module <folder> --key my-key.json --name "My name"`, then `node tools/verifier.js pack <folder> --out my-module.zip`. A system is signed in step 3.
 2. **Host** the file over **https** at an address that will not change (a GitHub release is ideal). A published file never changes; publish a new version instead.
-3. **Write** the submission: `node tools/verifier.js entry my-package.zip --url https://… --name "…" --summary "…" --license MIT` (for a system, add `--key my-key.json --publisher-name "…"`), and save it as `entries/<id>/<version>.json`.
+3. **Write** the submission: `node tools/verifier.js entry my-package.zip --url https://… --name "…" --summary "…" --license MIT` (for a system, add `--key my-key.json --publisher-name "…"`), and save it as `entries/<id>/<version>.json` (or add `--out .` from your clone: the tool writes it, in UTF-8).
 4. **Open a pull request** that only adds that file (up to 10 at once). The CI checks the package like the app would install it, posts its report, and merges on its own when everything is right. The package shows up as **Community** a few minutes later.
 
 For **Validated**, add the `demande-validation` label. Read the [rules](RULES.md) too.
