@@ -1,1 +1,16 @@
-{ "ourdir": ["yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"], "official": [], "validated": { "versions": [], "publishers": [] }, "sellers": [] }
+{
+  "ourdir": [
+    "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  ],
+  "official": [],
+  "validated": {
+    "versions": [],
+    "publishers": [
+      {
+        "key": "HqAxfszWwKwBvbmN40udBqtgKQEcPyw72Cyc2R6_0JM",
+        "name": "Talep"
+      }
+    ]
+  },
+  "sellers": []
+}
