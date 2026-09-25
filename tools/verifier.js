@@ -10424,6 +10424,20 @@ function repoRootKeys(repoDir) {
   const f = import_node_path4.default.join(repoDir, "root.pub");
   return import_node_fs4.default.existsSync(f) ? import_node_fs4.default.readFileSync(f, "utf8").split(/[\s,]+/).filter(Boolean) : [];
 }
+var STATUS_KEY_RE = /^[a-z0-9][a-z0-9_-]{1,63}@\d+\.\d+\.\d+(-[0-9A-Za-z.-]{1,30})?$/;
+function readStatuses(repoDir) {
+  const out = /* @__PURE__ */ new Map();
+  const f = import_node_path4.default.join(repoDir, "status.json");
+  if (!import_node_fs4.default.existsSync(f)) return out;
+  try {
+    const raw = JSON.parse(import_node_fs4.default.readFileSync(f, "utf8"));
+    if (raw && typeof raw === "object" && !Array.isArray(raw)) {
+      for (const [k, v] of Object.entries(raw)) if (v === "deprecated" && STATUS_KEY_RE.test(k)) out.set(k, "deprecated");
+    }
+  } catch {
+  }
+  return out;
+}
 function readSuccessionFiles(repoDir) {
   const dir = import_node_path4.default.join(repoDir, "successions");
   if (!import_node_fs4.default.existsSync(dir)) return [];
@@ -10662,6 +10676,7 @@ async function publishCatalog(o, deps2) {
   const fetch2 = fetcher(deps2);
   const tiers = readTiers(o.repoDir);
   const chain = repoChain(o.repoDir, now.getTime());
+  const statuses = readStatuses(o.repoDir);
   const seen = /* @__PURE__ */ new Map();
   if (o.previousIndex) {
     try {
@@ -10724,7 +10739,7 @@ async function publishCatalog(o, deps2) {
       // the package belongs to the key at the end of its chain; each version keeps the key that signed it
       publisher: { name: s.publisher.name, key: chain.head(s.publisher.key) }
     });
-    e.versions.push({ version: s.version, sha256: s.sha256, size: s.size, ...where, publishedAt: seen.get(key) ?? now.toISOString(), permissions: s.permissions, changelog: s.changelog, status: "active", key: s.publisher.key });
+    e.versions.push({ version: s.version, sha256: s.sha256, size: s.size, ...where, publishedAt: seen.get(key) ?? now.toISOString(), permissions: s.permissions, changelog: s.changelog, status: statuses.get(key) ?? "active", key: s.publisher.key });
     entries.set(s.id, e);
   }
   import_node_fs4.default.mkdirSync(import_node_path4.default.join(work, "entries"), { recursive: true });
