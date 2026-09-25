@@ -42,7 +42,7 @@ Elle ne doit **ajouter que** ce fichier (jusqu'à 10 soumissions à la fois). La
 
 ## Niveau « Validé »
 
-Validé veut dire qu'une personne a relu ton contenu : c'est la marque de qualité d'Ourdir, montrée à tous dès l'ouverture du Catalogue. La demande se fera bientôt depuis l'appli (Catalogue → *Mes publications*). Les grades, ce qu'ils apportent, ce qu'on relit et les délais sont dans les [règles](RULES.md#grades) : chaque demande est relue par une personne, au cas par cas, et cela peut prendre plusieurs jours, voire quelques semaines.
+Validé veut dire qu'une personne a relu ton contenu : c'est la marque de qualité d'Ourdir, montrée à tous dès l'ouverture du Catalogue. Demande-le depuis l'appli (Catalogue → *Mes publications*, « Demander la validation », pour une version ou pour ton compte), ou avec le formulaire « Demande de validation » des issues. Les grades, ce qu'ils apportent, ce qu'on relit et les délais sont dans les [règles](RULES.md#grades) : chaque demande est relue par une personne, au cas par cas, et cela peut prendre plusieurs jours, voire quelques semaines.
 
 Lis aussi les [règles](RULES.md).
 
@@ -63,4 +63,4 @@ Everything is done with this repository's tool, `tools/verifier.js` (Node 20+, n
 3. **Write** the submission: `node tools/verifier.js entry my-package.zip --url https://… --name "…" --summary "…" --license MIT` (for a system, add `--key my-key.json --publisher-name "…"`), and save it as `entries/<id>/<version>.json` (or add `--out .` from your clone: the tool writes it, in UTF-8).
 4. **Open a pull request** that only adds that file (up to 10 at once). The CI checks the package like the app would install it, posts its report, and merges on its own when everything is right. The package shows up as **Community** a few minutes later.
 
-**Validated** means a person read your content: Ourdir's mark of quality, shown to everyone as soon as the Catalog opens. It will soon be requested from the app (Catalog → *My publications*). Grades, what they bring, what we review and the delays are in the [rules](RULES.md#grades): every request is read by a person, case by case, and it can take several days, even a few weeks.
+**Validated** means a person read your content: Ourdir's mark of quality, shown to everyone as soon as the Catalog opens. Request it from the app (Catalog → *My publications*, "Request validation", for a version or for your account), or with the "Validation request" issue form. Grades, what they bring, what we review and the delays are in the [rules](RULES.md#grades): every request is read by a person, case by case, and it can take several days, even a few weeks.

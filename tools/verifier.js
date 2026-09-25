@@ -1671,7 +1671,30 @@ var require_fr = __commonJS({
       "ui.grades.sales": "Vente, plus tard : \xEAtre Valid\xE9 est la condition pour demander \xE0 devenir vendeur agr\xE9\xE9, quand la vente ouvrira.",
       "ui.grades.criteriaTitle": "Ce qu\u2019on relit",
       "ui.grades.criteria": "\xC7a marche comme annonc\xE9 ; les droits sont respect\xE9s (pas de contenu prot\xE9g\xE9 sans licence) ; rien de nuisible ; une fiche claire (nom, r\xE9sum\xE9, langues) ; pour un module, des permissions justifi\xE9es.",
-      "ui.grades.delay": "Chaque demande est relue par une personne, au cas par cas. Le traitement peut prendre plusieurs jours, voire quelques semaines. La validation n\u2019est jamais automatique ni garantie. Tu re\xE7ois la r\xE9ponse par e-mail et dans l\u2019appli."
+      "ui.grades.delay": "Chaque demande est relue par une personne, au cas par cas. Le traitement peut prendre plusieurs jours, voire quelques semaines. La validation n\u2019est jamais automatique ni garantie. Tu re\xE7ois la r\xE9ponse par e-mail et dans l\u2019appli.",
+      "ui.req.ask": "Demander la validation",
+      "ui.req.askAccount": "Faire valider mon compte de cr\xE9ateur",
+      "ui.req.accountTitle": "Ton compte de cr\xE9ateur",
+      "ui.req.accountText": "Valid\xE9, ton compte fait passer tous tes contenus sans code en Valid\xE9, mises \xE0 jour comprises.",
+      "ui.req.eyebrow": "Demande de validation",
+      "ui.req.titleVersion": "{name} v{version}",
+      "ui.req.titleAccount": "Mon compte de cr\xE9ateur",
+      "ui.req.whatVersion": "Une personne relira cette version pr\xE9cise. Accept\xE9e, elle passe en Valid\xE9.",
+      "ui.req.whatAccount": "Une personne relira ton travail publi\xE9. Accept\xE9e, tous tes contenus sans code passent en Valid\xE9, et tes modules le restent tant qu\u2019une mise \xE0 jour ne demande pas de nouvelle permission.",
+      "ui.req.message": "Un mot pour la personne qui relit (facultatif)",
+      "ui.req.why": "Pourquoi monter en grade ?",
+      "ui.req.read": "J\u2019ai lu ce qu\u2019on relit et les d\xE9lais",
+      "ui.req.send": "Envoyer la demande",
+      "ui.req.back": "Annuler",
+      "ui.req.sent": "Demande envoy\xE9e.",
+      "ui.req.cancel": "Annuler la demande",
+      "ui.req.cancelled": "Demande annul\xE9e.",
+      "ui.req.pending": "Demande envoy\xE9e le {date} \xB7 en attente",
+      "ui.req.accepted": "Validation accept\xE9e le {date}.",
+      "ui.req.refused": "Refus\xE9e le {date} : {reason}",
+      "ui.req.closed": "Les demandes sont momentan\xE9ment ferm\xE9es : beaucoup de demandes attendent d\xE9j\xE0 une relecture. R\xE9essaie dans quelques jours.",
+      "ui.req.tooRecent": "Publi\xE9 depuis moins de 30 jours : la demande sera possible ensuite.",
+      "ui.req.already": "D\xE9j\xE0 {tier}."
     };
   }
 });
@@ -8038,7 +8061,30 @@ var require_en2 = __commonJS({
       "ui.grades.sales": "Selling, later: being Validated is the condition to apply as an approved seller, once selling opens.",
       "ui.grades.criteriaTitle": "What we review",
       "ui.grades.criteria": "It works as described; rights are respected (no protected content without a licence); nothing harmful; a clear sheet (name, summary, languages); for a module, justified permissions.",
-      "ui.grades.delay": "Every request is read by a person, case by case. It can take several days, even a few weeks. Validation is never automatic nor guaranteed. You get the answer by e-mail and in the app."
+      "ui.grades.delay": "Every request is read by a person, case by case. It can take several days, even a few weeks. Validation is never automatic nor guaranteed. You get the answer by e-mail and in the app.",
+      "ui.req.ask": "Request validation",
+      "ui.req.askAccount": "Get my creator account validated",
+      "ui.req.accountTitle": "Your creator account",
+      "ui.req.accountText": "Once Validated, your account makes all your content without code Validated, updates included.",
+      "ui.req.eyebrow": "Validation request",
+      "ui.req.titleVersion": "{name} v{version}",
+      "ui.req.titleAccount": "My creator account",
+      "ui.req.whatVersion": "A person will read this exact version. Accepted, it becomes Validated.",
+      "ui.req.whatAccount": "A person will read your published work. Accepted, all your content without code becomes Validated, and your modules stay so while an update asks for no new permission.",
+      "ui.req.message": "A note for the reviewer (optional)",
+      "ui.req.why": "Why move up a grade?",
+      "ui.req.read": "I have read what is reviewed and the delays",
+      "ui.req.send": "Send the request",
+      "ui.req.back": "Cancel",
+      "ui.req.sent": "Request sent.",
+      "ui.req.cancel": "Cancel the request",
+      "ui.req.cancelled": "Request cancelled.",
+      "ui.req.pending": "Request sent on {date} \xB7 waiting",
+      "ui.req.accepted": "Validation accepted on {date}.",
+      "ui.req.refused": "Refused on {date}: {reason}",
+      "ui.req.closed": "Requests are closed for now: many already wait for a review. Try again in a few days.",
+      "ui.req.tooRecent": "Published less than 30 days ago: you can ask after that.",
+      "ui.req.already": "Already {tier}."
     };
   }
 });
