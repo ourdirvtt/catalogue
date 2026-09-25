@@ -1,0 +1,29 @@
+name: Demande de validation / Validation request
+description: Demander qu'une personne relise une version ou ton compte de créateur / Ask a person to review a version or your creator account.
+title: "Validation : "
+labels: [demande-validation]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Le plus simple : le bouton « Demander la validation » de l'appli Ourdir (Catalogue → Mes publications). / The simplest: the "Request validation" button in the Ourdir app (Catalog → My publications).
+
+        Chaque demande est relue par une personne, au cas par cas : cela peut prendre plusieurs jours, voire quelques semaines. La validation n'est jamais automatique ni garantie. Voir les [règles](https://github.com/ourdirvtt/catalogue/blob/main/RULES.md#grades). / Every request is read by a person, case by case: it can take several days, even a few weeks. Validation is never automatic nor guaranteed.
+  - type: input
+    id: paquet
+    attributes:
+      label: Paquet (identifiant), vide pour ton compte / Package id, empty for your account
+  - type: input
+    id: version
+    attributes:
+      label: Version, vide pour ton compte / Version, empty for your account
+  - type: input
+    id: cle
+    attributes:
+      label: Ta clé d'éditeur (publique) / Your publisher key (public)
+    validations:
+      required: true
+  - type: textarea
+    id: message
+    attributes:
+      label: Un mot pour la personne qui relit / A note for the reviewer
