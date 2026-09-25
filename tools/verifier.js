@@ -9688,7 +9688,7 @@ function once(u, opts, timeoutMs) {
         agent: false,
         timeout: timeoutMs,
         lookup: guardedLookup(!!opts.allowPrivate),
-        headers: { "user-agent": "Ourdir", accept: "*/*", "accept-encoding": "identity" }
+        headers: { "user-agent": opts.userAgent ?? "Ourdir", accept: "*/*", "accept-encoding": "identity" }
       },
       (res) => {
         const status = res.statusCode || 0;
@@ -10480,7 +10480,7 @@ function fetcher(deps2) {
     const u = new URL(url);
     const loop = !!deps2.loopbackPort && u.protocol === "http:" && u.hostname === "127.0.0.1" && Number(u.port) === deps2.loopbackPort;
     const dev = loop ? { allowHttp: true, allowPrivate: true, allowedPorts: [deps2.loopbackPort] } : {};
-    return (await fetchLimited(url, { maxBytes, timeoutMs: 6e4, ...dev })).body;
+    return (await fetchLimited(url, { maxBytes, timeoutMs: 6e4, userAgent: "ourdir-verifier/1", ...dev })).body;
   };
 }
 function readSubmissions(repoDir, deps2 = {}) {
