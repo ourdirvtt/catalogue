@@ -1658,7 +1658,20 @@ var require_fr = __commonJS({
       "wizard.pointsVieSanteMentale": "Points de vie, Sant\xE9 mentale",
       "wizard.ressourceActuelMaxListe": "Une ressource actuel / max, et une liste de sorts.",
       "wizard.seriePastillesCocherListe": "Une s\xE9rie de pastilles \xE0 cocher, et une liste de sorts.",
-      "wizard.valeurCaracteristiqueEstBonus": "La valeur de la caract\xE9ristique est le bonus : un clic lance 1d20 + valeur."
+      "wizard.valeurCaracteristiqueEstBonus": "La valeur de la caract\xE9ristique est le bonus : un clic lance 1d20 + valeur.",
+      "ui.cat.showCommunity": "Afficher le contenu communautaire",
+      "ui.cat.verifiedOnly": "Seul le contenu v\xE9rifi\xE9 est montr\xE9 (Ourdir, Officiel, Valid\xE9).",
+      "ui.cat.hiddenOne": "1 contenu communautaire correspond : l\u2019afficher",
+      "ui.cat.hiddenMany": "{n} contenus communautaires correspondent : les afficher",
+      "ui.grades.title": "Pourquoi monter en grade ?",
+      "ui.grades.intro": "Tout contenu publi\xE9 est d\u2019abord Communautaire : les contr\xF4les automatiques l\u2019ont accept\xE9, personne ne l\u2019a encore relu. Valid\xE9 veut dire qu\u2019une personne l\u2019a relu : c\u2019est la marque de qualit\xE9 d\u2019Ourdir.",
+      "ui.grades.visibility": "Visibilit\xE9 : le contenu Valid\xE9 est montr\xE9 \xE0 tout le monde d\xE8s l\u2019ouverture du Catalogue ; le communautaire n\u2019est vu que par ceux qui l\u2019affichent.",
+      "ui.grades.trust": "Confiance : le badge Valid\xE9 dit qu\u2019une personne l\u2019a relu, et le fichier est h\xE9berg\xE9 par Ourdir (il reste disponible m\xEAme si ton h\xE9bergement dispara\xEEt).",
+      "ui.grades.updates": "Mises \xE0 jour sans attente : un cr\xE9ateur Valid\xE9 publie ses mises \xE0 jour sans nouvelle relecture, sauf un module qui demande une nouvelle permission.",
+      "ui.grades.sales": "Vente, plus tard : \xEAtre Valid\xE9 est la condition pour demander \xE0 devenir vendeur agr\xE9\xE9, quand la vente ouvrira.",
+      "ui.grades.criteriaTitle": "Ce qu\u2019on relit",
+      "ui.grades.criteria": "\xC7a marche comme annonc\xE9 ; les droits sont respect\xE9s (pas de contenu prot\xE9g\xE9 sans licence) ; rien de nuisible ; une fiche claire (nom, r\xE9sum\xE9, langues) ; pour un module, des permissions justifi\xE9es.",
+      "ui.grades.delay": "Chaque demande est relue par une personne, au cas par cas. Le traitement peut prendre plusieurs jours, voire quelques semaines. La validation n\u2019est jamais automatique ni garantie. Tu re\xE7ois la r\xE9ponse par e-mail et dans l\u2019appli."
     };
   }
 });
@@ -8012,7 +8025,20 @@ var require_en2 = __commonJS({
       "wizard.pointsVieSanteMentale": "Hit points, Sanity",
       "wizard.ressourceActuelMaxListe": "A current / max resource, and a list of spells.",
       "wizard.seriePastillesCocherListe": "A series of pips to tick, and a list of spells.",
-      "wizard.valeurCaracteristiqueEstBonus": "The attribute's value is the bonus: a click rolls 1d20 + value."
+      "wizard.valeurCaracteristiqueEstBonus": "The attribute's value is the bonus: a click rolls 1d20 + value.",
+      "ui.cat.showCommunity": "Show community content",
+      "ui.cat.verifiedOnly": "Only verified content is shown (Ourdir, Official, Validated).",
+      "ui.cat.hiddenOne": "1 community item matches: show it",
+      "ui.cat.hiddenMany": "{n} community items match: show them",
+      "ui.grades.title": "Why move up a grade?",
+      "ui.grades.intro": "Everything published starts as Community: the automatic checks accepted it, nobody has read it yet. Validated means a person read it: it is Ourdir's mark of quality.",
+      "ui.grades.visibility": "Visibility: Validated content is shown to everyone as soon as the Catalogue opens; community content only to those who choose to see it.",
+      "ui.grades.trust": "Trust: the Validated badge says a person read it, and the file is hosted by Ourdir (it stays available even if your own hosting goes away).",
+      "ui.grades.updates": "Updates without waiting: a Validated creator publishes updates without a new review, except a module asking for a new permission.",
+      "ui.grades.sales": "Selling, later: being Validated is the condition to apply as an approved seller, once selling opens.",
+      "ui.grades.criteriaTitle": "What we review",
+      "ui.grades.criteria": "It works as described; rights are respected (no protected content without a licence); nothing harmful; a clear sheet (name, summary, languages); for a module, justified permissions.",
+      "ui.grades.delay": "Every request is read by a person, case by case. It can take several days, even a few weeks. Validation is never automatic nor guaranteed. You get the answer by e-mail and in the app."
     };
   }
 });
@@ -9027,6 +9053,15 @@ function normalizeVersion(v) {
   while (nums.length < 3) nums.push("0");
   return nums.join(".") + (pre ? "-" + pre : "");
 }
+function compareVersions(a, b) {
+  const pa = a.split("-")[0].split(".").map(Number);
+  const pb = b.split("-")[0].split(".").map(Number);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    if ((pa[i] || 0) !== (pb[i] || 0)) return (pa[i] || 0) < (pb[i] || 0) ? -1 : 1;
+  }
+  const preA = a.includes("-"), preB = b.includes("-");
+  return preA === preB ? 0 : preA ? -1 : 1;
+}
 var asArray = (v) => Array.isArray(v) ? v : v == null ? [] : [v];
 function parseManifest(raw) {
   const errors = [];
@@ -10009,16 +10044,18 @@ function checkTiers(bytes, signatureText, rootKeys, now, minSequence = 0) {
   if (p.tiers.sequence < minSequence) return bad(say("err.trust.tiersOlder"));
   return p;
 }
-function tierOf(tiers, kind, id, publisherKey, version, line = [publisherKey]) {
+function tierOf(tiers, kind, id, publisherKey, version, line = [publisherKey], siblings = []) {
   if (!tiers) return "community";
   if (tiers.ourdir.includes(publisherKey)) return "ourdir";
   if (tiers.official.some((o) => o.key === publisherKey)) return "official";
-  if (kind === "module") {
-    if (tiers.validated.versions.some((v) => v.id === id && v.version === version.version && v.sha256 === version.sha256)) return "validated";
-  } else if (tiers.validated.publishers.some((p) => line.includes(p.key))) {
-    return "validated";
-  }
-  return "community";
+  const reviewed = (v) => tiers.validated.versions.some((x) => x.id === id && x.version === v.version && x.sha256 === v.sha256);
+  if (reviewed(version)) return "validated";
+  if (!tiers.validated.publishers.some((p) => line.includes(p.key))) return "community";
+  if (kind !== "module") return "validated";
+  const ref = siblings.filter((s) => compareVersions(s.version, version.version) < 0 && reviewed(s)).sort((a, b) => compareVersions(b.version, a.version))[0];
+  if (!ref) return "community";
+  const allowed = new Set(ref.permissions ?? []);
+  return (version.permissions ?? []).every((p) => allowed.has(p)) ? "validated" : "community";
 }
 function maySell(tiers, publisherKey) {
   if (!tiers) return false;
@@ -10690,9 +10727,11 @@ async function publishCatalog(o, deps2) {
   const entries = /* @__PURE__ */ new Map();
   let hosted = 0;
   let external = 0;
-  for (const s of readSubmissions(o.repoDir, deps2)) {
+  const submissions = readSubmissions(o.repoDir, deps2);
+  for (const s of submissions) {
     const key = `${s.id}@${s.version}`;
-    const tier = tierOf(tiers, s.kind, s.id, s.publisher.key, s, chain.line(s.publisher.key));
+    const siblings = submissions.filter((x) => x.id === s.id).map((x) => ({ version: x.version, sha256: x.sha256, permissions: x.permissions }));
+    const tier = tierOf(tiers, s.kind, s.id, s.publisher.key, s, chain.line(s.publisher.key), siblings);
     let where;
     if (tier !== "community") {
       const rel = `packages/${s.id}/${s.version}.${extOf(s.kind)}`;
