@@ -6,9 +6,14 @@
   "official": [],
   "validated": {
     "versions": [],
-    "publishers": []
+    "publishers": [
+      {
+        "key": "HqAxfszWwKwBvbmN40udBqtgKQEcPyw72Cyc2R6_0JM",
+        "name": "Talep"
+      }
+    ]
   },
   "sellers": [],
-  "sequence": 1,
-  "expiresAt": "2027-09-24T15:20:54.517Z"
+  "sequence": 2,
+  "expiresAt": "2027-09-25T00:50:37.450Z"
 }
