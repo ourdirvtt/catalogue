@@ -92,7 +92,6 @@ var require_fr = __commonJS({
       "builder.duel.notNumber": "La d\xE9fense compar\xE9e doit \xEAtre un champ nombre de la fiche, hors d\u2019une liste (\xAB {field} \xBB n\u2019en est pas un). La cible a la m\xEAme fiche : elle doit avoir ce champ.",
       "builder.duelComparerJetCe": "Duel : comparer le jet \xE0 ce champ de la cible (une d\xE9fense)",
       "builder.duelDemandeTexteCliquable": "Un duel demande un texte cliquable avec un jet.",
-      "builder.duelNEstPossible": "Un duel n\u2019est possible que hors d\u2019une liste r\xE9p\xE9table.",
       "builder.effect.breaks": "Un effet rend un calcul invalide : {why}",
       "builder.effect.notComputed": "Un effet s\u2019ajoute \xE0 un champ nombre calcul\xE9, hors d\u2019une liste (\xAB {field} \xBB n\u2019en est pas un). Rends d\u2019abord ce champ calcul\xE9.",
       "builder.effetNEstPossible": "Un effet n\u2019est possible que hors d\u2019une liste r\xE9p\xE9table.",
@@ -2726,7 +2725,105 @@ var require_fr = __commonJS({
       "ui.rules.lib.packVersion": "Version du paquet",
       "err.libraries.badVersion": "La version du paquet s\u2019\xE9crit 1.2.0.",
       "ui.rules.lib.shareGo": "Partager au catalogue\u2026",
-      "err.libraries.notStaged": "Ce paquet n\u2019est plus pr\xEAt : repars du builder (Partager au catalogue)."
+      "err.libraries.notStaged": "Ce paquet n\u2019est plus pr\xEAt : repars du builder (Partager au catalogue).",
+      "rules.v.genScore": "4d6 et 3d6 ne servent qu\u2019\xE0 des caract\xE9ristiques en score.",
+      "rules.v.genValues": "La liste a {n} valeurs, chacune de {min} \xE0 {max}.",
+      "rules.v.genBudget": "Le budget va de 1 \xE0 {max} points.",
+      "rules.v.genCosts": "Les co\xFBts : de 2 \xE0 30 valeurs entre {min} et {max}, chacune de 0 \xE0 100 points.",
+      "rules.v.genTotal": "Le total \xE0 r\xE9partir va de {min} \xE0 {max}.",
+      "rules.v.crea": "La cr\xE9ation ne se lit pas.",
+      "rules.v.creaOrder": "Les tirages se font \xAB \xE0 r\xE9partir \xBB ou \xAB dans l\u2019ordre \xBB.",
+      "rules.v.creaSkills": "Les comp\xE9tences \xE0 former demandent des comp\xE9tences au rang \xAB form\xE9 \xBB, prises dans la liste.",
+      "rules.v.creaLevel": "Un niveau de d\xE9part demande une progression par niveaux.",
+      "rules.v.creaPick": "Un choix de d\xE9part vise un genre de la biblioth\xE8que (pas les aptitudes).",
+      "rules.v.creaPickTwice": "Ce genre a d\xE9j\xE0 son choix de d\xE9part.",
+      "rules.v.creaFilter": "Le filtre ne cite que des champs du genre et leurs options.",
+      "rules.c.noName": "Donne un nom \xE0 ton personnage.",
+      "rules.c.tooLong": "\xAB {name} \xBB : {max} caract\xE8res au plus.",
+      "rules.c.rollFirst": "Tire d\u2019abord tes caract\xE9ristiques.",
+      "rules.c.statBounds": "Chaque caract\xE9ristique va de {min} \xE0 {max}.",
+      "rules.c.rolledOnce": "Place chaque valeur tir\xE9e une fois.",
+      "rules.c.arrayOnce": "Place chaque valeur de la liste une fois.",
+      "rules.c.notPriced": "Une valeur n\u2019a pas de prix dans l\u2019achat de points.",
+      "rules.c.overBudget": "{spent} points d\xE9pens\xE9s pour un budget de {budget}.",
+      "rules.c.freeTotal": "Les caract\xE9ristiques doivent faire {total} au total.",
+      "rules.c.skills": "Choisis {n} comp\xE9tence(s) dans la liste.",
+      "rules.c.picks": "Choisis {n} entr\xE9e(s) de \xAB {genre} \xBB.",
+      "rules.c.pickOutside": "Une entr\xE9e choisie n\u2019est pas permise au d\xE9part.",
+      "rules.c.pickTwice": "Une entr\xE9e est choisie deux fois.",
+      "builder.askAtCreation": "Demand\xE9 \xE0 la cr\xE9ation",
+      "ui.rules.card.creation": "Cr\xE9ation",
+      "ui.rules.genValues": "Valeurs \xE0 placer",
+      "ui.rules.genBudget": "Budget (points)",
+      "ui.rules.genCosts": "Co\xFBts (valeur:co\xFBt, \u2026)",
+      "ui.rules.genTotal": "Total \xE0 r\xE9partir",
+      "ui.rules.genDefault": "Vide : {v}",
+      "ui.rules.creaHint": "Comment un joueur cr\xE9e son personnage \xE0 la table : ses caract\xE9ristiques selon la m\xE9thode choisie, des comp\xE9tences form\xE9es, un niveau de d\xE9part, ce qu\u2019il prend dans la biblioth\xE8que. Sans cette carte, l\u2019assistant demande le nom et les caract\xE9ristiques.",
+      "ui.rules.creaAdd": "R\xE9gler la cr\xE9ation",
+      "ui.rules.creaLead": "Ce que l\u2019assistant de cr\xE9ation demande au joueur. L\u2019h\xF4te tire les d\xE9s une seule fois et v\xE9rifie tout.",
+      "ui.rules.creaOrder": "Valeurs tir\xE9es",
+      "ui.rules.creaOrder.assign": "\xC0 r\xE9partir (le joueur les place)",
+      "ui.rules.creaOrder.inOrder": "Dans l\u2019ordre (la premi\xE8re \xE0 la premi\xE8re caract\xE9ristique)",
+      "ui.rules.creaSkills": "Former des comp\xE9tences au d\xE9part",
+      "ui.rules.creaPick": "Combien",
+      "ui.rules.creaLevel": "Niveau de d\xE9part",
+      "ui.rules.creaLevelHint": "Au-dessus de 1, le joueur re\xE7oit les gains et fait les choix de chaque niveau.",
+      "ui.rules.creaPicks": "Pris dans la biblioth\xE8que",
+      "ui.rules.creaPickN": "Combien",
+      "ui.rules.creaMax": "{name} au plus",
+      "ui.rules.creaPickAdd": "Ajouter un choix de d\xE9part",
+      "ui.rules.creaPreview": "Les \xE9tapes du joueur",
+      "ui.rules.creaTrial": "Tirage d\u2019essai",
+      "ui.rules.creaRemove": "Retirer la cr\xE9ation",
+      "ui.rules.creaStep.identity": "Identit\xE9 : le nom et les champs demand\xE9s",
+      "ui.rules.creaStep.stats": "Caract\xE9ristiques",
+      "ui.rules.creaStep.skills": "Comp\xE9tences \xE0 former",
+      "ui.rules.creaStep.start": "D\xE9part : les niveaux jusqu\u2019au niveau de d\xE9part",
+      "ui.rules.creaStep.library": "\xC9quipement et pouvoirs",
+      "ui.rules.creaStep.summary": "R\xE9sum\xE9, puis Terminer",
+      "rules.v.bar": "La barre fixe ne se lit pas.",
+      "rules.v.barTwice": "Cet \xE9l\xE9ment est d\xE9j\xE0 dans la barre.",
+      "rules.v.barResource": "Choisis une ressource (une valeur avec un maximum).",
+      "rules.v.barValue": "Choisis un nombre de la fiche.",
+      "rules.v.barInitiative": "Le syst\xE8me n\u2019a pas de jet d\u2019initiative.",
+      "rules.v.barStates": "Le syst\xE8me n\u2019a pas d\u2019\xE9tats.",
+      "rules.bar.states": "\xC9tats",
+      "builder.density.bad": "Densit\xE9 inconnue (a\xE9r\xE9e, normale ou compacte).",
+      "ui.rules.card.bar": "Barre fixe",
+      "ui.rules.barHint": "La bande qui reste en haut de chaque fiche \xE0 la table : l\u2019essentiel \xE0 voir, et \xE0 toucher d\u2019un clic en plein combat.",
+      "ui.rules.barDefault": "Choisie d\u2019office \xE0 partir des r\xE8gles :",
+      "ui.rules.barNone": "Rien \xE0 montrer.",
+      "ui.rules.barChoose": "La choisir moi-m\xEAme",
+      "ui.rules.barOn": "Montrer une barre en haut de la fiche",
+      "ui.rules.barItems": "\xC9l\xE9ments (6 au plus)",
+      "ui.rules.barKind": "Sorte",
+      "ui.rules.barKind.health": "Sant\xE9",
+      "ui.rules.barKind.resource": "Ressource",
+      "ui.rules.barKind.value": "Valeur",
+      "ui.rules.barKind.initiative": "Initiative",
+      "ui.rules.barKind.states": "\xC9tats",
+      "ui.rules.barValue": "Laquelle",
+      "ui.rules.barAdd": "Ajouter un \xE9l\xE9ment",
+      "ui.rules.barReset": "Revenir au choix d\u2019office",
+      "ui.rules.barMissing": "Pas sur la fiche : {list}. Ajoute leur bloc \xE0 la fiche, sinon la barre ne pourra pas les montrer.",
+      "ui.rules.up": "Monter",
+      "ui.rules.down": "Descendre",
+      "ui.builder.density": "Densit\xE9 des fiches",
+      "ui.builder.densityHint": "Celle par d\xE9faut ; chaque joueur peut choisir la sienne \xE0 la table.",
+      "ui.builder.density.airy": "A\xE9r\xE9e",
+      "ui.builder.density.normal": "Normale",
+      "ui.builder.density.compact": "Compacte",
+      "ui.builder.viewAs.label": "Voir comme",
+      "ui.builder.viewAs.gm": "MJ",
+      "ui.builder.viewAs.player": "Joueur",
+      "ui.builder.viewAs.note": "Vue du joueur :",
+      "ui.builder.viewAs.hidden": "{n} champ(s) cach\xE9(s) ({list})",
+      "ui.builder.viewAs.noneHidden": "aucun champ cach\xE9",
+      "ui.builder.viewAs.locked": "{n} verrouill\xE9(s)",
+      "ui.builder.viewAs.lockedTag": "verrouill\xE9",
+      "builder.hurts": "Inflige des d\xE9g\xE2ts \xE0 la cible (son jet est retir\xE9 des points de vie de la fiche vis\xE9e)",
+      "builder.hurtsBool": "\xAB Inflige des d\xE9g\xE2ts \xBB doit \xEAtre oui ou non.",
+      "builder.hurtsNeedsRoll": "Infliger des d\xE9g\xE2ts demande un texte cliquable qui a un jet."
     };
   }
 });
@@ -3887,6 +3984,8 @@ var require_rules_core = __commonJS({
         if (rules.rests !== void 0) validateRests(rules, errs);
         if (rules.progression !== void 0) validateProgression(rules, errs);
         if (rules.library !== void 0) validateLibrary(rules, errs);
+        if (rules.creation !== void 0) validateCreation(rules, errs);
+        if (rules.bar !== void 0) validateBar(rules, errs);
         if (!errs.length && (rules.stats !== void 0 || rules.derived !== void 0 || rules.skills !== void 0 || rules.combat !== void 0 || rules.effects !== void 0 || rules.rests !== void 0 || rules.progression !== void 0 || rules.library !== void 0)) {
           var dup = model(rules).dup;
           dup.forEach(function(d) {
@@ -3923,7 +4022,7 @@ var require_rules_core = __commonJS({
       var TYPE_RE = /^[a-z][a-z_]{0,29}$/;
       var MAX_TYPES = 12;
       var EFFECT_ICONS = ["a_terre", "aveugle", "poison", "peur", "benediction", "entrave", "rage", "sommeil", "feu", "froid", "saignement", "charme", "invisible", "protection", "faiblesse", "vitesse", "autre"];
-      var RESTORES = ["full", "half", "fixed", "formula"];
+      var RESTORES = ["full", "half", "fixed", "formula", "empty"];
       var ICON_TEXT = {
         a_terre: "rules.icon.a_terre",
         aveugle: "rules.icon.aveugle",
@@ -3946,7 +4045,7 @@ var require_rules_core = __commonJS({
       function iconName(id) {
         return has(ICON_TEXT, id) ? say2(ICON_TEXT[id]) : String(id);
       }
-      var FX = { states: 24, mods: 8, rolls: 4, rests: 4, restore: 12, n: 99, roll: 20, rounds: 100, fixed: 999 };
+      var FX = { states: 24, mods: 8, rolls: 4, rests: 4, restore: 24, n: 99, roll: 20, rounds: 100, fixed: 999 };
       var PROG = { xp: 1e6, marks: 40, gains: 24, give: 4, at: 20, onFail: 4, purchases: 20, features: 200, text: 1e3, among: 60, points: 20, n: 1e3, times: 20, useRes: 8 };
       var GIVES = ["add", "spread", "train", "feature", "pick"];
       var HOWS = ["average", "roll", "player"];
@@ -4628,6 +4727,7 @@ var require_rules_core = __commonJS({
         if (s.form === "dots" && !(s.min === 0 && isInt(s.max, 1, LIMITS2.dots))) e("max", "rules.v.dotsRange", { max: LIMITS2.dots });
         if (s.form === "percent" && !(s.min >= 0 && s.max <= 100)) e("max", "rules.v.percentRange");
         if (s.generation !== void 0 && !(isObj5(s.generation) && GENERATIONS.indexOf(s.generation.method) >= 0)) e("generation", "rules.v.generation");
+        else if (s.generation !== void 0 && Array.isArray(s.list)) genProblems(s.generation, s.list.length, s.min, s.max, s.form, e);
         if (!Array.isArray(s.list) || !s.list.length || s.list.length > LIMITS2.stats) return e("list", "rules.v.statList", { max: LIMITS2.stats });
         s.list.forEach(function(x, i) {
           var at = "list." + i;
@@ -6071,7 +6171,8 @@ var require_rules_core = __commonJS({
         var rounds = end.rounds === void 0 ? null : end.rounds, rest = end.rest === void 0 ? null : end.rest;
         if (rounds !== null && !intIn(rounds, 1, FX.rounds)) return null;
         if (rest !== null && rests.indexOf(rest) < 0) return null;
-        if (!mods.length && !rolls.length && !resist.length && !vuln.length) return null;
+        var ticks = typeof src.flag === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(src.flag) && (stateId !== null || raw.asState === true);
+        if (!mods.length && !rolls.length && !resist.length && !vuln.length && !ticks) return null;
         return {
           state: stateId,
           name,
@@ -6109,6 +6210,7 @@ var require_rules_core = __commonJS({
             var o = { res: x.res, how: x.how };
             if (x.how === "fixed") o.n = x.n;
             if (x.how === "formula") o.key = x.key;
+            if (typeof x.max === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(x.max)) o.max = x.max;
             return o;
           });
           rests.push({ id: r.id, name: cleanName(r.name), restore });
@@ -6125,8 +6227,11 @@ var require_rules_core = __commonJS({
         var ctx = { keys, res, types, rests, states: [], names: { keys: pick(nm.keys, keys), res: pick(nm.res, res), types: pick(nm.types, types) } };
         (Array.isArray(raw.states) ? raw.states.slice(0, FX.states) : []).forEach(function(s) {
           if (!isObj5(s) || typeof s.id !== "string" || !TYPE_RE.test(s.id)) return;
-          var clean2 = cleanEffectIn(ctx, { effect: s });
-          if (clean2 && EFFECT_ICONS.indexOf(s.icon) >= 0) ctx.states.push({ id: s.id, name: clean2.name, icon: s.icon, mods: clean2.mods, rolls: clean2.rolls, resist: clean2.resist, vuln: clean2.vuln, end: clean2.end });
+          var clean2 = cleanEffectIn(ctx, { effect: s, asState: true });
+          if (!clean2 || EFFECT_ICONS.indexOf(s.icon) < 0) return;
+          var st = { id: s.id, name: clean2.name, icon: s.icon, mods: clean2.mods, rolls: clean2.rolls, resist: clean2.resist, vuln: clean2.vuln, end: clean2.end };
+          if (typeof s.flag === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(s.flag)) st.flag = s.flag;
+          ctx.states.push(st);
         });
         return ctx;
       }
@@ -6156,6 +6261,7 @@ var require_rules_core = __commonJS({
         return { n: Math.max(-FX.roll, Math.min(FX.roll, n)), adv: up === down ? 0 : up ? 1 : -1 };
       }
       function restoreTo(item, current, max, value) {
+        if (item.how === "empty") return 0;
         var now = Number(current) || 0;
         if (max === null || max === void 0 || !isFinite(Number(max))) return now;
         var top = Number(max);
@@ -6302,6 +6408,12 @@ var require_rules_core = __commonJS({
           });
           if (isObj5(P.use) && Array.isArray(P.use.res)) P.use.res = P.use.res.map(resId);
         }
+        if (isObj5(rules.bar) && Array.isArray(rules.bar.items)) rules.bar.items.forEach(function(x) {
+          if (isObj5(x) && typeof x.key === "string") x.key = fix(x.key);
+        });
+        if (kind === "skills" && isObj5(rules.creation) && isObj5(rules.creation.skills) && Array.isArray(rules.creation.skills.among)) rules.creation.skills.among = rules.creation.skills.among.map(function(k2) {
+          return k2 === from ? to : k2;
+        });
         if (isObj5(rules.library) && Array.isArray(rules.library.entries)) rules.library.entries.forEach(function(x) {
           if (!isObj5(x)) return;
           if (kind === "stats" && isObj5(x.values) && x.values.arm_carac === from) x.values.arm_carac = to;
@@ -6701,6 +6813,392 @@ var require_rules_core = __commonJS({
         });
         return out;
       }
+      var BAR_KINDS = ["health", "resource", "value", "initiative", "states"];
+      var BAR_MAX = 6;
+      function resourceIds(rules) {
+        return (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
+          return isObj5(d) && d.resource === true && typeof d.id === "string";
+        }).map(function(d) {
+          return d.id;
+        });
+      }
+      function hasInitiative(rules) {
+        return (Array.isArray(rules.derived) ? rules.derived : []).some(function(d) {
+          return isObj5(d) && d.id === "initiative" && d.rollable === true;
+        });
+      }
+      function hasStates(rules) {
+        return isObj5(rules.effects) && Array.isArray(rules.effects.states) && rules.effects.states.length > 0;
+      }
+      function barItems(rules) {
+        if (!isObj5(rules)) return [];
+        if (isObj5(rules.bar)) return rules.bar.on === false ? [] : Array.isArray(rules.bar.items) ? rules.bar.items.filter(isObj5).slice(0, BAR_MAX) : [];
+        var out = [], c = isObj5(rules.combat) ? rules.combat : null;
+        var health = c && isObj5(c.damage) && typeof c.damage.health === "string" ? c.damage.health : null;
+        if (health) out.push({ kind: "health", key: health });
+        if (c && isObj5(c.attack) && typeof c.attack.defense === "string") out.push({ kind: "value", key: c.attack.defense });
+        if (hasInitiative(rules)) out.push({ kind: "initiative" });
+        resourceIds(rules).filter(function(k) {
+          return k !== health;
+        }).slice(0, 2).forEach(function(k) {
+          out.push({ kind: "resource", key: k });
+        });
+        if (hasStates(rules)) out.push({ kind: "states" });
+        return out.slice(0, BAR_MAX);
+      }
+      function validateBar(rules, errs) {
+        var b = rules.bar;
+        var e = function(p, key, vars) {
+          errs.push({ path: "bar" + (p ? "." + p : ""), message: say2(key, vars) });
+        };
+        if (!isObj5(b)) return e("", "rules.v.bar");
+        if (b.on !== void 0 && typeof b.on !== "boolean") e("on", "rules.v.bar");
+        if (!Array.isArray(b.items)) return e("items", "rules.v.bar");
+        if (b.items.length > BAR_MAX) return e("items", "rules.v.tooMany", { max: BAR_MAX });
+        var res = resourceIds(rules), values = valueKeys(rules), seen = {};
+        b.items.forEach(function(x, i) {
+          var at = "items." + i;
+          if (!isObj5(x) || BAR_KINDS.indexOf(x.kind) < 0) return e(at + ".kind", "rules.v.bar");
+          var id = x.kind + ":" + (x.key || "");
+          if (has(seen, id)) e(at, "rules.v.barTwice");
+          seen[id] = true;
+          if (x.kind === "health" || x.kind === "resource") {
+            if (res.indexOf(x.key) < 0) e(at + ".key", "rules.v.barResource");
+          } else if (x.kind === "value") {
+            if (!has(values, x.key)) e(at + ".key", "rules.v.barValue");
+          } else if (x.kind === "initiative") {
+            if (!hasInitiative(rules)) e(at + ".kind", "rules.v.barInitiative");
+          } else if (!hasStates(rules)) e(at + ".kind", "rules.v.barStates");
+        });
+      }
+      function barCtx(rules) {
+        return barItems(rules).map(function(x) {
+          var name = x.kind === "states" ? say2("rules.bar.states") : x.kind === "initiative" ? nameOf(rules, "initiative") : nameOf(rules, x.key);
+          var o = { kind: x.kind, key: x.kind === "initiative" ? "initiative" : x.kind === "states" ? null : x.key, name: cleanName(name) };
+          if (x.kind === "health" || x.kind === "resource") o.max = x.key + "_max";
+          return o;
+        });
+      }
+      var CREA = { picks: 12, pickN: 20, ask: 20, askText: 200, costs: 30, cost: 100, budget: 1e3 };
+      var ORDERS = ["assign", "inOrder"];
+      var ROLLED = { "4d6drop": true, "3d6": true, random: true };
+      var STANDARD_ARRAY = [15, 14, 13, 12, 10, 8];
+      var STANDARD_COSTS = { "8": 0, "9": 1, "10": 2, "11": 3, "12": 4, "13": 5, "14": 7, "15": 9 };
+      function genSettings(s) {
+        if (!isObj5(s) || !isObj5(s.generation) || GENERATIONS.indexOf(s.generation.method) < 0) return null;
+        var g = s.generation, n = Array.isArray(s.list) ? s.list.length : 0, lo = s.min, hi = s.max;
+        var inBounds = function(v2) {
+          return isInt(v2, lo, hi);
+        };
+        if (g.method === "array") {
+          if (Array.isArray(g.values)) return { method: "array", values: g.values.slice() };
+          var std = n === STANDARD_ARRAY.length && STANDARD_ARRAY.every(inBounds) ? STANDARD_ARRAY.slice() : [];
+          if (!std.length) for (var i = 0; i < n; i++) std.push(s["default"]);
+          return { method: "array", values: std };
+        }
+        if (g.method === "pointbuy") {
+          if (isObj5(g.costs) && isInt(g.budget, 1, CREA.budget)) return { method: "pointbuy", budget: g.budget, costs: JSON.parse(JSON.stringify(g.costs)) };
+          if (Object.keys(STANDARD_COSTS).every(function(k) {
+            return inBounds(Number(k));
+          })) return { method: "pointbuy", budget: 27, costs: JSON.parse(JSON.stringify(STANDARD_COSTS)) };
+          var costs = {};
+          for (var v = s["default"]; v <= hi && Object.keys(costs).length < CREA.costs; v++) costs[String(v)] = v - s["default"];
+          return { method: "pointbuy", budget: Math.max(1, Math.min(CREA.budget, n * 2)), costs };
+        }
+        if (g.method === "free") return { method: "free", total: isInt(g.total, lo * n, hi * n) ? g.total : s["default"] * n };
+        return { method: g.method };
+      }
+      function genProblems(g, n, lo, hi, form, e) {
+        if (!isObj5(g)) return;
+        var inBounds = function(v) {
+          return isInt(v, lo, hi);
+        };
+        if ((g.method === "4d6drop" || g.method === "3d6") && form !== "score") e("generation.method", "rules.v.genScore");
+        if (g.method === "array" && g.values !== void 0 && !(Array.isArray(g.values) && g.values.length === n && g.values.every(inBounds))) e("generation.values", "rules.v.genValues", { n, min: lo, max: hi });
+        if (g.method === "pointbuy" && (g.costs !== void 0 || g.budget !== void 0)) {
+          var keys = isObj5(g.costs) ? Object.keys(g.costs) : [];
+          if (!isInt(g.budget, 1, CREA.budget)) e("generation.budget", "rules.v.genBudget", { max: CREA.budget });
+          if (keys.length < 2 || keys.length > CREA.costs || !keys.every(function(k) {
+            return /^-?\d+$/.test(k) && inBounds(Number(k)) && isInt(g.costs[k], 0, CREA.cost);
+          })) e("generation.costs", "rules.v.genCosts", { min: lo, max: hi });
+        }
+        if (g.method === "free" && g.total !== void 0 && !isInt(g.total, lo * n, hi * n)) e("generation.total", "rules.v.genTotal", { min: lo * n, max: hi * n });
+      }
+      function levelBounds(rules) {
+        var P = rules.progression, L = isObj5(P) && isObj5(P.levels) ? P.levels : null;
+        var d = L ? byId(rules.derived, L.key) : null;
+        return d && isObj5(d.recipe) && isInt(d.recipe.max, 2, LIMITS2.add) ? { key: L.key, max: d.recipe.max } : null;
+      }
+      function validateCreation(rules, errs) {
+        var c = rules.creation;
+        var e = function(p, key, vars) {
+          errs.push({ path: "creation" + (p ? "." + p : ""), message: say2(key, vars) });
+        };
+        if (!isObj5(c)) return e("", "rules.v.crea");
+        if (c.order !== void 0 && ORDERS.indexOf(c.order) < 0) e("order", "rules.v.creaOrder");
+        if (c.skills !== void 0 && c.skills !== null) {
+          var sk = isObj5(rules.skills) && rules.skills.rank === "trained" && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj5).map(function(x) {
+            return x.id;
+          }) : null;
+          if (!sk || !isObj5(c.skills)) e("skills", "rules.v.creaSkills");
+          else {
+            var among = c.skills.among === "any" ? sk : c.skills.among;
+            if (!Array.isArray(among) || !among.length || !among.every(function(id) {
+              return sk.indexOf(id) >= 0;
+            })) e("skills.among", "rules.v.creaSkills");
+            else if (!isInt(c.skills.pick, 1, among.length)) e("skills.pick", "rules.v.progN", { min: 1, max: among.length });
+          }
+        }
+        if (c.level !== void 0 && c.level !== 1) {
+          var lb = levelBounds(rules);
+          if (!lb) e("level", "rules.v.creaLevel");
+          else if (!isInt(c.level, 1, lb.max)) e("level", "rules.v.progN", { min: 1, max: lb.max });
+        }
+        if (c.picks !== void 0) {
+          if (!Array.isArray(c.picks) || c.picks.length > CREA.picks) return e("picks", "rules.v.tooMany", { max: CREA.picks });
+          var pools = libraryPools(rules), seen = {};
+          c.picks.forEach(function(p, i) {
+            var at = "picks." + i;
+            var g = isObj5(p) && isObj5(rules.library) && Array.isArray(rules.library.genres) ? rules.library.genres.filter(function(x) {
+              return isObj5(x) && x.id === p.genre;
+            })[0] : null;
+            if (!g || g.kind === "feature") return e(at + ".genre", "rules.v.creaPick");
+            if (has(seen, g.id)) e(at + ".genre", "rules.v.creaPickTwice");
+            seen[g.id] = true;
+            if (!isInt(p.n, 1, CREA.pickN)) e(at + ".n", "rules.v.progN", { min: 1, max: CREA.pickN });
+            var fields = fieldsOf(g, pools), byField = {};
+            fields.forEach(function(f) {
+              byField[f.id] = f;
+            });
+            if (p.filter !== void 0 && p.filter !== null) {
+              if (!isObj5(p.filter) || !Object.keys(p.filter).every(function(k) {
+                var f = byField[k];
+                return f && f.type === "choice" && Array.isArray(p.filter[k]) && p.filter[k].length > 0 && p.filter[k].every(function(o) {
+                  return (f.options || []).indexOf(o) >= 0;
+                });
+              })) e(at + ".filter", "rules.v.creaFilter");
+            }
+            if (p.max !== void 0 && p.max !== null) {
+              if (!isObj5(p.max) || !Object.keys(p.max).every(function(k) {
+                var f = byField[k];
+                return f && f.type === "number" && isInt(p.max[k], -LIB.n, LIB.n);
+              })) e(at + ".max", "rules.v.creaFilter");
+            }
+          });
+        }
+      }
+      function creationCtx(rules, ask) {
+        var c = isObj5(rules.creation) ? rules.creation : {};
+        var s = isObj5(rules.stats) ? rules.stats : null;
+        var skills = null;
+        if (isObj5(c.skills) && isObj5(rules.skills) && Array.isArray(rules.skills.list)) {
+          var all = rules.skills.list.filter(isObj5);
+          var among = c.skills.among === "any" ? all.map(function(x) {
+            return x.id;
+          }) : c.skills.among.slice();
+          var names = {};
+          all.forEach(function(x) {
+            if (among.indexOf(x.id) >= 0) names[x.id] = cleanName(x.name) || x.id;
+          });
+          skills = { pick: c.skills.pick, among, names };
+        }
+        var lb = levelBounds(rules);
+        return JSON.parse(JSON.stringify({
+          stats: s ? { form: s.form, min: s.min, max: s.max, list: s.list.filter(isObj5).map(function(x) {
+            return { id: x.id, name: cleanName(x.name) || x.id };
+          }), gen: genSettings(s) } : null,
+          order: ORDERS.indexOf(c.order) >= 0 ? c.order : "assign",
+          skills,
+          level: isInt(c.level, 1, LIMITS2.add) ? c.level : 1,
+          levelKey: lb ? lb.key : null,
+          picks: Array.isArray(c.picks) ? c.picks.filter(isObj5).map(function(p) {
+            return { genre: p.genre, n: p.n, filter: isObj5(p.filter) ? p.filter : null, max: isObj5(p.max) ? p.max : null };
+          }) : [],
+          ask: (Array.isArray(ask) ? ask : []).filter(function(a) {
+            return isObj5(a) && typeof a.id === "string" && KEY_RE.test(a.id);
+          }).slice(0, CREA.ask).map(function(a) {
+            return { id: a.id, name: cleanName(a.name) || a.id };
+          })
+        }));
+      }
+      function cleanCreationCtx(raw) {
+        if (!isObj5(raw)) return null;
+        var ok = true, bad3 = function() {
+          ok = false;
+        };
+        var st = raw.stats === null ? null : isObj5(raw.stats) ? raw.stats : void 0;
+        if (st === void 0) return null;
+        if (st) {
+          if (STAT_FORMS.indexOf(st.form) < 0 || !isInt(st.min, -LIMITS2.add, LIMITS2.add) || !isInt(st.max, -LIMITS2.add, LIMITS2.add) || st.min >= st.max) return null;
+          if (!Array.isArray(st.list) || !st.list.length || st.list.length > LIMITS2.stats || !st.list.every(function(x) {
+            return isObj5(x) && typeof x.id === "string" && KEY_RE.test(x.id);
+          })) return null;
+          if (st.gen !== null && !(isObj5(st.gen) && GENERATIONS.indexOf(st.gen.method) >= 0)) return null;
+          if (st.gen) genProblems(st.gen, st.list.length, st.min, st.max, st.form, bad3);
+          if (st.gen && (st.gen.method === "array" && !Array.isArray(st.gen.values) || st.gen.method === "pointbuy" && !isObj5(st.gen.costs) || st.gen.method === "free" && !isInt(st.gen.total, -LIMITS2.add * LIMITS2.stats, LIMITS2.add * LIMITS2.stats))) return null;
+        }
+        if (ORDERS.indexOf(raw.order) < 0 || !isInt(raw.level, 1, LIMITS2.add)) return null;
+        if (raw.levelKey !== null && !(typeof raw.levelKey === "string" && KEY_RE.test(raw.levelKey))) return null;
+        if (raw.level > 1 && raw.levelKey === null) return null;
+        var sk = raw.skills;
+        if (sk !== null && !(isObj5(sk) && Array.isArray(sk.among) && sk.among.length && sk.among.length <= LIMITS2.skills && sk.among.every(function(id) {
+          return typeof id === "string" && KEY_RE.test(id);
+        }) && isInt(sk.pick, 1, sk.among.length))) return null;
+        if (!Array.isArray(raw.picks) || raw.picks.length > CREA.picks || !raw.picks.every(function(p) {
+          return isObj5(p) && typeof p.genre === "string" && /^[a-z][a-z0-9]{0,11}$/.test(p.genre) && isInt(p.n, 1, CREA.pickN) && (p.filter === null || isObj5(p.filter)) && (p.max === null || isObj5(p.max));
+        })) return null;
+        if (!Array.isArray(raw.ask) || raw.ask.length > CREA.ask || !raw.ask.every(function(a) {
+          return isObj5(a) && typeof a.id === "string" && KEY_RE.test(a.id);
+        })) return null;
+        if (!ok) return null;
+        var names = {};
+        if (sk) sk.among.forEach(function(id) {
+          names[id] = isObj5(sk.names) && typeof sk.names[id] === "string" ? cleanName(sk.names[id]) || id : id;
+        });
+        return JSON.parse(JSON.stringify({
+          stats: st ? { form: st.form, min: st.min, max: st.max, list: st.list.map(function(x) {
+            return { id: x.id, name: cleanName(x.name) || x.id };
+          }), gen: st.gen } : null,
+          order: raw.order,
+          skills: sk ? { pick: sk.pick, among: sk.among.slice(), names } : null,
+          level: raw.level,
+          levelKey: raw.levelKey,
+          picks: raw.picks.map(function(p) {
+            return { genre: p.genre, n: p.n, filter: p.filter, max: p.max };
+          }),
+          ask: raw.ask.map(function(a) {
+            return { id: a.id, name: cleanName(a.name) || a.id };
+          })
+        }));
+      }
+      function creationPlan(ctx) {
+        var steps = [{ id: "identity", ask: ctx.ask }];
+        if (ctx.stats && ctx.stats.gen) steps.push({ id: "stats", method: ctx.stats.gen.method, gen: ctx.stats.gen, order: ctx.order, list: ctx.stats.list, min: ctx.stats.min, max: ctx.stats.max, rolled: has(ROLLED, ctx.stats.gen.method) });
+        if (ctx.skills) steps.push({ id: "skills", pick: ctx.skills.pick, among: ctx.skills.among, names: ctx.skills.names });
+        if (ctx.level > 1) steps.push({ id: "start", level: ctx.level, levelKey: ctx.levelKey });
+        if (ctx.picks.length) steps.push({ id: "library", picks: ctx.picks });
+        steps.push({ id: "summary" });
+        return { steps };
+      }
+      function rollSeries(method, n, bounds, draw) {
+        var values = [], dice = method === "4d6drop" ? "4d6" : method === "3d6" ? "3d6" : bounds.min + "\u2013" + bounds.max;
+        for (var i = 0; i < n; i++) {
+          if (method === "4d6drop") {
+            var four = [draw(1, 6), draw(1, 6), draw(1, 6), draw(1, 6)].sort(function(a, b) {
+              return b - a;
+            });
+            values.push(four[0] + four[1] + four[2]);
+          } else if (method === "3d6") values.push(draw(1, 6) + draw(1, 6) + draw(1, 6));
+          else values.push(draw(bounds.min, bounds.max));
+        }
+        return { values, dice };
+      }
+      function sameValues(a, b) {
+        if (a.length !== b.length) return false;
+        var x = a.slice().sort(function(p, q) {
+          return p - q;
+        }), y = b.slice().sort(function(p, q) {
+          return p - q;
+        });
+        return x.every(function(v, i) {
+          return v === y[i];
+        });
+      }
+      function readCreation(ctx, answers, rolled, visible) {
+        var a = isObj5(answers) ? answers : {}, errors = [], writes = { name: "", identity: {}, stats: {}, skills: [], picks: [] };
+        var fault = function(key, vars) {
+          errors.push(say2(key, vars));
+        };
+        writes.name = cleanName(a.name);
+        if (!writes.name) fault("rules.c.noName");
+        var idn = isObj5(a.identity) ? a.identity : {};
+        ctx.ask.forEach(function(f) {
+          var v = idn[f.id];
+          if (v === void 0 || v === null || v === "") return;
+          if (typeof v !== "string" || v.length > CREA.askText) fault("rules.c.tooLong", { name: f.name, max: CREA.askText });
+          else writes.identity[f.id] = v.replace(/[<>]/g, "").trim();
+        });
+        var st = ctx.stats;
+        if (st && st.gen) {
+          var ids = st.list.map(function(x) {
+            return x.id;
+          });
+          var got = isObj5(a.stats) ? a.stats : {};
+          var vals = ids.map(function(id) {
+            return got[id];
+          });
+          var g = st.gen;
+          if (has(ROLLED, g.method) && !(Array.isArray(rolled) && rolled.length === ids.length)) fault("rules.c.rollFirst");
+          else if (has(ROLLED, g.method) && ctx.order === "inOrder") ids.forEach(function(id, i) {
+            writes.stats[id] = rolled[i];
+          });
+          else if (!vals.every(function(v) {
+            return isInt(v, st.min, st.max);
+          })) fault("rules.c.statBounds", { min: st.min, max: st.max });
+          else if (has(ROLLED, g.method) && !sameValues(vals, rolled)) fault("rules.c.rolledOnce");
+          else if (g.method === "array" && !sameValues(vals, g.values)) fault("rules.c.arrayOnce");
+          else if (g.method === "pointbuy") {
+            var spent = 0, priced = true;
+            vals.forEach(function(v) {
+              if (!has(g.costs, String(v))) priced = false;
+              else spent += g.costs[String(v)];
+            });
+            if (!priced) fault("rules.c.notPriced");
+            else if (spent > g.budget) fault("rules.c.overBudget", { spent, budget: g.budget });
+          } else if (g.method === "free" && vals.reduce(function(s, v) {
+            return s + v;
+          }, 0) !== g.total) fault("rules.c.freeTotal", { total: g.total });
+          if (!errors.length && !(has(ROLLED, g.method) && ctx.order === "inOrder")) ids.forEach(function(id, i) {
+            writes.stats[id] = vals[i];
+          });
+        }
+        if (ctx.skills) {
+          var sk = Array.isArray(a.skills) ? a.skills : [];
+          var uniq = sk.filter(function(id, i) {
+            return sk.indexOf(id) === i;
+          });
+          if (uniq.length !== sk.length || sk.length !== ctx.skills.pick || !sk.every(function(id) {
+            return ctx.skills.among.indexOf(id) >= 0;
+          })) fault("rules.c.skills", { n: ctx.skills.pick });
+          else writes.skills = sk.slice();
+        }
+        var list2 = Array.isArray(visible) ? visible : [];
+        var chosen = Array.isArray(a.picks) ? a.picks.filter(isObj5) : [];
+        var taken = {};
+        ctx.picks.forEach(function(p) {
+          var allowed = list2.filter(function(x) {
+            if (x.genre !== p.genre) return false;
+            var v = isObj5(x.values) ? x.values : {};
+            if (p.filter && !Object.keys(p.filter).every(function(k) {
+              return p.filter[k].indexOf(v[k]) >= 0;
+            })) return false;
+            if (p.max && !Object.keys(p.max).every(function(k) {
+              return typeof v[k] === "number" && v[k] <= p.max[k];
+            })) return false;
+            return true;
+          });
+          var mine = chosen.filter(function(c) {
+            return allowed.some(function(x) {
+              return x.source === c.source && x.id === c.id;
+            });
+          });
+          var need2 = Math.min(p.n, allowed.length);
+          mine.forEach(function(c) {
+            taken[c.source + ":" + c.id] = (taken[c.source + ":" + c.id] || 0) + 1;
+          });
+          if (mine.length !== need2) fault("rules.c.picks", { n: need2, genre: p.genre });
+          else mine.forEach(function(c) {
+            writes.picks.push({ source: c.source, id: c.id });
+          });
+        });
+        if (chosen.some(function(c) {
+          return !has(taken, c.source + ":" + c.id);
+        })) fault("rules.c.pickOutside");
+        if (Object.keys(taken).some(function(k) {
+          return taken[k] > 1;
+        })) fault("rules.c.pickTwice");
+        return errors.length ? { ok: false, errors } : { ok: true, writes };
+      }
       return {
         FAMILIES,
         LIMITS: LIMITS2,
@@ -6796,6 +7294,19 @@ var require_rules_core = __commonJS({
         PROG_KINDS,
         progKindOf,
         starterProgression,
+        BAR_KINDS,
+        BAR_MAX,
+        barItems,
+        validateBar,
+        barCtx,
+        CREA,
+        genSettings,
+        validateCreation,
+        creationCtx,
+        cleanCreationCtx,
+        creationPlan,
+        rollSeries,
+        readCreation,
         useTexts: useTexts2,
         say: say2
       };
@@ -6883,6 +7394,10 @@ var require_builder_core = __commonJS({
       var gmOnlyProp = { k: "gmOnly", t: "bool", get label() {
         return say2("builder.reserveMjJoueursNe");
       } };
+      var DENSITIES = ["airy", "normal", "compact"];
+      var askProp = { k: "askAtCreation", t: "bool", def: false, get label() {
+        return say2("builder.askAtCreation");
+      } };
       var variantProp = function(name) {
         return { k: "variant", t: "enum", options: [""].concat(Theme.VARIANTS[name]), labels: VARIANT_LABELS, def: "", get label() {
           return say2("builder.ui.style");
@@ -6928,6 +7443,9 @@ var require_builder_core = __commonJS({
             } },
             { k: "againstField", t: "field", pool: "number", get label() {
               return say2("builder.duelComparerJetCe");
+            } },
+            { k: "hurts", t: "bool", def: false, get label() {
+              return say2("builder.hurts");
             } },
             { k: "follows", t: "resolution", get label() {
               return say2("builder.follows");
@@ -6981,7 +7499,8 @@ var require_builder_core = __commonJS({
             { k: "defaultValue", t: "text", def: "", get label() {
               return say2("builder.valeurParDefaut");
             } },
-            gmOnlyProp
+            gmOnlyProp,
+            askProp
           ]
         },
         NumberInput: {
@@ -7043,7 +7562,8 @@ var require_builder_core = __commonJS({
             { k: "defaultValue", t: "text", def: "", get label() {
               return say2("builder.valeurParDefaut");
             } },
-            gmOnlyProp
+            gmOnlyProp,
+            askProp
           ]
         },
         Checkbox: {
@@ -7708,13 +8228,13 @@ var require_builder_core = __commonJS({
             twins.forEach(function(k) {
               fields.push({ className: "NumberInput", id: k, name: k, computed: true, defaultValue: flatFx[k] });
             });
-            views[0].children.push({ className: "Container", id: "rb_fx", layout: "vertical", children: fields });
+            views[0].children.unshift({ className: "Container", id: "rb_fx", layout: "vertical", children: fields });
           }
           var progList = Rules.progKeys(copy.rules);
           if (progList.length && views[0] && Array.isArray(views[0].children) && !allNodes(copy).some(function(n) {
             return n.id === "rb_prog";
           })) {
-            views[0].children.push({ className: "Container", id: "rb_prog", layout: "vertical", children: progList.map(function(k) {
+            views[0].children.unshift({ className: "Container", id: "rb_prog", layout: "vertical", children: progList.map(function(k) {
               return { className: "NumberInput", id: "prog_" + k, name: "prog_" + k, defaultValue: "0" };
             }) });
           }
@@ -7748,6 +8268,7 @@ var require_builder_core = __commonJS({
           err(null, "Document illisible.");
           return { ok: false, errors, warnings };
         }
+        if (doc.density !== void 0 && DENSITIES.indexOf(doc.density) < 0) err(null, say2("builder.density.bad"));
         var resolutions = {};
         if (doc.rules !== void 0) {
           if (doc.v !== 2) err("rules", say2("builder.rules.needV2"));
@@ -7913,10 +8434,13 @@ var require_builder_core = __commonJS({
             if (n.againstField !== void 0 && n.againstField !== "") {
               if (typeof n.againstField !== "string") err(n.id, say2("builder.defenseCompareeDoitEtre"));
               else if (!n.clickable || !n.roll) err(n.id, say2("builder.duelDemandeTexteCliquable"));
-              else if (scope.repeater) err(n.id, say2("builder.duelNEstPossible"));
               else if (!allNumbers[n.againstField]) err(n.id, say2("builder.duel.notNumber", { field: n.againstField }));
             }
             if (n.againstMode !== void 0 && n.againstMode !== "" && n.againstMode !== "atLeast" && n.againstMode !== "atMost") err(n.id, say2("builder.sensComparaisonEstInconnu"));
+            if (n.hurts !== void 0 && n.hurts !== false) {
+              if (n.hurts !== true) err(n.id, say2("builder.hurtsBool"));
+              else if (!n.clickable || !n.roll) err(n.id, say2("builder.hurtsNeedsRoll"));
+            }
             if (n.spendN !== void 0 && !(typeof n.spendN === "number" && n.spendN >= 1 && n.spendN <= 99 && Math.floor(n.spendN) === n.spendN)) err(n.id, say2("builder.quantiteDepenseeDoitEtre"));
             if (n.roll) formulas.push({ id: n.id, text: n.roll, kind: "roll", scope });
           }
@@ -8420,7 +8944,7 @@ var require_builder_core = __commonJS({
       function stripBuilderFields(n) {
         var out = {};
         Object.keys(n).forEach(function(k) {
-          if (k !== "options" && k !== "children" && k !== "variant" && k !== "textSize" && k !== "bold" && k !== "upper" && k !== "tabs" && k !== "readChildren" && k !== "noAdd" && k !== "gmOnly" && k !== "spendField" && k !== "spendN" && k !== "againstField" && k !== "againstMode" && k !== "effectTarget" && k !== "effectValue" && k !== "follows" && k !== "bind" && k !== "bindLayout") out[k] = n[k];
+          if (k !== "options" && k !== "children" && k !== "variant" && k !== "textSize" && k !== "bold" && k !== "upper" && k !== "tabs" && k !== "readChildren" && k !== "noAdd" && k !== "gmOnly" && k !== "spendField" && k !== "spendN" && k !== "againstField" && k !== "againstMode" && k !== "hurts" && k !== "effectTarget" && k !== "effectValue" && k !== "follows" && k !== "bind" && k !== "bindLayout") out[k] = n[k];
         });
         return out;
       }
@@ -8506,6 +9030,30 @@ var require_builder_core = __commonJS({
         }
         return { nodes, vars };
       }
+      function playerViewOf(doc) {
+        var r = compileRules(doc) || {};
+        var present = {};
+        allNodes(doc || {}).forEach(function(n) {
+          if (isObj5(n) && typeof n.id === "string") present[n.id] = true;
+        });
+        var hidden = {}, locked = {};
+        (r.gmOnly || []).forEach(function(p) {
+          var parts = String(p).split(".");
+          hidden[parts[parts.length - 1]] = true;
+        });
+        (r.locked || []).concat(r.sealed || []).forEach(function(k) {
+          locked[String(k)] = true;
+          locked[String(k).replace(/__\d+$/, "")] = true;
+        });
+        return {
+          hidden: Object.keys(hidden).filter(function(id) {
+            return present[id];
+          }),
+          locked: Object.keys(locked).filter(function(id) {
+            return present[id] && !hidden[id];
+          })
+        };
+      }
       function compileRules(doc) {
         doc = syncBound(upgradeDoc(doc));
         var gmOnly = [], actions = {}, writable = {}, computedDefences = [];
@@ -8520,16 +9068,19 @@ var require_builder_core = __commonJS({
               actions[n.id] = { spend: [{ field: target.id, n: typeof n.spendN === "number" && n.spendN >= 1 ? n.spendN : 1, name: cleanText2(target.name, 40) }] };
               writable[target.id] = { t: "number", min: typeof target.min === "number" ? Math.min(0, target.min) : 0, max: typeof target.max === "number" ? target.max : 1e6 };
             }
-            if (n.className === "Label" && !prefix && n.clickable && n.roll && typeof n.againstField === "string" && allNumbers[n.againstField]) {
+            if (n.className === "Label" && n.clickable && n.roll && n.hurts === true) {
+              actions[n.id] = actions[n.id] || { spend: [] };
+              actions[n.id].hurt = true;
+            }
+            if (n.className === "Label" && n.clickable && n.roll && typeof n.againstField === "string" && allNumbers[n.againstField]) {
               var defence = allNumbers[n.againstField];
               actions[n.id] = actions[n.id] || { spend: [] };
               actions[n.id].against = { field: defence.id, name: cleanText2(defence.name, 40), mode: n.againstMode === "atMost" ? "atMost" : "atLeast" };
               if (defence.computed) computedDefences.push(defence.id);
             }
             slots(n).forEach(function(sl) {
-              if (n.className === "Repeater") {
-                if (sl.area === "edit") visit(sl.list, prefix + n.id + ".*.");
-              } else visit(sl.list, prefix);
+              if (n.className === "Repeater") visit(sl.list, prefix + n.id + ".*.");
+              else visit(sl.list, prefix);
             });
           });
         }
@@ -8625,6 +9176,60 @@ var require_builder_core = __commonJS({
           out.library.resources.forEach(function(k) {
             wanted.push(k, k + "_max");
           });
+        }
+        if (doc && isObj5(doc.rules) && !Rules.validateRules(doc.rules).length) {
+          var ask = [];
+          (doc && doc.views || []).forEach(function(v) {
+            (function walk4(list2) {
+              (Array.isArray(list2) ? list2 : []).forEach(function(n) {
+                if (!isObj5(n)) return;
+                if ((n.className === "TextInput" || n.className === "Textarea") && n.askAtCreation === true && typeof n.id === "string") ask.push({ id: n.id, name: cleanText2(n.name, 40) || n.id });
+                if (n.className !== "Repeater") slots(n).forEach(function(sl) {
+                  walk4(sl.list);
+                });
+              });
+            })(isObj5(v) ? v.children : []);
+          });
+          out.creation = Rules.creationCtx(doc.rules, ask);
+          out.sealed = (out.sealed || []).concat(["crea"]);
+          var bar = Rules.barCtx(doc.rules);
+          if (bar.length) out.bar = bar;
+          bar.forEach(function(x) {
+            if (x.kind === "resource" && !writable[x.key]) writable[x.key] = { t: "number", min: 0, max: 1e6 };
+          });
+        }
+        if (doc && DENSITIES.indexOf(doc.density) >= 0 && doc.density !== "normal") out.density = doc.density;
+        if (doc && isObj5(doc.roles)) {
+          var inDoc = {};
+          allNodes(doc).forEach(function(n) {
+            if (isObj5(n) && typeof n.id === "string") inDoc[n.id] = true;
+          });
+          var roles = {};
+          Object.keys(doc.roles).slice(0, 8).forEach(function(view) {
+            var r = doc.roles[view];
+            if (!/^[A-Za-z0-9_-]{1,40}$/.test(view) || !isObj5(r)) return;
+            var one = {};
+            ["health", "healthMax", "defense"].forEach(function(k) {
+              if (typeof r[k] === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(r[k]) && inDoc[r[k]]) {
+                one[k] = r[k];
+                wanted.push(r[k]);
+              }
+            });
+            if (Array.isArray(r.armor)) {
+              var armor = r.armor.slice(0, 4).filter(function(a) {
+                return isObj5(a) && typeof a.key === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(a.key) && inDoc[a.key];
+              }).map(function(a) {
+                wanted.push(a.key);
+                return { key: a.key, name: cleanText2(a.name, 40) || a.key, factor: typeof a.factor === "number" && a.factor >= 0.5 && a.factor <= 4 ? a.factor : 1 };
+              });
+              if (armor.length) {
+                one.armor = armor;
+                if (r.ablate === true) one.ablate = true;
+              }
+            }
+            if (Object.keys(one).length) roles[view] = one;
+          });
+          if (Object.keys(roles).length) out.roles = roles;
         }
         if (Object.keys(writable).length) out.writable = writable;
         if (Object.keys(actions).length) out.actions = actions;
@@ -9105,6 +9710,7 @@ var require_builder_core = __commonJS({
         syncBound,
         upgradeDoc,
         compileRules,
+        playerViewOf,
         derivedSheet,
         applyEffects,
         computedNumberIds,
@@ -9156,6 +9762,21 @@ var require_fr2 = __commonJS({
       "ambiencePanel.title": "Ambiance",
       "ambiencePanel.torch": "Torche",
       "ambiencePanel.torchHint": "Une sc\xE8ne sombre : chaque personnage porte une torche et n\u2019y voit que par elle.",
+      "bar.density": "Densit\xE9 des fiches",
+      "bar.density.airy": "A\xE9r\xE9e",
+      "bar.density.compact": "Compacte",
+      "bar.density.normal": "Normale",
+      "bar.density.system": "Comme le syst\xE8me",
+      "bar.display": "Affichage",
+      "bar.hp": "D\xE9g\xE2ts ou soins",
+      "bar.initiative": "Lancer l\u2019initiative",
+      "bar.label": "Barre de la fiche",
+      "bar.left": "{n} tour(s)",
+      "bar.less": "Un point de {name} en moins",
+      "bar.more": "Un point de {name} en plus",
+      "bar.noState": "aucun",
+      "bar.refused": "Refus\xE9 : {why}",
+      "bar.roll": "Lancer",
       "bubble.angle": "Ouverture",
       "bubble.bright": "Lumi\xE8re vive",
       "bubble.candle": "Bougie",
@@ -9189,19 +9810,89 @@ var require_fr2 = __commonJS({
       "bubble.torch": "Torche",
       "bubble.wall": "Mur",
       "bubble.window": "Fen\xEAtre",
+      "character.accept": "Accepter",
+      "character.accepted": "Le personnage est \xE0 la table, \xE0 son joueur.",
+      "character.by": "Envoy\xE9 par {who}",
+      "character.cancel": "Retirer",
+      "character.close": "Fermer",
+      "character.export": "Exporter",
+      "character.exportHint": "Le personnage dans un fichier .ourdirperso, pour une autre table du m\xEAme syst\xE8me",
+      "character.failed": "Refus\xE9 : {why}",
+      "character.import": "Importer un personnage",
+      "character.importHint": "Un fichier .ourdirperso d'une table du m\xEAme syst\xE8me",
+      "character.level": "niveau {n}",
+      "character.levelOf": " (niveau {n})",
+      "character.madeHere": "Le personnage est \xE0 la table.",
+      "character.mine": "En attente du MJ ({n})",
+      "character.n.asked": "{who} veut importer {name}{level}.",
+      "character.n.cancelled": "{who} a retir\xE9 l'import de {name}.",
+      "character.n.made": "{name} a \xE9t\xE9 import\xE9.",
+      "character.n.refused": "L'import de {name} est refus\xE9{why}.",
+      "character.noRemarks": "Rien \xE0 signaler \xE0 la relecture.",
+      "character.none": "Aucun import n'attend.",
+      "character.open": "Ouvrir",
+      "character.pending": "\xC0 valider ({n})",
+      "character.reason": "Motif (dit au joueur)",
+      "character.refuse": "Refuser",
+      "character.refused": "Import impossible : {why}",
+      "character.remarks": "\xC0 la relecture : {list}.",
+      "character.reviewTitle": "Personnages \xE0 importer",
+      "character.rows": "{key} : {n} ligne(s)",
+      "character.see": "Voir",
+      "character.someone": "un joueur",
+      "character.tooBig": "Ce fichier est trop gros.",
+      "character.waiting": "Le personnage attend l'accord du MJ.",
+      "character.warn.clamped": "\xAB {key} \xBB ramen\xE9 de {from} \xE0 {to}",
+      "character.warn.dropped": "\xAB {key} \xBB laiss\xE9 de c\xF4t\xE9",
+      "character.warn.missing": "\xAB {id} \xBB ({list}) absent de cette table",
+      "character.warn.more": "et {n} de plus",
       "chat.placeholder": "\xC9crire \xE0 la table\u2026 /me pour agir",
+      "clocks.create": "Cr\xE9er",
+      "clocks.down": "Descendre",
+      "clocks.e.created": "Nouvelle horloge : \xAB {name} \xBB ({segments} segments).",
+      "clocks.e.down": "{who} fait reculer \xAB {name} \xBB : {filled}/{segments}.",
+      "clocks.e.full": "\xAB {name} \xBB est pleine !",
+      "clocks.e.removed": "L'horloge \xAB {name} \xBB est retir\xE9e.",
+      "clocks.e.up": "{who} fait avancer \xAB {name} \xBB : {filled}/{segments}.",
+      "clocks.failed": "Refus\xE9 : {why}",
+      "clocks.label": "{name} : {filled} sur {segments}",
+      "clocks.less": "Reculer d'un segment",
+      "clocks.menu": "Plus",
+      "clocks.more": "Avancer d'un segment",
+      "clocks.namePh": "Nom de la nouvelle horloge",
+      "clocks.none": "Aucune horloge en vue.",
+      "clocks.noneGm": "Aucune horloge. Cr\xE9ez-en une pour suivre une menace ou un projet.",
+      "clocks.pinned": "\xC9pingl\xE9e en haut de l'\xE9cran",
+      "clocks.players": "Les joueurs peuvent la remplir",
+      "clocks.remove": "Supprimer",
+      "clocks.removeAsk": "Supprimer l'horloge \xAB {name} \xBB ?",
+      "clocks.rename": "Nom de l'horloge",
+      "clocks.reset": "Remettre \xE0 z\xE9ro",
+      "clocks.segments": "Segments",
+      "clocks.segmentsN": "{n} segments",
+      "clocks.someone": "Quelqu'un",
+      "clocks.strip": "Horloges \xE9pingl\xE9es",
+      "clocks.stripMax": "Montrer les horloges \xE9pingl\xE9es ({n})",
+      "clocks.stripMin": "R\xE9duire les horloges \xE9pingl\xE9es",
+      "clocks.title": "Horloges",
+      "clocks.up": "Monter",
+      "clocks.visible": "Visible des joueurs",
       "collision.off": "Fant\xF4me : laisser les jetons traverser les murs",
       "collision.on": "Fant\xF4me : les jetons traversent les murs (cliquer pour arr\xEAter)",
+      "combat.ablated": "Protection us\xE9e : {before} \u2192 {after}.",
       "combat.applied": "\u2212{n} PV ({before} \u2192 {after})",
       "combat.appliedAuto": "\u2212{n} PV ({before} \u2192 {after}), d\u2019office",
       "combat.appliedHidden": "\u2212{n} PV",
+      "combat.at": "Touch\xE9 : {name}.",
       "combat.btn.apply": "Appliquer",
+      "combat.btn.at": "Appliquer \xB7 {name}",
       "combat.btn.damage": "D\xE9g\xE2ts",
       "combat.btn.double": "Double",
       "combat.btn.half": "Moiti\xE9",
       "combat.btn.heal": "Soigner",
       "combat.btn.undo": "Annuler",
       "combat.crit": "Critique !",
+      "combat.critDice": "Doublez les d\xE9s de d\xE9g\xE2ts.",
       "combat.dealt": "{raw} {type}",
       "combat.defense": "{name} : {value}",
       "combat.down": "Hors de combat",
@@ -9248,6 +9939,71 @@ var require_fr2 = __commonJS({
       "contextMenu.target": "Cibler",
       "contextMenu.untarget": "Ne plus cibler",
       "craftFolders.create": "Cr\xE9er",
+      "creation.accept": "Accepter",
+      "creation.back": "Pr\xE9c\xE9dent",
+      "creation.blank": "Cette fiche est vierge.",
+      "creation.budgetLeft": "Points restants : {n} sur {budget}",
+      "creation.cannot": "La cr\xE9ation ne s\u2019ouvre pas.",
+      "creation.count": "{n} sur {max}",
+      "creation.done": "Personnage cr\xE9\xE9.",
+      "creation.draft": "Cr\xE9ation en cours.",
+      "creation.finish": "Terminer",
+      "creation.gmValidates": "Je valide les cr\xE9ations des joueurs",
+      "creation.inOrder": "Dans l\u2019ordre : chaque valeur va \xE0 sa caract\xE9ristique.",
+      "creation.later": "Plus tard",
+      "creation.less": "Moins de {name}",
+      "creation.levelN": "Niveau {n}",
+      "creation.method.3d6": "3d6",
+      "creation.method.4d6drop": "4d6, les trois meilleurs",
+      "creation.method.array": "Place chaque valeur de la liste",
+      "creation.method.free": "R\xE9partis le total",
+      "creation.method.pointbuy": "Achat de points",
+      "creation.method.random": "Au hasard",
+      "creation.more": "Plus de {name}",
+      "creation.n.asked": "{who} attend la validation du MJ.",
+      "creation.n.created": "{who} a cr\xE9\xE9 son personnage.",
+      "creation.n.refused": "La cr\xE9ation de {who} est refus\xE9e : {why}",
+      "creation.n.reset": "La cr\xE9ation de {who} est relanc\xE9e.",
+      "creation.n.rolled": "{who} tire ses caract\xE9ristiques ({dice}) : {values}",
+      "creation.name": "Nom",
+      "creation.next": "Suivant",
+      "creation.nothing": "Ce niveau n\u2019apporte rien \xE0 choisir.",
+      "creation.pending": "En attente du MJ.",
+      "creation.pendingGm": "Une cr\xE9ation attend ta validation.",
+      "creation.pickN": "{n} : {genre}",
+      "creation.placeEach": "Place chaque valeur une fois : {values}",
+      "creation.reason": "Raison (si tu refuses)",
+      "creation.reasonHint": "Ce que le joueur doit changer",
+      "creation.refuse": "Refuser",
+      "creation.refused": "Refus\xE9 : {why}",
+      "creation.refusedWith": "Le MJ a refus\xE9 : {why}",
+      "creation.reset": "Relancer la cr\xE9ation",
+      "creation.resetConfirm": "Relancer la cr\xE9ation de cette fiche ? Le joueur pourra tirer \xE0 nouveau ; ses valeurs actuelles restent jusqu\u2019\xE0 ce qu\u2019il termine.",
+      "creation.resetDone": "Cr\xE9ation relanc\xE9e.",
+      "creation.resume": "Reprendre la cr\xE9ation",
+      "creation.reviewOf": "Cr\xE9ation de {name}",
+      "creation.roll": "Tirer",
+      "creation.rollOnce": "L\u2019h\xF4te tire une seule fois : la s\xE9rie est gard\xE9e.",
+      "creation.rolled": "Tirage : {values} ({dice})",
+      "creation.see": "Voir",
+      "creation.send": "Envoyer au MJ",
+      "creation.sent": "Cr\xE9ation envoy\xE9e au MJ.",
+      "creation.settings": "Cr\xE9ation",
+      "creation.someone": "Quelqu\u2019un",
+      "creation.start": "Cr\xE9er mon personnage",
+      "creation.step.identity": "Identit\xE9",
+      "creation.step.library": "\xC9quipement et pouvoirs",
+      "creation.step.skills": "Comp\xE9tences",
+      "creation.step.start": "D\xE9part",
+      "creation.step.stats": "Caract\xE9ristiques",
+      "creation.step.summary": "R\xE9sum\xE9",
+      "creation.taken": "Pris : {list}",
+      "creation.title": "Cr\xE9er mon personnage",
+      "creation.totalLeft": "Reste \xE0 r\xE9partir : {n} sur {total}",
+      "creation.trainN": "Forme {n} comp\xE9tence(s)",
+      "creation.trained": "Form\xE9 en : {list}",
+      "creation.willWait": "Le MJ validera cette cr\xE9ation avant qu\u2019elle ne soit \xE9crite.",
+      "creation.willWrite": "Tout sera \xE9crit sur la fiche d\u2019un coup.",
       "dnd.classes.adopt": "Adopter la sous-classe : {name}",
       "dnd.classes.leveled": "{who} : {summary}.",
       "dnd.classes.leveledRoll": "{who} : {summary} (d\xE9 : {roll}).",
@@ -9381,11 +10137,29 @@ var require_fr2 = __commonJS({
       "host.bulk.tooMany": "Trop de fiches d\u2019un coup ({max} au plus).",
       "host.bulkParse.imageInvalide": "Image invalide.",
       "host.bulkParse.typeFicheInvalide": "Type de fiche invalide.",
+      "host.character.cannotRead": "Vous ne pouvez pas lire cette fiche.",
+      "host.character.file.damaged": "Ce fichier est ab\xEEm\xE9.",
+      "host.character.file.notOurs": "Ce n'est pas un fichier de personnage Ourdir.",
+      "host.character.file.tooBig": "Ce fichier est trop gros.",
+      "host.character.file.tooNew": "Ce fichier vient d'une version d'Ourdir plus r\xE9cente : mettez Ourdir \xE0 jour.",
+      "host.character.gmOnly": "Seul le MJ d\xE9cide d'un import.",
+      "host.character.gone": "Cet import n'attend plus.",
+      "host.character.newerSystem": "Ce personnage a \xE9t\xE9 fait avec une version plus r\xE9cente de {name} ({file}, ici {here}) : mettez le syst\xE8me \xE0 jour.",
+      "host.character.noView": "Ce syst\xE8me n'a plus cette sorte de fiche.",
+      "host.character.otherSystem": "Ce personnage a \xE9t\xE9 fait pour un autre syst\xE8me ({name}).",
+      "host.character.tooBig": "Ce personnage est trop gros pour un fichier.",
+      "host.character.tooMany": "Vous avez d\xE9j\xE0 {max} imports qui attendent le MJ.",
+      "host.clocks.closed": "Cette horloge n'est pas ouverte aux joueurs.",
+      "host.clocks.gmOnly": "Seul le MJ r\xE8gle les horloges.",
+      "host.clocks.gone": "Cette horloge n'est plus l\xE0.",
+      "host.clocks.tooMany": "La table a d\xE9j\xE0 {max} horloges.",
+      "host.clocks.tooManyPinned": "{max} horloges sont d\xE9j\xE0 \xE9pingl\xE9es.",
       "host.combat.already": "C\u2019est d\xE9j\xE0 fait.",
       "host.combat.attack": "Attaque",
       "host.combat.badDice": "Les d\xE9s de cette arme ne se lisent pas (ex. 1d8+2).",
       "host.combat.noAmmo": "Plus de munitions.",
       "host.combat.noCard": "Cette carte n\u2019existe plus.",
+      "host.combat.noHealth": "Cette fiche ne dit pas o\xF9 sont ses points de vie.",
       "host.combat.noRules": "Ce syst\xE8me ne d\xE9crit pas de combat.",
       "host.combat.noWeapon": "Cette arme n\u2019est plus sur la fiche.",
       "host.common.badScene": "Sc\xE8ne invalide.",
@@ -9416,6 +10190,15 @@ var require_fr2 = __commonJS({
       "host.craft.listFull": "Cette liste est pleine.",
       "host.craftAdd.cibleIntrouvable": "Cible introuvable.",
       "host.craftAdd.contenuIntrouvable": "Contenu introuvable.",
+      "host.creation.done": "Ce personnage est d\xE9j\xE0 cr\xE9\xE9.",
+      "host.creation.gmOnly": "Seul le MJ d\xE9cide d\u2019une cr\xE9ation.",
+      "host.creation.noLevels": "Ce syst\xE8me n\u2019a pas de niveaux pour un d\xE9part plus haut.",
+      "host.creation.noRoll": "Cette m\xE9thode ne tire pas de d\xE9s.",
+      "host.creation.noRules": "Ce syst\xE8me n\u2019a pas de cr\xE9ation guid\xE9e.",
+      "host.creation.notFresh": "Cette fiche est d\xE9j\xE0 remplie : demande au MJ de relancer la cr\xE9ation.",
+      "host.creation.nothingWaits": "Aucune cr\xE9ation n\u2019attend sur cette fiche.",
+      "host.creation.startLevel": "Niveau {n} : {why}",
+      "host.creation.waiting": "Cette cr\xE9ation attend d\xE9j\xE0 le MJ.",
       "host.effects.bad": "Cet effet ne se lit pas.",
       "host.effects.full": "Cette fiche porte d\xE9j\xE0 24 effets.",
       "host.effects.gone": "Cet effet n\u2019est plus l\xE0.",
@@ -9757,6 +10540,9 @@ var require_fr2 = __commonJS({
       "playlistImport.doneOne": "{n} musique ajout\xE9e.",
       "playlistImport.empty": "Cette liste YouTube est vide, priv\xE9e ou introuvable.",
       "playlistImport.reading": "Lecture de la liste YouTube\u2026",
+      "print.button": "Imprimer",
+      "print.footer": "{name} \u2014 imprim\xE9 le {date} avec Ourdir",
+      "print.hint": "La fiche sur papier, ou en PDF depuis la bo\xEEte d'impression",
       "progress.accept": "Accepter",
       "progress.asked": "Le niveau {level} attend la r\xE9ponse du MJ.",
       "progress.askedBuy": "Un achat attend la r\xE9ponse du MJ.",
@@ -9848,6 +10634,20 @@ var require_fr2 = __commonJS({
       "rollsToChat.test": "Test de {what}",
       "rules.against": " (contre {n})",
       "rules.attack": "Attaquer",
+      "rules.bar.states": "\xC9tats",
+      "rules.c.arrayOnce": "Place chaque valeur de la liste une fois.",
+      "rules.c.freeTotal": "Les caract\xE9ristiques doivent faire {total} au total.",
+      "rules.c.noName": "Donne un nom \xE0 ton personnage.",
+      "rules.c.notPriced": "Une valeur n\u2019a pas de prix dans l\u2019achat de points.",
+      "rules.c.overBudget": "{spent} points d\xE9pens\xE9s pour un budget de {budget}.",
+      "rules.c.pickOutside": "Une entr\xE9e choisie n\u2019est pas permise au d\xE9part.",
+      "rules.c.pickTwice": "Une entr\xE9e est choisie deux fois.",
+      "rules.c.picks": "Choisis {n} entr\xE9e(s) de \xAB {genre} \xBB.",
+      "rules.c.rollFirst": "Tire d\u2019abord tes caract\xE9ristiques.",
+      "rules.c.rolledOnce": "Place chaque valeur tir\xE9e une fois.",
+      "rules.c.skills": "Choisis {n} comp\xE9tence(s) dans la liste.",
+      "rules.c.statBounds": "Chaque caract\xE9ristique va de {min} \xE0 {max}.",
+      "rules.c.tooLong": "\xAB {name} \xBB : {max} caract\xE8res au plus.",
       "rules.crit": "R\xE9ussite critique",
       "rules.deg.extreme": "R\xE9ussite extr\xEAme",
       "rules.deg.hard": "R\xE9ussite difficile",
@@ -10005,6 +10805,12 @@ var require_fr2 = __commonJS({
       "rules.v.adv": "Avantage, d\xE9savantage ou rien.",
       "rules.v.advantage": "L\u2019avantage ne s\u2019applique pas \xE0 une r\xE9serve, \xE0 Fate ni \xE0 des bandes.",
       "rules.v.bands": "Bandes : de 2 \xE0 12, dans l\u2019ordre croissant, la derni\xE8re sans maximum, chacune avec un nom et une tonalit\xE9.",
+      "rules.v.bar": "La barre fixe ne se lit pas.",
+      "rules.v.barInitiative": "Le syst\xE8me n\u2019a pas de jet d\u2019initiative.",
+      "rules.v.barResource": "Choisis une ressource (une valeur avec un maximum).",
+      "rules.v.barStates": "Le syst\xE8me n\u2019a pas d\u2019\xE9tats.",
+      "rules.v.barTwice": "Cet \xE9l\xE9ment est d\xE9j\xE0 dans la barre.",
+      "rules.v.barValue": "Choisis un nombre de la fiche.",
       "rules.v.bonus": "Bonus : un nombre entier de \u22121000 \xE0 1000.",
       "rules.v.bool": "Oui ou non attendu.",
       "rules.v.buyNoXp": "Un achat se paie en exp\xE9rience : il en faut une.",
@@ -10019,6 +10825,13 @@ var require_fr2 = __commonJS({
       "rules.v.costNoXp": "Sans exp\xE9rience, les niveaux n\u2019ont pas de co\xFBt (le MJ les accorde).",
       "rules.v.count": "Nombre de d\xE9s : de 1 \xE0 {max}.",
       "rules.v.countAt": "Seuil de succ\xE8s : une face d\u2019un d{sides}.",
+      "rules.v.crea": "La cr\xE9ation ne se lit pas.",
+      "rules.v.creaFilter": "Le filtre ne cite que des champs du genre et leurs options.",
+      "rules.v.creaLevel": "Un niveau de d\xE9part demande une progression par niveaux.",
+      "rules.v.creaOrder": "Les tirages se font \xAB \xE0 r\xE9partir \xBB ou \xAB dans l\u2019ordre \xBB.",
+      "rules.v.creaPick": "Un choix de d\xE9part vise un genre de la biblioth\xE8que (pas les aptitudes).",
+      "rules.v.creaPickTwice": "Ce genre a d\xE9j\xE0 son choix de d\xE9part.",
+      "rules.v.creaSkills": "Les comp\xE9tences \xE0 former demandent des comp\xE9tences au rang \xAB form\xE9 \xBB, prises dans la liste.",
       "rules.v.critical": "Critique : d\xE9s doubl\xE9s, maximum plus un jet, ou rien.",
       "rules.v.cycle": "Boucle de calcul : {path}.",
       "rules.v.default": "La difficult\xE9 par d\xE9faut n\u2019est pas dans la liste.",
@@ -10041,6 +10854,11 @@ var require_fr2 = __commonJS({
       "rules.v.finesse": "La finesse compare deux caract\xE9ristiques diff\xE9rentes.",
       "rules.v.fixed": "Cible fixe : un nombre entier.",
       "rules.v.gauge": "Une jauge demande une ressource.",
+      "rules.v.genBudget": "Le budget va de 1 \xE0 {max} points.",
+      "rules.v.genCosts": "Les co\xFBts : de 2 \xE0 30 valeurs entre {min} et {max}, chacune de 0 \xE0 100 points.",
+      "rules.v.genScore": "4d6 et 3d6 ne servent qu\u2019\xE0 des caract\xE9ristiques en score.",
+      "rules.v.genTotal": "Le total \xE0 r\xE9partir va de {min} \xE0 {max}.",
+      "rules.v.genValues": "La liste a {n} valeurs, chacune de {min} \xE0 {max}.",
       "rules.v.generation": "M\xE9thode de cr\xE9ation inconnue.",
       "rules.v.give": "De 1 \xE0 {max} gains.",
       "rules.v.giveKind": "Un gain : ajouter, r\xE9partir, former, une aptitude ou un choix d\u2019aptitude.",
@@ -11724,7 +12542,6 @@ var require_en2 = __commonJS({
       "builder.duel.notNumber": "The compared defence must be a number field of the sheet, outside a list (\u201C{field}\u201D is not one). The target has the same sheet: it must have this field.",
       "builder.duelComparerJetCe": "Duel: compare the roll with this field of the target (a defence)",
       "builder.duelDemandeTexteCliquable": "A duel needs a clickable text with a roll.",
-      "builder.duelNEstPossible": "A duel is only possible outside a repeatable list.",
       "builder.effect.breaks": "An effect makes a computation invalid: {why}",
       "builder.effect.notComputed": "An effect adds to a computed number field, outside a list (\u201C{field}\u201D is not one). Make this field computed first.",
       "builder.effetNEstPossible": "An effect is only possible outside a repeatable list.",
@@ -14358,7 +15175,105 @@ var require_en2 = __commonJS({
       "ui.rules.lib.packVersion": "Package version",
       "err.libraries.badVersion": "A package version is written 1.2.0.",
       "ui.rules.lib.shareGo": "Share to the catalogue\u2026",
-      "err.libraries.notStaged": "This package is no longer ready: start again from the builder (Share to the catalogue)."
+      "err.libraries.notStaged": "This package is no longer ready: start again from the builder (Share to the catalogue).",
+      "rules.v.genScore": "4d6 and 3d6 only serve characteristics as scores.",
+      "rules.v.genValues": "The list has {n} values, each from {min} to {max}.",
+      "rules.v.genBudget": "The budget goes from 1 to {max} points.",
+      "rules.v.genCosts": "The costs: 2 to 30 values between {min} and {max}, each from 0 to 100 points.",
+      "rules.v.genTotal": "The total to share goes from {min} to {max}.",
+      "rules.v.crea": "The creation cannot be read.",
+      "rules.v.creaOrder": "Rolls are \xAB to place \xBB or \xAB in order \xBB.",
+      "rules.v.creaSkills": "Skills to train need skills of rank \xAB trained \xBB, taken from the list.",
+      "rules.v.creaLevel": "A starting level needs a progression by levels.",
+      "rules.v.creaPick": "A starting pick names a genre of the library (not the features).",
+      "rules.v.creaPickTwice": "This genre already has its starting pick.",
+      "rules.v.creaFilter": "The filter only names the genre's fields and their options.",
+      "rules.c.noName": "Give your character a name.",
+      "rules.c.tooLong": "\xAB {name} \xBB: {max} characters at most.",
+      "rules.c.rollFirst": "Roll your characteristics first.",
+      "rules.c.statBounds": "Each characteristic goes from {min} to {max}.",
+      "rules.c.rolledOnce": "Place each rolled value once.",
+      "rules.c.arrayOnce": "Place each value of the list once.",
+      "rules.c.notPriced": "A value has no price in the point buy.",
+      "rules.c.overBudget": "{spent} points spent for a budget of {budget}.",
+      "rules.c.freeTotal": "The characteristics must total {total}.",
+      "rules.c.skills": "Pick {n} skill(s) from the list.",
+      "rules.c.picks": "Pick {n} entry(ies) of \xAB {genre} \xBB.",
+      "rules.c.pickOutside": "A picked entry is not allowed at the start.",
+      "rules.c.pickTwice": "An entry is picked twice.",
+      "builder.askAtCreation": "Asked at creation",
+      "ui.rules.card.creation": "Creation",
+      "ui.rules.genValues": "Values to place",
+      "ui.rules.genBudget": "Budget (points)",
+      "ui.rules.genCosts": "Costs (value:cost, \u2026)",
+      "ui.rules.genTotal": "Total to share",
+      "ui.rules.genDefault": "Empty: {v}",
+      "ui.rules.creaHint": "How a player makes their character at the table: characteristics by the chosen method, trained skills, a starting level, what they take from the library. Without this card, the assistant asks for the name and the characteristics.",
+      "ui.rules.creaAdd": "Set the creation",
+      "ui.rules.creaLead": "What the creation assistant asks the player. The host rolls the dice once and checks everything.",
+      "ui.rules.creaOrder": "Rolled values",
+      "ui.rules.creaOrder.assign": "To place (the player puts them)",
+      "ui.rules.creaOrder.inOrder": "In order (the first to the first characteristic)",
+      "ui.rules.creaSkills": "Train skills at the start",
+      "ui.rules.creaPick": "How many",
+      "ui.rules.creaLevel": "Starting level",
+      "ui.rules.creaLevelHint": "Above 1, the player gets the gains and makes the choices of each level.",
+      "ui.rules.creaPicks": "Taken from the library",
+      "ui.rules.creaPickN": "How many",
+      "ui.rules.creaMax": "{name} at most",
+      "ui.rules.creaPickAdd": "Add a starting pick",
+      "ui.rules.creaPreview": "The player's steps",
+      "ui.rules.creaTrial": "Trial roll",
+      "ui.rules.creaRemove": "Remove the creation",
+      "ui.rules.creaStep.identity": "Identity: the name and the fields asked for",
+      "ui.rules.creaStep.stats": "Characteristics",
+      "ui.rules.creaStep.skills": "Skills to train",
+      "ui.rules.creaStep.start": "Start: the levels up to the starting level",
+      "ui.rules.creaStep.library": "Equipment and powers",
+      "ui.rules.creaStep.summary": "Summary, then Finish",
+      "rules.v.bar": "The fixed bar cannot be read.",
+      "rules.v.barTwice": "This item is already in the bar.",
+      "rules.v.barResource": "Pick a resource (a value with a maximum).",
+      "rules.v.barValue": "Pick a number of the sheet.",
+      "rules.v.barInitiative": "The system has no initiative roll.",
+      "rules.v.barStates": "The system has no states.",
+      "rules.bar.states": "States",
+      "builder.density.bad": "Unknown density (airy, normal or compact).",
+      "ui.rules.card.bar": "Fixed bar",
+      "ui.rules.barHint": "The band that stays at the top of each sheet at the table: what matters, seen and touched in one click in the thick of a fight.",
+      "ui.rules.barDefault": "Chosen from the rules:",
+      "ui.rules.barNone": "Nothing to show.",
+      "ui.rules.barChoose": "Choose it myself",
+      "ui.rules.barOn": "Show a bar at the top of the sheet",
+      "ui.rules.barItems": "Items (6 at most)",
+      "ui.rules.barKind": "Kind",
+      "ui.rules.barKind.health": "Health",
+      "ui.rules.barKind.resource": "Resource",
+      "ui.rules.barKind.value": "Value",
+      "ui.rules.barKind.initiative": "Initiative",
+      "ui.rules.barKind.states": "States",
+      "ui.rules.barValue": "Which",
+      "ui.rules.barAdd": "Add an item",
+      "ui.rules.barReset": "Back to the rules' choice",
+      "ui.rules.barMissing": "Not on the sheet: {list}. Add their block to the sheet, or the bar cannot show them.",
+      "ui.rules.up": "Up",
+      "ui.rules.down": "Down",
+      "ui.builder.density": "Sheet density",
+      "ui.builder.densityHint": "The default one; each player may choose theirs at the table.",
+      "ui.builder.density.airy": "Airy",
+      "ui.builder.density.normal": "Normal",
+      "ui.builder.density.compact": "Compact",
+      "ui.builder.viewAs.label": "View as",
+      "ui.builder.viewAs.gm": "GM",
+      "ui.builder.viewAs.player": "Player",
+      "ui.builder.viewAs.note": "As the player:",
+      "ui.builder.viewAs.hidden": "{n} field(s) hidden ({list})",
+      "ui.builder.viewAs.noneHidden": "no hidden field",
+      "ui.builder.viewAs.locked": "{n} locked",
+      "ui.builder.viewAs.lockedTag": "locked",
+      "builder.hurts": "Deals damage to the target (its roll is taken from the hit points of the sheet aimed at)",
+      "builder.hurtsBool": "\u201CDeals damage\u201D must be yes or no.",
+      "builder.hurtsNeedsRoll": "Dealing damage needs a clickable text with a roll."
     };
   }
 });
@@ -14396,6 +15311,21 @@ var require_en3 = __commonJS({
       "ambiencePanel.title": "Ambience",
       "ambiencePanel.torch": "Torch",
       "ambiencePanel.torchHint": "A dark scene: each character carries a torch and sees only by it.",
+      "bar.density": "Sheet density",
+      "bar.density.airy": "Airy",
+      "bar.density.compact": "Compact",
+      "bar.density.normal": "Normal",
+      "bar.density.system": "As the system says",
+      "bar.display": "Display",
+      "bar.hp": "Damage or healing",
+      "bar.initiative": "Roll the initiative",
+      "bar.label": "Sheet bar",
+      "bar.left": "{n} round(s)",
+      "bar.less": "One point of {name} less",
+      "bar.more": "One point of {name} more",
+      "bar.noState": "none",
+      "bar.refused": "Refused: {why}",
+      "bar.roll": "Roll",
       "bubble.angle": "Opening",
       "bubble.bright": "Bright light",
       "bubble.candle": "Candle",
@@ -14429,19 +15359,89 @@ var require_en3 = __commonJS({
       "bubble.torch": "Torch",
       "bubble.wall": "Wall",
       "bubble.window": "Window",
+      "character.accept": "Accept",
+      "character.accepted": "The character is at the table, their player's.",
+      "character.by": "Sent by {who}",
+      "character.cancel": "Take back",
+      "character.close": "Close",
+      "character.export": "Export",
+      "character.exportHint": "The character in an .ourdirperso file, for another table of the same system",
+      "character.failed": "Refused: {why}",
+      "character.import": "Import a character",
+      "character.importHint": "An .ourdirperso file from a table of the same system",
+      "character.level": "level {n}",
+      "character.levelOf": " (level {n})",
+      "character.madeHere": "The character is at the table.",
+      "character.mine": "Waiting for the GM ({n})",
+      "character.n.asked": "{who} wants to import {name}{level}.",
+      "character.n.cancelled": "{who} took back the import of {name}.",
+      "character.n.made": "{name} was imported.",
+      "character.n.refused": "The import of {name} is refused{why}.",
+      "character.noRemarks": "Nothing to report on reading.",
+      "character.none": "No import is waiting.",
+      "character.open": "Open",
+      "character.pending": "To approve ({n})",
+      "character.reason": "Reason (told to the player)",
+      "character.refuse": "Refuse",
+      "character.refused": "Cannot import: {why}",
+      "character.remarks": "On reading: {list}.",
+      "character.reviewTitle": "Characters to import",
+      "character.rows": "{key}: {n} row(s)",
+      "character.see": "See",
+      "character.someone": "a player",
+      "character.tooBig": "This file is too big.",
+      "character.waiting": "The character waits for the GM's approval.",
+      "character.warn.clamped": "\u201C{key}\u201D brought from {from} to {to}",
+      "character.warn.dropped": "\u201C{key}\u201D left out",
+      "character.warn.missing": "\u201C{id}\u201D ({list}) not at this table",
+      "character.warn.more": "and {n} more",
       "chat.placeholder": "Write to the table\u2026 /me to act",
+      "clocks.create": "Create",
+      "clocks.down": "Move down",
+      "clocks.e.created": "New clock: \u201C{name}\u201D ({segments} segments).",
+      "clocks.e.down": "{who} moves \u201C{name}\u201D back: {filled}/{segments}.",
+      "clocks.e.full": "\u201C{name}\u201D is full!",
+      "clocks.e.removed": "The clock \u201C{name}\u201D is removed.",
+      "clocks.e.up": "{who} moves \u201C{name}\u201D forward: {filled}/{segments}.",
+      "clocks.failed": "Refused: {why}",
+      "clocks.label": "{name}: {filled} of {segments}",
+      "clocks.less": "One segment back",
+      "clocks.menu": "More",
+      "clocks.more": "One segment forward",
+      "clocks.namePh": "Name of the new clock",
+      "clocks.none": "No clock in sight.",
+      "clocks.noneGm": "No clock yet. Create one to follow a threat or a project.",
+      "clocks.pinned": "Pinned at the top of the screen",
+      "clocks.players": "The players may fill it",
+      "clocks.remove": "Delete",
+      "clocks.removeAsk": "Delete the clock \u201C{name}\u201D?",
+      "clocks.rename": "Name of the clock",
+      "clocks.reset": "Empty it",
+      "clocks.segments": "Segments",
+      "clocks.segmentsN": "{n} segments",
+      "clocks.someone": "Someone",
+      "clocks.strip": "Pinned clocks",
+      "clocks.stripMax": "Show the pinned clocks ({n})",
+      "clocks.stripMin": "Fold the pinned clocks",
+      "clocks.title": "Clocks",
+      "clocks.up": "Move up",
+      "clocks.visible": "Shown to the players",
       "collision.off": "Ghost: let tokens go through walls",
       "collision.on": "Ghost: tokens go through walls (click to stop)",
+      "combat.ablated": "Protection worn: {before} \u2192 {after}.",
       "combat.applied": "\u2212{n} HP ({before} \u2192 {after})",
       "combat.appliedAuto": "\u2212{n} HP ({before} \u2192 {after}), automatically",
       "combat.appliedHidden": "\u2212{n} HP",
+      "combat.at": "Hit: {name}.",
       "combat.btn.apply": "Apply",
+      "combat.btn.at": "Apply \xB7 {name}",
       "combat.btn.damage": "Damage",
       "combat.btn.double": "Double",
       "combat.btn.half": "Half",
       "combat.btn.heal": "Heal",
       "combat.btn.undo": "Undo",
       "combat.crit": "Critical!",
+      "combat.critDice": "Double the damage dice.",
       "combat.dealt": "{raw} {type}",
       "combat.defense": "{name}: {value}",
       "combat.down": "Out of the fight",
@@ -14488,6 +15488,71 @@ var require_en3 = __commonJS({
       "contextMenu.target": "Target",
       "contextMenu.untarget": "Stop targeting",
       "craftFolders.create": "Create",
+      "creation.accept": "Accept",
+      "creation.back": "Back",
+      "creation.blank": "This sheet is blank.",
+      "creation.budgetLeft": "Points left: {n} of {budget}",
+      "creation.cannot": "The creation does not open.",
+      "creation.count": "{n} of {max}",
+      "creation.done": "Character made.",
+      "creation.draft": "Creation in progress.",
+      "creation.finish": "Finish",
+      "creation.gmValidates": "I check the players' creations",
+      "creation.inOrder": "In order: each value goes to its characteristic.",
+      "creation.later": "Later",
+      "creation.less": "Less {name}",
+      "creation.levelN": "Level {n}",
+      "creation.method.3d6": "3d6",
+      "creation.method.4d6drop": "4d6, the best three",
+      "creation.method.array": "Place each value of the list",
+      "creation.method.free": "Share the total",
+      "creation.method.pointbuy": "Point buy",
+      "creation.method.random": "At random",
+      "creation.more": "More {name}",
+      "creation.n.asked": "{who} waits for the game master's check.",
+      "creation.n.created": "{who} made their character.",
+      "creation.n.refused": "{who}'s creation is refused: {why}",
+      "creation.n.reset": "{who}'s creation starts again.",
+      "creation.n.rolled": "{who} rolls their characteristics ({dice}): {values}",
+      "creation.name": "Name",
+      "creation.next": "Next",
+      "creation.nothing": "This level brings nothing to choose.",
+      "creation.pending": "Waiting for the game master.",
+      "creation.pendingGm": "A creation waits for your check.",
+      "creation.pickN": "{n}: {genre}",
+      "creation.placeEach": "Place each value once: {values}",
+      "creation.reason": "Reason (if you refuse)",
+      "creation.reasonHint": "What the player should change",
+      "creation.refuse": "Refuse",
+      "creation.refused": "Refused: {why}",
+      "creation.refusedWith": "The game master refused: {why}",
+      "creation.reset": "Start the creation again",
+      "creation.resetConfirm": "Start this sheet's creation again? The player may roll again; their current values stay until they finish.",
+      "creation.resetDone": "Creation started again.",
+      "creation.resume": "Resume the creation",
+      "creation.reviewOf": "Creation of {name}",
+      "creation.roll": "Roll",
+      "creation.rollOnce": "The host rolls once: the series is kept.",
+      "creation.rolled": "Rolled: {values} ({dice})",
+      "creation.see": "See",
+      "creation.send": "Send to the game master",
+      "creation.sent": "Creation sent to the game master.",
+      "creation.settings": "Creation",
+      "creation.someone": "Someone",
+      "creation.start": "Make my character",
+      "creation.step.identity": "Identity",
+      "creation.step.library": "Equipment and powers",
+      "creation.step.skills": "Skills",
+      "creation.step.start": "Start",
+      "creation.step.stats": "Characteristics",
+      "creation.step.summary": "Summary",
+      "creation.taken": "Taken: {list}",
+      "creation.title": "Make my character",
+      "creation.totalLeft": "Left to share: {n} of {total}",
+      "creation.trainN": "Train {n} skill(s)",
+      "creation.trained": "Trained in: {list}",
+      "creation.willWait": "The game master will check this creation before it is written.",
+      "creation.willWrite": "Everything is written to the sheet at once.",
       "dnd.classes.adopt": "Take up the subclass: {name}",
       "dnd.classes.leveled": "{who}: {summary}.",
       "dnd.classes.leveledRoll": "{who}: {summary} (die: {roll}).",
@@ -14621,11 +15686,29 @@ var require_en3 = __commonJS({
       "host.bulk.tooMany": "Too many sheets at once ({max} at most).",
       "host.bulkParse.imageInvalide": "Invalid image.",
       "host.bulkParse.typeFicheInvalide": "Invalid sheet kind.",
+      "host.character.cannotRead": "You cannot read this sheet.",
+      "host.character.file.damaged": "This file is damaged.",
+      "host.character.file.notOurs": "This is not an Ourdir character file.",
+      "host.character.file.tooBig": "This file is too big.",
+      "host.character.file.tooNew": "This file comes from a newer Ourdir: update Ourdir.",
+      "host.character.gmOnly": "Only the GM decides on an import.",
+      "host.character.gone": "This import is no longer waiting.",
+      "host.character.newerSystem": "This character was made with a newer version of {name} ({file}, here {here}): update the system.",
+      "host.character.noView": "This system no longer has this kind of sheet.",
+      "host.character.otherSystem": "This character was made for another system ({name}).",
+      "host.character.tooBig": "This character is too big for a file.",
+      "host.character.tooMany": "You already have {max} imports waiting for the GM.",
+      "host.clocks.closed": "This clock is not open to the players.",
+      "host.clocks.gmOnly": "Only the GM sets the clocks.",
+      "host.clocks.gone": "This clock is no longer here.",
+      "host.clocks.tooMany": "The table already has {max} clocks.",
+      "host.clocks.tooManyPinned": "{max} clocks are already pinned.",
       "host.combat.already": "Already done.",
       "host.combat.attack": "Attack",
       "host.combat.badDice": "This weapon\u2019s dice cannot be read (e.g. 1d8+2).",
       "host.combat.noAmmo": "Out of ammunition.",
       "host.combat.noCard": "This card no longer exists.",
+      "host.combat.noHealth": "This sheet does not say where its hit points are.",
       "host.combat.noRules": "This system describes no combat.",
       "host.combat.noWeapon": "This weapon is no longer on the sheet.",
       "host.common.badScene": "Invalid scene.",
@@ -14656,6 +15739,15 @@ var require_en3 = __commonJS({
       "host.craft.listFull": "This list is full.",
       "host.craftAdd.cibleIntrouvable": "Target not found.",
       "host.craftAdd.contenuIntrouvable": "Content not found.",
+      "host.creation.done": "This character is already made.",
+      "host.creation.gmOnly": "Only the game master decides a creation.",
+      "host.creation.noLevels": "This system has no levels for a higher start.",
+      "host.creation.noRoll": "This method rolls no dice.",
+      "host.creation.noRules": "This system has no guided creation.",
+      "host.creation.notFresh": "This sheet is already filled: ask the game master to start the creation again.",
+      "host.creation.nothingWaits": "No creation waits on this sheet.",
+      "host.creation.startLevel": "Level {n}: {why}",
+      "host.creation.waiting": "This creation already waits for the game master.",
       "host.effects.bad": "This effect cannot be read.",
       "host.effects.full": "This sheet already bears 24 effects.",
       "host.effects.gone": "This effect is no longer there.",
@@ -14997,6 +16089,9 @@ var require_en3 = __commonJS({
       "playlistImport.doneOne": "{n} track added.",
       "playlistImport.empty": "This YouTube playlist is empty, private or not found.",
       "playlistImport.reading": "Reading the YouTube playlist\u2026",
+      "print.button": "Print",
+      "print.footer": "{name} \u2014 printed on {date} with Ourdir",
+      "print.hint": "The sheet on paper, or as a PDF from the print dialog",
       "progress.accept": "Accept",
       "progress.asked": "Level {level} is waiting for the game master.",
       "progress.askedBuy": "A purchase is waiting for the game master.",
@@ -15088,6 +16183,20 @@ var require_en3 = __commonJS({
       "rollsToChat.test": "{what} check",
       "rules.against": " (against {n})",
       "rules.attack": "Attack",
+      "rules.bar.states": "States",
+      "rules.c.arrayOnce": "Place each value of the list once.",
+      "rules.c.freeTotal": "The characteristics must total {total}.",
+      "rules.c.noName": "Give your character a name.",
+      "rules.c.notPriced": "A value has no price in the point buy.",
+      "rules.c.overBudget": "{spent} points spent for a budget of {budget}.",
+      "rules.c.pickOutside": "A picked entry is not allowed at the start.",
+      "rules.c.pickTwice": "An entry is picked twice.",
+      "rules.c.picks": "Pick {n} entry(ies) of \xAB {genre} \xBB.",
+      "rules.c.rollFirst": "Roll your characteristics first.",
+      "rules.c.rolledOnce": "Place each rolled value once.",
+      "rules.c.skills": "Pick {n} skill(s) from the list.",
+      "rules.c.statBounds": "Each characteristic goes from {min} to {max}.",
+      "rules.c.tooLong": "\xAB {name} \xBB: {max} characters at most.",
       "rules.crit": "Critical success",
       "rules.deg.extreme": "Extreme success",
       "rules.deg.hard": "Hard success",
@@ -15245,6 +16354,12 @@ var require_en3 = __commonJS({
       "rules.v.adv": "Advantage, disadvantage or nothing.",
       "rules.v.advantage": "Advantage does not apply to a pool, to Fate nor to bands.",
       "rules.v.bands": "Bands: 2 to 12, rising, the last without a maximum, each with a name and a tone.",
+      "rules.v.bar": "The fixed bar cannot be read.",
+      "rules.v.barInitiative": "The system has no initiative roll.",
+      "rules.v.barResource": "Pick a resource (a value with a maximum).",
+      "rules.v.barStates": "The system has no states.",
+      "rules.v.barTwice": "This item is already in the bar.",
+      "rules.v.barValue": "Pick a number of the sheet.",
       "rules.v.bonus": "Bonus: a whole number from \u22121000 to 1000.",
       "rules.v.bool": "Yes or no expected.",
       "rules.v.buyNoXp": "A purchase is paid in experience: there must be some.",
@@ -15259,6 +16374,13 @@ var require_en3 = __commonJS({
       "rules.v.costNoXp": "Without experience, levels have no cost (the GM grants them).",
       "rules.v.count": "Number of dice: 1 to {max}.",
       "rules.v.countAt": "Success threshold: a face of a d{sides}.",
+      "rules.v.crea": "The creation cannot be read.",
+      "rules.v.creaFilter": "The filter only names the genre's fields and their options.",
+      "rules.v.creaLevel": "A starting level needs a progression by levels.",
+      "rules.v.creaOrder": "Rolls are \xAB to place \xBB or \xAB in order \xBB.",
+      "rules.v.creaPick": "A starting pick names a genre of the library (not the features).",
+      "rules.v.creaPickTwice": "This genre already has its starting pick.",
+      "rules.v.creaSkills": "Skills to train need skills of rank \xAB trained \xBB, taken from the list.",
       "rules.v.critical": "Critical: doubled dice, maximum plus a roll, or nothing.",
       "rules.v.cycle": "Calculation loop: {path}.",
       "rules.v.default": "The default difficulty is not in the list.",
@@ -15281,6 +16403,11 @@ var require_en3 = __commonJS({
       "rules.v.finesse": "Finesse compares two different characteristics.",
       "rules.v.fixed": "Fixed target: a whole number.",
       "rules.v.gauge": "A gauge needs a resource.",
+      "rules.v.genBudget": "The budget goes from 1 to {max} points.",
+      "rules.v.genCosts": "The costs: 2 to 30 values between {min} and {max}, each from 0 to 100 points.",
+      "rules.v.genScore": "4d6 and 3d6 only serve characteristics as scores.",
+      "rules.v.genTotal": "The total to share goes from {min} to {max}.",
+      "rules.v.genValues": "The list has {n} values, each from {min} to {max}.",
       "rules.v.generation": "Unknown creation method.",
       "rules.v.give": "From 1 to {max} gains.",
       "rules.v.giveKind": "A gain: add, spread, train, a feature or a choice of feature.",
