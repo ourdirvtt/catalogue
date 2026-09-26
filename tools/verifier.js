@@ -32,9 +32,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// apps/desktop/i18n/fr.json
+// ../VTT/tabletop-desktop/apps/desktop/i18n/fr.json
 var require_fr = __commonJS({
-  "apps/desktop/i18n/fr.json"(exports2, module2) {
+  "../VTT/tabletop-desktop/apps/desktop/i18n/fr.json"(exports2, module2) {
     module2.exports = {
       "app.lang": "fr",
       "app.name": "Ourdir",
@@ -1290,6 +1290,10 @@ var require_fr = __commonJS({
       "ui.cat.translationTarget": "Traduit Ourdir en \xAB {language} \xBB.",
       "ui.cat.update": "Mettre \xE0 jour",
       "ui.cat.updateAvailable": "Mise \xE0 jour disponible",
+      "ui.cat.updateLine": "Version {v} disponible au catalogue.",
+      "ui.cat.ahead": "Version {v} disponible avec Ourdir {app} ou plus r\xE9cent.",
+      "ui.cat.needsOurdir": "Demande Ourdir {v} ou plus r\xE9cent",
+      "ui.cat.waiting": "{n} de tes paquets ont une mise \xE0 jour qui demande une version plus r\xE9cente d'Ourdir.",
       "ui.cat.updates": "{n} mise(s) \xE0 jour disponible(s).",
       "ui.cat.versions": "Versions",
       "ui.cat.yes": "oui",
@@ -2828,9 +2832,9 @@ var require_fr = __commonJS({
   }
 });
 
-// apps/desktop/renderer/builder-theme.js
+// ../VTT/tabletop-desktop/apps/desktop/renderer/builder-theme.js
 var require_builder_theme = __commonJS({
-  "apps/desktop/renderer/builder-theme.js"(exports2, module2) {
+  "../VTT/tabletop-desktop/apps/desktop/renderer/builder-theme.js"(exports2, module2) {
     "use strict";
     (function(root, factory) {
       if (typeof module2 === "object" && module2.exports) module2.exports = factory();
@@ -3093,7 +3097,7 @@ var require_builder_theme = __commonJS({
         var seen = {}, total = 0;
         assets.forEach(function(a) {
           var label = a && typeof a.id === "string" ? "\xAB " + a.id + " \xBB" : "";
-          if (!isObj5(a) || typeof a.id !== "string" || !ASSET_ID_RE.test(a.id)) return errors.push(say2("builderTheme.identifiantFichierEmbarqueInvalide"));
+          if (!isObj6(a) || typeof a.id !== "string" || !ASSET_ID_RE.test(a.id)) return errors.push(say2("builderTheme.identifiantFichierEmbarqueInvalide"));
           if (seen[a.id]) return errors.push(say2("builderTheme.assets.duplicate", { name: label }));
           seen[a.id] = true;
           var type = ASSET_TYPES[a.mime];
@@ -3115,7 +3119,7 @@ var require_builder_theme = __commonJS({
       }
       var assetOf = function(assets, id) {
         return (Array.isArray(assets) ? assets : []).filter(function(a) {
-          return isObj5(a) && a.id === id;
+          return isObj6(a) && a.id === id;
         })[0] || null;
       };
       var assetFontId = function(v) {
@@ -3124,7 +3128,7 @@ var require_builder_theme = __commonJS({
       var dataUrl = function(a) {
         return 'url("data:' + a.mime + ";base64," + a.data + '")';
       };
-      var isObj5 = function(v) {
+      var isObj6 = function(v) {
         return v !== null && typeof v === "object" && !Array.isArray(v);
       };
       var isInt = function(v, r) {
@@ -3150,10 +3154,10 @@ var require_builder_theme = __commonJS({
       }
       var DEFAULTS = { frame: "none", spacing: "none", stat: { style: "plain" }, gauge: { style: "bar", color: "accent" }, tag: { style: "paper" } };
       function withDefaults(t) {
-        if (!isObj5(t)) return t;
+        if (!isObj6(t)) return t;
         var out = JSON.parse(JSON.stringify(t));
-        if (isObj5(out.shape) && out.shape.frame === void 0) out.shape.frame = DEFAULTS.frame;
-        if (isObj5(out.shape) && out.shape.spacing === void 0) out.shape.spacing = DEFAULTS.spacing;
+        if (isObj6(out.shape) && out.shape.frame === void 0) out.shape.frame = DEFAULTS.frame;
+        if (isObj6(out.shape) && out.shape.spacing === void 0) out.shape.spacing = DEFAULTS.spacing;
         ["stat", "gauge", "tag"].forEach(function(k) {
           if (out[k] === void 0) out[k] = JSON.parse(JSON.stringify(DEFAULTS[k]));
         });
@@ -3324,17 +3328,17 @@ var require_builder_theme = __commonJS({
       function validateTheme(t, assets) {
         var errors = [];
         if (t === null || t === void 0) return errors;
-        if (!isObj5(t)) return [say2("builderTheme.themeIllisible")];
+        if (!isObj6(t)) return [say2("builderTheme.themeIllisible")];
         t = withDefaults(t);
         var e = function(m) {
           errors.push(m);
         };
         if (t.name !== void 0 && (typeof t.name !== "string" || t.name.length > 60)) e(say2("builderTheme.nomThemeInvalide"));
-        if (!isObj5(t.colors)) e("Couleurs manquantes.");
+        if (!isObj6(t.colors)) e("Couleurs manquantes.");
         else COLOR_KEYS.forEach(function(c) {
           if (typeof t.colors[c.k] !== "string" || !HEX.test(t.colors[c.k])) e(say2("builderTheme.badColor", { name: c.label }));
         });
-        if (!isObj5(t.fonts)) e("Polices manquantes.");
+        if (!isObj6(t.fonts)) e("Polices manquantes.");
         else {
           var fontOk = function(v) {
             if (FONTS[v]) return true;
@@ -3347,7 +3351,7 @@ var require_builder_theme = __commonJS({
           if (ENUMS.fonts.headingCase.indexOf(t.fonts.headingCase) < 0) e(say2("builderTheme.casseTitresInvalide"));
           if (!isInt(t.fonts.headingSpacing, RANGES.headingSpacing)) e(say2("builderTheme.range.spacing", { min: RANGES.headingSpacing[0], max: RANGES.headingSpacing[1] }));
         }
-        if (!isObj5(t.background)) e("Fond manquant.");
+        if (!isObj6(t.background)) e("Fond manquant.");
         else {
           if (ENUMS.background.kind.indexOf(t.background.kind) < 0) e(say2("builderTheme.typeFondInconnu"));
           if (typeof t.background.color2 !== "string" || !HEX.test(t.background.color2)) e(say2("builderTheme.secondeCouleurFondInvalide"));
@@ -3361,7 +3365,7 @@ var require_builder_theme = __commonJS({
             if (!img || img.kind !== "image") e(say2("builderTheme.choisisImageFondParmi"));
           }
         }
-        if (!isObj5(t.shape)) e("Formes manquantes.");
+        if (!isObj6(t.shape)) e("Formes manquantes.");
         else {
           if (!isInt(t.shape.radius, RANGES.radius)) e("Arrondi : " + RANGES.radius.join(" \xE0 ") + " px.");
           if (!isInt(t.shape.borderWidth, RANGES.borderWidth)) e(say2("builderTheme.range.borderWidth", { min: RANGES.borderWidth[0], max: RANGES.borderWidth[1] }));
@@ -3371,16 +3375,16 @@ var require_builder_theme = __commonJS({
           if (ENUMS.shape.frame.indexOf(t.shape.frame) < 0) e(say2("builderTheme.cadreInconnu"));
           if (ENUMS.shape.spacing.indexOf(t.shape.spacing) < 0) e(say2("builderTheme.espacementInconnu"));
         }
-        if (!isObj5(t.header)) e("Bandeau manquant.");
+        if (!isObj6(t.header)) e("Bandeau manquant.");
         else {
           if (ENUMS.header.style.indexOf(t.header.style) < 0) e(say2("builderTheme.styleBandeauInconnu"));
           if (ENUMS.header.align.indexOf(t.header.align) < 0) e(say2("builderTheme.alignementBandeauInvalide"));
         }
-        if (!isObj5(t.fields) || ENUMS.fields.style.indexOf(t.fields.style) < 0) e(say2("builderTheme.styleChampsInconnu"));
+        if (!isObj6(t.fields) || ENUMS.fields.style.indexOf(t.fields.style) < 0) e(say2("builderTheme.styleChampsInconnu"));
         if (ENUMS.titleRule.indexOf(t.titleRule) < 0) e(say2("builderTheme.ornementTitresInconnu"));
-        if (!isObj5(t.stat) || ENUMS.stat.style.indexOf(t.stat.style) < 0) e(say2("builderTheme.styleBlocsStatInconnu"));
-        if (!isObj5(t.gauge) || ENUMS.gauge.style.indexOf(t.gauge.style) < 0 || ENUMS.gauge.color.indexOf(t.gauge.color) < 0) e(say2("builderTheme.styleJaugeInconnu"));
-        if (!isObj5(t.tag) || ENUMS.tag.style.indexOf(t.tag.style) < 0) e(say2("builderTheme.styleEtiquetteJetInconnu"));
+        if (!isObj6(t.stat) || ENUMS.stat.style.indexOf(t.stat.style) < 0) e(say2("builderTheme.styleBlocsStatInconnu"));
+        if (!isObj6(t.gauge) || ENUMS.gauge.style.indexOf(t.gauge.style) < 0 || ENUMS.gauge.color.indexOf(t.gauge.color) < 0) e(say2("builderTheme.styleJaugeInconnu"));
+        if (!isObj6(t.tag) || ENUMS.tag.style.indexOf(t.tag.style) < 0) e(say2("builderTheme.styleEtiquetteJetInconnu"));
         return errors;
       }
       function rgba(hex, alpha) {
@@ -3717,9 +3721,9 @@ var require_builder_theme = __commonJS({
   }
 });
 
-// apps/desktop/renderer/rules-core.js
+// ../VTT/tabletop-desktop/apps/desktop/renderer/rules-core.js
 var require_rules_core = __commonJS({
-  "apps/desktop/renderer/rules-core.js"(exports2, module2) {
+  "../VTT/tabletop-desktop/apps/desktop/renderer/rules-core.js"(exports2, module2) {
     "use strict";
     (function(root, factory) {
       if (typeof module2 === "object" && module2.exports) module2.exports = factory();
@@ -3759,7 +3763,7 @@ var require_rules_core = __commonJS({
       var TONES = ["crit", "success", "partial", "fail", "fumble"];
       var ASKS = ["always", "shift", "never"];
       var WHENS = ["natural", "doubles", "maxCount", "zeroWithOne", "total"];
-      var isObj5 = function(x) {
+      var isObj6 = function(x) {
         return !!x && typeof x === "object" && !Array.isArray(x);
       };
       var has = function(o, k) {
@@ -3875,52 +3879,52 @@ var require_rules_core = __commonJS({
         var e = function(p, key, vars) {
           errs.push({ path: at + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj5(r)) return e("", "rules.v.notResolution");
+        if (!isObj6(r)) return e("", "rules.v.notResolution");
         if (typeof r.id !== "string" || !ID_RE3.test(r.id)) e("id", "rules.v.id");
         if (!cleanName(r.name)) e("name", "rules.v.name");
         if (FAMILIES.indexOf(r.family) < 0) e("family", "rules.v.family");
         var d = r.dice;
-        if (!isObj5(d)) return e("dice", "rules.v.dice");
+        if (!isObj6(d)) return e("dice", "rules.v.dice");
         var pool = d.count === "pool";
         if (!pool && !isInt(d.count, 1, LIMITS2.count)) e("dice.count", "rules.v.count", { max: LIMITS2.count });
         if (SIDES.indexOf(d.sides) < 0) e("dice.sides", "rules.v.sides", { list: SIDES.join(", ") });
         if (d.fate !== true && d.fate !== false) e("dice.fate", "rules.v.bool");
         if (d.fate === true && (d.sides !== 3 || pool)) e("dice.fate", "rules.v.fate");
-        if (d.reroll !== null && !(isObj5(d.reroll) && isInt(d.reroll.on, 1, 100) && d.reroll.on <= d.sides && (d.reroll.once === true || d.reroll.once === false))) e("dice.reroll", "rules.v.reroll");
-        if (d.explode !== null && !(isObj5(d.explode) && d.explode.on === "max" && isInt(d.explode.limit, 0, 10) && d.sides > 1)) e("dice.explode", "rules.v.explode");
-        if (d.keep !== null && !(isObj5(d.keep) && (d.keep.which === "high" || d.keep.which === "low") && isInt(d.keep.n, 1, LIMITS2.count) && (pool || d.keep.n < d.count))) e("dice.keep", "rules.v.keep");
+        if (d.reroll !== null && !(isObj6(d.reroll) && isInt(d.reroll.on, 1, 100) && d.reroll.on <= d.sides && (d.reroll.once === true || d.reroll.once === false))) e("dice.reroll", "rules.v.reroll");
+        if (d.explode !== null && !(isObj6(d.explode) && d.explode.on === "max" && isInt(d.explode.limit, 0, 10) && d.sides > 1)) e("dice.explode", "rules.v.explode");
+        if (d.keep !== null && !(isObj6(d.keep) && (d.keep.which === "high" || d.keep.which === "low") && isInt(d.keep.n, 1, LIMITS2.count) && (pool || d.keep.n < d.count))) e("dice.keep", "rules.v.keep");
         if (!isInt(r.bonus, -LIMITS2.add, LIMITS2.add)) e("bonus", "rules.v.bonus");
         var t = r.target;
-        if (!isObj5(t) || TARGETS.indexOf(t.kind) < 0) e("target.kind", "rules.v.target");
+        if (!isObj6(t) || TARGETS.indexOf(t.kind) < 0) e("target.kind", "rules.v.target");
         else {
           if (!Array.isArray(t.difficulties) || t.difficulties.length > LIMITS2.difficulties) e("target.difficulties", "rules.v.difficulties", { max: LIMITS2.difficulties });
           else t.difficulties.forEach(function(x, i) {
-            if (!isObj5(x) || !cleanName(x.name)) e("target.difficulties." + i + ".name", "rules.v.name");
-            if (!isObj5(x) || !isInt(x.value, -LIMITS2.add, LIMITS2.add)) e("target.difficulties." + i + ".value", "rules.v.difficultyValue");
+            if (!isObj6(x) || !cleanName(x.name)) e("target.difficulties." + i + ".name", "rules.v.name");
+            if (!isObj6(x) || !isInt(x.value, -LIMITS2.add, LIMITS2.add)) e("target.difficulties." + i + ".value", "rules.v.difficultyValue");
           });
           var diffs = Array.isArray(t.difficulties) ? t.difficulties : [];
           if (t.kind === "difficulty" && !diffs.length) e("target.difficulties", "rules.v.noDifficulty");
           if (t.kind === "difficulty" && t["default"] && !diffs.some(function(x) {
-            return isObj5(x) && x.name === t["default"];
+            return isObj6(x) && x.name === t["default"];
           })) e("target.default", "rules.v.default");
           if (t.kind === "fixed" && !isInt(t.fixed, -LIMITS2.add, LIMITS2.add)) e("target.fixed", "rules.v.fixed");
         }
         var rd = r.read;
-        if (!isObj5(rd) || READS.indexOf(rd.kind) < 0) return e("read.kind", "rules.v.read");
+        if (!isObj6(rd) || READS.indexOf(rd.kind) < 0) return e("read.kind", "rules.v.read");
         if (rd.tie !== "success" && rd.tie !== "fail") e("read.tie", "rules.v.tie");
         if (rd.margin !== true && rd.margin !== false) e("read.margin", "rules.v.bool");
         if ((rd.kind === "count" || rd.kind === "best") && !pool) e("dice.count", "rules.v.needPool");
         if (rd.kind === "count") {
           var c = rd.count;
-          if (!isObj5(c) || !isInt(c.at, 1, 100) || c.at > d.sides) e("read.count.at", "rules.v.countAt", { sides: d.sides });
-          if (!isObj5(c) || !isInt(c.need, 1, LIMITS2.pool)) e("read.count.need", "rules.v.need");
-          if (!isObj5(c) || !(c["double"] === 0 || isInt(c["double"], 1, 100) && c["double"] <= d.sides)) e("read.count.double", "rules.v.double");
+          if (!isObj6(c) || !isInt(c.at, 1, 100) || c.at > d.sides) e("read.count.at", "rules.v.countAt", { sides: d.sides });
+          if (!isObj6(c) || !isInt(c.need, 1, LIMITS2.pool)) e("read.count.need", "rules.v.need");
+          if (!isObj6(c) || !(c["double"] === 0 || isInt(c["double"], 1, 100) && c["double"] <= d.sides)) e("read.count.double", "rules.v.double");
         }
         if (rd.kind === "bands" || rd.kind === "best") {
           var b = rd.bands, ok = Array.isArray(b) && b.length >= 2 && b.length <= LIMITS2.bands;
           if (ok) b.forEach(function(x, i) {
             var last = i === b.length - 1;
-            if (!isObj5(x) || !cleanName(x.name) || TONES.indexOf(x.tone) < 0) ok = false;
+            if (!isObj6(x) || !cleanName(x.name) || TONES.indexOf(x.tone) < 0) ok = false;
             else if (last ? x.max !== null : !isInt(x.max, -LIMITS2.add, LIMITS2.add)) ok = false;
             else if (i > 0 && !last && x.max <= b[i - 1].max) ok = false;
           });
@@ -3928,11 +3932,11 @@ var require_rules_core = __commonJS({
         }
         if (rd.degrees !== null) {
           var g = rd.degrees;
-          var steps = isObj5(g) && isInt(g.steps, 1, LIMITS2.add) && Array.isArray(g.names) && g.names.length >= 1 && g.names.length <= LIMITS2.bands && g.names.every(function(n) {
+          var steps = isObj6(g) && isInt(g.steps, 1, LIMITS2.add) && Array.isArray(g.names) && g.names.length >= 1 && g.names.length <= LIMITS2.bands && g.names.every(function(n) {
             return !!cleanName(n);
           });
-          var fr = isObj5(g) && Array.isArray(g.fractions) && g.fractions.length >= 1 && g.fractions.length <= 4 && g.fractions.every(function(f, i) {
-            return isObj5(f) && typeof f.at === "number" && f.at > 0 && f.at < 1 && !!cleanName(f.name) && (i === 0 || f.at > g.fractions[i - 1].at);
+          var fr = isObj6(g) && Array.isArray(g.fractions) && g.fractions.length >= 1 && g.fractions.length <= 4 && g.fractions.every(function(f, i) {
+            return isObj6(f) && typeof f.at === "number" && f.at > 0 && f.at < 1 && !!cleanName(f.name) && (i === 0 || f.at > g.fractions[i - 1].at);
           });
           if (!(steps && rd.kind === "over") && !(fr && rd.kind === "under")) e("read.degrees", "rules.v.degrees");
         }
@@ -3940,7 +3944,7 @@ var require_rules_core = __commonJS({
           var list2 = r[k];
           if (!Array.isArray(list2) || list2.length > LIMITS2.conditions) return e(k, "rules.v.conditions");
           list2.forEach(function(c2, i) {
-            var good = isObj5(c2) && WHENS.indexOf(c2.when) >= 0 && Array.isArray(c2.values) && c2.values.length <= LIMITS2.values && c2.values.every(function(v) {
+            var good = isObj6(c2) && WHENS.indexOf(c2.when) >= 0 && Array.isArray(c2.values) && c2.values.length <= LIMITS2.values && c2.values.every(function(v) {
               return isInt(v, -LIMITS2.add, LIMITS2.add);
             }) && (c2.name === "" || !!cleanName(c2.name));
             if (good && (c2.when === "natural" || c2.when === "total") && !c2.values.length) good = false;
@@ -3951,28 +3955,28 @@ var require_rules_core = __commonJS({
           });
         });
         var w = r.window;
-        if (!isObj5(w) || ASKS.indexOf(w.ask) < 0 || ["advantage", "bonus", "difficulty", "poolDice"].some(function(k) {
+        if (!isObj6(w) || ASKS.indexOf(w.ask) < 0 || ["advantage", "bonus", "difficulty", "poolDice"].some(function(k) {
           return w[k] !== true && w[k] !== false;
         })) e("window", "rules.v.window");
         else {
           if (w.poolDice && !pool) e("window.poolDice", "rules.v.needPool");
-          if (w.difficulty && (!isObj5(t) || t.kind !== "difficulty")) e("window.difficulty", "rules.v.windowDifficulty");
+          if (w.difficulty && (!isObj6(t) || t.kind !== "difficulty")) e("window.difficulty", "rules.v.windowDifficulty");
           if (w.advantage && (pool || d.fate || rd.kind === "bands")) e("window.advantage", "rules.v.advantage");
         }
       }
       function validateRules(rules) {
         var errs = [];
-        if (!isObj5(rules)) return [{ path: "", message: say2("rules.v.notRules") }];
+        if (!isObj6(rules)) return [{ path: "", message: say2("rules.v.notRules") }];
         validateResolution(rules.resolution, "resolution", errs);
         var rolls = rules.rolls === void 0 ? [] : rules.rolls;
         if (!Array.isArray(rolls) || rolls.length > LIMITS2.rolls) errs.push({ path: "rolls", message: say2("rules.v.rolls", { max: LIMITS2.rolls }) });
         else {
           var seen = {};
-          if (isObj5(rules.resolution)) seen[rules.resolution.id] = true;
+          if (isObj6(rules.resolution)) seen[rules.resolution.id] = true;
           rolls.forEach(function(r, i) {
             validateResolution(r, "rolls." + i, errs);
-            if (isObj5(r) && seen[r.id]) errs.push({ path: "rolls." + i + ".id", message: say2("rules.v.sameId", { id: r.id }) });
-            if (isObj5(r)) seen[r.id] = true;
+            if (isObj6(r) && seen[r.id]) errs.push({ path: "rolls." + i + ".id", message: say2("rules.v.sameId", { id: r.id }) });
+            if (isObj6(r)) seen[r.id] = true;
           });
         }
         if (rules.stats !== void 0) validateStats(rules, errs);
@@ -3999,10 +4003,10 @@ var require_rules_core = __commonJS({
       }
       function resolutionsOf(rules) {
         var out = {};
-        if (!isObj5(rules)) return out;
-        if (isObj5(rules.resolution)) out[rules.resolution.id] = rules.resolution;
+        if (!isObj6(rules)) return out;
+        if (isObj6(rules.resolution)) out[rules.resolution.id] = rules.resolution;
         (Array.isArray(rules.rolls) ? rules.rolls : []).forEach(function(r) {
-          if (isObj5(r)) out[r.id] = r;
+          if (isObj6(r)) out[r.id] = r;
         });
         return out;
       }
@@ -4081,25 +4085,25 @@ var require_rules_core = __commonJS({
       function libraryPools(rules) {
         var resources = {}, states = {}, types = [], stats = [];
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (isObj5(d) && d.resource && typeof d.id === "string") resources[d.id] = true;
+          if (isObj6(d) && d.resource && typeof d.id === "string") resources[d.id] = true;
         });
-        if (isObj5(rules.effects) && Array.isArray(rules.effects.states)) rules.effects.states.forEach(function(s) {
-          if (isObj5(s) && typeof s.id === "string") states[s.id] = true;
+        if (isObj6(rules.effects) && Array.isArray(rules.effects.states)) rules.effects.states.forEach(function(s) {
+          if (isObj6(s) && typeof s.id === "string") states[s.id] = true;
         });
-        var cb = isObj5(rules.combat) && isObj5(rules.combat.attack) && isObj5(rules.combat.damage) ? rules.combat : null;
+        var cb = isObj6(rules.combat) && isObj6(rules.combat.attack) && isObj6(rules.combat.damage) ? rules.combat : null;
         if (cb) {
-          types = (Array.isArray(cb.damage.types) ? cb.damage.types : []).filter(isObj5).map(function(t) {
+          types = (Array.isArray(cb.damage.types) ? cb.damage.types : []).filter(isObj6).map(function(t) {
             return t.id;
           });
-          stats = (Array.isArray(cb.attack.stats) && cb.attack.stats.length ? cb.attack.stats : isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj5).map(function(x) {
+          stats = (Array.isArray(cb.attack.stats) && cb.attack.stats.length ? cb.attack.stats : isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj6).map(function(x) {
             return x.id;
           }) : []).slice();
           if (Array.isArray(cb.attack.finesse)) stats.push("finesse");
         }
-        return { res: resolutionsOf(rules), resources, states, combat: !!cb, types, stats, progression: isObj5(rules.progression) };
+        return { res: resolutionsOf(rules), resources, states, combat: !!cb, types, stats, progression: isObj6(rules.progression) };
       }
       function fieldsOf(genre, pools) {
-        if (!isObj5(genre)) return [];
+        if (!isObj6(genre)) return [];
         if (genre.kind === "weapon") return [
           { id: "arm_carac", name: say2("rules.w.stat"), type: "choice", options: pools.stats.slice() },
           { id: "arm_bonus", name: say2("rules.w.bonus"), type: "number", min: -20, max: 30 },
@@ -4110,7 +4114,7 @@ var require_rules_core = __commonJS({
           { id: "arm_etiquettes", name: say2("rules.w.tags"), type: "text" }
         ];
         if (genre.kind === "feature") return [{ id: "text", name: say2("rules.l.featText"), type: "long" }];
-        return genre.kind === "custom" && Array.isArray(genre.fields) ? genre.fields.filter(isObj5) : [];
+        return genre.kind === "custom" && Array.isArray(genre.fields) ? genre.fields.filter(isObj6) : [];
       }
       var bool = function(x) {
         return x === true || x === false;
@@ -4136,7 +4140,7 @@ var require_rules_core = __commonJS({
         return t.sign < 0 ? "(0-" + termText(t) + ")" : termText(t);
       };
       var readKind = function(rules) {
-        return isObj5(rules.resolution) && isObj5(rules.resolution.read) ? rules.resolution.read.kind : "over";
+        return isObj6(rules.resolution) && isObj6(rules.resolution.read) ? rules.resolution.read.kind : "over";
       };
       function statAdd(rules, id) {
         var k = readKind(rules);
@@ -4177,33 +4181,33 @@ var require_rules_core = __commonJS({
       }
       function modKeys(rules) {
         var out = {};
-        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj5(x) && typeof x.id === "string") out[x.id] = true;
+        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj6(x) && typeof x.id === "string") out[x.id] = true;
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (isObj5(d) && typeof d.id === "string" && isObj5(d.recipe) && d.recipe.kind !== "input" && !d.resource) out[d.id] = true;
+          if (isObj6(d) && typeof d.id === "string" && isObj6(d.recipe) && d.recipe.kind !== "input" && !d.resource) out[d.id] = true;
         });
         var sk = rules.skills;
-        if (isObj5(sk) && sk.mode === "fixed" && Array.isArray(sk.list)) sk.list.forEach(function(x) {
-          if (isObj5(x) && typeof x.id === "string") out["sk_" + x.id + "_t"] = true;
+        if (isObj6(sk) && sk.mode === "fixed" && Array.isArray(sk.list)) sk.list.forEach(function(x) {
+          if (isObj6(x) && typeof x.id === "string") out["sk_" + x.id + "_t"] = true;
         });
         return out;
       }
       function effectKeys(rules) {
-        if (!isObj5(rules) || !isObj5(rules.effects)) return [];
+        if (!isObj6(rules) || !isObj6(rules.effects)) return [];
         var ok = modKeys(rules), out = [];
         var add = function(k) {
           if (typeof k === "string" && has(ok, k) && out.indexOf(k) < 0) out.push(k);
         };
-        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj5(x)) add(x.id);
+        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj6(x)) add(x.id);
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (isObj5(d) && d.show !== "hidden") add(d.id);
+          if (isObj6(d) && d.show !== "hidden") add(d.id);
         });
         (Array.isArray(rules.effects.states) ? rules.effects.states : []).forEach(function(s) {
-          (isObj5(s) && Array.isArray(s.mods) ? s.mods : []).forEach(function(m) {
-            if (isObj5(m)) add(m.key);
+          (isObj6(s) && Array.isArray(s.mods) ? s.mods : []).forEach(function(m) {
+            if (isObj6(m)) add(m.key);
           });
         });
         return out;
@@ -4212,37 +4216,37 @@ var require_rules_core = __commonJS({
         return effectKeys(rules).indexOf(key) >= 0;
       };
       function progTargets(rules) {
-        var out = {}, prog = isObj5(rules) && isObj5(rules.progression) ? rules.progression : {};
-        var levelKey = isObj5(prog.levels) ? prog.levels.key : null;
-        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj5(x) && typeof x.id === "string") out[x.id] = "stat";
+        var out = {}, prog = isObj6(rules) && isObj6(rules.progression) ? rules.progression : {};
+        var levelKey = isObj6(prog.levels) ? prog.levels.key : null;
+        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj6(x) && typeof x.id === "string") out[x.id] = "stat";
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (!isObj5(d) || typeof d.id !== "string" || !isObj5(d.recipe) || d.id === levelKey) return;
+          if (!isObj6(d) || typeof d.id !== "string" || !isObj6(d.recipe) || d.id === levelKey) return;
           out[d.id] = d.resource ? "resource" : d.recipe.kind === "input" ? "input" : "computed";
         });
         var sk = rules.skills;
-        if (isObj5(sk) && sk.mode === "fixed" && Array.isArray(sk.list)) sk.list.forEach(function(x) {
-          if (isObj5(x) && typeof x.id === "string") out["sk_" + x.id] = "skill";
+        if (isObj6(sk) && sk.mode === "fixed" && Array.isArray(sk.list)) sk.list.forEach(function(x) {
+          if (isObj6(x) && typeof x.id === "string") out["sk_" + x.id] = "skill";
         });
         return out;
       }
       function progKeys(rules) {
-        var prog = isObj5(rules) ? rules.progression : null;
-        if (!isObj5(prog)) return [];
+        var prog = isObj6(rules) ? rules.progression : null;
+        if (!isObj6(prog)) return [];
         var t = progTargets(rules), out = [];
         var add = function(k) {
           if (typeof k === "string" && t[k] === "computed" && out.indexOf(k) < 0) out.push(k);
         };
-        (isObj5(prog.levels) && Array.isArray(prog.levels.gains) ? prog.levels.gains : []).forEach(function(g) {
-          (isObj5(g) && Array.isArray(g.give) ? g.give : []).forEach(function(x) {
-            if (!isObj5(x)) return;
+        (isObj6(prog.levels) && Array.isArray(prog.levels.gains) ? prog.levels.gains : []).forEach(function(g) {
+          (isObj6(g) && Array.isArray(g.give) ? g.give : []).forEach(function(x) {
+            if (!isObj6(x)) return;
             if (x.kind === "add") add(x.key);
             if (x.kind === "spread" && Array.isArray(x.among)) x.among.forEach(add);
           });
         });
         (Array.isArray(prog.purchases) ? prog.purchases : []).forEach(function(b) {
-          if (isObj5(b) && b.what === "value") (Array.isArray(b.keys) ? b.keys : Object.keys(t)).forEach(add);
+          if (isObj6(b) && b.what === "value") (Array.isArray(b.keys) ? b.keys : Object.keys(t)).forEach(add);
         });
         return out;
       }
@@ -4271,9 +4275,9 @@ var require_rules_core = __commonJS({
         Object.keys(resolutionsOf(rules)).forEach(function(id) {
           m.owner[id] = "resolution";
         });
-        var s = isObj5(rules.stats) ? rules.stats : null;
+        var s = isObj6(rules.stats) ? rules.stats : null;
         (s && Array.isArray(s.list) ? s.list : []).forEach(function(x, i) {
-          if (!isObj5(x)) return;
+          if (!isObj6(x)) return;
           var at = "stats.list." + i + ".id";
           own(x.id, at);
           if (s.form === "dots") {
@@ -4290,7 +4294,7 @@ var require_rules_core = __commonJS({
           }
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d, i) {
-          if (!isObj5(d) || !isObj5(d.recipe)) return;
+          if (!isObj6(d) || !isObj6(d.recipe)) return;
           var at = "derived." + i + ".id";
           own(d.id, at);
           if (d.recipe.kind === "input") m.typed[d.id] = d.recipe["default"];
@@ -4306,9 +4310,9 @@ var require_rules_core = __commonJS({
             m.raw[d.id] = text;
           }
         });
-        var sk = isObj5(rules.skills) ? rules.skills : null;
+        var sk = isObj6(rules.skills) ? rules.skills : null;
         if (sk && sk.mode === "fixed") (Array.isArray(sk.list) ? sk.list : []).forEach(function(x, i) {
-          if (!isObj5(x)) return;
+          if (!isObj6(x)) return;
           var at = "skills.list." + i + ".id", k = "sk_" + x.id;
           own(k, at);
           if (sk.rank === "dots") pips(k, SKILL_DOTS);
@@ -4331,13 +4335,13 @@ var require_rules_core = __commonJS({
             m.raw[k + "_p"] = chain([{ sign: 1, text: "10" }, { sign: 1, text: "@" + k + "_t" }]);
           }
         });
-        if (isObj5(rules.combat)) {
+        if (isObj6(rules.combat)) {
           WEAPON_KEYS.concat(DEFENSE_KEYS).forEach(function(k) {
             own(k, "combat");
           });
           m.typed.def_reduction = 0;
         }
-        if (isObj5(rules.effects) || Array.isArray(rules.rests)) {
+        if (isObj6(rules.effects) || Array.isArray(rules.rests)) {
           own("fx", "effects");
           own("effets_actifs", "effects");
           Object.keys(fx).forEach(function(k) {
@@ -4345,15 +4349,15 @@ var require_rules_core = __commonJS({
             m.typed["fx_" + k] = 0;
           });
           (Array.isArray(rules.rests) ? rules.rests : []).forEach(function(r) {
-            if (isObj5(r) && typeof r.id === "string") own("repos_" + r.id, "rests");
+            if (isObj6(r) && typeof r.id === "string") own("repos_" + r.id, "rests");
           });
         }
-        if (isObj5(rules.progression)) {
+        if (isObj6(rules.progression)) {
           var P = rules.progression;
           own("prog", "progression");
           own("progression_etat", "progression");
           own("aptitudes_liste", "progression");
-          if (isObj5(P.xp) && typeof P.xp.id === "string") {
+          if (isObj6(P.xp) && typeof P.xp.id === "string") {
             own(P.xp.id, "progression.xp.id");
             m.typed[P.xp.id] = 0;
           }
@@ -4361,13 +4365,13 @@ var require_rules_core = __commonJS({
             own("prog_" + k, "progression");
             m.typed["prog_" + k] = 0;
           });
-          if (isObj5(P.use) && sk && sk.mode === "fixed") (Array.isArray(sk.list) ? sk.list : []).forEach(function(x) {
-            if (isObj5(x)) own("tick_" + x.id, "progression");
+          if (isObj6(P.use) && sk && sk.mode === "fixed") (Array.isArray(sk.list) ? sk.list : []).forEach(function(x) {
+            if (isObj6(x)) own("tick_" + x.id, "progression");
           });
         }
-        if (isObj5(rules.library) && Array.isArray(rules.library.genres)) {
+        if (isObj6(rules.library) && Array.isArray(rules.library.genres)) {
           rules.library.genres.forEach(function(g) {
-            if (!isObj5(g) || typeof g.id !== "string") return;
+            if (!isObj6(g) || typeof g.id !== "string") return;
             if (g.kind === "weapon") {
               own("arm_origine", "library");
               return;
@@ -4379,7 +4383,7 @@ var require_rules_core = __commonJS({
               own(pre + "_" + k, "library");
             });
             (Array.isArray(g.fields) ? g.fields : []).forEach(function(f) {
-              if (isObj5(f) && typeof f.id === "string") own(pre + "_" + f.id, "library");
+              if (isObj6(f) && typeof f.id === "string") own(pre + "_" + f.id, "library");
             });
           });
         }
@@ -4429,33 +4433,33 @@ var require_rules_core = __commonJS({
         return typeof bind === "string" && bind.indexOf("derived:") === 0 ? "derived" : typeof bind === "string" && bind.indexOf("library:") === 0 ? "library" : bind;
       };
       function bindKnown(rules, bind) {
-        if (!isObj5(rules) || typeof bind !== "string") return false;
-        if (bind === "stats") return isObj5(rules.stats) && Array.isArray(rules.stats.list) && rules.stats.list.length > 0;
-        if (bind === "skills") return isObj5(rules.skills) && rules.skills.mode === "fixed";
+        if (!isObj6(rules) || typeof bind !== "string") return false;
+        if (bind === "stats") return isObj6(rules.stats) && Array.isArray(rules.stats.list) && rules.stats.list.length > 0;
+        if (bind === "skills") return isObj6(rules.skills) && rules.skills.mode === "fixed";
         if (bind === "derived") return Array.isArray(rules.derived) && rules.derived.length > 0;
         if (bind.indexOf("derived:") === 0) {
           var id = bind.slice(8);
           return Array.isArray(rules.derived) && rules.derived.some(function(d) {
-            return isObj5(d) && d.id === id && d.show !== "hidden";
+            return isObj6(d) && d.id === id && d.show !== "hidden";
           });
         }
-        if (bind === "weapons" || bind === "defenses") return isObj5(rules.combat) && isObj5(rules.combat.attack) && isObj5(rules.combat.damage);
-        if (bind === "effects") return isObj5(rules.effects);
+        if (bind === "weapons" || bind === "defenses") return isObj6(rules.combat) && isObj6(rules.combat.attack) && isObj6(rules.combat.damage);
+        if (bind === "effects") return isObj6(rules.effects);
         if (bind === "rests") return Array.isArray(rules.rests) && rules.rests.length > 0;
         if (bind.indexOf("library:") === 0) {
           var lg = bind.slice(8);
-          return isObj5(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
-            return isObj5(g) && g.id === lg && g.kind === "custom";
+          return isObj6(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
+            return isObj6(g) && g.id === lg && g.kind === "custom";
           });
         }
-        if (bind === "progression") return isObj5(rules.progression);
-        if (bind === "features") return isObj5(rules.progression) && Array.isArray(rules.progression.features) && rules.progression.features.length > 0;
+        if (bind === "progression") return isObj6(rules.progression);
+        if (bind === "features") return isObj6(rules.progression) && Array.isArray(rules.progression.features) && rules.progression.features.length > 0;
         return false;
       }
       function layoutProblem(bind, layout) {
         if (layout === void 0 || layout === null) return false;
         var allowed = has(BIND_LAYOUTS, bindKind(bind)) ? BIND_LAYOUTS[bindKind(bind)] : null;
-        if (!isObj5(layout) || !allowed) return true;
+        if (!isObj6(layout) || !allowed) return true;
         return Object.keys(layout).some(function(k) {
           return !has(allowed, k) || allowed[k].indexOf(layout[k]) < 0;
         });
@@ -4463,7 +4467,7 @@ var require_rules_core = __commonJS({
       function boundChildren(rules, bind, layout, opts) {
         if (!bindKnown(rules, bind) || layoutProblem(bind, layout)) return null;
         opts = opts || {};
-        var L = isObj5(layout) ? layout : {};
+        var L = isObj6(layout) ? layout : {};
         var flat = flatFormulas(rules);
         var evaluate = typeof opts.evaluate === "function" ? opts.evaluate : function() {
           return 0;
@@ -4546,7 +4550,7 @@ var require_rules_core = __commonJS({
         }
         if (bind === "progression") {
           var P = rules.progression, pk = [{ className: "Label", id: "rbl_progression", text: say2("rules.p.title"), variant: "muted" }];
-          if (isObj5(P.xp)) pk.push(number(P.xp.id, cleanName(P.xp.name), { defaultValue: "0", min: 0, max: PROG.xp, align: "Center" }));
+          if (isObj6(P.xp)) pk.push(number(P.xp.id, cleanName(P.xp.name), { defaultValue: "0", min: 0, max: PROG.xp, align: "Center" }));
           pk.push({ className: "Label", id: "progression_etat", text: "" });
           return [row("rbr_progression", [col("rbc_progression", 12, pk)])];
         }
@@ -4570,7 +4574,7 @@ var require_rules_core = __commonJS({
         }
         if (bindKind(bind) === "library") {
           var lg = bind.slice(8), G = rules.library.genres.filter(function(x) {
-            return isObj5(x) && x.id === lg;
+            return isObj6(x) && x.id === lg;
           })[0];
           var pre = "lib_" + lg + "_";
           var lcell = function(key, size, title, node) {
@@ -4600,7 +4604,7 @@ var require_rules_core = __commonJS({
         }
         if (bind === "weapons" || bind === "defenses") {
           var cb = rules.combat;
-          var types = (Array.isArray(cb.damage.types) ? cb.damage.types : []).filter(isObj5).map(function(t) {
+          var types = (Array.isArray(cb.damage.types) ? cb.damage.types : []).filter(isObj6).map(function(t) {
             return { id: t.id, label: cleanName(t.name) };
           });
           var muted = function(id, text) {
@@ -4618,7 +4622,7 @@ var require_rules_core = __commonJS({
             }
             return [row("rbr_def", dcells)];
           }
-          var statIds = Array.isArray(cb.attack.stats) && cb.attack.stats.length ? cb.attack.stats : isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.map(function(x) {
+          var statIds = Array.isArray(cb.attack.stats) && cb.attack.stats.length ? cb.attack.stats : isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.map(function(x) {
             return x.id;
           }) : [];
           var caracs = statIds.map(function(id) {
@@ -4637,8 +4641,8 @@ var require_rules_core = __commonJS({
           var shown = { className: "Label", id: "arm_ligne", text: '#arm_nom + " \xB7 " + #arm_degats', computed: true };
           var attack = { className: "Label", id: "arm_attaquer", text: say2("rules.attack"), variant: "button", align: "Center" };
           var armRows = [row("rbr_arm_f", form), row("rbr_arm_g", more)];
-          if (isObj5(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
-            return isObj5(g) && g.kind === "weapon";
+          if (isObj6(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
+            return isObj6(g) && g.kind === "weapon";
           })) armRows.push(row("rbr_arm_o", [col("rbc_arm_origine", 12, [{ className: "TextInput", id: "arm_origine", name: "arm_origine", defaultValue: "" }])]));
           var list2 = { className: "Repeater", id: "arm", layout: "vertical", noAdd: false, children: armRows, readChildren: [row("rbr_arm_r", [col("rbc_arm_l", 9, [shown]), col("rbc_arm_a", 3, [attack])])] };
           return [row("rbr_w", [col("rbc_w", 12, [muted("rbl_w", say2("rules.weapons")), list2])])];
@@ -4686,13 +4690,13 @@ var require_rules_core = __commonJS({
       function boundBlock(rules, bind, layout, opts) {
         var kids = boundChildren(rules, bind, layout, opts);
         if (!kids) return null;
-        return { className: "Container", id: "rb_" + bind.replace(":", "_"), layout: "vertical", bind, bindLayout: isObj5(layout) ? layout : {}, children: kids };
+        return { className: "Container", id: "rb_" + bind.replace(":", "_"), layout: "vertical", bind, bindLayout: isObj6(layout) ? layout : {}, children: kids };
       }
       function lockedKeys(rules) {
-        var s = isObj5(rules) ? rules.stats : null, out = [];
-        if (!isObj5(s) || !Array.isArray(s.list)) return out;
+        var s = isObj6(rules) ? rules.stats : null, out = [];
+        if (!isObj6(s) || !Array.isArray(s.list)) return out;
         s.list.forEach(function(x) {
-          if (!isObj5(x) || x.playerEdit !== false || typeof x.id !== "string" || !KEY_RE.test(x.id)) return;
+          if (!isObj6(x) || x.playerEdit !== false || typeof x.id !== "string" || !KEY_RE.test(x.id)) return;
           if (s.form === "dots") {
             if (isInt(s.max, 1, LIMITS2.dots)) for (var k = 1; k <= s.max; k++) out.push(x.id + "__" + k);
           } else out.push(x.id);
@@ -4701,18 +4705,18 @@ var require_rules_core = __commonJS({
       }
       function valueKeys(rules) {
         var keys = {};
-        var s = isObj5(rules.stats) ? rules.stats : null;
+        var s = isObj6(rules.stats) ? rules.stats : null;
         (s && Array.isArray(s.list) ? s.list : []).forEach(function(x) {
-          if (!isObj5(x) || typeof x.id !== "string") return;
+          if (!isObj6(x) || typeof x.id !== "string") return;
           keys[x.id] = true;
           if (s.form === "score") keys[x.id + "_mod"] = true;
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (!isObj5(d) || typeof d.id !== "string") return;
+          if (!isObj6(d) || typeof d.id !== "string") return;
           keys[d.id] = true;
           if (d.resource) keys[d.id + "_max"] = true;
         });
-        if (isObj5(rules.combat)) keys.def_reduction = true;
+        if (isObj6(rules.combat)) keys.def_reduction = true;
         return keys;
       }
       function validateStats(rules, errs) {
@@ -4720,18 +4724,18 @@ var require_rules_core = __commonJS({
         var e = function(p, key, vars) {
           errs.push({ path: "stats" + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj5(s)) return e("", "rules.v.stats");
+        if (!isObj6(s)) return e("", "rules.v.stats");
         if (STAT_FORMS.indexOf(s.form) < 0) e("form", "rules.v.statForm");
         if (!isInt(s.min, -LIMITS2.add, LIMITS2.add) || !isInt(s.max, -LIMITS2.add, LIMITS2.add) || s.min >= s.max) e("min", "rules.v.statRange");
         else if (!isInt(s["default"], s.min, s.max)) e("default", "rules.v.statDefault");
         if (s.form === "dots" && !(s.min === 0 && isInt(s.max, 1, LIMITS2.dots))) e("max", "rules.v.dotsRange", { max: LIMITS2.dots });
         if (s.form === "percent" && !(s.min >= 0 && s.max <= 100)) e("max", "rules.v.percentRange");
-        if (s.generation !== void 0 && !(isObj5(s.generation) && GENERATIONS.indexOf(s.generation.method) >= 0)) e("generation", "rules.v.generation");
+        if (s.generation !== void 0 && !(isObj6(s.generation) && GENERATIONS.indexOf(s.generation.method) >= 0)) e("generation", "rules.v.generation");
         else if (s.generation !== void 0 && Array.isArray(s.list)) genProblems(s.generation, s.list.length, s.min, s.max, s.form, e);
         if (!Array.isArray(s.list) || !s.list.length || s.list.length > LIMITS2.stats) return e("list", "rules.v.statList", { max: LIMITS2.stats });
         s.list.forEach(function(x, i) {
           var at = "list." + i;
-          if (!isObj5(x)) return e(at, "rules.v.notResolution");
+          if (!isObj6(x)) return e(at, "rules.v.notResolution");
           if (typeof x.id !== "string" || !KEY_RE.test(x.id)) e(at + ".id", "rules.v.key");
           else if (s.form === "dots" && x.id.length > 12) e(at + ".id", "rules.v.dotsKey", { max: 12 });
           if (!cleanName(x.name)) e(at + ".name", "rules.v.name");
@@ -4747,9 +4751,9 @@ var require_rules_core = __commonJS({
           return isInt(x, -LIMITS2.add, LIMITS2.add);
         };
         var term = function(t) {
-          return isObj5(t) && (t.sign === 1 || t.sign === -1) && (t.ref !== void 0 ? ref(t.ref) && t.n === void 0 : int(t.n));
+          return isObj6(t) && (t.sign === 1 || t.sign === -1) && (t.ref !== void 0 ? ref(t.ref) && t.n === void 0 : int(t.n));
         };
-        if (!isObj5(r)) return false;
+        if (!isObj6(r)) return false;
         switch (r.kind) {
           case "input":
             return int(r.min) && int(r.max) && r.min < r.max && isInt(r["default"], r.min, r.max);
@@ -4763,7 +4767,7 @@ var require_rules_core = __commonJS({
             return ref(r.source) && isInt(r.by, 1, 100) && !!ROUNDS[r.round];
           case "steps":
             return ref(r.source) && int(r["else"]) && Array.isArray(r.steps) && r.steps.length >= 1 && r.steps.length <= LIMITS2.steps && r.steps.every(function(x, i) {
-              return isObj5(x) && int(x.upTo) && int(x.value) && (i === 0 || x.upTo > r.steps[i - 1].upTo);
+              return isObj6(x) && int(x.upTo) && int(x.value) && (i === 0 || x.upTo > r.steps[i - 1].upTo);
             });
           case "max":
           case "min":
@@ -4791,18 +4795,18 @@ var require_rules_core = __commonJS({
         var keys = valueKeys(rules), res = rules.resolution;
         list2.forEach(function(d, i) {
           var at = String(i);
-          if (!isObj5(d)) return e(at, "rules.v.notResolution");
+          if (!isObj6(d)) return e(at, "rules.v.notResolution");
           if (typeof d.id !== "string" || !KEY_RE.test(d.id)) e(at + ".id", "rules.v.key");
           if (!cleanName(d.name)) e(at + ".name", "rules.v.name");
-          if (!isObj5(d.recipe) || RECIPES.indexOf(d.recipe.kind) < 0 || !recipeOk(d.recipe, keys)) e(at + ".recipe", "rules.v.recipe");
+          if (!isObj6(d.recipe) || RECIPES.indexOf(d.recipe.kind) < 0 || !recipeOk(d.recipe, keys)) e(at + ".recipe", "rules.v.recipe");
           if (SHOWS.indexOf(d.show) < 0) e(at + ".show", "rules.v.show");
           if (!optBool(d.resource) || !optBool(d.rollable)) e(at, "rules.v.bool");
-          var input = isObj5(d.recipe) && d.recipe.kind === "input";
+          var input = isObj6(d.recipe) && d.recipe.kind === "input";
           if (d.show === "hidden" && (d.rollable || d.resource || input)) e(at + ".show", "rules.v.hidden");
           if (d.show === "gauge" && !d.resource) e(at + ".show", "rules.v.gauge");
           if (d.resource && (input || d.rollable)) e(at + ".resource", "rules.v.resource");
           if (d.rollWith !== void 0 && d.rollWith !== null && !has(resolutionsOf(rules), d.rollWith)) e(at + ".rollWith", "rules.v.rollWith", { id: String(d.rollWith) });
-          if (d.rollable && d.id === "initiative" && !(isObj5(res) && isObj5(res.dice) && typeof res.dice.count === "number")) e(at + ".rollable", "rules.v.initiative");
+          if (d.rollable && d.id === "initiative" && !(isObj6(res) && isObj6(res.dice) && typeof res.dice.count === "number")) e(at + ".rollable", "rules.v.initiative");
         });
       }
       function validateSkills(rules, errs) {
@@ -4810,24 +4814,24 @@ var require_rules_core = __commonJS({
         var e = function(p, key, vars) {
           errs.push({ path: "skills" + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj5(sk)) return e("", "rules.v.skills");
+        if (!isObj6(sk)) return e("", "rules.v.skills");
         if (SKILL_MODES.indexOf(sk.mode) < 0) e("mode", "rules.v.skillMode");
         if (RANKS.indexOf(sk.rank) < 0) e("rank", "rules.v.skillRank");
         var derived = {};
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (isObj5(d)) derived[d.id] = true;
+          if (isObj6(d)) derived[d.id] = true;
         });
         if (sk.rank === "trained" && !(typeof sk.proficiency === "string" && has(derived, sk.proficiency))) e("proficiency", "rules.v.proficiency");
         if (sk.rank !== "trained" && sk.proficiency !== null && sk.proficiency !== void 0) e("proficiency", "rules.v.proficiency");
         if (!bool(sk.expertise) || sk.expertise && sk.rank !== "trained") e("expertise", "rules.v.expertise");
         var stats = {};
-        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj5(x)) stats[x.id] = true;
+        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj6(x)) stats[x.id] = true;
         });
         if (!Array.isArray(sk.list) || sk.list.length > LIMITS2.skills || sk.mode === "fixed" && !sk.list.length) return e("list", "rules.v.skillList", { max: LIMITS2.skills });
         sk.list.forEach(function(x, i) {
           var at = "list." + i;
-          if (!isObj5(x)) return e(at, "rules.v.notResolution");
+          if (!isObj6(x)) return e(at, "rules.v.notResolution");
           if (typeof x.id !== "string" || !KEY_RE.test(x.id)) e(at + ".id", "rules.v.key");
           else if (sk.rank === "dots" && x.id.length > 9) e(at + ".id", "rules.v.dotsKey", { max: 9 });
           if (!cleanName(x.name)) e(at + ".name", "rules.v.name");
@@ -4837,7 +4841,7 @@ var require_rules_core = __commonJS({
         });
       }
       function cleanRules(raw) {
-        if (!isObj5(raw)) return null;
+        if (!isObj6(raw)) return null;
         var pick = function(o, keys) {
           var x = {};
           keys.forEach(function(k) {
@@ -4846,12 +4850,12 @@ var require_rules_core = __commonJS({
           return x;
         };
         var copyRes = function(r) {
-          if (!isObj5(r) || Object.getPrototypeOf(r) !== Object.prototype) return null;
+          if (!isObj6(r) || Object.getPrototypeOf(r) !== Object.prototype) return null;
           var o = pick(r, ["id", "name", "family", "bonus", "crit", "fumble"]);
-          o.dice = isObj5(r.dice) ? pick(r.dice, ["count", "sides", "fate", "reroll", "explode", "keep"]) : null;
-          o.target = isObj5(r.target) ? pick(r.target, ["kind", "difficulties", "default", "fixed"]) : null;
-          o.read = isObj5(r.read) ? pick(r.read, ["kind", "tie", "margin", "degrees", "bands", "count"]) : null;
-          o.window = isObj5(r.window) ? pick(r.window, ["ask", "advantage", "bonus", "difficulty", "poolDice"]) : null;
+          o.dice = isObj6(r.dice) ? pick(r.dice, ["count", "sides", "fate", "reroll", "explode", "keep"]) : null;
+          o.target = isObj6(r.target) ? pick(r.target, ["kind", "difficulties", "default", "fixed"]) : null;
+          o.read = isObj6(r.read) ? pick(r.read, ["kind", "tie", "margin", "degrees", "bands", "count"]) : null;
+          o.window = isObj6(r.window) ? pick(r.window, ["ask", "advantage", "bonus", "difficulty", "poolDice"]) : null;
           return JSON.parse(JSON.stringify(o));
         };
         var rules = { resolution: copyRes(raw.resolution), rolls: Array.isArray(raw.rolls) ? raw.rolls.slice(0, LIMITS2.rolls + 1).map(copyRes) : [] };
@@ -5034,13 +5038,13 @@ var require_rules_core = __commonJS({
         var e = function(p, key2, vars) {
           errs.push({ path: "combat" + (p ? "." + p : ""), message: say2(key2, vars) });
         };
-        if (!isObj5(c) || !isObj5(c.attack) || !isObj5(c.damage)) return e("", "rules.v.combat");
+        if (!isObj6(c) || !isObj6(c.attack) || !isObj6(c.damage)) return e("", "rules.v.combat");
         var a = c.attack, d = c.damage, keys = valueKeys(rules), stats = {}, derived = {};
-        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj5(x) && typeof x.id === "string") stats[x.id] = true;
+        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj6(x) && typeof x.id === "string") stats[x.id] = true;
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(x) {
-          if (isObj5(x) && typeof x.id === "string") derived[x.id] = x;
+          if (isObj6(x) && typeof x.id === "string") derived[x.id] = x;
         });
         var key = function(k) {
           return has(keys, k);
@@ -5058,10 +5062,10 @@ var require_rules_core = __commonJS({
         else {
           var seen = {};
           d.types.forEach(function(t, i) {
-            if (!isObj5(t) || typeof t.id !== "string" || !TYPE_RE.test(t.id)) e("damage.types." + i + ".id", "rules.v.typeKey");
+            if (!isObj6(t) || typeof t.id !== "string" || !TYPE_RE.test(t.id)) e("damage.types." + i + ".id", "rules.v.typeKey");
             else if (has(seen, t.id)) e("damage.types." + i + ".id", "rules.v.sameId", { id: t.id });
             else seen[t.id] = true;
-            if (!isObj5(t) || !cleanName(t.name)) e("damage.types." + i + ".name", "rules.v.name");
+            if (!isObj6(t) || !cleanName(t.name)) e("damage.types." + i + ".name", "rules.v.name");
           });
         }
         if (!has(derived, d.health) || !derived[d.health].resource) e("damage.health", "rules.v.health");
@@ -5074,8 +5078,8 @@ var require_rules_core = __commonJS({
           return isFinite(x) ? x : 0;
         };
         var stats = {};
-        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj5(x) && typeof x.id === "string") stats[x.id] = true;
+        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj6(x) && typeof x.id === "string") stats[x.id] = true;
         });
         var of = function(id) {
           return has(stats, id) ? v(statAdd(rules, id).slice(1)) : 0;
@@ -5111,7 +5115,7 @@ var require_rules_core = __commonJS({
         return "(" + dice + ")[" + tag + "]" + (flat > 0 ? "+" + flat : flat < 0 ? "-" + -flat : "");
       }
       function damageOf(total, type, target) {
-        var tg = isObj5(target) ? target : {};
+        var tg = isObj6(target) ? target : {};
         var raw = Math.max(0, Math.round(Number(total) || 0));
         var red = Math.max(0, Math.round(Number(tg.reduction) || 0));
         var after = Math.max(0, raw - red);
@@ -5136,11 +5140,11 @@ var require_rules_core = __commonJS({
         return { raw, reduction: Math.min(red, raw), factor, why, final: Math.floor(after * factor) };
       }
       function cleanCombat(raw, resolutions) {
-        if (!isObj5(raw) || !isObj5(raw.combat) || !isObj5(raw.combat.attack) || !isObj5(raw.combat.damage) || !isObj5(resolutions)) return null;
+        if (!isObj6(raw) || !isObj6(raw.combat) || !isObj6(raw.combat.attack) || !isObj6(raw.combat.damage) || !isObj6(resolutions)) return null;
         var named2 = function(x) {
-          return isObj5(x) && typeof x.id === "string" && KEY_RE.test(x.id);
+          return isObj6(x) && typeof x.id === "string" && KEY_RE.test(x.id);
         };
-        var s = isObj5(raw.stats) ? raw.stats : {};
+        var s = isObj6(raw.stats) ? raw.stats : {};
         var stats = { form: typeof s.form === "string" ? s.form : "score", list: (Array.isArray(s.list) ? s.list : []).filter(named2).slice(0, LIMITS2.stats).map(function(x) {
           return { id: x.id, name: cleanName(x.name) || x.id };
         }) };
@@ -5159,7 +5163,7 @@ var require_rules_core = __commonJS({
             addStat: d.addStat,
             critical: d.critical,
             types: Array.isArray(d.types) ? d.types.slice(0, MAX_TYPES + 1).map(function(t) {
-              return isObj5(t) ? { id: t.id, name: cleanName(t.name) } : t;
+              return isObj6(t) ? { id: t.id, name: cleanName(t.name) } : t;
             }) : d.types,
             health: d.health,
             reduction: d.reduction === void 0 ? null : d.reduction
@@ -5170,7 +5174,7 @@ var require_rules_core = __commonJS({
           if (!main2) main2 = resolutions[k];
           else rolls.push(resolutions[k]);
         });
-        if (!isObj5(main2)) return null;
+        if (!isObj6(main2)) return null;
         var rules = { resolution: main2, rolls, stats, derived: derived.map(function(x) {
           return { id: x.id, name: x.name, resource: x.resource, recipe: { kind: "input", min: 0, max: 1, "default": 0 } };
         }), combat };
@@ -5205,7 +5209,7 @@ var require_rules_core = __commonJS({
         }).slice(0, MAX_TYPES);
       }
       function weaponOf(ctx, row) {
-        var r = isObj5(row) ? row : {};
+        var r = isObj6(row) ? row : {};
         var a = ctx.combat.attack, types = ctx.combat.damage.types;
         var caracs = (a.stats.length ? a.stats : ctx.stats.list.map(function(x) {
           return x.id;
@@ -5231,21 +5235,21 @@ var require_rules_core = __commonJS({
         var e = function(p, key, vars) {
           errs.push({ path: "effects" + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj5(fx) || !Array.isArray(fx.states)) return e("", "rules.v.effects");
+        if (!isObj6(fx) || !Array.isArray(fx.states)) return e("", "rules.v.effects");
         if (fx.states.length > FX.states) return e("states", "rules.v.tooMany", { max: FX.states });
         var keys = modKeys(rules), res = resolutionsOf(rules), rests = {}, types = {}, seen = {};
         (Array.isArray(rules.rests) ? rules.rests : []).forEach(function(r) {
-          if (isObj5(r) && typeof r.id === "string") rests[r.id] = true;
+          if (isObj6(r) && typeof r.id === "string") rests[r.id] = true;
         });
-        (isObj5(rules.combat) && isObj5(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types : []).forEach(function(t) {
-          if (isObj5(t) && typeof t.id === "string") types[t.id] = true;
+        (isObj6(rules.combat) && isObj6(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types : []).forEach(function(t) {
+          if (isObj6(t) && typeof t.id === "string") types[t.id] = true;
         });
         var intIn2 = function(x, lo, hi) {
           return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
         };
         fx.states.forEach(function(s, i) {
           var at = "states." + i;
-          if (!isObj5(s)) return e(at, "rules.v.effects");
+          if (!isObj6(s)) return e(at, "rules.v.effects");
           if (typeof s.id !== "string" || !TYPE_RE.test(s.id)) e(at + ".id", "rules.v.typeKey");
           else if (has(seen, s.id)) e(at + ".id", "rules.v.sameId", { id: s.id });
           else seen[s.id] = true;
@@ -5253,13 +5257,13 @@ var require_rules_core = __commonJS({
           if (EFFECT_ICONS.indexOf(s.icon) < 0) e(at + ".icon", "rules.v.icon");
           if (!Array.isArray(s.mods) || s.mods.length > FX.mods) e(at + ".mods", "rules.v.tooMany", { max: FX.mods });
           else s.mods.forEach(function(m, j) {
-            if (!isObj5(m) || !has(keys, m.key)) e(at + ".mods." + j + ".key", "rules.v.modKey");
-            if (!isObj5(m) || !intIn2(m.n, -FX.n, FX.n) || m.n === 0) e(at + ".mods." + j + ".n", "rules.v.modN", { max: FX.n });
+            if (!isObj6(m) || !has(keys, m.key)) e(at + ".mods." + j + ".key", "rules.v.modKey");
+            if (!isObj6(m) || !intIn2(m.n, -FX.n, FX.n) || m.n === 0) e(at + ".mods." + j + ".n", "rules.v.modN", { max: FX.n });
           });
           if (!Array.isArray(s.rolls) || s.rolls.length > FX.rolls) e(at + ".rolls", "rules.v.tooMany", { max: FX.rolls });
           else s.rolls.forEach(function(r, j) {
             var rp = at + ".rolls." + j;
-            if (!isObj5(r)) return e(rp, "rules.v.effects");
+            if (!isObj6(r)) return e(rp, "rules.v.effects");
             if (!has(res, r.res)) e(rp + ".res", "rules.v.combatRoll", { id: String(r.res) });
             if (!intIn2(r.n, -FX.roll, FX.roll)) e(rp + ".n", "rules.v.modN", { max: FX.roll });
             if ([-1, 0, 1].indexOf(r.adv) < 0) e(rp + ".adv", "rules.v.adv");
@@ -5272,7 +5276,7 @@ var require_rules_core = __commonJS({
             })) e(at + "." + k, "rules.v.effectTypes");
           });
           var end = s.end;
-          if (!isObj5(end)) return e(at + ".end", "rules.v.effects");
+          if (!isObj6(end)) return e(at + ".end", "rules.v.effects");
           if (end.rounds !== null && !intIn2(end.rounds, 1, FX.rounds)) e(at + ".end.rounds", "rules.v.rounds", { max: FX.rounds });
           if (end.at !== "start" && end.at !== "end") e(at + ".end.at", "rules.v.effects");
           if (end.rest !== null && !has(rests, end.rest)) e(at + ".end.rest", "rules.v.restUnknown");
@@ -5286,11 +5290,11 @@ var require_rules_core = __commonJS({
         if (!Array.isArray(list2) || list2.length < 1 || list2.length > FX.rests) return e("", "rules.v.rests", { max: FX.rests });
         var resources = {}, keys = valueKeys(rules), seen = {};
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (isObj5(d) && d.resource && typeof d.id === "string") resources[d.id] = true;
+          if (isObj6(d) && d.resource && typeof d.id === "string") resources[d.id] = true;
         });
         list2.forEach(function(r, i) {
           var at = String(i);
-          if (!isObj5(r)) return e(at, "rules.v.rests", { max: FX.rests });
+          if (!isObj6(r)) return e(at, "rules.v.rests", { max: FX.rests });
           if (typeof r.id !== "string" || !TYPE_RE.test(r.id)) e(at + ".id", "rules.v.typeKey");
           else if (has(seen, r.id)) e(at + ".id", "rules.v.sameId", { id: r.id });
           else seen[r.id] = true;
@@ -5298,7 +5302,7 @@ var require_rules_core = __commonJS({
           if (!Array.isArray(r.restore) || r.restore.length > FX.restore) return e(at + ".restore", "rules.v.tooMany", { max: FX.restore });
           r.restore.forEach(function(x, j) {
             var p = at + ".restore." + j;
-            if (!isObj5(x)) return e(p, "rules.v.rests", { max: FX.rests });
+            if (!isObj6(x)) return e(p, "rules.v.rests", { max: FX.rests });
             if (!has(resources, x.res)) e(p + ".res", "rules.v.health");
             if (RESTORES.indexOf(x.how) < 0) e(p + ".how", "rules.v.restHow");
             else if (x.how === "fixed" && !(typeof x.n === "number" && Math.floor(x.n) === x.n && x.n >= 1 && x.n <= FX.fixed)) e(p + ".n", "rules.v.modN", { max: FX.fixed });
@@ -5307,11 +5311,11 @@ var require_rules_core = __commonJS({
         });
       }
       var onFailOk = function(r) {
-        return isObj5(r) && isObj5(r.target) && (r.target.kind === "none" || r.target.kind === "fixed");
+        return isObj6(r) && isObj6(r.target) && (r.target.kind === "none" || r.target.kind === "fixed");
       };
       function libraryHasFeatures(rules) {
-        return isObj5(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
-          return isObj5(g) && g.kind === "feature";
+        return isObj6(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
+          return isObj6(g) && g.kind === "feature";
         });
       }
       function validateProgression(rules, errs, pools) {
@@ -5319,17 +5323,17 @@ var require_rules_core = __commonJS({
         var e = function(at, key, vars) {
           errs.push({ path: "progression" + (at ? "." + at : ""), message: say2(key, vars) });
         };
-        if (!isObj5(p)) return e("", "rules.v.prog");
+        if (!isObj6(p)) return e("", "rules.v.prog");
         var P0 = pools || null;
         var targets = P0 ? P0.targets : progTargets(rules), res = P0 ? P0.res : resolutionsOf(rules), values = P0 ? P0.values : valueKeys(rules);
-        var rank = P0 ? P0.rank : isObj5(rules.skills) ? rules.skills.rank : null;
+        var rank = P0 ? P0.rank : isObj6(rules.skills) ? rules.skills.rank : null;
         var libFeat = P0 ? P0.libFeat === true : libraryHasFeatures(rules);
         var intIn2 = function(x, lo, hi) {
           return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
         };
         var skills = P0 ? P0.skills.map(function(id) {
           return { id };
-        }) : isObj5(rules.skills) && rules.skills.mode === "fixed" && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj5) : [];
+        }) : isObj6(rules.skills) && rules.skills.mode === "fixed" && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj6) : [];
         var skillIds = {}, statIds = {}, valueTargets = {}, feats = {};
         skills.forEach(function(x) {
           skillIds[x.id] = true;
@@ -5348,7 +5352,7 @@ var require_rules_core = __commonJS({
         if (!Array.isArray(p.features) || p.features.length > PROG.features) e("features", "rules.v.tooMany", { max: PROG.features });
         else p.features.forEach(function(f, i) {
           var at = "features." + i;
-          if (!isObj5(f)) return e(at, "rules.v.prog");
+          if (!isObj6(f)) return e(at, "rules.v.prog");
           if (typeof f.id !== "string" || !TYPE_RE.test(f.id)) e(at + ".id", "rules.v.typeKey");
           else if (has(feats, f.id)) e(at + ".id", "rules.v.sameId", { id: f.id });
           else feats[f.id] = true;
@@ -5356,20 +5360,20 @@ var require_rules_core = __commonJS({
           if (typeof f.text !== "string" || f.text.length > PROG.text) e(at + ".text", "rules.v.featText", { max: PROG.text });
         });
         if (p.xp !== null) {
-          if (!isObj5(p.xp)) e("xp", "rules.v.prog");
+          if (!isObj6(p.xp)) e("xp", "rules.v.prog");
           else {
             if (typeof p.xp.id !== "string" || !KEY_RE.test(p.xp.id)) e("xp.id", "rules.v.typeKey");
             if (!cleanName(p.xp.name)) e("xp.name", "rules.v.name");
             if (!Array.isArray(p.xp.onFail) || p.xp.onFail.length > PROG.onFail) e("xp.onFail", "rules.v.tooMany", { max: PROG.onFail });
             else p.xp.onFail.forEach(function(x, i) {
-              if (!isObj5(x) || !has(res, x.res)) e("xp.onFail." + i + ".res", "rules.v.progRoll", { id: String(isObj5(x) ? x.res : "") });
+              if (!isObj6(x) || !has(res, x.res)) e("xp.onFail." + i + ".res", "rules.v.progRoll", { id: String(isObj6(x) ? x.res : "") });
               else if (!onFailOk(res[x.res])) e("xp.onFail." + i + ".res", "rules.v.onFailTarget");
-              if (!isObj5(x) || !intIn2(x.n, 1, 100)) e("xp.onFail." + i + ".n", "rules.v.progN", { min: 1, max: 100 });
+              if (!isObj6(x) || !intIn2(x.n, 1, 100)) e("xp.onFail." + i + ".n", "rules.v.progN", { min: 1, max: 100 });
             });
           }
         }
         var validateGive = function(x, at) {
-          if (!isObj5(x) || GIVES.indexOf(x.kind) < 0) return e(at, "rules.v.giveKind");
+          if (!isObj6(x) || GIVES.indexOf(x.kind) < 0) return e(at, "rules.v.giveKind");
           if (x.kind === "add") {
             if (!has(targets, x.key)) e(at + ".key", "rules.v.progKey");
             if (x.dice === void 0) {
@@ -5400,23 +5404,23 @@ var require_rules_core = __commonJS({
         };
         if (p.levels !== null) {
           var L = p.levels;
-          if (!isObj5(L)) e("levels", "rules.v.prog");
+          if (!isObj6(L)) e("levels", "rules.v.prog");
           else {
             var lv = P0 ? null : (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
-              return isObj5(d) && d.id === L.key;
+              return isObj6(d) && d.id === L.key;
             })[0];
             var top = LIMITS2.add;
             if (P0) {
               if (P0.levelKey !== L.key || !isInt(P0.levelMax, 2, LIMITS2.add)) e("levels.key", "rules.v.levelKey");
               else top = P0.levelMax;
-            } else if (!lv || !isObj5(lv.recipe) || lv.recipe.kind !== "input" || lv.resource) e("levels.key", "rules.v.levelKey");
+            } else if (!lv || !isObj6(lv.recipe) || lv.recipe.kind !== "input" || lv.resource) e("levels.key", "rules.v.levelKey");
             else if (lv.recipe.min !== 1 || !(lv.recipe.max >= 2)) e("levels.key", "rules.v.levelRange");
             else top = lv.recipe.max;
             if (!bool(L.spend)) e("levels.spend", "rules.v.prog");
             var c = L.cost;
             if (p.xp === null) {
               if (c !== null) e("levels.cost", "rules.v.costNoXp");
-            } else if (!isObj5(c)) e("levels.cost", "rules.v.cost");
+            } else if (!isObj6(c)) e("levels.cost", "rules.v.cost");
             else if (c.kind === "fixed") {
               if (!intIn2(c.n, 1, PROG.xp)) e("levels.cost.n", "rules.v.progN", { min: 1, max: PROG.xp });
             } else if (c.kind === "formula") {
@@ -5431,7 +5435,7 @@ var require_rules_core = __commonJS({
             if (!Array.isArray(L.gains) || L.gains.length > PROG.gains) e("levels.gains", "rules.v.tooMany", { max: PROG.gains });
             else L.gains.forEach(function(g, i) {
               var at = "levels.gains." + i;
-              if (!isObj5(g) || !isObj5(g.when)) return e(at, "rules.v.prog");
+              if (!isObj6(g) || !isObj6(g.when)) return e(at, "rules.v.prog");
               var w = g.when;
               if (w.at !== void 0) {
                 if (!Array.isArray(w.at) || w.at.length < 1 || w.at.length > PROG.at || !w.at.every(function(x) {
@@ -5452,7 +5456,7 @@ var require_rules_core = __commonJS({
             var seenBuy = {};
             p.purchases.forEach(function(b, i) {
               var at = "purchases." + i;
-              if (!isObj5(b)) return e(at, "rules.v.prog");
+              if (!isObj6(b)) return e(at, "rules.v.prog");
               if (typeof b.id !== "string" || !TYPE_RE.test(b.id)) e(at + ".id", "rules.v.typeKey");
               else if (has(seenBuy, b.id)) e(at + ".id", "rules.v.sameId", { id: b.id });
               else seenBuy[b.id] = true;
@@ -5467,7 +5471,7 @@ var require_rules_core = __commonJS({
         }
         if (p.use !== null) {
           var u = p.use;
-          if (!isObj5(u)) e("use", "rules.v.prog");
+          if (!isObj6(u)) e("use", "rules.v.prog");
           else {
             if (!skills.length) e("use", "rules.v.useNeeds");
             if (!list2(u.res, res, PROG.useRes)) e("use.res", "rules.v.progRoll", { id: String(u.res) });
@@ -5480,7 +5484,7 @@ var require_rules_core = __commonJS({
         if (p.xp === null && p.levels === null && p.purchases === null && p.use === null) e("", "rules.v.progEmpty");
       }
       function actionProblems(a, fields, pools, e) {
-        if (!isObj5(a)) return e("", "rules.v.lib");
+        if (!isObj6(a)) return e("", "rules.v.lib");
         var numField = function(v) {
           return typeof v === "string" && fields.some(function(f) {
             return "@" + f.id === v && f.type === "number";
@@ -5494,8 +5498,8 @@ var require_rules_core = __commonJS({
         if (a.roll !== null && a.roll !== void 0) {
           any = true;
           var r = a.roll;
-          if (!isObj5(r)) e("roll", "rules.v.lib");
-          else if (isObj5(r.attack)) {
+          if (!isObj6(r)) e("roll", "rules.v.lib");
+          else if (isObj6(r.attack)) {
             if (!pools.combat) e("roll.attack", "rules.v.libNoCombat");
             if (typeof r.attack.damage !== "string" || !parseDamage(r.attack.damage)) e("roll.attack.damage", "rules.v.libDamage");
             if (r.attack.type !== void 0 && r.attack.type !== null && pools.types.indexOf(r.attack.type) < 0) e("roll.attack.type", "rules.v.effectTypes");
@@ -5507,18 +5511,18 @@ var require_rules_core = __commonJS({
         }
         if (a.cost !== null && a.cost !== void 0) {
           any = true;
-          if (!isObj5(a.cost) || !has(pools.resources, a.cost.res)) e("cost.res", "rules.v.libCost");
-          if (!isObj5(a.cost) || !intOr(a.cost.n, 1, LIB.cost)) e("cost.n", "rules.v.progN", { min: 1, max: LIB.cost });
+          if (!isObj6(a.cost) || !has(pools.resources, a.cost.res)) e("cost.res", "rules.v.libCost");
+          if (!isObj6(a.cost) || !intOr(a.cost.n, 1, LIB.cost)) e("cost.n", "rules.v.progN", { min: 1, max: LIB.cost });
         }
         if (a.state !== null && a.state !== void 0) {
           any = true;
-          if (!isObj5(a.state) || !has(pools.states, a.state.id)) e("state.id", "rules.v.libState");
-          if (!isObj5(a.state) || a.state.on !== "self" && a.state.on !== "target") e("state.on", "rules.v.lib");
+          if (!isObj6(a.state) || !has(pools.states, a.state.id)) e("state.id", "rules.v.libState");
+          if (!isObj6(a.state) || a.state.on !== "self" && a.state.on !== "target") e("state.on", "rules.v.lib");
         }
         if (!any) e("", "rules.v.libActionEmpty");
       }
       function entryProblems(x, genre, fields, pools, e) {
-        if (!isObj5(x.values)) return e("values", "rules.v.lib");
+        if (!isObj6(x.values)) return e("values", "rules.v.lib");
         var known = {};
         fields.forEach(function(f) {
           known[f.id] = f;
@@ -5553,12 +5557,12 @@ var require_rules_core = __commonJS({
         var e = function(at, key, vars) {
           errs.push({ path: "library" + (at ? "." + at : ""), message: say2(key, vars) });
         };
-        if (!isObj5(L) || !Array.isArray(L.genres) || !Array.isArray(L.entries)) return e("", "rules.v.lib");
+        if (!isObj6(L) || !Array.isArray(L.genres) || !Array.isArray(L.entries)) return e("", "rules.v.lib");
         if (L.genres.length > LIB.genres) return e("genres", "rules.v.tooMany", { max: LIB.genres });
         var pools = given3 || libraryPools(rules), genres = {}, kinds = {};
         L.genres.forEach(function(g, i) {
           var at = "genres." + i;
-          if (!isObj5(g)) return e(at, "rules.v.lib");
+          if (!isObj6(g)) return e(at, "rules.v.lib");
           if (typeof g.id !== "string" || !GENRE_RE.test(g.id)) e(at + ".id", "rules.v.libGenreKey");
           else if (has(genres, g.id)) e(at + ".id", "rules.v.sameId", { id: g.id });
           else genres[g.id] = g;
@@ -5576,7 +5580,7 @@ var require_rules_core = __commonJS({
           var seen = {};
           g.fields.forEach(function(f, j) {
             var fp = at + ".fields." + j;
-            if (!isObj5(f)) return e(fp, "rules.v.lib");
+            if (!isObj6(f)) return e(fp, "rules.v.lib");
             if (typeof f.id !== "string" || !FIELD_RE.test(f.id) || LIB_RESERVED.indexOf(f.id) >= 0) e(fp + ".id", "rules.v.libFieldKey");
             else if (has(seen, f.id)) e(fp + ".id", "rules.v.sameId", { id: f.id });
             else seen[f.id] = true;
@@ -5596,7 +5600,7 @@ var require_rules_core = __commonJS({
         var ids = {};
         L.entries.forEach(function(x, i) {
           var at = "entries." + i;
-          if (!isObj5(x)) return e(at, "rules.v.lib");
+          if (!isObj6(x)) return e(at, "rules.v.lib");
           if (typeof x.id !== "string" || !ENTRY_RE.test(x.id)) e(at + ".id", "rules.v.typeKey");
           else if (has(ids, x.id)) e(at + ".id", "rules.v.sameId", { id: x.id });
           else ids[x.id] = true;
@@ -5611,10 +5615,10 @@ var require_rules_core = __commonJS({
       }
       function entryHash(x) {
         var vals = {};
-        Object.keys(isObj5(x) && isObj5(x.values) ? x.values : {}).sort().forEach(function(k) {
+        Object.keys(isObj6(x) && isObj6(x.values) ? x.values : {}).sort().forEach(function(k) {
           vals[k] = x.values[k];
         });
-        var s = JSON.stringify([isObj5(x) ? x.genre : null, isObj5(x) ? x.name : null, vals, isObj5(x) && x.action !== void 0 ? x.action : null]);
+        var s = JSON.stringify([isObj6(x) ? x.genre : null, isObj6(x) ? x.name : null, vals, isObj6(x) && x.action !== void 0 ? x.action : null]);
         var h = 2166136261;
         for (var i = 0; i < s.length; i++) {
           h ^= s.charCodeAt(i);
@@ -5638,9 +5642,9 @@ var require_rules_core = __commonJS({
         });
       }
       function pasteEntries(rules, genreId, text) {
-        var L = isObj5(rules.library) ? rules.library : { genres: [], entries: [] };
+        var L = isObj6(rules.library) ? rules.library : { genres: [], entries: [] };
         var g = (Array.isArray(L.genres) ? L.genres : []).filter(function(x) {
-          return isObj5(x) && x.id === genreId;
+          return isObj6(x) && x.id === genreId;
         })[0];
         var out = { entries: [], errors: [] };
         if (!g || g.kind === "feature") {
@@ -5668,7 +5672,7 @@ var require_rules_core = __commonJS({
         }
         var taken = {};
         (Array.isArray(L.entries) ? L.entries : []).forEach(function(x) {
-          if (isObj5(x)) taken[x.id] = true;
+          if (isObj6(x)) taken[x.id] = true;
         });
         lines.slice(1).forEach(function(line, i) {
           var cells = line.split("	"), x = { id: "", genre: g.id, name: "", values: {}, action: null };
@@ -5717,8 +5721,8 @@ var require_rules_core = __commonJS({
         Object.keys(pools.resources).forEach(function(k) {
           names.resources[k] = nameOf(rules, k);
         });
-        (isObj5(rules.effects) && Array.isArray(rules.effects.states) ? rules.effects.states : []).forEach(function(s) {
-          if (isObj5(s) && typeof s.id === "string") names.states[s.id] = cleanName(s.name) || s.id;
+        (isObj6(rules.effects) && Array.isArray(rules.effects.states) ? rules.effects.states : []).forEach(function(s) {
+          if (isObj6(s) && typeof s.id === "string") names.states[s.id] = cleanName(s.name) || s.id;
         });
         return names;
       }
@@ -5728,10 +5732,10 @@ var require_rules_core = __commonJS({
       function libraryCtx(rules) {
         var L = rules.library, pools = libraryPools(rules);
         return JSON.parse(JSON.stringify({
-          genres: L.genres.filter(isObj5).map(function(g) {
+          genres: L.genres.filter(isObj6).map(function(g) {
             return { id: g.id, name: cleanName(g.name), kind: g.kind, fields: fieldsOf(g, pools) };
           }),
-          entries: L.entries.filter(isObj5).map(function(x) {
+          entries: L.entries.filter(isObj6).map(function(x) {
             return { id: x.id, genre: x.genre, name: x.name, values: x.values, action: x.action === void 0 ? null : x.action, hash: entryHash(x) };
           }),
           res: Object.keys(pools.res),
@@ -5745,19 +5749,19 @@ var require_rules_core = __commonJS({
         }));
       }
       function actionWords(ctx, a) {
-        if (!isObj5(a) || !isObj5(ctx)) return "";
-        var nm = isObj5(ctx.names) ? ctx.names : {};
+        if (!isObj6(a) || !isObj6(ctx)) return "";
+        var nm = isObj6(ctx.names) ? ctx.names : {};
         var of = function(group, id) {
-          return isObj5(nm[group]) && typeof nm[group][id] === "string" ? nm[group][id] : String(id);
+          return isObj6(nm[group]) && typeof nm[group][id] === "string" ? nm[group][id] : String(id);
         };
         var num2 = function(v) {
           return typeof v === "string" ? v.slice(1) : (v > 0 ? "+" : "") + v;
         };
         var parts = [];
-        if (isObj5(a.roll) && isObj5(a.roll.attack)) parts.push(say2("rules.l.attack", { dice: a.roll.attack.damage + (a.roll.attack.type ? " " + a.roll.attack.type : "") }));
-        else if (isObj5(a.roll)) parts.push(say2("rules.l.roll", { res: of("res", a.roll.res), bonus: a.roll.bonus ? " " + num2(a.roll.bonus) : "" }));
-        if (isObj5(a.cost)) parts.push(say2("rules.l.cost", { n: typeof a.cost.n === "string" ? a.cost.n.slice(1) : a.cost.n, res: of("resources", a.cost.res) }));
-        if (isObj5(a.state)) parts.push(say2(a.state.on === "self" ? "rules.l.stateSelf" : "rules.l.stateTarget", { state: of("states", a.state.id) }));
+        if (isObj6(a.roll) && isObj6(a.roll.attack)) parts.push(say2("rules.l.attack", { dice: a.roll.attack.damage + (a.roll.attack.type ? " " + a.roll.attack.type : "") }));
+        else if (isObj6(a.roll)) parts.push(say2("rules.l.roll", { res: of("res", a.roll.res), bonus: a.roll.bonus ? " " + num2(a.roll.bonus) : "" }));
+        if (isObj6(a.cost)) parts.push(say2("rules.l.cost", { n: typeof a.cost.n === "string" ? a.cost.n.slice(1) : a.cost.n, res: of("resources", a.cost.res) }));
+        if (isObj6(a.state)) parts.push(say2(a.state.on === "self" ? "rules.l.stateSelf" : "rules.l.stateTarget", { state: of("states", a.state.id) }));
         return (cleanName(a.label) || "") + " : " + parts.join(" \xB7 ");
       }
       function poolsOfCtx(ctx) {
@@ -5771,7 +5775,7 @@ var require_rules_core = __commonJS({
         return { res: set(ctx.res), resources: set(ctx.resources), states: set(ctx.states), combat: ctx.combat === true, types: Array.isArray(ctx.types) ? ctx.types.slice() : [], stats: Array.isArray(ctx.stats) ? ctx.stats.slice() : [], progression: ctx.progression === true };
       }
       function cleanLibraryCtx(raw, resolutions) {
-        if (!isObj5(raw) || !isObj5(resolutions) || !Array.isArray(raw.genres) || !Array.isArray(raw.entries)) return null;
+        if (!isObj6(raw) || !isObj6(resolutions) || !Array.isArray(raw.genres) || !Array.isArray(raw.entries)) return null;
         var KEY = /^[a-z][a-z0-9_]{0,40}$/;
         var ids = function(l, max) {
           return Array.isArray(l) && l.length <= max && l.every(function(x) {
@@ -5785,20 +5789,20 @@ var require_rules_core = __commonJS({
         var ctx0 = { res, resources, states, types, stats, combat: raw.combat === true, progression: raw.progression === true };
         var pools = poolsOfCtx(ctx0);
         var genres = raw.genres.slice(0, LIB.genres + 1).map(function(g) {
-          return isObj5(g) ? { id: g.id, name: g.name, kind: g.kind, fields: g.kind === "custom" ? g.fields : [] } : g;
+          return isObj6(g) ? { id: g.id, name: g.name, kind: g.kind, fields: g.kind === "custom" ? g.fields : [] } : g;
         });
         var entries = raw.entries.slice(0, LIB.entries + 1).map(function(x) {
-          return isObj5(x) ? { id: x.id, genre: x.genre, name: x.name, values: x.values, action: x.action === void 0 ? null : x.action } : x;
+          return isObj6(x) ? { id: x.id, genre: x.genre, name: x.name, values: x.values, action: x.action === void 0 ? null : x.action } : x;
         });
         var errs = [];
         validateLibrary({ library: { genres, entries } }, errs, pools);
         if (errs.length) return null;
-        var nm = isObj5(raw.names) ? raw.names : {};
+        var nm = isObj6(raw.names) ? raw.names : {};
         var names = {};
         ["res", "resources", "states"].forEach(function(group) {
           names[group] = {};
           ctx0[group].forEach(function(id) {
-            var v = isObj5(nm[group]) && typeof nm[group][id] === "string" ? cleanName(nm[group][id]) : "";
+            var v = isObj6(nm[group]) && typeof nm[group][id] === "string" ? cleanName(nm[group][id]) : "";
             names[group][id] = v || id;
           });
         });
@@ -5820,9 +5824,9 @@ var require_rules_core = __commonJS({
         }));
       }
       function cleanEntryIn(ctx, raw) {
-        if (!isObj5(ctx) || !isObj5(raw) || !Array.isArray(ctx.genres)) return null;
+        if (!isObj6(ctx) || !isObj6(raw) || !Array.isArray(ctx.genres)) return null;
         var g = ctx.genres.filter(function(x2) {
-          return isObj5(x2) && x2.id === raw.genre;
+          return isObj6(x2) && x2.id === raw.genre;
         })[0];
         if (!g) return null;
         var x = { id: raw.id, genre: raw.genre, name: raw.name, values: raw.values, action: raw.action === void 0 ? null : raw.action };
@@ -5841,7 +5845,7 @@ var require_rules_core = __commonJS({
       }
       function rowOf(ctx, entry, source) {
         var g = (Array.isArray(ctx.genres) ? ctx.genres : []).filter(function(x) {
-          return isObj5(x) && x.id === entry.genre;
+          return isObj6(x) && x.id === entry.genre;
         })[0];
         if (!g || g.kind === "feature") return null;
         var origin = source + ":" + entry.id + ":" + entryHash(entry);
@@ -5870,7 +5874,7 @@ var require_rules_core = __commonJS({
       }
       var STARTER_SPELLS = { fantasy: true, horror: true };
       function starterLibrary(rules) {
-        var tone = isObj5(rules.identity) && typeof rules.identity.tone === "string" ? rules.identity.tone : "fantasy";
+        var tone = isObj6(rules.identity) && typeof rules.identity.tone === "string" ? rules.identity.tone : "fantasy";
         var pools = libraryPools(rules), spells = has(STARTER_SPELLS, tone);
         var g1 = spells ? { id: "sort", name: say2("rules.l.spells"), kind: "custom", fields: [
           { id: "niveau", name: say2("rules.l.level"), type: "number", min: 0, max: 9 },
@@ -5885,7 +5889,7 @@ var require_rules_core = __commonJS({
         var e = function(g, id, values, action) {
           entries.push({ id, genre: g.id, name: say2("rules.l.e." + id), values, action });
         };
-        var main2 = isObj5(rules.resolution) ? rules.resolution.id : null;
+        var main2 = isObj6(rules.resolution) ? rules.resolution.id : null;
         var fire = pools.types.indexOf("feu") >= 0 ? "feu" : null;
         var mana = Object.keys(pools.resources).filter(function(k) {
           return /^(pm|mana|magie|pouvoir)/.test(k);
@@ -5904,8 +5908,8 @@ var require_rules_core = __commonJS({
         return errs.length ? null : trial.library;
       }
       function levelCost(prog, n, evaluate) {
-        var L = isObj5(prog) ? prog.levels : null;
-        if (!isObj5(L) || !isObj5(L.cost)) return null;
+        var L = isObj6(prog) ? prog.levels : null;
+        if (!isObj6(L) || !isObj6(L.cost)) return null;
         if (!(n >= 2)) return 0;
         var c = L.cost, v;
         if (c.kind === "fixed") v = c.n;
@@ -5916,9 +5920,9 @@ var require_rules_core = __commonJS({
         return Math.max(0, Math.min(PROG.xp, Math.round(v)));
       }
       function gainsAt(prog, n) {
-        var L = isObj5(prog) ? prog.levels : null, out = [];
-        (isObj5(L) && Array.isArray(L.gains) ? L.gains : []).forEach(function(g, i) {
-          if (!isObj5(g) || !isObj5(g.when)) return;
+        var L = isObj6(prog) ? prog.levels : null, out = [];
+        (isObj6(L) && Array.isArray(L.gains) ? L.gains : []).forEach(function(g, i) {
+          if (!isObj6(g) || !isObj6(g.when)) return;
           var w = g.when;
           var hit = Array.isArray(w.at) ? w.at.indexOf(n) >= 0 : n >= w.from && (n - w.from) % w.every === 0;
           if (hit) (Array.isArray(g.give) ? g.give : []).forEach(function(x, j) {
@@ -5929,8 +5933,8 @@ var require_rules_core = __commonJS({
       }
       function describeGive(rules, x) {
         var feats = {};
-        (isObj5(rules.progression) && Array.isArray(rules.progression.features) ? rules.progression.features : []).forEach(function(f) {
-          if (isObj5(f)) feats[f.id] = cleanName(f.name);
+        (isObj6(rules.progression) && Array.isArray(rules.progression.features) ? rules.progression.features : []).forEach(function(f) {
+          if (isObj6(f)) feats[f.id] = cleanName(f.name);
         });
         var names = function(l, of) {
           return l.map(of).join(", ");
@@ -5971,14 +5975,14 @@ var require_rules_core = __commonJS({
       }
       function levelPlan(rules, sheet, n) {
         var prog = rules.progression, auto = [], choices = [];
-        var trained = isObj5(sheet) && isObj5(sheet.trained) ? sheet.trained : {};
-        var taken = isObj5(sheet) && isObj5(sheet.features) ? sheet.features : {};
-        var skills = isObj5(rules.skills) && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj5).map(function(x) {
+        var trained = isObj6(sheet) && isObj6(sheet.trained) ? sheet.trained : {};
+        var taken = isObj6(sheet) && isObj6(sheet.features) ? sheet.features : {};
+        var skills = isObj6(rules.skills) && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj6).map(function(x) {
           return x.id;
         }) : [];
         var feats = {};
         (Array.isArray(prog.features) ? prog.features : []).forEach(function(f) {
-          if (isObj5(f)) feats[f.id] = true;
+          if (isObj6(f)) feats[f.id] = true;
         });
         gainsAt(prog, n).forEach(function(g) {
           var x = g.give;
@@ -6000,7 +6004,7 @@ var require_rules_core = __commonJS({
         return { level: n, auto, choices };
       }
       function readChoices(plan, raw) {
-        if (!isObj5(plan) || !Array.isArray(plan.choices) || !isObj5(raw)) return null;
+        if (!isObj6(plan) || !Array.isArray(plan.choices) || !isObj6(raw)) return null;
         if (Object.keys(raw).some(function(k) {
           return !plan.choices.some(function(c) {
             return c.at === k;
@@ -6015,7 +6019,7 @@ var require_rules_core = __commonJS({
             return true;
           }
           if (c.kind === "spread") {
-            if (!isObj5(a)) return false;
+            if (!isObj6(a)) return false;
             var sum = 0, clean2 = {};
             var fine = Object.keys(a).every(function(k) {
               var v = a[k];
@@ -6046,10 +6050,10 @@ var require_rules_core = __commonJS({
         Object.keys(t).forEach(function(k) {
           names[k] = nameOf(rules, k);
         });
-        if (isObj5(P.xp)) names[P.xp.id] = cleanName(P.xp.name);
-        var L = isObj5(P.levels) ? P.levels : null;
+        if (isObj6(P.xp)) names[P.xp.id] = cleanName(P.xp.name);
+        var L = isObj6(P.levels) ? P.levels : null;
         var lv = L ? (rules.derived || []).filter(function(d) {
-          return isObj5(d) && d.id === L.key;
+          return isObj6(d) && d.id === L.key;
         })[0] : null;
         if (lv) names[lv.id] = cleanName(lv.name);
         return JSON.parse(JSON.stringify({
@@ -6063,8 +6067,8 @@ var require_rules_core = __commonJS({
           targets: t,
           keys: progKeys(rules),
           names,
-          skillRank: isObj5(rules.skills) ? rules.skills.rank : null,
-          skills: isObj5(rules.skills) && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj5).map(function(x) {
+          skillRank: isObj6(rules.skills) ? rules.skills.rank : null,
+          skills: isObj6(rules.skills) && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj6).map(function(x) {
             return x.id;
           }) : [],
           values: Object.keys(valueKeys(rules)),
@@ -6072,10 +6076,10 @@ var require_rules_core = __commonJS({
         }));
       }
       function cleanProgressCtx(raw, resolutions) {
-        if (!isObj5(raw) || !isObj5(resolutions)) return null;
+        if (!isObj6(raw) || !isObj6(resolutions)) return null;
         var KEY = /^[a-z][a-z0-9_]{0,40}$/, KINDS2 = ["stat", "skill", "input", "resource", "computed"];
         var t = raw.targets;
-        if (!isObj5(t) || Object.keys(t).length > 400) return null;
+        if (!isObj6(t) || Object.keys(t).length > 400) return null;
         var targets = {};
         var tk = Object.keys(t);
         for (var i = 0; i < tk.length; i++) {
@@ -6104,8 +6108,8 @@ var require_rules_core = __commonJS({
         validateProgression({ progression: prog }, errs, { targets, values, res: resolutions, skills, rank, levelKey, levelMax: levelKey === null ? null : raw.levelMax, libFeat: raw.libFeat === true });
         if (errs.length) return null;
         var names = {};
-        var nm = isObj5(raw.names) ? raw.names : {};
-        Object.keys(targets).concat(levelKey ? [levelKey] : [], isObj5(prog.xp) ? [prog.xp.id] : []).forEach(function(k) {
+        var nm = isObj6(raw.names) ? raw.names : {};
+        Object.keys(targets).concat(levelKey ? [levelKey] : [], isObj6(prog.xp) ? [prog.xp.id] : []).forEach(function(k) {
           names[k] = typeof nm[k] === "string" && cleanName(nm[k]) ? cleanName(nm[k]) : k;
         });
         return JSON.parse(JSON.stringify({ xp: prog.xp, levels: prog.levels, levelKey, levelMax: levelKey === null ? null : raw.levelMax, purchases: prog.purchases, use: prog.use, features: prog.features, targets, keys, names, skillRank: rank, skills, values: valuesList, libFeat: raw.libFeat === true }));
@@ -6114,11 +6118,11 @@ var require_rules_core = __commonJS({
         return JSON.parse(JSON.stringify({
           keys: effectKeys(rules),
           res: Object.keys(resolutionsOf(rules)),
-          types: isObj5(rules.combat) && isObj5(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types.map(function(t) {
+          types: isObj6(rules.combat) && isObj6(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types.map(function(t) {
             return t.id;
           }) : [],
           rests: Array.isArray(rules.rests) ? rules.rests : [],
-          states: isObj5(rules.effects) && Array.isArray(rules.effects.states) ? rules.effects.states : [],
+          states: isObj6(rules.effects) && Array.isArray(rules.effects.states) ? rules.effects.states : [],
           // the names the page shows (lot D3): of the values an effect changes, of the resolutions, of the damage types
           names: {
             keys: effectKeys(rules).reduce(function(o, k) {
@@ -6129,7 +6133,7 @@ var require_rules_core = __commonJS({
               o[k] = cleanName(resolutionsOf(rules)[k].name) || k;
               return o;
             }, {}),
-            types: (isObj5(rules.combat) && isObj5(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types : []).reduce(function(o, t) {
+            types: (isObj6(rules.combat) && isObj6(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types : []).reduce(function(o, t) {
               o[t.id] = cleanName(t.name) || t.id;
               return o;
             }, {})
@@ -6140,30 +6144,30 @@ var require_rules_core = __commonJS({
         return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
       };
       function cleanEffectIn(ctx, raw) {
-        if (!isObj5(ctx) || !isObj5(raw)) return null;
+        if (!isObj6(ctx) || !isObj6(raw)) return null;
         var src = null, stateId = null;
         if (typeof raw.state === "string") {
           src = (Array.isArray(ctx.states) ? ctx.states : []).filter(function(s) {
-            return isObj5(s) && s.id === raw.state;
+            return isObj6(s) && s.id === raw.state;
           })[0] || null;
           if (!src) return null;
           stateId = src.id;
-        } else if (isObj5(raw.effect)) src = raw.effect;
+        } else if (isObj6(raw.effect)) src = raw.effect;
         else return null;
         var keys = Array.isArray(ctx.keys) ? ctx.keys : [], res = Array.isArray(ctx.res) ? ctx.res : [], types = Array.isArray(ctx.types) ? ctx.types : [];
         var rests = (Array.isArray(ctx.rests) ? ctx.rests : []).map(function(r) {
-          return isObj5(r) ? r.id : null;
+          return isObj6(r) ? r.id : null;
         });
         var name = cleanName(src.name);
         if (!name) return null;
         var mods = src.mods, rolls = src.rolls, resist = src.resist, vuln = src.vuln, end = src.end;
         if (!Array.isArray(mods) || mods.length > FX.mods || !Array.isArray(rolls) || rolls.length > FX.rolls) return null;
-        if (!Array.isArray(resist) || resist.length > MAX_TYPES || !Array.isArray(vuln) || vuln.length > MAX_TYPES || !isObj5(end)) return null;
+        if (!Array.isArray(resist) || resist.length > MAX_TYPES || !Array.isArray(vuln) || vuln.length > MAX_TYPES || !isObj6(end)) return null;
         if (!mods.every(function(m) {
-          return isObj5(m) && keys.indexOf(m.key) >= 0 && intIn(m.n, -FX.n, FX.n) && m.n !== 0;
+          return isObj6(m) && keys.indexOf(m.key) >= 0 && intIn(m.n, -FX.n, FX.n) && m.n !== 0;
         })) return null;
         if (!rolls.every(function(r) {
-          return isObj5(r) && res.indexOf(r.res) >= 0 && intIn(r.n, -FX.roll, FX.roll) && [-1, 0, 1].indexOf(r.adv) >= 0 && !(r.n === 0 && r.adv === 0);
+          return isObj6(r) && res.indexOf(r.res) >= 0 && intIn(r.n, -FX.roll, FX.roll) && [-1, 0, 1].indexOf(r.adv) >= 0 && !(r.n === 0 && r.adv === 0);
         })) return null;
         if (!resist.concat(vuln).every(function(t) {
           return types.indexOf(t) >= 0;
@@ -6189,7 +6193,7 @@ var require_rules_core = __commonJS({
         };
       }
       function cleanEffectCtx(raw, resolutions) {
-        if (!isObj5(raw) || !isObj5(resolutions)) return null;
+        if (!isObj6(raw) || !isObj6(resolutions)) return null;
         var strs = function(l, re, max) {
           return Array.isArray(l) && l.length <= max && l.every(function(x) {
             return typeof x === "string" && re.test(x);
@@ -6203,9 +6207,9 @@ var require_rules_core = __commonJS({
         if (!Array.isArray(raw.rests) || raw.rests.length > FX.rests) return null;
         for (var i = 0; i < raw.rests.length; i++) {
           var r = raw.rests[i];
-          if (!isObj5(r) || typeof r.id !== "string" || !TYPE_RE.test(r.id) || !cleanName(r.name) || !Array.isArray(r.restore) || r.restore.length > FX.restore) return null;
+          if (!isObj6(r) || typeof r.id !== "string" || !TYPE_RE.test(r.id) || !cleanName(r.name) || !Array.isArray(r.restore) || r.restore.length > FX.restore) return null;
           var restore = r.restore.filter(function(x) {
-            return isObj5(x) && typeof x.res === "string" && KEY_RE.test(x.res) && RESTORES.indexOf(x.how) >= 0 && (x.how !== "fixed" || intIn(x.n, 1, FX.fixed)) && (x.how !== "formula" || typeof x.key === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(x.key));
+            return isObj6(x) && typeof x.res === "string" && KEY_RE.test(x.res) && RESTORES.indexOf(x.how) >= 0 && (x.how !== "fixed" || intIn(x.n, 1, FX.fixed)) && (x.how !== "formula" || typeof x.key === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(x.key));
           }).map(function(x) {
             var o = { res: x.res, how: x.how };
             if (x.how === "fixed") o.n = x.n;
@@ -6215,18 +6219,18 @@ var require_rules_core = __commonJS({
           });
           rests.push({ id: r.id, name: cleanName(r.name), restore });
         }
-        var nm = isObj5(raw.names) ? raw.names : {};
+        var nm = isObj6(raw.names) ? raw.names : {};
         var pick = function(src, ids) {
           var o = {};
           ids.forEach(function(id) {
-            var v = isObj5(src) && typeof src[id] === "string" ? cleanName(src[id]) : "";
+            var v = isObj6(src) && typeof src[id] === "string" ? cleanName(src[id]) : "";
             o[id] = v || id;
           });
           return o;
         };
         var ctx = { keys, res, types, rests, states: [], names: { keys: pick(nm.keys, keys), res: pick(nm.res, res), types: pick(nm.types, types) } };
         (Array.isArray(raw.states) ? raw.states.slice(0, FX.states) : []).forEach(function(s) {
-          if (!isObj5(s) || typeof s.id !== "string" || !TYPE_RE.test(s.id)) return;
+          if (!isObj6(s) || typeof s.id !== "string" || !TYPE_RE.test(s.id)) return;
           var clean2 = cleanEffectIn(ctx, { effect: s, asState: true });
           if (!clean2 || EFFECT_ICONS.indexOf(s.icon) < 0) return;
           var st = { id: s.id, name: clean2.name, icon: s.icon, mods: clean2.mods, rolls: clean2.rolls, resist: clean2.resist, vuln: clean2.vuln, end: clean2.end };
@@ -6236,13 +6240,13 @@ var require_rules_core = __commonJS({
         return ctx;
       }
       function cleanEffect(rules, raw) {
-        return isObj5(rules) && isObj5(rules.effects) ? cleanEffectIn(effectCtx(rules), raw) : null;
+        return isObj6(rules) && isObj6(rules.effects) ? cleanEffectIn(effectCtx(rules), raw) : null;
       }
       function sumMods(effects) {
         var out = {};
         (Array.isArray(effects) ? effects : []).forEach(function(e) {
-          (isObj5(e) && Array.isArray(e.mods) ? e.mods : []).forEach(function(m) {
-            if (!isObj5(m) || typeof m.key !== "string" || typeof m.n !== "number") return;
+          (isObj6(e) && Array.isArray(e.mods) ? e.mods : []).forEach(function(m) {
+            if (!isObj6(m) || typeof m.key !== "string" || typeof m.n !== "number") return;
             out[m.key] = Math.max(-FX.n, Math.min(FX.n, (has(out, m.key) ? out[m.key] : 0) + m.n));
           });
         });
@@ -6251,8 +6255,8 @@ var require_rules_core = __commonJS({
       function rollsFor(effects, resId) {
         var n = 0, up = false, down = false;
         (Array.isArray(effects) ? effects : []).forEach(function(e) {
-          (isObj5(e) && Array.isArray(e.rolls) ? e.rolls : []).forEach(function(r) {
-            if (!isObj5(r) || r.res !== resId) return;
+          (isObj6(e) && Array.isArray(e.rolls) ? e.rolls : []).forEach(function(r) {
+            if (!isObj6(r) || r.res !== resId) return;
             n += Number(r.n) || 0;
             if (r.adv > 0) up = true;
             if (r.adv < 0) down = true;
@@ -6272,19 +6276,19 @@ var require_rules_core = __commonJS({
       var IDENTITY = { tone: ["fantasy", "horror", "cyber", "scifi", "modern", "narrative"], audience: ["beginner", "veteran"], complexity: ["oneshot", "campaign"] };
       function validateIdentity(rules, errs) {
         var x = rules.identity;
-        if (!isObj5(x)) return errs.push({ path: "identity", message: say2("rules.v.identity") });
+        if (!isObj6(x)) return errs.push({ path: "identity", message: say2("rules.v.identity") });
         Object.keys(IDENTITY).forEach(function(k) {
           if (IDENTITY[k].indexOf(x[k]) < 0) errs.push({ path: "identity." + k, message: say2("rules.v.identity") });
         });
       }
       var byId = function(list2, id) {
         return (Array.isArray(list2) ? list2 : []).filter(function(x) {
-          return isObj5(x) && x.id === id;
+          return isObj6(x) && x.id === id;
         })[0];
       };
       function nameOf(rules, key) {
-        if (key === "def_reduction" && isObj5(rules.combat)) return say2("rules.reduction");
-        var stats = isObj5(rules.stats) ? rules.stats.list : [], skills = isObj5(rules.skills) ? rules.skills.list : [];
+        if (key === "def_reduction" && isObj6(rules.combat)) return say2("rules.reduction");
+        var stats = isObj6(rules.stats) ? rules.stats.list : [], skills = isObj6(rules.skills) ? rules.skills.list : [];
         var hit = byId(stats, key) || byId(rules.derived, key);
         if (hit) return cleanName(hit.name) || key;
         var m = /^(.+)_(mod|max)$/.exec(String(key));
@@ -6302,7 +6306,7 @@ var require_rules_core = __commonJS({
         });
       }
       function renameKey(rules, kind, from, to) {
-        if (!isObj5(rules) || typeof to !== "string" || from === to) return [];
+        if (!isObj6(rules) || typeof to !== "string" || from === to) return [];
         if (!(kind === "resolution" ? ID_RE3 : KEY_RE).test(to)) return [];
         var item = kind === "resolution" ? has(resolutionsOf(rules), from) ? resolutionsOf(rules)[from] : null : byId(kind === "stats" ? (rules.stats || {}).list : kind === "derived" ? rules.derived : (rules.skills || {}).list, from);
         if (!item) return [];
@@ -6332,27 +6336,27 @@ var require_rules_core = __commonJS({
           return has(map, k2) ? map[k2] : k2;
         };
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (!isObj5(d)) return;
+          if (!isObj6(d)) return;
           if (kind === "resolution" && d.rollWith === from) d.rollWith = to;
           var r = d.recipe;
-          if (!isObj5(r)) return;
+          if (!isObj6(r)) return;
           ["source", "level"].forEach(function(key) {
             if (typeof r[key] === "string") r[key] = fix(r[key]);
           });
           (Array.isArray(r.terms) ? r.terms : []).forEach(function(t) {
-            if (isObj5(t) && typeof t.ref === "string") t.ref = fix(t.ref);
+            if (isObj6(t) && typeof t.ref === "string") t.ref = fix(t.ref);
           });
           if (typeof r.formula === "string") r.formula = r.formula.replace(/@([a-z0-9_]+)/g, function(all, key) {
             return "@" + fix(key);
           });
         });
-        if (isObj5(rules.skills)) {
+        if (isObj6(rules.skills)) {
           if (kind === "derived" && rules.skills.proficiency === from) rules.skills.proficiency = to;
           if (kind === "stats") (Array.isArray(rules.skills.list) ? rules.skills.list : []).forEach(function(x) {
-            if (isObj5(x) && x.stat === from) x.stat = to;
+            if (isObj6(x) && x.stat === from) x.stat = to;
           });
         }
-        if (isObj5(rules.combat) && isObj5(rules.combat.attack) && isObj5(rules.combat.damage)) {
+        if (isObj6(rules.combat) && isObj6(rules.combat.attack) && isObj6(rules.combat.damage)) {
           var a = rules.combat.attack, dmg = rules.combat.damage;
           if (kind === "resolution" && a.rollWith === from) a.rollWith = to;
           if (typeof a.defense === "string") a.defense = fix(a.defense);
@@ -6362,23 +6366,23 @@ var require_rules_core = __commonJS({
           if (typeof dmg.health === "string") dmg.health = fix(dmg.health);
           if (typeof dmg.reduction === "string") dmg.reduction = fix(dmg.reduction);
         }
-        if (isObj5(rules.effects) && Array.isArray(rules.effects.states)) rules.effects.states.forEach(function(st) {
-          if (!isObj5(st)) return;
+        if (isObj6(rules.effects) && Array.isArray(rules.effects.states)) rules.effects.states.forEach(function(st) {
+          if (!isObj6(st)) return;
           (Array.isArray(st.mods) ? st.mods : []).forEach(function(mo) {
-            if (isObj5(mo) && typeof mo.key === "string") mo.key = fix(mo.key);
+            if (isObj6(mo) && typeof mo.key === "string") mo.key = fix(mo.key);
           });
           (Array.isArray(st.rolls) ? st.rolls : []).forEach(function(ro) {
-            if (isObj5(ro) && kind === "resolution" && ro.res === from) ro.res = to;
+            if (isObj6(ro) && kind === "resolution" && ro.res === from) ro.res = to;
           });
         });
         (Array.isArray(rules.rests) ? rules.rests : []).forEach(function(re) {
-          (isObj5(re) && Array.isArray(re.restore) ? re.restore : []).forEach(function(x) {
-            if (!isObj5(x)) return;
+          (isObj6(re) && Array.isArray(re.restore) ? re.restore : []).forEach(function(x) {
+            if (!isObj6(x)) return;
             if (typeof x.res === "string") x.res = fix(x.res);
             if (typeof x.key === "string") x.key = fix(x.key);
           });
         });
-        if (isObj5(rules.progression)) {
+        if (isObj6(rules.progression)) {
           var P = rules.progression;
           var skillId = function(k2) {
             return kind === "skills" && k2 === from ? to : k2;
@@ -6389,14 +6393,14 @@ var require_rules_core = __commonJS({
           var same = function(k2) {
             return k2;
           };
-          if (isObj5(P.xp) && Array.isArray(P.xp.onFail)) P.xp.onFail.forEach(function(x) {
-            if (isObj5(x)) x.res = resId(x.res);
+          if (isObj6(P.xp) && Array.isArray(P.xp.onFail)) P.xp.onFail.forEach(function(x) {
+            if (isObj6(x)) x.res = resId(x.res);
           });
-          if (isObj5(P.levels)) {
+          if (isObj6(P.levels)) {
             if (typeof P.levels.key === "string") P.levels.key = fix(P.levels.key);
             (Array.isArray(P.levels.gains) ? P.levels.gains : []).forEach(function(g) {
-              (isObj5(g) && Array.isArray(g.give) ? g.give : []).forEach(function(x) {
-                if (!isObj5(x)) return;
+              (isObj6(g) && Array.isArray(g.give) ? g.give : []).forEach(function(x) {
+                if (!isObj6(x)) return;
                 if (typeof x.key === "string") x.key = fix(x.key);
                 if (typeof x.plus === "string") x.plus = fix(x.plus);
                 if (Array.isArray(x.among)) x.among = x.among.map(x.kind === "train" ? skillId : x.kind === "pick" ? same : fix);
@@ -6404,29 +6408,29 @@ var require_rules_core = __commonJS({
             });
           }
           (Array.isArray(P.purchases) ? P.purchases : []).forEach(function(b) {
-            if (isObj5(b) && Array.isArray(b.keys)) b.keys = b.keys.map(b.what === "skill" ? skillId : b.what === "feature" ? same : fix);
+            if (isObj6(b) && Array.isArray(b.keys)) b.keys = b.keys.map(b.what === "skill" ? skillId : b.what === "feature" ? same : fix);
           });
-          if (isObj5(P.use) && Array.isArray(P.use.res)) P.use.res = P.use.res.map(resId);
+          if (isObj6(P.use) && Array.isArray(P.use.res)) P.use.res = P.use.res.map(resId);
         }
-        if (isObj5(rules.bar) && Array.isArray(rules.bar.items)) rules.bar.items.forEach(function(x) {
-          if (isObj5(x) && typeof x.key === "string") x.key = fix(x.key);
+        if (isObj6(rules.bar) && Array.isArray(rules.bar.items)) rules.bar.items.forEach(function(x) {
+          if (isObj6(x) && typeof x.key === "string") x.key = fix(x.key);
         });
-        if (kind === "skills" && isObj5(rules.creation) && isObj5(rules.creation.skills) && Array.isArray(rules.creation.skills.among)) rules.creation.skills.among = rules.creation.skills.among.map(function(k2) {
+        if (kind === "skills" && isObj6(rules.creation) && isObj6(rules.creation.skills) && Array.isArray(rules.creation.skills.among)) rules.creation.skills.among = rules.creation.skills.among.map(function(k2) {
           return k2 === from ? to : k2;
         });
-        if (isObj5(rules.library) && Array.isArray(rules.library.entries)) rules.library.entries.forEach(function(x) {
-          if (!isObj5(x)) return;
-          if (kind === "stats" && isObj5(x.values) && x.values.arm_carac === from) x.values.arm_carac = to;
+        if (isObj6(rules.library) && Array.isArray(rules.library.entries)) rules.library.entries.forEach(function(x) {
+          if (!isObj6(x)) return;
+          if (kind === "stats" && isObj6(x.values) && x.values.arm_carac === from) x.values.arm_carac = to;
           var ac = x.action;
-          if (!isObj5(ac)) return;
-          if (isObj5(ac.roll) && kind === "resolution" && ac.roll.res === from) ac.roll.res = to;
-          if (isObj5(ac.cost) && typeof ac.cost.res === "string") ac.cost.res = fix(ac.cost.res);
+          if (!isObj6(ac)) return;
+          if (isObj6(ac.roll) && kind === "resolution" && ac.roll.res === from) ac.roll.res = to;
+          if (isObj6(ac.cost) && typeof ac.cost.res === "string") ac.cost.res = fix(ac.cost.res);
         });
         return kind === "resolution" ? [[from, to]] : pairs;
       }
       var ROUND_TEXT = { down: "rules.x.fractionDown", up: "rules.x.fractionUp", near: "rules.x.fractionNear" };
       function explain(rules, key, valueOf) {
-        if (!isObj5(rules)) return "";
+        if (!isObj6(rules)) return "";
         var val = typeof valueOf === "function" ? valueOf : null;
         var ref = function(k) {
           return val ? String(val(k)) + " (" + nameOf(rules, k) + ")" : nameOf(rules, k);
@@ -6442,7 +6446,7 @@ var require_rules_core = __commonJS({
         var words = "";
         var d = byId(rules.derived, key);
         var mod = /^(.+)_mod$/.exec(String(key)), total = /^sk_(.+)_t$/.exec(String(key));
-        if (d && isObj5(d.recipe)) {
+        if (d && isObj6(d.recipe)) {
           var r = d.recipe;
           if (r.kind === "modifier") words = say2("rules.x.modifier", { of: ref(r.source) });
           else if (r.kind === "sum") words = joined(r.terms);
@@ -6456,10 +6460,10 @@ var require_rules_core = __commonJS({
           else if (r.kind === "raw") words = String(r.formula).replace(/@([a-z0-9_]+)/g, function(all, k) {
             return ref(k);
           });
-        } else if (mod && isObj5(rules.stats) && byId(rules.stats.list, mod[1])) words = say2("rules.x.modifier", { of: ref(mod[1]) });
-        else if (total && isObj5(rules.skills) && byId(rules.skills.list, total[1])) {
+        } else if (mod && isObj6(rules.stats) && byId(rules.stats.list, mod[1])) words = say2("rules.x.modifier", { of: ref(mod[1]) });
+        else if (total && isObj6(rules.skills) && byId(rules.skills.list, total[1])) {
           var x = byId(rules.skills.list, total[1]), parts = [];
-          if (x.stat && readKind(rules) !== "under" && isObj5(rules.stats)) parts.push(ref(statAdd(rules, x.stat).slice(1)));
+          if (x.stat && readKind(rules) !== "under" && isObj6(rules.stats)) parts.push(ref(statAdd(rules, x.stat).slice(1)));
           if (rules.skills.rank === "trained") {
             parts.push(say2("rules.x.ifTrained", { prof: ref(rules.skills.proficiency) }));
             if (rules.skills.expertise) parts.push(say2("rules.x.ifExpert", { prof: ref(rules.skills.proficiency) }));
@@ -6487,8 +6491,8 @@ var require_rules_core = __commonJS({
         ] };
       }
       function starterDerived(rules) {
-        var fam = isObj5(rules.resolution) ? rules.resolution.family : "custom";
-        var stats = isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : [];
+        var fam = isObj6(rules.resolution) ? rules.resolution.family : "custom";
+        var stats = isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : [];
         var add = function(x) {
           return x ? rules.stats.form === "score" ? x.id + "_mod" : x.id : null;
         };
@@ -6520,10 +6524,10 @@ var require_rules_core = __commonJS({
         });
       }
       function starterSkills(rules) {
-        var fam = isObj5(rules.resolution) ? rules.resolution.family : "custom";
-        var stats = isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : [];
+        var fam = isObj6(rules.resolution) ? rules.resolution.family : "custom";
+        var stats = isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : [];
         var prof = (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
-          return isObj5(d) && d.id === "maitrise";
+          return isObj6(d) && d.id === "maitrise";
         })[0];
         var rank = prof ? "trained" : fam === "d100" || fam === "d100deg" ? "percent" : fam === "pool10" || fam === "pool6best" ? "dots" : "bonus";
         return { mode: "fixed", rank, proficiency: prof ? "maitrise" : null, expertise: false, list: [
@@ -6575,15 +6579,15 @@ var require_rules_core = __commonJS({
         energie: "rules.dt.energie"
       };
       function starterCombat(rules) {
-        var derived = Array.isArray(rules.derived) ? rules.derived.filter(isObj5) : [];
+        var derived = Array.isArray(rules.derived) ? rules.derived.filter(isObj6) : [];
         var health = derived.filter(function(d) {
           return d.resource;
         })[0];
-        if (!health || !isObj5(rules.resolution)) return null;
-        var stats = isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj5).map(function(x) {
+        if (!health || !isObj6(rules.resolution)) return null;
+        var stats = isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj6).map(function(x) {
           return x.id;
         }) : [];
-        var tone = isObj5(rules.identity) && has(STARTER_TYPES, rules.identity.tone) ? rules.identity.tone : "fantasy";
+        var tone = isObj6(rules.identity) && has(STARTER_TYPES, rules.identity.tone) ? rules.identity.tone : "fantasy";
         return {
           attack: {
             rollWith: rules.resolution.id,
@@ -6597,7 +6601,7 @@ var require_rules_core = __commonJS({
             finesse: stats.length >= 2 ? [stats[0], stats[1]] : null
           },
           damage: {
-            addStat: isObj5(rules.stats) && rules.stats.form === "score",
+            addStat: isObj6(rules.stats) && rules.stats.form === "score",
             critical: "double",
             types: STARTER_TYPES[tone].map(function(id) {
               return { id, name: say2(TYPE_TEXT[id]) };
@@ -6616,14 +6620,14 @@ var require_rules_core = __commonJS({
         narrative: []
       };
       function starterEffects(rules) {
-        if (!isObj5(rules.resolution)) return null;
-        var tone = isObj5(rules.identity) && has(STARTER_STATES, rules.identity.tone) ? rules.identity.tone : "fantasy";
+        if (!isObj6(rules.resolution)) return null;
+        var tone = isObj6(rules.identity) && has(STARTER_STATES, rules.identity.tone) ? rules.identity.tone : "fantasy";
         var res = rules.resolution, k = res.read ? res.read.kind : "over";
         var step = res.dice && res.dice.count === "pool" ? 1 : k === "under" ? 20 : 2;
         var main2 = res.id, rests = Array.isArray(rules.rests) ? rules.rests : [];
         var last = rests.length ? rests[rests.length - 1].id : null;
         var defence = (Array.isArray(rules.derived) ? rules.derived : []).some(function(d) {
-          return isObj5(d) && d.id === "defense" && d.recipe && d.recipe.kind !== "input" && !d.resource;
+          return isObj6(d) && d.id === "defense" && d.recipe && d.recipe.kind !== "input" && !d.resource;
         });
         var s = function(id, mods, rolls, end) {
           return { id, name: say2("rules.state." + id), icon: id, mods, rolls, resist: [], vuln: [], end: { rounds: end.rounds || null, at: "end", rest: end.rest || null } };
@@ -6666,7 +6670,7 @@ var require_rules_core = __commonJS({
       }
       function starterRests(rules) {
         var res = (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
-          return isObj5(d) && d.resource;
+          return isObj6(d) && d.resource;
         });
         if (!res.length) return null;
         return [
@@ -6684,28 +6688,28 @@ var require_rules_core = __commonJS({
         return has(PROG_BY_FAMILY, fam) ? PROG_BY_FAMILY[fam] : null;
       }
       function starterProgression(rules, kind) {
-        var fam = isObj5(rules.resolution) ? rules.resolution.family : "custom";
+        var fam = isObj6(rules.resolution) ? rules.resolution.family : "custom";
         kind = kind || progKindOf(fam);
         if (PROG_KINDS.indexOf(kind) < 0) return null;
-        var derived = Array.isArray(rules.derived) ? rules.derived.filter(isObj5) : [];
+        var derived = Array.isArray(rules.derived) ? rules.derived.filter(isObj6) : [];
         var level = derived.filter(function(d) {
           return d.id === "niveau";
         })[0] || null;
-        var stats = isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj5).map(function(x) {
+        var stats = isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj6).map(function(x) {
           return x.id;
         }) : [];
-        var sk = isObj5(rules.skills) && rules.skills.mode === "fixed" && Array.isArray(rules.skills.list) && rules.skills.list.length ? rules.skills : null;
+        var sk = isObj6(rules.skills) && rules.skills.mode === "fixed" && Array.isArray(rules.skills.list) && rules.skills.list.length ? rules.skills : null;
         var hp = derived.filter(function(d) {
           return d.resource;
         })[0] || null;
-        var main2 = isObj5(rules.resolution) ? rules.resolution.id : "test";
+        var main2 = isObj6(rules.resolution) ? rules.resolution.id : "test";
         var xp = { id: "xp", name: say2("rules.p.xp"), onFail: [] };
         var feature = function(id) {
           return { id, name: say2("rules.p.f." + id), text: say2("rules.p.f." + id + ".text") };
         };
         var add = [], prog = null;
         if (kind === "levels" || kind === "advances") {
-          if (level && (!isObj5(level.recipe) || level.recipe.kind !== "input")) return null;
+          if (level && (!isObj6(level.recipe) || level.recipe.kind !== "input")) return null;
           if (!level) {
             level = { id: "niveau", name: say2("rules.der.level"), recipe: { kind: "input", min: 1, max: kind === "levels" ? 20 : 10, "default": 1 }, show: "field" };
             add.push(level);
@@ -6714,8 +6718,8 @@ var require_rules_core = __commonJS({
         if (kind === "levels") {
           var gains = [];
           if (hp) {
-            var ref = isObj5(hp.recipe) && Array.isArray(hp.recipe.terms) ? hp.recipe.terms.filter(function(t) {
-              return isObj5(t) && typeof t.ref === "string";
+            var ref = isObj6(hp.recipe) && Array.isArray(hp.recipe.terms) ? hp.recipe.terms.filter(function(t) {
+              return isObj6(t) && typeof t.ref === "string";
             })[0] : null;
             gains.push({ when: { every: 1, from: 2 }, give: [{ kind: "add", key: hp.id, dice: "1d8", plus: ref ? ref.ref : null, how: "player" }] });
           }
@@ -6731,7 +6735,7 @@ var require_rules_core = __commonJS({
           prog = { xp: null, levels: null, purchases: null, use: { res: [main2], on: "success", test: "1d100", beat: "value", gain: "1d10" }, features: [] };
         } else {
           var buys = [];
-          var statMax = isObj5(rules.stats) && isInt(rules.stats.max, 1, LIMITS2.add) ? rules.stats.max : 5;
+          var statMax = isObj6(rules.stats) && isInt(rules.stats.max, 1, LIMITS2.add) ? rules.stats.max : 5;
           if (stats.length) buys.push({ id: "carac", name: say2("rules.p.buyStat"), what: "stat", keys: "any", price: fam === "fate" ? "@r*2" : "@r*5", max: statMax });
           if (sk) buys.push({ id: "competence", name: say2("rules.p.buySkill"), what: "skill", keys: "any", price: fam === "fate" ? "@r" : "@r*3", max: sk.rank === "trained" ? 1 : sk.rank === "dots" ? 5 : sk.rank === "percent" ? 100 : 5 });
           buys.push({ id: "aptitude", name: say2("rules.p.buyFeature"), what: "feature", keys: "any", price: 7, max: 1 });
@@ -6817,26 +6821,26 @@ var require_rules_core = __commonJS({
       var BAR_MAX = 6;
       function resourceIds(rules) {
         return (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
-          return isObj5(d) && d.resource === true && typeof d.id === "string";
+          return isObj6(d) && d.resource === true && typeof d.id === "string";
         }).map(function(d) {
           return d.id;
         });
       }
       function hasInitiative(rules) {
         return (Array.isArray(rules.derived) ? rules.derived : []).some(function(d) {
-          return isObj5(d) && d.id === "initiative" && d.rollable === true;
+          return isObj6(d) && d.id === "initiative" && d.rollable === true;
         });
       }
       function hasStates(rules) {
-        return isObj5(rules.effects) && Array.isArray(rules.effects.states) && rules.effects.states.length > 0;
+        return isObj6(rules.effects) && Array.isArray(rules.effects.states) && rules.effects.states.length > 0;
       }
       function barItems(rules) {
-        if (!isObj5(rules)) return [];
-        if (isObj5(rules.bar)) return rules.bar.on === false ? [] : Array.isArray(rules.bar.items) ? rules.bar.items.filter(isObj5).slice(0, BAR_MAX) : [];
-        var out = [], c = isObj5(rules.combat) ? rules.combat : null;
-        var health = c && isObj5(c.damage) && typeof c.damage.health === "string" ? c.damage.health : null;
+        if (!isObj6(rules)) return [];
+        if (isObj6(rules.bar)) return rules.bar.on === false ? [] : Array.isArray(rules.bar.items) ? rules.bar.items.filter(isObj6).slice(0, BAR_MAX) : [];
+        var out = [], c = isObj6(rules.combat) ? rules.combat : null;
+        var health = c && isObj6(c.damage) && typeof c.damage.health === "string" ? c.damage.health : null;
         if (health) out.push({ kind: "health", key: health });
-        if (c && isObj5(c.attack) && typeof c.attack.defense === "string") out.push({ kind: "value", key: c.attack.defense });
+        if (c && isObj6(c.attack) && typeof c.attack.defense === "string") out.push({ kind: "value", key: c.attack.defense });
         if (hasInitiative(rules)) out.push({ kind: "initiative" });
         resourceIds(rules).filter(function(k) {
           return k !== health;
@@ -6851,14 +6855,14 @@ var require_rules_core = __commonJS({
         var e = function(p, key, vars) {
           errs.push({ path: "bar" + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj5(b)) return e("", "rules.v.bar");
+        if (!isObj6(b)) return e("", "rules.v.bar");
         if (b.on !== void 0 && typeof b.on !== "boolean") e("on", "rules.v.bar");
         if (!Array.isArray(b.items)) return e("items", "rules.v.bar");
         if (b.items.length > BAR_MAX) return e("items", "rules.v.tooMany", { max: BAR_MAX });
         var res = resourceIds(rules), values = valueKeys(rules), seen = {};
         b.items.forEach(function(x, i) {
           var at = "items." + i;
-          if (!isObj5(x) || BAR_KINDS.indexOf(x.kind) < 0) return e(at + ".kind", "rules.v.bar");
+          if (!isObj6(x) || BAR_KINDS.indexOf(x.kind) < 0) return e(at + ".kind", "rules.v.bar");
           var id = x.kind + ":" + (x.key || "");
           if (has(seen, id)) e(at, "rules.v.barTwice");
           seen[id] = true;
@@ -6885,7 +6889,7 @@ var require_rules_core = __commonJS({
       var STANDARD_ARRAY = [15, 14, 13, 12, 10, 8];
       var STANDARD_COSTS = { "8": 0, "9": 1, "10": 2, "11": 3, "12": 4, "13": 5, "14": 7, "15": 9 };
       function genSettings(s) {
-        if (!isObj5(s) || !isObj5(s.generation) || GENERATIONS.indexOf(s.generation.method) < 0) return null;
+        if (!isObj6(s) || !isObj6(s.generation) || GENERATIONS.indexOf(s.generation.method) < 0) return null;
         var g = s.generation, n = Array.isArray(s.list) ? s.list.length : 0, lo = s.min, hi = s.max;
         var inBounds = function(v2) {
           return isInt(v2, lo, hi);
@@ -6897,7 +6901,7 @@ var require_rules_core = __commonJS({
           return { method: "array", values: std };
         }
         if (g.method === "pointbuy") {
-          if (isObj5(g.costs) && isInt(g.budget, 1, CREA.budget)) return { method: "pointbuy", budget: g.budget, costs: JSON.parse(JSON.stringify(g.costs)) };
+          if (isObj6(g.costs) && isInt(g.budget, 1, CREA.budget)) return { method: "pointbuy", budget: g.budget, costs: JSON.parse(JSON.stringify(g.costs)) };
           if (Object.keys(STANDARD_COSTS).every(function(k) {
             return inBounds(Number(k));
           })) return { method: "pointbuy", budget: 27, costs: JSON.parse(JSON.stringify(STANDARD_COSTS)) };
@@ -6909,14 +6913,14 @@ var require_rules_core = __commonJS({
         return { method: g.method };
       }
       function genProblems(g, n, lo, hi, form, e) {
-        if (!isObj5(g)) return;
+        if (!isObj6(g)) return;
         var inBounds = function(v) {
           return isInt(v, lo, hi);
         };
         if ((g.method === "4d6drop" || g.method === "3d6") && form !== "score") e("generation.method", "rules.v.genScore");
         if (g.method === "array" && g.values !== void 0 && !(Array.isArray(g.values) && g.values.length === n && g.values.every(inBounds))) e("generation.values", "rules.v.genValues", { n, min: lo, max: hi });
         if (g.method === "pointbuy" && (g.costs !== void 0 || g.budget !== void 0)) {
-          var keys = isObj5(g.costs) ? Object.keys(g.costs) : [];
+          var keys = isObj6(g.costs) ? Object.keys(g.costs) : [];
           if (!isInt(g.budget, 1, CREA.budget)) e("generation.budget", "rules.v.genBudget", { max: CREA.budget });
           if (keys.length < 2 || keys.length > CREA.costs || !keys.every(function(k) {
             return /^-?\d+$/.test(k) && inBounds(Number(k)) && isInt(g.costs[k], 0, CREA.cost);
@@ -6925,22 +6929,22 @@ var require_rules_core = __commonJS({
         if (g.method === "free" && g.total !== void 0 && !isInt(g.total, lo * n, hi * n)) e("generation.total", "rules.v.genTotal", { min: lo * n, max: hi * n });
       }
       function levelBounds(rules) {
-        var P = rules.progression, L = isObj5(P) && isObj5(P.levels) ? P.levels : null;
+        var P = rules.progression, L = isObj6(P) && isObj6(P.levels) ? P.levels : null;
         var d = L ? byId(rules.derived, L.key) : null;
-        return d && isObj5(d.recipe) && isInt(d.recipe.max, 2, LIMITS2.add) ? { key: L.key, max: d.recipe.max } : null;
+        return d && isObj6(d.recipe) && isInt(d.recipe.max, 2, LIMITS2.add) ? { key: L.key, max: d.recipe.max } : null;
       }
       function validateCreation(rules, errs) {
         var c = rules.creation;
         var e = function(p, key, vars) {
           errs.push({ path: "creation" + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj5(c)) return e("", "rules.v.crea");
+        if (!isObj6(c)) return e("", "rules.v.crea");
         if (c.order !== void 0 && ORDERS.indexOf(c.order) < 0) e("order", "rules.v.creaOrder");
         if (c.skills !== void 0 && c.skills !== null) {
-          var sk = isObj5(rules.skills) && rules.skills.rank === "trained" && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj5).map(function(x) {
+          var sk = isObj6(rules.skills) && rules.skills.rank === "trained" && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj6).map(function(x) {
             return x.id;
           }) : null;
-          if (!sk || !isObj5(c.skills)) e("skills", "rules.v.creaSkills");
+          if (!sk || !isObj6(c.skills)) e("skills", "rules.v.creaSkills");
           else {
             var among = c.skills.among === "any" ? sk : c.skills.among;
             if (!Array.isArray(among) || !among.length || !among.every(function(id) {
@@ -6959,8 +6963,8 @@ var require_rules_core = __commonJS({
           var pools = libraryPools(rules), seen = {};
           c.picks.forEach(function(p, i) {
             var at = "picks." + i;
-            var g = isObj5(p) && isObj5(rules.library) && Array.isArray(rules.library.genres) ? rules.library.genres.filter(function(x) {
-              return isObj5(x) && x.id === p.genre;
+            var g = isObj6(p) && isObj6(rules.library) && Array.isArray(rules.library.genres) ? rules.library.genres.filter(function(x) {
+              return isObj6(x) && x.id === p.genre;
             })[0] : null;
             if (!g || g.kind === "feature") return e(at + ".genre", "rules.v.creaPick");
             if (has(seen, g.id)) e(at + ".genre", "rules.v.creaPickTwice");
@@ -6971,7 +6975,7 @@ var require_rules_core = __commonJS({
               byField[f.id] = f;
             });
             if (p.filter !== void 0 && p.filter !== null) {
-              if (!isObj5(p.filter) || !Object.keys(p.filter).every(function(k) {
+              if (!isObj6(p.filter) || !Object.keys(p.filter).every(function(k) {
                 var f = byField[k];
                 return f && f.type === "choice" && Array.isArray(p.filter[k]) && p.filter[k].length > 0 && p.filter[k].every(function(o) {
                   return (f.options || []).indexOf(o) >= 0;
@@ -6979,7 +6983,7 @@ var require_rules_core = __commonJS({
               })) e(at + ".filter", "rules.v.creaFilter");
             }
             if (p.max !== void 0 && p.max !== null) {
-              if (!isObj5(p.max) || !Object.keys(p.max).every(function(k) {
+              if (!isObj6(p.max) || !Object.keys(p.max).every(function(k) {
                 var f = byField[k];
                 return f && f.type === "number" && isInt(p.max[k], -LIB.n, LIB.n);
               })) e(at + ".max", "rules.v.creaFilter");
@@ -6988,11 +6992,11 @@ var require_rules_core = __commonJS({
         }
       }
       function creationCtx(rules, ask) {
-        var c = isObj5(rules.creation) ? rules.creation : {};
-        var s = isObj5(rules.stats) ? rules.stats : null;
+        var c = isObj6(rules.creation) ? rules.creation : {};
+        var s = isObj6(rules.stats) ? rules.stats : null;
         var skills = null;
-        if (isObj5(c.skills) && isObj5(rules.skills) && Array.isArray(rules.skills.list)) {
-          var all = rules.skills.list.filter(isObj5);
+        if (isObj6(c.skills) && isObj6(rules.skills) && Array.isArray(rules.skills.list)) {
+          var all = rules.skills.list.filter(isObj6);
           var among = c.skills.among === "any" ? all.map(function(x) {
             return x.id;
           }) : c.skills.among.slice();
@@ -7004,56 +7008,56 @@ var require_rules_core = __commonJS({
         }
         var lb = levelBounds(rules);
         return JSON.parse(JSON.stringify({
-          stats: s ? { form: s.form, min: s.min, max: s.max, list: s.list.filter(isObj5).map(function(x) {
+          stats: s ? { form: s.form, min: s.min, max: s.max, list: s.list.filter(isObj6).map(function(x) {
             return { id: x.id, name: cleanName(x.name) || x.id };
           }), gen: genSettings(s) } : null,
           order: ORDERS.indexOf(c.order) >= 0 ? c.order : "assign",
           skills,
           level: isInt(c.level, 1, LIMITS2.add) ? c.level : 1,
           levelKey: lb ? lb.key : null,
-          picks: Array.isArray(c.picks) ? c.picks.filter(isObj5).map(function(p) {
-            return { genre: p.genre, n: p.n, filter: isObj5(p.filter) ? p.filter : null, max: isObj5(p.max) ? p.max : null };
+          picks: Array.isArray(c.picks) ? c.picks.filter(isObj6).map(function(p) {
+            return { genre: p.genre, n: p.n, filter: isObj6(p.filter) ? p.filter : null, max: isObj6(p.max) ? p.max : null };
           }) : [],
           ask: (Array.isArray(ask) ? ask : []).filter(function(a) {
-            return isObj5(a) && typeof a.id === "string" && KEY_RE.test(a.id);
+            return isObj6(a) && typeof a.id === "string" && KEY_RE.test(a.id);
           }).slice(0, CREA.ask).map(function(a) {
             return { id: a.id, name: cleanName(a.name) || a.id };
           })
         }));
       }
       function cleanCreationCtx(raw) {
-        if (!isObj5(raw)) return null;
+        if (!isObj6(raw)) return null;
         var ok = true, bad3 = function() {
           ok = false;
         };
-        var st = raw.stats === null ? null : isObj5(raw.stats) ? raw.stats : void 0;
+        var st = raw.stats === null ? null : isObj6(raw.stats) ? raw.stats : void 0;
         if (st === void 0) return null;
         if (st) {
           if (STAT_FORMS.indexOf(st.form) < 0 || !isInt(st.min, -LIMITS2.add, LIMITS2.add) || !isInt(st.max, -LIMITS2.add, LIMITS2.add) || st.min >= st.max) return null;
           if (!Array.isArray(st.list) || !st.list.length || st.list.length > LIMITS2.stats || !st.list.every(function(x) {
-            return isObj5(x) && typeof x.id === "string" && KEY_RE.test(x.id);
+            return isObj6(x) && typeof x.id === "string" && KEY_RE.test(x.id);
           })) return null;
-          if (st.gen !== null && !(isObj5(st.gen) && GENERATIONS.indexOf(st.gen.method) >= 0)) return null;
+          if (st.gen !== null && !(isObj6(st.gen) && GENERATIONS.indexOf(st.gen.method) >= 0)) return null;
           if (st.gen) genProblems(st.gen, st.list.length, st.min, st.max, st.form, bad3);
-          if (st.gen && (st.gen.method === "array" && !Array.isArray(st.gen.values) || st.gen.method === "pointbuy" && !isObj5(st.gen.costs) || st.gen.method === "free" && !isInt(st.gen.total, -LIMITS2.add * LIMITS2.stats, LIMITS2.add * LIMITS2.stats))) return null;
+          if (st.gen && (st.gen.method === "array" && !Array.isArray(st.gen.values) || st.gen.method === "pointbuy" && !isObj6(st.gen.costs) || st.gen.method === "free" && !isInt(st.gen.total, -LIMITS2.add * LIMITS2.stats, LIMITS2.add * LIMITS2.stats))) return null;
         }
         if (ORDERS.indexOf(raw.order) < 0 || !isInt(raw.level, 1, LIMITS2.add)) return null;
         if (raw.levelKey !== null && !(typeof raw.levelKey === "string" && KEY_RE.test(raw.levelKey))) return null;
         if (raw.level > 1 && raw.levelKey === null) return null;
         var sk = raw.skills;
-        if (sk !== null && !(isObj5(sk) && Array.isArray(sk.among) && sk.among.length && sk.among.length <= LIMITS2.skills && sk.among.every(function(id) {
+        if (sk !== null && !(isObj6(sk) && Array.isArray(sk.among) && sk.among.length && sk.among.length <= LIMITS2.skills && sk.among.every(function(id) {
           return typeof id === "string" && KEY_RE.test(id);
         }) && isInt(sk.pick, 1, sk.among.length))) return null;
         if (!Array.isArray(raw.picks) || raw.picks.length > CREA.picks || !raw.picks.every(function(p) {
-          return isObj5(p) && typeof p.genre === "string" && /^[a-z][a-z0-9]{0,11}$/.test(p.genre) && isInt(p.n, 1, CREA.pickN) && (p.filter === null || isObj5(p.filter)) && (p.max === null || isObj5(p.max));
+          return isObj6(p) && typeof p.genre === "string" && /^[a-z][a-z0-9]{0,11}$/.test(p.genre) && isInt(p.n, 1, CREA.pickN) && (p.filter === null || isObj6(p.filter)) && (p.max === null || isObj6(p.max));
         })) return null;
         if (!Array.isArray(raw.ask) || raw.ask.length > CREA.ask || !raw.ask.every(function(a) {
-          return isObj5(a) && typeof a.id === "string" && KEY_RE.test(a.id);
+          return isObj6(a) && typeof a.id === "string" && KEY_RE.test(a.id);
         })) return null;
         if (!ok) return null;
         var names = {};
         if (sk) sk.among.forEach(function(id) {
-          names[id] = isObj5(sk.names) && typeof sk.names[id] === "string" ? cleanName(sk.names[id]) || id : id;
+          names[id] = isObj6(sk.names) && typeof sk.names[id] === "string" ? cleanName(sk.names[id]) || id : id;
         });
         return JSON.parse(JSON.stringify({
           stats: st ? { form: st.form, min: st.min, max: st.max, list: st.list.map(function(x) {
@@ -7105,13 +7109,13 @@ var require_rules_core = __commonJS({
         });
       }
       function readCreation(ctx, answers, rolled, visible) {
-        var a = isObj5(answers) ? answers : {}, errors = [], writes = { name: "", identity: {}, stats: {}, skills: [], picks: [] };
+        var a = isObj6(answers) ? answers : {}, errors = [], writes = { name: "", identity: {}, stats: {}, skills: [], picks: [] };
         var fault = function(key, vars) {
           errors.push(say2(key, vars));
         };
         writes.name = cleanName(a.name);
         if (!writes.name) fault("rules.c.noName");
-        var idn = isObj5(a.identity) ? a.identity : {};
+        var idn = isObj6(a.identity) ? a.identity : {};
         ctx.ask.forEach(function(f) {
           var v = idn[f.id];
           if (v === void 0 || v === null || v === "") return;
@@ -7123,7 +7127,7 @@ var require_rules_core = __commonJS({
           var ids = st.list.map(function(x) {
             return x.id;
           });
-          var got = isObj5(a.stats) ? a.stats : {};
+          var got = isObj6(a.stats) ? a.stats : {};
           var vals = ids.map(function(id) {
             return got[id];
           });
@@ -7163,12 +7167,12 @@ var require_rules_core = __commonJS({
           else writes.skills = sk.slice();
         }
         var list2 = Array.isArray(visible) ? visible : [];
-        var chosen = Array.isArray(a.picks) ? a.picks.filter(isObj5) : [];
+        var chosen = Array.isArray(a.picks) ? a.picks.filter(isObj6) : [];
         var taken = {};
         ctx.picks.forEach(function(p) {
           var allowed = list2.filter(function(x) {
             if (x.genre !== p.genre) return false;
-            var v = isObj5(x.values) ? x.values : {};
+            var v = isObj6(x.values) ? x.values : {};
             if (p.filter && !Object.keys(p.filter).every(function(k) {
               return p.filter[k].indexOf(v[k]) >= 0;
             })) return false;
@@ -7314,9 +7318,9 @@ var require_rules_core = __commonJS({
   }
 });
 
-// apps/desktop/renderer/builder-core.js
+// ../VTT/tabletop-desktop/apps/desktop/renderer/builder-core.js
 var require_builder_core = __commonJS({
-  "apps/desktop/renderer/builder-core.js"(exports2, module2) {
+  "../VTT/tabletop-desktop/apps/desktop/renderer/builder-core.js"(exports2, module2) {
     "use strict";
     (function(root, factory) {
       if (typeof module2 === "object" && module2.exports) module2.exports = factory();
@@ -7735,7 +7739,7 @@ var require_builder_core = __commonJS({
       };
       function slots(n) {
         if (!n) return [];
-        if (n.className === "Tab") return (Array.isArray(n.tabs) ? n.tabs : []).filter(isObj5).map(function(t) {
+        if (n.className === "Tab") return (Array.isArray(n.tabs) ? n.tabs : []).filter(isObj6).map(function(t) {
           return { list: Array.isArray(t.children) ? t.children : [], key: "tab:" + t.id, tab: t };
         });
         if (n.className === "Repeater") return [{ list: Array.isArray(n.children) ? n.children : [], key: "edit", area: "edit" }, { list: Array.isArray(n.readChildren) ? n.readChildren : [], key: "read", area: "read" }];
@@ -7745,7 +7749,7 @@ var require_builder_core = __commonJS({
         var out = {};
         function visit(list2) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-            if (!isObj5(n)) return;
+            if (!isObj6(n)) return;
             if (n.className === "NumberInput" && (withComputed || !n.computed) && typeof n.id === "string") out[n.id] = n;
             if (n.className === "Repeater") return;
             slots(n).forEach(function(sl) {
@@ -7754,14 +7758,14 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj5(v)) visit(v.children);
+          if (isObj6(v)) visit(v.children);
         });
         return out;
       }
       function hasValue(n) {
         return !!(n && (COMPONENTS[n.className].value || n.className === "Label" && n.computed));
       }
-      var isObj5 = function(v) {
+      var isObj6 = function(v) {
         return v !== null && typeof v === "object" && !Array.isArray(v);
       };
       var own = function(o, k) {
@@ -8097,7 +8101,7 @@ var require_builder_core = __commonJS({
         };
       }
       function upgradeDoc(doc) {
-        if (!isObj5(doc) || !("theme" in doc)) return doc;
+        if (!isObj6(doc) || !("theme" in doc)) return doc;
         var out = Object.assign({}, doc);
         out.skins = doc.theme ? [{ id: "defaut", get name() {
           return say2("builder.parDefaut");
@@ -8112,12 +8116,12 @@ var require_builder_core = __commonJS({
         var seen = {};
         skins.forEach(function(s, i) {
           var label = "Skin " + (i + 1);
-          if (!isObj5(s)) return err("theme", label + " illisible.");
+          if (!isObj6(s)) return err("theme", label + " illisible.");
           if (typeof s.id !== "string" || !Theme.SKIN_ID_RE.test(s.id)) err("theme", say2("builder.skin.badId", { label }));
           else if (seen[s.id]) err("theme", say2("builder.skin.duplicate", { id: s.id }));
           else seen[s.id] = true;
           if (typeof s.name !== "string" || !cleanText2(s.name, 100).trim() || s.name.length > 40) err("theme", say2("builder.skin.badName", { label }));
-          if (!isObj5(s.theme)) return err("theme", label + " : apparence manquante.");
+          if (!isObj6(s.theme)) return err("theme", label + " : apparence manquante.");
           Theme.validateTheme(s.theme, doc.assets).forEach(function(m) {
             err("theme", label + " : " + m);
           });
@@ -8186,9 +8190,9 @@ var require_builder_core = __commonJS({
         }
       }
       function syncBound(doc, opts) {
-        if (!isObj5(doc) || !isObj5(doc.rules) || !allNodes(doc).some(function(n) {
+        if (!isObj6(doc) || !isObj6(doc.rules) || !allNodes(doc).some(function(n) {
           return typeof n.bind === "string";
-        }) && !isObj5(doc.rules.effects) && !isObj5(doc.rules.progression)) return doc;
+        }) && !isObj6(doc.rules.effects) && !isObj6(doc.rules.progression)) return doc;
         if (Rules.validateRules(doc.rules).length) return doc;
         var copy = opts && opts.inPlace ? doc : JSON.parse(JSON.stringify(doc));
         var alone = {};
@@ -8264,7 +8268,7 @@ var require_builder_core = __commonJS({
         var warn = function(id, message2) {
           warnings.push({ id: id || null, message: message2 });
         };
-        if (!isObj5(doc) || doc.v !== 1 && doc.v !== 2) {
+        if (!isObj6(doc) || doc.v !== 1 && doc.v !== 2) {
           err(null, "Document illisible.");
           return { ok: false, errors, warnings };
         }
@@ -8276,12 +8280,12 @@ var require_builder_core = __commonJS({
             errors.push({ id: "rules", path: e.path, message: e.message });
           });
           resolutions = Rules.resolutionsOf(doc.rules);
-          var PR = isObj5(doc.rules) && isObj5(doc.rules.progression) ? doc.rules.progression : null;
+          var PR = isObj6(doc.rules) && isObj6(doc.rules.progression) ? doc.rules.progression : null;
           if (PR) {
             var progFormulas = [];
-            if (isObj5(PR.levels) && isObj5(PR.levels.cost)) progFormulas.push(PR.levels.cost.f, PR.levels.cost.then);
+            if (isObj6(PR.levels) && isObj6(PR.levels.cost)) progFormulas.push(PR.levels.cost.f, PR.levels.cost.then);
             (Array.isArray(PR.purchases) ? PR.purchases : []).forEach(function(b) {
-              if (isObj5(b)) progFormulas.push(b.price);
+              if (isObj6(b)) progFormulas.push(b.price);
             });
             progFormulas.forEach(function(f) {
               if (typeof f === "string" && !parseFormula(f).ok) err(null, say2("builder.prog.formula", { f }));
@@ -8316,7 +8320,7 @@ var require_builder_core = __commonJS({
         function check(n, depth, parent, scope) {
           count++;
           if (count > maxNodes) return;
-          if (!isObj5(n) || !COMPONENTS[n.className]) {
+          if (!isObj6(n) || !COMPONENTS[n.className]) {
             err(n && n.id, say2("builder.unknownComponent", { name: n && n.className }));
             return;
           }
@@ -8338,7 +8342,7 @@ var require_builder_core = __commonJS({
             else if (typeof n.bind !== "string" || seenBind[n.bind]) err(n.id, say2("builder.bind.twice", { bind: String(n.bind) }));
             else {
               seenBind[n.bind] = true;
-              if (!isObj5(doc.rules) || !Rules.bindKnown(doc.rules, n.bind)) warn(n.id, say2("builder.bind.orphan", { bind: n.bind }));
+              if (!isObj6(doc.rules) || !Rules.bindKnown(doc.rules, n.bind)) warn(n.id, say2("builder.bind.orphan", { bind: n.bind }));
               else if (Rules.layoutProblem(n.bind, n.bindLayout)) err(n.id, say2("builder.bind.layout"));
             }
           }
@@ -8382,15 +8386,15 @@ var require_builder_core = __commonJS({
             if (tabs.length > LIMITS2.tabs) err(n.id, say2("builder.tabs.tooMany", { max: LIMITS2.tabs }));
             if (n.verticalWidth != null && !(Number.isInteger(n.verticalWidth) && n.verticalWidth >= 1 && n.verticalWidth <= 11)) err(n.id, say2("builder.largeurOngletsVerticauxVa"));
             tabs.forEach(function(t2) {
-              if (!isObj5(t2) || typeof t2.id !== "string" || !ID_RE3.test(t2.id)) err(n.id, say2("builder.cleOngletInvalide"));
+              if (!isObj6(t2) || typeof t2.id !== "string" || !ID_RE3.test(t2.id)) err(n.id, say2("builder.cleOngletInvalide"));
               else if (seenTab[t2.id]) err(n.id, say2("builder.tabs.duplicate", { id: t2.id }));
               else {
                 seenTab[t2.id] = true;
                 if (idOwner[n.id + "__" + t2.id]) err(n.id, say2("builder.key.taken", { id: n.id + "__" + t2.id }));
                 idOwner[n.id + "__" + t2.id] = true;
               }
-              if (!isObj5(t2) || typeof t2.label !== "string" || !cleanText2(t2.label, 1e5).trim() || t2.label.length > LIMITS2.tabTitle) err(n.id, say2("builder.titreOngletVideTrop"));
-              if (isObj5(t2) && !Array.isArray(t2.children)) err(n.id, say2("builder.contenuOngletIllisible"));
+              if (!isObj6(t2) || typeof t2.label !== "string" || !cleanText2(t2.label, 1e5).trim() || t2.label.length > LIMITS2.tabTitle) err(n.id, say2("builder.titreOngletVideTrop"));
+              if (isObj6(t2) && !Array.isArray(t2.children)) err(n.id, say2("builder.contenuOngletIllisible"));
             });
           }
           if (n.className === "Repeater") {
@@ -8469,10 +8473,10 @@ var require_builder_core = __commonJS({
               if (opts2.length > LIMITS2.options) err(n.id, say2("builder.options.tooMany", { max: LIMITS2.options }));
               var seen = {};
               opts2.forEach(function(o) {
-                if (!isObj5(o) || typeof o.id !== "string" || !ID_RE3.test(o.id)) err(n.id, say2("builder.cleOptionInvalide"));
+                if (!isObj6(o) || typeof o.id !== "string" || !ID_RE3.test(o.id)) err(n.id, say2("builder.cleOptionInvalide"));
                 else if (seen[o.id]) err(n.id, say2("builder.options.duplicate", { id: o.id }));
                 else seen[o.id] = true;
-                if (!isObj5(o) || typeof o.label !== "string" || !cleanText2(o.label, 1e5).trim() || o.label.length > LIMITS2.optionLabel) err(n.id, say2("builder.libelleOptionVideTrop"));
+                if (!isObj6(o) || typeof o.label !== "string" || !cleanText2(o.label, 1e5).trim() || o.label.length > LIMITS2.optionLabel) err(n.id, say2("builder.libelleOptionVideTrop"));
               });
             } else if (!(doc.tables && doc.tables[n.tableId])) err(n.id, say2("builder.table.notFound", { id: n.tableId }));
           }
@@ -8498,7 +8502,7 @@ var require_builder_core = __commonJS({
         var vars = {};
         if (doc.variables !== void 0 && !Array.isArray(doc.variables)) err(null, "Variables illisibles.");
         (Array.isArray(doc.variables) ? doc.variables : []).forEach(function(v) {
-          if (!isObj5(v) || typeof v.id !== "string" || !ID_RE3.test(v.id)) err(null, say2("builder.nomVariableInvalide"));
+          if (!isObj6(v) || typeof v.id !== "string" || !ID_RE3.test(v.id)) err(null, say2("builder.nomVariableInvalide"));
           else if (vars[v.id] !== void 0) err(null, say2("builder.var.duplicate", { id: v.id }));
           else {
             vars[v.id] = String(v.value);
@@ -8981,7 +8985,7 @@ var require_builder_core = __commonJS({
         var all = {};
         function visit(list2) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n2) {
-            if (!isObj5(n2)) return;
+            if (!isObj6(n2)) return;
             if (typeof n2.id === "string") all[n2.id] = n2;
             if (n2.className === "Repeater") return;
             slots(n2).forEach(function(sl) {
@@ -8990,11 +8994,11 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj5(v)) visit(v.children);
+          if (isObj6(v)) visit(v.children);
         });
         var variables = {};
         (doc && doc.variables || []).forEach(function(v) {
-          if (isObj5(v) && typeof v.id === "string") variables[v.id] = String(v.value);
+          if (isObj6(v) && typeof v.id === "string") variables[v.id] = String(v.value);
         });
         var nodes = {}, vars = {}, todo = (wanted || []).slice(), guard = 0;
         function reads(formula2) {
@@ -9034,7 +9038,7 @@ var require_builder_core = __commonJS({
         var r = compileRules(doc) || {};
         var present = {};
         allNodes(doc || {}).forEach(function(n) {
-          if (isObj5(n) && typeof n.id === "string") present[n.id] = true;
+          if (isObj6(n) && typeof n.id === "string") present[n.id] = true;
         });
         var hidden = {}, locked = {};
         (r.gmOnly || []).forEach(function(p) {
@@ -9061,7 +9065,7 @@ var require_builder_core = __commonJS({
         var allNumbers = spendableIds(doc, true);
         function visit(list2, prefix) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-            if (!isObj5(n)) return;
+            if (!isObj6(n)) return;
             if (n.gmOnly === true && COMPONENTS[n.className] && COMPONENTS[n.className].value && typeof n.id === "string") gmOnly.push(prefix + n.id);
             if (n.className === "Label" && !prefix && n.clickable && n.roll && typeof n.spendField === "string" && spendable[n.spendField]) {
               var target = spendable[n.spendField];
@@ -9085,11 +9089,11 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj5(v)) visit(v.children, "");
+          if (isObj6(v)) visit(v.children, "");
         });
         var out = { v: 1 };
         if (gmOnly.length) out.gmOnly = gmOnly.slice(0, 200);
-        if (doc && isObj5(doc.rules)) {
+        if (doc && isObj6(doc.rules)) {
           var present = {};
           allNodes(doc).forEach(function(n) {
             present[n.id] = true;
@@ -9103,7 +9107,7 @@ var require_builder_core = __commonJS({
           var sites = {}, known = Rules.resolutionsOf(doc.rules);
           (function visitSites(list2) {
             (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-              if (!isObj5(n)) return;
+              if (!isObj6(n)) return;
               if (n.className === "Label" && n.clickable && typeof n.follows === "string" && own(known, n.follows)) sites[n.id] = n.follows;
               slots(n).forEach(function(sl) {
                 visitSites(sl.list);
@@ -9113,7 +9117,7 @@ var require_builder_core = __commonJS({
           out.resolve = { rules: { resolution: doc.rules.resolution, rolls: doc.rules.rolls || [] }, sites };
         }
         var wanted = [];
-        if (doc && isObj5(doc.rules) && isObj5(doc.rules.combat) && !Rules.validateRules(doc.rules).length) {
+        if (doc && isObj6(doc.rules) && isObj6(doc.rules.combat) && !Rules.validateRules(doc.rules).length) {
           var cr = doc.rules;
           out.combat = {
             stats: { form: cr.stats ? cr.stats.form : "score", list: (cr.stats ? cr.stats.list : []).map(function(x) {
@@ -9127,7 +9131,7 @@ var require_builder_core = __commonJS({
           var keys = Rules.combatKeys(Object.assign({ resolution: Rules.resolutionsOf(cr)[cr.combat.attack.rollWith] }, out.combat));
           wanted = keys.attacker.concat(keys.target);
         }
-        if (doc && isObj5(doc.rules) && (isObj5(doc.rules.effects) || Array.isArray(doc.rules.rests)) && !Rules.validateRules(doc.rules).length) {
+        if (doc && isObj6(doc.rules) && (isObj6(doc.rules.effects) || Array.isArray(doc.rules.rests)) && !Rules.validateRules(doc.rules).length) {
           var keysFx = Rules.effectKeys(doc.rules);
           out.sealed = ["fx"].concat(keysFx.map(function(k) {
             return "fx_" + k;
@@ -9143,18 +9147,18 @@ var require_builder_core = __commonJS({
             });
           });
         }
-        if (doc && isObj5(doc.rules) && isObj5(doc.rules.progression) && !Rules.validateRules(doc.rules).length) {
+        if (doc && isObj6(doc.rules) && isObj6(doc.rules.progression) && !Rules.validateRules(doc.rules).length) {
           var P = doc.rules.progression, pk = Rules.progKeys(doc.rules), targets = Rules.progTargets(doc.rules);
           var sealedP = ["prog"].concat(pk.map(function(k) {
             return "prog_" + k;
           }));
-          if (isObj5(P.xp)) sealedP.push(P.xp.id);
-          if (isObj5(P.levels)) sealedP.push(P.levels.key);
-          if (isObj5(P.use)) ((doc.rules.skills || {}).list || []).forEach(function(x) {
-            if (isObj5(x)) sealedP.push("tick_" + x.id);
+          if (isObj6(P.xp)) sealedP.push(P.xp.id);
+          if (isObj6(P.levels)) sealedP.push(P.levels.key);
+          if (isObj6(P.use)) ((doc.rules.skills || {}).list || []).forEach(function(x) {
+            if (isObj6(x)) sealedP.push("tick_" + x.id);
           });
-          if (isObj5(P.use)) ((doc.rules.skills || {}).list || []).forEach(function(x) {
-            if (isObj5(x)) wanted.push("sk_" + x.id + "_t");
+          if (isObj6(P.use)) ((doc.rules.skills || {}).list || []).forEach(function(x) {
+            if (isObj6(x)) wanted.push("sk_" + x.id + "_t");
           });
           out.sealed = (out.sealed || []).concat(sealedP);
           out.progress = Rules.progressCtx(doc.rules);
@@ -9165,30 +9169,30 @@ var require_builder_core = __commonJS({
           wanted = wanted.concat(sealedP.filter(function(k) {
             return k !== "prog" && k.indexOf("tick_") !== 0;
           }));
-          (isObj5(P.levels) ? P.levels.gains : []).forEach(function(g) {
+          (isObj6(P.levels) ? P.levels.gains : []).forEach(function(g) {
             g.give.forEach(function(x) {
               if (typeof x.plus === "string") wanted.push(x.plus);
             });
           });
         }
-        if (doc && isObj5(doc.rules) && isObj5(doc.rules.library) && !Rules.validateRules(doc.rules).length) {
+        if (doc && isObj6(doc.rules) && isObj6(doc.rules.library) && !Rules.validateRules(doc.rules).length) {
           out.library = Rules.libraryCtx(doc.rules);
           out.library.resources.forEach(function(k) {
             wanted.push(k, k + "_max");
           });
         }
-        if (doc && isObj5(doc.rules) && !Rules.validateRules(doc.rules).length) {
+        if (doc && isObj6(doc.rules) && !Rules.validateRules(doc.rules).length) {
           var ask = [];
           (doc && doc.views || []).forEach(function(v) {
             (function walk4(list2) {
               (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-                if (!isObj5(n)) return;
+                if (!isObj6(n)) return;
                 if ((n.className === "TextInput" || n.className === "Textarea") && n.askAtCreation === true && typeof n.id === "string") ask.push({ id: n.id, name: cleanText2(n.name, 40) || n.id });
                 if (n.className !== "Repeater") slots(n).forEach(function(sl) {
                   walk4(sl.list);
                 });
               });
-            })(isObj5(v) ? v.children : []);
+            })(isObj6(v) ? v.children : []);
           });
           out.creation = Rules.creationCtx(doc.rules, ask);
           out.sealed = (out.sealed || []).concat(["crea"]);
@@ -9199,15 +9203,15 @@ var require_builder_core = __commonJS({
           });
         }
         if (doc && DENSITIES.indexOf(doc.density) >= 0 && doc.density !== "normal") out.density = doc.density;
-        if (doc && isObj5(doc.roles)) {
+        if (doc && isObj6(doc.roles)) {
           var inDoc = {};
           allNodes(doc).forEach(function(n) {
-            if (isObj5(n) && typeof n.id === "string") inDoc[n.id] = true;
+            if (isObj6(n) && typeof n.id === "string") inDoc[n.id] = true;
           });
           var roles = {};
           Object.keys(doc.roles).slice(0, 8).forEach(function(view) {
             var r = doc.roles[view];
-            if (!/^[A-Za-z0-9_-]{1,40}$/.test(view) || !isObj5(r)) return;
+            if (!/^[A-Za-z0-9_-]{1,40}$/.test(view) || !isObj6(r)) return;
             var one = {};
             ["health", "healthMax", "defense"].forEach(function(k) {
               if (typeof r[k] === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(r[k]) && inDoc[r[k]]) {
@@ -9217,7 +9221,7 @@ var require_builder_core = __commonJS({
             });
             if (Array.isArray(r.armor)) {
               var armor = r.armor.slice(0, 4).filter(function(a) {
-                return isObj5(a) && typeof a.key === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(a.key) && inDoc[a.key];
+                return isObj6(a) && typeof a.key === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(a.key) && inDoc[a.key];
               }).map(function(a) {
                 wanted.push(a.key);
                 return { key: a.key, name: cleanText2(a.name, 40) || a.key, factor: typeof a.factor === "number" && a.factor >= 0.5 && a.factor <= 4 ? a.factor : 1 };
@@ -9248,7 +9252,7 @@ var require_builder_core = __commonJS({
         };
         function visit(list2) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-            if (!isObj5(n)) return;
+            if (!isObj6(n)) return;
             if (n.className === "Gauge") add(n.name, n.valueField, n.maxField);
             if (n.className === "Repeater") return;
             slots(n).forEach(function(sl) {
@@ -9257,7 +9261,7 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj5(v)) visit(v.children);
+          if (isObj6(v)) visit(v.children);
         });
         Object.keys(typed).forEach(function(id) {
           if (typed[id + "_max"]) add(typed[id].name, id, id + "_max");
@@ -9504,7 +9508,7 @@ var require_builder_core = __commonJS({
         if (!views.length) throw new Error(say2("builder.cetteFicheNPas"));
         var src = views[0];
         var unknown = {};
-        var tables = isObj5(system.tables) ? JSON.parse(JSON.stringify(system.tables)) : {};
+        var tables = isObj6(system.tables) ? JSON.parse(JSON.stringify(system.tables)) : {};
         if (Array.isArray(system.tables)) {
           tables = {};
           system.tables.forEach(function(t) {
@@ -9729,9 +9733,9 @@ var require_builder_core = __commonJS({
   }
 });
 
-// product/client/i18n/fr.json
+// ../VTT/tabletop-desktop/product/client/i18n/fr.json
 var require_fr2 = __commonJS({
-  "product/client/i18n/fr.json"(exports2, module2) {
+  "../VTT/tabletop-desktop/product/client/i18n/fr.json"(exports2, module2) {
     module2.exports = {
       "access.banner": "Lecture seule : tu peux voir cette fiche, pas la modifier.",
       "accessButton.allRead": "tous en lecture",
@@ -11173,9 +11177,9 @@ var require_fr2 = __commonJS({
   }
 });
 
-// apps/desktop/renderer/theme-core.js
+// ../VTT/tabletop-desktop/apps/desktop/renderer/theme-core.js
 var require_theme_core = __commonJS({
-  "apps/desktop/renderer/theme-core.js"(exports2, module2) {
+  "../VTT/tabletop-desktop/apps/desktop/renderer/theme-core.js"(exports2, module2) {
     "use strict";
     (function(root, factory) {
       if (typeof module2 === "object" && module2.exports) module2.exports = factory(require_builder_theme());
@@ -11270,7 +11274,7 @@ var require_theme_core = __commonJS({
       };
       var MINIMA = { "text-bg": 4.5, "text-panel": 4.5, "muted-panel": 3, "ink-paper": 4.5 };
       var TOP = ["format", "v", "id", "name", "version", "author", "license", "description", "base", "colors", "fonts", "shape", "effects", "filter"];
-      var isObj5 = function(v) {
+      var isObj6 = function(v) {
         return v !== null && typeof v === "object" && !Array.isArray(v);
       };
       var has = function(list2, v) {
@@ -11283,7 +11287,7 @@ var require_theme_core = __commonJS({
       };
       function validate(d) {
         var out = [];
-        if (!isObj5(d)) return [say2("tableTheme.ceNEstPas")];
+        if (!isObj6(d)) return [say2("tableTheme.ceNEstPas")];
         strictKeys(d, TOP, say2("tableTheme.theme"), out);
         if (d.format !== FORMAT || d.v !== 1) out.push(say2("tableTheme.notTheme"));
         if (typeof d.id !== "string" || !ID_RE3.test(d.id)) out.push(say2("tableTheme.badId"));
@@ -11294,7 +11298,7 @@ var require_theme_core = __commonJS({
         });
         if (d.description !== void 0 && (typeof d.description !== "string" || d.description.length > 300)) out.push(say2("tableTheme.badDescription"));
         if (!has(BUILTIN, d.base)) out.push(say2("tableTheme.badBase"));
-        if (!isObj5(d.colors)) out.push(say2("tableTheme.noColors"));
+        if (!isObj6(d.colors)) out.push(say2("tableTheme.noColors"));
         else {
           strictKeys(d.colors, COLOR_KEYS.map(function(c) {
             return c.k;
@@ -11303,14 +11307,14 @@ var require_theme_core = __commonJS({
             if (typeof d.colors[c.k] !== "string" || !COLOR_RE.test(d.colors[c.k])) out.push(say2("tableTheme.badColor", { name: c.label }));
           });
         }
-        if (!isObj5(d.fonts)) out.push(say2("tableTheme.noFonts"));
+        if (!isObj6(d.fonts)) out.push(say2("tableTheme.noFonts"));
         else {
           strictKeys(d.fonts, ["display", "body", "mono"], say2("tableTheme.fonts"), out);
           ["display", "body", "mono"].forEach(function(k) {
             if (!has(FONT_KEYS, d.fonts[k])) out.push(say2("tableTheme.badFont", { name: k }));
           });
         }
-        if (!isObj5(d.shape)) out.push(say2("tableTheme.noShape"));
+        if (!isObj6(d.shape)) out.push(say2("tableTheme.noShape"));
         else {
           strictKeys(d.shape, ["corners", "cut", "tabs", "knots"], say2("tableTheme.shape"), out);
           if (!has(Object.keys(CHOICES.corners), d.shape.corners)) out.push(say2("tableTheme.badCorners"));
@@ -11318,7 +11322,7 @@ var require_theme_core = __commonJS({
           if (!has(CHOICES.tabs, d.shape.tabs)) out.push(say2("tableTheme.badTabs"));
           if (!has(CHOICES.knots, d.shape.knots)) out.push(say2("tableTheme.badKnots"));
         }
-        if (!isObj5(d.effects)) out.push(say2("tableTheme.noEffects"));
+        if (!isObj6(d.effects)) out.push(say2("tableTheme.noEffects"));
         else {
           strictKeys(d.effects, ["glow", "texture", "grain", "capitals"], say2("tableTheme.effects"), out);
           if (!has(CHOICES.glow, d.effects.glow)) out.push(say2("tableTheme.badGlow"));
@@ -11646,6 +11650,7 @@ var require_theme_core = __commonJS({
       return {
         useTexts: useTexts2,
         FORMAT,
+        TOP,
         MAX_BYTES,
         ID_RE: ID_RE3,
         BUILTIN,
@@ -11666,9 +11671,9 @@ var require_theme_core = __commonJS({
   }
 });
 
-// apps/desktop/renderer/translation-core.js
+// ../VTT/tabletop-desktop/apps/desktop/renderer/translation-core.js
 var require_translation_core = __commonJS({
-  "apps/desktop/renderer/translation-core.js"(exports2, module2) {
+  "../VTT/tabletop-desktop/apps/desktop/renderer/translation-core.js"(exports2, module2) {
     "use strict";
     (function(root, factory) {
       if (typeof module2 === "object" && module2.exports) module2.exports = factory();
@@ -11690,7 +11695,7 @@ var require_translation_core = __commonJS({
       var own = function(o, k) {
         return Object.prototype.hasOwnProperty.call(o, k);
       };
-      var isObj5 = function(v) {
+      var isObj6 = function(v) {
         return !!v && typeof v === "object" && !Array.isArray(v);
       };
       var err = function(code, params) {
@@ -11717,7 +11722,7 @@ var require_translation_core = __commonJS({
         return markers(v) === markers(english) && tags(v) === tags(english);
       };
       function validate(d) {
-        if (!isObj5(d) || d.format !== FORMAT || d.v !== 1) return [err("notTranslation")];
+        if (!isObj6(d) || d.format !== FORMAT || d.v !== 1) return [err("notTranslation")];
         var e = [];
         Object.keys(d).forEach(function(k) {
           if (TOP.indexOf(k) < 0) e.push(err("unknownField", { field: k }));
@@ -11729,14 +11734,14 @@ var require_translation_core = __commonJS({
           if (d[f[0]] !== void 0 && (typeof d[f[0]] !== "string" || d[f[0]].length > f[1])) e.push(err("badMeta", { field: f[0] }));
         });
         if (typeof d.language !== "string" || !LANG_RE2.test(d.language)) e.push(err("badLanguage"));
-        if (isObj5(d.target) && LATER.indexOf(d.target.kind) >= 0) e.push(err("targetLater", { kind: d.target.kind }));
-        else if (!isObj5(d.target) || d.target.kind !== "ourdir" || Object.keys(d.target).length !== 1) e.push(err("badTarget"));
-        if (!isObj5(d.texts)) e.push(err("badTexts"));
+        if (isObj6(d.target) && LATER.indexOf(d.target.kind) >= 0) e.push(err("targetLater", { kind: d.target.kind }));
+        else if (!isObj6(d.target) || d.target.kind !== "ourdir" || Object.keys(d.target).length !== 1) e.push(err("badTarget"));
+        if (!isObj6(d.texts)) e.push(err("badTexts"));
         else {
           Object.keys(d.texts).forEach(function(s) {
             if (SECTIONS.indexOf(s) < 0) return e.push(err("unknownSection", { section: s }));
             var sec = d.texts[s];
-            if (!isObj5(sec)) return e.push(err("badSection", { section: s }));
+            if (!isObj6(sec)) return e.push(err("badSection", { section: s }));
             Object.keys(sec).forEach(function(k) {
               var v = sec[k];
               if (typeof v !== "string") e.push(err("notString", { section: s, key: k }));
@@ -11745,7 +11750,7 @@ var require_translation_core = __commonJS({
             });
           });
         }
-        if (d.source !== void 0 && !isObj5(d.source)) e.push(err("badSource"));
+        if (d.source !== void 0 && !isObj6(d.source)) e.push(err("badSource"));
         return e.slice(0, 50);
       }
       function parse(text) {
@@ -11871,9 +11876,9 @@ var require_translation_core = __commonJS({
   }
 });
 
-// product/i18n/engine/en.json
+// ../VTT/tabletop-desktop/product/i18n/engine/en.json
 var require_en = __commonJS({
-  "product/i18n/engine/en.json"(exports2, module2) {
+  "../VTT/tabletop-desktop/product/i18n/engine/en.json"(exports2, module2) {
     module2.exports = {
       " -- shared by %{username}": " -- shared by %{username}",
       "${count} song": "${count} song",
@@ -12482,9 +12487,9 @@ var require_en = __commonJS({
   }
 });
 
-// apps/desktop/i18n/en.json
+// ../VTT/tabletop-desktop/apps/desktop/i18n/en.json
 var require_en2 = __commonJS({
-  "apps/desktop/i18n/en.json"(exports2, module2) {
+  "../VTT/tabletop-desktop/apps/desktop/i18n/en.json"(exports2, module2) {
     module2.exports = {
       "app.lang": "en",
       "app.name": "Ourdir",
@@ -13740,6 +13745,10 @@ var require_en2 = __commonJS({
       "ui.cat.translationTarget": "Translates Ourdir into \u201C{language}\u201D.",
       "ui.cat.update": "Update",
       "ui.cat.updateAvailable": "Update available",
+      "ui.cat.updateLine": "Version {v} is available in the catalogue.",
+      "ui.cat.ahead": "Version {v} is available with Ourdir {app} or newer.",
+      "ui.cat.needsOurdir": "Needs Ourdir {v} or newer",
+      "ui.cat.waiting": "{n} of your packages have an update that needs a newer Ourdir.",
       "ui.cat.updates": "{n} update(s) available.",
       "ui.cat.versions": "Versions",
       "ui.cat.yes": "yes",
@@ -15278,9 +15287,9 @@ var require_en2 = __commonJS({
   }
 });
 
-// product/client/i18n/en.json
+// ../VTT/tabletop-desktop/product/client/i18n/en.json
 var require_en3 = __commonJS({
-  "product/client/i18n/en.json"(exports2, module2) {
+  "../VTT/tabletop-desktop/product/client/i18n/en.json"(exports2, module2) {
     module2.exports = {
       "access.banner": "Read only: you can see this sheet, not change it.",
       "accessButton.allRead": "everyone reads",
@@ -16722,7 +16731,7 @@ var require_en3 = __commonJS({
   }
 });
 
-// apps/desktop/verifier/cli.ts
+// ../VTT/tabletop-desktop/apps/desktop/verifier/cli.ts
 var cli_exports = {};
 __export(cli_exports, {
   sayFrench: () => sayFrench
@@ -16731,22 +16740,22 @@ module.exports = __toCommonJS(cli_exports);
 var import_node_fs7 = __toESM(require("node:fs"));
 var import_node_path7 = __toESM(require("node:path"));
 
-// apps/desktop/src/catalog/pipeline.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/pipeline.ts
 var import_node_crypto3 = __toESM(require("node:crypto"));
 var import_node_fs5 = __toESM(require("node:fs"));
 var import_node_os2 = __toESM(require("node:os"));
 var import_node_path5 = __toESM(require("node:path"));
 
-// apps/desktop/src/modules/install.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/modules/install.ts
 var import_node_crypto = __toESM(require("node:crypto"));
 var import_node_fs3 = __toESM(require("node:fs"));
 var import_node_os = __toESM(require("node:os"));
 var import_node_path3 = __toESM(require("node:path"));
 
-// apps/desktop/src/identity.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/identity.ts
 var import_crypto = __toESM(require("crypto"));
 
-// apps/desktop/src/say.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/say.ts
 var given = null;
 var french = null;
 function useTexts(fn) {
@@ -16774,7 +16783,7 @@ function say(key, vars) {
   return text;
 }
 
-// apps/desktop/src/identity.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/identity.ts
 var SPKI_ED25519_PREFIX = Buffer.from("302a300506032b6570032100", "hex");
 var MAX_NAME = 32;
 var b64u = (buf) => buf.toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
@@ -16821,7 +16830,7 @@ function verify(publicKey, context, data, signature) {
   }
 }
 
-// apps/desktop/src/modules/compat.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/modules/compat.ts
 var RULES = [
   // ---- shimmed
   { api: "Hooks", re: /\bHooks\.(on|once|off|call|callAll)\b/g, status: "supported", note: "err.compat.hooks", permission: "engine.hook" },
@@ -16941,10 +16950,10 @@ function withDependencies(report, requires, hasScripts) {
   return extra.length ? summarize([...report.apis, ...extra], hasScripts) : report;
 }
 
-// apps/desktop/src/modules/foundry.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/modules/foundry.ts
 var MAX_PACK_BYTES = 50 * 1024 * 1024;
 
-// apps/desktop/src/modules/permissions.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/modules/permissions.ts
 var PERMISSIONS = [
   // interface
   { id: "ui.panel", risk: "low", group: "ui" },
@@ -16999,7 +17008,7 @@ function classify(requested) {
   return { known, reserved, unknown };
 }
 
-// apps/desktop/src/modules/manifest.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/modules/manifest.ts
 var MAX_MANIFEST_BYTES = 256 * 1024;
 var SUPPORTED_API = "1";
 var ID_RE = /^[a-z0-9_][a-z0-9_-]{1,63}$/;
@@ -17187,6 +17196,7 @@ function parseManifest(raw) {
       conflicts,
       permissions,
       access: tt && tt.access === "licensed" ? "licensed" : "free",
+      ourdir: tt && typeof m.ourdir === "string" && /^\d+\.\d+\.\d+$/.test(m.ourdir) ? m.ourdir : void 0,
       foundryCompat: kind === "foundry" ? {
         minimum: clean(compat.minimum ?? m.minimumCoreVersion, 20) || void 0,
         verified: clean(compat.verified ?? m.compatibleCoreVersion, 20) || void 0,
@@ -17196,12 +17206,12 @@ function parseManifest(raw) {
   };
 }
 
-// apps/desktop/src/modules/bundle.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/modules/bundle.ts
 var MAX_BUNDLE_BYTES = 4 * 1024 * 1024;
 var MAX_FILE_BYTES = 2 * 1024 * 1024;
 var usesModuleSyntax = (text) => /^\s*(import\s*[\w{*"']|export\s)/m.test(text);
 
-// apps/desktop/src/modules/zip.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/modules/zip.ts
 var import_node_fs = __toESM(require("node:fs"));
 var import_node_path = __toESM(require("node:path"));
 var import_node_zlib = __toESM(require("node:zlib"));
@@ -17361,10 +17371,10 @@ function extractZip(buf, dest, limits = DEFAULT_LIMITS) {
   return written;
 }
 
-// apps/desktop/src/catalog/licensed.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/licensed.ts
 var licensedRefusal = () => say("err.licensed.refusal");
 
-// apps/desktop/src/removeFile.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/removeFile.ts
 var import_node_fs2 = __toESM(require("node:fs"));
 var import_node_path2 = __toESM(require("node:path"));
 function removeFile(file) {
@@ -17399,7 +17409,7 @@ function removeEntry(p) {
   import_node_fs2.default.rmdirSync(p);
 }
 
-// apps/desktop/src/modules/install.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/modules/install.ts
 var officialKeys = [];
 var SIGNATURE_FILE = "SIGNATURE.json";
 var GENERATED_DIR = ".tabletop";
@@ -17602,7 +17612,7 @@ function prepare(source, tmpBase = import_node_os.default.tmpdir(), opts = {}) {
   }
 }
 
-// apps/desktop/src/modules/safeFetch.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/modules/safeFetch.ts
 var import_node_dns = __toESM(require("node:dns"));
 var import_node_http = __toESM(require("node:http"));
 var import_node_https = __toESM(require("node:https"));
@@ -17733,12 +17743,12 @@ function once(u, opts, timeoutMs) {
   });
 }
 
-// apps/desktop/src/catalog/builder.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/builder.ts
 var import_node_crypto2 = __toESM(require("node:crypto"));
 var import_node_fs4 = __toESM(require("node:fs"));
 var import_node_path4 = __toESM(require("node:path"));
 
-// apps/desktop/src/catalog/format.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/format.ts
 var CATALOG_FORMAT = "ourdir-catalog";
 var CATALOG_VERSION = 2;
 var INDEX_FILE = "index.json";
@@ -17988,14 +17998,15 @@ function parseIndex(bytes, opts = {}) {
   const keys = (Array.isArray(rev.keys) ? rev.keys : []).filter((k) => isValidPublicKey(k)).slice(0, LIMITS.revokedKeys);
   const packages = (Array.isArray(rev.packages) ? rev.packages : []).filter(isObj).filter((p) => typeof p.id === "string" && ID_RE2.test(p.id) && (p.version === void 0 || typeof p.version === "string" && VERSION_RE2.test(p.version))).slice(0, LIMITS.revokedPackages).map((p) => ({ id: p.id, version: p.version }));
   const successions = (Array.isArray(raw.successions) ? raw.successions : []).filter(isObj).filter((f) => typeof f.body === "string" && f.body.length <= 1024 && (f.sig === null || isObj(f.sig)) && (f.delegation === void 0 || typeof f.delegation === "string" && f.delegation.length <= 4096)).slice(0, LIMITS.successions).map((f) => ({ body: f.body, sig: f.sig, ...typeof f.delegation === "string" ? { delegation: f.delegation } : {} }));
+  const sinceRev = typeof raw.sinceRev === "number" && Number.isSafeInteger(raw.sinceRev) && raw.sinceRev > 0 ? raw.sinceRev : void 0;
   if (errors.length) return { ok: false, errors };
   return {
     ok: true,
-    index: { format: CATALOG_FORMAT, v: CATALOG_VERSION, sequence, generatedAt, expiresAt, entries, revoked: { keys, packages }, successions }
+    index: { format: CATALOG_FORMAT, v: CATALOG_VERSION, sequence, generatedAt, expiresAt, entries, revoked: { keys, packages }, successions, ...sinceRev ? { sinceRev } : {} }
   };
 }
 
-// apps/desktop/src/catalog/signing.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/signing.ts
 var INDEX_CONTEXT = "ourdir-catalog/v2";
 function signBytes(bytes, identity, context, now = /* @__PURE__ */ new Date()) {
   const body = { v: 1, publicKey: identity.publicKey, signature: sign(identity, context, bytes), signedAt: now.toISOString() };
@@ -18020,7 +18031,7 @@ function verifyBytes(bytes, signatureText, keys, context, what = say("err.signin
 var signIndex = (indexBytes, identity, now = /* @__PURE__ */ new Date()) => signBytes(indexBytes, identity, INDEX_CONTEXT, now);
 var verifyIndex = (indexBytes, signatureText, keys) => verifyBytes(indexBytes, signatureText, keys, INDEX_CONTEXT);
 
-// apps/desktop/src/catalog/trust.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/trust.ts
 var DELEGATION_FILE = "delegation.json";
 var TIERS_FILE = "tiers.json";
 var TIERS_SIGNATURE_FILE = "tiers.json.sig";
@@ -18114,7 +18125,7 @@ function maySell(tiers, publisherKey) {
   return tiers.ourdir.includes(publisherKey) || tiers.official.some((o) => o.key === publisherKey) || tiers.sellers.some((s) => s.key === publisherKey);
 }
 
-// apps/desktop/src/catalog/succession.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/succession.ts
 var SUCCESSION_CONTEXT = "ourdir-succession/v1";
 var RECOVERY_DELEGATION_CONTEXT = "ourdir-recovery-delegation/v1";
 var RECOVERY_DELEGATION_FILE = "recovery-delegation.json";
@@ -18201,16 +18212,16 @@ function chainOf(list2) {
   return { next, prev, head, line, problems };
 }
 
-// apps/desktop/src/catalog/client.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/client.ts
 var MARKS = new RegExp("[" + String.fromCharCode(768) + "-" + String.fromCharCode(879) + "]", "g");
 
-// apps/desktop/src/catalog/download.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/download.ts
 function requestedPermissions(p) {
   const m = p.manifest;
   return m.kind === "native" ? m.permissions : [.../* @__PURE__ */ new Set([...p.compat?.suggestedPermissions ?? [], ...m.files.styles.length ? ["ui.style"] : []])];
 }
 
-// apps/desktop/src/catalog/builder.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/builder.ts
 var dirs = (root) => ({
   entries: import_node_path4.default.join(root, "entries"),
   packages: import_node_path4.default.join(root, "packages"),
@@ -18254,7 +18265,9 @@ function build2(root, identity, opts = {}) {
     entries: entries.map((e) => ({ ...e, versions: e.versions.map(({ file, url, ...rest }) => ({ ...rest, url: url ?? file })) })),
     revoked: readJson(d.revoked, { keys: [], packages: [] }),
     // key replacements the CI kept (spec « clé perdue » §2.4); a maintainer's folder has none
-    successions: readJson(import_node_path4.default.join(root, "successions.json"), [])
+    successions: readJson(import_node_path4.default.join(root, "successions.json"), []),
+    // the table that computed each version's minApp (catalog/since.ts): the CI reuses them while it stays the same
+    ...opts.sinceRev ? { sinceRev: opts.sinceRev } : {}
   };
   const bytes = Buffer.from(JSON.stringify(index, null, 2) + "\n", "utf8");
   const parsed = parseIndex(bytes, { loopbackPort: opts.loopbackPort });
@@ -18329,7 +18342,7 @@ function verifyPublished(outDir, rootKeys, opts = {}) {
   return errors.length ? { ok: false, errors } : { ok: true, sequence: parsed.index.sequence, files, external };
 }
 
-// apps/desktop/src/catalog/package.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/package.ts
 var PACKAGE_CONTEXT = "ourdir-package/v1";
 function signPackageFile(bytes, identity) {
   return sign(identity, PACKAGE_CONTEXT, bytes);
@@ -18338,7 +18351,7 @@ function verifyPackageFile(bytes, publicKey, signature) {
   return isValidPublicKey(publicKey) && typeof signature === "string" && verify(publicKey, PACKAGE_CONTEXT, bytes, signature);
 }
 
-// apps/desktop/src/catalog/submission.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/submission.ts
 var OPEN_KINDS = ["module", "system", "theme", "translation", "compendium"];
 var MAX_SUBMISSIONS_PER_PR = 10;
 var SUBMISSION_PATH_RE = /^entries\/([a-z0-9][a-z0-9_-]{1,63})\/(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]{1,30})?)\.json$/;
@@ -18471,13 +18484,194 @@ function renderReport(r) {
   lines.push("");
   for (const p of r.policy.slice(0, 10)) lines.push("- \u2718 " + safe(p));
   for (const e of r.results.slice(0, 10)) {
-    lines.push(`- ${e.ok ? "\u2714" : e.waiting ? "\u23F3" : "\u2718"} ${safe(e.file)}${e.ok ? "" : " : " + e.errors.slice(0, 4).map(safe).join(" ; ")}`);
+    const needs = e.ok && e.minApp ? ` \u2014 Demande Ourdir ${safe(e.minApp)} ou plus r\xE9cent / Needs Ourdir ${safe(e.minApp)} or newer` : "";
+    lines.push(`- ${e.ok ? "\u2714" : e.waiting ? "\u23F3" : "\u2718"} ${safe(e.file)}${e.ok ? needs : " : " + e.errors.slice(0, 4).map(safe).join(" ; ")}`);
   }
   lines.push("", "R\xE8gles : RULES.md \xB7 Guide : CONTRIBUTING.md");
   return lines.join("\n");
 }
 
-// apps/desktop/src/catalog/pipeline.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/since.ts
+var APP_VERSION = "0.1.0";
+var SINCE_REV = 1;
+var AT_0_1_0 = [
+  "component:Avatar",
+  "component:Checkbox",
+  "component:Choice",
+  "component:Column",
+  "component:Container",
+  "component:Gauge",
+  "component:Icon",
+  "component:Label",
+  "component:NumberInput",
+  "component:Repeater",
+  "component:Row",
+  "component:Tab",
+  "component:TextInput",
+  "component:Textarea",
+  "component:Track",
+  "doc:v1",
+  "library:action",
+  "library:v1",
+  "prop:Avatar.name",
+  "prop:Checkbox.effectTarget",
+  "prop:Checkbox.effectValue",
+  "prop:Checkbox.gmOnly",
+  "prop:Checkbox.label",
+  "prop:Checkbox.name",
+  "prop:Choice.expanded",
+  "prop:Choice.gmOnly",
+  "prop:Choice.multiple",
+  "prop:Choice.name",
+  "prop:Choice.optional",
+  "prop:Choice.options",
+  "prop:Column.size",
+  "prop:Column.variant",
+  "prop:Container.layout",
+  "prop:Container.variant",
+  "prop:Gauge.max",
+  "prop:Gauge.maxField",
+  "prop:Gauge.name",
+  "prop:Gauge.segments",
+  "prop:Gauge.showValue",
+  "prop:Gauge.valueField",
+  "prop:Icon.iconName",
+  "prop:Icon.roll",
+  "prop:Icon.rollTitle",
+  "prop:Label.againstField",
+  "prop:Label.againstMode",
+  "prop:Label.align",
+  "prop:Label.bold",
+  "prop:Label.clickable",
+  "prop:Label.computed",
+  "prop:Label.follows",
+  "prop:Label.hurts",
+  "prop:Label.markdown",
+  "prop:Label.quickBar",
+  "prop:Label.quickBarLabel",
+  "prop:Label.roll",
+  "prop:Label.rollTitle",
+  "prop:Label.spendField",
+  "prop:Label.spendN",
+  "prop:Label.text",
+  "prop:Label.textSize",
+  "prop:Label.tooltipLabel",
+  "prop:Label.upper",
+  "prop:Label.variant",
+  "prop:NumberInput.align",
+  "prop:NumberInput.computed",
+  "prop:NumberInput.defaultValue",
+  "prop:NumberInput.gmOnly",
+  "prop:NumberInput.max",
+  "prop:NumberInput.min",
+  "prop:NumberInput.name",
+  "prop:NumberInput.tooltipLabel",
+  "prop:NumberInput.variant",
+  "prop:Repeater.layout",
+  "prop:Repeater.noAdd",
+  "prop:Repeater.readChildren",
+  "prop:Tab.tabs",
+  "prop:Tab.vertical",
+  "prop:Tab.verticalWidth",
+  "prop:TextInput.askAtCreation",
+  "prop:TextInput.bold",
+  "prop:TextInput.defaultValue",
+  "prop:TextInput.gmOnly",
+  "prop:TextInput.name",
+  "prop:TextInput.placeholder",
+  "prop:TextInput.textSize",
+  "prop:Textarea.askAtCreation",
+  "prop:Textarea.defaultValue",
+  "prop:Textarea.gmOnly",
+  "prop:Textarea.name",
+  "prop:Textarea.placeholder",
+  "prop:Track.count",
+  "prop:Track.name",
+  "prop:Track.showTotal",
+  "role:ablate",
+  "role:armor",
+  "role:defense",
+  "role:health",
+  "role:healthMax",
+  "rules:bar",
+  "rules:combat",
+  "rules:creation",
+  "rules:derived",
+  "rules:effects",
+  "rules:identity",
+  "rules:library",
+  "rules:progression",
+  "rules:resolution",
+  "rules:rests",
+  "rules:rolls",
+  "rules:skills",
+  "rules:stats",
+  "skins",
+  "theme:base",
+  "theme:colors",
+  "theme:effects",
+  "theme:filter",
+  "theme:fonts",
+  "theme:shape",
+  "theme:v1",
+  "view:Main"
+];
+var SINCE = Object.freeze(Object.fromEntries(AT_0_1_0.map((k) => [k, "0.1.0"])));
+var isObj5 = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+var THEME_IDENTITY = /* @__PURE__ */ new Set(["format", "v", "id", "name", "version", "author", "license", "description"]);
+var NODE_KEYS = /* @__PURE__ */ new Set(["className", "id", "children"]);
+function systemFeatures(doc, out) {
+  out.add(`doc:v${Number(doc.v) || 1}`);
+  const walk3 = (x) => {
+    if (Array.isArray(x)) return x.forEach(walk3);
+    if (!isObj5(x)) return;
+    if (typeof x.className === "string") {
+      out.add("component:" + x.className);
+      for (const k of Object.keys(x)) if (!NODE_KEYS.has(k)) out.add(`prop:${x.className}.${k}`);
+    }
+    Object.values(x).forEach(walk3);
+  };
+  for (const v of Array.isArray(doc.views) ? doc.views : []) {
+    if (isObj5(v) && typeof v.type === "string") out.add("view:" + v.type);
+    walk3(v);
+  }
+  if (isObj5(doc.rules)) for (const b of Object.keys(doc.rules)) out.add("rules:" + b);
+  if (isObj5(doc.roles)) {
+    for (const r of Object.values(doc.roles)) if (isObj5(r)) for (const k of Object.keys(r)) out.add("role:" + k);
+  }
+  if (Array.isArray(doc.skins) && doc.skins.length) out.add("skins");
+}
+function featuresOf(kind, bytes) {
+  if (kind === "module" || kind === "translation") return [];
+  let raw;
+  try {
+    raw = JSON.parse(bytes.toString("utf8"));
+  } catch {
+    return [];
+  }
+  if (!isObj5(raw)) return [];
+  const out = /* @__PURE__ */ new Set();
+  if (kind === "system" && isObj5(raw.doc)) systemFeatures(raw.doc, out);
+  else if (kind === "theme") {
+    out.add(`theme:v${Number(raw.v) || 1}`);
+    for (const k of Object.keys(raw)) if (!THEME_IDENTITY.has(k)) out.add("theme:" + k);
+  } else if (kind === "compendium") {
+    out.add(`library:v${Number(raw.v) || 1}`);
+    if (Array.isArray(raw.entries) && raw.entries.some((e) => isObj5(e) && e.action !== void 0 && e.action !== null)) out.add("library:action");
+  }
+  return [...out].sort();
+}
+function minAppOf(kind, bytes, declared) {
+  let v = "0.1.0";
+  const raise = (x) => {
+    if (compareVersions(x, v) > 0) v = x;
+  };
+  for (const f of featuresOf(kind, bytes)) raise(SINCE[f] ?? APP_VERSION);
+  if (declared) raise(declared);
+  return v;
+}
+
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/pipeline.ts
 var sha2563 = (b) => import_node_crypto3.default.createHash("sha256").update(b).digest("hex");
 var message = (err) => err instanceof Error ? err.message : String(err);
 var extOf = (kind) => kind === "module" ? "zip" : kind === "theme" ? "ourdir-theme.json" : kind === "translation" ? "ourdir-translation.json" : kind === "compendium" ? "ourdirlib" : "ttsystem.json";
@@ -18760,7 +18954,8 @@ async function checkSubmission(file, text, repoDir, deps2) {
   if (bytes.length !== s.size) errors.push(`Taille : ${bytes.length} octets au lieu de ${s.size}.`);
   else if (sha2563(bytes) !== s.sha256) errors.push("Empreinte SHA-256 diff\xE9rente de celle d\xE9clar\xE9e.");
   else errors.push(...s.kind === "system" ? checkSystem(bytes, s, deps2) : s.kind === "theme" ? checkTheme(bytes, s, deps2) : s.kind === "translation" ? checkTranslation(bytes, s, deps2) : s.kind === "compendium" ? checkLibrary(bytes, s, readSubmissions(repoDir, deps2).filter((x) => x.kind === "system").map((x) => x.id)) : checkModule(bytes, s));
-  return { file, id: s.id, version: s.version, ok: errors.length === 0, errors };
+  const minApp = errors.length === 0 ? minAppFor(s, bytes) : void 0;
+  return { file, id: s.id, version: s.version, ok: errors.length === 0, errors, ...minApp ? { minApp } : {} };
 }
 async function checkPullRequest(o, deps2) {
   const policy = filePolicy(o.changes);
@@ -18782,14 +18977,22 @@ async function checkPullRequest(o, deps2) {
   }
   return { ok: results.length > 0 && results.every((r) => r.ok), policy: [], results };
 }
-async function problemWith(fetch2, s) {
+async function fetchChecked(fetch2, s) {
   try {
     const b = await fetch2(s.url, s.size + 1);
-    if (b.length !== s.size) return "la taille du fichier a chang\xE9";
-    if (sha2563(b) !== s.sha256) return "le fichier a chang\xE9 (empreinte diff\xE9rente)";
-    return null;
+    if (b.length !== s.size) return { why: "la taille du fichier a chang\xE9" };
+    if (sha2563(b) !== s.sha256) return { why: "le fichier a chang\xE9 (empreinte diff\xE9rente)" };
+    return { bytes: b };
   } catch (err) {
-    return "injoignable : " + message(err);
+    return { why: "injoignable : " + message(err) };
+  }
+}
+function minAppFor(s, bytes) {
+  try {
+    const declared = s.kind === "module" ? withPackage(bytes, (p) => p.manifest.ourdir ?? null) : null;
+    return minAppOf(s.kind, bytes, declared);
+  } catch {
+    return void 0;
   }
 }
 async function publishCatalog(o, deps2) {
@@ -18799,10 +19002,16 @@ async function publishCatalog(o, deps2) {
   const chain = repoChain(o.repoDir, now.getTime());
   const statuses = readStatuses(o.repoDir);
   const seen = /* @__PURE__ */ new Map();
+  const reuse = /* @__PURE__ */ new Map();
   if (o.previousIndex) {
     try {
       const idx = JSON.parse(o.previousIndex.toString("utf8"));
-      for (const e of idx.entries ?? []) for (const v of e.versions ?? []) seen.set(`${e.id}@${v.version}`, String(v.publishedAt));
+      for (const e of idx.entries ?? []) {
+        for (const v of e.versions ?? []) {
+          seen.set(`${e.id}@${v.version}`, String(v.publishedAt));
+          if (idx.sinceRev === SINCE_REV && typeof v.minApp === "string") reuse.set(`${e.id}@${v.version}`, v.minApp);
+        }
+      }
     } catch {
     }
   }
@@ -18817,29 +19026,41 @@ async function publishCatalog(o, deps2) {
     const siblings = submissions.filter((x) => x.id === s.id).map((x) => ({ version: x.version, sha256: x.sha256, permissions: x.permissions }));
     const tier = tierOf(tiers, s.kind, s.id, s.publisher.key, s, chain.line(s.publisher.key), siblings);
     let where;
+    let minApp;
     if (tier !== "community") {
       const rel = `packages/${s.id}/${s.version}.${extOf(s.kind)}`;
       const mirror = import_node_path5.default.join(o.hostedDir, s.id, `${s.version}.${extOf(s.kind)}`);
       let bytes = import_node_fs5.default.existsSync(mirror) ? import_node_fs5.default.readFileSync(mirror) : null;
       if (!bytes || sha2563(bytes) !== s.sha256) {
-        const why = await problemWith(fetch2, s);
-        if (why) {
-          broken.push({ id: s.id, version: s.version, reason: why });
+        const got = await fetchChecked(fetch2, s);
+        if ("why" in got) {
+          broken.push({ id: s.id, version: s.version, reason: got.why });
           continue;
         }
-        bytes = await fetch2(s.url, s.size + 1);
+        bytes = got.bytes;
       }
+      minApp = reuse.get(key) ?? minAppFor(s, bytes);
       import_node_fs5.default.mkdirSync(import_node_path5.default.dirname(import_node_path5.default.join(work, rel)), { recursive: true });
       import_node_fs5.default.writeFileSync(import_node_path5.default.join(work, rel), bytes);
       where = { file: rel };
       hosted++;
     } else {
+      let bytes = null;
       if (o.links === "all" || !seen.has(key)) {
-        const why = await problemWith(fetch2, s);
-        if (why) {
-          broken.push({ id: s.id, version: s.version, reason: why });
+        const got = await fetchChecked(fetch2, s);
+        if ("why" in got) {
+          broken.push({ id: s.id, version: s.version, reason: got.why });
           continue;
         }
+        bytes = got.bytes;
+      }
+      minApp = reuse.get(key);
+      if (!minApp) {
+        if (!bytes) {
+          const got = await fetchChecked(fetch2, s);
+          if ("bytes" in got) bytes = got.bytes;
+        }
+        if (bytes) minApp = minAppFor(s, bytes);
       }
       where = { url: s.url };
       external++;
@@ -18862,7 +19083,7 @@ async function publishCatalog(o, deps2) {
       // the package belongs to the key at the end of its chain; each version keeps the key that signed it
       publisher: { name: s.publisher.name, key: chain.head(s.publisher.key) }
     });
-    e.versions.push({ version: s.version, sha256: s.sha256, size: s.size, ...where, publishedAt: seen.get(key) ?? now.toISOString(), permissions: s.permissions, changelog: s.changelog, status: statuses.get(key) ?? "active", key: s.publisher.key });
+    e.versions.push({ version: s.version, sha256: s.sha256, size: s.size, ...where, publishedAt: seen.get(key) ?? now.toISOString(), ...minApp ? { minApp } : {}, permissions: s.permissions, changelog: s.changelog, status: statuses.get(key) ?? "active", key: s.publisher.key });
     entries.set(s.id, e);
   }
   import_node_fs5.default.mkdirSync(import_node_path5.default.join(work, "entries"), { recursive: true });
@@ -18876,7 +19097,7 @@ async function publishCatalog(o, deps2) {
   });
   import_node_fs5.default.writeFileSync(import_node_path5.default.join(work, "successions.json"), JSON.stringify(valid));
   const sequence = publishSequence(now);
-  build2(work, o.identity, { now, days: 7, sequence, loopbackPort: deps2.loopbackPort });
+  build2(work, o.identity, { now, days: 7, sequence, loopbackPort: deps2.loopbackPort, sinceRev: SINCE_REV });
   const check = verifyPublished(import_node_path5.default.join(work, "public"), o.rootKeys, { now, loopbackPort: deps2.loopbackPort });
   if (!check.ok) throw new Error("Le catalogue produit serait refus\xE9 par l\u2019application : " + check.errors.join(" ; "));
   removeTree(o.outDir);
@@ -18894,7 +19115,7 @@ function copyDir(from, to) {
   }
 }
 
-// apps/desktop/src/catalog/pack.ts
+// ../VTT/tabletop-desktop/apps/desktop/src/catalog/pack.ts
 var import_node_fs6 = __toESM(require("node:fs"));
 var import_node_path6 = __toESM(require("node:path"));
 var import_node_zlib2 = __toESM(require("node:zlib"));
@@ -18959,7 +19180,7 @@ function packFolder(dir) {
   return Buffer.concat([...locals, centralBytes, end]);
 }
 
-// apps/desktop/verifier/cli.ts
+// ../VTT/tabletop-desktop/apps/desktop/verifier/cli.ts
 var core = require_builder_core();
 var FR_TEXTS = { ...require_fr2(), ...require_fr() };
 function sayFrench(key, vars) {
