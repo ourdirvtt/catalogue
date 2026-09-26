@@ -1,0 +1,27 @@
+{
+  "v": 1,
+  "id": "cpred-en",
+  "version": "2.1.0",
+  "kind": "system",
+  "name": "Cyberpunk RED sheet (unofficial)",
+  "url": "https://github.com/ourdirvtt/catalogue/releases/download/cpred-2.1.0/fiche-cyberpunk-red-en.json",
+  "size": 521395,
+  "sha256": "a7f5b3fa6aa1ea6c3bd71dc2120cda98a75be3365fc54d06ee3b1e5ac9107540",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "signature": "q3qANaYC-gUBYOP5Fs3nKvgSZzEaTQmM08D8nuuJzrNcHGrG9wCekFxJCtIvoVBs2ohoQJXTlWDJZG_kVVjBDA",
+  "permissions": [],
+  "license": "Homebrew Content Policy (R. Talsorian Games)",
+  "summary": "Unofficial Cyberpunk RED character sheet, in English: gauges, core book skills, weapons, cyberware, damage to the target with armour, three skins.",
+  "description": "",
+  "tags": [
+    "cyberpunk",
+    "fiche"
+  ],
+  "languages": [
+    "en"
+  ],
+  "access": "free"
+}
