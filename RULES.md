@@ -16,6 +16,12 @@ Ces règles s'appliquent à tout paquet listé dans le catalogue d'Ourdir, qu'il
 
 Permis, à condition de porter l'étiquette `nsfw`. Un contenu adulte sans cette étiquette est retiré.
 
+## Tes droits
+
+- **Ce que tu nous autorises** : en publiant, tu garantis avoir les droits sur ton paquet, et tu autorises Ourdir à l'héberger, le reproduire, le signer et le distribuer gratuitement aux utilisateurs d'Ourdir. Les utilisateurs s'en servent sous la licence que tu indiques dans le champ `license`.
+- **Ce que tu ne nous autorises pas** : cette autorisation s'arrête au catalogue. Elle ne donne à Ourdir aucun droit de reprendre ton code ou ton contenu dans Ourdir lui-même.
+- **Quand une idée de module entre dans Ourdir** : une idée ou une fonction ne s'approprie pas, Ourdir peut construire la sienne. Dans ce cas, pour un paquet du catalogue, nous nous engageons à : te prévenir avant de l'annoncer (adresse de ta clé ou ton dépôt) ; ne jamais reprendre ton code, tes textes ou tes images sans ton accord écrit (soit notre propre version sans partir de ton code, soit un accord que tu peux refuser) ; te citer ; garder ton paquet au catalogue ; reprendre, quand c'est possible, les réglages de ses utilisateurs.
+
 ## Retrait
 
 - Un paquet qui enfreint ces règles est retiré **sans préavis** dès qu'un signalement fondé est reçu ; les versions installées sont désactivées dans l'appli.
@@ -67,6 +73,12 @@ These rules apply to every package listed in the Ourdir catalogue, hosted by Our
 ## Adult content
 
 Allowed, with the `nsfw` tag. Adult content without it is removed.
+
+## Your rights
+
+- **What you allow us**: by publishing, you warrant that you hold the rights to your package, and you allow Ourdir to host, copy, sign and distribute it free of charge to Ourdir users. Users use it under the licence you name in the `license` field.
+- **What you do not allow us**: this permission ends at the catalogue. It gives Ourdir no right to take your code or content into Ourdir itself.
+- **When a module's idea comes into Ourdir**: an idea or a feature cannot be owned, and Ourdir may build its own. When it does, for a catalogue package, we commit to: tell you before announcing it (your key's address or your repository); never take your code, text or images without your written agreement (either our own version not based on your code, or an agreement you may refuse); credit you; keep your package in the catalogue; carry over, when possible, its users' settings.
 
 ## Removal
 
