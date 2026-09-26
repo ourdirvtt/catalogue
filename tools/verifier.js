@@ -48,6 +48,11 @@ var require_fr = __commonJS({
       "builder.alignementNombre": "Alignement du nombre",
       "builder.aucune": "Aucune",
       "builder.badSize": "Taille de fiche invalide (300\u20131600 \xD7 200\u20131600).",
+      "builder.bind.inList": "Un bloc des r\xE8gles ne se place pas dans une liste.",
+      "builder.bind.layout": "Disposition du bloc inconnue.",
+      "builder.bind.notContainer": "Seul un conteneur peut suivre les r\xE8gles.",
+      "builder.bind.orphan": "Ce bloc suit \xAB {bind} \xBB, absent des r\xE8gles : il reste tel quel.",
+      "builder.bind.twice": "Le bloc \xAB {bind} \xBB est d\xE9j\xE0 sur la fiche (ou illisible).",
       "builder.caracteristiques": "Caract\xE9ristiques",
       "builder.carte": "Carte",
       "builder.caseCocher": "Case \xE0 cocher",
@@ -96,6 +101,11 @@ var require_fr = __commonJS({
       "builder.entreesSousAutre": "Entr\xE9es l\u2019une sous l\u2019autre",
       "builder.equipement": "\xC9quipement",
       "builder.equipment": "\xC9quipement",
+      "builder.follows": "Ce jet suit",
+      "builder.follows.noDice": "Ce jet suit une r\xE8gle : \xE9cris seulement ce qui s\u2019ajoute (@force, #bonus, 2), pas de d\xE9s.",
+      "builder.follows.none": "aucune r\xE8gle",
+      "builder.follows.notClickable": "Un jet qui suit une r\xE8gle doit \xEAtre cliquable.",
+      "builder.follows.unknown": "Ce jet suit \xAB {id} \xBB, qui n\u2019existe pas dans les r\xE8gles.",
       "builder.forceDexteriteConstitutionIntelligence": "Force, Dext\xE9rit\xE9, Constitution, Intelligence, Sagesse, Charisme",
       "builder.formula": "Formule",
       "builder.formula.emptyRef": "{what} : r\xE9f\xE9rence \xAB @ \xBB sans nom.",
@@ -192,11 +202,15 @@ var require_fr = __commonJS({
       "builder.reserveMjJoueursNe": "R\xE9serv\xE9 au MJ : les joueurs ne peuvent pas le modifier",
       "builder.reserveMjNeS": "\xAB R\xE9serv\xE9 au MJ \xBB ne s\u2019applique qu\u2019aux champs que le joueur remplit.",
       "builder.ressourceDepenseeDoitEtre": "La ressource d\xE9pens\xE9e doit \xEAtre un champ.",
+      "builder.roll.advOneDie": "adv() et disadv() gardent le meilleur (le pire) des d\xE9s donn\xE9s : avec un seul d\xE9, il n\u2019y a pas d\u2019avantage. \xC9cris adv(2d20).",
       "builder.roll.context": "Le jet : {problem}",
+      "builder.roll.d20Bonus": "Jet : d20 + bonus",
       "builder.roll.inList": "Le jet cite \xAB @{id} \xBB : ce champ est dans une liste r\xE9p\xE9table, utilise \xAB #{id} \xBB dans l\u2019affichage d\u2019une entr\xE9e.",
       "builder.roll.noField": "Le jet cite \xAB @{id} \xBB : ce champ n\u2019existe pas ou n\u2019a pas de valeur.",
       "builder.roll.noVar": "Le jet cite la variable \xAB ${id} \xBB : elle n\u2019existe pas.",
+      "builder.roll.underPercent": "Jet : pourcentage, r\xE9ussi sous la valeur",
       "builder.rollTooLong": "Jet trop long ({max} max).",
+      "builder.rules.needV2": "Un syst\xE8me avec des r\xE8gles est un document de version 2.",
       "builder.sensComparaisonEstInconnu": "Le sens de la comparaison est inconnu.",
       "builder.seulEspaceEstAccepte": "Seul l\u2019espace est accept\xE9 comme s\xE9parateur (pas de tabulation ni de retour \xE0 la ligne).",
       "builder.seulPortraitParFiche": "Un seul portrait par fiche.",
@@ -223,6 +237,49 @@ var require_fr = __commonJS({
       "builder.titreOngletVideTrop": "Titre d\u2019onglet vide ou trop long.",
       "builder.tooManyNodes": "Trop d\u2019\xE9l\xE9ments ({max} max).",
       "builder.toutesOptionsVisibles": "Toutes les options visibles",
+      "builder.ui.alignement": "Alignement",
+      "builder.ui.bandeau": "Bandeau",
+      "builder.ui.bouton": "Bouton",
+      "builder.ui.cellules0Automatique": "Cellules (0 : automatique)",
+      "builder.ui.colonne": "Colonne",
+      "builder.ui.conteneur": "Conteneur",
+      "builder.ui.discret": "Discret",
+      "builder.ui.disposition": "Disposition",
+      "builder.ui.enCreux": "En creux",
+      "builder.ui.enLigneCompact": "En ligne (compact)",
+      "builder.ui.grande": "Grande",
+      "builder.ui.gras": "Gras",
+      "builder.ui.indication": "Indication",
+      "builder.ui.infobulleAuSurvolOptionnel": "Infobulle au survol (optionnel)",
+      "builder.ui.inventaire": "Inventaire",
+      "builder.ui.jauge": "Jauge",
+      "builder.ui.ligne": "Ligne",
+      "builder.ui.listeDAptitudes": "Liste d'aptitudes",
+      "builder.ui.listeDAttaques": "Liste d'attaques",
+      "builder.ui.listeDeChoix": "Liste de choix",
+      "builder.ui.listeDeSorts": "Liste de sorts",
+      "builder.ui.listeLibre": "Liste libre",
+      "builder.ui.majuscules": "Majuscules",
+      "builder.ui.maximum": "Maximum",
+      "builder.ui.minimum": "Minimum",
+      "builder.ui.minuscule": "Minuscule",
+      "builder.ui.moyenne": "Moyenne",
+      "builder.ui.nom": "Nom",
+      "builder.ui.normale": "Normale",
+      "builder.ui.notesLibres": "Notes libres",
+      "builder.ui.onglets": "Onglets",
+      "builder.ui.options": "Options",
+      "builder.ui.pastille": "Pastille",
+      "builder.ui.pastilles": "Pastilles",
+      "builder.ui.petite": "Petite",
+      "builder.ui.peutResterVide": "Peut rester vide",
+      "builder.ui.plusieursChoix": "Plusieurs choix",
+      "builder.ui.portrait": "Portrait",
+      "builder.ui.ressourceActuelMax": "Ressource (actuel / max)",
+      "builder.ui.sousTitre": "Sous-titre",
+      "builder.ui.style": "Style",
+      "builder.ui.taille": "Taille",
+      "builder.ui.titre": "Titre",
       "builder.unknownBlock": "Bloc inconnu : {id}",
       "builder.unknownComponent": "Composant inconnu : {name}",
       "builder.unsupported": "Cette fiche utilise des \xE9l\xE9ments que l\u2019\xE9diteur ne g\xE8re pas encore : {list}.",
@@ -319,19 +376,31 @@ var require_fr = __commonJS({
       "builderTheme.texteDiscret": "Texte discret",
       "builderTheme.themeIllisible": "Th\xE8me illisible.",
       "builderTheme.typeFondInconnu": "Type de fond inconnu.",
+      "builderTheme.ui.accentPrincipal": "Accent principal",
+      "builderTheme.ui.accentSecondaire": "Accent secondaire",
+      "builderTheme.ui.alegreyaLivre": "Alegreya (livre)",
+      "builderTheme.ui.arrondie": "Arrondie",
+      "builderTheme.ui.bandeauFond": "Bandeau (fond)",
+      "builderTheme.ui.barlowCondensedAffiche": "Barlow Condensed (affiche)",
+      "builderTheme.ui.bordures": "Bordures",
+      "builderTheme.ui.caveatManuscrite": "Caveat (manuscrite)",
+      "builderTheme.ui.chakraPetchHud": "Chakra Petch (HUD)",
+      "builderTheme.ui.champsFond": "Champs (fond)",
+      "builderTheme.ui.crimsonProRoman": "Crimson Pro (roman)",
+      "builderTheme.ui.exo2ScienceFiction": "Exo 2 (science-fiction)",
+      "builderTheme.ui.imFellEnglishGrimoire": "IM Fell English (grimoire)",
+      "builderTheme.ui.interNet": "Inter (net)",
+      "builderTheme.ui.jetbrainsMonoCode": "JetBrains Mono (code)",
+      "builderTheme.ui.livreAncien": "Livre ancien",
+      "builderTheme.ui.michromaLargeTechno": "Michroma (large, techno)",
+      "builderTheme.ui.panneaux": "Panneaux",
+      "builderTheme.ui.panneauxEnCreux": "Panneaux en creux",
+      "builderTheme.ui.sairaStencilOnePochoir": "Saira Stencil One (pochoir)",
+      "builderTheme.ui.serifClassique": "Serif classique",
+      "builderTheme.ui.shareTechMonoTerminal": "Share Tech Mono (terminal)",
+      "builderTheme.ui.terminal": "Terminal",
       "builderTheme.valeursCalculees": "Valeurs calcul\xE9es",
       "dialog.firewall.failed": "Le pare-feu Windows n\u2019a pas pu \xEAtre mis \xE0 jour. Accepte l\u2019invite administrateur (UAC) et r\xE9essaie.",
-      "dialog.friends.added": "{name} a \xE9t\xE9 ajout\xE9 \xE0 tes amis.",
-      "dialog.friends.copied": "Ton code d\u2019ami est copi\xE9. Envoie-le \xE0 la personne de ton choix (Discord, SMS\u2026).",
-      "dialog.hostFailed.title": "Le host n\u2019a pas d\xE9marr\xE9",
-      "dialog.internet.cancel": "Annuler",
-      "dialog.internet.confirm": "Ouvrir sur Internet",
-      "dialog.internet.detail": "Le port sera joignable depuis Internet. Seules les cl\xE9s que tu invites peuvent se connecter et tout le trafic est chiffr\xE9 (TLS, certificat \xE9pingl\xE9 dans l\u2019invitation) : le host ne r\xE9pond \xE0 personne d\u2019autre. Ta box doit rediriger le port, ou ton IPv6 doit \xEAtre joignable.",
-      "dialog.internet.message": "Ouvrir le port \xE0 tout Internet ?",
-      "dialog.internet.title": "Exposer la table sur Internet",
-      "dialog.invite.copied": "Invitation pour {name} copi\xE9e",
-      "dialog.invite.detail": "Elle est chiffr\xE9e pour {name} seul : envoie-la par le canal de ton choix (Discord, SMS\u2026). Personne d\u2019autre ne peut lire l\u2019adresse qu\u2019elle contient. Valable 7 jours.",
-      "dialog.invite.localWarning": "Ton acc\xE8s r\xE9seau est r\xE9gl\xE9 sur \xAB Local \xBB : ton ami ne pourra pas te joindre. Change-le dans Param\xE8tres, puis recr\xE9e l\u2019invitation.",
       "dialog.join.unknownSender": "Cette invitation vient de quelqu\u2019un qui n\u2019est pas dans tes amis. Ajoute son code d\u2019ami (menu Amis) avant de la r\xE9utiliser.",
       "err.bundle.absolute": "chemin absolu (propre \xE0 Foundry)",
       "err.bundle.badType": "Type de fichier non assemblable : {name}.",
@@ -441,6 +510,7 @@ var require_fr = __commonJS({
       "err.foundry.outside": "Chemin hors du module.",
       "err.foundry.tooManyDocs": "Compendium trop grand (plus de {max} documents).",
       "err.handshake.silent": "Le host n\u2019a pas r\xE9pondu : il est injoignable, ou ta cl\xE9 n\u2019est pas invit\xE9e \xE0 cette table.",
+      "err.identity.notBackup": "Ce fichier n\u2019est pas une sauvegarde d\u2019identit\xE9 d\u2019Ourdir, ou il est ab\xEEm\xE9.",
       "err.install.archiveTropVolumineuse": "Archive trop volumineuse.",
       "err.install.badJson": "module.json n\u2019est pas du JSON valide.",
       "err.install.badSignature": "Signature illisible : ignor\xE9e.",
@@ -632,45 +702,15 @@ var require_fr = __commonJS({
       "menu.edit.redo": "R\xE9tablir",
       "menu.edit.selectAll": "Tout s\xE9lectionner",
       "menu.edit.undo": "Annuler",
-      "menu.friends": "Amis",
-      "menu.friends.addFromClipboard": "Ajouter un ami (code dans le presse-papiers)",
-      "menu.friends.copyCode": "Copier mon code d\u2019ami",
-      "menu.friends.invite": "Inviter \xE0 ma table",
-      "menu.friends.join": "Rejoindre une table (invitation dans le presse-papiers)",
-      "menu.friends.none": "Aucun ami pour l\u2019instant",
-      "menu.friends.remove": "Retirer",
-      "menu.friends.uninvite": "Retirer de ma table",
       "menu.help": "Aide",
       "menu.help.logs": "Ouvrir le dossier des journaux",
       "menu.home": "Accueil",
-      "menu.host": "Host",
       "menu.host.devTools": "Outils de d\xE9veloppement",
-      "menu.host.network": "Acc\xE8s r\xE9seau",
-      "menu.host.network.internet": "Internet (joueurs \xE0 distance)",
-      "menu.host.network.lan": "R\xE9seau local (LAN)",
-      "menu.host.network.local": "Local (ce PC uniquement)",
-      "menu.host.openUserData": "Ouvrir userData",
-      "menu.host.reachability": "Accessibilit\xE9 (mes amis peuvent-ils me joindre ?)",
-      "menu.host.start": "D\xE9marrer le host",
-      "menu.host.stop": "Arr\xEAter",
-      "menu.tables": "Tables",
-      "menu.tables.forget": "Oublier",
-      "menu.tables.mine": "Ma table",
-      "menu.tables.none": "Aucune table rejointe",
-      "menu.tables.open": "Ouvrir",
       "menu.view": "Affichage",
       "menu.view.fullscreen": "Plein \xE9cran",
       "menu.view.resetZoom": "Taille normale",
       "menu.view.zoomIn": "Agrandir",
       "menu.view.zoomOut": "R\xE9duire",
-      "offline.body": "Le host embarqu\xE9 n\u2019est pas lanc\xE9. Menu Host \u2192 D\xE9marrer le host (127.0.0.1:3010).",
-      "offline.hint": "Menu : D\xE9marrer host \xB7 Arr\xEAter \xB7 Ouvrir userData \xB7 DevTools",
-      "offline.lead": "Le host embarqu\xE9 n\u2019est pas encore lanc\xE9.",
-      "offline.statusLabel": "\xC9tat du host",
-      "offline.statusRunning": "En cours",
-      "offline.statusStopped": "Arr\xEAt\xE9",
-      "offline.title": "Serveur non d\xE9marr\xE9",
-      "offline.userDataLabel": "userData",
       "pkg.identity.badCode": "Code d\u2019ami invalide.",
       "pkg.identity.badCodeCopy": "Code d\u2019ami invalide (copie incompl\xE8te ou modifi\xE9e).",
       "pkg.identity.noEncryption": "Identit\xE9 chiffr\xE9e : le chiffrement du syst\xE8me est indisponible.",
@@ -721,6 +761,210 @@ var require_fr = __commonJS({
       "reach.upnp.mapped": "Ta box a ouvert le port {port} automatiquement (UPnP). Ton adresse publique est {ip} : elle sera mise dans les invitations.",
       "reach.upnp.none": "Aucune box compatible UPnP trouv\xE9e. Ouvre le port \xE0 la main dans la box : redirection TCP du port {port} vers ce PC, puis renseigne ton adresse publique (\xAB publicHost \xBB dans host.json).",
       "reach.upnp.refused": "Ta box a \xE9t\xE9 trouv\xE9e mais refuse d\u2019ouvrir le port. Ouvre-le \xE0 la main dans la box : redirection TCP du port {port} vers ce PC.",
+      "rules.against": " (contre {n})",
+      "rules.attack": "Attaquer",
+      "rules.crit": "R\xE9ussite critique",
+      "rules.deg.extreme": "R\xE9ussite extr\xEAme",
+      "rules.deg.hard": "R\xE9ussite difficile",
+      "rules.der.defense": "D\xE9fense",
+      "rules.der.health": "Sant\xE9",
+      "rules.der.hp": "Points de vie",
+      "rules.der.initiative": "Initiative",
+      "rules.der.level": "Niveau",
+      "rules.der.magic": "Points de magie",
+      "rules.der.proficiency": "Ma\xEEtrise",
+      "rules.der.sanity": "Sant\xE9 mentale",
+      "rules.der.stress": "Stress",
+      "rules.der.willpower": "Volont\xE9",
+      "rules.diff.easy": "Facile",
+      "rules.diff.hard": "Difficile",
+      "rules.diff.medium": "Moyen",
+      "rules.diff.veryHard": "Tr\xE8s difficile",
+      "rules.dt.balistique": "Balistique",
+      "rules.dt.contondant": "Contondant",
+      "rules.dt.electrique": "\xC9lectrique",
+      "rules.dt.energie": "\xC9nergie",
+      "rules.dt.explosif": "Explosif",
+      "rules.dt.feu": "Feu",
+      "rules.dt.foudre": "Foudre",
+      "rules.dt.froid": "Froid",
+      "rules.dt.necrotique": "N\xE9crotique",
+      "rules.dt.perforant": "Perforant",
+      "rules.dt.poison": "Poison",
+      "rules.dt.psychique": "Psychique",
+      "rules.dt.tranchant": "Tranchant",
+      "rules.expertIn": "{name} : expert",
+      "rules.fail": "\xC9chec",
+      "rules.fate.average": "Moyen",
+      "rules.fate.fair": "Correct",
+      "rules.fate.good": "Bon",
+      "rules.fate.great": "Excellent",
+      "rules.fate.mediocre": "M\xE9diocre",
+      "rules.fate.superb": "Superbe",
+      "rules.finesse": "La meilleure des deux (finesse)",
+      "rules.fumble": "\xC9chec critique",
+      "rules.fx.title": "\xC9tats",
+      "rules.icon.a_terre": "\xC0 terre",
+      "rules.icon.autre": "Autre",
+      "rules.icon.aveugle": "Aveugle",
+      "rules.icon.benediction": "B\xE9n\xE9diction",
+      "rules.icon.charme": "Charme",
+      "rules.icon.entrave": "Entrave",
+      "rules.icon.faiblesse": "Faiblesse",
+      "rules.icon.feu": "Feu",
+      "rules.icon.froid": "Froid",
+      "rules.icon.invisible": "Invisible",
+      "rules.icon.peur": "Peur",
+      "rules.icon.poison": "Poison",
+      "rules.icon.protection": "Protection",
+      "rules.icon.rage": "Rage",
+      "rules.icon.saignement": "Saignement",
+      "rules.icon.sommeil": "Sommeil",
+      "rules.icon.vitesse": "Vitesse",
+      "rules.immune": "Immunit\xE9s",
+      "rules.margin": ", de {n}",
+      "rules.maxOf": "{name} (max)",
+      "rules.modOf": "Modificateur {name}",
+      "rules.partial": "R\xE9ussite partielle",
+      "rules.passiveOf": "{name} (passive)",
+      "rules.reduction": "R\xE9duction",
+      "rules.resist": "R\xE9sistances",
+      "rules.rest.halte": "Halte",
+      "rules.rest.nuit": "Nuit",
+      "rules.rest.title": "Repos",
+      "rules.sk.athletics": "Athl\xE9tisme",
+      "rules.sk.perception": "Perception",
+      "rules.stat.agility": "Agilit\xE9",
+      "rules.stat.mind": "Esprit",
+      "rules.stat.strength": "Force",
+      "rules.state.a_terre": "\xC0 terre",
+      "rules.state.aveugle": "Aveugl\xE9",
+      "rules.state.benediction": "B\xE9ni",
+      "rules.state.entrave": "Entrav\xE9",
+      "rules.state.peur": "Effray\xE9",
+      "rules.state.poison": "Empoisonn\xE9",
+      "rules.state.protection": "\xC0 couvert",
+      "rules.state.saignement": "Bless\xE9 grave",
+      "rules.success": "R\xE9ussite",
+      "rules.successes": "{n} succ\xE8s",
+      "rules.test": "Test",
+      "rules.totalOf": "{name} (total)",
+      "rules.trainedIn": "{name} : form\xE9",
+      "rules.under": " (sous {n})",
+      "rules.v.adv": "Avantage, d\xE9savantage ou rien.",
+      "rules.v.advantage": "L\u2019avantage ne s\u2019applique pas \xE0 une r\xE9serve, \xE0 Fate ni \xE0 des bandes.",
+      "rules.v.bands": "Bandes : de 2 \xE0 12, dans l\u2019ordre croissant, la derni\xE8re sans maximum, chacune avec un nom et une tonalit\xE9.",
+      "rules.v.bonus": "Bonus : un nombre entier de \u22121000 \xE0 1000.",
+      "rules.v.bool": "Oui ou non attendu.",
+      "rules.v.combat": "Combat illisible.",
+      "rules.v.combatKey": "Cette valeur n\u2019existe pas sur la fiche.",
+      "rules.v.combatRoll": "L\u2019attaque se lance avec \xAB {id} \xBB, qui n\u2019existe pas dans les r\xE8gles.",
+      "rules.v.combatStats": "Les armes ne peuvent prendre que des caract\xE9ristiques du syst\xE8me.",
+      "rules.v.condition": "Condition de critique ou de maladresse illisible.",
+      "rules.v.conditions": "Critiques et maladresses : 6 conditions au plus.",
+      "rules.v.count": "Nombre de d\xE9s : de 1 \xE0 {max}.",
+      "rules.v.countAt": "Seuil de succ\xE8s : une face d\u2019un d{sides}.",
+      "rules.v.critical": "Critique : d\xE9s doubl\xE9s, maximum plus un jet, ou rien.",
+      "rules.v.cycle": "Boucle de calcul : {path}.",
+      "rules.v.default": "La difficult\xE9 par d\xE9faut n\u2019est pas dans la liste.",
+      "rules.v.degrees": "Degr\xE9s : par paliers au-dessus de la cible, ou par fractions sous la valeur.",
+      "rules.v.derived": "D\xE9riv\xE9s : {max} au plus.",
+      "rules.v.dice": "D\xE9s illisibles.",
+      "rules.v.difficulties": "Difficult\xE9s : {max} au plus.",
+      "rules.v.difficultyValue": "La difficult\xE9 a besoin d\u2019une valeur enti\xE8re.",
+      "rules.v.dotsKey": "En pastilles, la cl\xE9 fait {max} caract\xE8res au plus.",
+      "rules.v.dotsRange": "Pastilles : de 0 \xE0 {max} au plus.",
+      "rules.v.double": "Face qui compte double : une face du d\xE9, ou 0.",
+      "rules.v.effectTypes": "Des types de d\xE9g\xE2ts du combat.",
+      "rules.v.effects": "\xC9tats illisibles.",
+      "rules.v.expertise": "L\u2019expertise ne va qu\u2019avec \xAB form\xE9 \xBB.",
+      "rules.v.explode": "Explosion : sur le maximum, 10 fois au plus.",
+      "rules.v.family": "Famille de d\xE9s inconnue.",
+      "rules.v.fate": "Les d\xE9s Fate sont des d3, en nombre fixe.",
+      "rules.v.finesse": "La finesse compare deux caract\xE9ristiques diff\xE9rentes.",
+      "rules.v.fixed": "Cible fixe : un nombre entier.",
+      "rules.v.gauge": "Une jauge demande une ressource.",
+      "rules.v.generation": "M\xE9thode de cr\xE9ation inconnue.",
+      "rules.v.group": "Groupe : 40 caract\xE8res au plus.",
+      "rules.v.health": "Les d\xE9g\xE2ts touchent une ressource (un d\xE9riv\xE9 actuel / maximum).",
+      "rules.v.hidden": "Un d\xE9riv\xE9 cach\xE9 ne peut \xEAtre ni jetable, ni une ressource, ni une valeur saisie.",
+      "rules.v.icon": "Ic\xF4ne inconnue.",
+      "rules.v.id": "Cl\xE9 invalide : des minuscules et _, 30 caract\xE8res au plus.",
+      "rules.v.identity": "Identit\xE9 : un ton, un public et une complexit\xE9 de la liste.",
+      "rules.v.initiative": "L\u2019initiative se lance avec un nombre fixe de d\xE9s.",
+      "rules.v.keep": "Garder : le meilleur ou le pire, moins que le nombre de d\xE9s.",
+      "rules.v.key": "Cl\xE9 invalide : une minuscule, puis des minuscules, des chiffres et _, 30 caract\xE8res au plus.",
+      "rules.v.modKey": "Un effet change une caract\xE9ristique, une valeur calcul\xE9e ou le total d\u2019une comp\xE9tence.",
+      "rules.v.modN": "Un nombre entier, de \u2212{max} \xE0 {max}, pas z\xE9ro.",
+      "rules.v.name": "Il faut un nom.",
+      "rules.v.need": "Succ\xE8s requis : au moins 1.",
+      "rules.v.needPool": "Il faut une r\xE9serve de d\xE9s (le nombre de d\xE9s vient de ce qu\u2019on ajoute).",
+      "rules.v.noDifficulty": "Une cible \xAB difficult\xE9 \xBB a besoin d\u2019au moins une difficult\xE9.",
+      "rules.v.notResolution": "R\xE9solution illisible.",
+      "rules.v.notRules": "R\xE8gles illisibles.",
+      "rules.v.percentRange": "Pourcentage : entre 0 et 100.",
+      "rules.v.proficiency": "\xAB Form\xE9 \xBB ajoute un d\xE9riv\xE9 de ma\xEEtrise : choisis-le (et seulement avec \xAB form\xE9 \xBB).",
+      "rules.v.read": "Lecture du r\xE9sultat inconnue.",
+      "rules.v.recipe": "Recette inconnue, incompl\xE8te, ou qui lit ce qui n\u2019existe pas.",
+      "rules.v.reroll": "Relance : une face du d\xE9, une fois ou toujours.",
+      "rules.v.resource": "Une ressource se calcule et ne se lance pas.",
+      "rules.v.restHow": "En entier, de moiti\xE9, d\u2019un nombre ou d\u2019une valeur.",
+      "rules.v.restUnknown": "Ce repos n\u2019existe pas.",
+      "rules.v.rests": "De 1 \xE0 {max} repos.",
+      "rules.v.rollNothing": "Ce jet ne change rien : un bonus ou un avantage.",
+      "rules.v.rollWith": "Ce d\xE9riv\xE9 suit \xAB {id} \xBB, qui n\u2019existe pas dans les r\xE8gles.",
+      "rules.v.rolls": "Jets secondaires : {max} au plus.",
+      "rules.v.rounds": "Entre 1 et {max} rounds.",
+      "rules.v.sameId": "La cl\xE9 \xAB {id} \xBB est d\xE9j\xE0 prise.",
+      "rules.v.short": "Abr\xE9viation : 6 caract\xE8res au plus.",
+      "rules.v.show": "Affichage inconnu.",
+      "rules.v.sides": "Faces du d\xE9 : {list}.",
+      "rules.v.skillList": "Comp\xE9tences : de 1 \xE0 {max}.",
+      "rules.v.skillMode": "Mode des comp\xE9tences inconnu.",
+      "rules.v.skillRank": "Rang des comp\xE9tences inconnu.",
+      "rules.v.skillStat": "\xAB {id} \xBB n\u2019est pas une caract\xE9ristique.",
+      "rules.v.skills": "Comp\xE9tences illisibles.",
+      "rules.v.statDefault": "La valeur de d\xE9part doit \xEAtre dans la plage.",
+      "rules.v.statForm": "Forme des caract\xE9ristiques inconnue.",
+      "rules.v.statList": "Caract\xE9ristiques : de 1 \xE0 {max}.",
+      "rules.v.statRange": "Plage : un minimum plus petit que le maximum, entre \u22121000 et 1000.",
+      "rules.v.stats": "Caract\xE9ristiques illisibles.",
+      "rules.v.target": "Cible inconnue.",
+      "rules.v.tie": "\xC9galit\xE9 : r\xE9ussite ou \xE9chec.",
+      "rules.v.tooLong": "\xAB {id} \xBB donne une formule trop longue une fois d\xE9pli\xE9e ({n} caract\xE8res, {max} au plus).",
+      "rules.v.tooMany": "{max} au plus.",
+      "rules.v.typeKey": "Cl\xE9 de type : des minuscules et _, 30 caract\xE8res au plus.",
+      "rules.v.types": "Types de d\xE9g\xE2ts : {max} au plus.",
+      "rules.v.window": "Fen\xEAtre du jet illisible.",
+      "rules.v.windowDifficulty": "La fen\xEAtre ne peut proposer une difficult\xE9 que si la cible est une difficult\xE9.",
+      "rules.vuln": "Vuln\xE9rabilit\xE9s",
+      "rules.w.ammo": "Munitions",
+      "rules.w.bonus": "Bonus",
+      "rules.w.damage": "D\xE9g\xE2ts",
+      "rules.w.name": "Arme",
+      "rules.w.range": "Port\xE9e",
+      "rules.w.stat": "Caract\xE9ristique",
+      "rules.w.tags": "\xC9tiquettes",
+      "rules.w.type": "Type",
+      "rules.weapons": "Armes",
+      "rules.x.fractionDown": "{of} \xF7 {by}, arrondi en dessous",
+      "rules.x.fractionNear": "{of} \xF7 {by}, arrondi au plus proche",
+      "rules.x.fractionUp": "{of} \xF7 {by}, arrondi au-dessus",
+      "rules.x.ifExpert": "{prof} si expert",
+      "rules.x.ifTrained": "{prof} si form\xE9",
+      "rules.x.max": "le plus grand de {list}",
+      "rules.x.min": "le plus petit de {list}",
+      "rules.x.modifier": "({of} \u2212 10) \xF7 2, arrondi en dessous",
+      "rules.x.perLevel": "{base} + {per} \xD7 {level}",
+      "rules.x.step": "jusqu\u2019\xE0 {upTo} \u2192 {value}",
+      "rules.x.steps": "selon {of} : {list} ; sinon {other}",
+      "sys.dnd5e.description": "Fiche compl\xE8te de cinqui\xE8me \xE9dition \xE0 partir des r\xE8gles du SRD 5.1 : caract\xE9ristiques, sauvegardes, 18 comp\xE9tences, sorts et emplacements, attaques, \xE9tats, \xE9quipement. Sans logo, sans affiliation.",
+      "sys.fate-like.description": "Aspects, six approches, stress et cons\xE9quences. Jet 4d3-8, l\u2019\xE9quivalent ouvert de 4dF, sans texte sous licence.",
+      "sys.generic.description": "Fiche universelle : 6 traits et un d20. Un point de d\xE9part neutre pour n\u2019importe quel jeu.",
+      "sys.generic.name": "G\xE9n\xE9rique",
+      "sys.license.original": "Cr\xE9ation originale d\u2019Ourdir",
+      "sys.lite.description": "La fiche des tables Lite : points de vie avec barre et \xE9tat, initiative en un clic, quatre ressources, notes.",
+      "sys.osr.description": "Classe, points de vie, CA, six caract\xE9ristiques, jets d\u2019attaque et de sauvegarde au d20.",
       "tableTheme.accentFil": "Accent (le fil)",
       "tableTheme.advice": "{advice} ({ratio} pour {min}).",
       "tableTheme.badBase": "Base : un des th\xE8mes int\xE9gr\xE9s.",
@@ -765,8 +1009,27 @@ var require_fr = __commonJS({
       "tableTheme.theme": "Th\xE8me",
       "tableTheme.tooBig": "Th\xE8me trop volumineux (64 Ko au plus).",
       "tableTheme.tooLong80": "{name} : 80 caract\xE8res au plus.",
+      "tableTheme.ui.accentSecondaire": "Accent secondaire",
+      "tableTheme.ui.attention": "Attention",
+      "tableTheme.ui.danger": "Danger",
+      "tableTheme.ui.filets": "Filets",
+      "tableTheme.ui.fond": "Fond",
+      "tableTheme.ui.fondProfond": "Fond profond",
+      "tableTheme.ui.panneaux": "Panneaux",
+      "tableTheme.ui.panneauxEnCreux": "Panneaux en creux",
+      "tableTheme.ui.papierFichesJets": "Papier (fiches, jets)",
       "tableTheme.unknownField": "{where} : champ inconnu \xAB {name} \xBB.",
       "tableTheme.unreadable": "Ce fichier n\u2019est pas un th\xE8me Ourdir (JSON illisible).",
+      "ui.about.data": "Tes donn\xE9es : {path}",
+      "ui.about.engine": "Electron {electron} \xB7 Chromium {chrome} \xB7 Node {node}",
+      "ui.about.fonts": "Polices embarqu\xE9es (leurs licences sont livr\xE9es avec elles, dans le dossier fonts) : {list}",
+      "ui.about.licences": "Licences",
+      "ui.about.licencesTitle": "Licences et cr\xE9dits",
+      "ui.about.report": "Pr\xE9parer un rapport de bug\u2026",
+      "ui.about.reportDone": "Rapport enregistr\xE9 : {file}",
+      "ui.about.reportHint": "Le rapport contient les journaux et les r\xE9glages de l\u2019appli, jamais tes cl\xE9s, ton identit\xE9, tes amis ni tes tables. Les journaux peuvent citer les noms de tes amis et des adresses IP. Envoie-le \xE0 contact@ourdir.fr en racontant ce qui s\u2019est pass\xE9.",
+      "ui.about.title": "\xC0 propos d\u2019Ourdir",
+      "ui.about.version": "Ourdir {version} \xB7 version alpha",
       "ui.access.closed": "Ta box n\u2019a pas ouvert la porte : tes amis ne pourront pas te rejoindre pour l\u2019instant.",
       "ui.access.firewall": "Windows n\u2019a pas autoris\xE9 l\u2019application : tes amis ne peuvent pas te rejoindre.",
       "ui.access.idle": "Pr\xEAt. L\u2019acc\xE8s de tes amis se met en place tout seul quand tu lances une table.",
@@ -796,6 +1059,7 @@ var require_fr = __commonJS({
       "ui.builder.blocksHint": "Des morceaux de fiche d\xE9j\xE0 construits (caract\xE9ristiques, listes, pastilles...). Ils s\u2019ins\xE8rent dans la colonne, le conteneur ou l\u2019onglet s\xE9lectionn\xE9, puis se modifient comme tout le reste.",
       "ui.builder.blocksInsert": "Ins\xE9rer dans la fiche",
       "ui.builder.blocksTitle": "Blocs pr\xEAts \xE0 l\u2019emploi",
+      "ui.builder.boundHint": "Cet \xE9l\xE9ment suit les r\xE8gles (bloc \xAB {bind} \xBB) : il est refait \xE0 chaque changement des r\xE8gles. Change la r\xE8gle, pas l\u2019\xE9l\xE9ment.",
       "ui.builder.cannotSave": "Corrige d\u2019abord les erreurs list\xE9es sous la fiche.",
       "ui.builder.canvasEmpty": "La fiche est vide : ajoute une ligne, puis des champs.",
       "ui.builder.checksErrors": "{n} erreur(s) \xE0 corriger",
@@ -811,6 +1075,8 @@ var require_fr = __commonJS({
       "ui.builder.dice.keep3": "4d6, garde les 3 meilleurs",
       "ui.builder.dice.min3": "d6 avec un minimum de 3",
       "ui.builder.dice.percent": "d100 (pourcentage)",
+      "ui.builder.dice.pool": "R\xE9serve : 5d10, compte les 7 et plus",
+      "ui.builder.dice.reroll1": "d20, relance un 1 (une fois)",
       "ui.builder.down": "Descendre",
       "ui.builder.dropHere": "D\xE9pose un champ ici",
       "ui.builder.duplicate": "Dupliquer",
@@ -829,6 +1095,7 @@ var require_fr = __commonJS({
       "ui.builder.imported": "Syst\xE8me \xAB {name} \xBB import\xE9.",
       "ui.builder.insertDice": "Ins\xE9rer un d\xE9 ou une r\xE8gle de jet\u2026",
       "ui.builder.insertRef": "Ins\xE9rer une valeur\u2026",
+      "ui.builder.installed": "Syst\xE8mes install\xE9s",
       "ui.builder.keyInvalid": "Cl\xE9 invalide : lettres, chiffres et _ (40 max).",
       "ui.builder.keyTaken": "Cette cl\xE9 est d\xE9j\xE0 utilis\xE9e.",
       "ui.builder.leaveConfirm": "Quitter sans enregistrer les modifications ?",
@@ -883,6 +1150,7 @@ var require_fr = __commonJS({
       "ui.builder.tabsHint": "Clique un onglet sur la fiche pour le remplir : ce que tu ajoutes ensuite se place dedans.",
       "ui.builder.tabsLabel": "Onglets",
       "ui.builder.templateFail": "Ce mod\xE8le ne peut pas \xEAtre ouvert dans l\u2019\xE9diteur.",
+      "ui.builder.templates": "Mod\xE8les",
       "ui.builder.themeAddFile": "Ajouter un fichier (police woff2, woff, ttf, otf ; image png, jpg, webp)",
       "ui.builder.themeAngle": "Angle du d\xE9grad\xE9",
       "ui.builder.themeAssets": "Polices et images embarqu\xE9es",
@@ -911,7 +1179,6 @@ var require_fr = __commonJS({
       "ui.builder.themeHeader": "Bandeau de titre",
       "ui.builder.themeHeaderAlign": "Alignement du bandeau",
       "ui.builder.themeHeadingFont": "Police des titres",
-      "ui.builder.themeHint": "L\u2019identit\xE9 visuelle de la fiche : couleurs, polices, fond, formes. L\u2019aper\xE7u \xE0 gauche est mis \xE0 jour en direct.",
       "ui.builder.themeImage": "Image de fond",
       "ui.builder.themeImageMode": "Affichage de l\u2019image",
       "ui.builder.themeImported": "(import\xE9e)",
@@ -919,7 +1186,6 @@ var require_fr = __commonJS({
       "ui.builder.themeKindFont": "police",
       "ui.builder.themeKindImage": "image",
       "ui.builder.themeNoImages": "Ajoute d\u2019abord une image dans \xAB Polices et images embarqu\xE9es \xBB ci-dessous.",
-      "ui.builder.themeNone": "Aucun (apparence de base du jeu)",
       "ui.builder.themePatternColor": "Couleur du motif",
       "ui.builder.themePatternOpacity": "Intensit\xE9 du motif",
       "ui.builder.themePatternSize": "Taille du motif",
@@ -976,6 +1242,13 @@ var require_fr = __commonJS({
       "ui.cat.kind.theme": "Th\xE8mes de table",
       "ui.cat.kind.translation": "Traductions",
       "ui.cat.kindFilter": "Type",
+      "ui.cat.kindOne.adventure": "Aventure",
+      "ui.cat.kindOne.compendium": "Compendium",
+      "ui.cat.kindOne.maps": "Pack de cartes",
+      "ui.cat.kindOne.module": "Module",
+      "ui.cat.kindOne.system": "Syst\xE8me",
+      "ui.cat.kindOne.theme": "Th\xE8me de table",
+      "ui.cat.kindOne.translation": "Traduction",
       "ui.cat.lang.all": "Toutes les langues",
       "ui.cat.langFilter": "Langue",
       "ui.cat.lead": "Des modules et des syst\xE8mes sign\xE9s, pr\xEAts \xE0 installer. Rien n\u2019est install\xE9 avant l\u2019\xE9cran de v\xE9rification.",
@@ -1024,8 +1297,9 @@ var require_fr = __commonJS({
       "ui.common.cancel": "Annuler",
       "ui.common.copied": "Copi\xE9",
       "ui.common.copy": "Copier",
-      "ui.common.loading": "Chargement\u2026",
       "ui.common.paste": "Coller",
+      "ui.error.startup": "Ourdir n\u2019a pas pu d\xE9marrer. Les d\xE9tails sont dans le journal : {log}",
+      "ui.error.unexpected": "Quelque chose s\u2019est mal pass\xE9. Les d\xE9tails sont dans le journal (menu Aide \u2192 Ouvrir le dossier des journaux).",
       "ui.friends.accessBad": "Ta table n\u2019est probablement pas joignable depuis Internet pour l\u2019instant (voir Param\xE8tres). L\u2019invitation fonctionnera quand ce sera r\xE9gl\xE9.",
       "ui.friends.add": "Ajouter un ami",
       "ui.friends.addPlaceholder": "Colle son code d\u2019ami (td1_\u2026)",
@@ -1068,6 +1342,19 @@ var require_fr = __commonJS({
       "ui.home.title": "Comment veux-tu commencer ?",
       "ui.home.zero": "Partir de z\xE9ro",
       "ui.home.zeroText": "Un assistant te pose quelques questions et te donne une fiche d\xE9j\xE0 jouable.",
+      "ui.identity.backupHint": "La sauvegarde garde ta cl\xE9, ton nom et tes amis. Si tu perds ton identit\xE9 sans elle, tes amis devront t\u2019ajouter \xE0 nouveau. Garde ce fichier secret : il permet de se faire passer pour toi.",
+      "ui.identity.defaultName": "Joueur",
+      "ui.identity.export": "Sauvegarder mon identit\xE9\u2026",
+      "ui.identity.exported": "Identit\xE9 sauvegard\xE9e : {file}",
+      "ui.identity.import": "Restaurer une identit\xE9\u2026",
+      "ui.identity.imported": "Identit\xE9 restaur\xE9e.",
+      "ui.identity.newOne": "Continuer avec une nouvelle identit\xE9",
+      "ui.identity.replace": "Remplacer",
+      "ui.identity.replaceDetail": "L\u2019identit\xE9 actuelle est gard\xE9e de c\xF4t\xE9 dans le dossier des donn\xE9es, rien n\u2019est effac\xE9. Les amis de la sauvegarde s\u2019ajoutent aux tiens.",
+      "ui.identity.replaceTitle": "Remplacer ton identit\xE9 par cette sauvegarde ?",
+      "ui.identity.stopFirst": "Arr\xEAte d\u2019abord la table que tu h\xE9berges.",
+      "ui.identity.unreadable": "Ton identit\xE9 est illisible.",
+      "ui.identity.unreadableDetail": "Le fichier identity.json est ab\xEEm\xE9, ou vient d\u2019un autre compte Windows. Tu peux continuer avec une nouvelle identit\xE9 : l\u2019ancienne est gard\xE9e de c\xF4t\xE9, et tes amis devront t\u2019ajouter \xE0 nouveau. Si tu as une sauvegarde de ton identit\xE9, restaure-la ensuite dans Amis.",
       "ui.key.addRecovery": "Ajouter un e-mail de secours",
       "ui.key.alert": "Quelqu\u2019un demande \xE0 remplacer ta cl\xE9 d\u2019\xE9diteur depuis ton e-mail ({date}). Si ce n\u2019est pas toi :",
       "ui.key.alertNotice": "Quelqu\u2019un demande \xE0 remplacer ta cl\xE9 d\u2019\xE9diteur : ouvre le Catalogue d\u2019Ourdir pour annuler si ce n\u2019est pas toi.",
@@ -1104,6 +1391,7 @@ var require_fr = __commonJS({
       "ui.key.step.key": "Nouvelle cl\xE9",
       "ui.key.title": "Ma cl\xE9 d\u2019\xE9diteur",
       "ui.key.waiting": "Remplacement pr\xE9vu le {date}. Tu peux fermer : l\u2019appli suit la demande.",
+      "ui.me.idle": "Aucune table lanc\xE9e",
       "ui.mod.bundleFailed": "Plusieurs fichiers : l\u2019assemblage a \xE9chou\xE9 (voir les avertissements). Le module ne pourra pas s\u2019ex\xE9cuter.",
       "ui.mod.bundled": "Plusieurs fichiers : assembl\xE9s en un seul script ({n} fichiers).",
       "ui.mod.by": "par {authors}",
@@ -1157,7 +1445,6 @@ var require_fr = __commonJS({
       "ui.mod.runtime.pending": "Install\xE9 \xB7 version ancienne, r\xE9installe-le pour l\u2019ex\xE9cuter",
       "ui.mod.runtime.ready": "Pr\xEAt : s\u2019ex\xE9cute dans les parties, isol\xE9",
       "ui.mod.runtime.unsupported": "Non ex\xE9cutable : {reason}",
-      "ui.mod.skipped": "{n} fichier(s) ignor\xE9(s) par s\xE9curit\xE9.",
       "ui.mod.status.blocked": "Bloqu\xE9 (s\xE9curit\xE9)",
       "ui.mod.status.partial": "En partie",
       "ui.mod.status.supported": "Pris en charge",
@@ -1177,8 +1464,6 @@ var require_fr = __commonJS({
       "ui.mod.urlLabel": "Installer depuis une adresse",
       "ui.mod.version": "Version {v}",
       "ui.mod.warnings": "Avertissements",
-      "ui.modules.empty": "Aucun module install\xE9.",
-      "ui.modules.text": "Les modules (sc\xE8nes, aides de jeu, extensions) arrivent avec le gestionnaire de modules. Ils tourneront dans un bac \xE0 sable et demanderont des permissions explicites.",
       "ui.modules.title": "Modules",
       "ui.nav.catalog": "Catalogue",
       "ui.nav.friends": "Amis",
@@ -1234,9 +1519,363 @@ var require_fr = __commonJS({
       "ui.roles.roles": "R\xF4les",
       "ui.roles.running": "La table tourne : un changement de r\xF4le est appliqu\xE9 tout de suite, et le membre concern\xE9 est reconnect\xE9 pour que sa page corresponde \xE0 son nouveau r\xF4le.",
       "ui.roles.save": "Enregistrer",
+      "ui.rules.addRow": "Ajouter",
+      "ui.rules.addStat": "La caract\xE9ristique de l\u2019arme s\u2019ajoute aux d\xE9g\xE2ts",
+      "ui.rules.adv": "Avantage",
+      "ui.rules.adv.down": "d\xE9savantage",
+      "ui.rules.adv.none": "rien",
+      "ui.rules.adv.up": "avantage",
+      "ui.rules.ask": "Elle s\u2019ouvre",
+      "ui.rules.ask.always": "\xE0 chaque clic (Maj+clic lance aussit\xF4t)",
+      "ui.rules.ask.never": "jamais",
+      "ui.rules.ask.shift": "avec Maj+clic seulement",
+      "ui.rules.audience": "Public",
+      "ui.rules.audience.beginner": "D\xE9butant",
+      "ui.rules.audience.veteran": "Habitu\xE9",
+      "ui.rules.bandLast": "Au-del\xE0",
+      "ui.rules.bandMax": "Jusqu\u2019\xE0",
+      "ui.rules.bandNew": "Nouvelle bande",
+      "ui.rules.bandTone": "Sens",
+      "ui.rules.bands": "Bandes (de la plus basse \xE0 la plus haute)",
+      "ui.rules.base": "Base",
+      "ui.rules.bench": "Banc d\u2019essai",
+      "ui.rules.benchAdds": "Ce que le jet ajoute",
+      "ui.rules.benchAdvantage": "Avantage",
+      "ui.rules.benchBroken": "Ce jet a une faute : corrige-la pour l\u2019essayer.",
+      "ui.rules.benchDisadvantage": "D\xE9savantage",
+      "ui.rules.benchExpr": "Ce que la table lancera",
+      "ui.rules.benchGo": "Lancer",
+      "ui.rules.benchHint": "Essaie un jet comme \xE0 la table : les d\xE9s sont lanc\xE9s ici, la table les lancera sur son serveur.",
+      "ui.rules.benchNormal": "Normal",
+      "ui.rules.benchNothing": "rien \xE0 dire (pas de cible)",
+      "ui.rules.benchPool": "D\xE9s de la r\xE9serve",
+      "ui.rules.benchRates": "Sur 2000 jets : {list}",
+      "ui.rules.benchRoll": "Jet",
+      "ui.rules.benchValue": "Valeur (la cible)",
+      "ui.rules.bind.defenses": "D\xE9fenses",
+      "ui.rules.bind.derived": "D\xE9riv\xE9s",
+      "ui.rules.bind.effects": "\xC9tats",
+      "ui.rules.bind.one": "D\xE9riv\xE9 : {name}",
+      "ui.rules.bind.rests": "Repos",
+      "ui.rules.bind.skills": "Comp\xE9tences",
+      "ui.rules.bind.stats": "Caract\xE9ristiques",
+      "ui.rules.bind.weapons": "Armes",
+      "ui.rules.bonus": "Bonus fixe",
+      "ui.rules.bonusHint": "Ajout\xE9 \xE0 chaque jet de ce type (rare : 0 le plus souvent).",
+      "ui.rules.boundOrphan": "Sa r\xE8gle a disparu : il reste tel quel. D\xE9lie-le pour le modifier.",
+      "ui.rules.boundPanelHint": "Son contenu suit les r\xE8gles ; tu choisis sa place et sa disposition.",
+      "ui.rules.boundTag": "R\xE8gles",
+      "ui.rules.by": "Divis\xE9 par",
+      "ui.rules.card.combat": "Combat",
+      "ui.rules.card.derived": "D\xE9riv\xE9s",
+      "ui.rules.card.effects": "\xC9tats et repos",
+      "ui.rules.card.identity": "Identit\xE9",
+      "ui.rules.card.resolution": "D\xE9s et r\xE9ussite",
+      "ui.rules.card.rolls": "Jets secondaires",
+      "ui.rules.card.skills": "Comp\xE9tences",
+      "ui.rules.card.stats": "Caract\xE9ristiques",
+      "ui.rules.cards": "R\xE8gles du syst\xE8me",
+      "ui.rules.checkAt": "R\xE8gles, {card} : {message}",
+      "ui.rules.combatAdd": "Ajouter le combat",
+      "ui.rules.combatAttack": "L\u2019attaque",
+      "ui.rules.combatDamage": "Les d\xE9g\xE2ts",
+      "ui.rules.combatDefense": "Doit battre, sur la fiche de la cible",
+      "ui.rules.combatDefenseHint": "Aucune : le jet se lit seul (au d100, sous sa comp\xE9tence).",
+      "ui.rules.combatHint": "Comment une attaque se lance, ce qu\u2019elle doit battre, et ce que font les d\xE9g\xE2ts.",
+      "ui.rules.combatNeedsHealth": "Il faut d\u2019abord une ressource \xE0 toucher (un d\xE9riv\xE9 ressource, les points de vie).",
+      "ui.rules.combatNoDefense": "aucune d\xE9fense",
+      "ui.rules.combatRemove": "Retirer le combat",
+      "ui.rules.combatStats": "Caract\xE9ristiques qu\u2019une arme peut prendre",
+      "ui.rules.complexity": "Complexit\xE9",
+      "ui.rules.complexity.campaign": "Campagne",
+      "ui.rules.complexity.oneshot": "Partie unique",
+      "ui.rules.conditionName": "Nom (vide : le nom habituel)",
+      "ui.rules.countAt": "Un d\xE9 r\xE9ussit \xE0 partir de",
+      "ui.rules.countDouble": "Face qui compte double",
+      "ui.rules.countDoubleHint": "0 : aucune.",
+      "ui.rules.countNeed": "Succ\xE8s demand\xE9s",
+      "ui.rules.crit.double": "les d\xE9s sont doubl\xE9s",
+      "ui.rules.crit.maxPlus": "le maximum des d\xE9s, plus un jet",
+      "ui.rules.crit.none": "rien ne change",
+      "ui.rules.critical": "Sur un critique",
+      "ui.rules.crits": "R\xE9ussite critique quand",
+      "ui.rules.critsMore": "Critiques et \xE9checs critiques",
+      "ui.rules.default": "Au d\xE9part",
+      "ui.rules.degreeGreat": "R\xE9ussite \xE9clatante",
+      "ui.rules.degreeNames": "Noms des degr\xE9s (s\xE9par\xE9s par des virgules)",
+      "ui.rules.degreeNice": "Belle r\xE9ussite",
+      "ui.rules.degreeSteps": "Un degr\xE9 tous les",
+      "ui.rules.degrees": "Degr\xE9s de r\xE9ussite",
+      "ui.rules.degreesFractions": "Par fractions de la valeur",
+      "ui.rules.degreesOff": "Aucun",
+      "ui.rules.degreesSteps": "Par paliers au-dessus de la cible",
+      "ui.rules.derivedAdd": "Ajouter un d\xE9riv\xE9",
+      "ui.rules.derivedHint": "Des valeurs calcul\xE9es \xE0 partir des caract\xE9ristiques : la fiche les montre et les tient \xE0 jour.",
+      "ui.rules.derivedIdeas": "Ajouter les habituels : {list}",
+      "ui.rules.derivedNew": "Nouveau d\xE9riv\xE9",
+      "ui.rules.derivedRemove": "Retirer ce d\xE9riv\xE9",
+      "ui.rules.dice": "D\xE9s",
+      "ui.rules.diceFixed": "Fixe",
+      "ui.rules.diceKind": "Nombre de d\xE9s",
+      "ui.rules.diceMore": "Relances, explosions, d\xE9s gard\xE9s",
+      "ui.rules.diceN": "D\xE9s",
+      "ui.rules.dicePool": "R\xE9serve (le jet donne le nombre)",
+      "ui.rules.dicePoolHint": "Ce que le jet ajoute (une caract\xE9ristique, une comp\xE9tence) donne le nombre de d\xE9s.",
+      "ui.rules.difficulties": "Difficult\xE9s",
+      "ui.rules.difficultyDefault": "Difficult\xE9 par d\xE9faut",
+      "ui.rules.difficultyNew": "Difficult\xE9 {n}",
+      "ui.rules.editRule": "Modifier la r\xE8gle",
+      "ui.rules.effectRollAdd": "Ajouter un jet",
+      "ui.rules.effectRolls": "Sur les jets",
+      "ui.rules.effectsAdd": "Ajouter des \xE9tats et des repos",
+      "ui.rules.effectsHint": "Les \xE9tats qu\u2019on pose \xE0 la table (\xE0 terre, b\xE9ni\u2026) et les repos qui font revenir les ressources.",
+      "ui.rules.effectsRemove": "Retirer les \xE9tats et les repos",
+      "ui.rules.emptyHint": "Choisis une famille : tout reste modifiable ensuite. Sans r\xE8gles, la fiche reste une fiche libre.",
+      "ui.rules.emptyTitle": "Comment ton jeu lance-t-il les d\xE9s ?",
+      "ui.rules.endAt": "Le round se compte",
+      "ui.rules.endAt.end": "\xE0 la fin du tour du porteur",
+      "ui.rules.endAt.start": "au d\xE9but du tour du porteur",
+      "ui.rules.endRest": "Tombe au repos",
+      "ui.rules.endRestNone": "aucun",
+      "ui.rules.expertise": "Expertise (ma\xEEtrise doubl\xE9e)",
+      "ui.rules.explain": "Voir le calcul",
+      "ui.rules.explode": "Le maximum explose (on relance et on ajoute)",
+      "ui.rules.explodeLimit": "Explosions au plus",
+      "ui.rules.explodeLimitHint": "0 : sans limite.",
+      "ui.rules.fam.3d6under": "3d6 sous la caract\xE9ristique",
+      "ui.rules.fam.3d6under.ex": "\xAB 9 sous 12 : r\xE9ussite de 3 \xBB",
+      "ui.rules.fam.custom": "Sur mesure",
+      "ui.rules.fam.custom.ex": "Tu d\xE9cris tout toi-m\xEAme.",
+      "ui.rules.fam.d100": "d100 sous la valeur",
+      "ui.rules.fam.d100.ex": "\xAB 34 sous 55 % : r\xE9ussite \xBB",
+      "ui.rules.fam.d100deg": "d100 \xE0 degr\xE9s",
+      "ui.rules.fam.d100deg.ex": "R\xE9ussite, difficile (\xBD), extr\xEAme (\u2155).",
+      "ui.rules.fam.d20": "d20 contre une difficult\xE9",
+      "ui.rules.fam.d20.ex": "\xAB 1d20 + 3 contre 15 : r\xE9ussite de 2 \xBB",
+      "ui.rules.fam.d20adv": "d20 avec avantage",
+      "ui.rules.fam.d20adv.ex": "Chaque jet demande : normal, avantage ou d\xE9savantage.",
+      "ui.rules.fam.fate": "D\xE9s Fate et \xE9chelle",
+      "ui.rules.fam.fate.ex": "\xAB 4dF + 2 contre Bon (3) \xBB",
+      "ui.rules.fam.pbta": "2d6 en trois bandes",
+      "ui.rules.fam.pbta.ex": "6 ou moins \xE9chec, 7 \xE0 9 partielle, 10 et plus r\xE9ussite.",
+      "ui.rules.fam.pool10": "R\xE9serve de d10",
+      "ui.rules.fam.pool10.ex": "\xAB 5d10, chaque 7 ou plus est un succ\xE8s \xBB",
+      "ui.rules.fam.pool6best": "R\xE9serve de d6, le meilleur d\xE9",
+      "ui.rules.fam.pool6best.ex": "6 r\xE9ussite, 4-5 partielle, 1-3 \xE9chec ; deux 6 critique.",
+      "ui.rules.family": "Famille de d\xE9s",
+      "ui.rules.familyConfirm": "Repartir de cette famille ? Les d\xE9s, la cible, la lecture et la fen\xEAtre seront remplac\xE9s.",
+      "ui.rules.fate": "D\xE9s Fate (\u22121, 0, +1)",
+      "ui.rules.finesseA": "Premi\xE8re",
+      "ui.rules.finesseB": "Seconde",
+      "ui.rules.finesseOn": "Finesse : la meilleure de deux caract\xE9ristiques",
+      "ui.rules.fixed": "Nombre \xE0 atteindre",
+      "ui.rules.form.bonus": "Bonus direct (\u22122 \xE0 +3)",
+      "ui.rules.form.dots": "Pastilles",
+      "ui.rules.form.percent": "Pourcentage",
+      "ui.rules.form.score": "Score, avec un modificateur (3 \xE0 18)",
+      "ui.rules.formula": "Formule",
+      "ui.rules.formulaHint": "Des cl\xE9s (@force), des nombres, + \u2212 * /, et floor, ceil, round, if.",
+      "ui.rules.fractionAt": "Sous cette part de la valeur",
+      "ui.rules.fractions": "Fractions (du plus rare au plus courant)",
+      "ui.rules.fumbles": "\xC9chec critique quand",
+      "ui.rules.gen.3d6": "3d6 dans l\u2019ordre",
+      "ui.rules.gen.4d6drop": "4d6, on retire le plus bas",
+      "ui.rules.gen.array": "Valeurs impos\xE9es",
+      "ui.rules.gen.free": "R\xE9partition libre",
+      "ui.rules.gen.pointbuy": "Achat de points",
+      "ui.rules.gen.random": "Au hasard",
+      "ui.rules.genNone": "Non pr\xE9cis\xE9e",
+      "ui.rules.generation": "Cr\xE9ation du personnage",
+      "ui.rules.generationHint": "Enregistr\xE9e pour la cr\xE9ation c\xF4t\xE9 joueur (\xE0 venir).",
+      "ui.rules.group": "Groupe",
+      "ui.rules.health": "Les d\xE9g\xE2ts touchent",
+      "ui.rules.how.fixed": "d\u2019un nombre",
+      "ui.rules.how.formula": "d\u2019une valeur de la fiche",
+      "ui.rules.how.full": "en entier",
+      "ui.rules.how.half": "de moiti\xE9",
+      "ui.rules.icon": "Ic\xF4ne",
+      "ui.rules.identityAdd": "D\xE9crire le jeu",
+      "ui.rules.identityHint": "Le ton, le public et la complexit\xE9 r\xE8glent l\u2019assistant et la fiche propos\xE9e.",
+      "ui.rules.identityUse": "Ils servent \xE0 l\u2019assistant et aux propositions ; la fiche n\u2019en d\xE9pend pas.",
+      "ui.rules.keep": "Ne garder qu\u2019une partie des d\xE9s",
+      "ui.rules.keepHigh": "les meilleurs",
+      "ui.rules.keepLow": "les pires",
+      "ui.rules.keepN": "Combien",
+      "ui.rules.keepWhich": "Garder",
+      "ui.rules.key": "Cl\xE9",
+      "ui.rules.keyHint": "Minuscules, chiffres et _ : elle sert dans les formules (@cl\xE9).",
+      "ui.rules.keyHintRoll": "Minuscules et _ seulement : elle marque les d\xE9s de ce jet.",
+      "ui.rules.keyRefused": "Cl\xE9 refus\xE9e : invalide ou d\xE9j\xE0 prise.",
+      "ui.rules.layout.arrange": "Disposition",
+      "ui.rules.layout.column": "l\u2019une sous l\u2019autre",
+      "ui.rules.layout.columns": "Colonnes",
+      "ui.rules.layout.fields": "en champs",
+      "ui.rules.layout.grid": "en grille",
+      "ui.rules.layout.grouped": "Group\xE9es",
+      "ui.rules.layout.row": "en ligne",
+      "ui.rules.layout.style": "Pr\xE9sentation",
+      "ui.rules.layout.tiles": "en tuiles",
+      "ui.rules.level": "Niveau lu",
+      "ui.rules.mainRoll": "le test",
+      "ui.rules.margin": "Dire de combien (\xAB r\xE9ussite de 3 \xBB)",
+      "ui.rules.max": "Maximum",
+      "ui.rules.min": "Minimum",
+      "ui.rules.modAdd": "Ajouter une valeur",
+      "ui.rules.modKey": "Valeur",
+      "ui.rules.modN": "De combien",
+      "ui.rules.mods": "Ce qu\u2019il change",
+      "ui.rules.name": "Nom",
+      "ui.rules.needDerived": "Ajoute d\u2019abord un d\xE9riv\xE9 (la ma\xEEtrise)",
+      "ui.rules.no": "non",
+      "ui.rules.noStat": "aucune",
+      "ui.rules.otherwise": "Au-del\xE0",
+      "ui.rules.out.crit": "R\xE9ussite critique",
+      "ui.rules.out.fail": "\xC9chec",
+      "ui.rules.out.fumble": "\xC9chec critique",
+      "ui.rules.out.partial": "R\xE9ussite partielle",
+      "ui.rules.out.success": "R\xE9ussite",
+      "ui.rules.palette": "Blocs des r\xE8gles",
+      "ui.rules.paletteEmpty": "Tous les blocs des r\xE8gles sont sur la fiche.",
+      "ui.rules.passive": "Valeur passive (10 + total)",
+      "ui.rules.per": "Par niveau",
+      "ui.rules.playerEdit": "Le joueur la change",
+      "ui.rules.proficiency": "Ma\xEEtrise ajout\xE9e",
+      "ui.rules.rank.bonus": "un bonus",
+      "ui.rules.rank.dots": "des pastilles",
+      "ui.rules.rank.percent": "un pourcentage",
+      "ui.rules.rank.trained": "form\xE9 ou non (+ ma\xEEtrise)",
+      "ui.rules.read": "Lecture du r\xE9sultat",
+      "ui.rules.read.bands": "le total dans des bandes",
+      "ui.rules.read.best": "le meilleur d\xE9, dans des bandes",
+      "ui.rules.read.count": "les d\xE9s qui r\xE9ussissent (succ\xE8s)",
+      "ui.rules.read.over": "le total contre la cible (au-dessus)",
+      "ui.rules.read.under": "le d\xE9 sous la cible",
+      "ui.rules.readKind": "On lit",
+      "ui.rules.recipe": "Se calcule",
+      "ui.rules.recipe.fraction": "en fraction",
+      "ui.rules.recipe.input": "par le joueur (valeur saisie)",
+      "ui.rules.recipe.max": "le plus grand de",
+      "ui.rules.recipe.min": "le plus petit de",
+      "ui.rules.recipe.modifier": "en modificateur d\u2019une valeur",
+      "ui.rules.recipe.perLevel": "par niveau",
+      "ui.rules.recipe.raw": "par une formule",
+      "ui.rules.recipe.steps": "par paliers",
+      "ui.rules.recipe.sum": "en somme",
+      "ui.rules.reductionFrom": "R\xE9duction, lue sur la cible",
+      "ui.rules.reductionHint": "Soustraite avant tout le reste (une armure qui absorbe).",
+      "ui.rules.removeConfirm": "Retirer ceci des r\xE8gles ? Ce qui le cite sur la fiche le dira.",
+      "ui.rules.removeRow": "Retirer",
+      "ui.rules.reroll": "Relancer une face",
+      "ui.rules.rerollOn": "Face relanc\xE9e",
+      "ui.rules.rerollOnce": "Une seule fois",
+      "ui.rules.resist": "R\xE9sistances",
+      "ui.rules.resource": "C\u2019est une ressource (actuel et maximum)",
+      "ui.rules.restAdd": "Ajouter un repos",
+      "ui.rules.restNew": "Nouveau repos",
+      "ui.rules.restore": "Ce qui revient",
+      "ui.rules.restoreAdd": "Ajouter une ressource",
+      "ui.rules.restoreHow": "Comment",
+      "ui.rules.restoreKey": "De la valeur",
+      "ui.rules.restoreRes": "Ressource",
+      "ui.rules.rests": "Repos",
+      "ui.rules.restsNeedResource": "Un repos fait revenir une ressource : il en faut une (un d\xE9riv\xE9 ressource).",
+      "ui.rules.rollAdd": "Ajouter un jet de la famille",
+      "ui.rules.rollNew": "Jet {n}",
+      "ui.rules.rollRemove": "Retirer ce jet",
+      "ui.rules.rollWith": "Le jet suit",
+      "ui.rules.rollable": "On peut la lancer",
+      "ui.rules.rollsHint": "Des jets qui se lisent autrement que le test (D\xE9g\xE2ts, Sant\xE9 mentale\u2026) : un texte de la fiche peut les suivre.",
+      "ui.rules.round": "Arrondi",
+      "ui.rules.round.down": "en dessous",
+      "ui.rules.round.near": "au plus proche",
+      "ui.rules.round.up": "au-dessus",
+      "ui.rules.rounds": "Dure (rounds)",
+      "ui.rules.roundsHint": "Vide : jusqu\u2019\xE0 ce qu\u2019on le retire, ou au repos choisi.",
+      "ui.rules.short": "Abr\xE9viation",
+      "ui.rules.show": "Sur la fiche",
+      "ui.rules.show.field": "en champ",
+      "ui.rules.show.gauge": "en jauge (ressource)",
+      "ui.rules.show.hidden": "cach\xE9 (sert aux calculs)",
+      "ui.rules.show.tile": "en tuile",
+      "ui.rules.sides": "Faces",
+      "ui.rules.sign": "Signe",
+      "ui.rules.skillAdd": "Ajouter une comp\xE9tence",
+      "ui.rules.skillList": "La liste",
+      "ui.rules.skillMode": "Comp\xE9tences",
+      "ui.rules.skillMode.fixed": "une liste fixe",
+      "ui.rules.skillMode.none": "aucune",
+      "ui.rules.skillNew": "Nouvelle comp\xE9tence",
+      "ui.rules.skillRank": "Rang",
+      "ui.rules.skillStat": "Caract\xE9ristique",
+      "ui.rules.skillsAdd": "Ajouter des comp\xE9tences",
+      "ui.rules.skillsHint": "Les comp\xE9tences : leur total suit la famille de d\xE9s, sans formule \xE0 \xE9crire.",
+      "ui.rules.skillsRemove": "Retirer les comp\xE9tences",
+      "ui.rules.source": "Valeur lue",
+      "ui.rules.statAdd": "Ajouter une caract\xE9ristique",
+      "ui.rules.statForm": "Forme",
+      "ui.rules.statList": "La liste",
+      "ui.rules.statNew": "Nouvelle caract\xE9ristique",
+      "ui.rules.state.bad": "\xC0 corriger",
+      "ui.rules.state.off": "Pas encore",
+      "ui.rules.state.ok": "Pr\xEAt",
+      "ui.rules.stateAdd": "Ajouter un \xE9tat",
+      "ui.rules.stateNew": "Nouvel \xE9tat",
+      "ui.rules.states": "\xC9tats",
+      "ui.rules.statsAdd": "Ajouter des caract\xE9ristiques",
+      "ui.rules.statsHint": "Les caract\xE9ristiques du personnage : chaque jet d\u2019une caract\xE9ristique suit le test.",
+      "ui.rules.statsRemove": "Retirer les caract\xE9ristiques",
+      "ui.rules.steps": "Paliers",
+      "ui.rules.target": "Cible",
+      "ui.rules.target.difficulty": "une difficult\xE9 choisie",
+      "ui.rules.target.fixed": "un nombre fixe",
+      "ui.rules.target.none": "rien (la lecture suffit)",
+      "ui.rules.target.value": "la valeur du jet (sous la valeur)",
+      "ui.rules.targetKind": "Le jet se compare \xE0",
+      "ui.rules.targetValueHint": "Ce que le jet ajoute devient la cible : on lance sous la caract\xE9ristique ou la comp\xE9tence.",
+      "ui.rules.termKind": "Terme",
+      "ui.rules.termNumber": "un nombre",
+      "ui.rules.termRef": "une valeur de la fiche",
+      "ui.rules.termValue": "Valeur",
+      "ui.rules.terms": "Termes",
+      "ui.rules.tie": "\xC0 \xE9galit\xE9 avec la cible",
+      "ui.rules.tie.fail": "\xE9chec",
+      "ui.rules.tie.success": "r\xE9ussite",
+      "ui.rules.tone": "Ton",
+      "ui.rules.tone.cyber": "Cyberpunk",
+      "ui.rules.tone.fantasy": "Fantasy",
+      "ui.rules.tone.horror": "Horreur",
+      "ui.rules.tone.modern": "Contemporain",
+      "ui.rules.tone.narrative": "Narratif",
+      "ui.rules.tone.scifi": "Science-fiction",
+      "ui.rules.typeAdd": "Ajouter un type",
+      "ui.rules.typeNew": "Nouveau type",
+      "ui.rules.types": "Types de d\xE9g\xE2ts",
+      "ui.rules.unbind": "D\xE9lier",
+      "ui.rules.unbindConfirm": "D\xE9lier ce bloc ? Ses \xE9l\xE9ments restent sur la fiche mais ne suivront plus les r\xE8gles.",
+      "ui.rules.upTo": "Jusqu\u2019\xE0",
+      "ui.rules.value": "Valeur",
+      "ui.rules.values": "Valeurs",
+      "ui.rules.valuesHint": "S\xE9par\xE9es par des virgules : 1, 2, 3.",
+      "ui.rules.viewRules": "R\xE8gles",
+      "ui.rules.viewSheet": "Fiche",
+      "ui.rules.vuln": "Vuln\xE9rabilit\xE9s",
+      "ui.rules.when": "Quand",
+      "ui.rules.when.doubles": "un double au d100 (11, 22\u2026)",
+      "ui.rules.when.maxCount": "autant de d\xE9s au maximum",
+      "ui.rules.when.natural": "un d\xE9 montre",
+      "ui.rules.when.total": "le total vaut",
+      "ui.rules.when.zeroWithOne": "aucun succ\xE8s et un 1",
+      "ui.rules.winAdvantage": "Avantage ou d\xE9savantage",
+      "ui.rules.winBonus": "Bonus ou malus",
+      "ui.rules.winDifficulty": "Choix de la difficult\xE9",
+      "ui.rules.winPoolDice": "D\xE9s en plus ou en moins",
+      "ui.rules.window": "Fen\xEAtre au clic",
+      "ui.rules.yes": "oui",
       "ui.settings.advanced": "Options avanc\xE9es",
       "ui.settings.data": "Donn\xE9es",
       "ui.settings.details": "D\xE9tails techniques",
+      "ui.settings.devTools": "Outils de d\xE9veloppement (menu Aide)",
+      "ui.settings.devToolsHint": "Pour aider \xE0 comprendre un bug. Laisse-les \xE9teints sinon : une commande coll\xE9e dans ces outils peut tout faire dans Ourdir.",
       "ui.settings.display": "Affichage",
       "ui.settings.friendsAccess": "Mes amis peuvent me rejoindre par Internet",
       "ui.settings.friendsAccessDesc": "Actif par d\xE9faut. Tout est r\xE9gl\xE9 automatiquement : la box, le pare-feu et l\u2019adresse. Seuls les amis que tu invites peuvent entrer. Si ta box ne laisse pas entrer, ils passent par le relais d\u2019Ourdir : rien \xE0 ouvrir.",
@@ -1264,10 +1903,8 @@ var require_fr = __commonJS({
       "ui.settings.mode.local.desc": "Personne d\u2019autre ne peut se connecter.",
       "ui.settings.network": "Acc\xE8s r\xE9seau",
       "ui.settings.openData": "Ouvrir le dossier de donn\xE9es",
-      "ui.settings.port": "Port : {port}",
       "ui.settings.publicHost": "Adresse personnalis\xE9e (nom DDNS)",
       "ui.settings.publicHostHint": "Pour les utilisateurs avanc\xE9s. Normalement l\u2019adresse est d\xE9tect\xE9e toute seule. Sans http:// ni port.",
-      "ui.settings.reach": "Mes amis peuvent-ils me joindre ?",
       "ui.settings.reachRun": "V\xE9rifier",
       "ui.settings.recheck": "Rev\xE9rifier maintenant",
       "ui.settings.reduceMotion": "R\xE9duire les animations",
@@ -1282,6 +1919,7 @@ var require_fr = __commonJS({
       "ui.settings.relayInvalid": "Relais invalide : un nom d\u2019h\xF4te (avec un port si besoin) ou une adresse ws(s)://.",
       "ui.settings.restartNote": "Changer d\u2019acc\xE8s relance la table en cours.",
       "ui.settings.save": "Enregistrer",
+      "ui.settings.setAside": "Le fichier {file} \xE9tait illisible : il a \xE9t\xE9 mis de c\xF4t\xE9 (rien n\u2019est effac\xE9) et Ourdir a repris les r\xE9glages par d\xE9faut.",
       "ui.settings.textSize": "Taille de l\u2019interface",
       "ui.settings.title": "Param\xE8tres",
       "ui.settings.uiMode": "Interface en partie",
@@ -1308,7 +1946,6 @@ var require_fr = __commonJS({
       "ui.share.exported": "Cl\xE9 enregistr\xE9e : {path}",
       "ui.share.eyebrow": "Partager \xAB {name} \xBB",
       "ui.share.fail": "Le partage a \xE9chou\xE9.",
-      "ui.share.haveVerified": "D\xE9j\xE0 v\xE9rifi\xE9e",
       "ui.share.importKey": "J\u2019ai d\xE9j\xE0 une cl\xE9 (importer)",
       "ui.share.importTitle": "Importer une cl\xE9 d\u2019\xE9diteur",
       "ui.share.keyText": "Elle signe tes partages et prouve qu\u2019ils viennent de toi. Elle est distincte de ton identit\xE9 de joueur (codes d\u2019ami).",
@@ -1436,9 +2073,8 @@ var require_fr = __commonJS({
       "ui.tables.neverPlayed": "Jamais lanc\xE9e",
       "ui.tables.none": "Tu n\u2019h\xE9berges aucune table pour l\u2019instant. Cr\xE9e-en une pour commencer.",
       "ui.tables.offlineHint": "Hors ligne : la table est arr\xEAt\xE9e ou injoignable, ou ton acc\xE8s a \xE9t\xE9 retir\xE9.",
-      "ui.tables.open": "Ouvrir",
-      "ui.tables.openFolder": "Ouvrir le dossier",
       "ui.tables.others": "Autres tables",
+      "ui.tables.portBusy": "Le port {port} est d\xE9j\xE0 utilis\xE9 par un autre programme (peut-\xEAtre un autre Ourdir ouvert). Ferme-le, puis relance la table.",
       "ui.tables.preset.full": "Complet",
       "ui.tables.preset.lite": "Lite",
       "ui.tables.presetForever": "Se choisit maintenant et ne change plus : une table Lite reste l\xE9g\xE8re, une table Compl\xE8te garde tout.",
@@ -1455,8 +2091,11 @@ var require_fr = __commonJS({
       "ui.tables.restoreTitle": "Restaurer une table",
       "ui.tables.restored": "Table \xAB {name} \xBB restaur\xE9e.",
       "ui.tables.restoredNoSystem": "Table \xAB {name} \xBB restaur\xE9e, mais son syst\xE8me de jeu n\u2019est pas install\xE9 ici : elle utilise le syst\xE8me Generic. Importe le syst\xE8me puis change-le.",
+      "ui.tables.serverMissing": "Des fichiers d\u2019Ourdir manquent : r\xE9installe l\u2019application.",
+      "ui.tables.serverStopped": "Le serveur de la table s\u2019est arr\xEAt\xE9 pendant le d\xE9marrage. Les d\xE9tails sont dans le journal (menu Aide \u2192 Ouvrir le dossier des journaux).",
       "ui.tables.settings": "Param\xE8tres",
-      "ui.tables.startFailed": "La table n\u2019a pas pu d\xE9marrer ({detail}). V\xE9rifie qu\u2019aucun autre programme n\u2019utilise le m\xEAme port, puis regarde le journal (menu Aide).",
+      "ui.tables.startFailed": "La table n\u2019a pas pu d\xE9marrer. Les d\xE9tails sont dans le journal (menu Aide \u2192 Ouvrir le dossier des journaux).",
+      "ui.tables.startTimeout": "La table ne r\xE9pond pas au bout de 30 secondes. Les d\xE9tails sont dans le journal (menu Aide \u2192 Ouvrir le dossier des journaux).",
       "ui.tables.starting": "D\xE9marrage\u2026",
       "ui.tables.status.changed": "Certificat modifi\xE9",
       "ui.tables.status.checking": "V\xE9rification\u2026",
@@ -1617,16 +2256,21 @@ var require_fr = __commonJS({
       "ui.tr.templateSaved": "Mod\xE8le enregistr\xE9 : {path}",
       "ui.tr.templateTitle": "Enregistrer le mod\xE8le de traduction",
       "ui.tr.title": "Traductions",
-      "ui.wizard.attrs.hint": "Tu peux en renommer, en retirer ou en ajouter (douze au plus).",
-      "ui.wizard.attrs.label": "Caract\xE9ristiques (s\xE9par\xE9es par des virgules)",
-      "ui.wizard.attrs.q": "Quelles caract\xE9ristiques ?",
       "ui.wizard.back": "Pr\xE9c\xE9dent",
+      "ui.wizard.beginnerHint": "Les options sont repli\xE9es, avec des valeurs s\xFBres.",
+      "ui.wizard.campaignHint": "Des onglets : Personnage, Comp\xE9tences, Combat, Inventaire, Notes.",
       "ui.wizard.combat.no": "Non",
       "ui.wizard.combat.q": "Y a-t-il du combat tactique ?",
-      "ui.wizard.combat.yes": "Oui : classe d\u2019armure, initiative et attaques",
+      "ui.wizard.combat.yes": "Oui : une liste d\u2019attaques qui se lancent selon les r\xE8gles",
+      "ui.wizard.derived.q": "Les valeurs habituelles de ces d\xE9s ?",
+      "ui.wizard.derived.yes": "Oui : points de vie, d\xE9fense, initiative\u2026 selon la famille",
+      "ui.wizard.dice.q": "Comment lance-t-on les d\xE9s ?",
+      "ui.wizard.diceBeginner": "Critiques, marge et fen\xEAtre au clic sont r\xE9gl\xE9s pour cette famille ; tu pourras tout changer dans l\u2019onglet R\xE8gles.",
+      "ui.wizard.effects.q": "Des \xE9tats et des repos ?",
+      "ui.wizard.effects.yes": "Oui : \xE0 terre, b\xE9ni\u2026 et une halte, une nuit",
+      "ui.wizard.extras.q": "Et le reste ?",
       "ui.wizard.finish": "Cr\xE9er ma fiche",
-      "ui.wizard.genre.more": "Les jeux \xE0 r\xE9serve de d\xE9s ou \xE0 d\xE9s narratifs viendront plus tard : pour eux, choisis \xAB Je d\xE9cide \xBB et r\xE8gle les jets ensuite.",
-      "ui.wizard.genre.q": "Quel genre de jeu ?",
+      "ui.wizard.game.q": "Quel jeu fais-tu ?",
       "ui.wizard.inventory.q": "Un inventaire ?",
       "ui.wizard.look.hint": "Tu pourras tout r\xE9gler ensuite dans l\u2019\xE9diteur. Ta fiche sera pr\xEAte \xE0 jouer d\xE8s l\u2019ouverture.",
       "ui.wizard.look.q": "Quelle apparence ?",
@@ -1634,31 +2278,71 @@ var require_fr = __commonJS({
       "ui.wizard.name": "Nom de ton syst\xE8me",
       "ui.wizard.next": "Suivant",
       "ui.wizard.no": "Non",
-      "ui.wizard.resources.hint": "Points de vie, destin, mana\u2026 Chacune a une valeur actuelle et un maximum (six au plus).",
-      "ui.wizard.resources.label": "Ressources (s\xE9par\xE9es par des virgules)",
-      "ui.wizard.resources.q": "Quelles ressources ?",
-      "ui.wizard.skills.q": "Ajouter une liste de comp\xE9tences ?",
+      "ui.wizard.oneshotHint": "Une fiche sur une page, sans onglets.",
+      "ui.wizard.preview": "Aper\xE7u",
+      "ui.wizard.previewList": "liste",
+      "ui.wizard.resources.hint": "Destin, mana, munitions\u2026 Les points de vie viennent d\xE9j\xE0 des d\xE9s choisis.",
+      "ui.wizard.resources.label": "Ressources en plus (s\xE9par\xE9es par des virgules)",
+      "ui.wizard.skills.hint": "Chacune s\u2019appuie sur une caract\xE9ristique : tu la changeras dans l\u2019onglet R\xE8gles.",
+      "ui.wizard.skills.label": "Comp\xE9tences (s\xE9par\xE9es par des virgules)",
+      "ui.wizard.skills.list": "Une liste",
+      "ui.wizard.skills.listHint": "Propos\xE9e selon le ton ; leur total suit les d\xE9s.",
+      "ui.wizard.skills.none": "Aucune",
+      "ui.wizard.skills.noneHint": "Les caract\xE9ristiques suffisent.",
+      "ui.wizard.skills.q": "Des comp\xE9tences ?",
+      "ui.wizard.stats.hint": "Propos\xE9es selon le ton et les d\xE9s : renomme, retire, ajoute (douze au plus). Vide : aucune.",
+      "ui.wizard.stats.label": "Caract\xE9ristiques (s\xE9par\xE9es par des virgules)",
+      "ui.wizard.stats.q": "Quelles caract\xE9ristiques ?",
       "ui.wizard.stepOf": "\xC9tape {n} sur {total}",
       "ui.wizard.title": "Assistant de cr\xE9ation",
+      "ui.wizard.veteranHint": "Tu r\xE8gles aussi la fen\xEAtre, les critiques, la forme des caract\xE9ristiques.",
       "ui.wizard.yes": "Oui",
-      "wizard.bonusInitiative": "Bonus d\u2019initiative",
-      "wizard.chaqueCaracteristiqueEstPourcentage": "Chaque caract\xE9ristique est un pourcentage ; un clic lance 1d100, \xE0 comparer \xE0 la valeur.",
-      "wizard.chaqueCaracteristiqueScoreModificateur": "Chaque caract\xE9ristique a un score ; le modificateur se calcule tout seul ((score \u2212 10) \xF7 2) et un clic lance 1d20 + modificateur.",
-      "wizard.classeArmure": "Classe d\u2019armure",
-      "wizard.competences": "Comp\xE9tences",
-      "wizard.d20AvecBonusDirect": "Un d20 avec un bonus direct, et tu nommes tout toi-m\xEAme.",
-      "wizard.d20ScoreModificateur": "d20 : score et modificateur",
+      "wizard.attacks": "Attaques",
       "wizard.equipement": "\xC9quipement",
-      "wizard.forceConstitutionTailleDexterite": "Force, Constitution, Taille, Dext\xE9rit\xE9, Apparence, Intelligence, Pouvoir, \xC9ducation",
-      "wizard.forceDexteriteConstitutionIntelligence": "Force, Dext\xE9rit\xE9, Constitution, Intelligence, Sagesse, Charisme",
       "wizard.invalid": "L\u2019assistant a produit une fiche invalide : {why}",
-      "wizard.jeDecide": "Je d\xE9cide",
+      "wizard.notes": "Notes",
       "wizard.pasMagie": "Pas de magie",
-      "wizard.physiqueAdresseEspritPresence": "Physique, Adresse, Esprit, Pr\xE9sence",
-      "wizard.pointsVieSanteMentale": "Points de vie, Sant\xE9 mentale",
       "wizard.ressourceActuelMaxListe": "Une ressource actuel / max, et une liste de sorts.",
+      "wizard.s.cyber.skills": "Piratage, Armes \xE0 feu, Conduite, Furtivit\xE9, N\xE9gociation, M\xE9decine",
+      "wizard.s.cyber.stats": "Corps, R\xE9flexes, Technique, Intelligence, Sang-froid, Empathie",
+      "wizard.s.fantasy.pct": "Force, Constitution, Dext\xE9rit\xE9, Intelligence, Pouvoir, Charisme",
+      "wizard.s.fantasy.skills": "Athl\xE9tisme, Discr\xE9tion, Perception, Arcanes, Persuasion, Survie",
+      "wizard.s.fantasy.stats": "Force, Dext\xE9rit\xE9, Constitution, Intelligence, Sagesse, Charisme",
+      "wizard.s.horror.pct": "Force, Constitution, Taille, Dext\xE9rit\xE9, Apparence, Intelligence, Pouvoir, \xC9ducation",
+      "wizard.s.horror.skills": "Biblioth\xE8que, Discr\xE9tion, \xC9couter, Premiers soins, Psychologie, Occultisme",
+      "wizard.s.horror.stats": "Force, Dext\xE9rit\xE9, Constitution, Esprit, Volont\xE9, Sang-froid",
+      "wizard.s.modern.skills": "Conduite, Recherche, Discr\xE9tion, Persuasion, Bagarre, Premiers secours",
+      "wizard.s.modern.stats": "Physique, Agilit\xE9, Esprit, Charme",
+      "wizard.s.narrative.skills": "Observer, Convaincre, Se battre, Se faufiler",
+      "wizard.s.narrative.stats": "Audace, C\u0153ur, Ombre, Esprit",
+      "wizard.s.scifi.skills": "Pilotage, Technologie, Tir, Survie, Diplomatie, Sciences",
+      "wizard.s.scifi.stats": "Physique, Agilit\xE9, Intellect, Volont\xE9, Pr\xE9sence",
       "wizard.seriePastillesCocherListe": "Une s\xE9rie de pastilles \xE0 cocher, et une liste de sorts.",
-      "wizard.valeurCaracteristiqueEstBonus": "La valeur de la caract\xE9ristique est le bonus : un clic lance 1d20 + valeur.",
+      "wizard.spells": "Sorts",
+      "wizard.tab.character": "Personnage",
+      "wizard.tab.combat": "Combat",
+      "wizard.tab.inventory": "Inventaire",
+      "wizard.tab.magic": "Magie",
+      "wizard.tab.notes": "Notes",
+      "wizard.tab.skills": "Comp\xE9tences",
+      "wizard.tpl.blades": "\xC0 la Blades",
+      "wizard.tpl.blades.hint": "Douze actions en pastilles, le meilleur d6, du stress.",
+      "wizard.tpl.blades.skills": "Chasser, \xC9tudier, Examiner, Bricoler, R\xF4der, \xC9cumer, Frapper, Man\u0153uvrer, Consorter, Commander, Persuader, Dompter",
+      "wizard.tpl.fate": "\xC0 la Fate",
+      "wizard.tpl.fate.hint": "D\xE9s Fate, \xE9chelle, des comp\xE9tences pour seules valeurs, du stress.",
+      "wizard.tpl.fate.skills": "Athl\xE9tisme, Combat, Discr\xE9tion, Empathie, Volont\xE9, Savoir, Perception, Relations",
+      "wizard.tpl.generic": "G\xE9n\xE9rique d20",
+      "wizard.tpl.generic.hint": "Six caract\xE9ristiques, ma\xEEtrise, points de vie, comp\xE9tences, en onglets.",
+      "wizard.tpl.horror": "Horreur au d100",
+      "wizard.tpl.horror.hint": "Pourcentages \xE0 degr\xE9s, sant\xE9 mentale, comp\xE9tences d\u2019enqu\xEAte.",
+      "wizard.tpl.osr": "Vieille \xE9cole (OSR)",
+      "wizard.tpl.osr.hint": "3d6 dans l\u2019ordre, pas de comp\xE9tences, des emplacements de sorts, une page.",
+      "wizard.tpl.pbta": "PbtA",
+      "wizard.tpl.pbta.hint": "2d6 + une caract\xE9ristique, trois bandes, une page.",
+      "wizard.tpl.pool10": "R\xE9serve de d10",
+      "wizard.tpl.pool10.hint": "Caract\xE9ristiques et comp\xE9tences en pastilles, succ\xE8s \xE0 7.",
+      "wizard.ui.emplacementsDeSorts": "Emplacements de sorts",
+      "wizard.ui.pointsDeMagie": "Points de magie",
       "ui.cat.showCommunity": "Afficher le contenu communautaire",
       "ui.cat.verifiedOnly": "Seul le contenu v\xE9rifi\xE9 est montr\xE9 (Ourdir, Officiel, Valid\xE9).",
       "ui.cat.hiddenOne": "1 contenu communautaire correspond : l\u2019afficher",
@@ -1694,7 +2378,355 @@ var require_fr = __commonJS({
       "ui.req.refused": "Refus\xE9e le {date} : {reason}",
       "ui.req.closed": "Les demandes sont momentan\xE9ment ferm\xE9es : beaucoup de demandes attendent d\xE9j\xE0 une relecture. R\xE9essaie dans quelques jours.",
       "ui.req.tooRecent": "Publi\xE9 depuis moins de 30 jours : la demande sera possible ensuite.",
-      "ui.req.already": "D\xE9j\xE0 {tier}."
+      "ui.req.already": "D\xE9j\xE0 {tier}.",
+      "ui.usage.title": "Aider Ourdir avec des statistiques anonymes ?",
+      "ui.usage.text": "Une fois par jour au plus, Ourdir enverrait : un identifiant tir\xE9 au hasard, sa version, ton syst\xE8me d\u2019exploitation et ta langue, les syst\xE8mes de jeu jou\xE9s (\xAB fait-maison \xBB pour les tiens, sans nom), et si tu as h\xE9berg\xE9 ou rejoint une table.",
+      "ui.usage.never": "Jamais tes tables, tes personnages, tes messages, ni ton adresse. Tu pourras changer d\u2019avis dans Param\xE8tres.",
+      "ui.usage.yes": "Oui, j\u2019aide",
+      "ui.usage.no": "Non merci",
+      "ui.usage.privacy": "Politique de confidentialit\xE9",
+      "ui.usage.settingsTitle": "Confidentialit\xE9",
+      "ui.usage.settingsOn": "Tu aides Ourdir avec des statistiques anonymes.",
+      "ui.usage.settingsOff": "Aucune statistique n\u2019est envoy\xE9e.",
+      "ui.usage.stop": "Arr\xEAter et effacer ce qui a \xE9t\xE9 envoy\xE9",
+      "ui.usage.start": "Aider Ourdir",
+      "ui.loading.label": "Chargement de la table",
+      "ui.loading.phrase.opening": "Arriv\xE9e \xE0 la table\u2026",
+      "ui.loading.phrase.reaching": "Recherche de la table\u2026",
+      "ui.loading.phrase.starting": "La table s'\xE9veille\u2026",
+      "ui.loading.step.connect": "Connexion",
+      "ui.loading.step.host": "La table",
+      "ui.loading.step.ourdir": "Interface",
+      "ui.loading.step.ready": "Pr\xEAt",
+      "ui.loading.step.scene": "Sc\xE8ne",
+      "rules.v.prog": "Progression illisible.",
+      "rules.v.progEmpty": "Rien ne fait progresser : de l\u2019exp\xE9rience, des niveaux, des achats ou l\u2019usage.",
+      "rules.v.progRoll": "Ce jet n\u2019existe pas dans les r\xE8gles : \xAB {id} \xBB.",
+      "rules.v.progN": "Un nombre entier, de {min} \xE0 {max}.",
+      "rules.v.progKey": "Une caract\xE9ristique, une comp\xE9tence ou une valeur de la fiche, jamais le niveau.",
+      "rules.v.progDice": "Un d\xE9 comme 1d8 ou 2d6.",
+      "rules.v.progAmong": "Une liste de ce qui existe, chacun une fois.",
+      "rules.v.spreadRoom": "Pas assez de place pour tous les points : plus de choix, ou un maximum plus haut.",
+      "rules.v.trainNeeds": "Former une comp\xE9tence demande des comp\xE9tences \xAB form\xE9es \xBB.",
+      "rules.v.featUnknown": "Cette aptitude n\u2019existe pas.",
+      "rules.v.featText": "{max} caract\xE8res au plus.",
+      "rules.v.giveKind": "Un gain : ajouter, r\xE9partir, former, une aptitude ou un choix d\u2019aptitude.",
+      "rules.v.give": "De 1 \xE0 {max} gains.",
+      "rules.v.when": "Tous les N niveaux, \xE0 partir d\u2019un niveau de 2 \xE0 {max}.",
+      "rules.v.whenAt": "Des niveaux de 2 \xE0 {max}.",
+      "rules.v.levelKey": "Le niveau est une valeur saisie de la fiche.",
+      "rules.v.levelRange": "Le niveau commence \xE0 1 et va au moins jusqu\u2019\xE0 2.",
+      "rules.v.cost": "Un co\xFBt fixe, une formule, ou des rep\xE8res puis une formule.",
+      "rules.v.costNoXp": "Sans exp\xE9rience, les niveaux n\u2019ont pas de co\xFBt (le MJ les accorde).",
+      "rules.v.costFormula": "Une formule du niveau vis\xE9, @n (par exemple 1000*@n).",
+      "rules.v.marks": "De 1 \xE0 {max} rep\xE8res, chacun plus haut que le pr\xE9c\xE9dent (exp\xE9rience cumul\xE9e).",
+      "rules.v.buyNoXp": "Un achat se paie en exp\xE9rience : il en faut une.",
+      "rules.v.price": "Un prix de 1 \xE0 1 000 000, ou une formule du nouveau rang, @r.",
+      "rules.v.useNeeds": "L\u2019usage coche des comp\xE9tences : il en faut.",
+      "rules.p.title": "Progression",
+      "rules.p.features": "Aptitudes",
+      "rules.p.xp": "Exp\xE9rience",
+      "rules.p.addN": "{n} \xE0 {name}",
+      "rules.p.addDice": "+{dice}{plus} \xE0 {name}, {how}",
+      "rules.p.how.average": "en moyenne",
+      "rules.p.how.roll": "au d\xE9",
+      "rules.p.how.player": "au choix du joueur",
+      "rules.p.spread": "{n} point(s) \xE0 r\xE9partir entre {list} ({max} max chacun)",
+      "rules.p.train": "Former {n} comp\xE9tence(s) : {list}",
+      "rules.p.anySkill": "au choix",
+      "rules.p.feature": "Aptitude : {name}",
+      "rules.p.pick": "{n} aptitude(s) parmi {list}",
+      "rules.p.buyStat": "Caract\xE9ristique",
+      "rules.p.buySkill": "Comp\xE9tence",
+      "rules.p.buyFeature": "Aptitude",
+      "rules.p.f.endurci": "Endurci",
+      "rules.p.f.endurci.text": "Une fois par repos, ignorer une blessure l\xE9g\xE8re.",
+      "rules.p.f.vif": "Vif",
+      "rules.p.f.vif.text": "Agir le premier quand l\u2019initiative est \xE0 \xE9galit\xE9.",
+      "rules.p.f.resolu": "R\xE9solu",
+      "rules.p.f.resolu.text": "Relancer un jet contre la peur, une fois par s\xE9ance.",
+      "rules.p.f.nouvelle_action": "Nouvelle action",
+      "rules.p.f.nouvelle_action.text": "Prendre une nouvelle action de ton livret.",
+      "rules.p.f.plus_un": "+1 \xE0 une caract\xE9ristique",
+      "rules.p.f.plus_un.text": "Ajouter 1 \xE0 une caract\xE9ristique (+2 au plus), \xE0 reporter sur la fiche.",
+      "rules.p.f.autre_livret": "Action d\u2019un autre livret",
+      "rules.p.f.autre_livret.text": "Prendre une action d\u2019un autre livret.",
+      "rules.p.f.allie": "Un alli\xE9",
+      "rules.p.f.allie.text": "Gagner un alli\xE9 fid\xE8le, d\xE9crit avec le MJ.",
+      "rules.p.f.atout": "Un atout",
+      "rules.p.f.atout.text": "Gagner un lieu, un v\xE9hicule ou un bien qui compte.",
+      "rules.p.f.guerison": "Effacer une cicatrice",
+      "rules.p.f.guerison.text": "Effacer une s\xE9quelle ou une condition durable.",
+      "builder.prog.formula": "La formule \xAB {f} \xBB ne se lit pas (parenth\xE8ses, op\xE9rateurs).",
+      "ui.rules.card.progression": "Progression",
+      "ui.rules.progHint": "Comment les personnages progressent : de l\u2019exp\xE9rience et des niveaux, des points \xE0 d\xE9penser, l\u2019usage, des avanc\xE9es.",
+      "ui.rules.progKind": "Sorte",
+      "ui.rules.prog.kind.levels": "Des niveaux (exp\xE9rience, gains, choix)",
+      "ui.rules.prog.kind.points": "Des points \xE0 d\xE9penser",
+      "ui.rules.prog.kind.use": "L\u2019usage (une r\xE9ussite coche la comp\xE9tence)",
+      "ui.rules.prog.kind.advances": "Des avanc\xE9es (un \xE9chec rapporte, 5 pour une avanc\xE9e)",
+      "ui.rules.progNone": "Aucun mod\xE8le ne convient \xE0 ces r\xE8gles : ajoutez d\u2019abord des comp\xE9tences ou une ressource.",
+      "ui.rules.progAdd": "Ajouter une progression",
+      "ui.rules.prog.remove": "Retirer la progression",
+      "ui.rules.prog.xp": "Exp\xE9rience",
+      "ui.rules.prog.xpOn": "Les personnages gagnent de l\u2019exp\xE9rience",
+      "ui.rules.prog.xpName": "Exp\xE9rience",
+      "ui.rules.prog.onFail": "Un \xE9chec rapporte",
+      "ui.rules.prog.onFailAdd": "Ajouter un jet",
+      "ui.rules.prog.gets": "Rapporte",
+      "ui.rules.prog.levels": "Niveaux",
+      "ui.rules.prog.levelsOn": "Les personnages montent de niveau",
+      "ui.rules.prog.needLevel": "Il faut une valeur saisie \xAB Niveau \xBB (onglet D\xE9riv\xE9s).",
+      "ui.rules.prog.levelKey": "Valeur du niveau",
+      "ui.rules.prog.levelMax": "Niveau maximum",
+      "ui.rules.prog.cost": "Co\xFBt d\u2019un niveau",
+      "ui.rules.prog.cost.fixed": "fixe",
+      "ui.rules.prog.cost.formula": "une formule",
+      "ui.rules.prog.cost.marks": "des rep\xE8res, puis une formule",
+      "ui.rules.prog.costN": "Co\xFBt",
+      "ui.rules.prog.costF": "Formule",
+      "ui.rules.prog.costFHint": "@n est le niveau vis\xE9 : 1000*@n, 100*@n*@n\u2026",
+      "ui.rules.prog.marks": "Rep\xE8res (niveaux 2, 3, 4\u2026)",
+      "ui.rules.prog.marksHint": "S\xE9par\xE9s par des virgules : 300, 900, 2700.",
+      "ui.rules.prog.then": "Au-del\xE0",
+      "ui.rules.prog.spend": "L\u2019exp\xE9rience est",
+      "ui.rules.prog.spend.no": "cumul\xE9e (le co\xFBt est un total)",
+      "ui.rules.prog.spend.yes": "d\xE9pens\xE9e (elle repart \xE0 0)",
+      "ui.rules.prog.gains": "Gains",
+      "ui.rules.prog.gainAdd": "Ajouter une r\xE8gle de gain",
+      "ui.rules.prog.when": "Quand",
+      "ui.rules.prog.when.every": "tous les N niveaux",
+      "ui.rules.prog.when.at": "\xE0 des niveaux pr\xE9cis",
+      "ui.rules.prog.atLevels": "Niveaux",
+      "ui.rules.prog.every": "Tous les",
+      "ui.rules.prog.from": "\xC0 partir du niveau",
+      "ui.rules.prog.give": "Gain",
+      "ui.rules.prog.giveAdd": "Ajouter un gain",
+      "ui.rules.give.add": "ajouter \xE0 une valeur",
+      "ui.rules.give.spread": "des points \xE0 r\xE9partir",
+      "ui.rules.give.train": "former des comp\xE9tences",
+      "ui.rules.give.feature": "une aptitude",
+      "ui.rules.give.pick": "une aptitude au choix",
+      "ui.rules.prog.to": "\xC0",
+      "ui.rules.prog.addBy": "De",
+      "ui.rules.prog.addBy.n": "un nombre",
+      "ui.rules.prog.addBy.dice": "un d\xE9",
+      "ui.rules.prog.dice": "D\xE9",
+      "ui.rules.prog.plus": "Plus",
+      "ui.rules.prog.plusNone": "rien",
+      "ui.rules.prog.how": "Le d\xE9 est pris",
+      "ui.rules.prog.how.average": "en moyenne",
+      "ui.rules.prog.how.roll": "au d\xE9",
+      "ui.rules.prog.how.player": "au choix du joueur",
+      "ui.rules.prog.points": "Points",
+      "ui.rules.prog.maxEach": "Au plus par valeur",
+      "ui.rules.prog.among": "Parmi",
+      "ui.rules.anyOf": "au choix (toutes)",
+      "ui.rules.prog.pick": "Combien",
+      "ui.rules.prog.times": "Chacune au plus",
+      "ui.rules.prog.feature": "Aptitude",
+      "ui.rules.prog.upTo": "Voir jusqu\u2019au niveau",
+      "ui.rules.prog.preview": "Aper\xE7u",
+      "ui.rules.prog.previewBad": "Corrigez la progression pour voir l\u2019aper\xE7u.",
+      "ui.rules.prog.col.level": "Niveau",
+      "ui.rules.prog.col.cost": "Co\xFBt",
+      "ui.rules.prog.col.gains": "Gains",
+      "ui.rules.prog.purchases": "Achats",
+      "ui.rules.prog.buyWhat": "Ce qu\u2019on ach\xE8te",
+      "ui.rules.buy.stat": "une caract\xE9ristique",
+      "ui.rules.buy.skill": "une comp\xE9tence",
+      "ui.rules.buy.value": "une valeur",
+      "ui.rules.buy.feature": "une aptitude",
+      "ui.rules.prog.price": "Prix",
+      "ui.rules.prog.priceHint": "Un nombre, ou une formule du nouveau rang @r : @r*5.",
+      "ui.rules.prog.buyMax": "Rang maximum",
+      "ui.rules.prog.buyNew": "Nouvel achat",
+      "ui.rules.prog.buyAdd": "Ajouter un achat",
+      "ui.rules.prog.use": "Usage",
+      "ui.rules.prog.useOn": "Une r\xE9ussite coche la comp\xE9tence jet\xE9e",
+      "ui.rules.prog.useRes": "Sur les jets",
+      "ui.rules.prog.useOnWhat": "Coche sur",
+      "ui.rules.prog.useOn.success": "une r\xE9ussite",
+      "ui.rules.prog.useOn.crit": "une r\xE9ussite critique",
+      "ui.rules.prog.useTest": "Test de fin de s\xE9ance",
+      "ui.rules.prog.useTestHint": "Il faut faire plus que la valeur actuelle.",
+      "ui.rules.prog.useGain": "Gain si r\xE9ussi",
+      "ui.rules.prog.useNeeds": "L\u2019usage coche des comp\xE9tences : ajoutez-en d\u2019abord.",
+      "ui.rules.prog.features": "Aptitudes",
+      "ui.rules.prog.featText": "Ce qu\u2019elle fait",
+      "ui.rules.prog.featNew": "Nouvelle aptitude",
+      "ui.rules.prog.featAdd": "Ajouter une aptitude",
+      "ui.rules.bind.progression": "Progression",
+      "ui.rules.bind.features": "Aptitudes",
+      "ui.wizard.progress.q": "Comment les personnages progressent-ils ?",
+      "ui.wizard.progress.family": "Comme d\u2019habitude pour ces d\xE9s",
+      "ui.wizard.progress.none": "Pas de progression",
+      "ui.settings.portLabel": "Port de la table",
+      "ui.settings.portCheck": "V\xE9rifier",
+      "ui.settings.portReset": "Revenir \xE0 {port}",
+      "ui.settings.portFree": "Le port {port} est libre.",
+      "ui.settings.portTaken": "Le port {port} est d\xE9j\xE0 utilis\xE9 par un autre programme.",
+      "ui.settings.portInvalid": "Un port est un nombre de 1024 \xE0 65535.",
+      "ui.settings.portSaved": "Port de la table : {port}.",
+      "ui.settings.portNext": "La table en cours garde le port {running} ; le port {port} servira \xE0 son prochain lancement.",
+      "ui.settings.portHint": "Change-le si un autre programme utilise d\xE9j\xE0 ce port. Tes amis retrouvent la table par le relais et apprennent la nouvelle adresse \xE0 leur prochaine connexion ; une invitation envoy\xE9e avant garde l'ancien port : sans relais, renvoie-la.",
+      "ui.tables.portBusyOffer": "Le port {port} est d\xE9j\xE0 utilis\xE9 par un autre programme (peut-\xEAtre un autre Ourdir ouvert). Le port {free} est libre.",
+      "ui.port.offerTitle": "Port d\xE9j\xE0 utilis\xE9",
+      "ui.port.offerUse": "Utiliser le port {port}",
+      "ui.port.offerCancel": "Annuler",
+      "rules.v.onFailTarget": "L\u2019h\xF4te ne voit pas la difficult\xE9 choisie : un \xE9chec ne rapporte que sur un jet sans difficult\xE9, ou \xE0 difficult\xE9 fixe.",
+      "rules.v.lib": "Biblioth\xE8que illisible.",
+      "rules.v.libGenreKey": "Cl\xE9 de genre : une minuscule puis des minuscules ou chiffres, 12 au plus.",
+      "rules.v.libFieldKey": "Cl\xE9 de champ : minuscules, chiffres et _, 16 au plus (nom, origine, agir, ligne sont r\xE9serv\xE9s).",
+      "rules.v.libOneKind": "Un seul genre de ce type.",
+      "rules.v.libNoCombat": "Il faut un combat dans les r\xE8gles.",
+      "rules.v.libNoProgress": "Il faut une progression dans les r\xE8gles.",
+      "rules.v.libFixedFields": "Les champs de ce genre sont fix\xE9s par les r\xE8gles.",
+      "rules.v.libRange": "Le minimum doit \xEAtre sous le maximum.",
+      "rules.v.libOptions": "De 2 \xE0 {max} options, chacune une fois.",
+      "rules.v.libGenre": "Ce genre n\u2019existe pas.",
+      "rules.v.libFeatureEntry": "Les aptitudes se d\xE9crivent dans la carte Progression.",
+      "rules.v.libField": "Ce champ n\u2019existe pas dans ce genre.",
+      "rules.v.libNumber": "Un nombre entier dans les bornes du champ.",
+      "rules.v.libChoice": "Une des options du champ.",
+      "rules.v.libText": "{max} caract\xE8res au plus.",
+      "rules.v.libDamage": "Des d\xE9s de d\xE9g\xE2ts comme 1d8 ou 2d6+1d4+2.",
+      "rules.v.libWeaponAction": "Une arme attaque comme le combat le dit : pas d\u2019action \xE0 elle.",
+      "rules.v.libBonus": "Un nombre de \u2212{max} \xE0 {max}, ou un champ nombre du genre (@niveau).",
+      "rules.v.libCost": "Un co\xFBt se paie dans une ressource.",
+      "rules.v.libState": "Cet \xE9tat n\u2019existe pas.",
+      "rules.v.libActionEmpty": "Cette action ne fait rien : un jet, un co\xFBt ou un \xE9tat.",
+      "rules.v.libPasteName": "Il faut une colonne \xAB Nom \xBB.",
+      "rules.l.name": "Nom",
+      "rules.l.act": "Agir",
+      "rules.l.cast": "Lancer",
+      "rules.l.use": "Utiliser",
+      "rules.l.attack": "attaque {dice}",
+      "rules.l.roll": "jet de {res}{bonus}",
+      "rules.l.cost": "{n} {res}",
+      "rules.l.stateSelf": "{state} sur soi",
+      "rules.l.stateTarget": "{state} sur la cible",
+      "rules.l.spells": "Sorts",
+      "rules.l.talents": "Talents",
+      "rules.l.items": "Objets",
+      "rules.l.level": "Niveau",
+      "rules.l.range": "Port\xE9e",
+      "rules.l.weight": "Poids",
+      "rules.l.description": "Description",
+      "rules.l.far": "Loin",
+      "rules.l.touch": "Contact",
+      "rules.l.e.trait_de_feu": "Trait de feu",
+      "rules.l.e.trait_de_feu.text": "Un trait de flammes jaillit vers la cible.",
+      "rules.l.e.benediction": "B\xE9n\xE9diction",
+      "rules.l.e.benediction.text": "La cible est b\xE9nie pour quelques rounds.",
+      "rules.l.e.lumiere": "Lumi\xE8re",
+      "rules.l.e.lumiere.text": "Un objet touch\xE9 brille comme une torche.",
+      "rules.l.e.sang_froid": "Sang-froid",
+      "rules.l.e.sang_froid.text": "Un jet sous pression, avec un bonus.",
+      "rules.l.e.corde": "Corde (15 m)",
+      "rules.l.e.corde.text": "Une corde de chanvre solide.",
+      "rules.l.e.torche": "Torche",
+      "rules.l.e.torche.text": "\xC9claire un rayon de quelques m\xE8tres pendant une heure.",
+      "ui.rules.card.library": "Biblioth\xE8que",
+      "ui.rules.libHint": "Des sorts, des objets, des dons\u2026 d\xE9crits une fois, ajout\xE9s aux fiches d\u2019un clic \xE0 la table.",
+      "ui.rules.libExamples": "Ajouter des exemples",
+      "ui.rules.libEmpty": "Commencer une biblioth\xE8que vide",
+      "ui.rules.lib.genres": "Genres",
+      "ui.rules.lib.weapons": "Les armes du combat (liste Armes)",
+      "ui.rules.lib.weaponsName": "Armes",
+      "ui.rules.lib.features": "Les aptitudes de la progression",
+      "ui.rules.lib.featuresName": "Aptitudes",
+      "ui.rules.lib.fields": "Champs",
+      "ui.rules.lib.type": "Type",
+      "ui.rules.lib.type.text": "texte court",
+      "ui.rules.lib.type.long": "texte long",
+      "ui.rules.lib.type.number": "nombre",
+      "ui.rules.lib.type.choice": "choix",
+      "ui.rules.lib.optionA": "Option A",
+      "ui.rules.lib.optionB": "Option B",
+      "ui.rules.lib.min": "Minimum",
+      "ui.rules.lib.max": "Maximum",
+      "ui.rules.lib.options": "Options",
+      "ui.rules.lib.optionsHint": "S\xE9par\xE9es par des virgules.",
+      "ui.rules.lib.fieldNew": "Nouveau champ",
+      "ui.rules.lib.fieldAdd": "Ajouter un champ",
+      "ui.rules.lib.genreNew": "Nouveau genre",
+      "ui.rules.lib.genreAdd": "Ajouter un genre",
+      "ui.rules.lib.entries": "Entr\xE9es",
+      "ui.rules.lib.genre": "Genre",
+      "ui.rules.lib.search": "Chercher",
+      "ui.rules.lib.action": "Action",
+      "ui.rules.lib.entryAdd": "Ajouter une entr\xE9e",
+      "ui.rules.lib.entryNew": "Nouvelle entr\xE9e",
+      "ui.rules.lib.entryRemove": "Retirer cette entr\xE9e",
+      "ui.rules.lib.acts": "Cette entr\xE9e agit \xE0 la table",
+      "ui.rules.lib.label": "Libell\xE9 du bouton",
+      "ui.rules.lib.roll": "Jet",
+      "ui.rules.lib.roll.none": "aucun",
+      "ui.rules.lib.roll.roll": "un jet d\u2019une r\xE9solution",
+      "ui.rules.lib.roll.attack": "une attaque avec des d\xE9g\xE2ts",
+      "ui.rules.lib.bonus": "Bonus",
+      "ui.rules.lib.bonusN": "un nombre",
+      "ui.rules.lib.damage": "D\xE9g\xE2ts",
+      "ui.rules.lib.damageType": "Type de d\xE9g\xE2ts",
+      "ui.rules.lib.costOn": "Elle co\xFBte",
+      "ui.rules.lib.costRes": "Ressource",
+      "ui.rules.lib.costN": "Combien",
+      "ui.rules.lib.stateOn": "Elle pose un \xE9tat",
+      "ui.rules.lib.state": "\xC9tat",
+      "ui.rules.lib.stateWho": "Sur",
+      "ui.rules.lib.onTarget": "la cible",
+      "ui.rules.lib.onSelf": "soi",
+      "ui.rules.lib.paste": "Coller un tableau",
+      "ui.rules.lib.pasteHint": "Collez des lignes d\u2019un tableur, la premi\xE8re donnant les colonnes : {cols}",
+      "ui.rules.lib.pasteGo": "Ajouter ces lignes",
+      "ui.rules.lib.pasteDone": "{n} entr\xE9e(s) ajout\xE9e(s).",
+      "ui.rules.lib.pasteLine": "Ligne {line} : {why}",
+      "ui.rules.lib.remove": "Retirer la biblioth\xE8que",
+      "ui.rules.bind.library": "Biblioth\xE8que : {name}",
+      "err.libraries.empty": "Le paquet n\u2019a aucune entr\xE9e.",
+      "err.libraries.tooMany": "Un paquet a {max} entr\xE9es au plus.",
+      "err.libraries.entry": "L\u2019entr\xE9e {n} ({name}) ne se lit pas avec ce syst\xE8me.",
+      "err.libraries.twice": "L\u2019entr\xE9e {n} ({name}) est en double.",
+      "err.libraries.badName": "Donne un nom au paquet (lettres ou chiffres).",
+      "err.libraries.noLibrary": "Ce syst\xE8me n\u2019a pas de biblioth\xE8que.",
+      "err.libraries.tooBig": "Ce fichier est trop gros pour un paquet (1 Mo au plus).",
+      "err.libraries.unreadable": "Ce fichier n\u2019est pas un paquet de biblioth\xE8que Ourdir.",
+      "err.libraries.otherSystem": "Ce paquet est pour un syst\xE8me qui n\u2019est pas install\xE9 ici ({system}).",
+      "err.libraries.tooNew": "Ce paquet demande la version {need} du syst\xE8me (install\xE9e : {have}).",
+      "err.libraries.full": "{max} paquets au plus sont install\xE9s : retires-en un d\u2019abord.",
+      "ui.lib.title": "Biblioth\xE8ques",
+      "ui.lib.hint": "Les paquets install\xE9s pour le syst\xE8me de cette table. Coche ceux que la table utilise : leurs entr\xE9es rejoignent sa biblioth\xE8que au prochain lancement.",
+      "ui.lib.none": "Aucun paquet install\xE9 pour ce syst\xE8me.",
+      "ui.lib.count": "{n} entr\xE9e(s), syst\xE8me {version} ou plus",
+      "ui.lib.install": "Installer un paquet\u2026",
+      "ui.lib.installTitle": "Installer un paquet de biblioth\xE8que",
+      "ui.lib.exportTitle": "Exporter un paquet de biblioth\xE8que",
+      "ui.lib.installed": "\xAB {name} \xBB est install\xE9.",
+      "ui.lib.updated": "\xAB {name} \xBB est mis \xE0 jour.",
+      "ui.lib.installFail": "Ce paquet ne s\u2019installe pas.",
+      "ui.lib.remove": "Retirer",
+      "ui.lib.removeConfirm": "Retirer le paquet \xAB {name} \xBB de cet ordinateur ? Les tables qui l\u2019utilisent ne l\u2019auront plus.",
+      "ui.lib.restart": "La table tourne : les biblioth\xE8ques changeront au prochain lancement.",
+      "ui.rules.lib.export": "Exporter en paquet",
+      "ui.rules.lib.packName": "Nom du paquet",
+      "ui.rules.lib.pickAll": "Tout cocher",
+      "ui.rules.lib.exportGo": "Exporter\u2026",
+      "ui.rules.lib.saveFirst": "Enregistre d\u2019abord le syst\xE8me : le paquet part de ce qui est enregistr\xE9.",
+      "ui.rules.lib.exported": "Paquet export\xE9 ({n} entr\xE9e(s)).",
+      "ui.rules.lib.exportFailed": "Le paquet n\u2019a pas pu \xEAtre export\xE9.",
+      "rules.l.featText": "Texte",
+      "rules.v.libFeatureAction": "Une aptitude n\u2019agit pas : pas d\u2019action \xE0 elle.",
+      "rules.v.pickLibrary": "\xAB Toute la biblioth\xE8que \xBB demande un genre Aptitudes dans la biblioth\xE8que.",
+      "rules.p.anyFeature": "toute la biblioth\xE8que",
+      "ui.rules.prog.anyLibrary": "Toute la biblioth\xE8que (celles du MJ et des paquets aussi)",
+      "ui.cat.reviewLibrary": "Paquet de biblioth\xE8que",
+      "ui.cat.libraryFor": "Pour le syst\xE8me {system} (version {version} ou plus) : {n} entr\xE9e(s).",
+      "ui.cat.libraryNote": "Un paquet de biblioth\xE8que ne contient aucun code : des entr\xE9es (sorts, objets, aptitudes\u2026), relues avec le syst\xE8me install\xE9 ici. Une fois install\xE9, coche-le dans les Param\xE8tres de chaque table qui doit l\u2019utiliser.",
+      "ui.rules.lib.packVersion": "Version du paquet",
+      "err.libraries.badVersion": "La version du paquet s\u2019\xE9crit 1.2.0.",
+      "ui.rules.lib.shareGo": "Partager au catalogue\u2026",
+      "err.libraries.notStaged": "Ce paquet n\u2019est plus pr\xEAt : repars du builder (Partager au catalogue)."
     };
   }
 });
@@ -1737,32 +2769,56 @@ var require_builder_theme = __commonJS({
         system: { get label() {
           return say2("builderTheme.moderneSysteme");
         }, css: '"Segoe UI", system-ui, -apple-system, sans-serif' },
-        rounded: { label: "Arrondie", css: '"Trebuchet MS", "Segoe UI", sans-serif' },
+        rounded: { get label() {
+          return say2("builderTheme.ui.arrondie");
+        }, css: '"Trebuchet MS", "Segoe UI", sans-serif' },
         geometric: { get label() {
           return say2("builderTheme.geometrique");
         }, css: '"Century Gothic", "Franklin Gothic Medium", Tahoma, sans-serif' },
         impact: { get label() {
           return say2("builderTheme.afficheGrasCondense");
         }, css: 'Impact, "Arial Narrow Bold", "Franklin Gothic Heavy", sans-serif' },
-        serif: { label: "Serif classique", css: 'Georgia, "Times New Roman", serif' },
-        book: { label: "Livre ancien", css: '"Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif' },
+        serif: { get label() {
+          return say2("builderTheme.ui.serifClassique");
+        }, css: 'Georgia, "Times New Roman", serif' },
+        book: { get label() {
+          return say2("builderTheme.ui.livreAncien");
+        }, css: '"Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif' },
         typewriter: { get label() {
           return say2("builderTheme.machineEcrire");
         }, css: '"Courier New", Courier, monospace' },
-        mono: { label: "Terminal", css: 'Consolas, "Lucida Console", "Courier New", monospace' },
+        mono: { get label() {
+          return say2("builderTheme.ui.terminal");
+        }, css: 'Consolas, "Lucida Console", "Courier New", monospace' },
         hand: { get label() {
           return say2("builderTheme.manuscrite");
         }, css: '"Segoe Print", "Bradley Hand", "Comic Sans MS", cursive' },
         // a CSS font stack // i18n-ok
         // the library shipped with Ourdir (loom-themes.css in the game, the launcher's stylesheets in the editor): open licences, fetched only when used
-        alegreya: { label: "Alegreya (livre)", family: "Alegreya", css: '"Alegreya", Georgia, serif' },
-        barlow: { label: "Barlow Condensed (affiche)", family: "Barlow Condensed", css: '"Barlow Condensed", "Arial Narrow", sans-serif' },
-        inter: { label: "Inter (net)", family: "Inter", css: '"Inter", "Segoe UI", sans-serif' },
-        jetbrains: { label: "JetBrains Mono (code)", family: "JetBrains Mono", css: '"JetBrains Mono", Consolas, monospace' },
-        exo2: { label: "Exo 2 (science-fiction)", family: "Exo 2", css: '"Exo 2", "Segoe UI", sans-serif' },
-        michroma: { label: "Michroma (large, techno)", family: "Michroma", css: '"Michroma", "Segoe UI", sans-serif' },
-        fell: { label: "IM Fell English (grimoire)", family: "IM Fell English", css: '"IM Fell English", Georgia, serif' },
-        crimson: { label: "Crimson Pro (roman)", family: "Crimson Pro", css: '"Crimson Pro", Georgia, serif' },
+        alegreya: { get label() {
+          return say2("builderTheme.ui.alegreyaLivre");
+        }, family: "Alegreya", css: '"Alegreya", Georgia, serif' },
+        barlow: { get label() {
+          return say2("builderTheme.ui.barlowCondensedAffiche");
+        }, family: "Barlow Condensed", css: '"Barlow Condensed", "Arial Narrow", sans-serif' },
+        inter: { get label() {
+          return say2("builderTheme.ui.interNet");
+        }, family: "Inter", css: '"Inter", "Segoe UI", sans-serif' },
+        jetbrains: { get label() {
+          return say2("builderTheme.ui.jetbrainsMonoCode");
+        }, family: "JetBrains Mono", css: '"JetBrains Mono", Consolas, monospace' },
+        exo2: { get label() {
+          return say2("builderTheme.ui.exo2ScienceFiction");
+        }, family: "Exo 2", css: '"Exo 2", "Segoe UI", sans-serif' },
+        michroma: { get label() {
+          return say2("builderTheme.ui.michromaLargeTechno");
+        }, family: "Michroma", css: '"Michroma", "Segoe UI", sans-serif' },
+        fell: { get label() {
+          return say2("builderTheme.ui.imFellEnglishGrimoire");
+        }, family: "IM Fell English", css: '"IM Fell English", Georgia, serif' },
+        crimson: { get label() {
+          return say2("builderTheme.ui.crimsonProRoman");
+        }, family: "Crimson Pro", css: '"Crimson Pro", Georgia, serif' },
         playfair: { get label() {
           return say2("builderTheme.playfairDisplayElegant");
         }, family: "Playfair Display", css: '"Playfair Display", Georgia, serif' },
@@ -1772,31 +2828,53 @@ var require_builder_theme = __commonJS({
         specialelite: { get label() {
           return say2("builderTheme.specialEliteMachineUsee");
         }, family: "Special Elite", css: '"Special Elite", "Courier New", monospace' },
-        chakra: { label: "Chakra Petch (HUD)", family: "Chakra Petch", css: '"Chakra Petch", "Segoe UI", sans-serif' },
-        sharetech: { label: "Share Tech Mono (terminal)", family: "Share Tech Mono", css: '"Share Tech Mono", Consolas, monospace' },
-        stencil: { label: "Saira Stencil One (pochoir)", family: "Saira Stencil One", css: '"Saira Stencil One", Impact, sans-serif' },
-        caveat: { label: "Caveat (manuscrite)", family: "Caveat", css: '"Caveat", "Segoe Print", cursive' }
+        chakra: { get label() {
+          return say2("builderTheme.ui.chakraPetchHud");
+        }, family: "Chakra Petch", css: '"Chakra Petch", "Segoe UI", sans-serif' },
+        sharetech: { get label() {
+          return say2("builderTheme.ui.shareTechMonoTerminal");
+        }, family: "Share Tech Mono", css: '"Share Tech Mono", Consolas, monospace' },
+        stencil: { get label() {
+          return say2("builderTheme.ui.sairaStencilOnePochoir");
+        }, family: "Saira Stencil One", css: '"Saira Stencil One", Impact, sans-serif' },
+        caveat: { get label() {
+          return say2("builderTheme.ui.caveatManuscrite");
+        }, family: "Caveat", css: '"Caveat", "Segoe Print", cursive' }
       };
       var COLOR_KEYS = [
         { k: "bg", get label() {
           return say2("builderTheme.fondFiche");
         } },
-        { k: "surface", label: "Panneaux" },
-        { k: "surface2", label: "Panneaux en creux" },
+        { k: "surface", get label() {
+          return say2("builderTheme.ui.panneaux");
+        } },
+        { k: "surface2", get label() {
+          return say2("builderTheme.ui.panneauxEnCreux");
+        } },
         { k: "text", get label() {
           return say2("builderTheme.texte");
         } },
         { k: "muted", get label() {
           return say2("builderTheme.texteDiscret");
         } },
-        { k: "accent", label: "Accent principal" },
-        { k: "accent2", label: "Accent secondaire" },
-        { k: "border", label: "Bordures" },
-        { k: "headerBg", label: "Bandeau (fond)" },
+        { k: "accent", get label() {
+          return say2("builderTheme.ui.accentPrincipal");
+        } },
+        { k: "accent2", get label() {
+          return say2("builderTheme.ui.accentSecondaire");
+        } },
+        { k: "border", get label() {
+          return say2("builderTheme.ui.bordures");
+        } },
+        { k: "headerBg", get label() {
+          return say2("builderTheme.ui.bandeauFond");
+        } },
         { k: "headerText", get label() {
           return say2("builderTheme.bandeauTexte");
         } },
-        { k: "inputBg", label: "Champs (fond)" },
+        { k: "inputBg", get label() {
+          return say2("builderTheme.ui.champsFond");
+        } },
         { k: "inputText", get label() {
           return say2("builderTheme.champsTexte");
         } },
@@ -1956,8 +3034,11 @@ var require_builder_theme = __commonJS({
         return typeof v === "number" && Number.isInteger(v) && v >= r[0] && v <= r[1];
       };
       function makeTheme(o) {
-        return {
-          name: o.name,
+        var named2 = Object.getOwnPropertyDescriptor(o, "name");
+        var out = {};
+        if (named2 && named2.get) Object.defineProperty(out, "name", { get: named2.get, enumerable: true, configurable: true });
+        else out.name = o.name;
+        return Object.assign(out, {
           colors: o.colors,
           fonts: { body: o.body, heading: o.heading, size: o.size || 13, headingCase: o.headingCase || "none", headingSpacing: o.headingSpacing || 0 },
           background: Object.assign({ kind: "solid", color2: o.colors.surface2, angle: 160, patternColor: o.colors.accent, patternSize: 28, patternOpacity: 12, image: "", imageMode: "cover" }, o.background || {}),
@@ -1968,7 +3049,7 @@ var require_builder_theme = __commonJS({
           stat: Object.assign({ style: "plain" }, o.stat || {}),
           gauge: Object.assign({ style: "bar", color: "accent" }, o.gauge || {}),
           tag: Object.assign({ style: "paper" }, o.tag || {})
-        };
+        });
       }
       var DEFAULTS = { frame: "none", spacing: "none", stat: { style: "plain" }, gauge: { style: "bar", color: "accent" }, tag: { style: "paper" } };
       function withDefaults(t) {
@@ -2539,6 +3620,3189 @@ var require_builder_theme = __commonJS({
   }
 });
 
+// apps/desktop/renderer/rules-core.js
+var require_rules_core = __commonJS({
+  "apps/desktop/renderer/rules-core.js"(exports2, module2) {
+    "use strict";
+    (function(root, factory) {
+      if (typeof module2 === "object" && module2.exports) module2.exports = factory();
+      else root.TTRules = factory();
+    })(typeof self !== "undefined" ? self : exports2, function() {
+      "use strict";
+      var given2 = null;
+      var french2 = null;
+      function say2(key, vars) {
+        var text;
+        if (given2) text = given2(key, vars);
+        else {
+          if (french2 === null) {
+            try {
+              var file = ["..", "i18n", "fr.json"].join("/");
+              french2 = typeof module2 === "object" && module2 && typeof module2.require === "function" ? require(file) : {};
+            } catch (e) {
+              french2 = {};
+            }
+          }
+          text = french2[key] || key;
+          Object.keys(vars || {}).forEach(function(k) {
+            text = text.split("{" + k + "}").join(String(vars[k]));
+          });
+        }
+        return text;
+      }
+      function useTexts2(fn) {
+        given2 = typeof fn === "function" ? fn : null;
+      }
+      var LIMITS2 = { rolls: 8, difficulties: 12, bands: 12, conditions: 6, values: 20, name: 40, count: 20, pool: 50, add: 1e3, stats: 12, derived: 20, skills: 60, steps: 12, terms: 8, flat: 400, dots: 10 };
+      var ID_RE3 = /^[a-z][a-z_]{0,29}$/;
+      var SIDES = [2, 3, 4, 6, 8, 10, 12, 20, 100];
+      var FAMILIES = ["d20", "d20adv", "d100", "d100deg", "pool10", "pbta", "fate", "3d6under", "pool6best", "custom"];
+      var TARGETS = ["difficulty", "value", "defense", "fixed", "none"];
+      var READS = ["over", "under", "bands", "count", "best"];
+      var TONES = ["crit", "success", "partial", "fail", "fumble"];
+      var ASKS = ["always", "shift", "never"];
+      var WHENS = ["natural", "doubles", "maxCount", "zeroWithOne", "total"];
+      var isObj5 = function(x) {
+        return !!x && typeof x === "object" && !Array.isArray(x);
+      };
+      var has = function(o, k) {
+        return typeof k === "string" && Object.prototype.hasOwnProperty.call(o, k);
+      };
+      var isInt = function(x, lo, hi) {
+        return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
+      };
+      var cleanName = function(s) {
+        return String(s == null ? "" : s).replace(/[\u0000-\u001f\u007f<>]/g, "").trim().slice(0, LIMITS2.name);
+      };
+      var range = function(a, b) {
+        var out = [];
+        for (var i = a; i <= b; i++) out.push(i);
+        return out;
+      };
+      function base(id, name, fam) {
+        return {
+          id: id || "test",
+          name: name || say2("rules.test"),
+          family: fam,
+          dice: { count: 1, sides: 20, fate: false, reroll: null, explode: null, keep: null },
+          bonus: 0,
+          target: { kind: "none", difficulties: [], "default": "", fixed: null },
+          read: { kind: "over", tie: "success", margin: false, degrees: null, bands: null, count: null },
+          crit: [],
+          fumble: [],
+          window: { ask: "shift", advantage: false, bonus: true, difficulty: false, poolDice: false }
+        };
+      }
+      var d20Difficulties = function() {
+        return [
+          { name: say2("rules.diff.easy"), value: 10 },
+          { name: say2("rules.diff.medium"), value: 15 },
+          { name: say2("rules.diff.hard"), value: 20 },
+          { name: say2("rules.diff.veryHard"), value: 25 }
+        ];
+      };
+      function family(fam, id, name) {
+        var r = base(id, name, fam);
+        switch (fam) {
+          case "d20":
+          case "d20adv":
+            r.target = { kind: "difficulty", difficulties: d20Difficulties(), "default": say2("rules.diff.medium"), fixed: null };
+            r.read.margin = true;
+            r.crit = [{ when: "natural", values: [20], name: "" }];
+            r.fumble = [{ when: "natural", values: [1], name: "" }];
+            r.window = { ask: fam === "d20adv" ? "always" : "shift", advantage: true, bonus: true, difficulty: true, poolDice: false };
+            break;
+          case "d100":
+          case "d100deg":
+            r.dice.sides = 100;
+            r.target = { kind: "value", difficulties: [], "default": "", fixed: null };
+            r.read.kind = "under";
+            if (fam === "d100deg") r.read.degrees = { fractions: [{ at: 0.2, name: say2("rules.deg.extreme") }, { at: 0.5, name: say2("rules.deg.hard") }] };
+            r.crit = [{ when: "natural", values: fam === "d100deg" ? [1] : [1, 2, 3, 4, 5], name: "" }];
+            r.fumble = [{ when: "natural", values: fam === "d100deg" ? [100] : [96, 97, 98, 99, 100], name: "" }];
+            r.window = { ask: "shift", advantage: true, bonus: true, difficulty: false, poolDice: false };
+            break;
+          case "pool10":
+            r.dice = { count: "pool", sides: 10, fate: false, reroll: null, explode: null, keep: null };
+            r.read = { kind: "count", tie: "success", margin: false, degrees: null, bands: null, count: { at: 7, need: 1, "double": 0 } };
+            r.fumble = [{ when: "zeroWithOne", values: [], name: "" }];
+            r.window = { ask: "shift", advantage: false, bonus: false, difficulty: false, poolDice: true };
+            break;
+          case "pbta":
+            r.dice.count = 2;
+            r.dice.sides = 6;
+            r.read = { kind: "bands", tie: "success", margin: false, degrees: null, count: null, bands: [
+              { max: 6, name: say2("rules.fail"), tone: "fail" },
+              { max: 9, name: say2("rules.partial"), tone: "partial" },
+              { max: null, name: say2("rules.success"), tone: "success" }
+            ] };
+            break;
+          case "fate":
+            r.dice = { count: 4, sides: 3, fate: true, reroll: null, explode: null, keep: null };
+            r.target = { kind: "difficulty", "default": say2("rules.fate.fair"), fixed: null, difficulties: [
+              { name: say2("rules.fate.mediocre"), value: 0 },
+              { name: say2("rules.fate.average"), value: 1 },
+              { name: say2("rules.fate.fair"), value: 2 },
+              { name: say2("rules.fate.good"), value: 3 },
+              { name: say2("rules.fate.great"), value: 4 },
+              { name: say2("rules.fate.superb"), value: 5 }
+            ] };
+            r.read.margin = true;
+            r.window = { ask: "shift", advantage: false, bonus: true, difficulty: true, poolDice: false };
+            break;
+          case "3d6under":
+            r.dice.count = 3;
+            r.dice.sides = 6;
+            r.target = { kind: "value", difficulties: [], "default": "", fixed: null };
+            r.read.kind = "under";
+            r.read.margin = true;
+            r.crit = [{ when: "total", values: [3, 4], name: "" }];
+            r.fumble = [{ when: "total", values: [17, 18], name: "" }];
+            break;
+          case "pool6best":
+            r.dice = { count: "pool", sides: 6, fate: false, reroll: null, explode: null, keep: null };
+            r.read = { kind: "best", tie: "success", margin: false, degrees: null, count: null, bands: [
+              { max: 3, name: say2("rules.fail"), tone: "fail" },
+              { max: 5, name: say2("rules.partial"), tone: "partial" },
+              { max: null, name: say2("rules.success"), tone: "success" }
+            ] };
+            r.crit = [{ when: "maxCount", values: [2], name: "" }];
+            r.window = { ask: "shift", advantage: false, bonus: false, difficulty: false, poolDice: true };
+            break;
+          default:
+            r.family = "custom";
+        }
+        return r;
+      }
+      function validateResolution(r, at, errs) {
+        var e = function(p, key, vars) {
+          errs.push({ path: at + (p ? "." + p : ""), message: say2(key, vars) });
+        };
+        if (!isObj5(r)) return e("", "rules.v.notResolution");
+        if (typeof r.id !== "string" || !ID_RE3.test(r.id)) e("id", "rules.v.id");
+        if (!cleanName(r.name)) e("name", "rules.v.name");
+        if (FAMILIES.indexOf(r.family) < 0) e("family", "rules.v.family");
+        var d = r.dice;
+        if (!isObj5(d)) return e("dice", "rules.v.dice");
+        var pool = d.count === "pool";
+        if (!pool && !isInt(d.count, 1, LIMITS2.count)) e("dice.count", "rules.v.count", { max: LIMITS2.count });
+        if (SIDES.indexOf(d.sides) < 0) e("dice.sides", "rules.v.sides", { list: SIDES.join(", ") });
+        if (d.fate !== true && d.fate !== false) e("dice.fate", "rules.v.bool");
+        if (d.fate === true && (d.sides !== 3 || pool)) e("dice.fate", "rules.v.fate");
+        if (d.reroll !== null && !(isObj5(d.reroll) && isInt(d.reroll.on, 1, 100) && d.reroll.on <= d.sides && (d.reroll.once === true || d.reroll.once === false))) e("dice.reroll", "rules.v.reroll");
+        if (d.explode !== null && !(isObj5(d.explode) && d.explode.on === "max" && isInt(d.explode.limit, 0, 10) && d.sides > 1)) e("dice.explode", "rules.v.explode");
+        if (d.keep !== null && !(isObj5(d.keep) && (d.keep.which === "high" || d.keep.which === "low") && isInt(d.keep.n, 1, LIMITS2.count) && (pool || d.keep.n < d.count))) e("dice.keep", "rules.v.keep");
+        if (!isInt(r.bonus, -LIMITS2.add, LIMITS2.add)) e("bonus", "rules.v.bonus");
+        var t = r.target;
+        if (!isObj5(t) || TARGETS.indexOf(t.kind) < 0) e("target.kind", "rules.v.target");
+        else {
+          if (!Array.isArray(t.difficulties) || t.difficulties.length > LIMITS2.difficulties) e("target.difficulties", "rules.v.difficulties", { max: LIMITS2.difficulties });
+          else t.difficulties.forEach(function(x, i) {
+            if (!isObj5(x) || !cleanName(x.name)) e("target.difficulties." + i + ".name", "rules.v.name");
+            if (!isObj5(x) || !isInt(x.value, -LIMITS2.add, LIMITS2.add)) e("target.difficulties." + i + ".value", "rules.v.difficultyValue");
+          });
+          var diffs = Array.isArray(t.difficulties) ? t.difficulties : [];
+          if (t.kind === "difficulty" && !diffs.length) e("target.difficulties", "rules.v.noDifficulty");
+          if (t.kind === "difficulty" && t["default"] && !diffs.some(function(x) {
+            return isObj5(x) && x.name === t["default"];
+          })) e("target.default", "rules.v.default");
+          if (t.kind === "fixed" && !isInt(t.fixed, -LIMITS2.add, LIMITS2.add)) e("target.fixed", "rules.v.fixed");
+        }
+        var rd = r.read;
+        if (!isObj5(rd) || READS.indexOf(rd.kind) < 0) return e("read.kind", "rules.v.read");
+        if (rd.tie !== "success" && rd.tie !== "fail") e("read.tie", "rules.v.tie");
+        if (rd.margin !== true && rd.margin !== false) e("read.margin", "rules.v.bool");
+        if ((rd.kind === "count" || rd.kind === "best") && !pool) e("dice.count", "rules.v.needPool");
+        if (rd.kind === "count") {
+          var c = rd.count;
+          if (!isObj5(c) || !isInt(c.at, 1, 100) || c.at > d.sides) e("read.count.at", "rules.v.countAt", { sides: d.sides });
+          if (!isObj5(c) || !isInt(c.need, 1, LIMITS2.pool)) e("read.count.need", "rules.v.need");
+          if (!isObj5(c) || !(c["double"] === 0 || isInt(c["double"], 1, 100) && c["double"] <= d.sides)) e("read.count.double", "rules.v.double");
+        }
+        if (rd.kind === "bands" || rd.kind === "best") {
+          var b = rd.bands, ok = Array.isArray(b) && b.length >= 2 && b.length <= LIMITS2.bands;
+          if (ok) b.forEach(function(x, i) {
+            var last = i === b.length - 1;
+            if (!isObj5(x) || !cleanName(x.name) || TONES.indexOf(x.tone) < 0) ok = false;
+            else if (last ? x.max !== null : !isInt(x.max, -LIMITS2.add, LIMITS2.add)) ok = false;
+            else if (i > 0 && !last && x.max <= b[i - 1].max) ok = false;
+          });
+          if (!ok) e("read.bands", "rules.v.bands");
+        }
+        if (rd.degrees !== null) {
+          var g = rd.degrees;
+          var steps = isObj5(g) && isInt(g.steps, 1, LIMITS2.add) && Array.isArray(g.names) && g.names.length >= 1 && g.names.length <= LIMITS2.bands && g.names.every(function(n) {
+            return !!cleanName(n);
+          });
+          var fr = isObj5(g) && Array.isArray(g.fractions) && g.fractions.length >= 1 && g.fractions.length <= 4 && g.fractions.every(function(f, i) {
+            return isObj5(f) && typeof f.at === "number" && f.at > 0 && f.at < 1 && !!cleanName(f.name) && (i === 0 || f.at > g.fractions[i - 1].at);
+          });
+          if (!(steps && rd.kind === "over") && !(fr && rd.kind === "under")) e("read.degrees", "rules.v.degrees");
+        }
+        ["crit", "fumble"].forEach(function(k) {
+          var list2 = r[k];
+          if (!Array.isArray(list2) || list2.length > LIMITS2.conditions) return e(k, "rules.v.conditions");
+          list2.forEach(function(c2, i) {
+            var good = isObj5(c2) && WHENS.indexOf(c2.when) >= 0 && Array.isArray(c2.values) && c2.values.length <= LIMITS2.values && c2.values.every(function(v) {
+              return isInt(v, -LIMITS2.add, LIMITS2.add);
+            }) && (c2.name === "" || !!cleanName(c2.name));
+            if (good && (c2.when === "natural" || c2.when === "total") && !c2.values.length) good = false;
+            if (good && c2.when === "maxCount" && !(c2.values.length === 1 && c2.values[0] >= 1)) good = false;
+            if (good && c2.when === "zeroWithOne" && rd.kind !== "count") good = false;
+            if (good && c2.when === "doubles" && d.sides !== 100) good = false;
+            if (!good) e(k + "." + i, "rules.v.condition");
+          });
+        });
+        var w = r.window;
+        if (!isObj5(w) || ASKS.indexOf(w.ask) < 0 || ["advantage", "bonus", "difficulty", "poolDice"].some(function(k) {
+          return w[k] !== true && w[k] !== false;
+        })) e("window", "rules.v.window");
+        else {
+          if (w.poolDice && !pool) e("window.poolDice", "rules.v.needPool");
+          if (w.difficulty && (!isObj5(t) || t.kind !== "difficulty")) e("window.difficulty", "rules.v.windowDifficulty");
+          if (w.advantage && (pool || d.fate || rd.kind === "bands")) e("window.advantage", "rules.v.advantage");
+        }
+      }
+      function validateRules(rules) {
+        var errs = [];
+        if (!isObj5(rules)) return [{ path: "", message: say2("rules.v.notRules") }];
+        validateResolution(rules.resolution, "resolution", errs);
+        var rolls = rules.rolls === void 0 ? [] : rules.rolls;
+        if (!Array.isArray(rolls) || rolls.length > LIMITS2.rolls) errs.push({ path: "rolls", message: say2("rules.v.rolls", { max: LIMITS2.rolls }) });
+        else {
+          var seen = {};
+          if (isObj5(rules.resolution)) seen[rules.resolution.id] = true;
+          rolls.forEach(function(r, i) {
+            validateResolution(r, "rolls." + i, errs);
+            if (isObj5(r) && seen[r.id]) errs.push({ path: "rolls." + i + ".id", message: say2("rules.v.sameId", { id: r.id }) });
+            if (isObj5(r)) seen[r.id] = true;
+          });
+        }
+        if (rules.stats !== void 0) validateStats(rules, errs);
+        if (rules.derived !== void 0) validateDerived(rules, errs);
+        if (rules.skills !== void 0) validateSkills(rules, errs);
+        if (rules.identity !== void 0) validateIdentity(rules, errs);
+        if (rules.combat !== void 0) validateCombat(rules, errs);
+        if (rules.effects !== void 0) validateEffects(rules, errs);
+        if (rules.rests !== void 0) validateRests(rules, errs);
+        if (rules.progression !== void 0) validateProgression(rules, errs);
+        if (rules.library !== void 0) validateLibrary(rules, errs);
+        if (!errs.length && (rules.stats !== void 0 || rules.derived !== void 0 || rules.skills !== void 0 || rules.combat !== void 0 || rules.effects !== void 0 || rules.rests !== void 0 || rules.progression !== void 0 || rules.library !== void 0)) {
+          var dup = model(rules).dup;
+          dup.forEach(function(d) {
+            errs.push({ path: d.path, message: say2("rules.v.sameId", { id: d.key }) });
+          });
+          if (!dup.length) flatFormulas(rules).errors.forEach(function(x) {
+            errs.push(x);
+          });
+        }
+        return errs;
+      }
+      function resolutionsOf(rules) {
+        var out = {};
+        if (!isObj5(rules)) return out;
+        if (isObj5(rules.resolution)) out[rules.resolution.id] = rules.resolution;
+        (Array.isArray(rules.rolls) ? rules.rolls : []).forEach(function(r) {
+          if (isObj5(r)) out[r.id] = r;
+        });
+        return out;
+      }
+      var KEY_RE = /^[a-z][a-z0-9_]{0,29}$/;
+      var STAT_FORMS = ["score", "bonus", "percent", "dots"];
+      var GENERATIONS = ["array", "pointbuy", "4d6drop", "3d6", "free", "random"];
+      var RECIPES = ["input", "modifier", "sum", "perLevel", "fraction", "steps", "max", "min", "raw"];
+      var SHOWS = ["tile", "field", "gauge", "hidden"];
+      var RANKS = ["bonus", "percent", "dots", "trained"];
+      var SKILL_MODES = ["none", "fixed"];
+      var ROUNDS = { down: "floor", up: "ceil", near: "round" };
+      var RAW_WORDS = { floor: true, ceil: true, round: true, "if": true };
+      var SKILL_DOTS = 5;
+      var CRITICALS = ["double", "maxPlus", "none"];
+      var WEAPON_KEYS = ["arm", "arm_nom", "arm_carac", "arm_bonus", "arm_degats", "arm_type", "arm_portee", "arm_munitions", "arm_etiquettes", "arm_ligne", "arm_attaquer"];
+      var DEFENSE_KEYS = ["def_reduction", "def_resist", "def_immune", "def_vuln"];
+      var TYPE_RE = /^[a-z][a-z_]{0,29}$/;
+      var MAX_TYPES = 12;
+      var EFFECT_ICONS = ["a_terre", "aveugle", "poison", "peur", "benediction", "entrave", "rage", "sommeil", "feu", "froid", "saignement", "charme", "invisible", "protection", "faiblesse", "vitesse", "autre"];
+      var RESTORES = ["full", "half", "fixed", "formula"];
+      var ICON_TEXT = {
+        a_terre: "rules.icon.a_terre",
+        aveugle: "rules.icon.aveugle",
+        poison: "rules.icon.poison",
+        peur: "rules.icon.peur",
+        benediction: "rules.icon.benediction",
+        entrave: "rules.icon.entrave",
+        rage: "rules.icon.rage",
+        sommeil: "rules.icon.sommeil",
+        feu: "rules.icon.feu",
+        froid: "rules.icon.froid",
+        saignement: "rules.icon.saignement",
+        charme: "rules.icon.charme",
+        invisible: "rules.icon.invisible",
+        protection: "rules.icon.protection",
+        faiblesse: "rules.icon.faiblesse",
+        vitesse: "rules.icon.vitesse",
+        autre: "rules.icon.autre"
+      };
+      function iconName(id) {
+        return has(ICON_TEXT, id) ? say2(ICON_TEXT[id]) : String(id);
+      }
+      var FX = { states: 24, mods: 8, rolls: 4, rests: 4, restore: 12, n: 99, roll: 20, rounds: 100, fixed: 999 };
+      var PROG = { xp: 1e6, marks: 40, gains: 24, give: 4, at: 20, onFail: 4, purchases: 20, features: 200, text: 1e3, among: 60, points: 20, n: 1e3, times: 20, useRes: 8 };
+      var GIVES = ["add", "spread", "train", "feature", "pick"];
+      var HOWS = ["average", "roll", "player"];
+      var BUYS = ["stat", "skill", "value", "feature"];
+      var DICE_RE = /^([1-9]\d?)d([1-9]\d{0,2})$/;
+      var PROG_FORMULA_RE = /^[0-9a-z_@+\-*\/%()., ]*$/;
+      function dicePart(text) {
+        var m = typeof text === "string" ? DICE_RE.exec(text) : null;
+        return m && Number(m[2]) >= 2 ? { count: Number(m[1]), sides: Number(m[2]) } : null;
+      }
+      function diceAverage(d) {
+        return Math.ceil(d.count * (d.sides + 1) / 2);
+      }
+      function progFormulaOk(f, v) {
+        if (typeof f !== "string" || !f.trim() || f.length > LIMITS2.flat || !PROG_FORMULA_RE.test(f)) return false;
+        var words = f.replace(/@[a-z0-9_]*/g, " ").match(/[a-z_][a-z0-9_]*/g) || [];
+        var refs = (f.match(/@[a-z0-9_]*/g) || []).map(function(x) {
+          return x.slice(1);
+        });
+        return refs.length > 0 && words.every(function(w) {
+          return RAW_WORDS[w] === true;
+        }) && refs.every(function(x) {
+          return x === v;
+        });
+      }
+      var LIB = { genres: 12, fields: 12, entries: 500, options: 20, text: 80, long: 2e3, n: 1e3, cost: 999, bonus: 50 };
+      var GENRE_KINDS = ["custom", "weapon", "feature"];
+      var FIELD_TYPES = ["text", "long", "number", "choice"];
+      var GENRE_RE = /^[a-z][a-z0-9]{0,11}$/;
+      var FIELD_RE = /^[a-z][a-z0-9_]{0,15}$/;
+      var ENTRY_RE = /^[a-z][a-z0-9_]{0,39}$/;
+      var LIB_RESERVED = ["nom", "origine", "agir", "ligne"];
+      function libraryPools(rules) {
+        var resources = {}, states = {}, types = [], stats = [];
+        (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
+          if (isObj5(d) && d.resource && typeof d.id === "string") resources[d.id] = true;
+        });
+        if (isObj5(rules.effects) && Array.isArray(rules.effects.states)) rules.effects.states.forEach(function(s) {
+          if (isObj5(s) && typeof s.id === "string") states[s.id] = true;
+        });
+        var cb = isObj5(rules.combat) && isObj5(rules.combat.attack) && isObj5(rules.combat.damage) ? rules.combat : null;
+        if (cb) {
+          types = (Array.isArray(cb.damage.types) ? cb.damage.types : []).filter(isObj5).map(function(t) {
+            return t.id;
+          });
+          stats = (Array.isArray(cb.attack.stats) && cb.attack.stats.length ? cb.attack.stats : isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj5).map(function(x) {
+            return x.id;
+          }) : []).slice();
+          if (Array.isArray(cb.attack.finesse)) stats.push("finesse");
+        }
+        return { res: resolutionsOf(rules), resources, states, combat: !!cb, types, stats, progression: isObj5(rules.progression) };
+      }
+      function fieldsOf(genre, pools) {
+        if (!isObj5(genre)) return [];
+        if (genre.kind === "weapon") return [
+          { id: "arm_carac", name: say2("rules.w.stat"), type: "choice", options: pools.stats.slice() },
+          { id: "arm_bonus", name: say2("rules.w.bonus"), type: "number", min: -20, max: 30 },
+          { id: "arm_degats", name: say2("rules.w.damage"), type: "text" },
+          { id: "arm_type", name: say2("rules.w.type"), type: "choice", options: pools.types.slice() },
+          { id: "arm_portee", name: say2("rules.w.range"), type: "text" },
+          { id: "arm_munitions", name: say2("rules.w.ammo"), type: "number", min: 0, max: 999 },
+          { id: "arm_etiquettes", name: say2("rules.w.tags"), type: "text" }
+        ];
+        if (genre.kind === "feature") return [{ id: "text", name: say2("rules.l.featText"), type: "long" }];
+        return genre.kind === "custom" && Array.isArray(genre.fields) ? genre.fields.filter(isObj5) : [];
+      }
+      var bool = function(x) {
+        return x === true || x === false;
+      };
+      var optBool = function(x) {
+        return x === void 0 || bool(x);
+      };
+      var num = function(n) {
+        return n < 0 ? "(0-" + -n + ")" : String(n);
+      };
+      function chain(parts) {
+        var acc = "";
+        parts.forEach(function(p, i) {
+          if (i === 0) acc = p.sign < 0 ? "(0-" + p.text + ")" : p.text;
+          else acc = "(" + acc + ")" + (p.sign < 0 ? "-" : "+") + p.text;
+        });
+        return acc || "0";
+      }
+      var termText = function(t) {
+        return typeof t.ref === "string" ? "@" + t.ref : num(t.n);
+      };
+      var signed = function(t) {
+        return t.sign < 0 ? "(0-" + termText(t) + ")" : termText(t);
+      };
+      var readKind = function(rules) {
+        return isObj5(rules.resolution) && isObj5(rules.resolution.read) ? rules.resolution.read.kind : "over";
+      };
+      function statAdd(rules, id) {
+        var k = readKind(rules);
+        if (rules.stats.form === "score" && k !== "under" && k !== "count" && k !== "best") return "@" + id + "_mod";
+        return rules.stats.form !== "dots" && fxOn(rules, id) ? "@" + id + "_fx" : "@" + id;
+      }
+      function recipeText(r) {
+        switch (r.kind) {
+          case "modifier":
+            return "floor((@" + r.source + "-10)/2)";
+          case "sum":
+            return chain(r.terms.map(function(t) {
+              return { sign: t.sign, text: termText(t) };
+            }));
+          case "perLevel":
+            return chain([{ sign: 1, text: num(r.base) }, { sign: 1, text: num(r.per) + "*@" + r.level }]);
+          case "fraction":
+            return ROUNDS[r.round] + "(@" + r.source + "/" + r.by + ")";
+          case "steps": {
+            var out = num(r["else"]);
+            for (var i = r.steps.length - 1; i >= 0; i--) out = "if(@" + r.source + "<=" + num(r.steps[i].upTo) + "," + num(r.steps[i].value) + "," + out + ")";
+            return out;
+          }
+          case "max":
+          case "min": {
+            var cmp = r.kind === "max" ? ">" : "<";
+            var pick = function(a, b) {
+              return "if(" + a + cmp + b + "," + a + "," + b + ")";
+            };
+            var acc = pick(signed(r.terms[0]), signed(r.terms[1]));
+            if (r.terms[2]) acc = pick("(" + acc + ")", signed(r.terms[2]));
+            return acc;
+          }
+          case "raw":
+            return String(r.formula).replace(/\s+/g, "");
+        }
+        return "0";
+      }
+      function modKeys(rules) {
+        var out = {};
+        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj5(x) && typeof x.id === "string") out[x.id] = true;
+        });
+        (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
+          if (isObj5(d) && typeof d.id === "string" && isObj5(d.recipe) && d.recipe.kind !== "input" && !d.resource) out[d.id] = true;
+        });
+        var sk = rules.skills;
+        if (isObj5(sk) && sk.mode === "fixed" && Array.isArray(sk.list)) sk.list.forEach(function(x) {
+          if (isObj5(x) && typeof x.id === "string") out["sk_" + x.id + "_t"] = true;
+        });
+        return out;
+      }
+      function effectKeys(rules) {
+        if (!isObj5(rules) || !isObj5(rules.effects)) return [];
+        var ok = modKeys(rules), out = [];
+        var add = function(k) {
+          if (typeof k === "string" && has(ok, k) && out.indexOf(k) < 0) out.push(k);
+        };
+        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj5(x)) add(x.id);
+        });
+        (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
+          if (isObj5(d) && d.show !== "hidden") add(d.id);
+        });
+        (Array.isArray(rules.effects.states) ? rules.effects.states : []).forEach(function(s) {
+          (isObj5(s) && Array.isArray(s.mods) ? s.mods : []).forEach(function(m) {
+            if (isObj5(m)) add(m.key);
+          });
+        });
+        return out;
+      }
+      var fxOn = function(rules, key) {
+        return effectKeys(rules).indexOf(key) >= 0;
+      };
+      function progTargets(rules) {
+        var out = {}, prog = isObj5(rules) && isObj5(rules.progression) ? rules.progression : {};
+        var levelKey = isObj5(prog.levels) ? prog.levels.key : null;
+        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj5(x) && typeof x.id === "string") out[x.id] = "stat";
+        });
+        (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
+          if (!isObj5(d) || typeof d.id !== "string" || !isObj5(d.recipe) || d.id === levelKey) return;
+          out[d.id] = d.resource ? "resource" : d.recipe.kind === "input" ? "input" : "computed";
+        });
+        var sk = rules.skills;
+        if (isObj5(sk) && sk.mode === "fixed" && Array.isArray(sk.list)) sk.list.forEach(function(x) {
+          if (isObj5(x) && typeof x.id === "string") out["sk_" + x.id] = "skill";
+        });
+        return out;
+      }
+      function progKeys(rules) {
+        var prog = isObj5(rules) ? rules.progression : null;
+        if (!isObj5(prog)) return [];
+        var t = progTargets(rules), out = [];
+        var add = function(k) {
+          if (typeof k === "string" && t[k] === "computed" && out.indexOf(k) < 0) out.push(k);
+        };
+        (isObj5(prog.levels) && Array.isArray(prog.levels.gains) ? prog.levels.gains : []).forEach(function(g) {
+          (isObj5(g) && Array.isArray(g.give) ? g.give : []).forEach(function(x) {
+            if (!isObj5(x)) return;
+            if (x.kind === "add") add(x.key);
+            if (x.kind === "spread" && Array.isArray(x.among)) x.among.forEach(add);
+          });
+        });
+        (Array.isArray(prog.purchases) ? prog.purchases : []).forEach(function(b) {
+          if (isObj5(b) && b.what === "value") (Array.isArray(b.keys) ? b.keys : Object.keys(t)).forEach(add);
+        });
+        return out;
+      }
+      function model(rules) {
+        var m = { typed: {}, raw: {}, starts: {}, owner: {}, dup: [] };
+        var fx = {};
+        effectKeys(rules).forEach(function(k) {
+          fx[k] = true;
+        });
+        var pg = {};
+        progKeys(rules).forEach(function(k) {
+          pg[k] = true;
+        });
+        var own = function(key, at) {
+          if (Object.prototype.hasOwnProperty.call(m.owner, key)) m.dup.push({ key, path: at });
+          else m.owner[key] = at;
+        };
+        var pips = function(key, count) {
+          var parts = [];
+          for (var k = 1; k <= count; k++) {
+            m.typed[key + "__" + k] = 0;
+            parts.push({ sign: 1, text: "@" + key + "__" + k });
+          }
+          m.raw[key] = chain(parts);
+        };
+        Object.keys(resolutionsOf(rules)).forEach(function(id) {
+          m.owner[id] = "resolution";
+        });
+        var s = isObj5(rules.stats) ? rules.stats : null;
+        (s && Array.isArray(s.list) ? s.list : []).forEach(function(x, i) {
+          if (!isObj5(x)) return;
+          var at = "stats.list." + i + ".id";
+          own(x.id, at);
+          if (s.form === "dots") {
+            pips(x.id, s.max);
+            if (fx[x.id]) m.raw[x.id] = "(" + m.raw[x.id] + ")+@fx_" + x.id;
+          } else m.typed[x.id] = s["default"];
+          if (s.form === "score") {
+            own(x.id + "_mod", at);
+            m.raw[x.id + "_mod"] = fx[x.id] ? "floor(((@" + x.id + "+@fx_" + x.id + ")-10)/2)" : "floor((@" + x.id + "-10)/2)";
+          }
+          if (fx[x.id] && s.form !== "dots") {
+            own(x.id + "_fx", at);
+            m.raw[x.id + "_fx"] = "(@" + x.id + ")+@fx_" + x.id;
+          }
+        });
+        (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d, i) {
+          if (!isObj5(d) || !isObj5(d.recipe)) return;
+          var at = "derived." + i + ".id";
+          own(d.id, at);
+          if (d.recipe.kind === "input") m.typed[d.id] = d.recipe["default"];
+          else if (d.resource) {
+            own(d.id + "_max", at);
+            m.typed[d.id] = 0;
+            m.typed[d.id + "_max"] = 0;
+            m.starts[d.id] = recipeText(d.recipe);
+          } else {
+            var text = recipeText(d.recipe);
+            if (fx[d.id]) text = "(" + text + ")+@fx_" + d.id;
+            if (pg[d.id]) text = "(" + text + ")+@prog_" + d.id;
+            m.raw[d.id] = text;
+          }
+        });
+        var sk = isObj5(rules.skills) ? rules.skills : null;
+        if (sk && sk.mode === "fixed") (Array.isArray(sk.list) ? sk.list : []).forEach(function(x, i) {
+          if (!isObj5(x)) return;
+          var at = "skills.list." + i + ".id", k = "sk_" + x.id;
+          own(k, at);
+          if (sk.rank === "dots") pips(k, SKILL_DOTS);
+          else m.typed[k] = 0;
+          var parts = [];
+          if (x.stat && readKind(rules) !== "under" && s) parts.push({ sign: 1, text: statAdd(rules, x.stat) });
+          if (sk.rank === "trained") {
+            parts.push({ sign: 1, text: "@" + k + "*@" + sk.proficiency });
+            if (sk.expertise) {
+              own(k + "_x", at);
+              m.typed[k + "_x"] = 0;
+              parts.push({ sign: 1, text: "@" + k + "_x*@" + sk.proficiency });
+            }
+          } else parts.push({ sign: 1, text: "@" + k });
+          if (fx[k + "_t"]) parts.push({ sign: 1, text: "@fx_" + k + "_t" });
+          own(k + "_t", at);
+          m.raw[k + "_t"] = chain(parts);
+          if (x.passive) {
+            own(k + "_p", at);
+            m.raw[k + "_p"] = chain([{ sign: 1, text: "10" }, { sign: 1, text: "@" + k + "_t" }]);
+          }
+        });
+        if (isObj5(rules.combat)) {
+          WEAPON_KEYS.concat(DEFENSE_KEYS).forEach(function(k) {
+            own(k, "combat");
+          });
+          m.typed.def_reduction = 0;
+        }
+        if (isObj5(rules.effects) || Array.isArray(rules.rests)) {
+          own("fx", "effects");
+          own("effets_actifs", "effects");
+          Object.keys(fx).forEach(function(k) {
+            own("fx_" + k, "effects");
+            m.typed["fx_" + k] = 0;
+          });
+          (Array.isArray(rules.rests) ? rules.rests : []).forEach(function(r) {
+            if (isObj5(r) && typeof r.id === "string") own("repos_" + r.id, "rests");
+          });
+        }
+        if (isObj5(rules.progression)) {
+          var P = rules.progression;
+          own("prog", "progression");
+          own("progression_etat", "progression");
+          own("aptitudes_liste", "progression");
+          if (isObj5(P.xp) && typeof P.xp.id === "string") {
+            own(P.xp.id, "progression.xp.id");
+            m.typed[P.xp.id] = 0;
+          }
+          Object.keys(pg).forEach(function(k) {
+            own("prog_" + k, "progression");
+            m.typed["prog_" + k] = 0;
+          });
+          if (isObj5(P.use) && sk && sk.mode === "fixed") (Array.isArray(sk.list) ? sk.list : []).forEach(function(x) {
+            if (isObj5(x)) own("tick_" + x.id, "progression");
+          });
+        }
+        if (isObj5(rules.library) && Array.isArray(rules.library.genres)) {
+          rules.library.genres.forEach(function(g) {
+            if (!isObj5(g) || typeof g.id !== "string") return;
+            if (g.kind === "weapon") {
+              own("arm_origine", "library");
+              return;
+            }
+            if (g.kind !== "custom") return;
+            var pre = "lib_" + g.id;
+            own(pre, "library");
+            LIB_RESERVED.forEach(function(k) {
+              own(pre + "_" + k, "library");
+            });
+            (Array.isArray(g.fields) ? g.fields : []).forEach(function(f) {
+              if (isObj5(f) && typeof f.id === "string") own(pre + "_" + f.id, "library");
+            });
+          });
+        }
+        return m;
+      }
+      function flatFormulas(rules) {
+        var m = model(rules), computed = {}, state = {}, errors = [], looped = false;
+        var unfold = function(text, trail) {
+          return text.replace(/@(\w+)/g, function(all, k) {
+            if (!Object.prototype.hasOwnProperty.call(m.raw, k)) return all;
+            if (computed[k] !== void 0) return "(" + computed[k] + ")";
+            if (state[k] === 1) throw { loop: trail.concat(k) };
+            state[k] = 1;
+            computed[k] = unfold(m.raw[k], trail.concat(k));
+            state[k] = 2;
+            return "(" + computed[k] + ")";
+          });
+        };
+        Object.keys(m.raw).forEach(function(key) {
+          if (computed[key] !== void 0 || looped) return;
+          try {
+            state[key] = 1;
+            computed[key] = unfold(m.raw[key], [key]);
+            state[key] = 2;
+          } catch (e) {
+            if (!e || !e.loop) throw e;
+            looped = true;
+            errors.push({ path: m.owner[e.loop[0]] || "derived", message: say2("rules.v.cycle", { path: e.loop.join(" \u2192 ") }) });
+          }
+        });
+        var starts = {};
+        if (!looped) Object.keys(m.starts).forEach(function(id) {
+          starts[id] = unfold(m.starts[id], [id]);
+        });
+        [computed, starts].forEach(function(list2) {
+          Object.keys(list2).forEach(function(k) {
+            if (list2[k].length > LIMITS2.flat) errors.push({ path: m.owner[k] || "derived", message: say2("rules.v.tooLong", { id: k, n: list2[k].length, max: LIMITS2.flat }) });
+          });
+        });
+        return { computed, starts, typed: m.typed, errors };
+      }
+      function defaultsOf(rules) {
+        return model(rules).typed;
+      }
+      var BIND_LAYOUTS = { stats: { arrange: ["row", "column", "grid"] }, skills: { columns: [1, 2, 3], grouped: [true, false] }, derived: { style: ["tiles", "fields"] }, weapons: {}, defenses: {}, effects: {}, rests: {}, progression: {}, features: {}, library: {} };
+      var bindKind = function(bind) {
+        return typeof bind === "string" && bind.indexOf("derived:") === 0 ? "derived" : typeof bind === "string" && bind.indexOf("library:") === 0 ? "library" : bind;
+      };
+      function bindKnown(rules, bind) {
+        if (!isObj5(rules) || typeof bind !== "string") return false;
+        if (bind === "stats") return isObj5(rules.stats) && Array.isArray(rules.stats.list) && rules.stats.list.length > 0;
+        if (bind === "skills") return isObj5(rules.skills) && rules.skills.mode === "fixed";
+        if (bind === "derived") return Array.isArray(rules.derived) && rules.derived.length > 0;
+        if (bind.indexOf("derived:") === 0) {
+          var id = bind.slice(8);
+          return Array.isArray(rules.derived) && rules.derived.some(function(d) {
+            return isObj5(d) && d.id === id && d.show !== "hidden";
+          });
+        }
+        if (bind === "weapons" || bind === "defenses") return isObj5(rules.combat) && isObj5(rules.combat.attack) && isObj5(rules.combat.damage);
+        if (bind === "effects") return isObj5(rules.effects);
+        if (bind === "rests") return Array.isArray(rules.rests) && rules.rests.length > 0;
+        if (bind.indexOf("library:") === 0) {
+          var lg = bind.slice(8);
+          return isObj5(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
+            return isObj5(g) && g.id === lg && g.kind === "custom";
+          });
+        }
+        if (bind === "progression") return isObj5(rules.progression);
+        if (bind === "features") return isObj5(rules.progression) && Array.isArray(rules.progression.features) && rules.progression.features.length > 0;
+        return false;
+      }
+      function layoutProblem(bind, layout) {
+        if (layout === void 0 || layout === null) return false;
+        var allowed = has(BIND_LAYOUTS, bindKind(bind)) ? BIND_LAYOUTS[bindKind(bind)] : null;
+        if (!isObj5(layout) || !allowed) return true;
+        return Object.keys(layout).some(function(k) {
+          return !has(allowed, k) || allowed[k].indexOf(layout[k]) < 0;
+        });
+      }
+      function boundChildren(rules, bind, layout, opts) {
+        if (!bindKnown(rules, bind) || layoutProblem(bind, layout)) return null;
+        opts = opts || {};
+        var L = isObj5(layout) ? layout : {};
+        var flat = flatFormulas(rules);
+        var evaluate = typeof opts.evaluate === "function" ? opts.evaluate : function() {
+          return 0;
+        };
+        var res = rules.resolution;
+        var tidy = function(n) {
+          Object.keys(n).forEach(function(k) {
+            if (n[k] === void 0) delete n[k];
+          });
+          return n;
+        };
+        var label = function(key, name, roll, extra) {
+          var n = { className: "Label", id: "rbl_" + key, text: cleanName(name), align: "Center" };
+          if (roll) {
+            n.clickable = true;
+            n.roll = roll.text;
+            n.follows = roll.follows;
+          }
+          return tidy(Object.assign(n, extra || {}));
+        };
+        var number = function(id, name, extra) {
+          return tidy(Object.assign({ className: "NumberInput", id, name }, extra));
+        };
+        var row = function(id, cols) {
+          return { className: "Row", id, children: cols };
+        };
+        var col = function(id, size, kids) {
+          return { className: "Column", id, size, children: kids };
+        };
+        var rowsOf = function(prefix, cells2, per2) {
+          var size = Math.max(2, Math.floor(12 / Math.min(per2, cells2.length || 1))), rows = [];
+          for (var i = 0; i < cells2.length; i += per2) rows.push(row(prefix + i / per2, cells2.slice(i, i + per2).map(function(c2) {
+            return col("rbc_" + c2.key, size, c2.kids);
+          })));
+          return rows;
+        };
+        if (bind === "stats") {
+          var s = rules.stats, arrange = L.arrange || "row";
+          var cells = s.list.map(function(x) {
+            var name = cleanName(x.name);
+            var kids = [label(x.id, name, { text: statAdd(rules, x.id), follows: res.id }, { bold: true, variant: "subtitle" })];
+            kids.push(s.form === "dots" ? { className: "Track", id: x.id, name, count: s.max, showTotal: false } : number(x.id, name, { defaultValue: String(s["default"]), min: s.min, max: s.max, variant: "stat", align: "Center" }));
+            if (s.form === "score") kids.push(number(x.id + "_mod", say2("rules.modOf", { name }), { computed: true, defaultValue: flat.computed[x.id + "_mod"], align: "Center", tooltipLabel: tipOf(rules, x.id + "_mod") }));
+            return { key: x.id, kids };
+          });
+          if (arrange === "column") return cells.map(function(c2) {
+            return row("rbr_s_" + c2.key, c2.kids.map(function(k, i) {
+              return col("rbc_" + c2.key + "_" + i, i === 0 ? 6 : c2.kids.length === 2 ? 6 : 3, [k]);
+            }));
+          });
+          return rowsOf("rbr_s_", cells, arrange === "grid" ? 3 : 6);
+        }
+        if (bindKind(bind) === "derived") {
+          var one = bind === "derived" ? null : bind.slice(8), own = opts.own || {};
+          var fields = L.style === "fields";
+          var list2 = rules.derived.filter(function(d) {
+            return one ? d.id === one : d.show !== "hidden" && !has(own, d.id);
+          });
+          var dcells = list2.map(function(d) {
+            var name = cleanName(d.name), roll = null;
+            if (d.rollable) roll = d.id === "initiative" ? { text: "(" + diceTerm(res, res.dice.count, 0) + "+@initiative)[initiative]" } : { text: "@" + d.id, follows: d.rollWith || res.id };
+            var head = label(d.id, name, roll, fields ? { align: "Left" } : { variant: "muted" });
+            var values = [];
+            if (d.recipe.kind === "input") values.push(number(d.id, name, { defaultValue: String(d.recipe["default"]), min: d.recipe.min, max: d.recipe.max, variant: fields ? void 0 : "stat", align: "Center" }));
+            else if (d.resource) {
+              var start = String(Math.round(Number(evaluate(flat.starts[d.id])) || 0));
+              if (d.show === "gauge") values.push({ className: "Gauge", id: "rbg_" + d.id, name, valueField: d.id, maxField: d.id + "_max", segments: 10, showValue: true });
+              values.push(number(d.id, name, { defaultValue: start, min: 0, variant: "stat", align: "Center" }));
+              values.push({ className: "Label", id: "rbm_" + d.id, text: say2("rules.maxOf", { name }), align: "Center", variant: "muted" });
+              values.push(number(d.id + "_max", say2("rules.maxOf", { name }), { defaultValue: start, min: 0, align: "Center" }));
+            } else values.push(number(d.id, name, { computed: true, defaultValue: flat.computed[d.id], variant: fields ? void 0 : "stat", align: "Center", tooltipLabel: tipOf(rules, d.id) }));
+            return { key: d.id, head: d.resource && d.show === "gauge" && !fields ? null : head, values };
+          });
+          if (fields) return dcells.map(function(c2) {
+            return row("rbr_d_" + c2.key, [col("rbc_" + c2.key + "_a", 6, [c2.head]), col("rbc_" + c2.key + "_b", 6, c2.values)]);
+          });
+          return rowsOf(one ? "rbr_d_" + one + "_" : "rbr_d_", dcells.map(function(c2) {
+            return { key: c2.key, kids: (c2.head ? [c2.head] : []).concat(c2.values) };
+          }), 4);
+        }
+        if (bind === "progression") {
+          var P = rules.progression, pk = [{ className: "Label", id: "rbl_progression", text: say2("rules.p.title"), variant: "muted" }];
+          if (isObj5(P.xp)) pk.push(number(P.xp.id, cleanName(P.xp.name), { defaultValue: "0", min: 0, max: PROG.xp, align: "Center" }));
+          pk.push({ className: "Label", id: "progression_etat", text: "" });
+          return [row("rbr_progression", [col("rbc_progression", 12, pk)])];
+        }
+        if (bind === "features") {
+          return [row("rbr_aptitudes", [col("rbc_aptitudes", 12, [
+            { className: "Label", id: "rbl_aptitudes", text: say2("rules.p.features"), variant: "muted" },
+            { className: "Label", id: "aptitudes_liste", text: "" }
+          ])])];
+        }
+        if (bind === "effects") {
+          return [row("rbr_fx", [col("rbc_fx", 12, [
+            { className: "Label", id: "rbl_fx", text: say2("rules.fx.title"), variant: "muted" },
+            { className: "Label", id: "effets_actifs", text: "" }
+          ])])];
+        }
+        if (bind === "rests") {
+          var restCells = rules.rests.map(function(r) {
+            return col("rbc_repos_" + r.id, 3, [{ className: "Label", id: "repos_" + r.id, text: cleanName(r.name), variant: "button", align: "Center" }]);
+          });
+          return [row("rbr_repos", [col("rbc_repos", 12, [{ className: "Label", id: "rbl_repos", text: say2("rules.rest.title"), variant: "muted" }])])].concat(restCells.length ? [row("rbr_repos_b", restCells)] : []);
+        }
+        if (bindKind(bind) === "library") {
+          var lg = bind.slice(8), G = rules.library.genres.filter(function(x) {
+            return isObj5(x) && x.id === lg;
+          })[0];
+          var pre = "lib_" + lg + "_";
+          var lcell = function(key, size, title, node) {
+            return col("rbc_" + key, size, [{ className: "Label", id: "rbl_" + key, text: title, variant: "muted" }, node]);
+          };
+          var cellsL = [lcell(pre + "nom", 6, say2("rules.l.name"), { className: "TextInput", id: pre + "nom", name: say2("rules.l.name"), defaultValue: "" })];
+          var longs = [];
+          G.fields.forEach(function(f) {
+            var id = pre + f.id, nm = cleanName(f.name);
+            if (f.type === "long") longs.push(lcell(id, 12, nm, { className: "Textarea", id, name: nm, defaultValue: "" }));
+            else if (f.type === "choice") cellsL.push(lcell(id, 3, nm, { className: "Choice", id, name: nm, options: optionKeys(f.options).map(function(k, i) {
+              return { id: k, label: f.options[i] };
+            }) }));
+            else if (f.type === "number") cellsL.push(lcell(id, 3, nm, number(id, nm, { defaultValue: "", min: f.min, max: f.max, align: "Center" })));
+            else cellsL.push(lcell(id, 3, nm, { className: "TextInput", id, name: nm, defaultValue: "" }));
+          });
+          var formRows = [];
+          for (var li = 0; li < cellsL.length; li += 4) formRows.push(row("rbr_" + lg + "_f" + li / 4, cellsL.slice(li, li + 4)));
+          longs.forEach(function(c2, i) {
+            formRows.push(row("rbr_" + lg + "_l" + i, [c2]));
+          });
+          formRows.push(row("rbr_" + lg + "_o", [col("rbc_" + pre + "origine", 12, [{ className: "TextInput", id: pre + "origine", name: pre + "origine", defaultValue: "" }])]));
+          var shownL = { className: "Label", id: pre + "ligne", text: "#" + pre + "nom", computed: true };
+          var actL = { className: "Label", id: pre + "agir", text: say2("rules.l.act"), variant: "button", align: "Center" };
+          var listL = { className: "Repeater", id: "lib_" + lg, layout: "vertical", noAdd: false, children: formRows, readChildren: [row("rbr_" + lg + "_r", [col("rbc_" + lg + "_n", 9, [shownL]), col("rbc_" + lg + "_a", 3, [actL])])] };
+          return [row("rbr_lib_" + lg, [col("rbc_lib_" + lg, 12, [{ className: "Label", id: "rbl_lib_" + lg, text: cleanName(G.name), variant: "muted" }, listL])])];
+        }
+        if (bind === "weapons" || bind === "defenses") {
+          var cb = rules.combat;
+          var types = (Array.isArray(cb.damage.types) ? cb.damage.types : []).filter(isObj5).map(function(t) {
+            return { id: t.id, label: cleanName(t.name) };
+          });
+          var muted = function(id, text) {
+            return { className: "Label", id, text, variant: "muted" };
+          };
+          var cell = function(key, size, title, node) {
+            return col("rbc_" + key, size, [muted("rbl_" + key, title), node]);
+          };
+          if (bind === "defenses") {
+            var dcells = [cell("def_reduction", 3, say2("rules.reduction"), number("def_reduction", say2("rules.reduction"), { defaultValue: "0", min: 0, max: 99, align: "Center" }))];
+            if (types.length) {
+              [["def_resist", "rules.resist"], ["def_immune", "rules.immune"], ["def_vuln", "rules.vuln"]].forEach(function(x) {
+                dcells.push(cell(x[0], 3, say2(x[1]), { className: "Choice", id: x[0], name: say2(x[1]), options: types, multiple: true, expanded: true }));
+              });
+            }
+            return [row("rbr_def", dcells)];
+          }
+          var statIds = Array.isArray(cb.attack.stats) && cb.attack.stats.length ? cb.attack.stats : isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.map(function(x) {
+            return x.id;
+          }) : [];
+          var caracs = statIds.map(function(id) {
+            return { id, label: nameOf(rules, id) };
+          });
+          if (Array.isArray(cb.attack.finesse)) caracs.push({ id: "finesse", label: say2("rules.finesse") });
+          var form = [cell("arm_nom", 4, say2("rules.w.name"), { className: "TextInput", id: "arm_nom", name: say2("rules.w.name"), defaultValue: "" })];
+          if (caracs.length) form.push(cell("arm_carac", 3, say2("rules.w.stat"), { className: "Choice", id: "arm_carac", name: say2("rules.w.stat"), options: caracs }));
+          form.push(cell("arm_bonus", 2, say2("rules.w.bonus"), number("arm_bonus", say2("rules.w.bonus"), { defaultValue: "0", min: -20, max: 30, align: "Center" })));
+          form.push(cell("arm_degats", 3, say2("rules.w.damage"), { className: "TextInput", id: "arm_degats", name: say2("rules.w.damage"), defaultValue: "1d6" }));
+          var more = [];
+          if (types.length) more.push(cell("arm_type", 3, say2("rules.w.type"), { className: "Choice", id: "arm_type", name: say2("rules.w.type"), options: types }));
+          more.push(cell("arm_portee", 3, say2("rules.w.range"), { className: "TextInput", id: "arm_portee", name: say2("rules.w.range"), defaultValue: "" }));
+          more.push(cell("arm_munitions", 2, say2("rules.w.ammo"), number("arm_munitions", say2("rules.w.ammo"), { defaultValue: "", min: 0, max: 999, align: "Center" })));
+          more.push(cell("arm_etiquettes", 4, say2("rules.w.tags"), { className: "TextInput", id: "arm_etiquettes", name: say2("rules.w.tags"), defaultValue: "" }));
+          var shown = { className: "Label", id: "arm_ligne", text: '#arm_nom + " \xB7 " + #arm_degats', computed: true };
+          var attack = { className: "Label", id: "arm_attaquer", text: say2("rules.attack"), variant: "button", align: "Center" };
+          var armRows = [row("rbr_arm_f", form), row("rbr_arm_g", more)];
+          if (isObj5(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
+            return isObj5(g) && g.kind === "weapon";
+          })) armRows.push(row("rbr_arm_o", [col("rbc_arm_origine", 12, [{ className: "TextInput", id: "arm_origine", name: "arm_origine", defaultValue: "" }])]));
+          var list2 = { className: "Repeater", id: "arm", layout: "vertical", noAdd: false, children: armRows, readChildren: [row("rbr_arm_r", [col("rbc_arm_l", 9, [shown]), col("rbc_arm_a", 3, [attack])])] };
+          return [row("rbr_w", [col("rbc_w", 12, [muted("rbl_w", say2("rules.weapons")), list2])])];
+        }
+        var sk = rules.skills, columns = L.columns || 1, grouped = L.grouped !== false;
+        var groupAt = {}, groups = 0;
+        var order = sk.list.map(function(x, i) {
+          return { x, i };
+        });
+        if (grouped) {
+          order.forEach(function(o) {
+            var g = cleanName(o.x.group);
+            if (!Object.prototype.hasOwnProperty.call(groupAt, g)) groupAt[g] = groups++;
+          });
+          order.sort(function(a, b) {
+            return groupAt[cleanName(a.x.group)] - groupAt[cleanName(b.x.group)] || a.i - b.i;
+          });
+        }
+        var lines = [], last = null;
+        order.forEach(function(o) {
+          var x = o.x, g = cleanName(x.group), name = cleanName(x.name), k = "sk_" + x.id;
+          if (grouped && g && g !== last) lines.push({ className: "Label", id: "rbt_" + groupAt[g], text: g, variant: "subtitle" });
+          last = g;
+          var rank = [];
+          if (sk.rank === "trained") {
+            rank.push({ className: "Checkbox", id: k, name: say2("rules.trainedIn", { name }), label: "" });
+            if (sk.expertise) rank.push({ className: "Checkbox", id: k + "_x", name: say2("rules.expertIn", { name }), label: "" });
+          } else if (sk.rank === "dots") rank.push({ className: "Track", id: k, name, count: SKILL_DOTS, showTotal: false });
+          else rank.push(number(k, name, { defaultValue: "0", min: sk.rank === "percent" ? 0 : -20, max: sk.rank === "percent" ? 100 : 30, align: "Center" }));
+          var total = [number(k + "_t", say2("rules.totalOf", { name }), { computed: true, defaultValue: flat.computed[k + "_t"], align: "Center", tooltipLabel: tipOf(rules, k + "_t") })];
+          if (x.passive) total.push(number(k + "_p", say2("rules.passiveOf", { name }), { computed: true, defaultValue: flat.computed[k + "_p"], align: "Center" }));
+          lines.push(row("rbr_" + k, [
+            col("rbc_" + k + "_n", 6, [label(k, name, { text: "@" + k + "_t", follows: res.id }, { align: "Left" })]),
+            col("rbc_" + k + "_r", 3, rank),
+            col("rbc_" + k + "_t", 3, total)
+          ]));
+        });
+        var per = Math.ceil(lines.length / columns), out = [];
+        for (var c = 0; c < columns; c++) {
+          var part = lines.slice(c * per, (c + 1) * per);
+          if (part.length) out.push(col("rbk_" + c, Math.floor(12 / columns), part));
+        }
+        return [row("rbr_k", out)];
+      }
+      function boundBlock(rules, bind, layout, opts) {
+        var kids = boundChildren(rules, bind, layout, opts);
+        if (!kids) return null;
+        return { className: "Container", id: "rb_" + bind.replace(":", "_"), layout: "vertical", bind, bindLayout: isObj5(layout) ? layout : {}, children: kids };
+      }
+      function lockedKeys(rules) {
+        var s = isObj5(rules) ? rules.stats : null, out = [];
+        if (!isObj5(s) || !Array.isArray(s.list)) return out;
+        s.list.forEach(function(x) {
+          if (!isObj5(x) || x.playerEdit !== false || typeof x.id !== "string" || !KEY_RE.test(x.id)) return;
+          if (s.form === "dots") {
+            if (isInt(s.max, 1, LIMITS2.dots)) for (var k = 1; k <= s.max; k++) out.push(x.id + "__" + k);
+          } else out.push(x.id);
+        });
+        return out;
+      }
+      function valueKeys(rules) {
+        var keys = {};
+        var s = isObj5(rules.stats) ? rules.stats : null;
+        (s && Array.isArray(s.list) ? s.list : []).forEach(function(x) {
+          if (!isObj5(x) || typeof x.id !== "string") return;
+          keys[x.id] = true;
+          if (s.form === "score") keys[x.id + "_mod"] = true;
+        });
+        (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
+          if (!isObj5(d) || typeof d.id !== "string") return;
+          keys[d.id] = true;
+          if (d.resource) keys[d.id + "_max"] = true;
+        });
+        if (isObj5(rules.combat)) keys.def_reduction = true;
+        return keys;
+      }
+      function validateStats(rules, errs) {
+        var s = rules.stats;
+        var e = function(p, key, vars) {
+          errs.push({ path: "stats" + (p ? "." + p : ""), message: say2(key, vars) });
+        };
+        if (!isObj5(s)) return e("", "rules.v.stats");
+        if (STAT_FORMS.indexOf(s.form) < 0) e("form", "rules.v.statForm");
+        if (!isInt(s.min, -LIMITS2.add, LIMITS2.add) || !isInt(s.max, -LIMITS2.add, LIMITS2.add) || s.min >= s.max) e("min", "rules.v.statRange");
+        else if (!isInt(s["default"], s.min, s.max)) e("default", "rules.v.statDefault");
+        if (s.form === "dots" && !(s.min === 0 && isInt(s.max, 1, LIMITS2.dots))) e("max", "rules.v.dotsRange", { max: LIMITS2.dots });
+        if (s.form === "percent" && !(s.min >= 0 && s.max <= 100)) e("max", "rules.v.percentRange");
+        if (s.generation !== void 0 && !(isObj5(s.generation) && GENERATIONS.indexOf(s.generation.method) >= 0)) e("generation", "rules.v.generation");
+        if (!Array.isArray(s.list) || !s.list.length || s.list.length > LIMITS2.stats) return e("list", "rules.v.statList", { max: LIMITS2.stats });
+        s.list.forEach(function(x, i) {
+          var at = "list." + i;
+          if (!isObj5(x)) return e(at, "rules.v.notResolution");
+          if (typeof x.id !== "string" || !KEY_RE.test(x.id)) e(at + ".id", "rules.v.key");
+          else if (s.form === "dots" && x.id.length > 12) e(at + ".id", "rules.v.dotsKey", { max: 12 });
+          if (!cleanName(x.name)) e(at + ".name", "rules.v.name");
+          if (x["short"] !== void 0 && (typeof x["short"] !== "string" || x["short"].length > 6)) e(at + ".short", "rules.v.short");
+          if (!optBool(x.playerEdit)) e(at + ".playerEdit", "rules.v.bool");
+        });
+      }
+      function recipeOk(r, keys) {
+        var ref = function(k) {
+          return typeof k === "string" && keys[k] === true;
+        };
+        var int = function(x) {
+          return isInt(x, -LIMITS2.add, LIMITS2.add);
+        };
+        var term = function(t) {
+          return isObj5(t) && (t.sign === 1 || t.sign === -1) && (t.ref !== void 0 ? ref(t.ref) && t.n === void 0 : int(t.n));
+        };
+        if (!isObj5(r)) return false;
+        switch (r.kind) {
+          case "input":
+            return int(r.min) && int(r.max) && r.min < r.max && isInt(r["default"], r.min, r.max);
+          case "modifier":
+            return ref(r.source);
+          case "sum":
+            return Array.isArray(r.terms) && r.terms.length >= 1 && r.terms.length <= LIMITS2.terms && r.terms.every(term);
+          case "perLevel":
+            return int(r.base) && int(r.per) && ref(r.level);
+          case "fraction":
+            return ref(r.source) && isInt(r.by, 1, 100) && !!ROUNDS[r.round];
+          case "steps":
+            return ref(r.source) && int(r["else"]) && Array.isArray(r.steps) && r.steps.length >= 1 && r.steps.length <= LIMITS2.steps && r.steps.every(function(x, i) {
+              return isObj5(x) && int(x.upTo) && int(x.value) && (i === 0 || x.upTo > r.steps[i - 1].upTo);
+            });
+          case "max":
+          case "min":
+            return Array.isArray(r.terms) && r.terms.length >= 2 && r.terms.length <= 3 && r.terms.every(term);
+          case "raw": {
+            var f = r.formula;
+            if (typeof f !== "string" || !f.trim() || f.length > LIMITS2.flat || !/^[0-9a-z_@+\-*\/%().,<>=! ]*$/.test(f)) return false;
+            var words = f.replace(/@[a-z0-9_]*/g, " ").match(/[a-z_][a-z0-9_]*/g) || [];
+            var refs = (f.match(/@[a-z0-9_]*/g) || []).map(function(x) {
+              return x.slice(1);
+            });
+            return words.every(function(w) {
+              return RAW_WORDS[w] === true;
+            }) && refs.every(ref);
+          }
+        }
+        return false;
+      }
+      function validateDerived(rules, errs) {
+        var list2 = rules.derived;
+        var e = function(p, key, vars) {
+          errs.push({ path: "derived" + (p ? "." + p : ""), message: say2(key, vars) });
+        };
+        if (!Array.isArray(list2) || list2.length > LIMITS2.derived) return e("", "rules.v.derived", { max: LIMITS2.derived });
+        var keys = valueKeys(rules), res = rules.resolution;
+        list2.forEach(function(d, i) {
+          var at = String(i);
+          if (!isObj5(d)) return e(at, "rules.v.notResolution");
+          if (typeof d.id !== "string" || !KEY_RE.test(d.id)) e(at + ".id", "rules.v.key");
+          if (!cleanName(d.name)) e(at + ".name", "rules.v.name");
+          if (!isObj5(d.recipe) || RECIPES.indexOf(d.recipe.kind) < 0 || !recipeOk(d.recipe, keys)) e(at + ".recipe", "rules.v.recipe");
+          if (SHOWS.indexOf(d.show) < 0) e(at + ".show", "rules.v.show");
+          if (!optBool(d.resource) || !optBool(d.rollable)) e(at, "rules.v.bool");
+          var input = isObj5(d.recipe) && d.recipe.kind === "input";
+          if (d.show === "hidden" && (d.rollable || d.resource || input)) e(at + ".show", "rules.v.hidden");
+          if (d.show === "gauge" && !d.resource) e(at + ".show", "rules.v.gauge");
+          if (d.resource && (input || d.rollable)) e(at + ".resource", "rules.v.resource");
+          if (d.rollWith !== void 0 && d.rollWith !== null && !has(resolutionsOf(rules), d.rollWith)) e(at + ".rollWith", "rules.v.rollWith", { id: String(d.rollWith) });
+          if (d.rollable && d.id === "initiative" && !(isObj5(res) && isObj5(res.dice) && typeof res.dice.count === "number")) e(at + ".rollable", "rules.v.initiative");
+        });
+      }
+      function validateSkills(rules, errs) {
+        var sk = rules.skills;
+        var e = function(p, key, vars) {
+          errs.push({ path: "skills" + (p ? "." + p : ""), message: say2(key, vars) });
+        };
+        if (!isObj5(sk)) return e("", "rules.v.skills");
+        if (SKILL_MODES.indexOf(sk.mode) < 0) e("mode", "rules.v.skillMode");
+        if (RANKS.indexOf(sk.rank) < 0) e("rank", "rules.v.skillRank");
+        var derived = {};
+        (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
+          if (isObj5(d)) derived[d.id] = true;
+        });
+        if (sk.rank === "trained" && !(typeof sk.proficiency === "string" && has(derived, sk.proficiency))) e("proficiency", "rules.v.proficiency");
+        if (sk.rank !== "trained" && sk.proficiency !== null && sk.proficiency !== void 0) e("proficiency", "rules.v.proficiency");
+        if (!bool(sk.expertise) || sk.expertise && sk.rank !== "trained") e("expertise", "rules.v.expertise");
+        var stats = {};
+        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj5(x)) stats[x.id] = true;
+        });
+        if (!Array.isArray(sk.list) || sk.list.length > LIMITS2.skills || sk.mode === "fixed" && !sk.list.length) return e("list", "rules.v.skillList", { max: LIMITS2.skills });
+        sk.list.forEach(function(x, i) {
+          var at = "list." + i;
+          if (!isObj5(x)) return e(at, "rules.v.notResolution");
+          if (typeof x.id !== "string" || !KEY_RE.test(x.id)) e(at + ".id", "rules.v.key");
+          else if (sk.rank === "dots" && x.id.length > 9) e(at + ".id", "rules.v.dotsKey", { max: 9 });
+          if (!cleanName(x.name)) e(at + ".name", "rules.v.name");
+          if (x.stat !== null && x.stat !== void 0 && !has(stats, x.stat)) e(at + ".stat", "rules.v.skillStat", { id: String(x.stat) });
+          if (x.group !== void 0 && (typeof x.group !== "string" || x.group.length > LIMITS2.name)) e(at + ".group", "rules.v.group");
+          if (!optBool(x.passive)) e(at + ".passive", "rules.v.bool");
+        });
+      }
+      function cleanRules(raw) {
+        if (!isObj5(raw)) return null;
+        var pick = function(o, keys) {
+          var x = {};
+          keys.forEach(function(k) {
+            if (Object.prototype.hasOwnProperty.call(o, k)) x[k] = o[k];
+          });
+          return x;
+        };
+        var copyRes = function(r) {
+          if (!isObj5(r) || Object.getPrototypeOf(r) !== Object.prototype) return null;
+          var o = pick(r, ["id", "name", "family", "bonus", "crit", "fumble"]);
+          o.dice = isObj5(r.dice) ? pick(r.dice, ["count", "sides", "fate", "reroll", "explode", "keep"]) : null;
+          o.target = isObj5(r.target) ? pick(r.target, ["kind", "difficulties", "default", "fixed"]) : null;
+          o.read = isObj5(r.read) ? pick(r.read, ["kind", "tie", "margin", "degrees", "bands", "count"]) : null;
+          o.window = isObj5(r.window) ? pick(r.window, ["ask", "advantage", "bonus", "difficulty", "poolDice"]) : null;
+          return JSON.parse(JSON.stringify(o));
+        };
+        var rules = { resolution: copyRes(raw.resolution), rolls: Array.isArray(raw.rolls) ? raw.rolls.slice(0, LIMITS2.rolls + 1).map(copyRes) : [] };
+        if (validateRules(rules).length) return null;
+        return { resolutions: resolutionsOf(rules) };
+      }
+      var clamp = function(x, lo, hi) {
+        return Math.max(lo, Math.min(hi, x));
+      };
+      var signed = function(n) {
+        return n > 0 ? "+" + n : n < 0 ? "-" + -n : "";
+      };
+      function diceTerm(res, n, advantage) {
+        var d = res.dice;
+        if (d.fate) return n + "d3-" + 2 * n;
+        var x = n + "d" + d.sides;
+        if (d.explode) x = d.explode.limit > 0 ? "expln(" + x + "," + d.sides + "," + d.explode.limit + ")" : "expl(" + x + ")";
+        if (d.reroll) x = d.reroll.once ? "rerolln(" + x + "," + d.reroll.on + ",1)" : "reroll(" + x + "," + d.reroll.on + ")";
+        if (d.keep && !advantage) x = (d.keep.which === "high" ? "keeph(" : "keepl(") + x + "," + d.keep.n + ")";
+        if (advantage) {
+          var high = res.read.kind === "under" ? advantage < 0 : advantage > 0;
+          x = (high ? "keeph(" : "keepl(") + x + ",1)";
+        }
+        return x;
+      }
+      function targetOf(res, input) {
+        var t = res.target;
+        if (t.kind === "difficulty") {
+          var name = input.difficulty || t["default"];
+          var found = (t.difficulties || []).filter(function(x) {
+            return x.name === name;
+          })[0] || (t.difficulties || [])[0];
+          return found ? found.value : null;
+        }
+        if (t.kind === "value") return input.adds + res.bonus + (input.bonus || 0);
+        if (t.kind === "fixed") return t.fixed;
+        return null;
+      }
+      function planRoll(res, input) {
+        var adds = Math.round(clamp(Number(input.adds) || 0, -LIMITS2.add, LIMITS2.add));
+        var bonus = res.window.bonus ? Math.round(clamp(Number(input.bonus) || 0, -20, 20)) : 0;
+        var adv = res.window.advantage ? clamp(Math.round(Number(input.advantage) || 0), -1, 1) : 0;
+        var tag = "[r_" + res.id + "]";
+        var kind = res.read.kind;
+        var inp = { adds, bonus, difficulty: input.difficulty };
+        if (res.dice.count === "pool") {
+          var n = clamp(adds + (res.window.poolDice ? Math.round(clamp(Number(input.poolDice) || 0, -5, 5)) : 0), 0, LIMITS2.pool);
+          var body = n === 0 ? kind === "best" ? "2d" + res.dice.sides : "0" : diceTerm(res, n, 0);
+          return { expression: "(" + body + ")" + tag, target: targetOf(res, inp), pool: n, tag: "r_" + res.id };
+        }
+        var dice = "(" + diceTerm(res, adv ? 2 : res.dice.count, adv) + ")" + tag;
+        if (kind === "under") return { expression: dice, target: targetOf(res, inp), pool: null, tag: "r_" + res.id };
+        return { expression: dice + signed(adds + res.bonus + bonus), target: targetOf(res, inp), pool: null, tag: "r_" + res.id };
+      }
+      function template(res) {
+        if (res.dice.count === "pool") return { prefix: "0*1d2+(", suffix: ")" };
+        var d = diceTerm(res, res.dice.count, 0);
+        return res.read.kind === "under" ? { prefix: d + "+0*(", suffix: ")" } : { prefix: d + "+(", suffix: ")" };
+      }
+      function addsOf(rendered, tpl) {
+        var s = String(rendered);
+        if (s.indexOf(tpl.prefix) !== 0 || s.slice(-tpl.suffix.length) !== tpl.suffix) return null;
+        var mid = s.slice(tpl.prefix.length, s.length - tpl.suffix.length).replace(/\s+/g, "");
+        if (!/^[+-]?\d+(\.\d+)?([+-]\d+(\.\d+)?)*$/.test(mid) || mid.length > 60) return null;
+        var total = 0;
+        mid.replace(/[+-]?\d+(\.\d+)?/g, function(m) {
+          total += Number(m);
+          return m;
+        });
+        return Math.round(total);
+      }
+      function meets(c, kept, total, successes) {
+        switch (c.when) {
+          case "natural":
+            return kept.some(function(d) {
+              return c.values.indexOf(d.value) >= 0;
+            });
+          case "doubles":
+            return kept.some(function(d) {
+              return d.sides === 100 && d.value >= 11 && d.value <= 99 && d.value % 11 === 0;
+            });
+          case "maxCount":
+            return kept.filter(function(d) {
+              return d.value === d.sides;
+            }).length >= c.values[0];
+          case "zeroWithOne":
+            return successes === 0 && kept.some(function(d) {
+              return d.value === 1;
+            });
+          case "total":
+            return c.values.indexOf(total) >= 0;
+        }
+        return false;
+      }
+      function inBands(bands, v) {
+        for (var i = 0; i < bands.length; i++) if (bands[i].max === null || v <= bands[i].max) return bands[i];
+        return bands[bands.length - 1];
+      }
+      function readRoll(res, roll, plan) {
+        var kept = (roll && Array.isArray(roll.dice) ? roll.dice : []).filter(function(d) {
+          return d && !d.discarded;
+        });
+        var total = Number(roll && roll.total) || 0;
+        var rd = res.read, target = plan ? plan.target : null;
+        var out = { tone: null, label: "", margin: null, degree: null, successes: null, best: null };
+        if (rd.kind === "count") {
+          var dbl = rd.count["double"];
+          out.successes = kept.reduce(function(s, d) {
+            return s + (d.value >= rd.count.at ? dbl && d.value === dbl ? 2 : 1 : 0);
+          }, 0);
+        }
+        var empty = rd.kind === "best" && !!plan && plan.pool === 0;
+        if (rd.kind === "best" && kept.length) {
+          var values = kept.map(function(d) {
+            return d.value;
+          });
+          out.best = empty ? Math.min.apply(null, values) : Math.max.apply(null, values);
+        }
+        var named2 = function(c, key) {
+          return c.name || say2(key);
+        };
+        if (!empty) {
+          for (var i = 0; i < res.crit.length; i++) if (meets(res.crit[i], kept, total, out.successes)) {
+            out.tone = "crit";
+            out.label = named2(res.crit[i], "rules.crit");
+            return out;
+          }
+        }
+        for (var j = 0; j < res.fumble.length; j++) if (meets(res.fumble[j], kept, total, out.successes)) {
+          out.tone = "fumble";
+          out.label = named2(res.fumble[j], "rules.fumble");
+          return out;
+        }
+        var win = function(ok) {
+          out.tone = ok ? "success" : "fail";
+          out.label = say2(ok ? "rules.success" : "rules.fail");
+        };
+        if (rd.kind === "over") {
+          if (target === null) return out;
+          var diff = total - target;
+          win(diff > 0 || diff === 0 && rd.tie === "success");
+          out.margin = Math.abs(diff);
+          if (out.tone === "success" && rd.degrees && rd.degrees.steps) {
+            out.degree = Math.min(Math.floor(diff / rd.degrees.steps), rd.degrees.names.length - 1);
+            out.label = rd.degrees.names[out.degree];
+          }
+        } else if (rd.kind === "under") {
+          if (target === null) return out;
+          win(total < target || total === target && rd.tie === "success");
+          out.margin = Math.abs(target - total);
+          if (out.tone === "success" && rd.degrees && rd.degrees.fractions) {
+            var f = rd.degrees.fractions.filter(function(x) {
+              return total <= Math.floor(target * x.at);
+            })[0];
+            if (f) out.label = f.name;
+          }
+        } else if (rd.kind === "bands") {
+          var band = inBands(rd.bands, total);
+          out.tone = band.tone;
+          out.label = band.name;
+        } else if (rd.kind === "count") {
+          win(out.successes >= rd.count.need);
+        } else if (rd.kind === "best" && out.best !== null) {
+          var b = inBands(rd.bands, out.best);
+          out.tone = b.tone;
+          out.label = b.name;
+        }
+        return out;
+      }
+      function noteOf(res, outcome, plan) {
+        if (!outcome || !outcome.tone) return "";
+        var s = outcome.label;
+        if (outcome.successes !== null && res.read.kind === "count") s = say2("rules.successes", { n: outcome.successes }) + " : " + s;
+        if (res.read.margin && outcome.margin && (outcome.tone === "success" || outcome.tone === "fail")) s += say2("rules.margin", { n: outcome.margin });
+        if (plan && plan.target !== null && (res.read.kind === "over" || res.read.kind === "under")) s += say2(res.read.kind === "over" ? "rules.against" : "rules.under", { n: plan.target });
+        return s;
+      }
+      function validateCombat(rules, errs) {
+        var c = rules.combat;
+        var e = function(p, key2, vars) {
+          errs.push({ path: "combat" + (p ? "." + p : ""), message: say2(key2, vars) });
+        };
+        if (!isObj5(c) || !isObj5(c.attack) || !isObj5(c.damage)) return e("", "rules.v.combat");
+        var a = c.attack, d = c.damage, keys = valueKeys(rules), stats = {}, derived = {};
+        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj5(x) && typeof x.id === "string") stats[x.id] = true;
+        });
+        (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(x) {
+          if (isObj5(x) && typeof x.id === "string") derived[x.id] = x;
+        });
+        var key = function(k) {
+          return has(keys, k);
+        };
+        if (!has(resolutionsOf(rules), a.rollWith)) e("attack.rollWith", "rules.v.combatRoll", { id: String(a.rollWith) });
+        if (a.defense !== null && !key(a.defense)) e("attack.defense", "rules.v.combatKey");
+        if (a.proficiency !== null && !has(derived, a.proficiency)) e("attack.proficiency", "rules.v.combatKey");
+        if (!Array.isArray(a.stats) || a.stats.length > LIMITS2.stats || !a.stats.every(function(s) {
+          return has(stats, s);
+        })) e("attack.stats", "rules.v.combatStats");
+        if (a.finesse !== null && !(Array.isArray(a.finesse) && a.finesse.length === 2 && has(stats, a.finesse[0]) && has(stats, a.finesse[1]) && a.finesse[0] !== a.finesse[1])) e("attack.finesse", "rules.v.finesse");
+        if (!bool(d.addStat)) e("damage.addStat", "rules.v.bool");
+        if (CRITICALS.indexOf(d.critical) < 0) e("damage.critical", "rules.v.critical");
+        if (!Array.isArray(d.types) || d.types.length > MAX_TYPES) e("damage.types", "rules.v.types", { max: MAX_TYPES });
+        else {
+          var seen = {};
+          d.types.forEach(function(t, i) {
+            if (!isObj5(t) || typeof t.id !== "string" || !TYPE_RE.test(t.id)) e("damage.types." + i + ".id", "rules.v.typeKey");
+            else if (has(seen, t.id)) e("damage.types." + i + ".id", "rules.v.sameId", { id: t.id });
+            else seen[t.id] = true;
+            if (!isObj5(t) || !cleanName(t.name)) e("damage.types." + i + ".name", "rules.v.name");
+          });
+        }
+        if (!has(derived, d.health) || !derived[d.health].resource) e("damage.health", "rules.v.health");
+        if (d.reduction !== null && !key(d.reduction)) e("damage.reduction", "rules.v.combatKey");
+      }
+      function attackParts(rules, row, values) {
+        var a = rules.combat.attack;
+        var v = function(k) {
+          var x = Number(values(k));
+          return isFinite(x) ? x : 0;
+        };
+        var stats = {};
+        (isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj5(x) && typeof x.id === "string") stats[x.id] = true;
+        });
+        var of = function(id) {
+          return has(stats, id) ? v(statAdd(rules, id).slice(1)) : 0;
+        };
+        var carac = row && row.carac;
+        var stat = carac === "finesse" && Array.isArray(a.finesse) ? Math.max(of(a.finesse[0]), of(a.finesse[1])) : of(carac);
+        var proficiency = typeof a.proficiency === "string" ? v(a.proficiency) : 0;
+        var bonus = Math.round(Math.max(-LIMITS2.add, Math.min(LIMITS2.add, Number(row && row.bonus) || 0)));
+        return { stat, proficiency, bonus, total: stat + proficiency + bonus };
+      }
+      var DAMAGE_RE = /^(\d{1,2})d(\d{1,3})(?:\+(\d{1,2})d(\d{1,3}))?([+-]\d{1,3})?$|^([+-]?\d{1,3})$/;
+      function parseDamage(text) {
+        var m = DAMAGE_RE.exec(String(text == null ? "" : text).replace(/\s+/g, ""));
+        if (!m) return null;
+        if (m[6] !== void 0) return { dice: [], flat: Number(m[6]) };
+        var dice = [{ n: Number(m[1]), s: Number(m[2]) }];
+        if (m[3] !== void 0) dice.push({ n: Number(m[3]), s: Number(m[4]) });
+        if (!dice.every(function(d) {
+          return d.n >= 1 && d.n <= LIMITS2.count && SIDES.indexOf(d.s) >= 0;
+        })) return null;
+        return { dice, flat: m[5] ? Number(m[5]) : 0 };
+      }
+      function damageExpression(rules, damage, statPart, critical, tag) {
+        var d = rules.combat.damage;
+        var times = critical && d.critical === "double" ? 2 : 1;
+        var dice = damage.dice.map(function(x) {
+          return x.n * times + "d" + x.s;
+        }).join("+") || "0";
+        var flat = damage.flat + (d.addStat ? Math.round(Number(statPart) || 0) : 0);
+        if (critical && d.critical === "maxPlus") flat += damage.dice.reduce(function(s, x) {
+          return s + x.n * x.s;
+        }, 0);
+        return "(" + dice + ")[" + tag + "]" + (flat > 0 ? "+" + flat : flat < 0 ? "-" + -flat : "");
+      }
+      function damageOf(total, type, target) {
+        var tg = isObj5(target) ? target : {};
+        var raw = Math.max(0, Math.round(Number(total) || 0));
+        var red = Math.max(0, Math.round(Number(tg.reduction) || 0));
+        var after = Math.max(0, raw - red);
+        var t = typeof type === "string" ? type : "";
+        var inList = function(l) {
+          return !!t && Array.isArray(l) && l.indexOf(t) >= 0;
+        };
+        var factor = 1, why = null;
+        if (inList(tg.immune)) {
+          factor = 0;
+          why = "immune";
+        } else {
+          var r = inList(tg.resist), w = inList(tg.vuln);
+          if (r && !w) {
+            factor = 0.5;
+            why = "resist";
+          } else if (w && !r) {
+            factor = 2;
+            why = "vuln";
+          }
+        }
+        return { raw, reduction: Math.min(red, raw), factor, why, final: Math.floor(after * factor) };
+      }
+      function cleanCombat(raw, resolutions) {
+        if (!isObj5(raw) || !isObj5(raw.combat) || !isObj5(raw.combat.attack) || !isObj5(raw.combat.damage) || !isObj5(resolutions)) return null;
+        var named2 = function(x) {
+          return isObj5(x) && typeof x.id === "string" && KEY_RE.test(x.id);
+        };
+        var s = isObj5(raw.stats) ? raw.stats : {};
+        var stats = { form: typeof s.form === "string" ? s.form : "score", list: (Array.isArray(s.list) ? s.list : []).filter(named2).slice(0, LIMITS2.stats).map(function(x) {
+          return { id: x.id, name: cleanName(x.name) || x.id };
+        }) };
+        var derived = (Array.isArray(raw.derived) ? raw.derived : []).filter(named2).slice(0, LIMITS2.derived).map(function(d2) {
+          return { id: d2.id, name: cleanName(d2.name) || d2.id, resource: d2.resource === true };
+        });
+        var a = raw.combat.attack, d = raw.combat.damage;
+        var ids = function(l, max) {
+          return Array.isArray(l) ? l.filter(function(x) {
+            return typeof x === "string";
+          }).slice(0, max) : l;
+        };
+        var combat = {
+          attack: { rollWith: a.rollWith, defense: a.defense === void 0 ? null : a.defense, proficiency: a.proficiency === void 0 ? null : a.proficiency, stats: ids(a.stats, LIMITS2.stats), finesse: a.finesse === void 0 ? null : ids(a.finesse, 2) },
+          damage: {
+            addStat: d.addStat,
+            critical: d.critical,
+            types: Array.isArray(d.types) ? d.types.slice(0, MAX_TYPES + 1).map(function(t) {
+              return isObj5(t) ? { id: t.id, name: cleanName(t.name) } : t;
+            }) : d.types,
+            health: d.health,
+            reduction: d.reduction === void 0 ? null : d.reduction
+          }
+        };
+        var main2 = null, rolls = [];
+        Object.keys(resolutions).forEach(function(k) {
+          if (!main2) main2 = resolutions[k];
+          else rolls.push(resolutions[k]);
+        });
+        if (!isObj5(main2)) return null;
+        var rules = { resolution: main2, rolls, stats, derived: derived.map(function(x) {
+          return { id: x.id, name: x.name, resource: x.resource, recipe: { kind: "input", min: 0, max: 1, "default": 0 } };
+        }), combat };
+        var errs = [];
+        validateCombat(rules, errs);
+        if (errs.length || !has(resolutions, combat.attack.rollWith)) return null;
+        return JSON.parse(JSON.stringify({ stats, derived, combat }));
+      }
+      function combatKeys(ctx) {
+        var a = ctx.combat.attack, d = ctx.combat.damage;
+        var ids = a.stats.length ? a.stats : ctx.stats.list.map(function(x) {
+          return x.id;
+        });
+        var stat = function(id) {
+          return statAdd(ctx, id).slice(1);
+        };
+        var attacker = ids.map(stat);
+        if (Array.isArray(a.finesse)) a.finesse.forEach(function(id) {
+          if (attacker.indexOf(stat(id)) < 0) attacker.push(stat(id));
+        });
+        if (a.proficiency) attacker.push(a.proficiency);
+        var target = [];
+        [a.defense, d.reduction, d.health, d.health + "_max"].forEach(function(k) {
+          if (k && target.indexOf(k) < 0) target.push(k);
+        });
+        return { attacker, target };
+      }
+      function listOf(value) {
+        var l = Array.isArray(value) ? value : typeof value === "string" ? value.split(/[\s,]+/) : [];
+        return l.filter(function(x) {
+          return typeof x === "string" && TYPE_RE.test(x);
+        }).slice(0, MAX_TYPES);
+      }
+      function weaponOf(ctx, row) {
+        var r = isObj5(row) ? row : {};
+        var a = ctx.combat.attack, types = ctx.combat.damage.types;
+        var caracs = (a.stats.length ? a.stats : ctx.stats.list.map(function(x) {
+          return x.id;
+        })).slice();
+        if (Array.isArray(a.finesse)) caracs.push("finesse");
+        var carac = typeof r.arm_carac === "string" && caracs.indexOf(r.arm_carac) >= 0 ? r.arm_carac : caracs[0] || null;
+        var type = types.filter(function(t) {
+          return t.id === r.arm_type;
+        })[0] || types[0] || null;
+        var ammo = r.arm_munitions === void 0 || r.arm_munitions === null || r.arm_munitions === "" ? null : Math.max(0, Math.min(999, Math.floor(Number(r.arm_munitions) || 0)));
+        return {
+          name: cleanName(r.arm_nom),
+          carac,
+          bonus: Math.round(Math.max(-20, Math.min(30, Number(r.arm_bonus) || 0))),
+          damage: parseDamage(r.arm_degats === void 0 || r.arm_degats === null || r.arm_degats === "" ? "1d6" : r.arm_degats),
+          type: type ? type.id : "",
+          typeName: type ? type.name : "",
+          ammo
+        };
+      }
+      function validateEffects(rules, errs) {
+        var fx = rules.effects;
+        var e = function(p, key, vars) {
+          errs.push({ path: "effects" + (p ? "." + p : ""), message: say2(key, vars) });
+        };
+        if (!isObj5(fx) || !Array.isArray(fx.states)) return e("", "rules.v.effects");
+        if (fx.states.length > FX.states) return e("states", "rules.v.tooMany", { max: FX.states });
+        var keys = modKeys(rules), res = resolutionsOf(rules), rests = {}, types = {}, seen = {};
+        (Array.isArray(rules.rests) ? rules.rests : []).forEach(function(r) {
+          if (isObj5(r) && typeof r.id === "string") rests[r.id] = true;
+        });
+        (isObj5(rules.combat) && isObj5(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types : []).forEach(function(t) {
+          if (isObj5(t) && typeof t.id === "string") types[t.id] = true;
+        });
+        var intIn2 = function(x, lo, hi) {
+          return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
+        };
+        fx.states.forEach(function(s, i) {
+          var at = "states." + i;
+          if (!isObj5(s)) return e(at, "rules.v.effects");
+          if (typeof s.id !== "string" || !TYPE_RE.test(s.id)) e(at + ".id", "rules.v.typeKey");
+          else if (has(seen, s.id)) e(at + ".id", "rules.v.sameId", { id: s.id });
+          else seen[s.id] = true;
+          if (!cleanName(s.name)) e(at + ".name", "rules.v.name");
+          if (EFFECT_ICONS.indexOf(s.icon) < 0) e(at + ".icon", "rules.v.icon");
+          if (!Array.isArray(s.mods) || s.mods.length > FX.mods) e(at + ".mods", "rules.v.tooMany", { max: FX.mods });
+          else s.mods.forEach(function(m, j) {
+            if (!isObj5(m) || !has(keys, m.key)) e(at + ".mods." + j + ".key", "rules.v.modKey");
+            if (!isObj5(m) || !intIn2(m.n, -FX.n, FX.n) || m.n === 0) e(at + ".mods." + j + ".n", "rules.v.modN", { max: FX.n });
+          });
+          if (!Array.isArray(s.rolls) || s.rolls.length > FX.rolls) e(at + ".rolls", "rules.v.tooMany", { max: FX.rolls });
+          else s.rolls.forEach(function(r, j) {
+            var rp = at + ".rolls." + j;
+            if (!isObj5(r)) return e(rp, "rules.v.effects");
+            if (!has(res, r.res)) e(rp + ".res", "rules.v.combatRoll", { id: String(r.res) });
+            if (!intIn2(r.n, -FX.roll, FX.roll)) e(rp + ".n", "rules.v.modN", { max: FX.roll });
+            if ([-1, 0, 1].indexOf(r.adv) < 0) e(rp + ".adv", "rules.v.adv");
+            else if (r.n === 0 && r.adv === 0) e(rp, "rules.v.rollNothing");
+          });
+          ["resist", "vuln"].forEach(function(k) {
+            var l = s[k];
+            if (!Array.isArray(l) || l.length > MAX_TYPES || !l.every(function(t) {
+              return has(types, t);
+            })) e(at + "." + k, "rules.v.effectTypes");
+          });
+          var end = s.end;
+          if (!isObj5(end)) return e(at + ".end", "rules.v.effects");
+          if (end.rounds !== null && !intIn2(end.rounds, 1, FX.rounds)) e(at + ".end.rounds", "rules.v.rounds", { max: FX.rounds });
+          if (end.at !== "start" && end.at !== "end") e(at + ".end.at", "rules.v.effects");
+          if (end.rest !== null && !has(rests, end.rest)) e(at + ".end.rest", "rules.v.restUnknown");
+        });
+      }
+      function validateRests(rules, errs) {
+        var list2 = rules.rests;
+        var e = function(p, key, vars) {
+          errs.push({ path: "rests" + (p ? "." + p : ""), message: say2(key, vars) });
+        };
+        if (!Array.isArray(list2) || list2.length < 1 || list2.length > FX.rests) return e("", "rules.v.rests", { max: FX.rests });
+        var resources = {}, keys = valueKeys(rules), seen = {};
+        (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
+          if (isObj5(d) && d.resource && typeof d.id === "string") resources[d.id] = true;
+        });
+        list2.forEach(function(r, i) {
+          var at = String(i);
+          if (!isObj5(r)) return e(at, "rules.v.rests", { max: FX.rests });
+          if (typeof r.id !== "string" || !TYPE_RE.test(r.id)) e(at + ".id", "rules.v.typeKey");
+          else if (has(seen, r.id)) e(at + ".id", "rules.v.sameId", { id: r.id });
+          else seen[r.id] = true;
+          if (!cleanName(r.name)) e(at + ".name", "rules.v.name");
+          if (!Array.isArray(r.restore) || r.restore.length > FX.restore) return e(at + ".restore", "rules.v.tooMany", { max: FX.restore });
+          r.restore.forEach(function(x, j) {
+            var p = at + ".restore." + j;
+            if (!isObj5(x)) return e(p, "rules.v.rests", { max: FX.rests });
+            if (!has(resources, x.res)) e(p + ".res", "rules.v.health");
+            if (RESTORES.indexOf(x.how) < 0) e(p + ".how", "rules.v.restHow");
+            else if (x.how === "fixed" && !(typeof x.n === "number" && Math.floor(x.n) === x.n && x.n >= 1 && x.n <= FX.fixed)) e(p + ".n", "rules.v.modN", { max: FX.fixed });
+            else if (x.how === "formula" && !has(keys, x.key)) e(p + ".key", "rules.v.combatKey");
+          });
+        });
+      }
+      var onFailOk = function(r) {
+        return isObj5(r) && isObj5(r.target) && (r.target.kind === "none" || r.target.kind === "fixed");
+      };
+      function libraryHasFeatures(rules) {
+        return isObj5(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
+          return isObj5(g) && g.kind === "feature";
+        });
+      }
+      function validateProgression(rules, errs, pools) {
+        var p = rules.progression;
+        var e = function(at, key, vars) {
+          errs.push({ path: "progression" + (at ? "." + at : ""), message: say2(key, vars) });
+        };
+        if (!isObj5(p)) return e("", "rules.v.prog");
+        var P0 = pools || null;
+        var targets = P0 ? P0.targets : progTargets(rules), res = P0 ? P0.res : resolutionsOf(rules), values = P0 ? P0.values : valueKeys(rules);
+        var rank = P0 ? P0.rank : isObj5(rules.skills) ? rules.skills.rank : null;
+        var libFeat = P0 ? P0.libFeat === true : libraryHasFeatures(rules);
+        var intIn2 = function(x, lo, hi) {
+          return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
+        };
+        var skills = P0 ? P0.skills.map(function(id) {
+          return { id };
+        }) : isObj5(rules.skills) && rules.skills.mode === "fixed" && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj5) : [];
+        var skillIds = {}, statIds = {}, valueTargets = {}, feats = {};
+        skills.forEach(function(x) {
+          skillIds[x.id] = true;
+        });
+        Object.keys(targets).forEach(function(k) {
+          if (targets[k] === "stat") statIds[k] = true;
+          else if (targets[k] !== "skill") valueTargets[k] = true;
+        });
+        var list2 = function(l, pool, max) {
+          return Array.isArray(l) && l.length >= 1 && l.length <= max && l.every(function(k) {
+            return has(pool, k);
+          }) && l.every(function(k, i) {
+            return l.indexOf(k) === i;
+          });
+        };
+        if (!Array.isArray(p.features) || p.features.length > PROG.features) e("features", "rules.v.tooMany", { max: PROG.features });
+        else p.features.forEach(function(f, i) {
+          var at = "features." + i;
+          if (!isObj5(f)) return e(at, "rules.v.prog");
+          if (typeof f.id !== "string" || !TYPE_RE.test(f.id)) e(at + ".id", "rules.v.typeKey");
+          else if (has(feats, f.id)) e(at + ".id", "rules.v.sameId", { id: f.id });
+          else feats[f.id] = true;
+          if (!cleanName(f.name)) e(at + ".name", "rules.v.name");
+          if (typeof f.text !== "string" || f.text.length > PROG.text) e(at + ".text", "rules.v.featText", { max: PROG.text });
+        });
+        if (p.xp !== null) {
+          if (!isObj5(p.xp)) e("xp", "rules.v.prog");
+          else {
+            if (typeof p.xp.id !== "string" || !KEY_RE.test(p.xp.id)) e("xp.id", "rules.v.typeKey");
+            if (!cleanName(p.xp.name)) e("xp.name", "rules.v.name");
+            if (!Array.isArray(p.xp.onFail) || p.xp.onFail.length > PROG.onFail) e("xp.onFail", "rules.v.tooMany", { max: PROG.onFail });
+            else p.xp.onFail.forEach(function(x, i) {
+              if (!isObj5(x) || !has(res, x.res)) e("xp.onFail." + i + ".res", "rules.v.progRoll", { id: String(isObj5(x) ? x.res : "") });
+              else if (!onFailOk(res[x.res])) e("xp.onFail." + i + ".res", "rules.v.onFailTarget");
+              if (!isObj5(x) || !intIn2(x.n, 1, 100)) e("xp.onFail." + i + ".n", "rules.v.progN", { min: 1, max: 100 });
+            });
+          }
+        }
+        var validateGive = function(x, at) {
+          if (!isObj5(x) || GIVES.indexOf(x.kind) < 0) return e(at, "rules.v.giveKind");
+          if (x.kind === "add") {
+            if (!has(targets, x.key)) e(at + ".key", "rules.v.progKey");
+            if (x.dice === void 0) {
+              if (!intIn2(x.n, -PROG.n, PROG.n) || x.n === 0) e(at + ".n", "rules.v.modN", { max: PROG.n });
+            } else {
+              if (!dicePart(x.dice)) e(at + ".dice", "rules.v.progDice");
+              if (x.plus !== null && !has(values, x.plus)) e(at + ".plus", "rules.v.combatKey");
+              if (HOWS.indexOf(x.how) < 0) e(at + ".how", "rules.v.prog");
+            }
+          } else if (x.kind === "spread") {
+            if (!intIn2(x.points, 1, PROG.points)) e(at + ".points", "rules.v.progN", { min: 1, max: PROG.points });
+            if (!intIn2(x.maxEach, 1, PROG.points)) e(at + ".maxEach", "rules.v.progN", { min: 1, max: PROG.points });
+            else if (!list2(x.among, targets, PROG.among)) e(at + ".among", "rules.v.progAmong");
+            else if (x.among.length * x.maxEach < x.points) e(at + ".among", "rules.v.spreadRoom");
+          } else if (x.kind === "train") {
+            if (rank !== "trained") e(at, "rules.v.trainNeeds");
+            if (!intIn2(x.pick, 1, PROG.points)) e(at + ".pick", "rules.v.progN", { min: 1, max: PROG.points });
+            if (x.among !== "any" && !list2(x.among, skillIds, PROG.among)) e(at + ".among", "rules.v.progAmong");
+          } else if (x.kind === "feature") {
+            if (!has(feats, x.id)) e(at + ".id", "rules.v.featUnknown");
+          } else {
+            if (x.among === "library") {
+              if (!libFeat) e(at + ".among", "rules.v.pickLibrary");
+            } else if (!list2(x.among, feats, PROG.among)) e(at + ".among", "rules.v.featUnknown");
+            if (!intIn2(x.pick, 1, 5)) e(at + ".pick", "rules.v.progN", { min: 1, max: 5 });
+            if (!intIn2(x.times, 1, PROG.times)) e(at + ".times", "rules.v.progN", { min: 1, max: PROG.times });
+          }
+        };
+        if (p.levels !== null) {
+          var L = p.levels;
+          if (!isObj5(L)) e("levels", "rules.v.prog");
+          else {
+            var lv = P0 ? null : (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
+              return isObj5(d) && d.id === L.key;
+            })[0];
+            var top = LIMITS2.add;
+            if (P0) {
+              if (P0.levelKey !== L.key || !isInt(P0.levelMax, 2, LIMITS2.add)) e("levels.key", "rules.v.levelKey");
+              else top = P0.levelMax;
+            } else if (!lv || !isObj5(lv.recipe) || lv.recipe.kind !== "input" || lv.resource) e("levels.key", "rules.v.levelKey");
+            else if (lv.recipe.min !== 1 || !(lv.recipe.max >= 2)) e("levels.key", "rules.v.levelRange");
+            else top = lv.recipe.max;
+            if (!bool(L.spend)) e("levels.spend", "rules.v.prog");
+            var c = L.cost;
+            if (p.xp === null) {
+              if (c !== null) e("levels.cost", "rules.v.costNoXp");
+            } else if (!isObj5(c)) e("levels.cost", "rules.v.cost");
+            else if (c.kind === "fixed") {
+              if (!intIn2(c.n, 1, PROG.xp)) e("levels.cost.n", "rules.v.progN", { min: 1, max: PROG.xp });
+            } else if (c.kind === "formula") {
+              if (!progFormulaOk(c.f, "n")) e("levels.cost.f", "rules.v.costFormula");
+            } else if (c.kind === "marks") {
+              var up = function(x, i) {
+                return intIn2(x, 1, PROG.xp) && (L.spend || i === 0 || x > c.marks[i - 1]);
+              };
+              if (!Array.isArray(c.marks) || c.marks.length < 1 || c.marks.length > PROG.marks || !c.marks.every(up)) e("levels.cost.marks", "rules.v.marks", { max: PROG.marks });
+              if (!progFormulaOk(c.then, "n")) e("levels.cost.then", "rules.v.costFormula");
+            } else e("levels.cost.kind", "rules.v.cost");
+            if (!Array.isArray(L.gains) || L.gains.length > PROG.gains) e("levels.gains", "rules.v.tooMany", { max: PROG.gains });
+            else L.gains.forEach(function(g, i) {
+              var at = "levels.gains." + i;
+              if (!isObj5(g) || !isObj5(g.when)) return e(at, "rules.v.prog");
+              var w = g.when;
+              if (w.at !== void 0) {
+                if (!Array.isArray(w.at) || w.at.length < 1 || w.at.length > PROG.at || !w.at.every(function(x) {
+                  return intIn2(x, 2, top);
+                })) e(at + ".when.at", "rules.v.whenAt", { max: top });
+              } else if (!intIn2(w.every, 1, LIMITS2.add) || !intIn2(w.from, 2, top)) e(at + ".when", "rules.v.when", { max: top });
+              if (!Array.isArray(g.give) || g.give.length < 1 || g.give.length > PROG.give) return e(at + ".give", "rules.v.give", { max: PROG.give });
+              g.give.forEach(function(x, j) {
+                validateGive(x, at + ".give." + j);
+              });
+            });
+          }
+        }
+        if (p.purchases !== null) {
+          if (!Array.isArray(p.purchases) || p.purchases.length < 1 || p.purchases.length > PROG.purchases) e("purchases", "rules.v.tooMany", { max: PROG.purchases });
+          else {
+            if (p.xp === null) e("purchases", "rules.v.buyNoXp");
+            var seenBuy = {};
+            p.purchases.forEach(function(b, i) {
+              var at = "purchases." + i;
+              if (!isObj5(b)) return e(at, "rules.v.prog");
+              if (typeof b.id !== "string" || !TYPE_RE.test(b.id)) e(at + ".id", "rules.v.typeKey");
+              else if (has(seenBuy, b.id)) e(at + ".id", "rules.v.sameId", { id: b.id });
+              else seenBuy[b.id] = true;
+              if (!cleanName(b.name)) e(at + ".name", "rules.v.name");
+              if (BUYS.indexOf(b.what) < 0) return e(at + ".what", "rules.v.prog");
+              var pool = b.what === "feature" ? feats : b.what === "skill" ? skillIds : b.what === "stat" ? statIds : valueTargets;
+              if (b.keys === "any" ? !Object.keys(pool).length : !list2(b.keys, pool, PROG.among)) e(at + ".keys", "rules.v.progAmong");
+              if (!(intIn2(b.price, 1, PROG.xp) || progFormulaOk(b.price, "r"))) e(at + ".price", "rules.v.price");
+              if (b.what !== "feature" && !intIn2(b.max, 1, LIMITS2.add)) e(at + ".max", "rules.v.progN", { min: 1, max: LIMITS2.add });
+            });
+          }
+        }
+        if (p.use !== null) {
+          var u = p.use;
+          if (!isObj5(u)) e("use", "rules.v.prog");
+          else {
+            if (!skills.length) e("use", "rules.v.useNeeds");
+            if (!list2(u.res, res, PROG.useRes)) e("use.res", "rules.v.progRoll", { id: String(u.res) });
+            if (u.on !== "success" && u.on !== "crit") e("use.on", "rules.v.prog");
+            if (!dicePart(u.test)) e("use.test", "rules.v.progDice");
+            if (u.beat !== "value") e("use.beat", "rules.v.prog");
+            if (!dicePart(u.gain)) e("use.gain", "rules.v.progDice");
+          }
+        }
+        if (p.xp === null && p.levels === null && p.purchases === null && p.use === null) e("", "rules.v.progEmpty");
+      }
+      function actionProblems(a, fields, pools, e) {
+        if (!isObj5(a)) return e("", "rules.v.lib");
+        var numField = function(v) {
+          return typeof v === "string" && fields.some(function(f) {
+            return "@" + f.id === v && f.type === "number";
+          });
+        };
+        var intOr = function(v, lo, hi) {
+          return isInt(v, lo, hi) || numField(v);
+        };
+        if (!cleanName(a.label)) e("label", "rules.v.name");
+        var any = false;
+        if (a.roll !== null && a.roll !== void 0) {
+          any = true;
+          var r = a.roll;
+          if (!isObj5(r)) e("roll", "rules.v.lib");
+          else if (isObj5(r.attack)) {
+            if (!pools.combat) e("roll.attack", "rules.v.libNoCombat");
+            if (typeof r.attack.damage !== "string" || !parseDamage(r.attack.damage)) e("roll.attack.damage", "rules.v.libDamage");
+            if (r.attack.type !== void 0 && r.attack.type !== null && pools.types.indexOf(r.attack.type) < 0) e("roll.attack.type", "rules.v.effectTypes");
+            if (r.attack.bonus !== void 0 && !intOr(r.attack.bonus, -LIB.bonus, LIB.bonus)) e("roll.attack.bonus", "rules.v.libBonus", { max: LIB.bonus });
+          } else {
+            if (!has(pools.res, r.res)) e("roll.res", "rules.v.progRoll", { id: String(r.res) });
+            if (!intOr(r.bonus, -LIB.bonus, LIB.bonus)) e("roll.bonus", "rules.v.libBonus", { max: LIB.bonus });
+          }
+        }
+        if (a.cost !== null && a.cost !== void 0) {
+          any = true;
+          if (!isObj5(a.cost) || !has(pools.resources, a.cost.res)) e("cost.res", "rules.v.libCost");
+          if (!isObj5(a.cost) || !intOr(a.cost.n, 1, LIB.cost)) e("cost.n", "rules.v.progN", { min: 1, max: LIB.cost });
+        }
+        if (a.state !== null && a.state !== void 0) {
+          any = true;
+          if (!isObj5(a.state) || !has(pools.states, a.state.id)) e("state.id", "rules.v.libState");
+          if (!isObj5(a.state) || a.state.on !== "self" && a.state.on !== "target") e("state.on", "rules.v.lib");
+        }
+        if (!any) e("", "rules.v.libActionEmpty");
+      }
+      function entryProblems(x, genre, fields, pools, e) {
+        if (!isObj5(x.values)) return e("values", "rules.v.lib");
+        var known = {};
+        fields.forEach(function(f) {
+          known[f.id] = f;
+        });
+        Object.keys(x.values).forEach(function(k) {
+          var f = has(known, k) ? known[k] : null, v = x.values[k];
+          if (!f) return e("values." + k, "rules.v.libField");
+          if (f.type === "number") {
+            if (!isInt(v, typeof f.min === "number" ? f.min : -LIB.n, typeof f.max === "number" ? f.max : LIB.n)) e("values." + k, "rules.v.libNumber");
+          } else if (f.type === "choice") {
+            if ((f.options || []).indexOf(v) < 0) e("values." + k, "rules.v.libChoice");
+          } else {
+            var max = f.type === "long" ? LIB.long : LIB.text;
+            if (typeof v !== "string" || v.length > max) e("values." + k, "rules.v.libText", { max });
+          }
+        });
+        if (genre.kind === "weapon") {
+          if (typeof x.values.arm_degats === "string" && x.values.arm_degats && !parseDamage(x.values.arm_degats)) e("values.arm_degats", "rules.v.libDamage");
+          if (x.action !== null && x.action !== void 0) e("action", "rules.v.libWeaponAction");
+          return;
+        }
+        if (genre.kind === "feature") {
+          if (x.action !== null && x.action !== void 0) e("action", "rules.v.libFeatureAction");
+          return;
+        }
+        if (x.action !== null && x.action !== void 0) actionProblems(x.action, fields, pools, function(p, key, vars) {
+          e("action" + (p ? "." + p : ""), key, vars);
+        });
+      }
+      function validateLibrary(rules, errs, given3) {
+        var L = rules.library;
+        var e = function(at, key, vars) {
+          errs.push({ path: "library" + (at ? "." + at : ""), message: say2(key, vars) });
+        };
+        if (!isObj5(L) || !Array.isArray(L.genres) || !Array.isArray(L.entries)) return e("", "rules.v.lib");
+        if (L.genres.length > LIB.genres) return e("genres", "rules.v.tooMany", { max: LIB.genres });
+        var pools = given3 || libraryPools(rules), genres = {}, kinds = {};
+        L.genres.forEach(function(g, i) {
+          var at = "genres." + i;
+          if (!isObj5(g)) return e(at, "rules.v.lib");
+          if (typeof g.id !== "string" || !GENRE_RE.test(g.id)) e(at + ".id", "rules.v.libGenreKey");
+          else if (has(genres, g.id)) e(at + ".id", "rules.v.sameId", { id: g.id });
+          else genres[g.id] = g;
+          if (!cleanName(g.name)) e(at + ".name", "rules.v.name");
+          if (GENRE_KINDS.indexOf(g.kind) < 0) return e(at + ".kind", "rules.v.lib");
+          if (g.kind !== "custom") {
+            if (has(kinds, g.kind)) e(at + ".kind", "rules.v.libOneKind");
+            kinds[g.kind] = true;
+            if (g.kind === "weapon" && !pools.combat) e(at + ".kind", "rules.v.libNoCombat");
+            if (g.kind === "feature" && !pools.progression) e(at + ".kind", "rules.v.libNoProgress");
+            if (!Array.isArray(g.fields) || g.fields.length) e(at + ".fields", "rules.v.libFixedFields");
+            return;
+          }
+          if (!Array.isArray(g.fields) || g.fields.length > LIB.fields) return e(at + ".fields", "rules.v.tooMany", { max: LIB.fields });
+          var seen = {};
+          g.fields.forEach(function(f, j) {
+            var fp = at + ".fields." + j;
+            if (!isObj5(f)) return e(fp, "rules.v.lib");
+            if (typeof f.id !== "string" || !FIELD_RE.test(f.id) || LIB_RESERVED.indexOf(f.id) >= 0) e(fp + ".id", "rules.v.libFieldKey");
+            else if (has(seen, f.id)) e(fp + ".id", "rules.v.sameId", { id: f.id });
+            else seen[f.id] = true;
+            if (!cleanName(f.name)) e(fp + ".name", "rules.v.name");
+            if (FIELD_TYPES.indexOf(f.type) < 0) return e(fp + ".type", "rules.v.lib");
+            if (f.type === "number") {
+              if (f.min !== void 0 && !isInt(f.min, -LIB.n, LIB.n)) e(fp + ".min", "rules.v.progN", { min: -LIB.n, max: LIB.n });
+              if (f.max !== void 0 && !isInt(f.max, -LIB.n, LIB.n)) e(fp + ".max", "rules.v.progN", { min: -LIB.n, max: LIB.n });
+              if (isInt(f.min, -LIB.n, LIB.n) && isInt(f.max, -LIB.n, LIB.n) && f.min >= f.max) e(fp + ".max", "rules.v.libRange");
+            }
+            if (f.type === "choice" && !(Array.isArray(f.options) && f.options.length >= 2 && f.options.length <= LIB.options && f.options.every(function(o, k) {
+              return typeof o === "string" && cleanName(o) === o && o.length > 0 && f.options.indexOf(o) === k;
+            }))) e(fp + ".options", "rules.v.libOptions", { max: LIB.options });
+          });
+        });
+        if (L.entries.length > LIB.entries) return e("entries", "rules.v.tooMany", { max: LIB.entries });
+        var ids = {};
+        L.entries.forEach(function(x, i) {
+          var at = "entries." + i;
+          if (!isObj5(x)) return e(at, "rules.v.lib");
+          if (typeof x.id !== "string" || !ENTRY_RE.test(x.id)) e(at + ".id", "rules.v.typeKey");
+          else if (has(ids, x.id)) e(at + ".id", "rules.v.sameId", { id: x.id });
+          else ids[x.id] = true;
+          if (!cleanName(x.name)) e(at + ".name", "rules.v.name");
+          var g = typeof x.genre === "string" && has(genres, x.genre) ? genres[x.genre] : null;
+          if (!g) return e(at + ".genre", "rules.v.libGenre");
+          if (g.kind === "feature") return e(at + ".genre", "rules.v.libFeatureEntry");
+          entryProblems(x, g, fieldsOf(g, pools), pools, function(p, key, vars) {
+            e(at + "." + p, key, vars);
+          });
+        });
+      }
+      function entryHash(x) {
+        var vals = {};
+        Object.keys(isObj5(x) && isObj5(x.values) ? x.values : {}).sort().forEach(function(k) {
+          vals[k] = x.values[k];
+        });
+        var s = JSON.stringify([isObj5(x) ? x.genre : null, isObj5(x) ? x.name : null, vals, isObj5(x) && x.action !== void 0 ? x.action : null]);
+        var h = 2166136261;
+        for (var i = 0; i < s.length; i++) {
+          h ^= s.charCodeAt(i);
+          h = Math.imul(h, 16777619) >>> 0;
+        }
+        return ("0000000" + h.toString(16)).slice(-8);
+      }
+      var slugKey = function(s) {
+        return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "_").replace(/^[^a-z]+/, "").replace(/_+$/g, "").slice(0, 36);
+      };
+      var normWord = function(s) {
+        return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+      };
+      function optionKeys(options) {
+        var seen = {};
+        return (Array.isArray(options) ? options : []).map(function(o, i) {
+          var k = slugKey(o) || "option" + (i + 1), base2 = k, n = 2;
+          while (has(seen, k)) k = base2 + "_" + n++;
+          seen[k] = true;
+          return k;
+        });
+      }
+      function pasteEntries(rules, genreId, text) {
+        var L = isObj5(rules.library) ? rules.library : { genres: [], entries: [] };
+        var g = (Array.isArray(L.genres) ? L.genres : []).filter(function(x) {
+          return isObj5(x) && x.id === genreId;
+        })[0];
+        var out = { entries: [], errors: [] };
+        if (!g || g.kind === "feature") {
+          out.errors.push({ line: 0, message: say2("rules.v.libGenre") });
+          return out;
+        }
+        var pools = libraryPools(rules), fields = fieldsOf(g, pools), known = {};
+        fields.forEach(function(f) {
+          known[f.id] = f;
+        });
+        var lines = String(text || "").replace(/\r/g, "").split("\n").filter(function(l) {
+          return l.trim();
+        }).slice(0, LIB.entries + 1);
+        var heads = (lines[0] || "").split("	").map(function(h) {
+          var n = normWord(h);
+          if (n === "nom" || n === "name") return "name";
+          var f = fields.filter(function(x) {
+            return normWord(x.id) === n || normWord(x.name) === n;
+          })[0];
+          return f ? f.id : null;
+        });
+        if (heads.indexOf("name") < 0) {
+          out.errors.push({ line: 1, message: say2("rules.v.libPasteName") });
+          return out;
+        }
+        var taken = {};
+        (Array.isArray(L.entries) ? L.entries : []).forEach(function(x) {
+          if (isObj5(x)) taken[x.id] = true;
+        });
+        lines.slice(1).forEach(function(line, i) {
+          var cells = line.split("	"), x = { id: "", genre: g.id, name: "", values: {}, action: null };
+          heads.forEach(function(h, j) {
+            var v = String(cells[j] === void 0 ? "" : cells[j]).trim();
+            if (!h || v === "") return;
+            if (h === "name") {
+              x.name = v;
+              return;
+            }
+            var f = known[h];
+            if (f.type === "number") {
+              var num2 = Number(v.replace(",", "."));
+              x.values[h] = isFinite(num2) ? Math.round(num2) : v;
+            } else if (f.type === "choice") {
+              var o = (f.options || []).filter(function(op) {
+                return normWord(op) === normWord(v);
+              })[0];
+              x.values[h] = o === void 0 ? v : o;
+            } else x.values[h] = v;
+          });
+          var problems = [];
+          if (!cleanName(x.name)) problems.push(say2("rules.v.name"));
+          else {
+            var base2 = slugKey(x.name) || "entree", id = base2, k = 2;
+            while (has(taken, id)) id = base2 + "_" + k++;
+            x.id = id;
+            x.name = cleanName(x.name);
+            entryProblems(x, g, fields, pools, function(p, key, vars) {
+              problems.push(say2(key, vars));
+            });
+          }
+          if (problems.length) out.errors.push({ line: i + 2, message: problems[0] });
+          else {
+            taken[x.id] = true;
+            out.entries.push(x);
+          }
+        });
+        return out;
+      }
+      function libraryNames(rules) {
+        var pools = libraryPools(rules), names = { res: {}, resources: {}, states: {} };
+        Object.keys(pools.res).forEach(function(k) {
+          names.res[k] = cleanName(pools.res[k].name) || k;
+        });
+        Object.keys(pools.resources).forEach(function(k) {
+          names.resources[k] = nameOf(rules, k);
+        });
+        (isObj5(rules.effects) && Array.isArray(rules.effects.states) ? rules.effects.states : []).forEach(function(s) {
+          if (isObj5(s) && typeof s.id === "string") names.states[s.id] = cleanName(s.name) || s.id;
+        });
+        return names;
+      }
+      function actionText(rules, a) {
+        return actionWords({ names: libraryNames(rules) }, a);
+      }
+      function libraryCtx(rules) {
+        var L = rules.library, pools = libraryPools(rules);
+        return JSON.parse(JSON.stringify({
+          genres: L.genres.filter(isObj5).map(function(g) {
+            return { id: g.id, name: cleanName(g.name), kind: g.kind, fields: fieldsOf(g, pools) };
+          }),
+          entries: L.entries.filter(isObj5).map(function(x) {
+            return { id: x.id, genre: x.genre, name: x.name, values: x.values, action: x.action === void 0 ? null : x.action, hash: entryHash(x) };
+          }),
+          res: Object.keys(pools.res),
+          resources: Object.keys(pools.resources),
+          states: Object.keys(pools.states),
+          types: pools.types,
+          stats: pools.stats,
+          combat: pools.combat,
+          progression: pools.progression,
+          names: libraryNames(rules)
+        }));
+      }
+      function actionWords(ctx, a) {
+        if (!isObj5(a) || !isObj5(ctx)) return "";
+        var nm = isObj5(ctx.names) ? ctx.names : {};
+        var of = function(group, id) {
+          return isObj5(nm[group]) && typeof nm[group][id] === "string" ? nm[group][id] : String(id);
+        };
+        var num2 = function(v) {
+          return typeof v === "string" ? v.slice(1) : (v > 0 ? "+" : "") + v;
+        };
+        var parts = [];
+        if (isObj5(a.roll) && isObj5(a.roll.attack)) parts.push(say2("rules.l.attack", { dice: a.roll.attack.damage + (a.roll.attack.type ? " " + a.roll.attack.type : "") }));
+        else if (isObj5(a.roll)) parts.push(say2("rules.l.roll", { res: of("res", a.roll.res), bonus: a.roll.bonus ? " " + num2(a.roll.bonus) : "" }));
+        if (isObj5(a.cost)) parts.push(say2("rules.l.cost", { n: typeof a.cost.n === "string" ? a.cost.n.slice(1) : a.cost.n, res: of("resources", a.cost.res) }));
+        if (isObj5(a.state)) parts.push(say2(a.state.on === "self" ? "rules.l.stateSelf" : "rules.l.stateTarget", { state: of("states", a.state.id) }));
+        return (cleanName(a.label) || "") + " : " + parts.join(" \xB7 ");
+      }
+      function poolsOfCtx(ctx) {
+        var set = function(l) {
+          var o = {};
+          (Array.isArray(l) ? l : []).forEach(function(k) {
+            if (typeof k === "string") o[k] = true;
+          });
+          return o;
+        };
+        return { res: set(ctx.res), resources: set(ctx.resources), states: set(ctx.states), combat: ctx.combat === true, types: Array.isArray(ctx.types) ? ctx.types.slice() : [], stats: Array.isArray(ctx.stats) ? ctx.stats.slice() : [], progression: ctx.progression === true };
+      }
+      function cleanLibraryCtx(raw, resolutions) {
+        if (!isObj5(raw) || !isObj5(resolutions) || !Array.isArray(raw.genres) || !Array.isArray(raw.entries)) return null;
+        var KEY = /^[a-z][a-z0-9_]{0,40}$/;
+        var ids = function(l, max) {
+          return Array.isArray(l) && l.length <= max && l.every(function(x) {
+            return typeof x === "string" && KEY.test(x);
+          }) ? l.slice() : null;
+        };
+        var res = ids(raw.res, LIMITS2.rolls + 1), resources = ids(raw.resources, LIMITS2.derived), states = ids(raw.states, FX.states), types = ids(raw.types, MAX_TYPES), stats = ids(raw.stats, LIMITS2.stats + 1);
+        if (!res || !resources || !states || !types || !stats || !res.every(function(id) {
+          return has(resolutions, id);
+        })) return null;
+        var ctx0 = { res, resources, states, types, stats, combat: raw.combat === true, progression: raw.progression === true };
+        var pools = poolsOfCtx(ctx0);
+        var genres = raw.genres.slice(0, LIB.genres + 1).map(function(g) {
+          return isObj5(g) ? { id: g.id, name: g.name, kind: g.kind, fields: g.kind === "custom" ? g.fields : [] } : g;
+        });
+        var entries = raw.entries.slice(0, LIB.entries + 1).map(function(x) {
+          return isObj5(x) ? { id: x.id, genre: x.genre, name: x.name, values: x.values, action: x.action === void 0 ? null : x.action } : x;
+        });
+        var errs = [];
+        validateLibrary({ library: { genres, entries } }, errs, pools);
+        if (errs.length) return null;
+        var nm = isObj5(raw.names) ? raw.names : {};
+        var names = {};
+        ["res", "resources", "states"].forEach(function(group) {
+          names[group] = {};
+          ctx0[group].forEach(function(id) {
+            var v = isObj5(nm[group]) && typeof nm[group][id] === "string" ? cleanName(nm[group][id]) : "";
+            names[group][id] = v || id;
+          });
+        });
+        return JSON.parse(JSON.stringify({
+          genres: genres.map(function(g) {
+            return { id: g.id, name: cleanName(g.name), kind: g.kind, fields: fieldsOf(g, pools) };
+          }),
+          entries: entries.map(function(x) {
+            return { id: x.id, genre: x.genre, name: cleanName(x.name), values: x.values, action: x.action, hash: entryHash(x) };
+          }),
+          res,
+          resources,
+          states,
+          types,
+          stats,
+          combat: ctx0.combat,
+          progression: ctx0.progression,
+          names
+        }));
+      }
+      function cleanEntryIn(ctx, raw) {
+        if (!isObj5(ctx) || !isObj5(raw) || !Array.isArray(ctx.genres)) return null;
+        var g = ctx.genres.filter(function(x2) {
+          return isObj5(x2) && x2.id === raw.genre;
+        })[0];
+        if (!g) return null;
+        var x = { id: raw.id, genre: raw.genre, name: raw.name, values: raw.values, action: raw.action === void 0 ? null : raw.action };
+        if (typeof x.id !== "string" || !ENTRY_RE.test(x.id) || !cleanName(x.name)) return null;
+        var bad3 = false;
+        entryProblems(x, g, g.fields, poolsOfCtx(ctx), function() {
+          bad3 = true;
+        });
+        if (bad3) return null;
+        return JSON.parse(JSON.stringify({ id: x.id, genre: x.genre, name: cleanName(x.name), values: x.values, action: x.action }));
+      }
+      var ORIGIN_RE = /^(sys|table|pkg\.[a-z0-9][a-z0-9-]{0,39}):([a-z][a-z0-9_]{0,39}):([0-9a-f]{8})$/;
+      function originOf(text) {
+        var m = typeof text === "string" ? ORIGIN_RE.exec(text) : null;
+        return m ? { source: m[1], id: m[2], hash: m[3] } : null;
+      }
+      function rowOf(ctx, entry, source) {
+        var g = (Array.isArray(ctx.genres) ? ctx.genres : []).filter(function(x) {
+          return isObj5(x) && x.id === entry.genre;
+        })[0];
+        if (!g || g.kind === "feature") return null;
+        var origin = source + ":" + entry.id + ":" + entryHash(entry);
+        var row = {};
+        if (g.kind === "weapon") {
+          row.arm_nom = entry.name;
+          g.fields.forEach(function(f) {
+            if (has(entry.values, f.id)) row[f.id] = entry.values[f.id];
+          });
+          row.arm_origine = origin;
+          return { list: "arm", row };
+        }
+        var pre = "lib_" + g.id + "_";
+        row[pre + "nom"] = entry.name;
+        g.fields.forEach(function(f) {
+          if (!has(entry.values, f.id)) return;
+          var v = entry.values[f.id];
+          if (f.type === "choice") {
+            var i = (f.options || []).indexOf(v);
+            v = i >= 0 ? optionKeys(f.options)[i] : "";
+          }
+          row[pre + f.id] = v;
+        });
+        row[pre + "origine"] = origin;
+        return { list: "lib_" + g.id, row };
+      }
+      var STARTER_SPELLS = { fantasy: true, horror: true };
+      function starterLibrary(rules) {
+        var tone = isObj5(rules.identity) && typeof rules.identity.tone === "string" ? rules.identity.tone : "fantasy";
+        var pools = libraryPools(rules), spells = has(STARTER_SPELLS, tone);
+        var g1 = spells ? { id: "sort", name: say2("rules.l.spells"), kind: "custom", fields: [
+          { id: "niveau", name: say2("rules.l.level"), type: "number", min: 0, max: 9 },
+          { id: "portee", name: say2("rules.l.range"), type: "text" },
+          { id: "description", name: say2("rules.l.description"), type: "long" }
+        ] } : { id: "talent", name: say2("rules.l.talents"), kind: "custom", fields: [{ id: "description", name: say2("rules.l.description"), type: "long" }] };
+        var g2 = { id: "objet", name: say2("rules.l.items"), kind: "custom", fields: [
+          { id: "poids", name: say2("rules.l.weight"), type: "number", min: 0, max: 1e3 },
+          { id: "description", name: say2("rules.l.description"), type: "long" }
+        ] };
+        var entries = [];
+        var e = function(g, id, values, action) {
+          entries.push({ id, genre: g.id, name: say2("rules.l.e." + id), values, action });
+        };
+        var main2 = isObj5(rules.resolution) ? rules.resolution.id : null;
+        var fire = pools.types.indexOf("feu") >= 0 ? "feu" : null;
+        var mana = Object.keys(pools.resources).filter(function(k) {
+          return /^(pm|mana|magie|pouvoir)/.test(k);
+        })[0] || null;
+        if (spells) {
+          e(g1, "trait_de_feu", { niveau: 0, portee: say2("rules.l.far"), description: say2("rules.l.e.trait_de_feu.text") }, pools.combat ? { label: say2("rules.l.cast"), roll: { attack: fire ? { damage: "1d10", type: fire } : { damage: "1d10" } }, cost: null, state: null } : null);
+          e(g1, "benediction", { niveau: 1, portee: say2("rules.l.touch"), description: say2("rules.l.e.benediction.text") }, has(pools.states, "benediction") ? { label: say2("rules.l.cast"), roll: null, cost: mana ? { res: mana, n: 1 } : null, state: { id: "benediction", on: "target" } } : null);
+          e(g1, "lumiere", { niveau: 0, portee: say2("rules.l.touch"), description: say2("rules.l.e.lumiere.text") }, null);
+        } else e(g1, "sang_froid", { description: say2("rules.l.e.sang_froid.text") }, main2 ? { label: say2("rules.l.use"), roll: { res: main2, bonus: 2 }, cost: null, state: null } : null);
+        e(g2, "corde", { poids: 5, description: say2("rules.l.e.corde.text") }, null);
+        e(g2, "torche", { poids: 1, description: say2("rules.l.e.torche.text") }, null);
+        var trial = JSON.parse(JSON.stringify(rules));
+        trial.library = { genres: [g1, g2], entries };
+        var errs = [];
+        validateLibrary(trial, errs);
+        return errs.length ? null : trial.library;
+      }
+      function levelCost(prog, n, evaluate) {
+        var L = isObj5(prog) ? prog.levels : null;
+        if (!isObj5(L) || !isObj5(L.cost)) return null;
+        if (!(n >= 2)) return 0;
+        var c = L.cost, v;
+        if (c.kind === "fixed") v = c.n;
+        else if (c.kind === "marks" && n - 2 < c.marks.length) v = c.marks[n - 2];
+        else v = evaluate(c.kind === "marks" ? c.then : c.f, { n });
+        v = Number(v);
+        if (!isFinite(v)) return null;
+        return Math.max(0, Math.min(PROG.xp, Math.round(v)));
+      }
+      function gainsAt(prog, n) {
+        var L = isObj5(prog) ? prog.levels : null, out = [];
+        (isObj5(L) && Array.isArray(L.gains) ? L.gains : []).forEach(function(g, i) {
+          if (!isObj5(g) || !isObj5(g.when)) return;
+          var w = g.when;
+          var hit = Array.isArray(w.at) ? w.at.indexOf(n) >= 0 : n >= w.from && (n - w.from) % w.every === 0;
+          if (hit) (Array.isArray(g.give) ? g.give : []).forEach(function(x, j) {
+            out.push({ at: i + "." + j, give: x });
+          });
+        });
+        return out;
+      }
+      function describeGive(rules, x) {
+        var feats = {};
+        (isObj5(rules.progression) && Array.isArray(rules.progression.features) ? rules.progression.features : []).forEach(function(f) {
+          if (isObj5(f)) feats[f.id] = cleanName(f.name);
+        });
+        var names = function(l, of) {
+          return l.map(of).join(", ");
+        };
+        var skillName = function(id) {
+          return nameOf(rules, "sk_" + id);
+        };
+        var featName = function(id) {
+          return has(feats, id) ? feats[id] : id;
+        };
+        if (x.kind === "add" && x.dice === void 0) return say2("rules.p.addN", { n: (x.n > 0 ? "+" : "") + x.n, name: nameOf(rules, x.key) });
+        if (x.kind === "add") return say2("rules.p.addDice", { dice: x.dice, plus: x.plus ? " + " + nameOf(rules, x.plus) : "", name: nameOf(rules, x.key), how: say2("rules.p.how." + x.how) });
+        if (x.kind === "spread") return say2("rules.p.spread", { n: x.points, list: names(x.among, function(k) {
+          return nameOf(rules, k);
+        }), max: x.maxEach });
+        if (x.kind === "train") return say2("rules.p.train", { n: x.pick, list: x.among === "any" ? say2("rules.p.anySkill") : names(x.among, skillName) });
+        if (x.kind === "feature") return say2("rules.p.feature", { name: featName(x.id) });
+        return say2("rules.p.pick", { n: x.pick, list: x.among === "library" ? say2("rules.p.anyFeature") : names(x.among, featName) });
+      }
+      function outline(rules, upTo, evaluate) {
+        var prog = rules.progression, rows = [];
+        for (var n = 2; n <= upTo; n++) {
+          var gains = gainsAt(prog, n).map(function(g) {
+            return describeGive(rules, g.give);
+          });
+          var sig = gains.join("\n"), cost = levelCost(prog, n, evaluate), last = rows[rows.length - 1];
+          if (last && last.sig === sig) {
+            last.to = n;
+            last.costTo = cost;
+            continue;
+          }
+          if (rows.length >= 200) break;
+          rows.push({ from: n, to: n, costFrom: cost, costTo: cost, gains, sig });
+        }
+        return rows.map(function(r) {
+          return { from: r.from, to: r.to, costFrom: r.costFrom, costTo: r.costTo, gains: r.gains };
+        });
+      }
+      function levelPlan(rules, sheet, n) {
+        var prog = rules.progression, auto = [], choices = [];
+        var trained = isObj5(sheet) && isObj5(sheet.trained) ? sheet.trained : {};
+        var taken = isObj5(sheet) && isObj5(sheet.features) ? sheet.features : {};
+        var skills = isObj5(rules.skills) && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj5).map(function(x) {
+          return x.id;
+        }) : [];
+        var feats = {};
+        (Array.isArray(prog.features) ? prog.features : []).forEach(function(f) {
+          if (isObj5(f)) feats[f.id] = true;
+        });
+        gainsAt(prog, n).forEach(function(g) {
+          var x = g.give;
+          if (x.kind === "add" && x.dice !== void 0 && x.how === "player") choices.push({ at: g.at, kind: "how", give: x, average: diceAverage(dicePart(x.dice)) });
+          else if (x.kind === "add" || x.kind === "feature") auto.push({ at: g.at, give: x });
+          else if (x.kind === "spread") choices.push({ at: g.at, kind: "spread", points: x.points, maxEach: x.maxEach, among: x.among.slice() });
+          else if (x.kind === "train") {
+            var open = (x.among === "any" ? skills : x.among).filter(function(id) {
+              return !has(trained, id) || !trained[id];
+            });
+            if (open.length) choices.push({ at: g.at, kind: "train", pick: Math.min(x.pick, open.length), among: open });
+          } else {
+            var left = (x.among === "library" ? Object.keys(feats) : x.among).filter(function(id) {
+              return has(feats, id) && (has(taken, id) ? Number(taken[id]) || 0 : 0) < x.times;
+            });
+            if (left.length) choices.push({ at: g.at, kind: "pick", pick: Math.min(x.pick, left.length), among: left });
+          }
+        });
+        return { level: n, auto, choices };
+      }
+      function readChoices(plan, raw) {
+        if (!isObj5(plan) || !Array.isArray(plan.choices) || !isObj5(raw)) return null;
+        if (Object.keys(raw).some(function(k) {
+          return !plan.choices.some(function(c) {
+            return c.at === k;
+          });
+        })) return null;
+        var out = {}, used = {};
+        var ok = plan.choices.every(function(c) {
+          var a = has(raw, c.at) ? raw[c.at] : void 0;
+          if (c.kind === "how") {
+            if (a !== "average" && a !== "roll") return false;
+            out[c.at] = a;
+            return true;
+          }
+          if (c.kind === "spread") {
+            if (!isObj5(a)) return false;
+            var sum = 0, clean2 = {};
+            var fine = Object.keys(a).every(function(k) {
+              var v = a[k];
+              if (c.among.indexOf(k) < 0 || typeof v !== "number" || Math.floor(v) !== v || v < 0 || v > c.maxEach) return false;
+              if (v) clean2[k] = v;
+              sum += v;
+              return true;
+            });
+            if (!fine || sum !== c.points) return false;
+            out[c.at] = clean2;
+            return true;
+          }
+          if (!Array.isArray(a) || a.length !== c.pick) return false;
+          var each = a.every(function(id) {
+            var tag = c.kind + ":" + id;
+            if (typeof id !== "string" || c.among.indexOf(id) < 0 || has(used, tag)) return false;
+            used[tag] = true;
+            return true;
+          });
+          if (!each) return false;
+          out[c.at] = a.slice();
+          return true;
+        });
+        return ok ? out : null;
+      }
+      function progressCtx(rules) {
+        var P = rules.progression, t = progTargets(rules), names = {};
+        Object.keys(t).forEach(function(k) {
+          names[k] = nameOf(rules, k);
+        });
+        if (isObj5(P.xp)) names[P.xp.id] = cleanName(P.xp.name);
+        var L = isObj5(P.levels) ? P.levels : null;
+        var lv = L ? (rules.derived || []).filter(function(d) {
+          return isObj5(d) && d.id === L.key;
+        })[0] : null;
+        if (lv) names[lv.id] = cleanName(lv.name);
+        return JSON.parse(JSON.stringify({
+          xp: P.xp,
+          levels: L,
+          levelKey: L ? L.key : null,
+          levelMax: lv ? lv.recipe.max : null,
+          purchases: P.purchases,
+          use: P.use,
+          features: P.features,
+          targets: t,
+          keys: progKeys(rules),
+          names,
+          skillRank: isObj5(rules.skills) ? rules.skills.rank : null,
+          skills: isObj5(rules.skills) && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj5).map(function(x) {
+            return x.id;
+          }) : [],
+          values: Object.keys(valueKeys(rules)),
+          libFeat: libraryHasFeatures(rules)
+        }));
+      }
+      function cleanProgressCtx(raw, resolutions) {
+        if (!isObj5(raw) || !isObj5(resolutions)) return null;
+        var KEY = /^[a-z][a-z0-9_]{0,40}$/, KINDS2 = ["stat", "skill", "input", "resource", "computed"];
+        var t = raw.targets;
+        if (!isObj5(t) || Object.keys(t).length > 400) return null;
+        var targets = {};
+        var tk = Object.keys(t);
+        for (var i = 0; i < tk.length; i++) {
+          if (!KEY.test(tk[i]) || KINDS2.indexOf(t[tk[i]]) < 0) return null;
+          targets[tk[i]] = t[tk[i]];
+        }
+        var list2 = function(l, re, max) {
+          return Array.isArray(l) && l.length <= max && l.every(function(x) {
+            return typeof x === "string" && re.test(x);
+          }) ? l.slice() : null;
+        };
+        var skills = list2(raw.skills, KEY_RE, LIMITS2.skills), valuesList = list2(raw.values, KEY, 400), keys = list2(raw.keys, KEY, 400);
+        if (!skills || !valuesList || !keys || !keys.every(function(k) {
+          return targets[k] === "computed";
+        })) return null;
+        var rank = raw.skillRank === null || RANKS.indexOf(raw.skillRank) >= 0 ? raw.skillRank : void 0;
+        if (rank === void 0) return null;
+        var levelKey = raw.levelKey === null ? null : typeof raw.levelKey === "string" && KEY_RE.test(raw.levelKey) ? raw.levelKey : void 0;
+        if (levelKey === void 0 || levelKey !== null && !isInt(raw.levelMax, 2, LIMITS2.add)) return null;
+        var values = {};
+        valuesList.forEach(function(k) {
+          values[k] = true;
+        });
+        var prog = { xp: raw.xp === void 0 ? null : raw.xp, levels: raw.levels === void 0 ? null : raw.levels, purchases: raw.purchases === void 0 ? null : raw.purchases, use: raw.use === void 0 ? null : raw.use, features: raw.features };
+        var errs = [];
+        validateProgression({ progression: prog }, errs, { targets, values, res: resolutions, skills, rank, levelKey, levelMax: levelKey === null ? null : raw.levelMax, libFeat: raw.libFeat === true });
+        if (errs.length) return null;
+        var names = {};
+        var nm = isObj5(raw.names) ? raw.names : {};
+        Object.keys(targets).concat(levelKey ? [levelKey] : [], isObj5(prog.xp) ? [prog.xp.id] : []).forEach(function(k) {
+          names[k] = typeof nm[k] === "string" && cleanName(nm[k]) ? cleanName(nm[k]) : k;
+        });
+        return JSON.parse(JSON.stringify({ xp: prog.xp, levels: prog.levels, levelKey, levelMax: levelKey === null ? null : raw.levelMax, purchases: prog.purchases, use: prog.use, features: prog.features, targets, keys, names, skillRank: rank, skills, values: valuesList, libFeat: raw.libFeat === true }));
+      }
+      function effectCtx(rules) {
+        return JSON.parse(JSON.stringify({
+          keys: effectKeys(rules),
+          res: Object.keys(resolutionsOf(rules)),
+          types: isObj5(rules.combat) && isObj5(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types.map(function(t) {
+            return t.id;
+          }) : [],
+          rests: Array.isArray(rules.rests) ? rules.rests : [],
+          states: isObj5(rules.effects) && Array.isArray(rules.effects.states) ? rules.effects.states : [],
+          // the names the page shows (lot D3): of the values an effect changes, of the resolutions, of the damage types
+          names: {
+            keys: effectKeys(rules).reduce(function(o, k) {
+              o[k] = nameOf(rules, k);
+              return o;
+            }, {}),
+            res: Object.keys(resolutionsOf(rules)).reduce(function(o, k) {
+              o[k] = cleanName(resolutionsOf(rules)[k].name) || k;
+              return o;
+            }, {}),
+            types: (isObj5(rules.combat) && isObj5(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types : []).reduce(function(o, t) {
+              o[t.id] = cleanName(t.name) || t.id;
+              return o;
+            }, {})
+          }
+        }));
+      }
+      var intIn = function(x, lo, hi) {
+        return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
+      };
+      function cleanEffectIn(ctx, raw) {
+        if (!isObj5(ctx) || !isObj5(raw)) return null;
+        var src = null, stateId = null;
+        if (typeof raw.state === "string") {
+          src = (Array.isArray(ctx.states) ? ctx.states : []).filter(function(s) {
+            return isObj5(s) && s.id === raw.state;
+          })[0] || null;
+          if (!src) return null;
+          stateId = src.id;
+        } else if (isObj5(raw.effect)) src = raw.effect;
+        else return null;
+        var keys = Array.isArray(ctx.keys) ? ctx.keys : [], res = Array.isArray(ctx.res) ? ctx.res : [], types = Array.isArray(ctx.types) ? ctx.types : [];
+        var rests = (Array.isArray(ctx.rests) ? ctx.rests : []).map(function(r) {
+          return isObj5(r) ? r.id : null;
+        });
+        var name = cleanName(src.name);
+        if (!name) return null;
+        var mods = src.mods, rolls = src.rolls, resist = src.resist, vuln = src.vuln, end = src.end;
+        if (!Array.isArray(mods) || mods.length > FX.mods || !Array.isArray(rolls) || rolls.length > FX.rolls) return null;
+        if (!Array.isArray(resist) || resist.length > MAX_TYPES || !Array.isArray(vuln) || vuln.length > MAX_TYPES || !isObj5(end)) return null;
+        if (!mods.every(function(m) {
+          return isObj5(m) && keys.indexOf(m.key) >= 0 && intIn(m.n, -FX.n, FX.n) && m.n !== 0;
+        })) return null;
+        if (!rolls.every(function(r) {
+          return isObj5(r) && res.indexOf(r.res) >= 0 && intIn(r.n, -FX.roll, FX.roll) && [-1, 0, 1].indexOf(r.adv) >= 0 && !(r.n === 0 && r.adv === 0);
+        })) return null;
+        if (!resist.concat(vuln).every(function(t) {
+          return types.indexOf(t) >= 0;
+        })) return null;
+        var rounds = end.rounds === void 0 ? null : end.rounds, rest = end.rest === void 0 ? null : end.rest;
+        if (rounds !== null && !intIn(rounds, 1, FX.rounds)) return null;
+        if (rest !== null && rests.indexOf(rest) < 0) return null;
+        if (!mods.length && !rolls.length && !resist.length && !vuln.length) return null;
+        return {
+          state: stateId,
+          name,
+          icon: EFFECT_ICONS.indexOf(src.icon) >= 0 ? src.icon : "autre",
+          mods: mods.map(function(m) {
+            return { key: m.key, n: m.n };
+          }),
+          rolls: rolls.map(function(r) {
+            return { res: r.res, n: r.n, adv: r.adv };
+          }),
+          resist: resist.slice(),
+          vuln: vuln.slice(),
+          end: { rounds, at: end.at === "start" ? "start" : "end", rest }
+        };
+      }
+      function cleanEffectCtx(raw, resolutions) {
+        if (!isObj5(raw) || !isObj5(resolutions)) return null;
+        var strs = function(l, re, max) {
+          return Array.isArray(l) && l.length <= max && l.every(function(x) {
+            return typeof x === "string" && re.test(x);
+          }) ? l.slice() : null;
+        };
+        var keys = strs(raw.keys, /^[a-z][a-z0-9_]{0,40}$/, 400), res = strs(raw.res, ID_RE3, LIMITS2.rolls + 1), types = strs(raw.types, TYPE_RE, MAX_TYPES);
+        if (!keys || !res || !types || !res.every(function(id) {
+          return has(resolutions, id);
+        })) return null;
+        var rests = [];
+        if (!Array.isArray(raw.rests) || raw.rests.length > FX.rests) return null;
+        for (var i = 0; i < raw.rests.length; i++) {
+          var r = raw.rests[i];
+          if (!isObj5(r) || typeof r.id !== "string" || !TYPE_RE.test(r.id) || !cleanName(r.name) || !Array.isArray(r.restore) || r.restore.length > FX.restore) return null;
+          var restore = r.restore.filter(function(x) {
+            return isObj5(x) && typeof x.res === "string" && KEY_RE.test(x.res) && RESTORES.indexOf(x.how) >= 0 && (x.how !== "fixed" || intIn(x.n, 1, FX.fixed)) && (x.how !== "formula" || typeof x.key === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(x.key));
+          }).map(function(x) {
+            var o = { res: x.res, how: x.how };
+            if (x.how === "fixed") o.n = x.n;
+            if (x.how === "formula") o.key = x.key;
+            return o;
+          });
+          rests.push({ id: r.id, name: cleanName(r.name), restore });
+        }
+        var nm = isObj5(raw.names) ? raw.names : {};
+        var pick = function(src, ids) {
+          var o = {};
+          ids.forEach(function(id) {
+            var v = isObj5(src) && typeof src[id] === "string" ? cleanName(src[id]) : "";
+            o[id] = v || id;
+          });
+          return o;
+        };
+        var ctx = { keys, res, types, rests, states: [], names: { keys: pick(nm.keys, keys), res: pick(nm.res, res), types: pick(nm.types, types) } };
+        (Array.isArray(raw.states) ? raw.states.slice(0, FX.states) : []).forEach(function(s) {
+          if (!isObj5(s) || typeof s.id !== "string" || !TYPE_RE.test(s.id)) return;
+          var clean2 = cleanEffectIn(ctx, { effect: s });
+          if (clean2 && EFFECT_ICONS.indexOf(s.icon) >= 0) ctx.states.push({ id: s.id, name: clean2.name, icon: s.icon, mods: clean2.mods, rolls: clean2.rolls, resist: clean2.resist, vuln: clean2.vuln, end: clean2.end });
+        });
+        return ctx;
+      }
+      function cleanEffect(rules, raw) {
+        return isObj5(rules) && isObj5(rules.effects) ? cleanEffectIn(effectCtx(rules), raw) : null;
+      }
+      function sumMods(effects) {
+        var out = {};
+        (Array.isArray(effects) ? effects : []).forEach(function(e) {
+          (isObj5(e) && Array.isArray(e.mods) ? e.mods : []).forEach(function(m) {
+            if (!isObj5(m) || typeof m.key !== "string" || typeof m.n !== "number") return;
+            out[m.key] = Math.max(-FX.n, Math.min(FX.n, (has(out, m.key) ? out[m.key] : 0) + m.n));
+          });
+        });
+        return out;
+      }
+      function rollsFor(effects, resId) {
+        var n = 0, up = false, down = false;
+        (Array.isArray(effects) ? effects : []).forEach(function(e) {
+          (isObj5(e) && Array.isArray(e.rolls) ? e.rolls : []).forEach(function(r) {
+            if (!isObj5(r) || r.res !== resId) return;
+            n += Number(r.n) || 0;
+            if (r.adv > 0) up = true;
+            if (r.adv < 0) down = true;
+          });
+        });
+        return { n: Math.max(-FX.roll, Math.min(FX.roll, n)), adv: up === down ? 0 : up ? 1 : -1 };
+      }
+      function restoreTo(item, current, max, value) {
+        var now = Number(current) || 0;
+        if (max === null || max === void 0 || !isFinite(Number(max))) return now;
+        var top = Number(max);
+        var gain = item.how === "full" ? top : item.how === "half" ? Math.floor(top / 2) : item.how === "fixed" ? Number(item.n) || 0 : Math.max(0, Math.round(Number(value) || 0));
+        if (now >= top) return now;
+        return item.how === "full" ? top : Math.min(top, now + Math.max(0, gain));
+      }
+      var IDENTITY = { tone: ["fantasy", "horror", "cyber", "scifi", "modern", "narrative"], audience: ["beginner", "veteran"], complexity: ["oneshot", "campaign"] };
+      function validateIdentity(rules, errs) {
+        var x = rules.identity;
+        if (!isObj5(x)) return errs.push({ path: "identity", message: say2("rules.v.identity") });
+        Object.keys(IDENTITY).forEach(function(k) {
+          if (IDENTITY[k].indexOf(x[k]) < 0) errs.push({ path: "identity." + k, message: say2("rules.v.identity") });
+        });
+      }
+      var byId = function(list2, id) {
+        return (Array.isArray(list2) ? list2 : []).filter(function(x) {
+          return isObj5(x) && x.id === id;
+        })[0];
+      };
+      function nameOf(rules, key) {
+        if (key === "def_reduction" && isObj5(rules.combat)) return say2("rules.reduction");
+        var stats = isObj5(rules.stats) ? rules.stats.list : [], skills = isObj5(rules.skills) ? rules.skills.list : [];
+        var hit = byId(stats, key) || byId(rules.derived, key);
+        if (hit) return cleanName(hit.name) || key;
+        var m = /^(.+)_(mod|max)$/.exec(String(key));
+        if (m && (byId(stats, m[1]) || byId(rules.derived, m[1]))) return say2(m[2] === "mod" ? "rules.modOf" : "rules.maxOf", { name: nameOf(rules, m[1]) });
+        m = /^sk_(.+?)(_t|_p|_x)?$/.exec(String(key));
+        if (m && byId(skills, m[1])) {
+          var n = cleanName(byId(skills, m[1]).name);
+          return !m[2] ? n : say2(m[2] === "_t" ? "rules.totalOf" : m[2] === "_p" ? "rules.passiveOf" : "rules.expertIn", { name: n });
+        }
+        return String(key);
+      }
+      function valueChoices(rules) {
+        return Object.keys(valueKeys(rules)).map(function(k) {
+          return { key: k, name: nameOf(rules, k) };
+        });
+      }
+      function renameKey(rules, kind, from, to) {
+        if (!isObj5(rules) || typeof to !== "string" || from === to) return [];
+        if (!(kind === "resolution" ? ID_RE3 : KEY_RE).test(to)) return [];
+        var item = kind === "resolution" ? has(resolutionsOf(rules), from) ? resolutionsOf(rules)[from] : null : byId(kind === "stats" ? (rules.stats || {}).list : kind === "derived" ? rules.derived : (rules.skills || {}).list, from);
+        if (!item) return [];
+        var pairs = [];
+        if (kind === "stats") {
+          pairs.push([from, to]);
+          if (rules.stats.form === "score") pairs.push([from + "_mod", to + "_mod"]);
+          if (rules.stats.form === "dots" && isInt(rules.stats.max, 1, LIMITS2.dots)) for (var k = 1; k <= rules.stats.max; k++) pairs.push([from + "__" + k, to + "__" + k]);
+        } else if (kind === "derived") {
+          pairs.push([from, to]);
+          if (item.resource) pairs.push([from + "_max", to + "_max"]);
+        } else if (kind === "skills") ["", "_x", "_t", "_p"].forEach(function(s) {
+          pairs.push(["sk_" + from + s, "sk_" + to + s]);
+        });
+        var owners = model(rules).owner, olds = pairs.map(function(p) {
+          return p[0];
+        });
+        if (kind === "resolution" ? has(owners, to) : pairs.some(function(p) {
+          return has(owners, p[1]) && olds.indexOf(p[1]) < 0;
+        })) return [];
+        item.id = to;
+        var map = {};
+        pairs.forEach(function(p) {
+          map[p[0]] = p[1];
+        });
+        var fix = function(k2) {
+          return has(map, k2) ? map[k2] : k2;
+        };
+        (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
+          if (!isObj5(d)) return;
+          if (kind === "resolution" && d.rollWith === from) d.rollWith = to;
+          var r = d.recipe;
+          if (!isObj5(r)) return;
+          ["source", "level"].forEach(function(key) {
+            if (typeof r[key] === "string") r[key] = fix(r[key]);
+          });
+          (Array.isArray(r.terms) ? r.terms : []).forEach(function(t) {
+            if (isObj5(t) && typeof t.ref === "string") t.ref = fix(t.ref);
+          });
+          if (typeof r.formula === "string") r.formula = r.formula.replace(/@([a-z0-9_]+)/g, function(all, key) {
+            return "@" + fix(key);
+          });
+        });
+        if (isObj5(rules.skills)) {
+          if (kind === "derived" && rules.skills.proficiency === from) rules.skills.proficiency = to;
+          if (kind === "stats") (Array.isArray(rules.skills.list) ? rules.skills.list : []).forEach(function(x) {
+            if (isObj5(x) && x.stat === from) x.stat = to;
+          });
+        }
+        if (isObj5(rules.combat) && isObj5(rules.combat.attack) && isObj5(rules.combat.damage)) {
+          var a = rules.combat.attack, dmg = rules.combat.damage;
+          if (kind === "resolution" && a.rollWith === from) a.rollWith = to;
+          if (typeof a.defense === "string") a.defense = fix(a.defense);
+          if (typeof a.proficiency === "string") a.proficiency = fix(a.proficiency);
+          if (Array.isArray(a.stats)) a.stats = a.stats.map(fix);
+          if (Array.isArray(a.finesse)) a.finesse = a.finesse.map(fix);
+          if (typeof dmg.health === "string") dmg.health = fix(dmg.health);
+          if (typeof dmg.reduction === "string") dmg.reduction = fix(dmg.reduction);
+        }
+        if (isObj5(rules.effects) && Array.isArray(rules.effects.states)) rules.effects.states.forEach(function(st) {
+          if (!isObj5(st)) return;
+          (Array.isArray(st.mods) ? st.mods : []).forEach(function(mo) {
+            if (isObj5(mo) && typeof mo.key === "string") mo.key = fix(mo.key);
+          });
+          (Array.isArray(st.rolls) ? st.rolls : []).forEach(function(ro) {
+            if (isObj5(ro) && kind === "resolution" && ro.res === from) ro.res = to;
+          });
+        });
+        (Array.isArray(rules.rests) ? rules.rests : []).forEach(function(re) {
+          (isObj5(re) && Array.isArray(re.restore) ? re.restore : []).forEach(function(x) {
+            if (!isObj5(x)) return;
+            if (typeof x.res === "string") x.res = fix(x.res);
+            if (typeof x.key === "string") x.key = fix(x.key);
+          });
+        });
+        if (isObj5(rules.progression)) {
+          var P = rules.progression;
+          var skillId = function(k2) {
+            return kind === "skills" && k2 === from ? to : k2;
+          };
+          var resId = function(k2) {
+            return kind === "resolution" && k2 === from ? to : k2;
+          };
+          var same = function(k2) {
+            return k2;
+          };
+          if (isObj5(P.xp) && Array.isArray(P.xp.onFail)) P.xp.onFail.forEach(function(x) {
+            if (isObj5(x)) x.res = resId(x.res);
+          });
+          if (isObj5(P.levels)) {
+            if (typeof P.levels.key === "string") P.levels.key = fix(P.levels.key);
+            (Array.isArray(P.levels.gains) ? P.levels.gains : []).forEach(function(g) {
+              (isObj5(g) && Array.isArray(g.give) ? g.give : []).forEach(function(x) {
+                if (!isObj5(x)) return;
+                if (typeof x.key === "string") x.key = fix(x.key);
+                if (typeof x.plus === "string") x.plus = fix(x.plus);
+                if (Array.isArray(x.among)) x.among = x.among.map(x.kind === "train" ? skillId : x.kind === "pick" ? same : fix);
+              });
+            });
+          }
+          (Array.isArray(P.purchases) ? P.purchases : []).forEach(function(b) {
+            if (isObj5(b) && Array.isArray(b.keys)) b.keys = b.keys.map(b.what === "skill" ? skillId : b.what === "feature" ? same : fix);
+          });
+          if (isObj5(P.use) && Array.isArray(P.use.res)) P.use.res = P.use.res.map(resId);
+        }
+        if (isObj5(rules.library) && Array.isArray(rules.library.entries)) rules.library.entries.forEach(function(x) {
+          if (!isObj5(x)) return;
+          if (kind === "stats" && isObj5(x.values) && x.values.arm_carac === from) x.values.arm_carac = to;
+          var ac = x.action;
+          if (!isObj5(ac)) return;
+          if (isObj5(ac.roll) && kind === "resolution" && ac.roll.res === from) ac.roll.res = to;
+          if (isObj5(ac.cost) && typeof ac.cost.res === "string") ac.cost.res = fix(ac.cost.res);
+        });
+        return kind === "resolution" ? [[from, to]] : pairs;
+      }
+      var ROUND_TEXT = { down: "rules.x.fractionDown", up: "rules.x.fractionUp", near: "rules.x.fractionNear" };
+      function explain(rules, key, valueOf) {
+        if (!isObj5(rules)) return "";
+        var val = typeof valueOf === "function" ? valueOf : null;
+        var ref = function(k) {
+          return val ? String(val(k)) + " (" + nameOf(rules, k) + ")" : nameOf(rules, k);
+        };
+        var term = function(t) {
+          return typeof t.ref === "string" ? ref(t.ref) : String(t.n);
+        };
+        var joined = function(terms) {
+          return terms.map(function(t, i) {
+            return (i === 0 ? t.sign < 0 ? "\u2212 " : "" : t.sign < 0 ? " \u2212 " : " + ") + term(t);
+          }).join("");
+        };
+        var words = "";
+        var d = byId(rules.derived, key);
+        var mod = /^(.+)_mod$/.exec(String(key)), total = /^sk_(.+)_t$/.exec(String(key));
+        if (d && isObj5(d.recipe)) {
+          var r = d.recipe;
+          if (r.kind === "modifier") words = say2("rules.x.modifier", { of: ref(r.source) });
+          else if (r.kind === "sum") words = joined(r.terms);
+          else if (r.kind === "perLevel") words = say2("rules.x.perLevel", { base: r.base, per: r.per, level: ref(r.level) });
+          else if (r.kind === "fraction") words = say2(ROUND_TEXT[r.round] || "rules.x.fractionDown", { of: ref(r.source), by: r.by });
+          else if (r.kind === "steps") words = say2("rules.x.steps", { of: ref(r.source), list: r.steps.map(function(x2) {
+            return say2("rules.x.step", { upTo: x2.upTo, value: x2.value });
+          }).join(" ; "), other: r["else"] });
+          else if (r.kind === "max") words = say2("rules.x.max", { list: r.terms.map(term).join(", ") });
+          else if (r.kind === "min") words = say2("rules.x.min", { list: r.terms.map(term).join(", ") });
+          else if (r.kind === "raw") words = String(r.formula).replace(/@([a-z0-9_]+)/g, function(all, k) {
+            return ref(k);
+          });
+        } else if (mod && isObj5(rules.stats) && byId(rules.stats.list, mod[1])) words = say2("rules.x.modifier", { of: ref(mod[1]) });
+        else if (total && isObj5(rules.skills) && byId(rules.skills.list, total[1])) {
+          var x = byId(rules.skills.list, total[1]), parts = [];
+          if (x.stat && readKind(rules) !== "under" && isObj5(rules.stats)) parts.push(ref(statAdd(rules, x.stat).slice(1)));
+          if (rules.skills.rank === "trained") {
+            parts.push(say2("rules.x.ifTrained", { prof: ref(rules.skills.proficiency) }));
+            if (rules.skills.expertise) parts.push(say2("rules.x.ifExpert", { prof: ref(rules.skills.proficiency) }));
+          } else parts.push(ref("sk_" + x.id));
+          words = parts.join(" + ");
+        }
+        if (!words) return "";
+        return val ? String(val(key)) + " = " + words : words;
+      }
+      var tipOf = function(rules, key) {
+        var w = explain(rules, key);
+        return !w ? void 0 : w.length > 80 ? w.slice(0, 79) + "\u2026" : w;
+      };
+      var FORM_RANGES = { score: [3, 18, 10], bonus: [-2, 3, 0], percent: [0, 100, 50], dots: [0, 5, 1] };
+      function formRange(form) {
+        return (FORM_RANGES[form] || FORM_RANGES.score).slice();
+      }
+      function starterStats(fam) {
+        var form = fam === "d100" || fam === "d100deg" ? "percent" : fam === "pool10" ? "dots" : fam === "pbta" || fam === "fate" || fam === "pool6best" ? "bonus" : "score";
+        var range2 = formRange(form);
+        return { form, min: range2[0], max: range2[1], "default": range2[2], list: [
+          { id: "force", name: say2("rules.stat.strength") },
+          { id: "agilite", name: say2("rules.stat.agility") },
+          { id: "esprit", name: say2("rules.stat.mind") }
+        ] };
+      }
+      function starterDerived(rules) {
+        var fam = isObj5(rules.resolution) ? rules.resolution.family : "custom";
+        var stats = isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : [];
+        var add = function(x) {
+          return x ? rules.stats.form === "score" ? x.id + "_mod" : x.id : null;
+        };
+        var body = add(stats[0]), quick = add(stats[1] || stats[0]);
+        var resource = function(id, key, base2, ref) {
+          return { id, name: say2(key), recipe: { kind: "sum", terms: [{ sign: 1, n: base2 }].concat(ref ? [{ sign: 1, ref }] : []) }, show: "gauge", resource: true };
+        };
+        var ideas = [];
+        if (fam === "d20" || fam === "d20adv" || fam === "3d6under") {
+          ideas.push({ id: "niveau", name: say2("rules.der.level"), recipe: { kind: "input", min: 1, max: 20, "default": 1 }, show: "field" });
+          ideas.push({ id: "maitrise", name: say2("rules.der.proficiency"), recipe: { kind: "steps", source: "niveau", steps: [{ upTo: 4, value: 2 }, { upTo: 8, value: 3 }, { upTo: 12, value: 4 }, { upTo: 16, value: 5 }], "else": 6 }, show: "tile" });
+          ideas.push(resource("pv", "rules.der.hp", 8, body));
+          if (quick) ideas.push({ id: "initiative", name: say2("rules.der.initiative"), recipe: { kind: "sum", terms: [{ sign: 1, ref: quick }] }, show: "tile", rollable: true });
+          if (quick) ideas.push({ id: "defense", name: say2("rules.der.defense"), recipe: { kind: "sum", terms: [{ sign: 1, n: 10 }, { sign: 1, ref: quick }] }, show: "tile" });
+        } else if (fam === "d100" || fam === "d100deg") {
+          ideas.push(resource("pv", "rules.der.hp", 10), resource("sm", "rules.der.sanity", 50), resource("pm", "rules.der.magic", 10));
+        } else if (fam === "pool10") ideas.push(resource("sante", "rules.der.health", 7), resource("volonte", "rules.der.willpower", 3));
+        else ideas.push(resource("stress", "rules.der.stress", fam === "fate" ? 3 : 9));
+        var trial = JSON.parse(JSON.stringify(rules));
+        trial.derived = Array.isArray(trial.derived) ? trial.derived : [];
+        if (validateRules(trial).length) return [];
+        return ideas.filter(function(d) {
+          trial.derived.push(d);
+          if (validateRules(trial).length) {
+            trial.derived.pop();
+            return false;
+          }
+          return true;
+        });
+      }
+      function starterSkills(rules) {
+        var fam = isObj5(rules.resolution) ? rules.resolution.family : "custom";
+        var stats = isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : [];
+        var prof = (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
+          return isObj5(d) && d.id === "maitrise";
+        })[0];
+        var rank = prof ? "trained" : fam === "d100" || fam === "d100deg" ? "percent" : fam === "pool10" || fam === "pool6best" ? "dots" : "bonus";
+        return { mode: "fixed", rank, proficiency: prof ? "maitrise" : null, expertise: false, list: [
+          { id: "athle", name: say2("rules.sk.athletics"), stat: stats[0] ? stats[0].id : null, passive: false },
+          { id: "percept", name: say2("rules.sk.perception"), stat: (stats[2] || stats[0] || {}).id || null, passive: false }
+        ] };
+      }
+      function starterRecipe(kind, key) {
+        switch (kind) {
+          case "input":
+            return { kind: "input", min: 0, max: 20, "default": 1 };
+          case "modifier":
+            return { kind: "modifier", source: key };
+          case "sum":
+            return { kind: "sum", terms: [{ sign: 1, n: 10 }].concat(key ? [{ sign: 1, ref: key }] : []) };
+          case "perLevel":
+            return { kind: "perLevel", base: 0, per: 1, level: key };
+          case "fraction":
+            return { kind: "fraction", source: key, by: 2, round: "down" };
+          case "steps":
+            return { kind: "steps", source: key, steps: [{ upTo: 4, value: 2 }], "else": 3 };
+          case "max":
+          case "min":
+            return { kind, terms: [{ sign: 1, ref: key }, { sign: 1, n: 0 }] };
+        }
+        return { kind: "raw", formula: key ? "@" + key : "0" };
+      }
+      var STARTER_TYPES = {
+        fantasy: ["tranchant", "perforant", "contondant", "feu", "froid", "foudre", "poison", "necrotique"],
+        horror: ["contondant", "tranchant", "balistique", "feu", "psychique"],
+        cyber: ["balistique", "tranchant", "contondant", "electrique", "feu", "explosif"],
+        scifi: ["energie", "balistique", "contondant", "feu", "explosif", "froid"],
+        modern: ["contondant", "tranchant", "balistique", "feu", "explosif"],
+        narrative: []
+      };
+      var TYPE_TEXT = {
+        tranchant: "rules.dt.tranchant",
+        perforant: "rules.dt.perforant",
+        contondant: "rules.dt.contondant",
+        feu: "rules.dt.feu",
+        froid: "rules.dt.froid",
+        foudre: "rules.dt.foudre",
+        poison: "rules.dt.poison",
+        necrotique: "rules.dt.necrotique",
+        balistique: "rules.dt.balistique",
+        psychique: "rules.dt.psychique",
+        electrique: "rules.dt.electrique",
+        explosif: "rules.dt.explosif",
+        energie: "rules.dt.energie"
+      };
+      function starterCombat(rules) {
+        var derived = Array.isArray(rules.derived) ? rules.derived.filter(isObj5) : [];
+        var health = derived.filter(function(d) {
+          return d.resource;
+        })[0];
+        if (!health || !isObj5(rules.resolution)) return null;
+        var stats = isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj5).map(function(x) {
+          return x.id;
+        }) : [];
+        var tone = isObj5(rules.identity) && has(STARTER_TYPES, rules.identity.tone) ? rules.identity.tone : "fantasy";
+        return {
+          attack: {
+            rollWith: rules.resolution.id,
+            defense: derived.some(function(d) {
+              return d.id === "defense";
+            }) ? "defense" : null,
+            proficiency: derived.some(function(d) {
+              return d.id === "maitrise";
+            }) ? "maitrise" : null,
+            stats,
+            finesse: stats.length >= 2 ? [stats[0], stats[1]] : null
+          },
+          damage: {
+            addStat: isObj5(rules.stats) && rules.stats.form === "score",
+            critical: "double",
+            types: STARTER_TYPES[tone].map(function(id) {
+              return { id, name: say2(TYPE_TEXT[id]) };
+            }),
+            health: health.id,
+            reduction: "def_reduction"
+          }
+        };
+      }
+      var STARTER_STATES = {
+        fantasy: ["a_terre", "aveugle", "poison", "peur", "benediction", "entrave"],
+        horror: ["peur", "saignement", "aveugle"],
+        cyber: ["entrave", "protection", "aveugle", "saignement"],
+        scifi: ["entrave", "protection", "aveugle", "saignement"],
+        modern: ["entrave", "protection", "aveugle", "saignement"],
+        narrative: []
+      };
+      function starterEffects(rules) {
+        if (!isObj5(rules.resolution)) return null;
+        var tone = isObj5(rules.identity) && has(STARTER_STATES, rules.identity.tone) ? rules.identity.tone : "fantasy";
+        var res = rules.resolution, k = res.read ? res.read.kind : "over";
+        var step = res.dice && res.dice.count === "pool" ? 1 : k === "under" ? 20 : 2;
+        var main2 = res.id, rests = Array.isArray(rules.rests) ? rules.rests : [];
+        var last = rests.length ? rests[rests.length - 1].id : null;
+        var defence = (Array.isArray(rules.derived) ? rules.derived : []).some(function(d) {
+          return isObj5(d) && d.id === "defense" && d.recipe && d.recipe.kind !== "input" && !d.resource;
+        });
+        var s = function(id, mods, rolls, end) {
+          return { id, name: say2("rules.state." + id), icon: id, mods, rolls, resist: [], vuln: [], end: { rounds: end.rounds || null, at: "end", rest: end.rest || null } };
+        };
+        var adv = function(a) {
+          return k === "over" || k === "under" ? [{ res: main2, n: 0, adv: a }] : [{ res: main2, n: a * step, adv: 0 }];
+        };
+        var MAKE = {
+          a_terre: function() {
+            return s("a_terre", defence ? [{ key: "defense", n: -2 }] : [], adv(-1), {});
+          },
+          aveugle: function() {
+            return s("aveugle", [], adv(-1), {});
+          },
+          poison: function() {
+            return s("poison", [], adv(-1), { rest: last });
+          },
+          peur: function() {
+            return s("peur", [], [{ res: main2, n: -step, adv: 0 }], { rounds: 3 });
+          },
+          benediction: function() {
+            return s("benediction", [], [{ res: main2, n: Math.max(1, step / 2), adv: 0 }], { rounds: 10 });
+          },
+          entrave: function() {
+            return s("entrave", defence ? [{ key: "defense", n: -2 }] : [], [], { rounds: 1 });
+          },
+          protection: function() {
+            return s("protection", defence ? [{ key: "defense", n: 2 }] : [], defence ? [] : [{ res: main2, n: step, adv: 0 }], {});
+          },
+          saignement: function() {
+            return s("saignement", [], [{ res: main2, n: -step, adv: 0 }], { rest: last });
+          }
+        };
+        var states = STARTER_STATES[tone].map(function(id) {
+          return MAKE[id]();
+        }).filter(function(x) {
+          return x.mods.length || x.rolls.length;
+        });
+        return { states };
+      }
+      function starterRests(rules) {
+        var res = (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
+          return isObj5(d) && d.resource;
+        });
+        if (!res.length) return null;
+        return [
+          { id: "halte", name: say2("rules.rest.halte"), restore: res.map(function(d) {
+            return { res: d.id, how: "half" };
+          }) },
+          { id: "nuit", name: say2("rules.rest.nuit"), restore: res.map(function(d) {
+            return { res: d.id, how: "full" };
+          }) }
+        ];
+      }
+      var PROG_KINDS = ["levels", "points", "use", "advances"];
+      var PROG_BY_FAMILY = { d20: "levels", d20adv: "levels", d100: "use", d100deg: "use", pool10: "points", pool6best: "points", "3d6under": "points", fate: "points", pbta: "advances" };
+      function progKindOf(fam) {
+        return has(PROG_BY_FAMILY, fam) ? PROG_BY_FAMILY[fam] : null;
+      }
+      function starterProgression(rules, kind) {
+        var fam = isObj5(rules.resolution) ? rules.resolution.family : "custom";
+        kind = kind || progKindOf(fam);
+        if (PROG_KINDS.indexOf(kind) < 0) return null;
+        var derived = Array.isArray(rules.derived) ? rules.derived.filter(isObj5) : [];
+        var level = derived.filter(function(d) {
+          return d.id === "niveau";
+        })[0] || null;
+        var stats = isObj5(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj5).map(function(x) {
+          return x.id;
+        }) : [];
+        var sk = isObj5(rules.skills) && rules.skills.mode === "fixed" && Array.isArray(rules.skills.list) && rules.skills.list.length ? rules.skills : null;
+        var hp = derived.filter(function(d) {
+          return d.resource;
+        })[0] || null;
+        var main2 = isObj5(rules.resolution) ? rules.resolution.id : "test";
+        var xp = { id: "xp", name: say2("rules.p.xp"), onFail: [] };
+        var feature = function(id) {
+          return { id, name: say2("rules.p.f." + id), text: say2("rules.p.f." + id + ".text") };
+        };
+        var add = [], prog = null;
+        if (kind === "levels" || kind === "advances") {
+          if (level && (!isObj5(level.recipe) || level.recipe.kind !== "input")) return null;
+          if (!level) {
+            level = { id: "niveau", name: say2("rules.der.level"), recipe: { kind: "input", min: 1, max: kind === "levels" ? 20 : 10, "default": 1 }, show: "field" };
+            add.push(level);
+          }
+        }
+        if (kind === "levels") {
+          var gains = [];
+          if (hp) {
+            var ref = isObj5(hp.recipe) && Array.isArray(hp.recipe.terms) ? hp.recipe.terms.filter(function(t) {
+              return isObj5(t) && typeof t.ref === "string";
+            })[0] : null;
+            gains.push({ when: { every: 1, from: 2 }, give: [{ kind: "add", key: hp.id, dice: "1d8", plus: ref ? ref.ref : null, how: "player" }] });
+          }
+          if (stats.length) gains.push({ when: { every: 4, from: 4 }, give: [{ kind: "spread", points: 2, among: stats.slice(0, PROG.among), maxEach: 1 }] });
+          gains.push({ when: { at: [3, 7] }, give: [{ kind: "pick", among: ["endurci", "vif", "resolu"], pick: 1, times: 1 }] });
+          var marks = [300, 900, 2700, 6500, 14e3, 23e3, 34e3, 48e3, 64e3, 85e3, 1e5, 12e4, 14e4, 165e3, 195e3, 225e3, 265e3, 305e3, 355e3];
+          prog = { xp, levels: { key: level.id, cost: { kind: "marks", marks, then: "355000+(@n-20)*50000" }, spend: false, gains }, purchases: null, use: null, features: ["endurci", "vif", "resolu"].map(feature) };
+        } else if (kind === "advances") {
+          var six = ["nouvelle_action", "plus_un", "autre_livret", "allie", "atout", "guerison"];
+          prog = { xp: { id: "xp", name: say2("rules.p.xp"), onFail: [{ res: main2, n: 1 }] }, levels: { key: level.id, cost: { kind: "fixed", n: 5 }, spend: true, gains: [{ when: { every: 1, from: 2 }, give: [{ kind: "pick", among: six, pick: 1, times: 2 }] }] }, purchases: null, use: null, features: six.map(feature) };
+        } else if (kind === "use") {
+          if (!sk) return null;
+          prog = { xp: null, levels: null, purchases: null, use: { res: [main2], on: "success", test: "1d100", beat: "value", gain: "1d10" }, features: [] };
+        } else {
+          var buys = [];
+          var statMax = isObj5(rules.stats) && isInt(rules.stats.max, 1, LIMITS2.add) ? rules.stats.max : 5;
+          if (stats.length) buys.push({ id: "carac", name: say2("rules.p.buyStat"), what: "stat", keys: "any", price: fam === "fate" ? "@r*2" : "@r*5", max: statMax });
+          if (sk) buys.push({ id: "competence", name: say2("rules.p.buySkill"), what: "skill", keys: "any", price: fam === "fate" ? "@r" : "@r*3", max: sk.rank === "trained" ? 1 : sk.rank === "dots" ? 5 : sk.rank === "percent" ? 100 : 5 });
+          buys.push({ id: "aptitude", name: say2("rules.p.buyFeature"), what: "feature", keys: "any", price: 7, max: 1 });
+          prog = { xp, levels: null, purchases: buys, use: null, features: ["endurci", "vif"].map(feature) };
+        }
+        var trial = JSON.parse(JSON.stringify(rules));
+        trial.derived = (Array.isArray(trial.derived) ? trial.derived : []).concat(add);
+        trial.progression = prog;
+        return validateRules(trial).length ? null : { derived: add, progression: prog };
+      }
+      function simulate(res, input, rng) {
+        var r = typeof rng === "function" ? rng : Math.random;
+        var plan = planRoll(res, input), d = res.dice, kind = res.read.kind;
+        var die = function() {
+          return 1 + Math.floor(r() * d.sides);
+        };
+        var one = function() {
+          var v = die(), out = [], tries = 0;
+          if (d.reroll) while (v === d.reroll.on && tries < (d.reroll.once ? 1 : 20)) {
+            v = die();
+            tries++;
+          }
+          out.push(v);
+          if (d.explode) {
+            var n = 0, limit = d.explode.limit || 20;
+            while (v === d.sides && n < limit) {
+              v = die();
+              out.push(v);
+              n++;
+            }
+          }
+          return out;
+        };
+        var pool = d.count === "pool";
+        var adv = res.window.advantage ? Math.max(-1, Math.min(1, Math.round(Number(input.advantage) || 0))) : 0;
+        var count = pool ? plan.pool === 0 ? kind === "best" ? 2 : 0 : plan.pool : adv ? 2 : d.count;
+        var groups = [];
+        for (var i = 0; i < count; i++) groups.push(one());
+        var sum = function(g) {
+          return g.reduce(function(a, b) {
+            return a + b;
+          }, 0);
+        };
+        var keepN = adv ? 1 : d.keep && !pool ? d.keep.n : count;
+        var high = adv ? kind === "under" ? adv < 0 : adv > 0 : d.keep ? d.keep.which === "high" : true;
+        var order = groups.map(function(g, i2) {
+          return i2;
+        }).sort(function(a, b) {
+          return high ? sum(groups[b]) - sum(groups[a]) : sum(groups[a]) - sum(groups[b]);
+        });
+        var kept = {};
+        order.slice(0, keepN).forEach(function(i2) {
+          kept[i2] = true;
+        });
+        var dice = [], total = 0;
+        groups.forEach(function(g, i2) {
+          g.forEach(function(v) {
+            dice.push({ value: v, sides: d.sides, discarded: !kept[i2] });
+            if (kept[i2]) total += d.fate ? v - 2 : v;
+          });
+        });
+        if (!pool && kind !== "under") {
+          var bonus = res.window.bonus ? Math.round(Math.max(-20, Math.min(20, Number(input.bonus) || 0))) : 0;
+          total += Math.round(Math.max(-LIMITS2.add, Math.min(LIMITS2.add, Number(input.adds) || 0))) + res.bonus + bonus;
+        }
+        var outcome = readRoll(res, { total, dice }, plan);
+        var shown = kind === "count" ? say2("rules.successes", { n: outcome.successes }) : kind === "best" && outcome.best !== null ? outcome.best : total;
+        var note = kind === "count" || kind === "best" ? outcome.label : noteOf(res, outcome, plan);
+        return { plan, total, dice, outcome, note, shown };
+      }
+      function successRates(res, input, n, rng) {
+        var out = { crit: 0, success: 0, partial: 0, fail: 0, fumble: 0 }, times = Math.max(1, Math.min(1e5, n || 1e3));
+        for (var i = 0; i < times; i++) {
+          var tone = simulate(res, input, rng).outcome.tone;
+          if (tone && has(out, tone)) out[tone]++;
+        }
+        Object.keys(out).forEach(function(k) {
+          out[k] = out[k] / times;
+        });
+        return out;
+      }
+      return {
+        FAMILIES,
+        LIMITS: LIMITS2,
+        ID_RE: ID_RE3,
+        TONES,
+        family,
+        validateRules,
+        resolutionsOf,
+        cleanRules,
+        readRoll,
+        noteOf,
+        planRoll,
+        template,
+        addsOf,
+        targetOf,
+        KEY_RE,
+        model,
+        statAdd,
+        flatFormulas,
+        defaultsOf,
+        BIND_LAYOUTS,
+        bindKnown,
+        layoutProblem,
+        boundChildren,
+        boundBlock,
+        lockedKeys,
+        IDENTITY,
+        SIDES,
+        nameOf,
+        valueChoices,
+        renameKey,
+        explain,
+        formRange,
+        starterStats,
+        starterDerived,
+        starterSkills,
+        starterRecipe,
+        simulate,
+        successRates,
+        CRITICALS,
+        EFFECT_ICONS,
+        RESTORES,
+        modKeys,
+        effectKeys,
+        iconName,
+        cleanEffect,
+        effectCtx,
+        cleanEffectIn,
+        cleanEffectCtx,
+        sumMods,
+        rollsFor,
+        restoreTo,
+        starterEffects,
+        starterRests,
+        attackParts,
+        parseDamage,
+        damageExpression,
+        damageOf,
+        starterCombat,
+        cleanCombat,
+        combatKeys,
+        listOf,
+        weaponOf,
+        LIB,
+        libraryPools,
+        fieldsOf,
+        validateLibrary,
+        entryHash,
+        actionWords,
+        cleanLibraryCtx,
+        cleanEntryIn,
+        originOf,
+        rowOf,
+        optionKeys,
+        pasteEntries,
+        actionText,
+        libraryCtx,
+        starterLibrary,
+        PROG,
+        GIVES,
+        dicePart,
+        diceAverage,
+        progTargets,
+        progKeys,
+        levelCost,
+        gainsAt,
+        describeGive,
+        outline,
+        levelPlan,
+        readChoices,
+        progressCtx,
+        cleanProgressCtx,
+        PROG_KINDS,
+        progKindOf,
+        starterProgression,
+        useTexts: useTexts2,
+        say: say2
+      };
+    });
+  }
+});
+
 // apps/desktop/renderer/builder-core.js
 var require_builder_core = __commonJS({
   "apps/desktop/renderer/builder-core.js"(exports2, module2) {
@@ -2572,6 +6836,8 @@ var require_builder_core = __commonJS({
         given2 = typeof fn === "function" ? fn : null;
       }
       var Theme = typeof module2 === "object" && module2.exports ? require_builder_theme() : self.TTBuilderTheme;
+      var Rules = typeof module2 === "object" && module2.exports ? require_rules_core() : self.TTRules;
+      Rules.useTexts(say2);
       var LIMITS2 = { nodes: 2e3, depth: 12, text: 500, name: 80, formula: 1e3, roll: 1e3, options: 60, optionLabel: 60, views: 1, tabs: 12, tabTitle: 60, skins: 6 };
       var RESERVED_IDS = { loom: true, loom_skin: true, loom_vision: true };
       var ID_RE3 = /^\w{1,40}$/;
@@ -2580,23 +6846,55 @@ var require_builder_core = __commonJS({
       var ALIGN = ["Left", "Center", "Right"];
       var VARIANT_LABELS = { get ""() {
         return say2("builder.aucune");
-      }, title: "Titre", subtitle: "Sous-titre", muted: "Discret", badge: "Pastille", banner: "Bandeau", get stat() {
+      }, get title() {
+        return say2("builder.ui.titre");
+      }, get subtitle() {
+        return say2("builder.ui.sousTitre");
+      }, get muted() {
+        return say2("builder.ui.discret");
+      }, get badge() {
+        return say2("builder.ui.pastille");
+      }, get banner() {
+        return say2("builder.ui.bandeau");
+      }, get stat() {
         return say2("builder.chiffreCle");
       }, get card() {
         return say2("builder.carte");
-      }, inset: "En creux", button: "Bouton", inline: "En ligne (compact)" };
-      var SIZE_LABELS = { "": "Normale", tiny: "Minuscule", small: "Petite", medium: "Moyenne", large: "Grande", get giant() {
+      }, get inset() {
+        return say2("builder.ui.enCreux");
+      }, get button() {
+        return say2("builder.ui.bouton");
+      }, get inline() {
+        return say2("builder.ui.enLigneCompact");
+      } };
+      var SIZE_LABELS = { get ""() {
+        return say2("builder.ui.normale");
+      }, get tiny() {
+        return say2("builder.ui.minuscule");
+      }, get small() {
+        return say2("builder.ui.petite");
+      }, get medium() {
+        return say2("builder.ui.moyenne");
+      }, get large() {
+        return say2("builder.ui.grande");
+      }, get giant() {
         return say2("builder.geante");
       } };
       var gmOnlyProp = { k: "gmOnly", t: "bool", get label() {
         return say2("builder.reserveMjJoueursNe");
       } };
       var variantProp = function(name) {
-        return { k: "variant", t: "enum", options: [""].concat(Theme.VARIANTS[name]), labels: VARIANT_LABELS, def: "", label: "Style" };
+        return { k: "variant", t: "enum", options: [""].concat(Theme.VARIANTS[name]), labels: VARIANT_LABELS, def: "", get label() {
+          return say2("builder.ui.style");
+        } };
       };
       var COMPONENTS = {
-        Row: { label: "Ligne", container: true, children: ["Column"], props: [] },
-        Column: { label: "Colonne", container: true, props: [{ k: "size", t: "int", min: 1, max: 12, def: 12, get label() {
+        Row: { get label() {
+          return say2("builder.ui.ligne");
+        }, container: true, children: ["Column"], props: [] },
+        Column: { get label() {
+          return say2("builder.ui.colonne");
+        }, container: true, props: [{ k: "size", t: "int", min: 1, max: 12, def: 12, get label() {
           return say2("builder.largeurSur12");
         } }, variantProp("Column")] },
         Label: {
@@ -2610,7 +6908,9 @@ var require_builder_core = __commonJS({
             }, get label() {
               return say2("builder.texteFormuleSiCalcule");
             } },
-            { k: "align", t: "enum", options: ALIGN, def: "Left", label: "Alignement" },
+            { k: "align", t: "enum", options: ALIGN, def: "Left", get label() {
+              return say2("builder.ui.alignement");
+            } },
             { k: "computed", t: "bool", def: false, get label() {
               return say2("builder.valeurCalculee");
             } },
@@ -2629,6 +6929,9 @@ var require_builder_core = __commonJS({
             { k: "againstField", t: "field", pool: "number", get label() {
               return say2("builder.duelComparerJetCe");
             } },
+            { k: "follows", t: "resolution", get label() {
+              return say2("builder.follows");
+            } },
             { k: "againstMode", t: "enum", options: ["", "atMost"], labels: { get ""() {
               return say2("builder.jetDoitAtteindreDefense");
             }, get atMost() {
@@ -2637,13 +6940,21 @@ var require_builder_core = __commonJS({
               return say2("builder.commentJetGagne");
             } },
             variantProp("Label"),
-            { k: "textSize", t: "enum", options: ["", "tiny", "small", "medium", "large", "giant"], labels: SIZE_LABELS, def: "", label: "Taille" },
-            { k: "bold", t: "bool", def: false, label: "Gras" },
-            { k: "upper", t: "bool", def: false, label: "Majuscules" },
+            { k: "textSize", t: "enum", options: ["", "tiny", "small", "medium", "large", "giant"], labels: SIZE_LABELS, def: "", get label() {
+              return say2("builder.ui.taille");
+            } },
+            { k: "bold", t: "bool", def: false, get label() {
+              return say2("builder.ui.gras");
+            } },
+            { k: "upper", t: "bool", def: false, get label() {
+              return say2("builder.ui.majuscules");
+            } },
             { k: "markdown", t: "bool", def: false, get label() {
               return say2("builder.miseFormeMarkdownGras");
             } },
-            { k: "tooltipLabel", t: "text", def: "", label: "Infobulle au survol (optionnel)" },
+            { k: "tooltipLabel", t: "text", def: "", get label() {
+              return say2("builder.ui.infobulleAuSurvolOptionnel");
+            } },
             { k: "quickBar", t: "bool", def: false, get label() {
               return say2("builder.peutEtreGlisseDans");
             } },
@@ -2661,8 +6972,12 @@ var require_builder_core = __commonJS({
           props: [
             { k: "name", t: "text", get def() {
               return say2("builder.champ");
-            }, label: "Nom" },
-            { k: "placeholder", t: "text", def: "", label: "Indication" },
+            }, get label() {
+              return say2("builder.ui.nom");
+            } },
+            { k: "placeholder", t: "text", def: "", get label() {
+              return say2("builder.ui.indication");
+            } },
             { k: "defaultValue", t: "text", def: "", get label() {
               return say2("builder.valeurParDefaut");
             } },
@@ -2679,12 +6994,18 @@ var require_builder_core = __commonJS({
           props: [
             { k: "name", t: "text", get def() {
               return say2("builder.nombre");
-            }, label: "Nom" },
+            }, get label() {
+              return say2("builder.ui.nom");
+            } },
             { k: "defaultValue", t: "text", def: "0", get label() {
               return say2("builder.valeurParDefautFormule");
             } },
-            { k: "min", t: "number", def: null, label: "Minimum" },
-            { k: "max", t: "number", def: null, label: "Maximum" },
+            { k: "min", t: "number", def: null, get label() {
+              return say2("builder.ui.minimum");
+            } },
+            { k: "max", t: "number", def: null, get label() {
+              return say2("builder.ui.maximum");
+            } },
             { k: "computed", t: "bool", def: false, get label() {
               return say2("builder.valeurCalculee");
             } },
@@ -2700,7 +7021,9 @@ var require_builder_core = __commonJS({
             } }, def: "", get label() {
               return say2("builder.alignementNombre");
             } },
-            { k: "tooltipLabel", t: "text", def: "", label: "Infobulle au survol (optionnel)" },
+            { k: "tooltipLabel", t: "text", def: "", get label() {
+              return say2("builder.ui.infobulleAuSurvolOptionnel");
+            } },
             gmOnlyProp
           ]
         },
@@ -2711,8 +7034,12 @@ var require_builder_core = __commonJS({
           value: true,
           icon: "\xB6",
           props: [
-            { k: "name", t: "text", def: "Notes", label: "Nom" },
-            { k: "placeholder", t: "text", def: "", label: "Indication" },
+            { k: "name", t: "text", def: "Notes", get label() {
+              return say2("builder.ui.nom");
+            } },
+            { k: "placeholder", t: "text", def: "", get label() {
+              return say2("builder.ui.indication");
+            } },
             { k: "defaultValue", t: "text", def: "", get label() {
               return say2("builder.valeurParDefaut");
             } },
@@ -2727,7 +7054,9 @@ var require_builder_core = __commonJS({
           numeric: true,
           icon: "\u2611",
           props: [
-            { k: "name", t: "text", def: "Case", label: "Nom" },
+            { k: "name", t: "text", def: "Case", get label() {
+              return say2("builder.ui.nom");
+            } },
             { k: "label", t: "text", def: "Case", get label() {
               return say2("builder.texteCote");
             } },
@@ -2741,14 +7070,24 @@ var require_builder_core = __commonJS({
           ]
         },
         Choice: {
-          label: "Liste de choix",
+          get label() {
+            return say2("builder.ui.listeDeChoix");
+          },
           value: true,
           icon: "\u25BE",
           props: [
-            { k: "name", t: "text", def: "Choix", label: "Nom" },
-            { k: "options", t: "options", def: null, label: "Options" },
-            { k: "optional", t: "bool", def: false, label: "Peut rester vide" },
-            { k: "multiple", t: "bool", def: false, label: "Plusieurs choix" },
+            { k: "name", t: "text", def: "Choix", get label() {
+              return say2("builder.ui.nom");
+            } },
+            { k: "options", t: "options", def: null, get label() {
+              return say2("builder.ui.options");
+            } },
+            { k: "optional", t: "bool", def: false, get label() {
+              return say2("builder.ui.peutResterVide");
+            } },
+            { k: "multiple", t: "bool", def: false, get label() {
+              return say2("builder.ui.plusieursChoix");
+            } },
             { k: "expanded", t: "bool", def: false, get label() {
               return say2("builder.toutesOptionsVisibles");
             } },
@@ -2772,14 +7111,22 @@ var require_builder_core = __commonJS({
             } }
           ]
         },
-        Avatar: { label: "Portrait", icon: "\u25C9", props: [{ k: "name", t: "text", def: "Portrait", label: "Nom" }] },
+        Avatar: { get label() {
+          return say2("builder.ui.portrait");
+        }, icon: "\u25C9", props: [{ k: "name", t: "text", def: "Portrait", get label() {
+          return say2("builder.ui.nom");
+        } }] },
         Track: {
-          label: "Pastilles",
+          get label() {
+            return say2("builder.ui.pastilles");
+          },
           value: true,
           numeric: true,
           icon: "\u25CF",
           props: [
-            { k: "name", t: "text", def: "Pastilles", label: "Nom" },
+            { k: "name", t: "text", def: "Pastilles", get label() {
+              return say2("builder.ui.nom");
+            } },
             { k: "count", t: "int", min: 1, max: 20, def: 5, get label() {
               return say2("builder.nombrePastilles");
             } },
@@ -2789,7 +7136,9 @@ var require_builder_core = __commonJS({
           ]
         },
         Gauge: {
-          label: "Jauge",
+          get label() {
+            return say2("builder.ui.jauge");
+          },
           icon: "\u25AD",
           props: [
             { k: "name", t: "text", def: "Jauge", get label() {
@@ -2804,28 +7153,38 @@ var require_builder_core = __commonJS({
             { k: "max", t: "int", min: 1, max: 9999, get label() {
               return say2("builder.maximumFixe");
             } },
-            { k: "segments", t: "int", min: 0, max: 40, def: 10, label: "Cellules (0 : automatique)" },
+            { k: "segments", t: "int", min: 0, max: 40, def: 10, get label() {
+              return say2("builder.ui.cellules0Automatique");
+            } },
             { k: "showValue", t: "bool", def: true, get label() {
               return say2("builder.afficherValeurMax");
             } }
           ]
         },
         Container: {
-          label: "Conteneur",
+          get label() {
+            return say2("builder.ui.conteneur");
+          },
           container: true,
           icon: "\u25A6",
           props: [{ k: "layout", t: "enum", options: ["horizontal", "vertical"], labels: { get horizontal() {
             return say2("builder.ligneCoteCote");
           }, get vertical() {
             return say2("builder.pileSousAutre");
-          } }, def: "horizontal", label: "Disposition" }, variantProp("Container")]
+          } }, def: "horizontal", get label() {
+            return say2("builder.ui.disposition");
+          } }, variantProp("Container")]
         },
         Tab: {
-          label: "Onglets",
+          get label() {
+            return say2("builder.ui.onglets");
+          },
           container: true,
           icon: "\u229F",
           props: [
-            { k: "tabs", t: "tabs", def: null, label: "Onglets" },
+            { k: "tabs", t: "tabs", def: null, get label() {
+              return say2("builder.ui.onglets");
+            } },
             { k: "vertical", t: "bool", def: false, get label() {
               return say2("builder.ongletsGaucheVerticaux");
             } },
@@ -2884,6 +7243,9 @@ var require_builder_core = __commonJS({
       }
       var isObj5 = function(v) {
         return v !== null && typeof v === "object" && !Array.isArray(v);
+      };
+      var own = function(o, k) {
+        return typeof k === "string" && Object.prototype.hasOwnProperty.call(o, k) ? o[k] : void 0;
       };
       var STR_CTRL = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\u0085\u2028\u2029]/g;
       function cleanText2(v, max) {
@@ -3170,9 +7532,9 @@ var require_builder_core = __commonJS({
         if (result.type === "string") return result.value;
         return Number.isNaN(result.total) ? 0 : result.total;
       }
-      function walk3(nodes, fn, path7, depth) {
+      function walk3(nodes, fn, path8, depth) {
         (nodes || []).forEach(function(n, i) {
-          var p = (path7 || []).concat(i);
+          var p = (path8 || []).concat(i);
           fn(n, p, depth || 0);
           slots(n).forEach(function(sl) {
             walk3(sl.list, fn, p, (depth || 0) + 1);
@@ -3303,6 +7665,62 @@ var require_builder_core = __commonJS({
           LIMITS2.text = saved.text;
         }
       }
+      function syncBound(doc, opts) {
+        if (!isObj5(doc) || !isObj5(doc.rules) || !allNodes(doc).some(function(n) {
+          return typeof n.bind === "string";
+        }) && !isObj5(doc.rules.effects) && !isObj5(doc.rules.progression)) return doc;
+        if (Rules.validateRules(doc.rules).length) return doc;
+        var copy = opts && opts.inPlace ? doc : JSON.parse(JSON.stringify(doc));
+        var alone = {};
+        allNodes(copy).forEach(function(n) {
+          if (typeof n.bind === "string" && n.bind.indexOf("derived:") === 0) alone[n.bind.slice(8)] = true;
+        });
+        var defaults = Rules.defaultsOf(copy.rules);
+        var env = { ref: function(id) {
+          return Object.prototype.hasOwnProperty.call(defaults, id) ? defaults[id] : 0;
+        }, variable: function() {
+          return void 0;
+        }, context: function() {
+          return 0;
+        } };
+        var evaluate = function(f) {
+          var p = parseFormula(f);
+          return p.ok ? evalFinal(evalAst(p.ast, env)) : 0;
+        };
+        allNodes(copy).forEach(function(n) {
+          if (n.className !== "Container" || typeof n.bind !== "string") return;
+          var kids = Rules.boundChildren(copy.rules, n.bind, n.bindLayout, { own: alone, evaluate });
+          if (kids) n.children = kids;
+        });
+        if (!(opts && opts.inPlace)) {
+          var views = Array.isArray(copy.views) ? copy.views : [];
+          var fxKeys = Rules.effectKeys(copy.rules);
+          if (fxKeys.length && views[0] && Array.isArray(views[0].children) && !allNodes(copy).some(function(n) {
+            return n.id === "rb_fx";
+          })) {
+            var flatFx = Rules.flatFormulas(copy.rules).computed;
+            var twins = Object.keys(flatFx).filter(function(k) {
+              return /_fx$/.test(k) && Rules.model(copy.rules).owner[k] && Rules.model(copy.rules).owner[k].indexOf("stats.") === 0;
+            });
+            var fields = fxKeys.map(function(k) {
+              return { className: "NumberInput", id: "fx_" + k, name: "fx_" + k, defaultValue: "0" };
+            });
+            twins.forEach(function(k) {
+              fields.push({ className: "NumberInput", id: k, name: k, computed: true, defaultValue: flatFx[k] });
+            });
+            views[0].children.push({ className: "Container", id: "rb_fx", layout: "vertical", children: fields });
+          }
+          var progList = Rules.progKeys(copy.rules);
+          if (progList.length && views[0] && Array.isArray(views[0].children) && !allNodes(copy).some(function(n) {
+            return n.id === "rb_prog";
+          })) {
+            views[0].children.push({ className: "Container", id: "rb_prog", layout: "vertical", children: progList.map(function(k) {
+              return { className: "NumberInput", id: "prog_" + k, name: "prog_" + k, defaultValue: "0" };
+            }) });
+          }
+        }
+        return copy;
+      }
       function validate(doc, opts) {
         return withLimits(opts, function() {
           var result = validateInner(doc, opts);
@@ -3317,7 +7735,7 @@ var require_builder_core = __commonJS({
         });
       }
       function validateInner(doc, opts) {
-        doc = upgradeDoc(doc);
+        doc = syncBound(upgradeDoc(doc));
         var maxNodes = opts && opts.maxNodes || LIMITS2.nodes;
         var errors = [], warnings = [];
         var err = function(id, message2) {
@@ -3326,9 +7744,28 @@ var require_builder_core = __commonJS({
         var warn = function(id, message2) {
           warnings.push({ id: id || null, message: message2 });
         };
-        if (!isObj5(doc) || doc.v !== 1) {
+        if (!isObj5(doc) || doc.v !== 1 && doc.v !== 2) {
           err(null, "Document illisible.");
           return { ok: false, errors, warnings };
+        }
+        var resolutions = {};
+        if (doc.rules !== void 0) {
+          if (doc.v !== 2) err("rules", say2("builder.rules.needV2"));
+          Rules.validateRules(doc.rules).forEach(function(e) {
+            errors.push({ id: "rules", path: e.path, message: e.message });
+          });
+          resolutions = Rules.resolutionsOf(doc.rules);
+          var PR = isObj5(doc.rules) && isObj5(doc.rules.progression) ? doc.rules.progression : null;
+          if (PR) {
+            var progFormulas = [];
+            if (isObj5(PR.levels) && isObj5(PR.levels.cost)) progFormulas.push(PR.levels.cost.f, PR.levels.cost.then);
+            (Array.isArray(PR.purchases) ? PR.purchases : []).forEach(function(b) {
+              if (isObj5(b)) progFormulas.push(b.price);
+            });
+            progFormulas.forEach(function(f) {
+              if (typeof f === "string" && !parseFormula(f).ok) err(null, say2("builder.prog.formula", { f }));
+            });
+          }
         }
         if (!SYSTEM_ID_RE.test(String(doc.id))) err(null, say2("builder.identifiantSystemeInvalideMinuscules"));
         var nm = cleanText2(doc.name, LIMITS2.name).trim();
@@ -3349,6 +7786,7 @@ var require_builder_core = __commonJS({
         if (views.length !== 1) err(null, say2("builder.seuleFichePrincipaleOnglets"));
         var count = 0;
         var idOwner = {};
+        var seenBind = {};
         var byId = {};
         var scopes = {};
         var formulas = [];
@@ -3373,6 +7811,16 @@ var require_builder_core = __commonJS({
             scopes[n.id] = scope;
           }
           if (typeof n.id === "string" && RESERVED_IDS[n.id]) err(n.id, say2("builder.key.reserved", { id: n.id }));
+          if (n.bind !== void 0) {
+            if (n.className !== "Container") err(n.id, say2("builder.bind.notContainer"));
+            else if (scope.repeater) err(n.id, say2("builder.bind.inList"));
+            else if (typeof n.bind !== "string" || seenBind[n.bind]) err(n.id, say2("builder.bind.twice", { bind: String(n.bind) }));
+            else {
+              seenBind[n.bind] = true;
+              if (!isObj5(doc.rules) || !Rules.bindKnown(doc.rules, n.bind)) warn(n.id, say2("builder.bind.orphan", { bind: n.bind }));
+              else if (Rules.layoutProblem(n.bind, n.bindLayout)) err(n.id, say2("builder.bind.layout"));
+            }
+          }
           var pc = parent && parent.className;
           var host = pc === "Column" || pc === "Container";
           if (n.className === "Row" && pc !== void 0 && !host) err(n.id, say2("builder.ligneSePlaceDans"));
@@ -3387,7 +7835,11 @@ var require_builder_core = __commonJS({
             for (var t = 1; t <= 20; t++) {
               if (idOwner[n.id + "__" + t]) err(n.id, say2("builder.key.taken", { id: n.id + "__" + t }));
             }
-            for (var u = 1; u <= (n.count || 0) && u <= 20; u++) idOwner[n.id + "__" + u] = true;
+            for (var u = 1; u <= (n.count || 0) && u <= 20; u++) {
+              idOwner[n.id + "__" + u] = true;
+              byId[n.id + "__" + u] = { className: "Checkbox", id: n.id + "__" + u };
+              scopes[n.id + "__" + u] = scope;
+            }
           }
           if (n.className === "Gauge") {
             if (scope.repeater) err(n.id, say2("builder.jaugeNePeutPas"));
@@ -3447,6 +7899,11 @@ var require_builder_core = __commonJS({
             else if (n.computed) formulas.push({ id: n.id, text: n.text, kind: "calc", scope });
             if (n.align !== void 0 && ALIGN.indexOf(n.align) < 0) err(n.id, say2("builder.alignementInvalide"));
             if (n.clickable && !n.roll) warn(n.id, say2("builder.cliquableSansJetClic"));
+            if (n.follows !== void 0 && n.follows !== "") {
+              if (typeof n.follows !== "string" || !own(resolutions, n.follows)) err(n.id, say2("builder.follows.unknown", { id: String(n.follows) }));
+              else if (!n.clickable) err(n.id, say2("builder.follows.notClickable"));
+              else if (/(^|[^@#\w])\d*d\d/i.test(String(n.roll || ""))) err(n.id, say2("builder.follows.noDice"));
+            }
             if (n.spendField !== void 0 && n.spendField !== "") {
               if (typeof n.spendField !== "string") err(n.id, say2("builder.ressourceDepenseeDoitEtre"));
               else if (!n.clickable || !n.roll) err(n.id, say2("builder.depenserRessourceDemandeTexte"));
@@ -3537,11 +7994,12 @@ var require_builder_core = __commonJS({
           if (f.kind === "roll") {
             if (f.text.length > LIMITS2.roll) err(where, say2("builder.rollTooLong", { max: LIMITS2.roll }));
             if (!/^[0-9A-Za-z_@$#+\-*\/%().,<>=! \[\]{}]*$/.test(f.text)) err(where, say2("builder.jetContientCaracteresNon"));
+            if (/\b(dis)?adv\(\s*1d/.test(f.text)) warn(where, say2("builder.roll.advOneDie"));
             var refRe = /[@$#](\w*)/g, m;
             while (m = refRe.exec(f.text)) {
               var tok = m[0];
               if (!m[1]) err(where, say2("builder.referenceVideDansJet"));
-              else if (tok[0] === "@" && !hasValue(byId[m[1]])) err(where, say2("builder.roll.noField", { id: m[1] }));
+              else if (tok[0] === "@" && !hasValue(own(byId, m[1]))) err(where, say2("builder.roll.noField", { id: m[1] }));
               else if (tok[0] === "@" && scopes[m[1]] && scopes[m[1]].repeater) err(where, say2("builder.roll.inList", { id: m[1] }));
               else if (tok[0] === "$" && vars[m[1]] === void 0) err(where, say2("builder.roll.noVar", { id: m[1] }));
               else if (tok[0] === "#") {
@@ -3566,7 +8024,7 @@ var require_builder_core = __commonJS({
           });
           var mine = [];
           p.refs.forEach(function(r) {
-            var t = byId[r];
+            var t = own(byId, r);
             if (!r) err(where, say2("builder.formula.emptyRef", { what: label || say2("builder.formula") }));
             else if (!t) err(where, say2("builder.formula.noRef", { what: label || say2("builder.formula"), id: r }));
             else if (!hasValue(t)) err(where, say2("builder.formula.noValue", { what: label || say2("builder.formula"), id: r, kind: COMPONENTS[t.className].label.toLowerCase() }));
@@ -3606,7 +8064,7 @@ var require_builder_core = __commonJS({
         return { ok: errors.length === 0, errors, warnings, stats: { nodes: count, formulas: formulas.length } };
       }
       var slugOf = function(text) {
-        return String(text == null ? "" : text).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 24);
+        return String(text == null ? "" : text).replace(/œ/g, "oe").replace(/Œ/g, "Oe").replace(/æ/g, "ae").replace(/Æ/g, "Ae").replace(/ß/g, "ss").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 24);
       };
       function kit(doc) {
         var used = {};
@@ -3650,6 +8108,7 @@ var require_builder_core = __commonJS({
         var form = fields.map(function(f) {
           var cell = f.kind === "number" ? { className: "NumberInput", id: ids[f.key], name: f.label, defaultValue: f.def == null ? "0" : String(f.def) } : { className: "TextInput", id: ids[f.key], name: f.label, placeholder: f.label, defaultValue: f.def == null ? "" : String(f.def) };
           if (f.min != null) cell.min = f.min;
+          if (f.max != null) cell.max = f.max;
           return k.col(f.size || 12, [k.label(f.label, { variant: "muted" }), cell]);
         });
         var display = { className: "Label", id: k.id(prefix + "_ligne"), text: fixText(displayText), computed: true };
@@ -3728,11 +8187,15 @@ var require_builder_core = __commonJS({
         },
         {
           id: "resource",
-          label: "Ressource (actuel / max)",
+          get label() {
+            return say2("builder.ui.ressourceActuelMax");
+          },
           get description() {
             return say2("builder.pointsVieManaMunitions");
           },
-          params: [{ k: "name", t: "text", def: "Points de vie", label: "Nom" }, { k: "max", t: "int", def: 10, min: 1, max: 999, get label() {
+          params: [{ k: "name", t: "text", def: "Points de vie", get label() {
+            return say2("builder.ui.nom");
+          } }, { k: "max", t: "int", def: 10, min: 1, max: 999, get label() {
             return say2("builder.maximumDepart");
           } }],
           build: function(doc, p) {
@@ -3752,7 +8215,9 @@ var require_builder_core = __commonJS({
           get description() {
             return say2("builder.stressBlessuresEchecsMort");
           },
-          params: [{ k: "name", t: "text", def: "Stress", label: "Nom" }, { k: "count", t: "int", def: 5, min: 1, max: 20, get label() {
+          params: [{ k: "name", t: "text", def: "Stress", get label() {
+            return say2("builder.ui.nom");
+          } }, { k: "count", t: "int", def: 5, min: 1, max: 20, get label() {
             return say2("builder.nombrePastilles");
           } }],
           build: function(doc, p) {
@@ -3772,9 +8237,21 @@ var require_builder_core = __commonJS({
           },
           params: [{ k: "title", t: "text", get def() {
             return say2("builder.competences");
-          }, label: "Titre" }],
+          }, get label() {
+            return say2("builder.ui.titre");
+          } }, { k: "rule", t: "select", def: "flat", options: ["flat", "percent"], labels: { get flat() {
+            return say2("builder.roll.d20Bonus");
+          }, get percent() {
+            return say2("builder.roll.underPercent");
+          } }, get label() {
+            return say2("builder.regle");
+          } }],
           build: function(doc, p) {
             var k = kit(doc), title = cleanText2(p.title, 40).trim() || say2("builder.skills");
+            if (p.rule === "percent") return [listBlock(k, title, slugOf(title) || "liste", [
+              { key: "nom", kind: "text", label: "Nom", size: 8 },
+              { key: "pct", kind: "number", label: "%", def: 50, min: 0, max: 100, size: 4 }
+            ], '#nom + " : " + #pct + " %"', "(1d100)<=#pct")];
             return [listBlock(k, title, slugOf(title) || "liste", [
               { key: "nom", kind: "text", label: "Nom", size: 8 },
               { key: "bonus", kind: "number", label: "Bonus", def: 0, size: 4 }
@@ -3783,13 +8260,30 @@ var require_builder_core = __commonJS({
         },
         {
           id: "attacks",
-          label: "Liste d'attaques",
+          get label() {
+            return say2("builder.ui.listeDAttaques");
+          },
           get description() {
             return say2("builder.nomBonusAttaqueDegats");
           },
-          params: [{ k: "title", t: "text", def: "Attaques", label: "Titre" }],
+          params: [{ k: "title", t: "text", def: "Attaques", get label() {
+            return say2("builder.ui.titre");
+          } }, { k: "rule", t: "select", def: "flat", options: ["flat", "percent"], labels: { get flat() {
+            return say2("builder.roll.d20Bonus");
+          }, get percent() {
+            return say2("builder.roll.underPercent");
+          } }, get label() {
+            return say2("builder.regle");
+          } }],
           build: function(doc, p) {
             var k = kit(doc), title = cleanText2(p.title, 40).trim() || "Attaques";
+            if (p.rule === "percent") return [listBlock(k, title, slugOf(title) || "attaques", [
+              { key: "nom", kind: "text", label: "Arme", size: 5 },
+              { key: "pct", kind: "number", label: "%", def: 50, min: 0, max: 100, size: 3 },
+              { key: "degats", kind: "text", get label() {
+                return say2("builder.degats");
+              }, def: "1d6", size: 4 }
+            ], '#nom + " (" + #degats + ")"', "(1d100)<=#pct")];
             return [listBlock(k, title, slugOf(title) || "attaques", [
               { key: "nom", kind: "text", label: "Arme", size: 5 },
               { key: "bonus", kind: "number", label: "Bonus", def: 0, size: 3 },
@@ -3801,13 +8295,17 @@ var require_builder_core = __commonJS({
         },
         {
           id: "inventory",
-          label: "Inventaire",
+          get label() {
+            return say2("builder.ui.inventaire");
+          },
           get description() {
             return say2("builder.listeObjetsAvecQuantite");
           },
           params: [{ k: "title", t: "text", get def() {
             return say2("builder.equipement");
-          }, label: "Titre" }],
+          }, get label() {
+            return say2("builder.ui.titre");
+          } }],
           build: function(doc, p) {
             var k = kit(doc), title = cleanText2(p.title, 40).trim() || say2("builder.equipment");
             return [listBlock(k, title, slugOf(title) || "inventaire", [
@@ -3821,11 +8319,15 @@ var require_builder_core = __commonJS({
         },
         {
           id: "spells",
-          label: "Liste de sorts",
+          get label() {
+            return say2("builder.ui.listeDeSorts");
+          },
           get description() {
             return say2("builder.nomNiveauEffetChaque");
           },
-          params: [{ k: "title", t: "text", def: "Sorts", label: "Titre" }],
+          params: [{ k: "title", t: "text", def: "Sorts", get label() {
+            return say2("builder.ui.titre");
+          } }],
           build: function(doc, p) {
             var k = kit(doc), title = cleanText2(p.title, 40).trim() || "Sorts";
             return [listBlock(k, title, slugOf(title) || "sorts", [
@@ -3837,11 +8339,15 @@ var require_builder_core = __commonJS({
         },
         {
           id: "features",
-          label: "Liste d'aptitudes",
+          get label() {
+            return say2("builder.ui.listeDAptitudes");
+          },
           get description() {
             return say2("builder.nomOrigineDescriptionChaque");
           },
-          params: [{ k: "title", t: "text", def: "Aptitudes", label: "Titre" }],
+          params: [{ k: "title", t: "text", def: "Aptitudes", get label() {
+            return say2("builder.ui.titre");
+          } }],
           build: function(doc, p) {
             var k = kit(doc), title = cleanText2(p.title, 40).trim() || "Aptitudes";
             return [listBlock(k, title, slugOf(title) || "aptitudes", [
@@ -3853,12 +8359,16 @@ var require_builder_core = __commonJS({
         },
         {
           id: "customlist",
-          label: "Liste libre",
+          get label() {
+            return say2("builder.ui.listeLibre");
+          },
           get description() {
             return say2("builder.listeDontTuNommes");
           },
           params: [
-            { k: "title", t: "text", def: "Contacts", label: "Titre" },
+            { k: "title", t: "text", def: "Contacts", get label() {
+              return say2("builder.ui.titre");
+            } },
             { k: "columns", t: "text", get def() {
               return say2("builder.nomRoleAttitude");
             }, get label() {
@@ -3879,11 +8389,15 @@ var require_builder_core = __commonJS({
         },
         {
           id: "notes",
-          label: "Notes libres",
+          get label() {
+            return say2("builder.ui.notesLibres");
+          },
           get description() {
             return say2("builder.titreGrandeZoneTexte");
           },
-          params: [{ k: "title", t: "text", def: "Notes", label: "Titre" }],
+          params: [{ k: "title", t: "text", def: "Notes", get label() {
+            return say2("builder.ui.titre");
+          } }],
           build: function(doc, p) {
             var k = kit(doc), title = cleanText2(p.title, 40).trim() || "Notes";
             return [k.row([k.col(12, [k.label(title, { variant: "title" }), { className: "Textarea", id: k.id(title), name: title, defaultValue: "" }])])];
@@ -3906,7 +8420,7 @@ var require_builder_core = __commonJS({
       function stripBuilderFields(n) {
         var out = {};
         Object.keys(n).forEach(function(k) {
-          if (k !== "options" && k !== "children" && k !== "variant" && k !== "textSize" && k !== "bold" && k !== "upper" && k !== "tabs" && k !== "readChildren" && k !== "noAdd" && k !== "gmOnly" && k !== "spendField" && k !== "spendN" && k !== "againstField" && k !== "againstMode" && k !== "effectTarget" && k !== "effectValue") out[k] = n[k];
+          if (k !== "options" && k !== "children" && k !== "variant" && k !== "textSize" && k !== "bold" && k !== "upper" && k !== "tabs" && k !== "readChildren" && k !== "noAdd" && k !== "gmOnly" && k !== "spendField" && k !== "spendN" && k !== "againstField" && k !== "againstMode" && k !== "effectTarget" && k !== "effectValue" && k !== "follows" && k !== "bind" && k !== "bindLayout") out[k] = n[k];
         });
         return out;
       }
@@ -3993,6 +8507,7 @@ var require_builder_core = __commonJS({
         return { nodes, vars };
       }
       function compileRules(doc) {
+        doc = syncBound(upgradeDoc(doc));
         var gmOnly = [], actions = {}, writable = {}, computedDefences = [];
         var spendable = spendableIds(doc);
         var allNumbers = spendableIds(doc, true);
@@ -4023,10 +8538,141 @@ var require_builder_core = __commonJS({
         });
         var out = { v: 1 };
         if (gmOnly.length) out.gmOnly = gmOnly.slice(0, 200);
+        if (doc && isObj5(doc.rules)) {
+          var present = {};
+          allNodes(doc).forEach(function(n) {
+            present[n.id] = true;
+          });
+          var locked = Rules.lockedKeys(doc.rules).filter(function(k) {
+            return present[k] || present[k.replace(/__\d+$/, "")];
+          });
+          if (locked.length) out.locked = locked.slice(0, 200);
+        }
+        if (doc && doc.rules) {
+          var sites = {}, known = Rules.resolutionsOf(doc.rules);
+          (function visitSites(list2) {
+            (Array.isArray(list2) ? list2 : []).forEach(function(n) {
+              if (!isObj5(n)) return;
+              if (n.className === "Label" && n.clickable && typeof n.follows === "string" && own(known, n.follows)) sites[n.id] = n.follows;
+              slots(n).forEach(function(sl) {
+                visitSites(sl.list);
+              });
+            });
+          })(((doc.views || [])[0] || {}).children);
+          out.resolve = { rules: { resolution: doc.rules.resolution, rolls: doc.rules.rolls || [] }, sites };
+        }
+        var wanted = [];
+        if (doc && isObj5(doc.rules) && isObj5(doc.rules.combat) && !Rules.validateRules(doc.rules).length) {
+          var cr = doc.rules;
+          out.combat = {
+            stats: { form: cr.stats ? cr.stats.form : "score", list: (cr.stats ? cr.stats.list : []).map(function(x) {
+              return { id: x.id, name: x.name };
+            }) },
+            derived: (cr.derived || []).map(function(x) {
+              return { id: x.id, name: x.name, resource: !!x.resource };
+            }),
+            combat: JSON.parse(JSON.stringify(cr.combat))
+          };
+          var keys = Rules.combatKeys(Object.assign({ resolution: Rules.resolutionsOf(cr)[cr.combat.attack.rollWith] }, out.combat));
+          wanted = keys.attacker.concat(keys.target);
+        }
+        if (doc && isObj5(doc.rules) && (isObj5(doc.rules.effects) || Array.isArray(doc.rules.rests)) && !Rules.validateRules(doc.rules).length) {
+          var keysFx = Rules.effectKeys(doc.rules);
+          out.sealed = ["fx"].concat(keysFx.map(function(k) {
+            return "fx_" + k;
+          }));
+          out.effects = Rules.effectCtx(doc.rules);
+          wanted = wanted.concat(keysFx.map(function(k) {
+            return "fx_" + k;
+          }));
+          (doc.rules.rests || []).forEach(function(r) {
+            (r.restore || []).forEach(function(x) {
+              wanted.push(x.res, x.res + "_max");
+              if (x.how === "formula") wanted.push(x.key);
+            });
+          });
+        }
+        if (doc && isObj5(doc.rules) && isObj5(doc.rules.progression) && !Rules.validateRules(doc.rules).length) {
+          var P = doc.rules.progression, pk = Rules.progKeys(doc.rules), targets = Rules.progTargets(doc.rules);
+          var sealedP = ["prog"].concat(pk.map(function(k) {
+            return "prog_" + k;
+          }));
+          if (isObj5(P.xp)) sealedP.push(P.xp.id);
+          if (isObj5(P.levels)) sealedP.push(P.levels.key);
+          if (isObj5(P.use)) ((doc.rules.skills || {}).list || []).forEach(function(x) {
+            if (isObj5(x)) sealedP.push("tick_" + x.id);
+          });
+          if (isObj5(P.use)) ((doc.rules.skills || {}).list || []).forEach(function(x) {
+            if (isObj5(x)) wanted.push("sk_" + x.id + "_t");
+          });
+          out.sealed = (out.sealed || []).concat(sealedP);
+          out.progress = Rules.progressCtx(doc.rules);
+          Object.keys(targets).forEach(function(k) {
+            wanted.push(k);
+            if (targets[k] === "resource") wanted.push(k + "_max");
+          });
+          wanted = wanted.concat(sealedP.filter(function(k) {
+            return k !== "prog" && k.indexOf("tick_") !== 0;
+          }));
+          (isObj5(P.levels) ? P.levels.gains : []).forEach(function(g) {
+            g.give.forEach(function(x) {
+              if (typeof x.plus === "string") wanted.push(x.plus);
+            });
+          });
+        }
+        if (doc && isObj5(doc.rules) && isObj5(doc.rules.library) && !Rules.validateRules(doc.rules).length) {
+          out.library = Rules.libraryCtx(doc.rules);
+          out.library.resources.forEach(function(k) {
+            wanted.push(k, k + "_max");
+          });
+        }
         if (Object.keys(writable).length) out.writable = writable;
         if (Object.keys(actions).length) out.actions = actions;
-        if (computedDefences.length) out.sheet = derivedSheet(doc, computedDefences);
+        if (computedDefences.length || wanted.length) out.sheet = derivedSheet(doc, computedDefences.concat(wanted));
         return Object.keys(out).length > 1 ? out : null;
+      }
+      function barAttributes(doc) {
+        var typed = spendableIds(doc, false), out = [], seenValue = {}, seenName = {};
+        var add = function(name, value, max) {
+          if (typeof value !== "string" || typeof max !== "string" || !typed[value] || !typed[max] || seenValue[value] || out.length >= 12) return;
+          seenValue[value] = true;
+          var base = cleanText2(name, 40).trim() || value, label = base, i = 2;
+          while (seenName[label]) label = base + " (" + i++ + ")";
+          seenName[label] = true;
+          out.push([label, value, max]);
+        };
+        function visit(list2) {
+          (Array.isArray(list2) ? list2 : []).forEach(function(n) {
+            if (!isObj5(n)) return;
+            if (n.className === "Gauge") add(n.name, n.valueField, n.maxField);
+            if (n.className === "Repeater") return;
+            slots(n).forEach(function(sl) {
+              visit(sl.list);
+            });
+          });
+        }
+        (doc && doc.views || []).forEach(function(v) {
+          if (isObj5(v)) visit(v.children);
+        });
+        Object.keys(typed).forEach(function(id) {
+          if (typed[id + "_max"]) add(typed[id].name, id, id + "_max");
+        });
+        return out;
+      }
+      function systemScript(doc) {
+        var lines = ["// built with the Ourdir System Builder"];
+        var bars = barAttributes(doc);
+        if (bars.length) {
+          var lit = function(s) {
+            return JSON.stringify(String(s)).replace(/[\u2028\u2029]/g, " ");
+          };
+          lines.push("getBarAttributes = function (sheet) {");
+          lines.push("  return { " + bars.map(function(b) {
+            return lit(b[0]) + ": [" + lit(b[1]) + ", " + lit(b[2]) + "]";
+          }).join(", ") + " };");
+          lines.push("};");
+        }
+        return lines.join("\n");
       }
       function compile(doc, opts) {
         return withLimits(opts, function() {
@@ -4034,11 +8680,12 @@ var require_builder_core = __commonJS({
         });
       }
       function compileInner(doc, opts) {
-        doc = upgradeDoc(doc);
+        doc = syncBound(upgradeDoc(doc));
         var v = validate(doc, opts);
         if (!v.ok) throw new Error(say2("builder.invalidSystem", { why: v.errors[0].message }));
         doc = applyEffects(doc);
         var tables = JSON.parse(JSON.stringify(doc.tables || {}));
+        var resolutions = doc.rules ? Rules.resolutionsOf(doc.rules) : {};
         var avatarId = null;
         var subViews = [];
         function subView(id, name, children) {
@@ -4109,6 +8756,10 @@ var require_builder_core = __commonJS({
             out.clickable = !!n.clickable || !!n.roll;
             out.computed = !!n.computed;
             if (n.roll) out.roll = n.roll;
+            if (n.follows && own(resolutions, n.follows) && n.roll !== void 0) {
+              var tpl = Rules.template(resolutions[n.follows]);
+              out.roll = tpl.prefix + (String(n.roll || "").trim() || "0") + tpl.suffix;
+            }
           }
           if (n.className === "NumberInput") {
             out.computed = !!n.computed;
@@ -4217,8 +8868,8 @@ var require_builder_core = __commonJS({
         var result = {
           tree,
           tables,
-          // Nothing typed by a person goes into the script: the engine's script sandbox executes it.
-          script: "// built with the Ourdir System Builder"
+          // generated from closed templates only (systemScript): the engine's script sandbox executes it
+          script: systemScript(doc)
         };
         var skins = Array.isArray(doc.skins) ? doc.skins : [];
         if (skins.length) {
@@ -4354,7 +9005,10 @@ var require_builder_core = __commonJS({
         function value(id) {
           if (cache.hasOwnProperty(id)) return cache[id];
           var n = byId[id];
-          if (!n) return 0;
+          if (!n) {
+            var pip = /^(.+)__(\d+)$/.exec(id);
+            return pip && byId[pip[1]] && byId[pip[1]].className === "Track" ? inputs[id] ? 1 : 0 : 0;
+          }
           if (busy[id]) {
             errors[id] = "boucle";
             return 0;
@@ -4448,6 +9102,7 @@ var require_builder_core = __commonJS({
         buildBlock,
         validate,
         compile,
+        syncBound,
         upgradeDoc,
         compileRules,
         derivedSheet,
@@ -4537,6 +9192,40 @@ var require_fr2 = __commonJS({
       "chat.placeholder": "\xC9crire \xE0 la table\u2026 /me pour agir",
       "collision.off": "Fant\xF4me : laisser les jetons traverser les murs",
       "collision.on": "Fant\xF4me : les jetons traversent les murs (cliquer pour arr\xEAter)",
+      "combat.applied": "\u2212{n} PV ({before} \u2192 {after})",
+      "combat.appliedAuto": "\u2212{n} PV ({before} \u2192 {after}), d\u2019office",
+      "combat.appliedHidden": "\u2212{n} PV",
+      "combat.btn.apply": "Appliquer",
+      "combat.btn.damage": "D\xE9g\xE2ts",
+      "combat.btn.double": "Double",
+      "combat.btn.half": "Moiti\xE9",
+      "combat.btn.heal": "Soigner",
+      "combat.btn.undo": "Annuler",
+      "combat.crit": "Critique !",
+      "combat.dealt": "{raw} {type}",
+      "combat.defense": "{name} : {value}",
+      "combat.down": "Hors de combat",
+      "combat.final": "\u2192 {n}",
+      "combat.healed": "+{n} PV ({before} \u2192 {after})",
+      "combat.healedHidden": "+{n} PV",
+      "combat.hit": "Touch\xE9",
+      "combat.hp": "Points de vie\u2026",
+      "combat.hpAmount": "Combien",
+      "combat.hpDone": "{name} : {before} \u2192 {after} PV",
+      "combat.hpHeal": "Soigner",
+      "combat.hpHurt": "Blesser",
+      "combat.miss": "Rat\xE9",
+      "combat.openSheet": "Ouvrez la fiche pour lancer ce jet.",
+      "combat.reduced": "\u2212 {n} (r\xE9duction)",
+      "combat.refused": "Refus\xE9 : {why}",
+      "combat.settings": "Combat",
+      "combat.settingsAuto": "Automatiques",
+      "combat.settingsHint": "Qui retire les points de vie quand une attaque touche.",
+      "combat.settingsValidate": "Apr\xE8s validation du MJ",
+      "combat.undone": "Annul\xE9",
+      "combat.why.immune": "immunit\xE9 : rien",
+      "combat.why.resist": "r\xE9sistance : moiti\xE9",
+      "combat.why.vuln": "vuln\xE9rabilit\xE9 : double",
       "compendium.add": "Ajouter \xE0 la fiche",
       "compendium.added": "\xAB {what} \xBB ajout\xE9 \xE0 {who}.",
       "compendium.back": "\u2190 Retour \xE0 la liste",
@@ -4576,6 +9265,49 @@ var require_fr2 = __commonJS({
       "dnd.monsters.createdNoScene": "Fiche \xAB {name} \xBB cr\xE9\xE9e, mais il n\u2019y a pas de sc\xE8ne ouverte pour y poser le jeton.",
       "dnd.monsters.failed": "La fiche n\u2019a pas pu \xEAtre cr\xE9\xE9e.",
       "dnd.monsters.placed": "\xAB {name} \xBB pos\xE9 sur la carte, avec sa fiche.",
+      "effects.add": "Ajouter un \xE9tat",
+      "effects.adv": "Avantage",
+      "effects.advDown": "d\xE9savantage",
+      "effects.advNone": "rien",
+      "effects.advUp": "avantage",
+      "effects.advantage": "avantage aux jets de {res}",
+      "effects.at.end": "compt\xE9 \xE0 la fin de son tour",
+      "effects.at.start": "compt\xE9 au d\xE9but de son tour",
+      "effects.by": "De combien",
+      "effects.cancel": "Annuler",
+      "effects.disadvantage": "d\xE9savantage aux jets de {res}",
+      "effects.free": "Effet libre",
+      "effects.groupRest": "Repos du groupe",
+      "effects.groupRestHint": "Toutes les fiches de l\u2019ordre du tour se reposent.",
+      "effects.groupRested": "{n} fiche(s) repos\xE9e(s)",
+      "effects.menu": "\xC9tats\u2026",
+      "effects.mod": "{n} {name}",
+      "effects.name": "Nom",
+      "effects.none": "Aucun \xE9tat.",
+      "effects.noticeOff": "{name} : fin de {effects}",
+      "effects.noticeOn": "{name} : {effect}",
+      "effects.noticeRest": "{name} : {rest}",
+      "effects.onRolls": "Sur les jets de",
+      "effects.put": "Poser",
+      "effects.refused": "Refus\xE9 : {why}",
+      "effects.remove": "Retirer",
+      "effects.resist": "r\xE9siste \xE0 {type}",
+      "effects.resistNone": "rien",
+      "effects.resistTo": "R\xE9siste \xE0",
+      "effects.restLabel": "Tombe au repos",
+      "effects.restNone": "aucun",
+      "effects.rested": "{name} : {rest}",
+      "effects.rollBonus": "{n} aux jets de {res}",
+      "effects.rounds": "{n} round(s)",
+      "effects.rounds.label": "Dure (rounds)",
+      "effects.roundsOrRest": "{n} round(s), ou \xE0 {rest}",
+      "effects.someone": "Quelqu\u2019un",
+      "effects.states": "\xC9tats de la fiche",
+      "effects.title": "\xC9tats",
+      "effects.untilRemoved": "jusqu\u2019\xE0 ce qu\u2019on le retire",
+      "effects.untilRest": "jusqu\u2019\xE0 {rest}",
+      "effects.value": "Valeur",
+      "effects.vuln": "vuln\xE9rable \xE0 {type}",
       "floorsModel.moved": "\xAB {name} \xBB passe au {level}",
       "floorsModel.movedSomeone": "Un jeton passe au {level}",
       "floorsModel.noAnswer": "Le serveur ne r\xE9pond pas.",
@@ -4649,6 +9381,13 @@ var require_fr2 = __commonJS({
       "host.bulk.tooMany": "Trop de fiches d\u2019un coup ({max} au plus).",
       "host.bulkParse.imageInvalide": "Image invalide.",
       "host.bulkParse.typeFicheInvalide": "Type de fiche invalide.",
+      "host.combat.already": "C\u2019est d\xE9j\xE0 fait.",
+      "host.combat.attack": "Attaque",
+      "host.combat.badDice": "Les d\xE9s de cette arme ne se lisent pas (ex. 1d8+2).",
+      "host.combat.noAmmo": "Plus de munitions.",
+      "host.combat.noCard": "Cette carte n\u2019existe plus.",
+      "host.combat.noRules": "Ce syst\xE8me ne d\xE9crit pas de combat.",
+      "host.combat.noWeapon": "Cette arme n\u2019est plus sur la fiche.",
       "host.common.badScene": "Sc\xE8ne invalide.",
       "host.common.badSceneOrFloor": "Sc\xE8ne ou \xE9tage invalide.",
       "host.common.gmOnly": "Seul le MJ peut changer cela.",
@@ -4677,11 +9416,19 @@ var require_fr2 = __commonJS({
       "host.craft.listFull": "Cette liste est pleine.",
       "host.craftAdd.cibleIntrouvable": "Cible introuvable.",
       "host.craftAdd.contenuIntrouvable": "Contenu introuvable.",
+      "host.effects.bad": "Cet effet ne se lit pas.",
+      "host.effects.full": "Cette fiche porte d\xE9j\xE0 24 effets.",
+      "host.effects.gone": "Cet effet n\u2019est plus l\xE0.",
+      "host.effects.groupGm": "Seul le MJ fait reposer tout le groupe.",
+      "host.effects.noRest": "Ce repos n\u2019existe pas.",
+      "host.effects.noRules": "Ce syst\xE8me ne d\xE9crit pas d\u2019\xE9tats.",
       "host.exploration.cleared": "L\u2019exploration a \xE9t\xE9 effac\xE9e.",
       "host.exploration.gmOnlyClear": "Seul le MJ peut effacer l\u2019exploration.",
       "host.exploration.invalid": "M\xE9moire d\u2019exploration invalide.",
       "host.exploration.tooBig": "M\xE9moire d\u2019exploration trop grande.",
       "host.fieldRules.gmOnly": "Ce champ est r\xE9serv\xE9 au MJ.",
+      "host.fieldRules.locked": "Ce champ est fix\xE9 par les r\xE8gles : seul le MJ le change.",
+      "host.fieldRules.sealed": "Ce champ n\u2019est \xE9crit que par la table (les effets).",
       "host.fieldRules.tooBig": "(trop grand pour \xEAtre v\xE9rifi\xE9)",
       "host.filter.gmOnly": "Seul le MJ r\xE8gle le filtre.",
       "host.floors.already": "Cette sc\xE8ne est d\xE9j\xE0 organis\xE9e en \xE9tages.",
@@ -4716,6 +9463,17 @@ var require_fr2 = __commonJS({
       "host.keys.bad": "Cl\xE9 invalide.",
       "host.keys.badOwner": "Cl\xE9 du propri\xE9taire invalide.",
       "host.keys.gm": "C\u2019est la cl\xE9 du MJ.",
+      "host.library.bad": "Cette entr\xE9e ne se lit pas.",
+      "host.library.full": "Il y a d\xE9j\xE0 trop d\u2019entr\xE9es.",
+      "host.library.gmOnly": "Seul le MJ tient sa biblioth\xE8que.",
+      "host.library.gone": "Cette entr\xE9e n\u2019est plus l\xE0.",
+      "host.library.noAction": "Cette entr\xE9e n\u2019agit pas.",
+      "host.library.noOrigin": "Cette ligne ne vient pas de la biblioth\xE8que.",
+      "host.library.noRes": "La fiche n\u2019a pas la ressource du co\xFBt.",
+      "host.library.noRules": "Ce syst\xE8me n\u2019a pas de biblioth\xE8que.",
+      "host.library.noTarget": "Choisis d\u2019abord une cible (T).",
+      "host.library.notEnough": "Pas assez pour payer le co\xFBt.",
+      "host.library.notListed": "Cette entr\xE9e ne va pas dans une liste de la fiche.",
       "host.lighting.already": "Cette sc\xE8ne a d\xE9j\xE0 son \xE9clairage.",
       "host.lighting.badLight": "Lumi\xE8re invalide.",
       "host.lighting.badLightPos": "Position de lumi\xE8re invalide.",
@@ -4744,6 +9502,19 @@ var require_fr2 = __commonJS({
       "host.media.tooBig": "Requ\xEAte trop volumineuse.",
       "host.music.gmOnlyClock": "Seul le MJ r\xE8gle l\u2019horloge de la musique.",
       "host.people.sheetN": "Fiche {id}",
+      "host.progress.badChoice": "Ces choix ne correspondent pas \xE0 ce que ce niveau propose.",
+      "host.progress.gmOnly": "Seul le MJ peut faire cela.",
+      "host.progress.noAsk": "Aucune demande n\u2019attend.",
+      "host.progress.noBuy": "Cet achat n\u2019existe pas pour cette fiche.",
+      "host.progress.noLevels": "Ce syst\xE8me n\u2019a pas de niveaux.",
+      "host.progress.noRules": "Ce syst\xE8me ne d\xE9crit pas de progression.",
+      "host.progress.noUse": "Ce syst\xE8me ne progresse pas par l\u2019usage.",
+      "host.progress.noXp": "Pas assez d\u2019exp\xE9rience : il en faut {n}.",
+      "host.progress.noXpRules": "Ce syst\xE8me n\u2019a pas d\u2019exp\xE9rience.",
+      "host.progress.nothingToUndo": "Rien \xE0 annuler.",
+      "host.progress.taken": "Cette aptitude est d\xE9j\xE0 prise.",
+      "host.progress.top": "Cette fiche est d\xE9j\xE0 au niveau le plus haut.",
+      "host.progress.waiting": "Une demande attend d\xE9j\xE0 la r\xE9ponse du MJ.",
       "host.roles.noLook": "Ton r\xF4le \xE0 cette table ne permet pas de changer l\u2019image ou le jeton d\u2019une fiche.",
       "host.roles.noUpload": "Ton r\xF4le \xE0 cette table ne permet pas d\u2019envoyer des fichiers.",
       "host.scene.exploration": "Brouillard d\u2019exploration : oui, non, ou le d\xE9faut de la table.",
@@ -4783,6 +9554,44 @@ var require_fr2 = __commonJS({
       "journal.notes": "Notes",
       "journal.openPdf": "Ouvrir le PDF",
       "journal.search": "Rechercher dans le journal\u2026",
+      "library.action": "Action",
+      "library.acts": "agit",
+      "library.add": "Ajouter",
+      "library.addTo": "Ajouter \xE0 la fiche",
+      "library.added": "{name} ajout\xE9 \xE0 la fiche.",
+      "library.cancel": "Annuler",
+      "library.editOrCopy": "Modifier ou copier\u2026",
+      "library.editTitle": "Modifier l\u2019entr\xE9e",
+      "library.filterGenre": "Genre",
+      "library.filterSource": "Source",
+      "library.fromLibrary": "Depuis la biblioth\xE8que",
+      "library.genre": "Genre",
+      "library.hidden": "Cach\xE9e aux joueurs",
+      "library.hiddenTag": "cach\xE9e",
+      "library.many": "entr\xE9es",
+      "library.n.act": "{who} : {entry}",
+      "library.n.add": "{who} ajoute {entry}",
+      "library.n.cost": "(\u2212{cost})",
+      "library.n.state": "\u2192 {state}",
+      "library.n.update": "{who} met \xE0 jour {entry}",
+      "library.name": "Nom",
+      "library.new": "Nouvelle entr\xE9e",
+      "library.newTitle": "Nouvelle entr\xE9e de la table",
+      "library.none": "Aucune entr\xE9e.",
+      "library.notTable": "Seules les entr\xE9es de la table se retirent ici.",
+      "library.pickOf": "{genre} : biblioth\xE8que",
+      "library.refused": "Refus\xE9 : {why}",
+      "library.remove": "Retirer",
+      "library.removed": "{name} retir\xE9.",
+      "library.save": "Enregistrer",
+      "library.saved": "{name} enregistr\xE9.",
+      "library.search": "Chercher",
+      "library.someone": "Quelqu\u2019un",
+      "library.source.sys": "Syst\xE8me",
+      "library.source.table": "Table",
+      "library.title": "Biblioth\xE8que",
+      "library.updateTitle": "Une version plus r\xE9cente existe : mettre \xE0 jour",
+      "library.updated": "{name} mis \xE0 jour.",
       "lightEngine.lighter": "\xC9clairage all\xE9g\xE9 pour rester fluide.",
       "lightingPanel.asPlayers": "Voir comme les joueurs",
       "lightingPanel.auto": "Auto",
@@ -4857,6 +9666,26 @@ var require_fr2 = __commonJS({
       "liteFog.reveal": "R\xE9v\xE9ler",
       "liteMacros.advantage": "Avantage",
       "liteMacros.disadvantage": "D\xE9savantage",
+      "loading.back": "Retour au lanceur",
+      "loading.continue": "Continuer quand m\xEAme",
+      "loading.error": "Impossible de rejoindre la table : {detail}",
+      "loading.label": "Chargement de la table",
+      "loading.modules": "Modules de la table : {list}",
+      "loading.phrase.connect": "Arriv\xE9e \xE0 la table\u2026",
+      "loading.phrase.modules": "D\xE9marrage des modules de la table\u2026",
+      "loading.phrase.ourdir": "Pr\xE9paration de l'interface\u2026",
+      "loading.phrase.ready": "C'est pr\xEAt !",
+      "loading.phrase.scene": "Mise en place de la sc\xE8ne\u2026",
+      "loading.retry": "R\xE9essayer",
+      "loading.slow.connect": "La table ne r\xE9pond pas encore.",
+      "loading.slow.ourdir": "L'interface tarde \xE0 se mettre en place.",
+      "loading.slow.scene": "La sc\xE8ne ne r\xE9pond pas.",
+      "loading.step.connect": "Connexion",
+      "loading.step.host": "La table",
+      "loading.step.modules": "Modules de la table",
+      "loading.step.ourdir": "Interface",
+      "loading.step.ready": "Pr\xEAt",
+      "loading.step.scene": "Sc\xE8ne",
       "lookThrough.banner": "Vue de {name} \xB7 Ctrl+L ou \xC9chap pour revenir",
       "lookThrough.bannerVowel": "Vue d\u2019{name} \xB7 Ctrl+L ou \xC9chap pour revenir",
       "lookThrough.someone": "personnage",
@@ -4928,6 +9757,85 @@ var require_fr2 = __commonJS({
       "playlistImport.doneOne": "{n} musique ajout\xE9e.",
       "playlistImport.empty": "Cette liste YouTube est vide, priv\xE9e ou introuvable.",
       "playlistImport.reading": "Lecture de la liste YouTube\u2026",
+      "progress.accept": "Accepter",
+      "progress.asked": "Le niveau {level} attend la r\xE9ponse du MJ.",
+      "progress.askedBuy": "Un achat attend la r\xE9ponse du MJ.",
+      "progress.award": "Distribuer \xE0 l\u2019ordre du tour",
+      "progress.awarded": "{each} pour chacune des {n} fiches.",
+      "progress.back": "Retour",
+      "progress.beforeAfter": "Avant \u2192 apr\xE8s",
+      "progress.brings": "Ce que ce niveau apporte",
+      "progress.buy": "Acheter\u2026",
+      "progress.buyOf": "Achats de {name}",
+      "progress.cannot": "Pas de mont\xE9e possible pour l\u2019instant.",
+      "progress.choicesToMake": "{n} choix \xE0 faire.",
+      "progress.climb": "Monter au niveau {n}",
+      "progress.climbNow": "Monter",
+      "progress.climbOf": "{name} : niveau {n}",
+      "progress.close": "Fermer",
+      "progress.each": "\xE0 chacune",
+      "progress.entry.buy": "Achat",
+      "progress.entry.level": "Niveau {n}",
+      "progress.gain.add": "{n} \xE0 {name}",
+      "progress.gain.dice": "+{dice} \xE0 {name}",
+      "progress.gain.feature": "Aptitude : {name}",
+      "progress.give": "Donner ({xp})",
+      "progress.giveGo": "Donner",
+      "progress.gmValidates": "Une mont\xE9e ou un achat d\u2019un joueur attend la validation du MJ",
+      "progress.grant": "Accorder un niveau",
+      "progress.granted": "Niveau accord\xE9 par le MJ : {n}.",
+      "progress.history": "Historique",
+      "progress.historyOf": "Historique de {name}",
+      "progress.how.average": "en moyenne ({n})",
+      "progress.how.roll": "au d\xE9",
+      "progress.left": "Reste {n} \xE0 r\xE9partir.",
+      "progress.less": "Moins \xE0 {name}",
+      "progress.level": "Niveau {n}",
+      "progress.menu": "Progression\u2026",
+      "progress.missing": "Il manque {n}.",
+      "progress.modOf": "mod. {name}",
+      "progress.more": "Plus \xE0 {name}",
+      "progress.n.accepted": "{who} : demande accept\xE9e.",
+      "progress.n.ask": "{who} demande le niveau {level} (\xE0 d\xE9cider sur sa fiche).",
+      "progress.n.buy": "{who} ach\xE8te",
+      "progress.n.grant": "{who} peut monter au niveau {level}.",
+      "progress.n.level": "{who} passe au niveau {level}",
+      "progress.n.refused": "{who} : demande refus\xE9e.",
+      "progress.n.tick": "{who} coche {skill}",
+      "progress.n.undo": "{who} : derni\xE8re mont\xE9e annul\xE9e.",
+      "progress.n.use": "{who} progresse par l\u2019usage",
+      "progress.n.xp": "{who} : {n} {xp}",
+      "progress.next": "Suivant",
+      "progress.noFeature": "Aucune aptitude.",
+      "progress.noHistory": "Rien encore.",
+      "progress.notNow": "Pas maintenant.",
+      "progress.nothing": "Rien de plus \xE0 ce niveau.",
+      "progress.of": "Progression de {name}",
+      "progress.pick": "Choisir {n} aptitude(s)",
+      "progress.refuse": "Refuser",
+      "progress.refused": "Refus\xE9 : {why}",
+      "progress.send": "Envoyer au MJ",
+      "progress.sent": "Demande envoy\xE9e au MJ.",
+      "progress.session": "Fin de s\xE9ance",
+      "progress.sessionDone": "{tests} test(s), {gains} progr\xE8s.",
+      "progress.sessionHint": "Chaque comp\xE9tence coch\xE9e est test\xE9e ; r\xE9ussi, elle progresse.",
+      "progress.settings": "Progression",
+      "progress.settingsHint": "Une fiche seule re\xE7oit son exp\xE9rience par \xAB Progression\u2026 \xBB de son pion.",
+      "progress.someone": "Quelqu\u2019un",
+      "progress.split": "partag\xE9",
+      "progress.spread": "{n} point(s) \xE0 r\xE9partir ({max} max chacun)",
+      "progress.ticked": "coch\xE9e",
+      "progress.train": "Former {n} comp\xE9tence(s)",
+      "progress.undo": "Annuler la derni\xE8re mont\xE9e",
+      "resolve.advantage": "Avantage",
+      "resolve.bonus": "Bonus ou malus",
+      "resolve.cancel": "Annuler",
+      "resolve.difficulty": "Difficult\xE9",
+      "resolve.disadvantage": "D\xE9savantage",
+      "resolve.go": "Lancer",
+      "resolve.normal": "Normal",
+      "resolve.poolDice": "D\xE9s en plus ou en moins",
+      "resolve.roll": "Jet",
       "rollTags.failure": "\xC9chec",
       "rollTags.hit": "Touch\xE9",
       "rollTags.miss": "Rat\xE9",
@@ -4938,6 +9846,318 @@ var require_fr2 = __commonJS({
       "rollsToChat.hit": "touche",
       "rollsToChat.roll": "jet",
       "rollsToChat.test": "Test de {what}",
+      "rules.against": " (contre {n})",
+      "rules.attack": "Attaquer",
+      "rules.crit": "R\xE9ussite critique",
+      "rules.deg.extreme": "R\xE9ussite extr\xEAme",
+      "rules.deg.hard": "R\xE9ussite difficile",
+      "rules.der.defense": "D\xE9fense",
+      "rules.der.health": "Sant\xE9",
+      "rules.der.hp": "Points de vie",
+      "rules.der.initiative": "Initiative",
+      "rules.der.level": "Niveau",
+      "rules.der.magic": "Points de magie",
+      "rules.der.proficiency": "Ma\xEEtrise",
+      "rules.der.sanity": "Sant\xE9 mentale",
+      "rules.der.stress": "Stress",
+      "rules.der.willpower": "Volont\xE9",
+      "rules.diff.easy": "Facile",
+      "rules.diff.hard": "Difficile",
+      "rules.diff.medium": "Moyen",
+      "rules.diff.veryHard": "Tr\xE8s difficile",
+      "rules.dt.balistique": "Balistique",
+      "rules.dt.contondant": "Contondant",
+      "rules.dt.electrique": "\xC9lectrique",
+      "rules.dt.energie": "\xC9nergie",
+      "rules.dt.explosif": "Explosif",
+      "rules.dt.feu": "Feu",
+      "rules.dt.foudre": "Foudre",
+      "rules.dt.froid": "Froid",
+      "rules.dt.necrotique": "N\xE9crotique",
+      "rules.dt.perforant": "Perforant",
+      "rules.dt.poison": "Poison",
+      "rules.dt.psychique": "Psychique",
+      "rules.dt.tranchant": "Tranchant",
+      "rules.expertIn": "{name} : expert",
+      "rules.fail": "\xC9chec",
+      "rules.fate.average": "Moyen",
+      "rules.fate.fair": "Correct",
+      "rules.fate.good": "Bon",
+      "rules.fate.great": "Excellent",
+      "rules.fate.mediocre": "M\xE9diocre",
+      "rules.fate.superb": "Superbe",
+      "rules.finesse": "La meilleure des deux (finesse)",
+      "rules.fumble": "\xC9chec critique",
+      "rules.fx.title": "\xC9tats",
+      "rules.icon.a_terre": "\xC0 terre",
+      "rules.icon.autre": "Autre",
+      "rules.icon.aveugle": "Aveugle",
+      "rules.icon.benediction": "B\xE9n\xE9diction",
+      "rules.icon.charme": "Charme",
+      "rules.icon.entrave": "Entrave",
+      "rules.icon.faiblesse": "Faiblesse",
+      "rules.icon.feu": "Feu",
+      "rules.icon.froid": "Froid",
+      "rules.icon.invisible": "Invisible",
+      "rules.icon.peur": "Peur",
+      "rules.icon.poison": "Poison",
+      "rules.icon.protection": "Protection",
+      "rules.icon.rage": "Rage",
+      "rules.icon.saignement": "Saignement",
+      "rules.icon.sommeil": "Sommeil",
+      "rules.icon.vitesse": "Vitesse",
+      "rules.immune": "Immunit\xE9s",
+      "rules.l.act": "Agir",
+      "rules.l.attack": "attaque {dice}",
+      "rules.l.cast": "Lancer",
+      "rules.l.cost": "{n} {res}",
+      "rules.l.description": "Description",
+      "rules.l.e.benediction": "B\xE9n\xE9diction",
+      "rules.l.e.benediction.text": "La cible est b\xE9nie pour quelques rounds.",
+      "rules.l.e.corde": "Corde (15 m)",
+      "rules.l.e.corde.text": "Une corde de chanvre solide.",
+      "rules.l.e.lumiere": "Lumi\xE8re",
+      "rules.l.e.lumiere.text": "Un objet touch\xE9 brille comme une torche.",
+      "rules.l.e.sang_froid": "Sang-froid",
+      "rules.l.e.sang_froid.text": "Un jet sous pression, avec un bonus.",
+      "rules.l.e.torche": "Torche",
+      "rules.l.e.torche.text": "\xC9claire un rayon de quelques m\xE8tres pendant une heure.",
+      "rules.l.e.trait_de_feu": "Trait de feu",
+      "rules.l.e.trait_de_feu.text": "Un trait de flammes jaillit vers la cible.",
+      "rules.l.far": "Loin",
+      "rules.l.featText": "Texte",
+      "rules.l.items": "Objets",
+      "rules.l.level": "Niveau",
+      "rules.l.name": "Nom",
+      "rules.l.range": "Port\xE9e",
+      "rules.l.roll": "jet de {res}{bonus}",
+      "rules.l.spells": "Sorts",
+      "rules.l.stateSelf": "{state} sur soi",
+      "rules.l.stateTarget": "{state} sur la cible",
+      "rules.l.talents": "Talents",
+      "rules.l.touch": "Contact",
+      "rules.l.use": "Utiliser",
+      "rules.l.weight": "Poids",
+      "rules.margin": ", de {n}",
+      "rules.maxOf": "{name} (max)",
+      "rules.modOf": "Modificateur {name}",
+      "rules.p.addDice": "+{dice}{plus} \xE0 {name}, {how}",
+      "rules.p.addN": "{n} \xE0 {name}",
+      "rules.p.anyFeature": "toute la biblioth\xE8que",
+      "rules.p.anySkill": "au choix",
+      "rules.p.buyFeature": "Aptitude",
+      "rules.p.buySkill": "Comp\xE9tence",
+      "rules.p.buyStat": "Caract\xE9ristique",
+      "rules.p.f.allie": "Un alli\xE9",
+      "rules.p.f.allie.text": "Gagner un alli\xE9 fid\xE8le, d\xE9crit avec le MJ.",
+      "rules.p.f.atout": "Un atout",
+      "rules.p.f.atout.text": "Gagner un lieu, un v\xE9hicule ou un bien qui compte.",
+      "rules.p.f.autre_livret": "Action d\u2019un autre livret",
+      "rules.p.f.autre_livret.text": "Prendre une action d\u2019un autre livret.",
+      "rules.p.f.endurci": "Endurci",
+      "rules.p.f.endurci.text": "Une fois par repos, ignorer une blessure l\xE9g\xE8re.",
+      "rules.p.f.guerison": "Effacer une cicatrice",
+      "rules.p.f.guerison.text": "Effacer une s\xE9quelle ou une condition durable.",
+      "rules.p.f.nouvelle_action": "Nouvelle action",
+      "rules.p.f.nouvelle_action.text": "Prendre une nouvelle action de ton livret.",
+      "rules.p.f.plus_un": "+1 \xE0 une caract\xE9ristique",
+      "rules.p.f.plus_un.text": "Ajouter 1 \xE0 une caract\xE9ristique (+2 au plus), \xE0 reporter sur la fiche.",
+      "rules.p.f.resolu": "R\xE9solu",
+      "rules.p.f.resolu.text": "Relancer un jet contre la peur, une fois par s\xE9ance.",
+      "rules.p.f.vif": "Vif",
+      "rules.p.f.vif.text": "Agir le premier quand l\u2019initiative est \xE0 \xE9galit\xE9.",
+      "rules.p.feature": "Aptitude : {name}",
+      "rules.p.features": "Aptitudes",
+      "rules.p.how.average": "en moyenne",
+      "rules.p.how.player": "au choix du joueur",
+      "rules.p.how.roll": "au d\xE9",
+      "rules.p.pick": "{n} aptitude(s) parmi {list}",
+      "rules.p.spread": "{n} point(s) \xE0 r\xE9partir entre {list} ({max} max chacun)",
+      "rules.p.title": "Progression",
+      "rules.p.train": "Former {n} comp\xE9tence(s) : {list}",
+      "rules.p.xp": "Exp\xE9rience",
+      "rules.partial": "R\xE9ussite partielle",
+      "rules.passiveOf": "{name} (passive)",
+      "rules.reduction": "R\xE9duction",
+      "rules.resist": "R\xE9sistances",
+      "rules.rest.halte": "Halte",
+      "rules.rest.nuit": "Nuit",
+      "rules.rest.title": "Repos",
+      "rules.sk.athletics": "Athl\xE9tisme",
+      "rules.sk.perception": "Perception",
+      "rules.stat.agility": "Agilit\xE9",
+      "rules.stat.mind": "Esprit",
+      "rules.stat.strength": "Force",
+      "rules.state.a_terre": "\xC0 terre",
+      "rules.state.aveugle": "Aveugl\xE9",
+      "rules.state.benediction": "B\xE9ni",
+      "rules.state.entrave": "Entrav\xE9",
+      "rules.state.peur": "Effray\xE9",
+      "rules.state.poison": "Empoisonn\xE9",
+      "rules.state.protection": "\xC0 couvert",
+      "rules.state.saignement": "Bless\xE9 grave",
+      "rules.success": "R\xE9ussite",
+      "rules.successes": "{n} succ\xE8s",
+      "rules.test": "Test",
+      "rules.totalOf": "{name} (total)",
+      "rules.trainedIn": "{name} : form\xE9",
+      "rules.under": " (sous {n})",
+      "rules.v.adv": "Avantage, d\xE9savantage ou rien.",
+      "rules.v.advantage": "L\u2019avantage ne s\u2019applique pas \xE0 une r\xE9serve, \xE0 Fate ni \xE0 des bandes.",
+      "rules.v.bands": "Bandes : de 2 \xE0 12, dans l\u2019ordre croissant, la derni\xE8re sans maximum, chacune avec un nom et une tonalit\xE9.",
+      "rules.v.bonus": "Bonus : un nombre entier de \u22121000 \xE0 1000.",
+      "rules.v.bool": "Oui ou non attendu.",
+      "rules.v.buyNoXp": "Un achat se paie en exp\xE9rience : il en faut une.",
+      "rules.v.combat": "Combat illisible.",
+      "rules.v.combatKey": "Cette valeur n\u2019existe pas sur la fiche.",
+      "rules.v.combatRoll": "L\u2019attaque se lance avec \xAB {id} \xBB, qui n\u2019existe pas dans les r\xE8gles.",
+      "rules.v.combatStats": "Les armes ne peuvent prendre que des caract\xE9ristiques du syst\xE8me.",
+      "rules.v.condition": "Condition de critique ou de maladresse illisible.",
+      "rules.v.conditions": "Critiques et maladresses : 6 conditions au plus.",
+      "rules.v.cost": "Un co\xFBt fixe, une formule, ou des rep\xE8res puis une formule.",
+      "rules.v.costFormula": "Une formule du niveau vis\xE9, @n (par exemple 1000*@n).",
+      "rules.v.costNoXp": "Sans exp\xE9rience, les niveaux n\u2019ont pas de co\xFBt (le MJ les accorde).",
+      "rules.v.count": "Nombre de d\xE9s : de 1 \xE0 {max}.",
+      "rules.v.countAt": "Seuil de succ\xE8s : une face d\u2019un d{sides}.",
+      "rules.v.critical": "Critique : d\xE9s doubl\xE9s, maximum plus un jet, ou rien.",
+      "rules.v.cycle": "Boucle de calcul : {path}.",
+      "rules.v.default": "La difficult\xE9 par d\xE9faut n\u2019est pas dans la liste.",
+      "rules.v.degrees": "Degr\xE9s : par paliers au-dessus de la cible, ou par fractions sous la valeur.",
+      "rules.v.derived": "D\xE9riv\xE9s : {max} au plus.",
+      "rules.v.dice": "D\xE9s illisibles.",
+      "rules.v.difficulties": "Difficult\xE9s : {max} au plus.",
+      "rules.v.difficultyValue": "La difficult\xE9 a besoin d\u2019une valeur enti\xE8re.",
+      "rules.v.dotsKey": "En pastilles, la cl\xE9 fait {max} caract\xE8res au plus.",
+      "rules.v.dotsRange": "Pastilles : de 0 \xE0 {max} au plus.",
+      "rules.v.double": "Face qui compte double : une face du d\xE9, ou 0.",
+      "rules.v.effectTypes": "Des types de d\xE9g\xE2ts du combat.",
+      "rules.v.effects": "\xC9tats illisibles.",
+      "rules.v.expertise": "L\u2019expertise ne va qu\u2019avec \xAB form\xE9 \xBB.",
+      "rules.v.explode": "Explosion : sur le maximum, 10 fois au plus.",
+      "rules.v.family": "Famille de d\xE9s inconnue.",
+      "rules.v.fate": "Les d\xE9s Fate sont des d3, en nombre fixe.",
+      "rules.v.featText": "{max} caract\xE8res au plus.",
+      "rules.v.featUnknown": "Cette aptitude n\u2019existe pas.",
+      "rules.v.finesse": "La finesse compare deux caract\xE9ristiques diff\xE9rentes.",
+      "rules.v.fixed": "Cible fixe : un nombre entier.",
+      "rules.v.gauge": "Une jauge demande une ressource.",
+      "rules.v.generation": "M\xE9thode de cr\xE9ation inconnue.",
+      "rules.v.give": "De 1 \xE0 {max} gains.",
+      "rules.v.giveKind": "Un gain : ajouter, r\xE9partir, former, une aptitude ou un choix d\u2019aptitude.",
+      "rules.v.group": "Groupe : 40 caract\xE8res au plus.",
+      "rules.v.health": "Les d\xE9g\xE2ts touchent une ressource (un d\xE9riv\xE9 actuel / maximum).",
+      "rules.v.hidden": "Un d\xE9riv\xE9 cach\xE9 ne peut \xEAtre ni jetable, ni une ressource, ni une valeur saisie.",
+      "rules.v.icon": "Ic\xF4ne inconnue.",
+      "rules.v.id": "Cl\xE9 invalide : des minuscules et _, 30 caract\xE8res au plus.",
+      "rules.v.identity": "Identit\xE9 : un ton, un public et une complexit\xE9 de la liste.",
+      "rules.v.initiative": "L\u2019initiative se lance avec un nombre fixe de d\xE9s.",
+      "rules.v.keep": "Garder : le meilleur ou le pire, moins que le nombre de d\xE9s.",
+      "rules.v.key": "Cl\xE9 invalide : une minuscule, puis des minuscules, des chiffres et _, 30 caract\xE8res au plus.",
+      "rules.v.levelKey": "Le niveau est une valeur saisie de la fiche.",
+      "rules.v.levelRange": "Le niveau commence \xE0 1 et va au moins jusqu\u2019\xE0 2.",
+      "rules.v.lib": "Biblioth\xE8que illisible.",
+      "rules.v.libActionEmpty": "Cette action ne fait rien : un jet, un co\xFBt ou un \xE9tat.",
+      "rules.v.libBonus": "Un nombre de \u2212{max} \xE0 {max}, ou un champ nombre du genre (@niveau).",
+      "rules.v.libChoice": "Une des options du champ.",
+      "rules.v.libCost": "Un co\xFBt se paie dans une ressource.",
+      "rules.v.libDamage": "Des d\xE9s de d\xE9g\xE2ts comme 1d8 ou 2d6+1d4+2.",
+      "rules.v.libFeatureAction": "Une aptitude n\u2019agit pas : pas d\u2019action \xE0 elle.",
+      "rules.v.libFeatureEntry": "Les aptitudes se d\xE9crivent dans la carte Progression.",
+      "rules.v.libField": "Ce champ n\u2019existe pas dans ce genre.",
+      "rules.v.libFieldKey": "Cl\xE9 de champ : minuscules, chiffres et _, 16 au plus (nom, origine, agir, ligne sont r\xE9serv\xE9s).",
+      "rules.v.libFixedFields": "Les champs de ce genre sont fix\xE9s par les r\xE8gles.",
+      "rules.v.libGenre": "Ce genre n\u2019existe pas.",
+      "rules.v.libGenreKey": "Cl\xE9 de genre : une minuscule puis des minuscules ou chiffres, 12 au plus.",
+      "rules.v.libNoCombat": "Il faut un combat dans les r\xE8gles.",
+      "rules.v.libNoProgress": "Il faut une progression dans les r\xE8gles.",
+      "rules.v.libNumber": "Un nombre entier dans les bornes du champ.",
+      "rules.v.libOneKind": "Un seul genre de ce type.",
+      "rules.v.libOptions": "De 2 \xE0 {max} options, chacune une fois.",
+      "rules.v.libPasteName": "Il faut une colonne \xAB Nom \xBB.",
+      "rules.v.libRange": "Le minimum doit \xEAtre sous le maximum.",
+      "rules.v.libState": "Cet \xE9tat n\u2019existe pas.",
+      "rules.v.libText": "{max} caract\xE8res au plus.",
+      "rules.v.libWeaponAction": "Une arme attaque comme le combat le dit : pas d\u2019action \xE0 elle.",
+      "rules.v.marks": "De 1 \xE0 {max} rep\xE8res, chacun plus haut que le pr\xE9c\xE9dent (exp\xE9rience cumul\xE9e).",
+      "rules.v.modKey": "Un effet change une caract\xE9ristique, une valeur calcul\xE9e ou le total d\u2019une comp\xE9tence.",
+      "rules.v.modN": "Un nombre entier, de \u2212{max} \xE0 {max}, pas z\xE9ro.",
+      "rules.v.name": "Il faut un nom.",
+      "rules.v.need": "Succ\xE8s requis : au moins 1.",
+      "rules.v.needPool": "Il faut une r\xE9serve de d\xE9s (le nombre de d\xE9s vient de ce qu\u2019on ajoute).",
+      "rules.v.noDifficulty": "Une cible \xAB difficult\xE9 \xBB a besoin d\u2019au moins une difficult\xE9.",
+      "rules.v.notResolution": "R\xE9solution illisible.",
+      "rules.v.notRules": "R\xE8gles illisibles.",
+      "rules.v.onFailTarget": "L\u2019h\xF4te ne voit pas la difficult\xE9 choisie : un \xE9chec ne rapporte que sur un jet sans difficult\xE9, ou \xE0 difficult\xE9 fixe.",
+      "rules.v.percentRange": "Pourcentage : entre 0 et 100.",
+      "rules.v.pickLibrary": "\xAB Toute la biblioth\xE8que \xBB demande un genre Aptitudes dans la biblioth\xE8que.",
+      "rules.v.price": "Un prix de 1 \xE0 1 000 000, ou une formule du nouveau rang, @r.",
+      "rules.v.proficiency": "\xAB Form\xE9 \xBB ajoute un d\xE9riv\xE9 de ma\xEEtrise : choisis-le (et seulement avec \xAB form\xE9 \xBB).",
+      "rules.v.prog": "Progression illisible.",
+      "rules.v.progAmong": "Une liste de ce qui existe, chacun une fois.",
+      "rules.v.progDice": "Un d\xE9 comme 1d8 ou 2d6.",
+      "rules.v.progEmpty": "Rien ne fait progresser : de l\u2019exp\xE9rience, des niveaux, des achats ou l\u2019usage.",
+      "rules.v.progKey": "Une caract\xE9ristique, une comp\xE9tence ou une valeur de la fiche, jamais le niveau.",
+      "rules.v.progN": "Un nombre entier, de {min} \xE0 {max}.",
+      "rules.v.progRoll": "Ce jet n\u2019existe pas dans les r\xE8gles : \xAB {id} \xBB.",
+      "rules.v.read": "Lecture du r\xE9sultat inconnue.",
+      "rules.v.recipe": "Recette inconnue, incompl\xE8te, ou qui lit ce qui n\u2019existe pas.",
+      "rules.v.reroll": "Relance : une face du d\xE9, une fois ou toujours.",
+      "rules.v.resource": "Une ressource se calcule et ne se lance pas.",
+      "rules.v.restHow": "En entier, de moiti\xE9, d\u2019un nombre ou d\u2019une valeur.",
+      "rules.v.restUnknown": "Ce repos n\u2019existe pas.",
+      "rules.v.rests": "De 1 \xE0 {max} repos.",
+      "rules.v.rollNothing": "Ce jet ne change rien : un bonus ou un avantage.",
+      "rules.v.rollWith": "Ce d\xE9riv\xE9 suit \xAB {id} \xBB, qui n\u2019existe pas dans les r\xE8gles.",
+      "rules.v.rolls": "Jets secondaires : {max} au plus.",
+      "rules.v.rounds": "Entre 1 et {max} rounds.",
+      "rules.v.sameId": "La cl\xE9 \xAB {id} \xBB est d\xE9j\xE0 prise.",
+      "rules.v.short": "Abr\xE9viation : 6 caract\xE8res au plus.",
+      "rules.v.show": "Affichage inconnu.",
+      "rules.v.sides": "Faces du d\xE9 : {list}.",
+      "rules.v.skillList": "Comp\xE9tences : de 1 \xE0 {max}.",
+      "rules.v.skillMode": "Mode des comp\xE9tences inconnu.",
+      "rules.v.skillRank": "Rang des comp\xE9tences inconnu.",
+      "rules.v.skillStat": "\xAB {id} \xBB n\u2019est pas une caract\xE9ristique.",
+      "rules.v.skills": "Comp\xE9tences illisibles.",
+      "rules.v.spreadRoom": "Pas assez de place pour tous les points : plus de choix, ou un maximum plus haut.",
+      "rules.v.statDefault": "La valeur de d\xE9part doit \xEAtre dans la plage.",
+      "rules.v.statForm": "Forme des caract\xE9ristiques inconnue.",
+      "rules.v.statList": "Caract\xE9ristiques : de 1 \xE0 {max}.",
+      "rules.v.statRange": "Plage : un minimum plus petit que le maximum, entre \u22121000 et 1000.",
+      "rules.v.stats": "Caract\xE9ristiques illisibles.",
+      "rules.v.target": "Cible inconnue.",
+      "rules.v.tie": "\xC9galit\xE9 : r\xE9ussite ou \xE9chec.",
+      "rules.v.tooLong": "\xAB {id} \xBB donne une formule trop longue une fois d\xE9pli\xE9e ({n} caract\xE8res, {max} au plus).",
+      "rules.v.tooMany": "{max} au plus.",
+      "rules.v.trainNeeds": "Former une comp\xE9tence demande des comp\xE9tences \xAB form\xE9es \xBB.",
+      "rules.v.typeKey": "Cl\xE9 de type : des minuscules et _, 30 caract\xE8res au plus.",
+      "rules.v.types": "Types de d\xE9g\xE2ts : {max} au plus.",
+      "rules.v.useNeeds": "L\u2019usage coche des comp\xE9tences : il en faut.",
+      "rules.v.when": "Tous les N niveaux, \xE0 partir d\u2019un niveau de 2 \xE0 {max}.",
+      "rules.v.whenAt": "Des niveaux de 2 \xE0 {max}.",
+      "rules.v.window": "Fen\xEAtre du jet illisible.",
+      "rules.v.windowDifficulty": "La fen\xEAtre ne peut proposer une difficult\xE9 que si la cible est une difficult\xE9.",
+      "rules.vuln": "Vuln\xE9rabilit\xE9s",
+      "rules.w.ammo": "Munitions",
+      "rules.w.bonus": "Bonus",
+      "rules.w.damage": "D\xE9g\xE2ts",
+      "rules.w.name": "Arme",
+      "rules.w.range": "Port\xE9e",
+      "rules.w.stat": "Caract\xE9ristique",
+      "rules.w.tags": "\xC9tiquettes",
+      "rules.w.type": "Type",
+      "rules.weapons": "Armes",
+      "rules.x.fractionDown": "{of} \xF7 {by}, arrondi en dessous",
+      "rules.x.fractionNear": "{of} \xF7 {by}, arrondi au plus proche",
+      "rules.x.fractionUp": "{of} \xF7 {by}, arrondi au-dessus",
+      "rules.x.ifExpert": "{prof} si expert",
+      "rules.x.ifTrained": "{prof} si form\xE9",
+      "rules.x.max": "le plus grand de {list}",
+      "rules.x.min": "le plus petit de {list}",
+      "rules.x.modifier": "({of} \u2212 10) \xF7 2, arrondi en dessous",
+      "rules.x.perLevel": "{base} + {per} \xD7 {level}",
+      "rules.x.step": "jusqu\u2019\xE0 {upTo} \u2192 {value}",
+      "rules.x.steps": "selon {of} : {list} ; sinon {other}",
       "screenFilter.auto": "Selon le th\xE8me",
       "screenFilter.dread": "P\xE9nombre et d\xE9saturation",
       "screenFilter.failed": "Le filtre n\u2019a pas pu \xEAtre enregistr\xE9.",
@@ -5077,6 +10297,10 @@ var require_fr2 = __commonJS({
       "tableCompendium.tagNote": "note",
       "tableCompendium.tagSheet": "fiche",
       "tableCompendium.title": "Table",
+      "tableModules.off": "Le MJ a coup\xE9 {list}.",
+      "tableModules.on": "Le MJ a activ\xE9 {list}.",
+      "tableModules.onOff": "Le MJ a activ\xE9 {on} et coup\xE9 {off}.",
+      "tableModules.reload": "Recharger",
       "target.chip": "Cible",
       "target.none": "Ce n\u2019est pas une cible : il n\u2019a pas de fiche.",
       "target.remove": "Retirer la cible",
@@ -5170,11 +10394,21 @@ var require_theme_core = __commonJS({
       var COLOR_RE = /^#[0-9a-f]{6}$/;
       var BUILTIN = ["metier", "fantasy", "cyberpunk", "espace", "horreur", "noir"];
       var COLOR_KEYS = [
-        { k: "void", label: "Fond profond" },
-        { k: "bg", label: "Fond" },
-        { k: "panel", label: "Panneaux" },
-        { k: "panel2", label: "Panneaux en creux" },
-        { k: "line", label: "Filets" },
+        { k: "void", get label() {
+          return say2("tableTheme.ui.fondProfond");
+        } },
+        { k: "bg", get label() {
+          return say2("tableTheme.ui.fond");
+        } },
+        { k: "panel", get label() {
+          return say2("tableTheme.ui.panneaux");
+        } },
+        { k: "panel2", get label() {
+          return say2("tableTheme.ui.panneauxEnCreux");
+        } },
+        { k: "line", get label() {
+          return say2("tableTheme.ui.filets");
+        } },
         { k: "text", get label() {
           return say2("tableTheme.texte");
         } },
@@ -5184,13 +10418,21 @@ var require_theme_core = __commonJS({
         { k: "accent", get label() {
           return say2("tableTheme.accentFil");
         } },
-        { k: "accent2", label: "Accent secondaire" },
+        { k: "accent2", get label() {
+          return say2("tableTheme.ui.accentSecondaire");
+        } },
         { k: "ok", get label() {
           return say2("tableTheme.reussite");
         } },
-        { k: "warn", label: "Attention" },
-        { k: "bad", label: "Danger" },
-        { k: "paper", label: "Papier (fiches, jets)" },
+        { k: "warn", get label() {
+          return say2("tableTheme.ui.attention");
+        } },
+        { k: "bad", get label() {
+          return say2("tableTheme.ui.danger");
+        } },
+        { k: "paper", get label() {
+          return say2("tableTheme.ui.papierFichesJets");
+        } },
         { k: "paperInk", get label() {
           return say2("tableTheme.encreSurPapier");
         } }
@@ -6438,6 +11680,11 @@ var require_en2 = __commonJS({
       "builder.alignementNombre": "Number alignment",
       "builder.aucune": "None",
       "builder.badSize": "Invalid sheet size (300\u20131600 \xD7 200\u20131600).",
+      "builder.bind.inList": "A rules block does not go in a list.",
+      "builder.bind.layout": "Unknown block layout.",
+      "builder.bind.notContainer": "Only a container can follow the rules.",
+      "builder.bind.orphan": "This block follows \xAB {bind} \xBB, which the rules do not hold: it stays as it is.",
+      "builder.bind.twice": "The \xAB {bind} \xBB block is already on the sheet (or unreadable).",
       "builder.caracteristiques": "Attributes",
       "builder.carte": "Card",
       "builder.caseCocher": "Checkbox",
@@ -6486,6 +11733,11 @@ var require_en2 = __commonJS({
       "builder.entreesSousAutre": "Entries one under the other",
       "builder.equipement": "Equipment",
       "builder.equipment": "Equipment",
+      "builder.follows": "This roll follows",
+      "builder.follows.noDice": "This roll follows a rule: write only what is added (@strength, #bonus, 2), no dice.",
+      "builder.follows.none": "no rule",
+      "builder.follows.notClickable": "A roll that follows a rule must be clickable.",
+      "builder.follows.unknown": "This roll follows \xAB {id} \xBB, which is not in the rules.",
       "builder.forceDexteriteConstitutionIntelligence": "Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma",
       "builder.formula": "Formula",
       "builder.formula.emptyRef": "{what}: an \u201C@\u201D reference without a name.",
@@ -6582,11 +11834,15 @@ var require_en2 = __commonJS({
       "builder.reserveMjJoueursNe": "Reserved for the GM: players cannot change it",
       "builder.reserveMjNeS": "\u201CReserved for the GM\u201D only applies to the fields the player fills in.",
       "builder.ressourceDepenseeDoitEtre": "The spent resource must be a field.",
+      "builder.roll.advOneDie": "adv() and disadv() keep the best (worst) of the dice given: with one die there is no advantage. Write adv(2d20).",
       "builder.roll.context": "The roll: {problem}",
+      "builder.roll.d20Bonus": "Roll: d20 + bonus",
       "builder.roll.inList": "The roll names \u201C@{id}\u201D: this field is in a repeatable list, use \u201C#{id}\u201D in an entry's display.",
       "builder.roll.noField": "The roll names \u201C@{id}\u201D: this field does not exist or has no value.",
       "builder.roll.noVar": "The roll names the variable \u201C${id}\u201D: it does not exist.",
+      "builder.roll.underPercent": "Roll: percentage, success under the value",
       "builder.rollTooLong": "Roll too long ({max} at most).",
+      "builder.rules.needV2": "A system with rules is a version 2 document.",
       "builder.sensComparaisonEstInconnu": "The direction of the comparison is unknown.",
       "builder.seulEspaceEstAccepte": "Only the space is accepted as a separator (no tab nor line break).",
       "builder.seulPortraitParFiche": "A single portrait per sheet.",
@@ -6613,6 +11869,49 @@ var require_en2 = __commonJS({
       "builder.titreOngletVideTrop": "Tab title empty or too long.",
       "builder.tooManyNodes": "Too many elements ({max} at most).",
       "builder.toutesOptionsVisibles": "All options visible",
+      "builder.ui.alignement": "Alignment",
+      "builder.ui.bandeau": "Banner",
+      "builder.ui.bouton": "Button",
+      "builder.ui.cellules0Automatique": "Cells (0: automatic)",
+      "builder.ui.colonne": "Column",
+      "builder.ui.conteneur": "Container",
+      "builder.ui.discret": "Subtle",
+      "builder.ui.disposition": "Layout",
+      "builder.ui.enCreux": "Inset",
+      "builder.ui.enLigneCompact": "Inline (compact)",
+      "builder.ui.grande": "Large",
+      "builder.ui.gras": "Bold",
+      "builder.ui.indication": "Placeholder",
+      "builder.ui.infobulleAuSurvolOptionnel": "Tooltip on hover (optional)",
+      "builder.ui.inventaire": "Inventory",
+      "builder.ui.jauge": "Gauge",
+      "builder.ui.ligne": "Row",
+      "builder.ui.listeDAptitudes": "Feature list",
+      "builder.ui.listeDAttaques": "Attack list",
+      "builder.ui.listeDeChoix": "Choice list",
+      "builder.ui.listeDeSorts": "Spell list",
+      "builder.ui.listeLibre": "Custom list",
+      "builder.ui.majuscules": "Uppercase",
+      "builder.ui.maximum": "Maximum",
+      "builder.ui.minimum": "Minimum",
+      "builder.ui.minuscule": "Tiny",
+      "builder.ui.moyenne": "Medium",
+      "builder.ui.nom": "Name",
+      "builder.ui.normale": "Normal",
+      "builder.ui.notesLibres": "Free notes",
+      "builder.ui.onglets": "Tabs",
+      "builder.ui.options": "Options",
+      "builder.ui.pastille": "Badge",
+      "builder.ui.pastilles": "Pips",
+      "builder.ui.petite": "Small",
+      "builder.ui.peutResterVide": "Can stay empty",
+      "builder.ui.plusieursChoix": "Several choices",
+      "builder.ui.portrait": "Portrait",
+      "builder.ui.ressourceActuelMax": "Resource (current / max)",
+      "builder.ui.sousTitre": "Subtitle",
+      "builder.ui.style": "Style",
+      "builder.ui.taille": "Size",
+      "builder.ui.titre": "Title",
       "builder.unknownBlock": "Unknown block: {id}",
       "builder.unknownComponent": "Unknown component: {name}",
       "builder.unsupported": "This sheet uses elements the editor does not handle yet: {list}.",
@@ -6709,19 +12008,31 @@ var require_en2 = __commonJS({
       "builderTheme.texteDiscret": "Quiet text",
       "builderTheme.themeIllisible": "Unreadable theme.",
       "builderTheme.typeFondInconnu": "Unknown background kind.",
+      "builderTheme.ui.accentPrincipal": "Main accent",
+      "builderTheme.ui.accentSecondaire": "Secondary accent",
+      "builderTheme.ui.alegreyaLivre": "Alegreya (book)",
+      "builderTheme.ui.arrondie": "Rounded",
+      "builderTheme.ui.bandeauFond": "Banner (background)",
+      "builderTheme.ui.barlowCondensedAffiche": "Barlow Condensed (poster)",
+      "builderTheme.ui.bordures": "Borders",
+      "builderTheme.ui.caveatManuscrite": "Caveat (handwritten)",
+      "builderTheme.ui.chakraPetchHud": "Chakra Petch (HUD)",
+      "builderTheme.ui.champsFond": "Fields (background)",
+      "builderTheme.ui.crimsonProRoman": "Crimson Pro (novel)",
+      "builderTheme.ui.exo2ScienceFiction": "Exo 2 (science fiction)",
+      "builderTheme.ui.imFellEnglishGrimoire": "IM Fell English (grimoire)",
+      "builderTheme.ui.interNet": "Inter (clean)",
+      "builderTheme.ui.jetbrainsMonoCode": "JetBrains Mono (code)",
+      "builderTheme.ui.livreAncien": "Old book",
+      "builderTheme.ui.michromaLargeTechno": "Michroma (wide, techno)",
+      "builderTheme.ui.panneaux": "Panels",
+      "builderTheme.ui.panneauxEnCreux": "Inset panels",
+      "builderTheme.ui.sairaStencilOnePochoir": "Saira Stencil One (stencil)",
+      "builderTheme.ui.serifClassique": "Classic serif",
+      "builderTheme.ui.shareTechMonoTerminal": "Share Tech Mono (terminal)",
+      "builderTheme.ui.terminal": "Terminal",
       "builderTheme.valeursCalculees": "Computed values",
       "dialog.firewall.failed": "Windows Firewall could not be updated. Accept the administrator prompt (UAC) and try again.",
-      "dialog.friends.added": "{name} was added to your friends.",
-      "dialog.friends.copied": "Your friend code is copied. Send it to whoever you want (Discord, SMS\u2026).",
-      "dialog.hostFailed.title": "Host failed to start",
-      "dialog.internet.cancel": "Cancel",
-      "dialog.internet.confirm": "Open to the Internet",
-      "dialog.internet.detail": "The port will be reachable from the Internet. Only keys you invite can connect and all traffic is encrypted (TLS, certificate pinned in the invitation): the host answers nobody else. Your router must forward the port, or your IPv6 must be reachable.",
-      "dialog.internet.message": "Open the port to the whole Internet?",
-      "dialog.internet.title": "Expose the table to the Internet",
-      "dialog.invite.copied": "Invitation for {name} copied",
-      "dialog.invite.detail": "It is encrypted for {name} only: send it any way you like (Discord, SMS\u2026). Nobody else can read the address inside. Valid for 7 days.",
-      "dialog.invite.localWarning": 'Your network access is set to "Local": your friend will not be able to reach you. Change it in Settings, then create the invitation again.',
       "dialog.join.unknownSender": "This invitation comes from someone who is not in your friends. Add their friend code (Friends menu) first.",
       "err.bundle.absolute": "absolute path (Foundry's own)",
       "err.bundle.badType": "File type that cannot be bundled: {name}.",
@@ -6831,6 +12142,7 @@ var require_en2 = __commonJS({
       "err.foundry.outside": "Path outside the module.",
       "err.foundry.tooManyDocs": "Compendium too big (more than {max} documents).",
       "err.handshake.silent": "The host did not answer: it cannot be reached, or your key is not invited to this table.",
+      "err.identity.notBackup": "This file is not an Ourdir identity backup, or it is damaged.",
       "err.install.archiveTropVolumineuse": "Archive too large.",
       "err.install.badJson": "module.json is not valid JSON.",
       "err.install.badSignature": "Unreadable signature: ignored.",
@@ -7022,45 +12334,15 @@ var require_en2 = __commonJS({
       "menu.edit.redo": "Redo",
       "menu.edit.selectAll": "Select all",
       "menu.edit.undo": "Undo",
-      "menu.friends": "Friends",
-      "menu.friends.addFromClipboard": "Add a friend (code on the clipboard)",
-      "menu.friends.copyCode": "Copy my friend code",
-      "menu.friends.invite": "Invite to my table",
-      "menu.friends.join": "Join a table (invitation on the clipboard)",
-      "menu.friends.none": "No friends yet",
-      "menu.friends.remove": "Remove",
-      "menu.friends.uninvite": "Remove from my table",
       "menu.help": "Help",
       "menu.help.logs": "Open the logs folder",
       "menu.home": "Home",
-      "menu.host": "Host",
       "menu.host.devTools": "DevTools",
-      "menu.host.network": "Network access",
-      "menu.host.network.internet": "Internet (remote players)",
-      "menu.host.network.lan": "Local network (LAN)",
-      "menu.host.network.local": "Local (this PC only)",
-      "menu.host.openUserData": "Open userData",
-      "menu.host.reachability": "Reachability (can my friends reach me?)",
-      "menu.host.start": "Start host",
-      "menu.host.stop": "Stop host",
-      "menu.tables": "Tables",
-      "menu.tables.forget": "Forget",
-      "menu.tables.mine": "My table",
-      "menu.tables.none": "No table joined yet",
-      "menu.tables.open": "Open",
       "menu.view": "View",
       "menu.view.fullscreen": "Full screen",
       "menu.view.resetZoom": "Actual size",
       "menu.view.zoomIn": "Zoom in",
       "menu.view.zoomOut": "Zoom out",
-      "offline.body": "The embedded host is not running. Use Host \u2192 Start host (127.0.0.1:3010).",
-      "offline.hint": "Menu: Start host \xB7 Stop \xB7 Open userData \xB7 DevTools",
-      "offline.lead": "The embedded host is not running yet.",
-      "offline.statusLabel": "Host status",
-      "offline.statusRunning": "Running",
-      "offline.statusStopped": "Stopped",
-      "offline.title": "Server not started",
-      "offline.userDataLabel": "userData",
       "pkg.identity.badCode": "Invalid friend code.",
       "pkg.identity.badCodeCopy": "Invalid friend code (incomplete or altered copy).",
       "pkg.identity.noEncryption": "Encrypted identity: the system's encryption is unavailable.",
@@ -7111,6 +12393,210 @@ var require_en2 = __commonJS({
       "reach.upnp.mapped": "Your router opened port {port} automatically (UPnP). Your public address is {ip}: it goes into invitations.",
       "reach.upnp.none": 'No UPnP router found. Forward TCP port {port} to this PC by hand, then set your public address ("publicHost" in host.json).',
       "reach.upnp.refused": "Your router was found but refuses to open the port. Do it by hand: forward TCP port {port} to this PC.",
+      "rules.against": " (against {n})",
+      "rules.attack": "Attack",
+      "rules.crit": "Critical success",
+      "rules.deg.extreme": "Extreme success",
+      "rules.deg.hard": "Hard success",
+      "rules.der.defense": "Defense",
+      "rules.der.health": "Health",
+      "rules.der.hp": "Hit points",
+      "rules.der.initiative": "Initiative",
+      "rules.der.level": "Level",
+      "rules.der.magic": "Magic points",
+      "rules.der.proficiency": "Proficiency",
+      "rules.der.sanity": "Sanity",
+      "rules.der.stress": "Stress",
+      "rules.der.willpower": "Willpower",
+      "rules.diff.easy": "Easy",
+      "rules.diff.hard": "Hard",
+      "rules.diff.medium": "Medium",
+      "rules.diff.veryHard": "Very hard",
+      "rules.dt.balistique": "Ballistic",
+      "rules.dt.contondant": "Bludgeoning",
+      "rules.dt.electrique": "Electric",
+      "rules.dt.energie": "Energy",
+      "rules.dt.explosif": "Explosive",
+      "rules.dt.feu": "Fire",
+      "rules.dt.foudre": "Lightning",
+      "rules.dt.froid": "Cold",
+      "rules.dt.necrotique": "Necrotic",
+      "rules.dt.perforant": "Piercing",
+      "rules.dt.poison": "Poison",
+      "rules.dt.psychique": "Psychic",
+      "rules.dt.tranchant": "Slashing",
+      "rules.expertIn": "{name}: expert",
+      "rules.fail": "Failure",
+      "rules.fate.average": "Average",
+      "rules.fate.fair": "Fair",
+      "rules.fate.good": "Good",
+      "rules.fate.great": "Great",
+      "rules.fate.mediocre": "Mediocre",
+      "rules.fate.superb": "Superb",
+      "rules.finesse": "The best of the two (finesse)",
+      "rules.fumble": "Critical failure",
+      "rules.fx.title": "States",
+      "rules.icon.a_terre": "Prone",
+      "rules.icon.autre": "Other",
+      "rules.icon.aveugle": "Blind",
+      "rules.icon.benediction": "Blessing",
+      "rules.icon.charme": "Charm",
+      "rules.icon.entrave": "Restraint",
+      "rules.icon.faiblesse": "Weakness",
+      "rules.icon.feu": "Fire",
+      "rules.icon.froid": "Cold",
+      "rules.icon.invisible": "Invisible",
+      "rules.icon.peur": "Fear",
+      "rules.icon.poison": "Poison",
+      "rules.icon.protection": "Protection",
+      "rules.icon.rage": "Rage",
+      "rules.icon.saignement": "Bleeding",
+      "rules.icon.sommeil": "Sleep",
+      "rules.icon.vitesse": "Speed",
+      "rules.immune": "Immunities",
+      "rules.margin": ", by {n}",
+      "rules.maxOf": "{name} (max)",
+      "rules.modOf": "{name} modifier",
+      "rules.partial": "Partial success",
+      "rules.passiveOf": "{name} (passive)",
+      "rules.reduction": "Reduction",
+      "rules.resist": "Resistances",
+      "rules.rest.halte": "Short rest",
+      "rules.rest.nuit": "Night",
+      "rules.rest.title": "Rests",
+      "rules.sk.athletics": "Athletics",
+      "rules.sk.perception": "Perception",
+      "rules.stat.agility": "Agility",
+      "rules.stat.mind": "Mind",
+      "rules.stat.strength": "Strength",
+      "rules.state.a_terre": "Prone",
+      "rules.state.aveugle": "Blinded",
+      "rules.state.benediction": "Blessed",
+      "rules.state.entrave": "Restrained",
+      "rules.state.peur": "Frightened",
+      "rules.state.poison": "Poisoned",
+      "rules.state.protection": "In cover",
+      "rules.state.saignement": "Badly wounded",
+      "rules.success": "Success",
+      "rules.successes": "{n} successes",
+      "rules.test": "Test",
+      "rules.totalOf": "{name} (total)",
+      "rules.trainedIn": "{name}: trained",
+      "rules.under": " (under {n})",
+      "rules.v.adv": "Advantage, disadvantage or nothing.",
+      "rules.v.advantage": "Advantage does not apply to a pool, to Fate nor to bands.",
+      "rules.v.bands": "Bands: 2 to 12, rising, the last without a maximum, each with a name and a tone.",
+      "rules.v.bonus": "Bonus: a whole number from \u22121000 to 1000.",
+      "rules.v.bool": "Yes or no expected.",
+      "rules.v.combat": "Unreadable combat.",
+      "rules.v.combatKey": "This value is not on the sheet.",
+      "rules.v.combatRoll": "The attack is rolled with \xAB {id} \xBB, which is not in the rules.",
+      "rules.v.combatStats": "Weapons can only take characteristics of the system.",
+      "rules.v.condition": "Unreadable critical or fumble condition.",
+      "rules.v.conditions": "Criticals and fumbles: 6 conditions at most.",
+      "rules.v.count": "Number of dice: 1 to {max}.",
+      "rules.v.countAt": "Success threshold: a face of a d{sides}.",
+      "rules.v.critical": "Critical: doubled dice, maximum plus a roll, or nothing.",
+      "rules.v.cycle": "Calculation loop: {path}.",
+      "rules.v.default": "The default difficulty is not in the list.",
+      "rules.v.degrees": "Degrees: steps above the target, or fractions under the value.",
+      "rules.v.derived": "Derived values: {max} at most.",
+      "rules.v.dice": "Unreadable dice.",
+      "rules.v.difficulties": "Difficulties: {max} at most.",
+      "rules.v.difficultyValue": "The difficulty needs a whole value.",
+      "rules.v.dotsKey": "With dots, the key is {max} characters at most.",
+      "rules.v.dotsRange": "Dots: from 0 to {max} at most.",
+      "rules.v.double": "Face that counts twice: a face of the die, or 0.",
+      "rules.v.effectTypes": "Damage types of the combat.",
+      "rules.v.effects": "Unreadable states.",
+      "rules.v.expertise": "Expertise only goes with \xAB trained \xBB.",
+      "rules.v.explode": "Explosion: on the highest face, 10 times at most.",
+      "rules.v.family": "Unknown dice family.",
+      "rules.v.fate": "Fate dice are d3, in a fixed number.",
+      "rules.v.finesse": "Finesse compares two different characteristics.",
+      "rules.v.fixed": "Fixed target: a whole number.",
+      "rules.v.gauge": "A gauge needs a resource.",
+      "rules.v.generation": "Unknown creation method.",
+      "rules.v.group": "Group: 40 characters at most.",
+      "rules.v.health": "Damage hits a resource (a current / maximum derived value).",
+      "rules.v.hidden": "A hidden derived value cannot be rolled, a resource, nor a typed value.",
+      "rules.v.icon": "Unknown icon.",
+      "rules.v.id": "Invalid key: lowercase letters and _, 30 characters at most.",
+      "rules.v.identity": "Identity: a tone, an audience and a complexity from the list.",
+      "rules.v.initiative": "Initiative is rolled with a fixed number of dice.",
+      "rules.v.keep": "Keep: best or worst, fewer than the number of dice.",
+      "rules.v.key": "Invalid key: a lowercase letter, then lowercase letters, digits and _, 30 characters at most.",
+      "rules.v.modKey": "An effect changes a characteristic, a computed value or a skill\u2019s total.",
+      "rules.v.modN": "A whole number, from \u2212{max} to {max}, not zero.",
+      "rules.v.name": "A name is needed.",
+      "rules.v.need": "Successes needed: at least 1.",
+      "rules.v.needPool": "A dice pool is needed (the number of dice comes from what is added).",
+      "rules.v.noDifficulty": "A \xAB difficulty \xBB target needs at least one difficulty.",
+      "rules.v.notResolution": "Unreadable resolution.",
+      "rules.v.notRules": "Unreadable rules.",
+      "rules.v.percentRange": "Percentage: between 0 and 100.",
+      "rules.v.proficiency": "\xAB Trained \xBB adds a proficiency derived value: choose it (and only with \xAB trained \xBB).",
+      "rules.v.read": "Unknown way to read the result.",
+      "rules.v.recipe": "Unknown or incomplete recipe, or one that reads what does not exist.",
+      "rules.v.reroll": "Reroll: a face of the die, once or always.",
+      "rules.v.resource": "A resource is worked out and is not rolled.",
+      "rules.v.restHow": "In full, by half, by a number or by a value.",
+      "rules.v.restUnknown": "This rest does not exist.",
+      "rules.v.rests": "From 1 to {max} rests.",
+      "rules.v.rollNothing": "This roll changes nothing: a bonus or an advantage.",
+      "rules.v.rollWith": "This derived value follows \xAB {id} \xBB, which is not in the rules.",
+      "rules.v.rolls": "Secondary rolls: {max} at most.",
+      "rules.v.rounds": "Between 1 and {max} rounds.",
+      "rules.v.sameId": "The key \xAB {id} \xBB is already taken.",
+      "rules.v.short": "Abbreviation: 6 characters at most.",
+      "rules.v.show": "Unknown display.",
+      "rules.v.sides": "Die faces: {list}.",
+      "rules.v.skillList": "Skills: 1 to {max}.",
+      "rules.v.skillMode": "Unknown skill mode.",
+      "rules.v.skillRank": "Unknown skill rank.",
+      "rules.v.skillStat": "\xAB {id} \xBB is not a characteristic.",
+      "rules.v.skills": "Unreadable skills.",
+      "rules.v.statDefault": "The starting value must be within the range.",
+      "rules.v.statForm": "Unknown form of characteristics.",
+      "rules.v.statList": "Characteristics: 1 to {max}.",
+      "rules.v.statRange": "Range: a minimum below the maximum, between \u22121000 and 1000.",
+      "rules.v.stats": "Unreadable characteristics.",
+      "rules.v.target": "Unknown target.",
+      "rules.v.tie": "Tie: success or failure.",
+      "rules.v.tooLong": "\xAB {id} \xBB gives a formula too long once unfolded ({n} characters, {max} at most).",
+      "rules.v.tooMany": "{max} at most.",
+      "rules.v.typeKey": "Type key: lowercase letters and _, 30 characters at most.",
+      "rules.v.types": "Damage types: {max} at most.",
+      "rules.v.window": "Unreadable roll window.",
+      "rules.v.windowDifficulty": "The window can offer a difficulty only if the target is a difficulty.",
+      "rules.vuln": "Vulnerabilities",
+      "rules.w.ammo": "Ammunition",
+      "rules.w.bonus": "Bonus",
+      "rules.w.damage": "Damage",
+      "rules.w.name": "Weapon",
+      "rules.w.range": "Range",
+      "rules.w.stat": "Characteristic",
+      "rules.w.tags": "Tags",
+      "rules.w.type": "Type",
+      "rules.weapons": "Weapons",
+      "rules.x.fractionDown": "{of} \xF7 {by}, rounded down",
+      "rules.x.fractionNear": "{of} \xF7 {by}, rounded to the nearest",
+      "rules.x.fractionUp": "{of} \xF7 {by}, rounded up",
+      "rules.x.ifExpert": "{prof} if expert",
+      "rules.x.ifTrained": "{prof} if trained",
+      "rules.x.max": "the greatest of {list}",
+      "rules.x.min": "the smallest of {list}",
+      "rules.x.modifier": "({of} \u2212 10) \xF7 2, rounded down",
+      "rules.x.perLevel": "{base} + {per} \xD7 {level}",
+      "rules.x.step": "up to {upTo} \u2192 {value}",
+      "rules.x.steps": "by {of}: {list}; otherwise {other}",
+      "sys.dnd5e.description": "A complete fifth-edition sheet from the SRD 5.1 rules: abilities, saving throws, 18 skills, spells and slots, attacks, conditions, equipment. No logo, no affiliation.",
+      "sys.fate-like.description": "Aspects, six approaches, stress and consequences. A 4d3-8 roll, the open equivalent of 4dF, with no licensed text.",
+      "sys.generic.description": "A universal sheet: 6 traits and a d20. A neutral starting point for any game.",
+      "sys.generic.name": "Generic",
+      "sys.license.original": "Ourdir original",
+      "sys.lite.description": "The sheet of Lite tables: hit points with a bar and a status, one-click initiative, four resources, notes.",
+      "sys.osr.description": "Class, hit points, AC, six abilities, attack rolls and saving throws on a d20.",
       "tableTheme.accentFil": "Accent (the thread)",
       "tableTheme.advice": "{advice} ({ratio} for {min}).",
       "tableTheme.badBase": "Base: one of the built-in themes.",
@@ -7155,8 +12641,27 @@ var require_en2 = __commonJS({
       "tableTheme.theme": "Theme",
       "tableTheme.tooBig": "Theme too large (64 KB at most).",
       "tableTheme.tooLong80": "{name}: 80 characters at most.",
+      "tableTheme.ui.accentSecondaire": "Secondary accent",
+      "tableTheme.ui.attention": "Warning",
+      "tableTheme.ui.danger": "Danger",
+      "tableTheme.ui.filets": "Rules",
+      "tableTheme.ui.fond": "Background",
+      "tableTheme.ui.fondProfond": "Deep background",
+      "tableTheme.ui.panneaux": "Panels",
+      "tableTheme.ui.panneauxEnCreux": "Inset panels",
+      "tableTheme.ui.papierFichesJets": "Paper (sheets, rolls)",
       "tableTheme.unknownField": "{where}: unknown field \u201C{name}\u201D.",
       "tableTheme.unreadable": "This file is not an Ourdir theme (unreadable JSON).",
+      "ui.about.data": "Your data: {path}",
+      "ui.about.engine": "Electron {electron} \xB7 Chromium {chrome} \xB7 Node {node}",
+      "ui.about.fonts": "Embedded fonts (their licenses ship with them, in the fonts folder): {list}",
+      "ui.about.licences": "Licenses",
+      "ui.about.licencesTitle": "Licenses and credits",
+      "ui.about.report": "Prepare a bug report\u2026",
+      "ui.about.reportDone": "Report saved: {file}",
+      "ui.about.reportHint": "The report holds the logs and the app\u2019s settings, never your keys, identity, friends or tables. The logs may name your friends and show IP addresses. Send it to contact@ourdir.fr with what happened.",
+      "ui.about.title": "About Ourdir",
+      "ui.about.version": "Ourdir {version} \xB7 alpha version",
       "ui.access.closed": "Your router did not open the door: your friends cannot reach you for now.",
       "ui.access.firewall": "Windows did not allow the app: your friends cannot reach you.",
       "ui.access.idle": "Ready. Your friends' access sets itself up when you launch a table.",
@@ -7186,6 +12691,7 @@ var require_en2 = __commonJS({
       "ui.builder.blocksHint": "Pre-built pieces of sheet (attributes, lists, pips...). They go into the selected column, container or tab, then edit like anything else.",
       "ui.builder.blocksInsert": "Insert into the sheet",
       "ui.builder.blocksTitle": "Ready-made blocks",
+      "ui.builder.boundHint": "This element follows the rules (\xAB {bind} \xBB block): it is made again at every change of the rules. Change the rule, not the element.",
       "ui.builder.cannotSave": "Fix the errors listed under the sheet first.",
       "ui.builder.canvasEmpty": "The sheet is empty: add a row, then fields.",
       "ui.builder.checksErrors": "{n} error(s) to fix",
@@ -7201,6 +12707,8 @@ var require_en2 = __commonJS({
       "ui.builder.dice.keep3": "4d6, keep the best 3",
       "ui.builder.dice.min3": "d6 with a minimum of 3",
       "ui.builder.dice.percent": "d100 (percentage)",
+      "ui.builder.dice.pool": "Pool: 5d10, count 7 and above",
+      "ui.builder.dice.reroll1": "d20, reroll a 1 (once)",
       "ui.builder.down": "Move down",
       "ui.builder.dropHere": "Drop a field here",
       "ui.builder.duplicate": "Duplicate",
@@ -7219,6 +12727,7 @@ var require_en2 = __commonJS({
       "ui.builder.imported": "System \u201C{name}\u201D imported.",
       "ui.builder.insertDice": "Insert a die or roll rule\u2026",
       "ui.builder.insertRef": "Insert a value\u2026",
+      "ui.builder.installed": "Installed systems",
       "ui.builder.keyInvalid": "Invalid key: letters, digits and _ (40 at most).",
       "ui.builder.keyTaken": "This key is already used.",
       "ui.builder.leaveConfirm": "Leave without saving your changes?",
@@ -7273,6 +12782,7 @@ var require_en2 = __commonJS({
       "ui.builder.tabsHint": "Click a tab on the sheet to fill it: what you add next goes inside.",
       "ui.builder.tabsLabel": "Tabs",
       "ui.builder.templateFail": "This template cannot be opened in the editor.",
+      "ui.builder.templates": "Templates",
       "ui.builder.themeAddFile": "Add a file (font woff2, woff, ttf, otf; image png, jpg, webp)",
       "ui.builder.themeAngle": "Gradient angle",
       "ui.builder.themeAssets": "Embedded fonts and images",
@@ -7301,7 +12811,6 @@ var require_en2 = __commonJS({
       "ui.builder.themeHeader": "Title bar",
       "ui.builder.themeHeaderAlign": "Title bar alignment",
       "ui.builder.themeHeadingFont": "Heading font",
-      "ui.builder.themeHint": "The visual identity of the sheet: colors, fonts, background, shapes. The preview updates live.",
       "ui.builder.themeImage": "Background image",
       "ui.builder.themeImageMode": "Image display",
       "ui.builder.themeImported": "(imported)",
@@ -7309,7 +12818,6 @@ var require_en2 = __commonJS({
       "ui.builder.themeKindFont": "font",
       "ui.builder.themeKindImage": "image",
       "ui.builder.themeNoImages": "Add an image first in \u201CEmbedded fonts and images\u201D below.",
-      "ui.builder.themeNone": "None (the game's basic look)",
       "ui.builder.themePatternColor": "Pattern color",
       "ui.builder.themePatternOpacity": "Pattern strength",
       "ui.builder.themePatternSize": "Pattern size",
@@ -7366,6 +12874,13 @@ var require_en2 = __commonJS({
       "ui.cat.kind.theme": "Table themes",
       "ui.cat.kind.translation": "Translations",
       "ui.cat.kindFilter": "Type",
+      "ui.cat.kindOne.adventure": "Adventure",
+      "ui.cat.kindOne.compendium": "Compendium",
+      "ui.cat.kindOne.maps": "Map pack",
+      "ui.cat.kindOne.module": "Module",
+      "ui.cat.kindOne.system": "System",
+      "ui.cat.kindOne.theme": "Table theme",
+      "ui.cat.kindOne.translation": "Translation",
       "ui.cat.lang.all": "All languages",
       "ui.cat.langFilter": "Language",
       "ui.cat.lead": "Signed modules and systems, ready to install. Nothing is installed before the review screen.",
@@ -7414,8 +12929,9 @@ var require_en2 = __commonJS({
       "ui.common.cancel": "Cancel",
       "ui.common.copied": "Copied",
       "ui.common.copy": "Copy",
-      "ui.common.loading": "Loading\u2026",
       "ui.common.paste": "Paste",
+      "ui.error.startup": "Ourdir could not start. The details are in the log: {log}",
+      "ui.error.unexpected": "Something went wrong. The details are in the log (Help menu \u2192 Open the logs folder).",
       "ui.friends.accessBad": "Your table is probably not reachable from the Internet yet (see Settings). The invitation will work once that is fixed.",
       "ui.friends.add": "Add a friend",
       "ui.friends.addPlaceholder": "Paste their friend code (td1_\u2026)",
@@ -7458,6 +12974,19 @@ var require_en2 = __commonJS({
       "ui.home.title": "How do you want to start?",
       "ui.home.zero": "Start from scratch",
       "ui.home.zeroText": "A wizard asks a few questions and gives you a sheet that is already playable.",
+      "ui.identity.backupHint": "The backup keeps your key, your name and your friends. If you lose your identity without it, your friends will have to add you again. Keep this file secret: it lets someone pass for you.",
+      "ui.identity.defaultName": "Player",
+      "ui.identity.export": "Back up my identity\u2026",
+      "ui.identity.exported": "Identity saved: {file}",
+      "ui.identity.import": "Restore an identity\u2026",
+      "ui.identity.imported": "Identity restored.",
+      "ui.identity.newOne": "Go on with a new identity",
+      "ui.identity.replace": "Replace",
+      "ui.identity.replaceDetail": "The current identity is kept aside in the data folder, nothing is deleted. The backup\u2019s friends are added to yours.",
+      "ui.identity.replaceTitle": "Replace your identity with this backup?",
+      "ui.identity.stopFirst": "Stop the table you host first.",
+      "ui.identity.unreadable": "Your identity cannot be read.",
+      "ui.identity.unreadableDetail": "The identity.json file is damaged, or comes from another Windows account. You can go on with a new identity: the old one is kept aside, and your friends will have to add you again. If you have a backup of your identity, restore it afterwards in Friends.",
       "ui.key.addRecovery": "Add a recovery e-mail",
       "ui.key.alert": "Someone asks to replace your publisher key from your e-mail ({date}). If it is not you:",
       "ui.key.alertNotice": "Someone asks to replace your publisher key: open Ourdir's Catalog to cancel if it is not you.",
@@ -7494,6 +13023,7 @@ var require_en2 = __commonJS({
       "ui.key.step.key": "New key",
       "ui.key.title": "My publisher key",
       "ui.key.waiting": "Replacement due on {date}. You can close: the app follows the request.",
+      "ui.me.idle": "No table running",
       "ui.mod.bundleFailed": "Several files: assembling failed (see warnings). The module will not be able to run.",
       "ui.mod.bundled": "Several files: assembled into one script ({n} files).",
       "ui.mod.by": "by {authors}",
@@ -7547,7 +13077,6 @@ var require_en2 = __commonJS({
       "ui.mod.runtime.pending": "Installed \xB7 old version, reinstall it to run it",
       "ui.mod.runtime.ready": "Ready: runs in games, isolated",
       "ui.mod.runtime.unsupported": "Cannot run: {reason}",
-      "ui.mod.skipped": "{n} file(s) skipped for safety.",
       "ui.mod.status.blocked": "Blocked (security)",
       "ui.mod.status.partial": "Partial",
       "ui.mod.status.supported": "Supported",
@@ -7567,8 +13096,6 @@ var require_en2 = __commonJS({
       "ui.mod.urlLabel": "Install from an address",
       "ui.mod.version": "Version {v}",
       "ui.mod.warnings": "Warnings",
-      "ui.modules.empty": "No module installed.",
-      "ui.modules.text": "Modules (scenes, handouts, extensions) arrive with the module manager. They will run in a sandbox and ask for explicit permissions.",
       "ui.modules.title": "Modules",
       "ui.nav.catalog": "Catalog",
       "ui.nav.friends": "Friends",
@@ -7624,9 +13151,363 @@ var require_en2 = __commonJS({
       "ui.roles.roles": "Roles",
       "ui.roles.running": "The table is running: a change of role applies at once, and the member concerned is reconnected so that their page matches their new role.",
       "ui.roles.save": "Save",
+      "ui.rules.addRow": "Add",
+      "ui.rules.addStat": "The weapon\u2019s characteristic adds to damage",
+      "ui.rules.adv": "Advantage",
+      "ui.rules.adv.down": "disadvantage",
+      "ui.rules.adv.none": "nothing",
+      "ui.rules.adv.up": "advantage",
+      "ui.rules.ask": "It opens",
+      "ui.rules.ask.always": "at every click (Shift+click rolls at once)",
+      "ui.rules.ask.never": "never",
+      "ui.rules.ask.shift": "with Shift+click only",
+      "ui.rules.audience": "Audience",
+      "ui.rules.audience.beginner": "Beginner",
+      "ui.rules.audience.veteran": "Veteran",
+      "ui.rules.bandLast": "Beyond",
+      "ui.rules.bandMax": "Up to",
+      "ui.rules.bandNew": "New band",
+      "ui.rules.bandTone": "Meaning",
+      "ui.rules.bands": "Bands (lowest first)",
+      "ui.rules.base": "Base",
+      "ui.rules.bench": "Test bench",
+      "ui.rules.benchAdds": "What the roll adds",
+      "ui.rules.benchAdvantage": "Advantage",
+      "ui.rules.benchBroken": "This roll has a fault: fix it to try it.",
+      "ui.rules.benchDisadvantage": "Disadvantage",
+      "ui.rules.benchExpr": "What the table will roll",
+      "ui.rules.benchGo": "Roll",
+      "ui.rules.benchHint": "Try a roll as at the table: the dice are rolled here, the table rolls them on its server.",
+      "ui.rules.benchNormal": "Normal",
+      "ui.rules.benchNothing": "nothing to say (no target)",
+      "ui.rules.benchPool": "Dice in the pool",
+      "ui.rules.benchRates": "Over 2000 rolls: {list}",
+      "ui.rules.benchRoll": "Roll",
+      "ui.rules.benchValue": "Value (the target)",
+      "ui.rules.bind.defenses": "Defences",
+      "ui.rules.bind.derived": "Derived values",
+      "ui.rules.bind.effects": "States",
+      "ui.rules.bind.one": "Derived value: {name}",
+      "ui.rules.bind.rests": "Rests",
+      "ui.rules.bind.skills": "Skills",
+      "ui.rules.bind.stats": "Characteristics",
+      "ui.rules.bind.weapons": "Weapons",
+      "ui.rules.bonus": "Fixed bonus",
+      "ui.rules.bonusHint": "Added to every roll of this kind (rare: usually 0).",
+      "ui.rules.boundOrphan": "Its rule is gone: it stays as it is. Unlink it to edit it.",
+      "ui.rules.boundPanelHint": "Its content follows the rules; you choose its place and its layout.",
+      "ui.rules.boundTag": "Rules",
+      "ui.rules.by": "Divided by",
+      "ui.rules.card.combat": "Combat",
+      "ui.rules.card.derived": "Derived values",
+      "ui.rules.card.effects": "States and rests",
+      "ui.rules.card.identity": "Identity",
+      "ui.rules.card.resolution": "Dice and success",
+      "ui.rules.card.rolls": "Secondary rolls",
+      "ui.rules.card.skills": "Skills",
+      "ui.rules.card.stats": "Characteristics",
+      "ui.rules.cards": "System rules",
+      "ui.rules.checkAt": "Rules, {card}: {message}",
+      "ui.rules.combatAdd": "Add combat",
+      "ui.rules.combatAttack": "The attack",
+      "ui.rules.combatDamage": "The damage",
+      "ui.rules.combatDefense": "Must beat, on the target\u2019s sheet",
+      "ui.rules.combatDefenseHint": "None: the roll is read alone (on the d100, under one\u2019s skill).",
+      "ui.rules.combatHint": "How an attack is rolled, what it must beat, and what damage does.",
+      "ui.rules.combatNeedsHealth": "First a resource to hit is needed (a resource derived value, the hit points).",
+      "ui.rules.combatNoDefense": "no defence",
+      "ui.rules.combatRemove": "Remove the combat",
+      "ui.rules.combatStats": "Characteristics a weapon can take",
+      "ui.rules.complexity": "Complexity",
+      "ui.rules.complexity.campaign": "Campaign",
+      "ui.rules.complexity.oneshot": "One-shot",
+      "ui.rules.conditionName": "Name (empty: the usual one)",
+      "ui.rules.countAt": "A die succeeds from",
+      "ui.rules.countDouble": "Face that counts twice",
+      "ui.rules.countDoubleHint": "0: none.",
+      "ui.rules.countNeed": "Successes needed",
+      "ui.rules.crit.double": "the dice are doubled",
+      "ui.rules.crit.maxPlus": "the dice\u2019s maximum, plus a roll",
+      "ui.rules.crit.none": "nothing changes",
+      "ui.rules.critical": "On a critical",
+      "ui.rules.crits": "Critical success when",
+      "ui.rules.critsMore": "Criticals and critical failures",
+      "ui.rules.default": "At the start",
+      "ui.rules.degreeGreat": "Brilliant success",
+      "ui.rules.degreeNames": "Names of the degrees (comma separated)",
+      "ui.rules.degreeNice": "Fine success",
+      "ui.rules.degreeSteps": "One degree every",
+      "ui.rules.degrees": "Degrees of success",
+      "ui.rules.degreesFractions": "By fractions of the value",
+      "ui.rules.degreesOff": "None",
+      "ui.rules.degreesSteps": "By steps above the target",
+      "ui.rules.derivedAdd": "Add a derived value",
+      "ui.rules.derivedHint": "Values worked out from the characteristics: the sheet shows them and keeps them up to date.",
+      "ui.rules.derivedIdeas": "Add the usual ones: {list}",
+      "ui.rules.derivedNew": "New derived value",
+      "ui.rules.derivedRemove": "Remove this derived value",
+      "ui.rules.dice": "Dice",
+      "ui.rules.diceFixed": "Fixed",
+      "ui.rules.diceKind": "Number of dice",
+      "ui.rules.diceMore": "Rerolls, explosions, kept dice",
+      "ui.rules.diceN": "Dice",
+      "ui.rules.dicePool": "Pool (the roll gives the number)",
+      "ui.rules.dicePoolHint": "What the roll adds (a characteristic, a skill) gives the number of dice.",
+      "ui.rules.difficulties": "Difficulties",
+      "ui.rules.difficultyDefault": "Default difficulty",
+      "ui.rules.difficultyNew": "Difficulty {n}",
+      "ui.rules.editRule": "Edit the rule",
+      "ui.rules.effectRollAdd": "Add a roll",
+      "ui.rules.effectRolls": "On the rolls",
+      "ui.rules.effectsAdd": "Add states and rests",
+      "ui.rules.effectsHint": "The states put on at the table (prone, blessed\u2026) and the rests that bring resources back.",
+      "ui.rules.effectsRemove": "Remove the states and rests",
+      "ui.rules.emptyHint": "Pick a family: everything stays editable afterwards. Without rules, the sheet stays a free sheet.",
+      "ui.rules.emptyTitle": "How does your game roll the dice?",
+      "ui.rules.endAt": "The round counts",
+      "ui.rules.endAt.end": "at the end of the bearer\u2019s turn",
+      "ui.rules.endAt.start": "at the start of the bearer\u2019s turn",
+      "ui.rules.endRest": "Ends at the rest",
+      "ui.rules.endRestNone": "none",
+      "ui.rules.expertise": "Expertise (doubled proficiency)",
+      "ui.rules.explain": "See the calculation",
+      "ui.rules.explode": "The highest face explodes (roll again and add)",
+      "ui.rules.explodeLimit": "Explosions at most",
+      "ui.rules.explodeLimitHint": "0: no limit.",
+      "ui.rules.fam.3d6under": "3d6 under the characteristic",
+      "ui.rules.fam.3d6under.ex": "\xAB 9 under 12: success by 3 \xBB",
+      "ui.rules.fam.custom": "Custom",
+      "ui.rules.fam.custom.ex": "You describe everything yourself.",
+      "ui.rules.fam.d100": "d100 under the value",
+      "ui.rules.fam.d100.ex": "\xAB 34 under 55%: success \xBB",
+      "ui.rules.fam.d100deg": "d100 with degrees",
+      "ui.rules.fam.d100deg.ex": "Success, hard (\xBD), extreme (\u2155).",
+      "ui.rules.fam.d20": "d20 against a difficulty",
+      "ui.rules.fam.d20.ex": "\xAB 1d20 + 3 against 15: success by 2 \xBB",
+      "ui.rules.fam.d20adv": "d20 with advantage",
+      "ui.rules.fam.d20adv.ex": "Each roll asks: normal, advantage or disadvantage.",
+      "ui.rules.fam.fate": "Fate dice and ladder",
+      "ui.rules.fam.fate.ex": "\xAB 4dF + 2 against Good (3) \xBB",
+      "ui.rules.fam.pbta": "2d6 in three bands",
+      "ui.rules.fam.pbta.ex": "6 or less fails, 7 to 9 partial, 10 and more succeeds.",
+      "ui.rules.fam.pool10": "Pool of d10",
+      "ui.rules.fam.pool10.ex": "\xAB 5d10, each 7 or more is a success \xBB",
+      "ui.rules.fam.pool6best": "Pool of d6, the best die",
+      "ui.rules.fam.pool6best.ex": "6 success, 4-5 partial, 1-3 failure; two 6s critical.",
+      "ui.rules.family": "Dice family",
+      "ui.rules.familyConfirm": "Start again from this family? The dice, target, reading and window will be replaced.",
+      "ui.rules.fate": "Fate dice (\u22121, 0, +1)",
+      "ui.rules.finesseA": "First",
+      "ui.rules.finesseB": "Second",
+      "ui.rules.finesseOn": "Finesse: the best of two characteristics",
+      "ui.rules.fixed": "Number to reach",
+      "ui.rules.form.bonus": "Direct bonus (\u22122 to +3)",
+      "ui.rules.form.dots": "Dots",
+      "ui.rules.form.percent": "Percentage",
+      "ui.rules.form.score": "Score, with a modifier (3 to 18)",
+      "ui.rules.formula": "Formula",
+      "ui.rules.formulaHint": "Keys (@strength), numbers, + \u2212 * /, and floor, ceil, round, if.",
+      "ui.rules.fractionAt": "Under this part of the value",
+      "ui.rules.fractions": "Fractions (rarest first)",
+      "ui.rules.fumbles": "Critical failure when",
+      "ui.rules.gen.3d6": "3d6 in order",
+      "ui.rules.gen.4d6drop": "4d6, drop the lowest",
+      "ui.rules.gen.array": "Given values",
+      "ui.rules.gen.free": "Free spread",
+      "ui.rules.gen.pointbuy": "Point buy",
+      "ui.rules.gen.random": "Random",
+      "ui.rules.genNone": "Not given",
+      "ui.rules.generation": "Character creation",
+      "ui.rules.generationHint": "Kept for character creation by the player (to come).",
+      "ui.rules.group": "Group",
+      "ui.rules.health": "Damage hits",
+      "ui.rules.how.fixed": "by a number",
+      "ui.rules.how.formula": "by a value of the sheet",
+      "ui.rules.how.full": "in full",
+      "ui.rules.how.half": "by half",
+      "ui.rules.icon": "Icon",
+      "ui.rules.identityAdd": "Describe the game",
+      "ui.rules.identityHint": "The tone, the audience and the complexity set the wizard and the proposed sheet.",
+      "ui.rules.identityUse": "They serve the wizard and the suggestions; the sheet does not depend on them.",
+      "ui.rules.keep": "Keep only some of the dice",
+      "ui.rules.keepHigh": "the best",
+      "ui.rules.keepLow": "the worst",
+      "ui.rules.keepN": "How many",
+      "ui.rules.keepWhich": "Keep",
+      "ui.rules.key": "Key",
+      "ui.rules.keyHint": "Lowercase letters, digits and _: it is used in formulas (@key).",
+      "ui.rules.keyHintRoll": "Lowercase letters and _ only: it tags the dice of this roll.",
+      "ui.rules.keyRefused": "Key refused: invalid or already taken.",
+      "ui.rules.layout.arrange": "Layout",
+      "ui.rules.layout.column": "one under the other",
+      "ui.rules.layout.columns": "Columns",
+      "ui.rules.layout.fields": "as fields",
+      "ui.rules.layout.grid": "in a grid",
+      "ui.rules.layout.grouped": "Grouped",
+      "ui.rules.layout.row": "in a row",
+      "ui.rules.layout.style": "Presentation",
+      "ui.rules.layout.tiles": "as tiles",
+      "ui.rules.level": "Level read",
+      "ui.rules.mainRoll": "the test",
+      "ui.rules.margin": "Say by how much (\xAB success by 3 \xBB)",
+      "ui.rules.max": "Maximum",
+      "ui.rules.min": "Minimum",
+      "ui.rules.modAdd": "Add a value",
+      "ui.rules.modKey": "Value",
+      "ui.rules.modN": "By how much",
+      "ui.rules.mods": "What it changes",
+      "ui.rules.name": "Name",
+      "ui.rules.needDerived": "Add a derived value first (the proficiency)",
+      "ui.rules.no": "no",
+      "ui.rules.noStat": "none",
+      "ui.rules.otherwise": "Beyond",
+      "ui.rules.out.crit": "Critical success",
+      "ui.rules.out.fail": "Failure",
+      "ui.rules.out.fumble": "Critical failure",
+      "ui.rules.out.partial": "Partial success",
+      "ui.rules.out.success": "Success",
+      "ui.rules.palette": "Rules blocks",
+      "ui.rules.paletteEmpty": "All the rules blocks are on the sheet.",
+      "ui.rules.passive": "Passive value (10 + total)",
+      "ui.rules.per": "Per level",
+      "ui.rules.playerEdit": "The player changes it",
+      "ui.rules.proficiency": "Proficiency added",
+      "ui.rules.rank.bonus": "a bonus",
+      "ui.rules.rank.dots": "dots",
+      "ui.rules.rank.percent": "a percentage",
+      "ui.rules.rank.trained": "trained or not (+ proficiency)",
+      "ui.rules.read": "Reading the result",
+      "ui.rules.read.bands": "the total in bands",
+      "ui.rules.read.best": "the best die, in bands",
+      "ui.rules.read.count": "the dice that succeed (successes)",
+      "ui.rules.read.over": "the total against the target (over)",
+      "ui.rules.read.under": "the die under the target",
+      "ui.rules.readKind": "Read",
+      "ui.rules.recipe": "Is worked out",
+      "ui.rules.recipe.fraction": "as a fraction",
+      "ui.rules.recipe.input": "by the player (typed value)",
+      "ui.rules.recipe.max": "the greatest of",
+      "ui.rules.recipe.min": "the smallest of",
+      "ui.rules.recipe.modifier": "as the modifier of a value",
+      "ui.rules.recipe.perLevel": "per level",
+      "ui.rules.recipe.raw": "by a formula",
+      "ui.rules.recipe.steps": "by steps",
+      "ui.rules.recipe.sum": "as a sum",
+      "ui.rules.reductionFrom": "Reduction, read on the target",
+      "ui.rules.reductionHint": "Subtracted before everything else (an armour that absorbs).",
+      "ui.rules.removeConfirm": "Remove this from the rules? What cites it on the sheet will say so.",
+      "ui.rules.removeRow": "Remove",
+      "ui.rules.reroll": "Reroll a face",
+      "ui.rules.rerollOn": "Face rerolled",
+      "ui.rules.rerollOnce": "Only once",
+      "ui.rules.resist": "Resistances",
+      "ui.rules.resource": "It is a resource (current and maximum)",
+      "ui.rules.restAdd": "Add a rest",
+      "ui.rules.restNew": "New rest",
+      "ui.rules.restore": "What comes back",
+      "ui.rules.restoreAdd": "Add a resource",
+      "ui.rules.restoreHow": "How",
+      "ui.rules.restoreKey": "By the value",
+      "ui.rules.restoreRes": "Resource",
+      "ui.rules.rests": "Rests",
+      "ui.rules.restsNeedResource": "A rest brings a resource back: one is needed (a resource derived value).",
+      "ui.rules.rollAdd": "Add a roll of the family",
+      "ui.rules.rollNew": "Roll {n}",
+      "ui.rules.rollRemove": "Remove this roll",
+      "ui.rules.rollWith": "The roll follows",
+      "ui.rules.rollable": "It can be rolled",
+      "ui.rules.rollsHint": "Rolls read differently from the test (Damage, Sanity\u2026): a text of the sheet can follow them.",
+      "ui.rules.round": "Rounding",
+      "ui.rules.round.down": "down",
+      "ui.rules.round.near": "to the nearest",
+      "ui.rules.round.up": "up",
+      "ui.rules.rounds": "Lasts (rounds)",
+      "ui.rules.roundsHint": "Empty: until removed, or at the chosen rest.",
+      "ui.rules.short": "Abbreviation",
+      "ui.rules.show": "On the sheet",
+      "ui.rules.show.field": "as a field",
+      "ui.rules.show.gauge": "as a gauge (resource)",
+      "ui.rules.show.hidden": "hidden (used in calculations)",
+      "ui.rules.show.tile": "as a tile",
+      "ui.rules.sides": "Faces",
+      "ui.rules.sign": "Sign",
+      "ui.rules.skillAdd": "Add a skill",
+      "ui.rules.skillList": "The list",
+      "ui.rules.skillMode": "Skills",
+      "ui.rules.skillMode.fixed": "a fixed list",
+      "ui.rules.skillMode.none": "none",
+      "ui.rules.skillNew": "New skill",
+      "ui.rules.skillRank": "Rank",
+      "ui.rules.skillStat": "Characteristic",
+      "ui.rules.skillsAdd": "Add skills",
+      "ui.rules.skillsHint": "Skills: their total follows the dice family, with no formula to write.",
+      "ui.rules.skillsRemove": "Remove the skills",
+      "ui.rules.source": "Value read",
+      "ui.rules.statAdd": "Add a characteristic",
+      "ui.rules.statForm": "Form",
+      "ui.rules.statList": "The list",
+      "ui.rules.statNew": "New characteristic",
+      "ui.rules.state.bad": "To fix",
+      "ui.rules.state.off": "Not yet",
+      "ui.rules.state.ok": "Ready",
+      "ui.rules.stateAdd": "Add a state",
+      "ui.rules.stateNew": "New state",
+      "ui.rules.states": "States",
+      "ui.rules.statsAdd": "Add characteristics",
+      "ui.rules.statsHint": "The character\u2019s characteristics: each roll of one follows the test.",
+      "ui.rules.statsRemove": "Remove the characteristics",
+      "ui.rules.steps": "Steps",
+      "ui.rules.target": "Target",
+      "ui.rules.target.difficulty": "a chosen difficulty",
+      "ui.rules.target.fixed": "a fixed number",
+      "ui.rules.target.none": "nothing (the reading is enough)",
+      "ui.rules.target.value": "the roll\u2019s value (under the value)",
+      "ui.rules.targetKind": "The roll is compared with",
+      "ui.rules.targetValueHint": "What the roll adds becomes the target: roll under the characteristic or the skill.",
+      "ui.rules.termKind": "Term",
+      "ui.rules.termNumber": "a number",
+      "ui.rules.termRef": "a value of the sheet",
+      "ui.rules.termValue": "Value",
+      "ui.rules.terms": "Terms",
+      "ui.rules.tie": "On a tie with the target",
+      "ui.rules.tie.fail": "failure",
+      "ui.rules.tie.success": "success",
+      "ui.rules.tone": "Tone",
+      "ui.rules.tone.cyber": "Cyberpunk",
+      "ui.rules.tone.fantasy": "Fantasy",
+      "ui.rules.tone.horror": "Horror",
+      "ui.rules.tone.modern": "Modern",
+      "ui.rules.tone.narrative": "Narrative",
+      "ui.rules.tone.scifi": "Science fiction",
+      "ui.rules.typeAdd": "Add a type",
+      "ui.rules.typeNew": "New type",
+      "ui.rules.types": "Damage types",
+      "ui.rules.unbind": "Unlink",
+      "ui.rules.unbindConfirm": "Unlink this block? Its elements stay on the sheet but will no longer follow the rules.",
+      "ui.rules.upTo": "Up to",
+      "ui.rules.value": "Value",
+      "ui.rules.values": "Values",
+      "ui.rules.valuesHint": "Comma separated: 1, 2, 3.",
+      "ui.rules.viewRules": "Rules",
+      "ui.rules.viewSheet": "Sheet",
+      "ui.rules.vuln": "Vulnerabilities",
+      "ui.rules.when": "When",
+      "ui.rules.when.doubles": "a double on the d100 (11, 22\u2026)",
+      "ui.rules.when.maxCount": "this many dice on their highest face",
+      "ui.rules.when.natural": "a die shows",
+      "ui.rules.when.total": "the total is",
+      "ui.rules.when.zeroWithOne": "no success and a 1",
+      "ui.rules.winAdvantage": "Advantage or disadvantage",
+      "ui.rules.winBonus": "Bonus or penalty",
+      "ui.rules.winDifficulty": "Choice of the difficulty",
+      "ui.rules.winPoolDice": "Extra or fewer dice",
+      "ui.rules.window": "Window at click time",
+      "ui.rules.yes": "yes",
       "ui.settings.advanced": "Advanced options",
       "ui.settings.data": "Data",
       "ui.settings.details": "Technical details",
+      "ui.settings.devTools": "Developer tools (Help menu)",
+      "ui.settings.devToolsHint": "To help understand a bug. Keep them off otherwise: a command pasted into these tools can do anything in Ourdir.",
       "ui.settings.display": "Display",
       "ui.settings.friendsAccess": "My friends can join me over the Internet",
       "ui.settings.friendsAccessDesc": "On by default. Everything is set up automatically: router, firewall and address. Only friends you invite can get in. If your router does not let them in, they come through Ourdir\u2019s relay: nothing to open.",
@@ -7654,10 +13535,8 @@ var require_en2 = __commonJS({
       "ui.settings.mode.local.desc": "Nobody else can connect.",
       "ui.settings.network": "Network access",
       "ui.settings.openData": "Open the data folder",
-      "ui.settings.port": "Port: {port}",
       "ui.settings.publicHost": "Custom address (DDNS name)",
       "ui.settings.publicHostHint": "For advanced users. Normally the address is detected automatically. No http:// and no port.",
-      "ui.settings.reach": "Can my friends reach me?",
       "ui.settings.reachRun": "Check",
       "ui.settings.recheck": "Check again now",
       "ui.settings.reduceMotion": "Reduce animations",
@@ -7672,6 +13551,7 @@ var require_en2 = __commonJS({
       "ui.settings.relayInvalid": "Invalid relay: a host name (with a port if needed) or a ws(s):// address.",
       "ui.settings.restartNote": "Changing access restarts the running table.",
       "ui.settings.save": "Save",
+      "ui.settings.setAside": "The file {file} could not be read: it was set aside (nothing is deleted) and Ourdir went back to the default settings.",
       "ui.settings.textSize": "Interface size",
       "ui.settings.title": "Settings",
       "ui.settings.uiMode": "Interface in game",
@@ -7698,7 +13578,6 @@ var require_en2 = __commonJS({
       "ui.share.exported": "Key saved: {path}",
       "ui.share.eyebrow": 'Share "{name}"',
       "ui.share.fail": "Sharing failed.",
-      "ui.share.haveVerified": "Already verified",
       "ui.share.importKey": "I already have a key (import)",
       "ui.share.importTitle": "Import a publisher key",
       "ui.share.keyText": "It signs your shares and proves they come from you. It is separate from your player identity (friend codes).",
@@ -7826,9 +13705,8 @@ var require_en2 = __commonJS({
       "ui.tables.neverPlayed": "Never launched",
       "ui.tables.none": "You are not hosting any table yet. Create one to get started.",
       "ui.tables.offlineHint": "Offline: the table is stopped or unreachable, or your access was removed.",
-      "ui.tables.open": "Open",
-      "ui.tables.openFolder": "Open folder",
       "ui.tables.others": "Other tables",
+      "ui.tables.portBusy": "Port {port} is already used by another program (maybe another Ourdir that is open). Close it, then start the table again.",
       "ui.tables.preset.full": "Full",
       "ui.tables.preset.lite": "Lite",
       "ui.tables.presetForever": "Chosen now and never changed: a Lite table stays light, a Full table keeps everything.",
@@ -7845,8 +13723,11 @@ var require_en2 = __commonJS({
       "ui.tables.restoreTitle": "Restore a table",
       "ui.tables.restored": "Table \u201C{name}\u201D restored.",
       "ui.tables.restoredNoSystem": "Table \u201C{name}\u201D restored, but its game system is not installed here: it uses the Generic system. Import the system first.",
+      "ui.tables.serverMissing": "Some of Ourdir\u2019s files are missing: reinstall the application.",
+      "ui.tables.serverStopped": "The table\u2019s server stopped while starting. The details are in the log (Help menu \u2192 Open the logs folder).",
       "ui.tables.settings": "Settings",
-      "ui.tables.startFailed": "The table could not start ({detail}). Check that no other program uses the same port, then look at the log (Help menu).",
+      "ui.tables.startFailed": "The table could not start. The details are in the log (Help menu \u2192 Open the logs folder).",
+      "ui.tables.startTimeout": "The table does not answer after 30 seconds. The details are in the log (Help menu \u2192 Open the logs folder).",
       "ui.tables.starting": "Starting\u2026",
       "ui.tables.status.changed": "Certificate changed",
       "ui.tables.status.checking": "Checking\u2026",
@@ -8007,16 +13888,21 @@ var require_en2 = __commonJS({
       "ui.tr.templateSaved": "Template saved: {path}",
       "ui.tr.templateTitle": "Save the translation template",
       "ui.tr.title": "Translations",
-      "ui.wizard.attrs.hint": "Rename, remove or add some (twelve at most).",
-      "ui.wizard.attrs.label": "Characteristics (separated by commas)",
-      "ui.wizard.attrs.q": "Which characteristics?",
       "ui.wizard.back": "Back",
+      "ui.wizard.beginnerHint": "Options stay folded, with safe values.",
+      "ui.wizard.campaignHint": "Tabs: Character, Skills, Combat, Inventory, Notes.",
       "ui.wizard.combat.no": "No",
       "ui.wizard.combat.q": "Is there tactical combat?",
-      "ui.wizard.combat.yes": "Yes: armour class, initiative and attacks",
+      "ui.wizard.combat.yes": "Yes: a list of attacks rolled by the rules",
+      "ui.wizard.derived.q": "The usual values of these dice?",
+      "ui.wizard.derived.yes": "Yes: hit points, defense, initiative\u2026 by family",
+      "ui.wizard.dice.q": "How are the dice rolled?",
+      "ui.wizard.diceBeginner": "Criticals, margin and window are set for this family; you can change everything in the Rules tab.",
+      "ui.wizard.effects.q": "States and rests?",
+      "ui.wizard.effects.yes": "Yes: prone, blessed\u2026 and a short rest, a night",
+      "ui.wizard.extras.q": "And the rest?",
       "ui.wizard.finish": "Create my sheet",
-      "ui.wizard.genre.more": "Dice pools and narrative dice will come later: for those, pick \u201CI decide\u201D and set the rolls afterwards.",
-      "ui.wizard.genre.q": "What kind of game?",
+      "ui.wizard.game.q": "What game are you making?",
       "ui.wizard.inventory.q": "An inventory?",
       "ui.wizard.look.hint": "You can adjust everything afterwards in the editor. Your sheet will be ready to play as soon as it opens.",
       "ui.wizard.look.q": "What look?",
@@ -8024,31 +13910,71 @@ var require_en2 = __commonJS({
       "ui.wizard.name": "Name of your system",
       "ui.wizard.next": "Next",
       "ui.wizard.no": "No",
-      "ui.wizard.resources.hint": "Hit points, fate, mana\u2026 Each has a current value and a maximum (six at most).",
-      "ui.wizard.resources.label": "Resources (separated by commas)",
-      "ui.wizard.resources.q": "Which resources?",
-      "ui.wizard.skills.q": "Add a list of skills?",
+      "ui.wizard.oneshotHint": "A sheet on one page, no tabs.",
+      "ui.wizard.preview": "Preview",
+      "ui.wizard.previewList": "list",
+      "ui.wizard.resources.hint": "Fate, mana, ammunition\u2026 Hit points already come from the dice chosen.",
+      "ui.wizard.resources.label": "Extra resources (comma separated)",
+      "ui.wizard.skills.hint": "Each leans on a characteristic: you will change it in the Rules tab.",
+      "ui.wizard.skills.label": "Skills (comma separated)",
+      "ui.wizard.skills.list": "A list",
+      "ui.wizard.skills.listHint": "Suggested by the tone; their total follows the dice.",
+      "ui.wizard.skills.none": "None",
+      "ui.wizard.skills.noneHint": "The characteristics are enough.",
+      "ui.wizard.skills.q": "Skills?",
+      "ui.wizard.stats.hint": "Suggested by the tone and the dice: rename, remove, add (twelve at most). Empty: none.",
+      "ui.wizard.stats.label": "Characteristics (comma separated)",
+      "ui.wizard.stats.q": "Which characteristics?",
       "ui.wizard.stepOf": "Step {n} of {total}",
       "ui.wizard.title": "Creation wizard",
+      "ui.wizard.veteranHint": "You also set the window, criticals, the form of characteristics.",
       "ui.wizard.yes": "Yes",
-      "wizard.bonusInitiative": "Initiative bonus",
-      "wizard.chaqueCaracteristiqueEstPourcentage": "Each attribute is a percentage; a click rolls 1d100, to compare with the value.",
-      "wizard.chaqueCaracteristiqueScoreModificateur": "Each attribute has a score; the modifier is computed by itself ((score \u2212 10) \xF7 2) and a click rolls 1d20 + modifier.",
-      "wizard.classeArmure": "Armour class",
-      "wizard.competences": "Skills",
-      "wizard.d20AvecBonusDirect": "A d20 with a direct bonus, and you name everything yourself.",
-      "wizard.d20ScoreModificateur": "d20: score and modifier",
+      "wizard.attacks": "Attacks",
       "wizard.equipement": "Equipment",
-      "wizard.forceConstitutionTailleDexterite": "Strength, Constitution, Size, Dexterity, Appearance, Intelligence, Power, Education",
-      "wizard.forceDexteriteConstitutionIntelligence": "Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma",
       "wizard.invalid": "The assistant made an invalid sheet: {why}",
-      "wizard.jeDecide": "I decide",
+      "wizard.notes": "Notes",
       "wizard.pasMagie": "No magic",
-      "wizard.physiqueAdresseEspritPresence": "Body, Agility, Mind, Presence",
-      "wizard.pointsVieSanteMentale": "Hit points, Sanity",
       "wizard.ressourceActuelMaxListe": "A current / max resource, and a list of spells.",
+      "wizard.s.cyber.skills": "Hacking, Firearms, Driving, Stealth, Negotiation, Medicine",
+      "wizard.s.cyber.stats": "Body, Reflexes, Tech, Intelligence, Cool, Empathy",
+      "wizard.s.fantasy.pct": "Strength, Constitution, Dexterity, Intelligence, Power, Charisma",
+      "wizard.s.fantasy.skills": "Athletics, Stealth, Perception, Arcana, Persuasion, Survival",
+      "wizard.s.fantasy.stats": "Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma",
+      "wizard.s.horror.pct": "Strength, Constitution, Size, Dexterity, Appearance, Intelligence, Power, Education",
+      "wizard.s.horror.skills": "Library use, Stealth, Listen, First aid, Psychology, Occult",
+      "wizard.s.horror.stats": "Strength, Dexterity, Constitution, Mind, Will, Nerve",
+      "wizard.s.modern.skills": "Driving, Research, Stealth, Persuasion, Brawl, First aid",
+      "wizard.s.modern.stats": "Physique, Agility, Mind, Charm",
+      "wizard.s.narrative.skills": "Notice, Convince, Fight, Sneak",
+      "wizard.s.narrative.stats": "Daring, Heart, Shadow, Wits",
+      "wizard.s.scifi.skills": "Piloting, Technology, Shooting, Survival, Diplomacy, Sciences",
+      "wizard.s.scifi.stats": "Physique, Agility, Intellect, Will, Presence",
       "wizard.seriePastillesCocherListe": "A series of pips to tick, and a list of spells.",
-      "wizard.valeurCaracteristiqueEstBonus": "The attribute's value is the bonus: a click rolls 1d20 + value.",
+      "wizard.spells": "Spells",
+      "wizard.tab.character": "Character",
+      "wizard.tab.combat": "Combat",
+      "wizard.tab.inventory": "Inventory",
+      "wizard.tab.magic": "Magic",
+      "wizard.tab.notes": "Notes",
+      "wizard.tab.skills": "Skills",
+      "wizard.tpl.blades": "Blades-like",
+      "wizard.tpl.blades.hint": "Twelve actions as dots, the best d6, stress.",
+      "wizard.tpl.blades.skills": "Hunt, Study, Survey, Tinker, Finesse, Prowl, Skirmish, Wreck, Attune, Command, Consort, Sway",
+      "wizard.tpl.fate": "Fate-like",
+      "wizard.tpl.fate.hint": "Fate dice, ladder, skills as the only values, stress.",
+      "wizard.tpl.fate.skills": "Athletics, Fight, Stealth, Empathy, Will, Lore, Notice, Contacts",
+      "wizard.tpl.generic": "Generic d20",
+      "wizard.tpl.generic.hint": "Six characteristics, proficiency, hit points, skills, in tabs.",
+      "wizard.tpl.horror": "d100 horror",
+      "wizard.tpl.horror.hint": "Percentages with degrees, sanity, investigation skills.",
+      "wizard.tpl.osr": "Old school (OSR)",
+      "wizard.tpl.osr.hint": "3d6 in order, no skills, spell slots, one page.",
+      "wizard.tpl.pbta": "PbtA",
+      "wizard.tpl.pbta.hint": "2d6 + a characteristic, three bands, one page.",
+      "wizard.tpl.pool10": "Pool of d10",
+      "wizard.tpl.pool10.hint": "Characteristics and skills as dots, successes at 7.",
+      "wizard.ui.emplacementsDeSorts": "Spell slots",
+      "wizard.ui.pointsDeMagie": "Magic points",
       "ui.cat.showCommunity": "Show community content",
       "ui.cat.verifiedOnly": "Only verified content is shown (Ourdir, Official, Validated).",
       "ui.cat.hiddenOne": "1 community item matches: show it",
@@ -8084,7 +14010,355 @@ var require_en2 = __commonJS({
       "ui.req.refused": "Refused on {date}: {reason}",
       "ui.req.closed": "Requests are closed for now: many already wait for a review. Try again in a few days.",
       "ui.req.tooRecent": "Published less than 30 days ago: you can ask after that.",
-      "ui.req.already": "Already {tier}."
+      "ui.req.already": "Already {tier}.",
+      "ui.usage.title": "Help Ourdir with anonymous statistics?",
+      "ui.usage.text": 'At most once a day, Ourdir would send: an id drawn at random, its version, your operating system and language, the game systems played ("fait-maison" for your own, unnamed), and whether you hosted or joined a table.',
+      "ui.usage.never": "Never your tables, characters, messages, nor your address. You can change your mind in Settings.",
+      "ui.usage.yes": "Yes, I\u2019ll help",
+      "ui.usage.no": "No thanks",
+      "ui.usage.privacy": "Privacy policy",
+      "ui.usage.settingsTitle": "Privacy",
+      "ui.usage.settingsOn": "You help Ourdir with anonymous statistics.",
+      "ui.usage.settingsOff": "No statistics are sent.",
+      "ui.usage.stop": "Stop and erase what was sent",
+      "ui.usage.start": "Help Ourdir",
+      "ui.loading.label": "Loading the table",
+      "ui.loading.phrase.opening": "Arriving at the table\u2026",
+      "ui.loading.phrase.reaching": "Looking for the table\u2026",
+      "ui.loading.phrase.starting": "Waking the table\u2026",
+      "ui.loading.step.connect": "Connection",
+      "ui.loading.step.host": "The table",
+      "ui.loading.step.ourdir": "Interface",
+      "ui.loading.step.ready": "Ready",
+      "ui.loading.step.scene": "Scene",
+      "rules.v.prog": "Unreadable progression.",
+      "rules.v.progEmpty": "Nothing makes one progress: experience, levels, purchases or use.",
+      "rules.v.progRoll": "This roll does not exist in the rules: \u201C{id}\u201D.",
+      "rules.v.progN": "A whole number, from {min} to {max}.",
+      "rules.v.progKey": "A characteristic, a skill or a value of the sheet, never the level.",
+      "rules.v.progDice": "A die such as 1d8 or 2d6.",
+      "rules.v.progAmong": "A list of what exists, each once.",
+      "rules.v.spreadRoom": "Not enough room for all the points: more choices, or a higher maximum.",
+      "rules.v.trainNeeds": "Training a skill needs \u201Ctrained\u201D skills.",
+      "rules.v.featUnknown": "This feature does not exist.",
+      "rules.v.featText": "{max} characters at most.",
+      "rules.v.giveKind": "A gain: add, spread, train, a feature or a choice of feature.",
+      "rules.v.give": "From 1 to {max} gains.",
+      "rules.v.when": "Every N levels, from a level between 2 and {max}.",
+      "rules.v.whenAt": "Levels from 2 to {max}.",
+      "rules.v.levelKey": "The level is a typed value of the sheet.",
+      "rules.v.levelRange": "The level starts at 1 and goes at least to 2.",
+      "rules.v.cost": "A fixed cost, a formula, or marks then a formula.",
+      "rules.v.costNoXp": "Without experience, levels have no cost (the GM grants them).",
+      "rules.v.costFormula": "A formula of the level reached, @n (for example 1000*@n).",
+      "rules.v.marks": "From 1 to {max} marks, each higher than the one before (cumulated experience).",
+      "rules.v.buyNoXp": "A purchase is paid in experience: there must be some.",
+      "rules.v.price": "A price from 1 to 1,000,000, or a formula of the new rank, @r.",
+      "rules.v.useNeeds": "Use ticks skills: there must be some.",
+      "rules.p.title": "Progression",
+      "rules.p.features": "Features",
+      "rules.p.xp": "Experience",
+      "rules.p.addN": "{n} to {name}",
+      "rules.p.addDice": "+{dice}{plus} to {name}, {how}",
+      "rules.p.how.average": "as the average",
+      "rules.p.how.roll": "rolled",
+      "rules.p.how.player": "as the player likes",
+      "rules.p.spread": "{n} point(s) to spread among {list} ({max} max each)",
+      "rules.p.train": "Train {n} skill(s): {list}",
+      "rules.p.anySkill": "any",
+      "rules.p.feature": "Feature: {name}",
+      "rules.p.pick": "{n} feature(s) among {list}",
+      "rules.p.buyStat": "Characteristic",
+      "rules.p.buySkill": "Skill",
+      "rules.p.buyFeature": "Feature",
+      "rules.p.f.endurci": "Hardened",
+      "rules.p.f.endurci.text": "Once per rest, shrug off a light wound.",
+      "rules.p.f.vif": "Quick",
+      "rules.p.f.vif.text": "Act first when initiative is tied.",
+      "rules.p.f.resolu": "Resolute",
+      "rules.p.f.resolu.text": "Reroll a roll against fear, once per session.",
+      "rules.p.f.nouvelle_action": "New move",
+      "rules.p.f.nouvelle_action.text": "Take a new move from your playbook.",
+      "rules.p.f.plus_un": "+1 to a stat",
+      "rules.p.f.plus_un.text": "Add 1 to a stat (+2 at most), to write on the sheet.",
+      "rules.p.f.autre_livret": "Move from another playbook",
+      "rules.p.f.autre_livret.text": "Take a move from another playbook.",
+      "rules.p.f.allie": "An ally",
+      "rules.p.f.allie.text": "Gain a loyal ally, described with the GM.",
+      "rules.p.f.atout": "An asset",
+      "rules.p.f.atout.text": "Gain a place, a vehicle or a possession that matters.",
+      "rules.p.f.guerison": "Clear a scar",
+      "rules.p.f.guerison.text": "Clear a lasting harm or condition.",
+      "builder.prog.formula": "The formula \u201C{f}\u201D cannot be read (brackets, operators).",
+      "ui.rules.card.progression": "Progression",
+      "ui.rules.progHint": "How characters progress: experience and levels, points to spend, use, advances.",
+      "ui.rules.progKind": "Kind",
+      "ui.rules.prog.kind.levels": "Levels (experience, gains, choices)",
+      "ui.rules.prog.kind.points": "Points to spend",
+      "ui.rules.prog.kind.use": "Use (a success ticks the skill)",
+      "ui.rules.prog.kind.advances": "Advances (a miss pays, 5 for an advance)",
+      "ui.rules.progNone": "No model fits these rules: add skills or a resource first.",
+      "ui.rules.progAdd": "Add a progression",
+      "ui.rules.prog.remove": "Remove the progression",
+      "ui.rules.prog.xp": "Experience",
+      "ui.rules.prog.xpOn": "Characters earn experience",
+      "ui.rules.prog.xpName": "Experience",
+      "ui.rules.prog.onFail": "A miss pays",
+      "ui.rules.prog.onFailAdd": "Add a roll",
+      "ui.rules.prog.gets": "Pays",
+      "ui.rules.prog.levels": "Levels",
+      "ui.rules.prog.levelsOn": "Characters level up",
+      "ui.rules.prog.needLevel": "A typed \u201CLevel\u201D value is needed (Derived tab).",
+      "ui.rules.prog.levelKey": "Level value",
+      "ui.rules.prog.levelMax": "Highest level",
+      "ui.rules.prog.cost": "Cost of a level",
+      "ui.rules.prog.cost.fixed": "fixed",
+      "ui.rules.prog.cost.formula": "a formula",
+      "ui.rules.prog.cost.marks": "marks, then a formula",
+      "ui.rules.prog.costN": "Cost",
+      "ui.rules.prog.costF": "Formula",
+      "ui.rules.prog.costFHint": "@n is the level reached: 1000*@n, 100*@n*@n\u2026",
+      "ui.rules.prog.marks": "Marks (levels 2, 3, 4\u2026)",
+      "ui.rules.prog.marksHint": "Separated by commas: 300, 900, 2700.",
+      "ui.rules.prog.then": "Beyond",
+      "ui.rules.prog.spend": "Experience is",
+      "ui.rules.prog.spend.no": "cumulated (the cost is a total)",
+      "ui.rules.prog.spend.yes": "spent (back to 0)",
+      "ui.rules.prog.gains": "Gains",
+      "ui.rules.prog.gainAdd": "Add a gain rule",
+      "ui.rules.prog.when": "When",
+      "ui.rules.prog.when.every": "every N levels",
+      "ui.rules.prog.when.at": "at given levels",
+      "ui.rules.prog.atLevels": "Levels",
+      "ui.rules.prog.every": "Every",
+      "ui.rules.prog.from": "From level",
+      "ui.rules.prog.give": "Gain",
+      "ui.rules.prog.giveAdd": "Add a gain",
+      "ui.rules.give.add": "add to a value",
+      "ui.rules.give.spread": "points to spread",
+      "ui.rules.give.train": "train skills",
+      "ui.rules.give.feature": "a feature",
+      "ui.rules.give.pick": "a feature to pick",
+      "ui.rules.prog.to": "To",
+      "ui.rules.prog.addBy": "By",
+      "ui.rules.prog.addBy.n": "a number",
+      "ui.rules.prog.addBy.dice": "a die",
+      "ui.rules.prog.dice": "Die",
+      "ui.rules.prog.plus": "Plus",
+      "ui.rules.prog.plusNone": "nothing",
+      "ui.rules.prog.how": "The die is taken",
+      "ui.rules.prog.how.average": "as the average",
+      "ui.rules.prog.how.roll": "rolled",
+      "ui.rules.prog.how.player": "as the player likes",
+      "ui.rules.prog.points": "Points",
+      "ui.rules.prog.maxEach": "At most per value",
+      "ui.rules.prog.among": "Among",
+      "ui.rules.anyOf": "any (all of them)",
+      "ui.rules.prog.pick": "How many",
+      "ui.rules.prog.times": "Each at most",
+      "ui.rules.prog.feature": "Feature",
+      "ui.rules.prog.upTo": "See up to level",
+      "ui.rules.prog.preview": "Preview",
+      "ui.rules.prog.previewBad": "Fix the progression to see the preview.",
+      "ui.rules.prog.col.level": "Level",
+      "ui.rules.prog.col.cost": "Cost",
+      "ui.rules.prog.col.gains": "Gains",
+      "ui.rules.prog.purchases": "Purchases",
+      "ui.rules.prog.buyWhat": "What is bought",
+      "ui.rules.buy.stat": "a characteristic",
+      "ui.rules.buy.skill": "a skill",
+      "ui.rules.buy.value": "a value",
+      "ui.rules.buy.feature": "a feature",
+      "ui.rules.prog.price": "Price",
+      "ui.rules.prog.priceHint": "A number, or a formula of the new rank @r: @r*5.",
+      "ui.rules.prog.buyMax": "Highest rank",
+      "ui.rules.prog.buyNew": "New purchase",
+      "ui.rules.prog.buyAdd": "Add a purchase",
+      "ui.rules.prog.use": "Use",
+      "ui.rules.prog.useOn": "A success ticks the skill rolled",
+      "ui.rules.prog.useRes": "On the rolls",
+      "ui.rules.prog.useOnWhat": "Ticks on",
+      "ui.rules.prog.useOn.success": "a success",
+      "ui.rules.prog.useOn.crit": "a critical success",
+      "ui.rules.prog.useTest": "End of session test",
+      "ui.rules.prog.useTestHint": "It must beat the current value.",
+      "ui.rules.prog.useGain": "Gain if it works",
+      "ui.rules.prog.useNeeds": "Use ticks skills: add some first.",
+      "ui.rules.prog.features": "Features",
+      "ui.rules.prog.featText": "What it does",
+      "ui.rules.prog.featNew": "New feature",
+      "ui.rules.prog.featAdd": "Add a feature",
+      "ui.rules.bind.progression": "Progression",
+      "ui.rules.bind.features": "Features",
+      "ui.wizard.progress.q": "How do characters progress?",
+      "ui.wizard.progress.family": "As usual for these dice",
+      "ui.wizard.progress.none": "No progression",
+      "ui.settings.portLabel": "Table port",
+      "ui.settings.portCheck": "Check",
+      "ui.settings.portReset": "Back to {port}",
+      "ui.settings.portFree": "Port {port} is free.",
+      "ui.settings.portTaken": "Port {port} is already used by another program.",
+      "ui.settings.portInvalid": "A port is a number from 1024 to 65535.",
+      "ui.settings.portSaved": "Table port: {port}.",
+      "ui.settings.portNext": "The running table keeps port {running}; port {port} will be used the next time it starts.",
+      "ui.settings.portHint": "Change it if another program already uses this port. Your friends find the table through the relay and learn the new address the next time they connect; an invitation sent before keeps the old port: without a relay, send it again.",
+      "ui.tables.portBusyOffer": "Port {port} is already used by another program (maybe another Ourdir). Port {free} is free.",
+      "ui.port.offerTitle": "Port already in use",
+      "ui.port.offerUse": "Use port {port}",
+      "ui.port.offerCancel": "Cancel",
+      "rules.v.onFailTarget": "The host does not see the chosen difficulty: a miss pays only on a roll without a difficulty, or with a fixed one.",
+      "rules.v.lib": "Unreadable library.",
+      "rules.v.libGenreKey": "Genre key: a lowercase letter then lowercase letters or digits, 12 at most.",
+      "rules.v.libFieldKey": "Field key: lowercase letters, digits and _, 16 at most (nom, origine, agir, ligne are reserved).",
+      "rules.v.libOneKind": "Only one genre of this kind.",
+      "rules.v.libNoCombat": "The rules need a combat.",
+      "rules.v.libNoProgress": "The rules need a progression.",
+      "rules.v.libFixedFields": "This genre\u2019s fields are set by the rules.",
+      "rules.v.libRange": "The minimum must be below the maximum.",
+      "rules.v.libOptions": "From 2 to {max} options, each once.",
+      "rules.v.libGenre": "This genre does not exist.",
+      "rules.v.libFeatureEntry": "Features are described in the Progression card.",
+      "rules.v.libField": "This field does not exist in this genre.",
+      "rules.v.libNumber": "A whole number within the field\u2019s bounds.",
+      "rules.v.libChoice": "One of the field\u2019s options.",
+      "rules.v.libText": "{max} characters at most.",
+      "rules.v.libDamage": "Damage dice such as 1d8 or 2d6+1d4+2.",
+      "rules.v.libWeaponAction": "A weapon attacks as the combat says: no action of its own.",
+      "rules.v.libBonus": "A number from \u2212{max} to {max}, or a number field of the genre (@level).",
+      "rules.v.libCost": "A cost is paid in a resource.",
+      "rules.v.libState": "This state does not exist.",
+      "rules.v.libActionEmpty": "This action does nothing: a roll, a cost or a state.",
+      "rules.v.libPasteName": "A \u201CName\u201D column is needed.",
+      "rules.l.name": "Name",
+      "rules.l.act": "Act",
+      "rules.l.cast": "Cast",
+      "rules.l.use": "Use",
+      "rules.l.attack": "attack {dice}",
+      "rules.l.roll": "{res} roll{bonus}",
+      "rules.l.cost": "{n} {res}",
+      "rules.l.stateSelf": "{state} on oneself",
+      "rules.l.stateTarget": "{state} on the target",
+      "rules.l.spells": "Spells",
+      "rules.l.talents": "Talents",
+      "rules.l.items": "Items",
+      "rules.l.level": "Level",
+      "rules.l.range": "Range",
+      "rules.l.weight": "Weight",
+      "rules.l.description": "Description",
+      "rules.l.far": "Far",
+      "rules.l.touch": "Touch",
+      "rules.l.e.trait_de_feu": "Fire bolt",
+      "rules.l.e.trait_de_feu.text": "A bolt of fire streaks toward the target.",
+      "rules.l.e.benediction": "Bless",
+      "rules.l.e.benediction.text": "The target is blessed for a few rounds.",
+      "rules.l.e.lumiere": "Light",
+      "rules.l.e.lumiere.text": "A touched object shines like a torch.",
+      "rules.l.e.sang_froid": "Cool head",
+      "rules.l.e.sang_froid.text": "A roll under pressure, with a bonus.",
+      "rules.l.e.corde": "Rope (50 ft)",
+      "rules.l.e.corde.text": "A sturdy hemp rope.",
+      "rules.l.e.torche": "Torch",
+      "rules.l.e.torche.text": "Lights a few metres for an hour.",
+      "ui.rules.card.library": "Library",
+      "ui.rules.libHint": "Spells, items, feats\u2026 described once, added to sheets in a click at the table.",
+      "ui.rules.libExamples": "Add examples",
+      "ui.rules.libEmpty": "Start an empty library",
+      "ui.rules.lib.genres": "Genres",
+      "ui.rules.lib.weapons": "The combat\u2019s weapons (Weapons list)",
+      "ui.rules.lib.weaponsName": "Weapons",
+      "ui.rules.lib.features": "The progression\u2019s features",
+      "ui.rules.lib.featuresName": "Features",
+      "ui.rules.lib.fields": "Fields",
+      "ui.rules.lib.type": "Type",
+      "ui.rules.lib.type.text": "short text",
+      "ui.rules.lib.type.long": "long text",
+      "ui.rules.lib.type.number": "number",
+      "ui.rules.lib.type.choice": "choice",
+      "ui.rules.lib.optionA": "Option A",
+      "ui.rules.lib.optionB": "Option B",
+      "ui.rules.lib.min": "Minimum",
+      "ui.rules.lib.max": "Maximum",
+      "ui.rules.lib.options": "Options",
+      "ui.rules.lib.optionsHint": "Separated by commas.",
+      "ui.rules.lib.fieldNew": "New field",
+      "ui.rules.lib.fieldAdd": "Add a field",
+      "ui.rules.lib.genreNew": "New genre",
+      "ui.rules.lib.genreAdd": "Add a genre",
+      "ui.rules.lib.entries": "Entries",
+      "ui.rules.lib.genre": "Genre",
+      "ui.rules.lib.search": "Search",
+      "ui.rules.lib.action": "Action",
+      "ui.rules.lib.entryAdd": "Add an entry",
+      "ui.rules.lib.entryNew": "New entry",
+      "ui.rules.lib.entryRemove": "Remove this entry",
+      "ui.rules.lib.acts": "This entry acts at the table",
+      "ui.rules.lib.label": "Button label",
+      "ui.rules.lib.roll": "Roll",
+      "ui.rules.lib.roll.none": "none",
+      "ui.rules.lib.roll.roll": "a roll of a resolution",
+      "ui.rules.lib.roll.attack": "an attack with damage",
+      "ui.rules.lib.bonus": "Bonus",
+      "ui.rules.lib.bonusN": "a number",
+      "ui.rules.lib.damage": "Damage",
+      "ui.rules.lib.damageType": "Damage type",
+      "ui.rules.lib.costOn": "It costs",
+      "ui.rules.lib.costRes": "Resource",
+      "ui.rules.lib.costN": "How much",
+      "ui.rules.lib.stateOn": "It puts a state on",
+      "ui.rules.lib.state": "State",
+      "ui.rules.lib.stateWho": "On",
+      "ui.rules.lib.onTarget": "the target",
+      "ui.rules.lib.onSelf": "oneself",
+      "ui.rules.lib.paste": "Paste a table",
+      "ui.rules.lib.pasteHint": "Paste lines from a spreadsheet, the first giving the columns: {cols}",
+      "ui.rules.lib.pasteGo": "Add these lines",
+      "ui.rules.lib.pasteDone": "{n} entry(ies) added.",
+      "ui.rules.lib.pasteLine": "Line {line}: {why}",
+      "ui.rules.lib.remove": "Remove the library",
+      "ui.rules.bind.library": "Library: {name}",
+      "err.libraries.empty": "The package has no entry.",
+      "err.libraries.tooMany": "A package has {max} entries at most.",
+      "err.libraries.entry": "Entry {n} ({name}) does not read with this system.",
+      "err.libraries.twice": "Entry {n} ({name}) is there twice.",
+      "err.libraries.badName": "Give the package a name (letters or digits).",
+      "err.libraries.noLibrary": "This system has no library.",
+      "err.libraries.tooBig": "This file is too big for a package (1 MB at most).",
+      "err.libraries.unreadable": "This file is not an Ourdir library package.",
+      "err.libraries.otherSystem": "This package is for a system that is not installed here ({system}).",
+      "err.libraries.tooNew": "This package asks for version {need} of the system (installed: {have}).",
+      "err.libraries.full": "{max} packages at most are installed: remove one first.",
+      "ui.lib.title": "Libraries",
+      "ui.lib.hint": "The packages installed for this table's system. Tick the ones the table uses: their entries join its library at the next launch.",
+      "ui.lib.none": "No package installed for this system.",
+      "ui.lib.count": "{n} entries, system {version} or later",
+      "ui.lib.install": "Install a package\u2026",
+      "ui.lib.installTitle": "Install a library package",
+      "ui.lib.exportTitle": "Export a library package",
+      "ui.lib.installed": "\xAB {name} \xBB is installed.",
+      "ui.lib.updated": "\xAB {name} \xBB is updated.",
+      "ui.lib.installFail": "This package does not install.",
+      "ui.lib.remove": "Remove",
+      "ui.lib.removeConfirm": "Remove the package \xAB {name} \xBB from this computer? Tables that use it will lose it.",
+      "ui.lib.restart": "The table is running: the libraries change at the next launch.",
+      "ui.rules.lib.export": "Export as a package",
+      "ui.rules.lib.packName": "Package name",
+      "ui.rules.lib.pickAll": "Tick all",
+      "ui.rules.lib.exportGo": "Export\u2026",
+      "ui.rules.lib.saveFirst": "Save the system first: the package is made from what is saved.",
+      "ui.rules.lib.exported": "Package exported ({n} entries).",
+      "ui.rules.lib.exportFailed": "The package could not be exported.",
+      "rules.l.featText": "Text",
+      "rules.v.libFeatureAction": "A feature does not act: no action of its own.",
+      "rules.v.pickLibrary": "\xAB The whole library \xBB needs a Features genre in the library.",
+      "rules.p.anyFeature": "the whole library",
+      "ui.rules.prog.anyLibrary": "The whole library (the game master's and the packages' too)",
+      "ui.cat.reviewLibrary": "Library package",
+      "ui.cat.libraryFor": "For the system {system} (version {version} or later): {n} entries.",
+      "ui.cat.libraryNote": "A library package holds no code: entries (spells, items, features\u2026), read again with the system installed here. Once installed, tick it in the Settings of each table that should use it.",
+      "ui.rules.lib.packVersion": "Package version",
+      "err.libraries.badVersion": "A package version is written 1.2.0.",
+      "ui.rules.lib.shareGo": "Share to the catalogue\u2026",
+      "err.libraries.notStaged": "This package is no longer ready: start again from the builder (Share to the catalogue)."
     };
   }
 });
@@ -8158,6 +14432,40 @@ var require_en3 = __commonJS({
       "chat.placeholder": "Write to the table\u2026 /me to act",
       "collision.off": "Ghost: let tokens go through walls",
       "collision.on": "Ghost: tokens go through walls (click to stop)",
+      "combat.applied": "\u2212{n} HP ({before} \u2192 {after})",
+      "combat.appliedAuto": "\u2212{n} HP ({before} \u2192 {after}), automatically",
+      "combat.appliedHidden": "\u2212{n} HP",
+      "combat.btn.apply": "Apply",
+      "combat.btn.damage": "Damage",
+      "combat.btn.double": "Double",
+      "combat.btn.half": "Half",
+      "combat.btn.heal": "Heal",
+      "combat.btn.undo": "Undo",
+      "combat.crit": "Critical!",
+      "combat.dealt": "{raw} {type}",
+      "combat.defense": "{name}: {value}",
+      "combat.down": "Out of the fight",
+      "combat.final": "\u2192 {n}",
+      "combat.healed": "+{n} HP ({before} \u2192 {after})",
+      "combat.healedHidden": "+{n} HP",
+      "combat.hit": "Hit",
+      "combat.hp": "Hit points\u2026",
+      "combat.hpAmount": "How many",
+      "combat.hpDone": "{name}: {before} \u2192 {after} HP",
+      "combat.hpHeal": "Heal",
+      "combat.hpHurt": "Hurt",
+      "combat.miss": "Miss",
+      "combat.openSheet": "Open the sheet to make this roll.",
+      "combat.reduced": "\u2212 {n} (reduction)",
+      "combat.refused": "Refused: {why}",
+      "combat.settings": "Combat",
+      "combat.settingsAuto": "Automatic",
+      "combat.settingsHint": "Who takes the hit points away when an attack hits.",
+      "combat.settingsValidate": "After the GM validates",
+      "combat.undone": "Undone",
+      "combat.why.immune": "immunity: nothing",
+      "combat.why.resist": "resistance: half",
+      "combat.why.vuln": "vulnerability: double",
       "compendium.add": "Add to the sheet",
       "compendium.added": "\u201C{what}\u201D added to {who}.",
       "compendium.back": "\u2190 Back to the list",
@@ -8197,6 +14505,49 @@ var require_en3 = __commonJS({
       "dnd.monsters.createdNoScene": "Sheet \u201C{name}\u201D created, but there is no open scene to place its token on.",
       "dnd.monsters.failed": "The sheet could not be created.",
       "dnd.monsters.placed": "\u201C{name}\u201D placed on the map, with its sheet.",
+      "effects.add": "Add a state",
+      "effects.adv": "Advantage",
+      "effects.advDown": "disadvantage",
+      "effects.advNone": "nothing",
+      "effects.advUp": "advantage",
+      "effects.advantage": "advantage on {res} rolls",
+      "effects.at.end": "counted at the end of their turn",
+      "effects.at.start": "counted at the start of their turn",
+      "effects.by": "By how much",
+      "effects.cancel": "Cancel",
+      "effects.disadvantage": "disadvantage on {res} rolls",
+      "effects.free": "Free effect",
+      "effects.groupRest": "Group rest",
+      "effects.groupRestHint": "Every sheet of the turn order rests.",
+      "effects.groupRested": "{n} sheet(s) rested",
+      "effects.menu": "States\u2026",
+      "effects.mod": "{n} {name}",
+      "effects.name": "Name",
+      "effects.none": "No state.",
+      "effects.noticeOff": "{name}: {effects} ends",
+      "effects.noticeOn": "{name}: {effect}",
+      "effects.noticeRest": "{name}: {rest}",
+      "effects.onRolls": "On the rolls of",
+      "effects.put": "Put on",
+      "effects.refused": "Refused: {why}",
+      "effects.remove": "Remove",
+      "effects.resist": "resists {type}",
+      "effects.resistNone": "nothing",
+      "effects.resistTo": "Resists",
+      "effects.restLabel": "Ends at the rest",
+      "effects.restNone": "none",
+      "effects.rested": "{name}: {rest}",
+      "effects.rollBonus": "{n} to {res} rolls",
+      "effects.rounds": "{n} round(s)",
+      "effects.rounds.label": "Lasts (rounds)",
+      "effects.roundsOrRest": "{n} round(s), or at {rest}",
+      "effects.someone": "Someone",
+      "effects.states": "The sheet\u2019s states",
+      "effects.title": "States",
+      "effects.untilRemoved": "until removed",
+      "effects.untilRest": "until {rest}",
+      "effects.value": "Value",
+      "effects.vuln": "vulnerable to {type}",
       "floorsModel.moved": "\u201C{name}\u201D goes to {level}",
       "floorsModel.movedSomeone": "A token goes to {level}",
       "floorsModel.noAnswer": "The server does not answer.",
@@ -8270,6 +14621,13 @@ var require_en3 = __commonJS({
       "host.bulk.tooMany": "Too many sheets at once ({max} at most).",
       "host.bulkParse.imageInvalide": "Invalid image.",
       "host.bulkParse.typeFicheInvalide": "Invalid sheet kind.",
+      "host.combat.already": "Already done.",
+      "host.combat.attack": "Attack",
+      "host.combat.badDice": "This weapon\u2019s dice cannot be read (e.g. 1d8+2).",
+      "host.combat.noAmmo": "Out of ammunition.",
+      "host.combat.noCard": "This card no longer exists.",
+      "host.combat.noRules": "This system describes no combat.",
+      "host.combat.noWeapon": "This weapon is no longer on the sheet.",
       "host.common.badScene": "Invalid scene.",
       "host.common.badSceneOrFloor": "Invalid scene or floor.",
       "host.common.gmOnly": "Only the GM can change that.",
@@ -8298,11 +14656,19 @@ var require_en3 = __commonJS({
       "host.craft.listFull": "This list is full.",
       "host.craftAdd.cibleIntrouvable": "Target not found.",
       "host.craftAdd.contenuIntrouvable": "Content not found.",
+      "host.effects.bad": "This effect cannot be read.",
+      "host.effects.full": "This sheet already bears 24 effects.",
+      "host.effects.gone": "This effect is no longer there.",
+      "host.effects.groupGm": "Only the GM rests the whole group.",
+      "host.effects.noRest": "This rest does not exist.",
+      "host.effects.noRules": "This system describes no states.",
       "host.exploration.cleared": "The exploration was cleared.",
       "host.exploration.gmOnlyClear": "Only the GM can clear the exploration.",
       "host.exploration.invalid": "Invalid exploration memory.",
       "host.exploration.tooBig": "Exploration memory too large.",
       "host.fieldRules.gmOnly": "This field is reserved for the GM.",
+      "host.fieldRules.locked": "This field is set by the rules: only the game master changes it.",
+      "host.fieldRules.sealed": "Only the table writes this field (the effects).",
       "host.fieldRules.tooBig": "(too large to be checked)",
       "host.filter.gmOnly": "Only the GM sets the filter.",
       "host.floors.already": "This scene is already organised into floors.",
@@ -8337,6 +14703,17 @@ var require_en3 = __commonJS({
       "host.keys.bad": "Invalid key.",
       "host.keys.badOwner": "Invalid owner key.",
       "host.keys.gm": "That is the GM's key.",
+      "host.library.bad": "This entry cannot be read.",
+      "host.library.full": "There are too many entries already.",
+      "host.library.gmOnly": "Only the game master keeps their library.",
+      "host.library.gone": "This entry is gone.",
+      "host.library.noAction": "This entry does not act.",
+      "host.library.noOrigin": "This row does not come from the library.",
+      "host.library.noRes": "The sheet does not have the cost\u2019s resource.",
+      "host.library.noRules": "This system has no library.",
+      "host.library.noTarget": "Pick a target first (T).",
+      "host.library.notEnough": "Not enough to pay the cost.",
+      "host.library.notListed": "This entry does not go in a list of the sheet.",
       "host.lighting.already": "This scene already has its lighting.",
       "host.lighting.badLight": "Invalid light.",
       "host.lighting.badLightPos": "Invalid light position.",
@@ -8365,6 +14742,19 @@ var require_en3 = __commonJS({
       "host.media.tooBig": "Request too large.",
       "host.music.gmOnlyClock": "Only the GM sets the music clock.",
       "host.people.sheetN": "Sheet {id}",
+      "host.progress.badChoice": "These choices do not match what this level offers.",
+      "host.progress.gmOnly": "Only the game master can do that.",
+      "host.progress.noAsk": "No request is waiting.",
+      "host.progress.noBuy": "This purchase does not exist for this sheet.",
+      "host.progress.noLevels": "This system has no levels.",
+      "host.progress.noRules": "This system describes no progression.",
+      "host.progress.noUse": "This system does not progress by use.",
+      "host.progress.noXp": "Not enough experience: {n} is needed.",
+      "host.progress.noXpRules": "This system has no experience.",
+      "host.progress.nothingToUndo": "Nothing to undo.",
+      "host.progress.taken": "This feature is taken already.",
+      "host.progress.top": "This sheet is at the highest level already.",
+      "host.progress.waiting": "A request is already waiting for the game master.",
       "host.roles.noLook": "Your role at this table does not allow changing a sheet's image or token.",
       "host.roles.noUpload": "Your role at this table does not allow sending files.",
       "host.scene.exploration": "Exploration fog: yes, no, or the table's default.",
@@ -8404,6 +14794,44 @@ var require_en3 = __commonJS({
       "journal.notes": "Notes",
       "journal.openPdf": "Open the PDF",
       "journal.search": "Search the journal\u2026",
+      "library.action": "Action",
+      "library.acts": "acts",
+      "library.add": "Add",
+      "library.addTo": "Add to the sheet",
+      "library.added": "{name} added to the sheet.",
+      "library.cancel": "Cancel",
+      "library.editOrCopy": "Edit or copy\u2026",
+      "library.editTitle": "Edit the entry",
+      "library.filterGenre": "Genre",
+      "library.filterSource": "Source",
+      "library.fromLibrary": "From the library",
+      "library.genre": "Genre",
+      "library.hidden": "Hidden from the players",
+      "library.hiddenTag": "hidden",
+      "library.many": "entries",
+      "library.n.act": "{who}: {entry}",
+      "library.n.add": "{who} adds {entry}",
+      "library.n.cost": "(\u2212{cost})",
+      "library.n.state": "\u2192 {state}",
+      "library.n.update": "{who} updates {entry}",
+      "library.name": "Name",
+      "library.new": "New entry",
+      "library.newTitle": "New table entry",
+      "library.none": "No entry.",
+      "library.notTable": "Only the table\u2019s entries are removed here.",
+      "library.pickOf": "{genre}: library",
+      "library.refused": "Refused: {why}",
+      "library.remove": "Remove",
+      "library.removed": "{name} removed.",
+      "library.save": "Save",
+      "library.saved": "{name} saved.",
+      "library.search": "Search",
+      "library.someone": "Someone",
+      "library.source.sys": "System",
+      "library.source.table": "Table",
+      "library.title": "Library",
+      "library.updateTitle": "A newer version exists: update",
+      "library.updated": "{name} updated.",
       "lightEngine.lighter": "Lighting lightened to stay smooth.",
       "lightingPanel.asPlayers": "See as the players do",
       "lightingPanel.auto": "Auto",
@@ -8478,6 +14906,26 @@ var require_en3 = __commonJS({
       "liteFog.reveal": "Reveal",
       "liteMacros.advantage": "Advantage",
       "liteMacros.disadvantage": "Disadvantage",
+      "loading.back": "Back to the launcher",
+      "loading.continue": "Continue anyway",
+      "loading.error": "Could not reach the table: {detail}",
+      "loading.label": "Loading the table",
+      "loading.modules": "Table modules: {list}",
+      "loading.phrase.connect": "Arriving at the table\u2026",
+      "loading.phrase.modules": "Starting the table's modules\u2026",
+      "loading.phrase.ourdir": "Getting the interface ready\u2026",
+      "loading.phrase.ready": "Ready!",
+      "loading.phrase.scene": "Setting the scene\u2026",
+      "loading.retry": "Try again",
+      "loading.slow.connect": "The table is not answering yet.",
+      "loading.slow.ourdir": "The interface is taking a while.",
+      "loading.slow.scene": "The scene is not answering.",
+      "loading.step.connect": "Connection",
+      "loading.step.host": "The table",
+      "loading.step.modules": "Table modules",
+      "loading.step.ourdir": "Interface",
+      "loading.step.ready": "Ready",
+      "loading.step.scene": "Scene",
       "lookThrough.banner": "{name}'s view \xB7 Ctrl+L or Escape to come back",
       "lookThrough.bannerVowel": "{name}'s view \xB7 Ctrl+L or Escape to come back",
       "lookThrough.someone": "the character",
@@ -8549,6 +14997,85 @@ var require_en3 = __commonJS({
       "playlistImport.doneOne": "{n} track added.",
       "playlistImport.empty": "This YouTube playlist is empty, private or not found.",
       "playlistImport.reading": "Reading the YouTube playlist\u2026",
+      "progress.accept": "Accept",
+      "progress.asked": "Level {level} is waiting for the game master.",
+      "progress.askedBuy": "A purchase is waiting for the game master.",
+      "progress.award": "Give to the turn order",
+      "progress.awarded": "{each} for each of the {n} sheets.",
+      "progress.back": "Back",
+      "progress.beforeAfter": "Before \u2192 after",
+      "progress.brings": "What this level brings",
+      "progress.buy": "Buy\u2026",
+      "progress.buyOf": "{name}\u2019s purchases",
+      "progress.cannot": "No climb possible for now.",
+      "progress.choicesToMake": "{n} choice(s) to make.",
+      "progress.climb": "Climb to level {n}",
+      "progress.climbNow": "Climb",
+      "progress.climbOf": "{name}: level {n}",
+      "progress.close": "Close",
+      "progress.each": "to each",
+      "progress.entry.buy": "Purchase",
+      "progress.entry.level": "Level {n}",
+      "progress.gain.add": "{n} to {name}",
+      "progress.gain.dice": "+{dice} to {name}",
+      "progress.gain.feature": "Feature: {name}",
+      "progress.give": "Give ({xp})",
+      "progress.giveGo": "Give",
+      "progress.gmValidates": "A player\u2019s climb or purchase waits for the game master",
+      "progress.grant": "Grant a level",
+      "progress.granted": "Level granted by the game master: {n}.",
+      "progress.history": "History",
+      "progress.historyOf": "{name}\u2019s history",
+      "progress.how.average": "the average ({n})",
+      "progress.how.roll": "rolled",
+      "progress.left": "{n} left to spread.",
+      "progress.less": "Less to {name}",
+      "progress.level": "Level {n}",
+      "progress.menu": "Progression\u2026",
+      "progress.missing": "{n} missing.",
+      "progress.modOf": "{name} mod.",
+      "progress.more": "More to {name}",
+      "progress.n.accepted": "{who}: request accepted.",
+      "progress.n.ask": "{who} asks for level {level} (to decide on their sheet).",
+      "progress.n.buy": "{who} buys",
+      "progress.n.grant": "{who} may climb to level {level}.",
+      "progress.n.level": "{who} reaches level {level}",
+      "progress.n.refused": "{who}: request refused.",
+      "progress.n.tick": "{who} ticks {skill}",
+      "progress.n.undo": "{who}: last climb undone.",
+      "progress.n.use": "{who} improves by use",
+      "progress.n.xp": "{who}: {n} {xp}",
+      "progress.next": "Next",
+      "progress.noFeature": "No feature.",
+      "progress.noHistory": "Nothing yet.",
+      "progress.notNow": "Not now.",
+      "progress.nothing": "Nothing more at this level.",
+      "progress.of": "{name}\u2019s progression",
+      "progress.pick": "Pick {n} feature(s)",
+      "progress.refuse": "Refuse",
+      "progress.refused": "Refused: {why}",
+      "progress.send": "Send to the game master",
+      "progress.sent": "Request sent to the game master.",
+      "progress.session": "End of session",
+      "progress.sessionDone": "{tests} test(s), {gains} improvement(s).",
+      "progress.sessionHint": "Each ticked skill is tested; on a success, it improves.",
+      "progress.settings": "Progression",
+      "progress.settingsHint": "A single sheet gets its experience from its token\u2019s \u201CProgression\u2026\u201D.",
+      "progress.someone": "Someone",
+      "progress.split": "shared",
+      "progress.spread": "{n} point(s) to spread ({max} max each)",
+      "progress.ticked": "ticked",
+      "progress.train": "Train {n} skill(s)",
+      "progress.undo": "Undo the last climb",
+      "resolve.advantage": "Advantage",
+      "resolve.bonus": "Bonus or penalty",
+      "resolve.cancel": "Cancel",
+      "resolve.difficulty": "Difficulty",
+      "resolve.disadvantage": "Disadvantage",
+      "resolve.go": "Roll",
+      "resolve.normal": "Normal",
+      "resolve.poolDice": "Extra or fewer dice",
+      "resolve.roll": "Roll",
       "rollTags.failure": "Failure",
       "rollTags.hit": "Hit",
       "rollTags.miss": "Miss",
@@ -8559,6 +15086,318 @@ var require_en3 = __commonJS({
       "rollsToChat.hit": "hit",
       "rollsToChat.roll": "roll",
       "rollsToChat.test": "{what} check",
+      "rules.against": " (against {n})",
+      "rules.attack": "Attack",
+      "rules.crit": "Critical success",
+      "rules.deg.extreme": "Extreme success",
+      "rules.deg.hard": "Hard success",
+      "rules.der.defense": "Defense",
+      "rules.der.health": "Health",
+      "rules.der.hp": "Hit points",
+      "rules.der.initiative": "Initiative",
+      "rules.der.level": "Level",
+      "rules.der.magic": "Magic points",
+      "rules.der.proficiency": "Proficiency",
+      "rules.der.sanity": "Sanity",
+      "rules.der.stress": "Stress",
+      "rules.der.willpower": "Willpower",
+      "rules.diff.easy": "Easy",
+      "rules.diff.hard": "Hard",
+      "rules.diff.medium": "Medium",
+      "rules.diff.veryHard": "Very hard",
+      "rules.dt.balistique": "Ballistic",
+      "rules.dt.contondant": "Bludgeoning",
+      "rules.dt.electrique": "Electric",
+      "rules.dt.energie": "Energy",
+      "rules.dt.explosif": "Explosive",
+      "rules.dt.feu": "Fire",
+      "rules.dt.foudre": "Lightning",
+      "rules.dt.froid": "Cold",
+      "rules.dt.necrotique": "Necrotic",
+      "rules.dt.perforant": "Piercing",
+      "rules.dt.poison": "Poison",
+      "rules.dt.psychique": "Psychic",
+      "rules.dt.tranchant": "Slashing",
+      "rules.expertIn": "{name}: expert",
+      "rules.fail": "Failure",
+      "rules.fate.average": "Average",
+      "rules.fate.fair": "Fair",
+      "rules.fate.good": "Good",
+      "rules.fate.great": "Great",
+      "rules.fate.mediocre": "Mediocre",
+      "rules.fate.superb": "Superb",
+      "rules.finesse": "The best of the two (finesse)",
+      "rules.fumble": "Critical failure",
+      "rules.fx.title": "States",
+      "rules.icon.a_terre": "Prone",
+      "rules.icon.autre": "Other",
+      "rules.icon.aveugle": "Blind",
+      "rules.icon.benediction": "Blessing",
+      "rules.icon.charme": "Charm",
+      "rules.icon.entrave": "Restraint",
+      "rules.icon.faiblesse": "Weakness",
+      "rules.icon.feu": "Fire",
+      "rules.icon.froid": "Cold",
+      "rules.icon.invisible": "Invisible",
+      "rules.icon.peur": "Fear",
+      "rules.icon.poison": "Poison",
+      "rules.icon.protection": "Protection",
+      "rules.icon.rage": "Rage",
+      "rules.icon.saignement": "Bleeding",
+      "rules.icon.sommeil": "Sleep",
+      "rules.icon.vitesse": "Speed",
+      "rules.immune": "Immunities",
+      "rules.l.act": "Act",
+      "rules.l.attack": "attack {dice}",
+      "rules.l.cast": "Cast",
+      "rules.l.cost": "{n} {res}",
+      "rules.l.description": "Description",
+      "rules.l.e.benediction": "Bless",
+      "rules.l.e.benediction.text": "The target is blessed for a few rounds.",
+      "rules.l.e.corde": "Rope (50 ft)",
+      "rules.l.e.corde.text": "A sturdy hemp rope.",
+      "rules.l.e.lumiere": "Light",
+      "rules.l.e.lumiere.text": "A touched object shines like a torch.",
+      "rules.l.e.sang_froid": "Cool head",
+      "rules.l.e.sang_froid.text": "A roll under pressure, with a bonus.",
+      "rules.l.e.torche": "Torch",
+      "rules.l.e.torche.text": "Lights a few metres for an hour.",
+      "rules.l.e.trait_de_feu": "Fire bolt",
+      "rules.l.e.trait_de_feu.text": "A bolt of fire streaks toward the target.",
+      "rules.l.far": "Far",
+      "rules.l.featText": "Text",
+      "rules.l.items": "Items",
+      "rules.l.level": "Level",
+      "rules.l.name": "Name",
+      "rules.l.range": "Range",
+      "rules.l.roll": "{res} roll{bonus}",
+      "rules.l.spells": "Spells",
+      "rules.l.stateSelf": "{state} on oneself",
+      "rules.l.stateTarget": "{state} on the target",
+      "rules.l.talents": "Talents",
+      "rules.l.touch": "Touch",
+      "rules.l.use": "Use",
+      "rules.l.weight": "Weight",
+      "rules.margin": ", by {n}",
+      "rules.maxOf": "{name} (max)",
+      "rules.modOf": "{name} modifier",
+      "rules.p.addDice": "+{dice}{plus} to {name}, {how}",
+      "rules.p.addN": "{n} to {name}",
+      "rules.p.anyFeature": "the whole library",
+      "rules.p.anySkill": "any",
+      "rules.p.buyFeature": "Feature",
+      "rules.p.buySkill": "Skill",
+      "rules.p.buyStat": "Characteristic",
+      "rules.p.f.allie": "An ally",
+      "rules.p.f.allie.text": "Gain a loyal ally, described with the GM.",
+      "rules.p.f.atout": "An asset",
+      "rules.p.f.atout.text": "Gain a place, a vehicle or a possession that matters.",
+      "rules.p.f.autre_livret": "Move from another playbook",
+      "rules.p.f.autre_livret.text": "Take a move from another playbook.",
+      "rules.p.f.endurci": "Hardened",
+      "rules.p.f.endurci.text": "Once per rest, shrug off a light wound.",
+      "rules.p.f.guerison": "Clear a scar",
+      "rules.p.f.guerison.text": "Clear a lasting harm or condition.",
+      "rules.p.f.nouvelle_action": "New move",
+      "rules.p.f.nouvelle_action.text": "Take a new move from your playbook.",
+      "rules.p.f.plus_un": "+1 to a stat",
+      "rules.p.f.plus_un.text": "Add 1 to a stat (+2 at most), to write on the sheet.",
+      "rules.p.f.resolu": "Resolute",
+      "rules.p.f.resolu.text": "Reroll a roll against fear, once per session.",
+      "rules.p.f.vif": "Quick",
+      "rules.p.f.vif.text": "Act first when initiative is tied.",
+      "rules.p.feature": "Feature: {name}",
+      "rules.p.features": "Features",
+      "rules.p.how.average": "as the average",
+      "rules.p.how.player": "as the player likes",
+      "rules.p.how.roll": "rolled",
+      "rules.p.pick": "{n} feature(s) among {list}",
+      "rules.p.spread": "{n} point(s) to spread among {list} ({max} max each)",
+      "rules.p.title": "Progression",
+      "rules.p.train": "Train {n} skill(s): {list}",
+      "rules.p.xp": "Experience",
+      "rules.partial": "Partial success",
+      "rules.passiveOf": "{name} (passive)",
+      "rules.reduction": "Reduction",
+      "rules.resist": "Resistances",
+      "rules.rest.halte": "Short rest",
+      "rules.rest.nuit": "Night",
+      "rules.rest.title": "Rests",
+      "rules.sk.athletics": "Athletics",
+      "rules.sk.perception": "Perception",
+      "rules.stat.agility": "Agility",
+      "rules.stat.mind": "Mind",
+      "rules.stat.strength": "Strength",
+      "rules.state.a_terre": "Prone",
+      "rules.state.aveugle": "Blinded",
+      "rules.state.benediction": "Blessed",
+      "rules.state.entrave": "Restrained",
+      "rules.state.peur": "Frightened",
+      "rules.state.poison": "Poisoned",
+      "rules.state.protection": "In cover",
+      "rules.state.saignement": "Badly wounded",
+      "rules.success": "Success",
+      "rules.successes": "{n} successes",
+      "rules.test": "Test",
+      "rules.totalOf": "{name} (total)",
+      "rules.trainedIn": "{name}: trained",
+      "rules.under": " (under {n})",
+      "rules.v.adv": "Advantage, disadvantage or nothing.",
+      "rules.v.advantage": "Advantage does not apply to a pool, to Fate nor to bands.",
+      "rules.v.bands": "Bands: 2 to 12, rising, the last without a maximum, each with a name and a tone.",
+      "rules.v.bonus": "Bonus: a whole number from \u22121000 to 1000.",
+      "rules.v.bool": "Yes or no expected.",
+      "rules.v.buyNoXp": "A purchase is paid in experience: there must be some.",
+      "rules.v.combat": "Unreadable combat.",
+      "rules.v.combatKey": "This value is not on the sheet.",
+      "rules.v.combatRoll": "The attack is rolled with \xAB {id} \xBB, which is not in the rules.",
+      "rules.v.combatStats": "Weapons can only take characteristics of the system.",
+      "rules.v.condition": "Unreadable critical or fumble condition.",
+      "rules.v.conditions": "Criticals and fumbles: 6 conditions at most.",
+      "rules.v.cost": "A fixed cost, a formula, or marks then a formula.",
+      "rules.v.costFormula": "A formula of the level reached, @n (for example 1000*@n).",
+      "rules.v.costNoXp": "Without experience, levels have no cost (the GM grants them).",
+      "rules.v.count": "Number of dice: 1 to {max}.",
+      "rules.v.countAt": "Success threshold: a face of a d{sides}.",
+      "rules.v.critical": "Critical: doubled dice, maximum plus a roll, or nothing.",
+      "rules.v.cycle": "Calculation loop: {path}.",
+      "rules.v.default": "The default difficulty is not in the list.",
+      "rules.v.degrees": "Degrees: steps above the target, or fractions under the value.",
+      "rules.v.derived": "Derived values: {max} at most.",
+      "rules.v.dice": "Unreadable dice.",
+      "rules.v.difficulties": "Difficulties: {max} at most.",
+      "rules.v.difficultyValue": "The difficulty needs a whole value.",
+      "rules.v.dotsKey": "With dots, the key is {max} characters at most.",
+      "rules.v.dotsRange": "Dots: from 0 to {max} at most.",
+      "rules.v.double": "Face that counts twice: a face of the die, or 0.",
+      "rules.v.effectTypes": "Damage types of the combat.",
+      "rules.v.effects": "Unreadable states.",
+      "rules.v.expertise": "Expertise only goes with \xAB trained \xBB.",
+      "rules.v.explode": "Explosion: on the highest face, 10 times at most.",
+      "rules.v.family": "Unknown dice family.",
+      "rules.v.fate": "Fate dice are d3, in a fixed number.",
+      "rules.v.featText": "{max} characters at most.",
+      "rules.v.featUnknown": "This feature does not exist.",
+      "rules.v.finesse": "Finesse compares two different characteristics.",
+      "rules.v.fixed": "Fixed target: a whole number.",
+      "rules.v.gauge": "A gauge needs a resource.",
+      "rules.v.generation": "Unknown creation method.",
+      "rules.v.give": "From 1 to {max} gains.",
+      "rules.v.giveKind": "A gain: add, spread, train, a feature or a choice of feature.",
+      "rules.v.group": "Group: 40 characters at most.",
+      "rules.v.health": "Damage hits a resource (a current / maximum derived value).",
+      "rules.v.hidden": "A hidden derived value cannot be rolled, a resource, nor a typed value.",
+      "rules.v.icon": "Unknown icon.",
+      "rules.v.id": "Invalid key: lowercase letters and _, 30 characters at most.",
+      "rules.v.identity": "Identity: a tone, an audience and a complexity from the list.",
+      "rules.v.initiative": "Initiative is rolled with a fixed number of dice.",
+      "rules.v.keep": "Keep: best or worst, fewer than the number of dice.",
+      "rules.v.key": "Invalid key: a lowercase letter, then lowercase letters, digits and _, 30 characters at most.",
+      "rules.v.levelKey": "The level is a typed value of the sheet.",
+      "rules.v.levelRange": "The level starts at 1 and goes at least to 2.",
+      "rules.v.lib": "Unreadable library.",
+      "rules.v.libActionEmpty": "This action does nothing: a roll, a cost or a state.",
+      "rules.v.libBonus": "A number from \u2212{max} to {max}, or a number field of the genre (@level).",
+      "rules.v.libChoice": "One of the field\u2019s options.",
+      "rules.v.libCost": "A cost is paid in a resource.",
+      "rules.v.libDamage": "Damage dice such as 1d8 or 2d6+1d4+2.",
+      "rules.v.libFeatureAction": "A feature does not act: no action of its own.",
+      "rules.v.libFeatureEntry": "Features are described in the Progression card.",
+      "rules.v.libField": "This field does not exist in this genre.",
+      "rules.v.libFieldKey": "Field key: lowercase letters, digits and _, 16 at most (nom, origine, agir, ligne are reserved).",
+      "rules.v.libFixedFields": "This genre\u2019s fields are set by the rules.",
+      "rules.v.libGenre": "This genre does not exist.",
+      "rules.v.libGenreKey": "Genre key: a lowercase letter then lowercase letters or digits, 12 at most.",
+      "rules.v.libNoCombat": "The rules need a combat.",
+      "rules.v.libNoProgress": "The rules need a progression.",
+      "rules.v.libNumber": "A whole number within the field\u2019s bounds.",
+      "rules.v.libOneKind": "Only one genre of this kind.",
+      "rules.v.libOptions": "From 2 to {max} options, each once.",
+      "rules.v.libPasteName": "A \u201CName\u201D column is needed.",
+      "rules.v.libRange": "The minimum must be below the maximum.",
+      "rules.v.libState": "This state does not exist.",
+      "rules.v.libText": "{max} characters at most.",
+      "rules.v.libWeaponAction": "A weapon attacks as the combat says: no action of its own.",
+      "rules.v.marks": "From 1 to {max} marks, each higher than the one before (cumulated experience).",
+      "rules.v.modKey": "An effect changes a characteristic, a computed value or a skill\u2019s total.",
+      "rules.v.modN": "A whole number, from \u2212{max} to {max}, not zero.",
+      "rules.v.name": "A name is needed.",
+      "rules.v.need": "Successes needed: at least 1.",
+      "rules.v.needPool": "A dice pool is needed (the number of dice comes from what is added).",
+      "rules.v.noDifficulty": "A \xAB difficulty \xBB target needs at least one difficulty.",
+      "rules.v.notResolution": "Unreadable resolution.",
+      "rules.v.notRules": "Unreadable rules.",
+      "rules.v.onFailTarget": "The host does not see the chosen difficulty: a miss pays only on a roll without a difficulty, or with a fixed one.",
+      "rules.v.percentRange": "Percentage: between 0 and 100.",
+      "rules.v.pickLibrary": "\xAB The whole library \xBB needs a Features genre in the library.",
+      "rules.v.price": "A price from 1 to 1,000,000, or a formula of the new rank, @r.",
+      "rules.v.proficiency": "\xAB Trained \xBB adds a proficiency derived value: choose it (and only with \xAB trained \xBB).",
+      "rules.v.prog": "Unreadable progression.",
+      "rules.v.progAmong": "A list of what exists, each once.",
+      "rules.v.progDice": "A die such as 1d8 or 2d6.",
+      "rules.v.progEmpty": "Nothing makes one progress: experience, levels, purchases or use.",
+      "rules.v.progKey": "A characteristic, a skill or a value of the sheet, never the level.",
+      "rules.v.progN": "A whole number, from {min} to {max}.",
+      "rules.v.progRoll": "This roll does not exist in the rules: \u201C{id}\u201D.",
+      "rules.v.read": "Unknown way to read the result.",
+      "rules.v.recipe": "Unknown or incomplete recipe, or one that reads what does not exist.",
+      "rules.v.reroll": "Reroll: a face of the die, once or always.",
+      "rules.v.resource": "A resource is worked out and is not rolled.",
+      "rules.v.restHow": "In full, by half, by a number or by a value.",
+      "rules.v.restUnknown": "This rest does not exist.",
+      "rules.v.rests": "From 1 to {max} rests.",
+      "rules.v.rollNothing": "This roll changes nothing: a bonus or an advantage.",
+      "rules.v.rollWith": "This derived value follows \xAB {id} \xBB, which is not in the rules.",
+      "rules.v.rolls": "Secondary rolls: {max} at most.",
+      "rules.v.rounds": "Between 1 and {max} rounds.",
+      "rules.v.sameId": "The key \xAB {id} \xBB is already taken.",
+      "rules.v.short": "Abbreviation: 6 characters at most.",
+      "rules.v.show": "Unknown display.",
+      "rules.v.sides": "Die faces: {list}.",
+      "rules.v.skillList": "Skills: 1 to {max}.",
+      "rules.v.skillMode": "Unknown skill mode.",
+      "rules.v.skillRank": "Unknown skill rank.",
+      "rules.v.skillStat": "\xAB {id} \xBB is not a characteristic.",
+      "rules.v.skills": "Unreadable skills.",
+      "rules.v.spreadRoom": "Not enough room for all the points: more choices, or a higher maximum.",
+      "rules.v.statDefault": "The starting value must be within the range.",
+      "rules.v.statForm": "Unknown form of characteristics.",
+      "rules.v.statList": "Characteristics: 1 to {max}.",
+      "rules.v.statRange": "Range: a minimum below the maximum, between \u22121000 and 1000.",
+      "rules.v.stats": "Unreadable characteristics.",
+      "rules.v.target": "Unknown target.",
+      "rules.v.tie": "Tie: success or failure.",
+      "rules.v.tooLong": "\xAB {id} \xBB gives a formula too long once unfolded ({n} characters, {max} at most).",
+      "rules.v.tooMany": "{max} at most.",
+      "rules.v.trainNeeds": "Training a skill needs \u201Ctrained\u201D skills.",
+      "rules.v.typeKey": "Type key: lowercase letters and _, 30 characters at most.",
+      "rules.v.types": "Damage types: {max} at most.",
+      "rules.v.useNeeds": "Use ticks skills: there must be some.",
+      "rules.v.when": "Every N levels, from a level between 2 and {max}.",
+      "rules.v.whenAt": "Levels from 2 to {max}.",
+      "rules.v.window": "Unreadable roll window.",
+      "rules.v.windowDifficulty": "The window can offer a difficulty only if the target is a difficulty.",
+      "rules.vuln": "Vulnerabilities",
+      "rules.w.ammo": "Ammunition",
+      "rules.w.bonus": "Bonus",
+      "rules.w.damage": "Damage",
+      "rules.w.name": "Weapon",
+      "rules.w.range": "Range",
+      "rules.w.stat": "Characteristic",
+      "rules.w.tags": "Tags",
+      "rules.w.type": "Type",
+      "rules.weapons": "Weapons",
+      "rules.x.fractionDown": "{of} \xF7 {by}, rounded down",
+      "rules.x.fractionNear": "{of} \xF7 {by}, rounded to the nearest",
+      "rules.x.fractionUp": "{of} \xF7 {by}, rounded up",
+      "rules.x.ifExpert": "{prof} if expert",
+      "rules.x.ifTrained": "{prof} if trained",
+      "rules.x.max": "the greatest of {list}",
+      "rules.x.min": "the smallest of {list}",
+      "rules.x.modifier": "({of} \u2212 10) \xF7 2, rounded down",
+      "rules.x.perLevel": "{base} + {per} \xD7 {level}",
+      "rules.x.step": "up to {upTo} \u2192 {value}",
+      "rules.x.steps": "by {of}: {list}; otherwise {other}",
       "screenFilter.auto": "As the theme says",
       "screenFilter.dread": "Gloom and desaturation",
       "screenFilter.failed": "The filter could not be saved.",
@@ -8698,6 +15537,10 @@ var require_en3 = __commonJS({
       "tableCompendium.tagNote": "note",
       "tableCompendium.tagSheet": "sheet",
       "tableCompendium.title": "Table",
+      "tableModules.off": "The GM turned off {list}.",
+      "tableModules.on": "The GM turned on {list}.",
+      "tableModules.onOff": "The GM turned on {on} and off {off}.",
+      "tableModules.reload": "Reload",
       "target.chip": "Target",
       "target.none": "This is not a target: it has no sheet.",
       "target.remove": "Remove the target",
@@ -8758,20 +15601,20 @@ __export(cli_exports, {
   sayFrench: () => sayFrench
 });
 module.exports = __toCommonJS(cli_exports);
-var import_node_fs6 = __toESM(require("node:fs"));
-var import_node_path6 = __toESM(require("node:path"));
+var import_node_fs7 = __toESM(require("node:fs"));
+var import_node_path7 = __toESM(require("node:path"));
 
 // apps/desktop/src/catalog/pipeline.ts
 var import_node_crypto3 = __toESM(require("node:crypto"));
-var import_node_fs4 = __toESM(require("node:fs"));
+var import_node_fs5 = __toESM(require("node:fs"));
 var import_node_os2 = __toESM(require("node:os"));
-var import_node_path4 = __toESM(require("node:path"));
+var import_node_path5 = __toESM(require("node:path"));
 
 // apps/desktop/src/modules/install.ts
 var import_node_crypto = __toESM(require("node:crypto"));
-var import_node_fs2 = __toESM(require("node:fs"));
+var import_node_fs3 = __toESM(require("node:fs"));
 var import_node_os = __toESM(require("node:os"));
-var import_node_path2 = __toESM(require("node:path"));
+var import_node_path3 = __toESM(require("node:path"));
 
 // apps/desktop/src/identity.ts
 var import_crypto = __toESM(require("crypto"));
@@ -8786,13 +15629,13 @@ function frenchTexts() {
   if (french) return french;
   french = {};
   const proc = globalThis.process;
-  const fs7 = proc && typeof proc.getBuiltinModule === "function" ? proc.getBuiltinModule("node:fs") : null;
-  const path7 = proc && fs7 && proc.getBuiltinModule ? proc.getBuiltinModule("node:path") : null;
-  if (!proc || !fs7 || !path7) return french;
-  for (const base of [proc.cwd(), path7.resolve(proc.cwd(), ".."), path7.resolve(proc.cwd(), "..", "..")]) {
-    const files = [path7.join(base, "product", "client", "i18n", "fr.json"), path7.join(base, "apps", "desktop", "i18n", "fr.json")];
-    if (!files.every((f) => fs7.existsSync(f))) continue;
-    for (const f of files) Object.assign(french, JSON.parse(fs7.readFileSync(f, "utf8")));
+  const fs8 = proc && typeof proc.getBuiltinModule === "function" ? proc.getBuiltinModule("node:fs") : null;
+  const path8 = proc && fs8 && proc.getBuiltinModule ? proc.getBuiltinModule("node:path") : null;
+  if (!proc || !fs8 || !path8) return french;
+  for (const base of [proc.cwd(), path8.resolve(proc.cwd(), ".."), path8.resolve(proc.cwd(), "..", "..")]) {
+    const files = [path8.join(base, "product", "client", "i18n", "fr.json"), path8.join(base, "apps", "desktop", "i18n", "fr.json")];
+    if (!files.every((f) => fs8.existsSync(f))) continue;
+    for (const f of files) Object.assign(french, JSON.parse(fs8.readFileSync(f, "utf8")));
     break;
   }
   return french;
@@ -9394,6 +16237,41 @@ function extractZip(buf, dest, limits = DEFAULT_LIMITS) {
 // apps/desktop/src/catalog/licensed.ts
 var licensedRefusal = () => say("err.licensed.refusal");
 
+// apps/desktop/src/removeFile.ts
+var import_node_fs2 = __toESM(require("node:fs"));
+var import_node_path2 = __toESM(require("node:path"));
+function removeFile(file) {
+  try {
+    import_node_fs2.default.unlinkSync(file);
+  } catch (err) {
+    if (err.code !== "ENOENT") throw err;
+  }
+}
+var RETRYABLE = /* @__PURE__ */ new Set(["EBUSY", "EPERM", "ENOTEMPTY", "EMFILE", "ENFILE"]);
+function removeTree(dir, retries = 0) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      removeEntry(dir);
+      return;
+    } catch (err) {
+      if (attempt >= retries || !RETRYABLE.has(err.code ?? "")) throw err;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+    }
+  }
+}
+function removeEntry(p) {
+  let st;
+  try {
+    st = import_node_fs2.default.lstatSync(p);
+  } catch (err) {
+    if (err.code === "ENOENT") return;
+    throw err;
+  }
+  if (!st.isDirectory()) return removeFile(p);
+  for (const name of import_node_fs2.default.readdirSync(p)) removeEntry(import_node_path2.default.join(p, name));
+  import_node_fs2.default.rmdirSync(p);
+}
+
 // apps/desktop/src/modules/install.ts
 var officialKeys = [];
 var SIGNATURE_FILE = "SIGNATURE.json";
@@ -9404,23 +16282,23 @@ var MAX_SCRIPT_READ = 5 * 1024 * 1024;
 var InstallError = class extends Error {
 };
 function copyTree(src, dest) {
-  import_node_fs2.default.mkdirSync(dest, { recursive: true });
-  for (const e of import_node_fs2.default.readdirSync(src, { withFileTypes: true })) {
-    const from = import_node_path2.default.join(src, e.name);
-    const to = import_node_path2.default.join(dest, e.name);
-    const st = import_node_fs2.default.lstatSync(from);
+  import_node_fs3.default.mkdirSync(dest, { recursive: true });
+  for (const e of import_node_fs3.default.readdirSync(src, { withFileTypes: true })) {
+    const from = import_node_path3.default.join(src, e.name);
+    const to = import_node_path3.default.join(dest, e.name);
+    const st = import_node_fs3.default.lstatSync(from);
     if (st.isSymbolicLink()) continue;
     if (st.isDirectory()) copyTree(from, to);
-    else if (st.isFile()) import_node_fs2.default.copyFileSync(from, to);
+    else if (st.isFile()) import_node_fs3.default.copyFileSync(from, to);
   }
 }
 var sha256 = (data) => import_node_crypto.default.createHash("sha256").update(data).digest("hex");
 function walk(dir, base = dir) {
   const out = [];
-  for (const e of import_node_fs2.default.readdirSync(dir, { withFileTypes: true })) {
-    const full = import_node_path2.default.join(dir, e.name);
+  for (const e of import_node_fs3.default.readdirSync(dir, { withFileTypes: true })) {
+    const full = import_node_path3.default.join(dir, e.name);
     if (e.isDirectory()) out.push(...walk(full, base));
-    else out.push(import_node_path2.default.relative(base, full).split(import_node_path2.default.sep).join("/"));
+    else out.push(import_node_path3.default.relative(base, full).split(import_node_path3.default.sep).join("/"));
   }
   return out;
 }
@@ -9428,7 +16306,7 @@ function hashPackage(root) {
   const files = walk(root).filter((f) => f !== SIGNATURE_FILE && !f.startsWith(GENERATED_DIR + "/")).sort();
   const h = import_node_crypto.default.createHash("sha256");
   for (const f of files) {
-    h.update(`${f}\0${sha256(import_node_fs2.default.readFileSync(import_node_path2.default.join(root, f)))}
+    h.update(`${f}\0${sha256(import_node_fs3.default.readFileSync(import_node_path3.default.join(root, f)))}
 `);
   }
   return { hash: h.digest("hex"), files };
@@ -9444,13 +16322,13 @@ function signPackage(root, publisher, name) {
     signature: sign(publisher, "module", signedPayload(parsed.id, parsed.version, hash)),
     signedAt: (/* @__PURE__ */ new Date()).toISOString()
   };
-  import_node_fs2.default.writeFileSync(import_node_path2.default.join(root, SIGNATURE_FILE), JSON.stringify(body, null, 2), "utf8");
+  import_node_fs3.default.writeFileSync(import_node_path3.default.join(root, SIGNATURE_FILE), JSON.stringify(body, null, 2), "utf8");
 }
 var MANIFEST_FILES = ["module.json", "system.json"];
 function manifestFile(root) {
   for (const name of MANIFEST_FILES) {
-    const file = import_node_path2.default.join(root, name);
-    if (import_node_fs2.default.existsSync(file)) return { file, packageType: name === "system.json" ? "system" : "module" };
+    const file = import_node_path3.default.join(root, name);
+    if (import_node_fs3.default.existsSync(file)) return { file, packageType: name === "system.json" ? "system" : "module" };
   }
   return null;
 }
@@ -9458,10 +16336,10 @@ function readManifest(root) {
   const found = manifestFile(root);
   if (!found) throw new InstallError(say("err.install.noManifest"));
   const file = found.file;
-  if (import_node_fs2.default.statSync(file).size > MAX_MANIFEST_BYTES) throw new InstallError(say("err.install.moduleJsonTropVolumineux"));
+  if (import_node_fs3.default.statSync(file).size > MAX_MANIFEST_BYTES) throw new InstallError(say("err.install.moduleJsonTropVolumineux"));
   let raw;
   try {
-    raw = JSON.parse(import_node_fs2.default.readFileSync(file, "utf8").replace(/^\uFEFF/, ""));
+    raw = JSON.parse(import_node_fs3.default.readFileSync(file, "utf8").replace(/^\uFEFF/, ""));
   } catch {
     throw new InstallError(say("err.install.badJson"));
   }
@@ -9470,10 +16348,10 @@ function readManifest(root) {
   return parsed.manifest;
 }
 function verifySignature(root, m, hash) {
-  const file = import_node_path2.default.join(root, SIGNATURE_FILE);
-  if (!import_node_fs2.default.existsSync(file)) return { trust: "unsigned" };
+  const file = import_node_path3.default.join(root, SIGNATURE_FILE);
+  if (!import_node_fs3.default.existsSync(file)) return { trust: "unsigned" };
   try {
-    const s = JSON.parse(import_node_fs2.default.readFileSync(file, "utf8"));
+    const s = JSON.parse(import_node_fs3.default.readFileSync(file, "utf8"));
     const key = s.publisher?.publicKey;
     if (s.v !== 1 || !isValidPublicKey(key) || typeof s.signature !== "string") {
       return { trust: "unsigned", warning: say("err.install.badSignature") };
@@ -9491,10 +16369,10 @@ function copyClean(src, dest, skipped) {
   let count = 0;
   let total = 0;
   const visit = (dir, rel) => {
-    for (const e of import_node_fs2.default.readdirSync(dir, { withFileTypes: true })) {
-      const from = import_node_path2.default.join(dir, e.name);
+    for (const e of import_node_fs3.default.readdirSync(dir, { withFileTypes: true })) {
+      const from = import_node_path3.default.join(dir, e.name);
       const to = rel ? `${rel}/${e.name}` : e.name;
-      const lst = import_node_fs2.default.lstatSync(from);
+      const lst = import_node_fs3.default.lstatSync(from);
       if (lst.isSymbolicLink()) {
         skipped.push(`${to} (lien symbolique)`);
       } else if (lst.isDirectory()) {
@@ -9510,8 +16388,8 @@ function copyClean(src, dest, skipped) {
         if (++count > MAX_FILES) throw new InstallError(say("err.install.tooMany"));
         total += lst.size;
         if (total > MAX_TOTAL) throw new InstallError(say("err.install.moduleTropVolumineux"));
-        import_node_fs2.default.mkdirSync(import_node_path2.default.dirname(import_node_path2.default.join(dest, to)), { recursive: true });
-        import_node_fs2.default.copyFileSync(from, import_node_path2.default.join(dest, to));
+        import_node_fs3.default.mkdirSync(import_node_path3.default.dirname(import_node_path3.default.join(dest, to)), { recursive: true });
+        import_node_fs3.default.copyFileSync(from, import_node_path3.default.join(dest, to));
       }
     }
   };
@@ -9520,30 +16398,30 @@ function copyClean(src, dest, skipped) {
 }
 function findRoot(dir) {
   if (manifestFile(dir)) return dir;
-  const subs = import_node_fs2.default.readdirSync(dir, { withFileTypes: true }).filter((e) => e.isDirectory());
-  if (subs.length === 1 && manifestFile(import_node_path2.default.join(dir, subs[0].name))) {
-    return import_node_path2.default.join(dir, subs[0].name);
+  const subs = import_node_fs3.default.readdirSync(dir, { withFileTypes: true }).filter((e) => e.isDirectory());
+  if (subs.length === 1 && manifestFile(import_node_path3.default.join(dir, subs[0].name))) {
+    return import_node_path3.default.join(dir, subs[0].name);
   }
   throw new InstallError(say("err.install.noManifestAtRoot"));
 }
 function prepare(source, tmpBase = import_node_os.default.tmpdir(), opts = {}) {
-  const work = import_node_fs2.default.mkdtempSync(import_node_path2.default.join(tmpBase, "td-mod-"));
-  const dispose = () => import_node_fs2.default.rmSync(work, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+  const work = import_node_fs3.default.mkdtempSync(import_node_path3.default.join(tmpBase, "td-mod-"));
+  const dispose = () => removeTree(work, 5);
   try {
-    const stat = import_node_fs2.default.statSync(source);
+    const stat = import_node_fs3.default.statSync(source);
     const skipped = [];
-    const raw = import_node_path2.default.join(work, "raw");
+    const raw = import_node_path3.default.join(work, "raw");
     if (stat.isDirectory()) {
-      import_node_fs2.default.mkdirSync(raw);
+      import_node_fs3.default.mkdirSync(raw);
       copyTree(source, raw);
     } else if (/\.zip$/i.test(source)) {
       if (stat.size > DEFAULT_LIMITS.maxTotalBytes) throw new InstallError(say("err.install.archiveTropVolumineuse"));
-      extractZip(import_node_fs2.default.readFileSync(source), raw);
+      extractZip(import_node_fs3.default.readFileSync(source), raw);
     } else {
       throw new InstallError(say("err.install.choose"));
     }
-    const clean2 = import_node_path2.default.join(work, "clean");
-    import_node_fs2.default.mkdirSync(clean2);
+    const clean2 = import_node_path3.default.join(work, "clean");
+    import_node_fs3.default.mkdirSync(clean2);
     const fileCount = copyClean(findRoot(raw), clean2, skipped);
     const manifest = readManifest(clean2);
     if (manifest.access === "licensed" && !opts.allowLicensed) throw new InstallError(licensedRefusal());
@@ -9554,25 +16432,25 @@ function prepare(source, tmpBase = import_node_os.default.tmpdir(), opts = {}) {
       ...manifest.files.styles,
       ...manifest.files.languages.map((l) => l.path)
     ];
-    for (const r of refs) if (!import_node_fs2.default.existsSync(import_node_path2.default.join(clean2, r))) missing.push(r);
+    for (const r of refs) if (!import_node_fs3.default.existsSync(import_node_path3.default.join(clean2, r))) missing.push(r);
     if (missing.length) throw new InstallError(say("err.install.missingFiles", { list: missing.join("\n- ") }));
     const { hash } = hashPackage(clean2);
     const sig = verifySignature(clean2, manifest, hash);
     if (sig.warning) warnings.push(sig.warning);
     if (skipped.length) warnings.push(say("err.install.skipped", { n: skipped.length }));
-    const parsedAgain = parseManifest(JSON.parse(import_node_fs2.default.readFileSync(manifestFile(clean2).file, "utf8")));
+    const parsedAgain = parseManifest(JSON.parse(import_node_fs3.default.readFileSync(manifestFile(clean2).file, "utf8")));
     if (parsedAgain.ok) warnings.push(...parsedAgain.warnings);
     let multiFile = false;
     for (const rel of manifest.files.scripts) {
-      const full = import_node_path2.default.join(clean2, rel);
-      if (import_node_fs2.default.statSync(full).size <= MAX_SCRIPT_READ && usesModuleSyntax(import_node_fs2.default.readFileSync(full, "utf8"))) multiFile = true;
+      const full = import_node_path3.default.join(clean2, rel);
+      if (import_node_fs3.default.statSync(full).size <= MAX_SCRIPT_READ && usesModuleSyntax(import_node_fs3.default.readFileSync(full, "utf8"))) multiFile = true;
     }
     let compat;
     if (manifest.kind === "foundry") {
       const scripts = walk(clean2).filter((f) => /\.m?js$/i.test(f) && !f.startsWith(GENERATED_DIR + "/")).slice(0, 400);
       const sources = scripts.map((p) => {
-        const full = import_node_path2.default.join(clean2, p);
-        return { path: p, text: import_node_fs2.default.statSync(full).size > MAX_SCRIPT_READ ? "" : import_node_fs2.default.readFileSync(full, "utf8") };
+        const full = import_node_path3.default.join(clean2, p);
+        return { path: p, text: import_node_fs3.default.statSync(full).size > MAX_SCRIPT_READ ? "" : import_node_fs3.default.readFileSync(full, "utf8") };
       });
       compat = withDependencies(analyzeScripts(sources), manifest.requires, sources.length > 0);
     }
@@ -9730,8 +16608,8 @@ function once(u, opts, timeoutMs) {
 
 // apps/desktop/src/catalog/builder.ts
 var import_node_crypto2 = __toESM(require("node:crypto"));
-var import_node_fs3 = __toESM(require("node:fs"));
-var import_node_path3 = __toESM(require("node:path"));
+var import_node_fs4 = __toESM(require("node:fs"));
+var import_node_path4 = __toESM(require("node:path"));
 
 // apps/desktop/src/catalog/format.ts
 var CATALOG_FORMAT = "ourdir-catalog";
@@ -9765,7 +16643,8 @@ var KIND_BYTES = {
   // a theme is a small document of values (spec « thèmes de table » §2)
   translation: MB,
   // texts only (spec « traductions » §2): 1 MB without its English column
-  compendium: 256 * MB,
+  compendium: MB,
+  // a library package: entries only (spec « bibliothèques » §7), 1 MB like the launcher reads it
   maps: 512 * MB,
   adventure: 512 * MB
 };
@@ -10206,23 +17085,23 @@ function requestedPermissions(p) {
 
 // apps/desktop/src/catalog/builder.ts
 var dirs = (root) => ({
-  entries: import_node_path3.default.join(root, "entries"),
-  packages: import_node_path3.default.join(root, "packages"),
-  revoked: import_node_path3.default.join(root, "revoked.json"),
-  state: import_node_path3.default.join(root, "state.json"),
-  out: import_node_path3.default.join(root, "public")
+  entries: import_node_path4.default.join(root, "entries"),
+  packages: import_node_path4.default.join(root, "packages"),
+  revoked: import_node_path4.default.join(root, "revoked.json"),
+  state: import_node_path4.default.join(root, "state.json"),
+  out: import_node_path4.default.join(root, "public")
 });
 var sha2562 = (b) => import_node_crypto2.default.createHash("sha256").update(b).digest("hex");
 var readJson = (file, fallback) => {
   try {
-    return JSON.parse(import_node_fs3.default.readFileSync(file, "utf8"));
+    return JSON.parse(import_node_fs4.default.readFileSync(file, "utf8"));
   } catch {
     return fallback;
   }
 };
 var writeJson = (file, data) => {
-  import_node_fs3.default.mkdirSync(import_node_path3.default.dirname(file), { recursive: true });
-  import_node_fs3.default.writeFileSync(file, JSON.stringify(data, null, 2) + "\n", "utf8");
+  import_node_fs4.default.mkdirSync(import_node_path4.default.dirname(file), { recursive: true });
+  import_node_fs4.default.writeFileSync(file, JSON.stringify(data, null, 2) + "\n", "utf8");
 };
 var CatalogError = class extends Error {
 };
@@ -10230,9 +17109,9 @@ function build2(root, identity, opts = {}) {
   const d = dirs(root);
   const now = opts.now ?? /* @__PURE__ */ new Date();
   const days = opts.days ?? 30;
-  const entries = import_node_fs3.default.existsSync(d.entries) ? import_node_fs3.default.readdirSync(d.entries).filter((f) => f.endsWith(".json")).sort().map((f) => readJson(import_node_path3.default.join(d.entries, f), null)) : [];
-  const tiersFile = import_node_path3.default.join(root, TIERS_FILE);
-  const tiers = import_node_fs3.default.existsSync(tiersFile) ? parseTiers(import_node_fs3.default.readFileSync(tiersFile)) : null;
+  const entries = import_node_fs4.default.existsSync(d.entries) ? import_node_fs4.default.readdirSync(d.entries).filter((f) => f.endsWith(".json")).sort().map((f) => readJson(import_node_path4.default.join(d.entries, f), null)) : [];
+  const tiersFile = import_node_path4.default.join(root, TIERS_FILE);
+  const tiers = import_node_fs4.default.existsSync(tiersFile) ? parseTiers(import_node_fs4.default.readFileSync(tiersFile)) : null;
   for (const e of entries) {
     if (e.access === "licensed" && !maySell(tiers && tiers.ok ? tiers.tiers : null, e.publisher.key)) {
       throw new CatalogError(`\xAB ${e.id} \xBB est payant, mais son \xE9diteur n\u2019est ni Ourdir, ni Officiel, ni vendeur agr\xE9\xE9 : publication refus\xE9e.`);
@@ -10248,25 +17127,25 @@ function build2(root, identity, opts = {}) {
     entries: entries.map((e) => ({ ...e, versions: e.versions.map(({ file, url, ...rest }) => ({ ...rest, url: url ?? file })) })),
     revoked: readJson(d.revoked, { keys: [], packages: [] }),
     // key replacements the CI kept (spec « clé perdue » §2.4); a maintainer's folder has none
-    successions: readJson(import_node_path3.default.join(root, "successions.json"), [])
+    successions: readJson(import_node_path4.default.join(root, "successions.json"), [])
   };
   const bytes = Buffer.from(JSON.stringify(index, null, 2) + "\n", "utf8");
   const parsed = parseIndex(bytes, { loopbackPort: opts.loopbackPort });
   if (!parsed.ok) throw new CatalogError("L\u2019index produit serait refus\xE9 par l\u2019application : " + parsed.errors.join(" ; "));
-  import_node_fs3.default.rmSync(d.out, { recursive: true, force: true });
-  import_node_fs3.default.mkdirSync(d.out, { recursive: true });
+  removeTree(d.out);
+  import_node_fs4.default.mkdirSync(d.out, { recursive: true });
   for (const e of entries) {
     for (const v of e.versions) {
       if (!v.file) continue;
-      const dest = import_node_path3.default.join(d.out, v.file);
-      import_node_fs3.default.mkdirSync(import_node_path3.default.dirname(dest), { recursive: true });
-      import_node_fs3.default.copyFileSync(import_node_path3.default.join(root, v.file), dest);
+      const dest = import_node_path4.default.join(d.out, v.file);
+      import_node_fs4.default.mkdirSync(import_node_path4.default.dirname(dest), { recursive: true });
+      import_node_fs4.default.copyFileSync(import_node_path4.default.join(root, v.file), dest);
     }
   }
-  import_node_fs3.default.writeFileSync(import_node_path3.default.join(d.out, INDEX_FILE), bytes);
-  import_node_fs3.default.writeFileSync(import_node_path3.default.join(d.out, SIGNATURE_FILE2), signIndex(bytes, identity, now));
+  import_node_fs4.default.writeFileSync(import_node_path4.default.join(d.out, INDEX_FILE), bytes);
+  import_node_fs4.default.writeFileSync(import_node_path4.default.join(d.out, SIGNATURE_FILE2), signIndex(bytes, identity, now));
   for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, RECOVERY_DELEGATION_FILE]) {
-    if (import_node_fs3.default.existsSync(import_node_path3.default.join(root, f))) import_node_fs3.default.copyFileSync(import_node_path3.default.join(root, f), import_node_path3.default.join(d.out, f));
+    if (import_node_fs4.default.existsSync(import_node_path4.default.join(root, f))) import_node_fs4.default.copyFileSync(import_node_path4.default.join(root, f), import_node_path4.default.join(d.out, f));
   }
   writeJson(d.state, { sequence });
   return { sequence, entries: entries.length, versions: entries.reduce((n, e) => n + e.versions.length, 0), expiresAt: index.expiresAt };
@@ -10276,15 +17155,15 @@ function verifyPublished(outDir, rootKeys, opts = {}) {
   const now = (opts.now ?? /* @__PURE__ */ new Date()).getTime();
   let bytes, sig;
   try {
-    bytes = import_node_fs3.default.readFileSync(import_node_path3.default.join(outDir, INDEX_FILE));
-    sig = import_node_fs3.default.readFileSync(import_node_path3.default.join(outDir, SIGNATURE_FILE2));
+    bytes = import_node_fs4.default.readFileSync(import_node_path4.default.join(outDir, INDEX_FILE));
+    sig = import_node_fs4.default.readFileSync(import_node_path4.default.join(outDir, SIGNATURE_FILE2));
   } catch {
     return { ok: false, errors: ["index.json ou index.json.sig manquant."] };
   }
   let keys = rootKeys;
-  const delegationFile = import_node_path3.default.join(outDir, DELEGATION_FILE);
-  if (import_node_fs3.default.existsSync(delegationFile)) {
-    const dl = checkDelegation(import_node_fs3.default.readFileSync(delegationFile), rootKeys, now);
+  const delegationFile = import_node_path4.default.join(outDir, DELEGATION_FILE);
+  if (import_node_fs4.default.existsSync(delegationFile)) {
+    const dl = checkDelegation(import_node_fs4.default.readFileSync(delegationFile), rootKeys, now);
     if (!dl.ok) return { ok: false, errors: ["D\xE9l\xE9gation refus\xE9e : " + dl.reason] };
     keys = [...rootKeys, dl.delegation.key];
   }
@@ -10292,11 +17171,11 @@ function verifyPublished(outDir, rootKeys, opts = {}) {
   if (!v.ok) return { ok: false, errors: [v.reason] };
   const parsed = parseIndex(bytes, { loopbackPort: opts.loopbackPort });
   if (!parsed.ok) return { ok: false, errors: parsed.errors };
-  const tiersFile = import_node_path3.default.join(outDir, TIERS_FILE);
-  if (import_node_fs3.default.existsSync(tiersFile)) {
+  const tiersFile = import_node_path4.default.join(outDir, TIERS_FILE);
+  if (import_node_fs4.default.existsSync(tiersFile)) {
     let t;
     try {
-      t = checkTiers(import_node_fs3.default.readFileSync(tiersFile), import_node_fs3.default.readFileSync(import_node_path3.default.join(outDir, TIERS_SIGNATURE_FILE)), rootKeys, now);
+      t = checkTiers(import_node_fs4.default.readFileSync(tiersFile), import_node_fs4.default.readFileSync(import_node_path4.default.join(outDir, TIERS_SIGNATURE_FILE)), rootKeys, now);
     } catch {
       t = { ok: false, reason: "tiers.json.sig manquant." };
     }
@@ -10310,9 +17189,9 @@ function verifyPublished(outDir, rootKeys, opts = {}) {
         external++;
         continue;
       }
-      const f = import_node_path3.default.join(outDir, ver.url);
+      const f = import_node_path4.default.join(outDir, ver.url);
       try {
-        const b = import_node_fs3.default.readFileSync(f);
+        const b = import_node_fs4.default.readFileSync(f);
         if (b.length !== ver.size || sha2562(b) !== ver.sha256) errors.push(`${e.id} ${ver.version} : le fichier ne correspond pas \xE0 l\u2019index.`);
         files++;
       } catch {
@@ -10333,7 +17212,7 @@ function verifyPackageFile(bytes, publicKey, signature) {
 }
 
 // apps/desktop/src/catalog/submission.ts
-var OPEN_KINDS = ["module", "system", "theme", "translation"];
+var OPEN_KINDS = ["module", "system", "theme", "translation", "compendium"];
 var MAX_SUBMISSIONS_PER_PR = 10;
 var SUBMISSION_PATH_RE = /^entries\/([a-z0-9][a-z0-9_-]{1,63})\/(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]{1,30})?)\.json$/;
 var PERM_RE2 = /^[a-z][a-z0-9]*(\.[a-z][a-z0-9]*){1,3}$/;
@@ -10377,6 +17256,8 @@ function parseSubmission(file, text, opts = {}) {
   if (kind === "system" && typeof raw.signature !== "string") errors.push("Un syst\xE8me doit porter sa signature (node scripts/sign-module.js --system).");
   if (kind === "theme" && typeof raw.signature !== "string") errors.push("Un th\xE8me doit porter sa signature (tools/verifier.js entry \u2026 --key).");
   if (kind === "translation" && typeof raw.signature !== "string") errors.push("Une traduction doit porter sa signature (tools/verifier.js entry \u2026 --key).");
+  if (kind === "compendium" && typeof raw.signature !== "string") errors.push("Un paquet de biblioth\xE8que doit porter sa signature (tools/verifier.js entry \u2026 --key).");
+  if (kind === "compendium" && raw.system === void 0) errors.push("Un paquet de biblioth\xE8que dit son syst\xE8me (system).");
   const perms = Array.isArray(raw.permissions) ? raw.permissions : [];
   if (perms.length > LIMITS.permissions || !perms.every((p) => typeof p === "string" && PERM_RE2.test(p))) errors.push("Liste de permissions invalide.");
   const license = cleanText(raw.license, LIMITS.name);
@@ -10472,7 +17353,7 @@ function renderReport(r) {
 // apps/desktop/src/catalog/pipeline.ts
 var sha2563 = (b) => import_node_crypto3.default.createHash("sha256").update(b).digest("hex");
 var message = (err) => err instanceof Error ? err.message : String(err);
-var extOf = (kind) => kind === "module" ? "zip" : kind === "theme" ? "ourdir-theme.json" : kind === "translation" ? "ourdir-translation.json" : "ttsystem.json";
+var extOf = (kind) => kind === "module" ? "zip" : kind === "theme" ? "ourdir-theme.json" : kind === "translation" ? "ourdir-translation.json" : kind === "compendium" ? "ourdirlib" : "ttsystem.json";
 var PUBLISH_MIN = 0.8;
 function fetcher(deps2) {
   if (deps2.fetchBytes) return deps2.fetchBytes;
@@ -10484,36 +17365,36 @@ function fetcher(deps2) {
   };
 }
 function readSubmissions(repoDir, deps2 = {}) {
-  const top = import_node_path4.default.join(repoDir, "entries");
-  if (!import_node_fs4.default.existsSync(top)) return [];
+  const top = import_node_path5.default.join(repoDir, "entries");
+  if (!import_node_fs5.default.existsSync(top)) return [];
   const out = [];
-  for (const id of import_node_fs4.default.readdirSync(top).sort()) {
-    const dir = import_node_path4.default.join(top, id);
-    if (!import_node_fs4.default.statSync(dir).isDirectory()) continue;
-    for (const f of import_node_fs4.default.readdirSync(dir).filter((x) => x.endsWith(".json")).sort()) {
-      const p = parseSubmission(`entries/${id}/${f}`, import_node_fs4.default.readFileSync(import_node_path4.default.join(dir, f), "utf8"), deps2);
+  for (const id of import_node_fs5.default.readdirSync(top).sort()) {
+    const dir = import_node_path5.default.join(top, id);
+    if (!import_node_fs5.default.statSync(dir).isDirectory()) continue;
+    for (const f of import_node_fs5.default.readdirSync(dir).filter((x) => x.endsWith(".json")).sort()) {
+      const p = parseSubmission(`entries/${id}/${f}`, import_node_fs5.default.readFileSync(import_node_path5.default.join(dir, f), "utf8"), deps2);
       if (p.ok) out.push(p.sub);
     }
   }
   return out;
 }
 function readTiers(repoDir) {
-  const f = import_node_path4.default.join(repoDir, TIERS_FILE);
-  if (!import_node_fs4.default.existsSync(f)) return null;
-  const p = parseTiers(import_node_fs4.default.readFileSync(f));
+  const f = import_node_path5.default.join(repoDir, TIERS_FILE);
+  if (!import_node_fs5.default.existsSync(f)) return null;
+  const p = parseTiers(import_node_fs5.default.readFileSync(f));
   return p.ok ? p.tiers : null;
 }
 function repoRootKeys(repoDir) {
-  const f = import_node_path4.default.join(repoDir, "root.pub");
-  return import_node_fs4.default.existsSync(f) ? import_node_fs4.default.readFileSync(f, "utf8").split(/[\s,]+/).filter(Boolean) : [];
+  const f = import_node_path5.default.join(repoDir, "root.pub");
+  return import_node_fs5.default.existsSync(f) ? import_node_fs5.default.readFileSync(f, "utf8").split(/[\s,]+/).filter(Boolean) : [];
 }
 var STATUS_KEY_RE = /^[a-z0-9][a-z0-9_-]{1,63}@\d+\.\d+\.\d+(-[0-9A-Za-z.-]{1,30})?$/;
 function readStatuses(repoDir) {
   const out = /* @__PURE__ */ new Map();
-  const f = import_node_path4.default.join(repoDir, "status.json");
-  if (!import_node_fs4.default.existsSync(f)) return out;
+  const f = import_node_path5.default.join(repoDir, "status.json");
+  if (!import_node_fs5.default.existsSync(f)) return out;
   try {
-    const raw = JSON.parse(import_node_fs4.default.readFileSync(f, "utf8"));
+    const raw = JSON.parse(import_node_fs5.default.readFileSync(f, "utf8"));
     if (raw && typeof raw === "object" && !Array.isArray(raw)) {
       for (const [k, v] of Object.entries(raw)) if (v === "deprecated" && STATUS_KEY_RE.test(k)) out.set(k, "deprecated");
     }
@@ -10522,11 +17403,11 @@ function readStatuses(repoDir) {
   return out;
 }
 function readSuccessionFiles(repoDir) {
-  const dir = import_node_path4.default.join(repoDir, "successions");
-  if (!import_node_fs4.default.existsSync(dir)) return [];
+  const dir = import_node_path5.default.join(repoDir, "successions");
+  if (!import_node_fs5.default.existsSync(dir)) return [];
   const out = [];
-  for (const f of import_node_fs4.default.readdirSync(dir).filter((x) => x.endsWith(".json")).sort()) {
-    const p = parseSuccession(import_node_fs4.default.readFileSync(import_node_path4.default.join(dir, f)));
+  for (const f of import_node_fs5.default.readdirSync(dir).filter((x) => x.endsWith(".json")).sort()) {
+    const p = parseSuccession(import_node_fs5.default.readFileSync(import_node_path5.default.join(dir, f)));
     if (p.ok && `${p.s.from}.json` === f) out.push(p.file);
   }
   return out;
@@ -10555,13 +17436,13 @@ function checkSuccessionFile(file, text, repoDir, now) {
   return { file, ok: true, errors: [] };
 }
 function withPackage(bytes, fn) {
-  const tmp = import_node_path4.default.join(import_node_os2.default.tmpdir(), `ourdir-check-${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}.zip`);
-  import_node_fs4.default.writeFileSync(tmp, bytes);
+  const tmp = import_node_path5.default.join(import_node_os2.default.tmpdir(), `ourdir-check-${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}.zip`);
+  import_node_fs5.default.writeFileSync(tmp, bytes);
   let p;
   try {
     p = prepare(tmp, void 0, { allowLicensed: true });
   } finally {
-    import_node_fs4.default.rmSync(tmp, { force: true });
+    removeFile(tmp);
   }
   try {
     return fn(p);
@@ -10577,6 +17458,7 @@ async function makeSubmission(bytes, o, _deps) {
   let publisher;
   let signature;
   let kind;
+  let system = o.system;
   let docLanguages;
   if (bytes.subarray(0, 2).toString("latin1") === "PK") {
     kind = "module";
@@ -10599,6 +17481,16 @@ async function makeSubmission(bytes, o, _deps) {
     version = String(doc.version);
     access = "free";
     docLanguages = typeof doc.language === "string" ? [doc.language] : void 0;
+    publisher = { name: o.publisherName || "\xC9diteur", key: o.identity.publicKey };
+    signature = signPackageFile(bytes, o.identity);
+  } else if (JSON.parse(bytes.toString("utf8"))?.kind === "ourdirlib") {
+    kind = "compendium";
+    const doc = JSON.parse(bytes.toString("utf8"));
+    if (!o.identity) throw new Error("Un paquet de biblioth\xE8que se signe avec la cl\xE9 de son \xE9diteur (--key).");
+    id = String(doc.id);
+    version = String(doc.version ?? "1.0.0");
+    access = "free";
+    system = doc.system && typeof doc.system.id === "string" ? { id: doc.system.id, minVersion: String(doc.system.minVersion ?? "1.0.0") } : o.system;
     publisher = { name: o.publisherName || "\xC9diteur", key: o.identity.publicKey };
     signature = signPackageFile(bytes, o.identity);
   } else if (JSON.parse(bytes.toString("utf8"))?.format === "ourdir-theme") {
@@ -10637,7 +17529,7 @@ async function makeSubmission(bytes, o, _deps) {
     summary: o.summary,
     description: o.description ?? "",
     tags: o.tags ?? [],
-    system: o.system,
+    system,
     languages: o.languages ?? docLanguages ?? [],
     homepage: o.homepage,
     changelog: o.changelog,
@@ -10690,6 +17582,25 @@ function checkTranslation(bytes, s, deps2) {
   }
   return out;
 }
+function checkLibrary(bytes, s, systems) {
+  if (!verifyPackageFile(bytes, s.publisher.key, s.signature)) return ["La signature du paquet ne correspond pas \xE0 la cl\xE9 de l\u2019\xE9diteur."];
+  let doc;
+  try {
+    doc = JSON.parse(bytes.toString("utf8"));
+  } catch {
+    return ["Ce fichier n\u2019est pas un paquet de biblioth\xE8que Ourdir (JSON illisible)."];
+  }
+  const KEY = /^[a-z][a-z0-9_]{0,39}$/;
+  if (!doc || doc.kind !== "ourdirlib" || doc.v !== 1 || !doc.system || typeof doc.system.id !== "string" || !Array.isArray(doc.entries)) return ["Ce fichier n\u2019est pas un paquet de biblioth\xE8que Ourdir."];
+  const out = [];
+  if (doc.id !== s.id || String(doc.version ?? "1.0.0") !== s.version) out.push("Le paquet annonce un autre identifiant ou une autre version que la soumission.");
+  if (!s.system || s.system.id !== doc.system.id) out.push("Le paquet vise un autre syst\xE8me que la soumission.");
+  else if (!systems.includes(doc.system.id)) out.push(`Le syst\xE8me \xAB ${doc.system.id} \xBB n\u2019est pas au catalogue : publie-le d\u2019abord.`);
+  if (!doc.entries.length || doc.entries.length > 500) out.push("Un paquet a de 1 \xE0 500 entr\xE9es.");
+  const bad3 = doc.entries.findIndex((e) => !e || typeof e !== "object" || typeof e.id !== "string" || !KEY.test(e.id) || typeof e.genre !== "string" || typeof e.name !== "string" || !e.name.trim() || e.values !== void 0 && (typeof e.values !== "object" || Array.isArray(e.values)));
+  if (bad3 >= 0) out.push(`L\u2019entr\xE9e ${bad3 + 1} n\u2019a pas la forme d\u2019une entr\xE9e de biblioth\xE8que.`);
+  return out;
+}
 function checkModule(bytes, s) {
   try {
     return withPackage(bytes, (p) => {
@@ -10721,7 +17632,7 @@ async function checkSubmission(file, text, repoDir, deps2) {
   }
   if (bytes.length !== s.size) errors.push(`Taille : ${bytes.length} octets au lieu de ${s.size}.`);
   else if (sha2563(bytes) !== s.sha256) errors.push("Empreinte SHA-256 diff\xE9rente de celle d\xE9clar\xE9e.");
-  else errors.push(...s.kind === "system" ? checkSystem(bytes, s, deps2) : s.kind === "theme" ? checkTheme(bytes, s, deps2) : s.kind === "translation" ? checkTranslation(bytes, s, deps2) : checkModule(bytes, s));
+  else errors.push(...s.kind === "system" ? checkSystem(bytes, s, deps2) : s.kind === "theme" ? checkTheme(bytes, s, deps2) : s.kind === "translation" ? checkTranslation(bytes, s, deps2) : s.kind === "compendium" ? checkLibrary(bytes, s, readSubmissions(repoDir, deps2).filter((x) => x.kind === "system").map((x) => x.id)) : checkModule(bytes, s));
   return { file, id: s.id, version: s.version, ok: errors.length === 0, errors };
 }
 async function checkPullRequest(o, deps2) {
@@ -10731,11 +17642,11 @@ async function checkPullRequest(o, deps2) {
   for (const c of o.changes) {
     const isSuccession = SUCCESSION_PATH_RE.test(c.filename);
     if (!SUBMISSION_PATH_RE.test(c.filename) && !isSuccession) continue;
-    const full = import_node_path4.default.resolve(o.prDir, c.filename);
-    if (!full.startsWith(import_node_path4.default.resolve(o.prDir) + import_node_path4.default.sep)) continue;
+    const full = import_node_path5.default.resolve(o.prDir, c.filename);
+    if (!full.startsWith(import_node_path5.default.resolve(o.prDir) + import_node_path5.default.sep)) continue;
     let text;
     try {
-      text = import_node_fs4.default.readFileSync(full, "utf8");
+      text = import_node_fs5.default.readFileSync(full, "utf8");
     } catch {
       results.push({ file: c.filename, ok: false, errors: ["Fichier introuvable dans la pull request."] });
       continue;
@@ -10768,7 +17679,7 @@ async function publishCatalog(o, deps2) {
     } catch {
     }
   }
-  const work = import_node_fs4.default.mkdtempSync(import_node_path4.default.join(import_node_os2.default.tmpdir(), "ourdir-publish-"));
+  const work = import_node_fs5.default.mkdtempSync(import_node_path5.default.join(import_node_os2.default.tmpdir(), "ourdir-publish-"));
   const broken = [];
   const entries = /* @__PURE__ */ new Map();
   let hosted = 0;
@@ -10781,8 +17692,8 @@ async function publishCatalog(o, deps2) {
     let where;
     if (tier !== "community") {
       const rel = `packages/${s.id}/${s.version}.${extOf(s.kind)}`;
-      const mirror = import_node_path4.default.join(o.hostedDir, s.id, `${s.version}.${extOf(s.kind)}`);
-      let bytes = import_node_fs4.default.existsSync(mirror) ? import_node_fs4.default.readFileSync(mirror) : null;
+      const mirror = import_node_path5.default.join(o.hostedDir, s.id, `${s.version}.${extOf(s.kind)}`);
+      let bytes = import_node_fs5.default.existsSync(mirror) ? import_node_fs5.default.readFileSync(mirror) : null;
       if (!bytes || sha2563(bytes) !== s.sha256) {
         const why = await problemWith(fetch2, s);
         if (why) {
@@ -10791,8 +17702,8 @@ async function publishCatalog(o, deps2) {
         }
         bytes = await fetch2(s.url, s.size + 1);
       }
-      import_node_fs4.default.mkdirSync(import_node_path4.default.dirname(import_node_path4.default.join(work, rel)), { recursive: true });
-      import_node_fs4.default.writeFileSync(import_node_path4.default.join(work, rel), bytes);
+      import_node_fs5.default.mkdirSync(import_node_path5.default.dirname(import_node_path5.default.join(work, rel)), { recursive: true });
+      import_node_fs5.default.writeFileSync(import_node_path5.default.join(work, rel), bytes);
       where = { file: rel };
       hosted++;
     } else {
@@ -10827,43 +17738,43 @@ async function publishCatalog(o, deps2) {
     e.versions.push({ version: s.version, sha256: s.sha256, size: s.size, ...where, publishedAt: seen.get(key) ?? now.toISOString(), permissions: s.permissions, changelog: s.changelog, status: statuses.get(key) ?? "active", key: s.publisher.key });
     entries.set(s.id, e);
   }
-  import_node_fs4.default.mkdirSync(import_node_path4.default.join(work, "entries"), { recursive: true });
-  for (const [id, e] of entries) import_node_fs4.default.writeFileSync(import_node_path4.default.join(work, "entries", `${id}.json`), JSON.stringify(e, null, 2));
+  import_node_fs5.default.mkdirSync(import_node_path5.default.join(work, "entries"), { recursive: true });
+  for (const [id, e] of entries) import_node_fs5.default.writeFileSync(import_node_path5.default.join(work, "entries", `${id}.json`), JSON.stringify(e, null, 2));
   for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, "revoked.json", RECOVERY_DELEGATION_FILE]) {
-    if (import_node_fs4.default.existsSync(import_node_path4.default.join(o.repoDir, f))) import_node_fs4.default.copyFileSync(import_node_path4.default.join(o.repoDir, f), import_node_path4.default.join(work, f));
+    if (import_node_fs5.default.existsSync(import_node_path5.default.join(o.repoDir, f))) import_node_fs5.default.copyFileSync(import_node_path5.default.join(o.repoDir, f), import_node_path5.default.join(work, f));
   }
   const valid = readSuccessionFiles(o.repoDir).filter((f) => {
     const p = parseSuccession(JSON.stringify(f));
     return p.ok && chain.next.get(p.s.from) === p.s.to;
   });
-  import_node_fs4.default.writeFileSync(import_node_path4.default.join(work, "successions.json"), JSON.stringify(valid));
+  import_node_fs5.default.writeFileSync(import_node_path5.default.join(work, "successions.json"), JSON.stringify(valid));
   const sequence = publishSequence(now);
   build2(work, o.identity, { now, days: 7, sequence, loopbackPort: deps2.loopbackPort });
-  const check = verifyPublished(import_node_path4.default.join(work, "public"), o.rootKeys, { now, loopbackPort: deps2.loopbackPort });
+  const check = verifyPublished(import_node_path5.default.join(work, "public"), o.rootKeys, { now, loopbackPort: deps2.loopbackPort });
   if (!check.ok) throw new Error("Le catalogue produit serait refus\xE9 par l\u2019application : " + check.errors.join(" ; "));
-  import_node_fs4.default.rmSync(o.outDir, { recursive: true, force: true });
-  copyDir(import_node_path4.default.join(work, "public"), o.outDir);
-  import_node_fs4.default.rmSync(work, { recursive: true, force: true });
+  removeTree(o.outDir);
+  copyDir(import_node_path5.default.join(work, "public"), o.outDir);
+  removeTree(work);
   return { sequence, entries: entries.size, hosted, external, broken };
 }
 function copyDir(from, to) {
-  import_node_fs4.default.mkdirSync(to, { recursive: true });
-  for (const name of import_node_fs4.default.readdirSync(from)) {
-    const a = import_node_path4.default.join(from, name);
-    const b = import_node_path4.default.join(to, name);
-    if (import_node_fs4.default.statSync(a).isDirectory()) copyDir(a, b);
-    else import_node_fs4.default.copyFileSync(a, b);
+  import_node_fs5.default.mkdirSync(to, { recursive: true });
+  for (const name of import_node_fs5.default.readdirSync(from)) {
+    const a = import_node_path5.default.join(from, name);
+    const b = import_node_path5.default.join(to, name);
+    if (import_node_fs5.default.statSync(a).isDirectory()) copyDir(a, b);
+    else import_node_fs5.default.copyFileSync(a, b);
   }
 }
 
 // apps/desktop/src/catalog/pack.ts
-var import_node_fs5 = __toESM(require("node:fs"));
-var import_node_path5 = __toESM(require("node:path"));
+var import_node_fs6 = __toESM(require("node:fs"));
+var import_node_path6 = __toESM(require("node:path"));
 var import_node_zlib2 = __toESM(require("node:zlib"));
 var SKIP = /* @__PURE__ */ new Set(["node_modules"]);
 function walk2(root, rel = "") {
   const out = [];
-  for (const e of import_node_fs5.default.readdirSync(import_node_path5.default.join(root, rel), { withFileTypes: true })) {
+  for (const e of import_node_fs6.default.readdirSync(import_node_path6.default.join(root, rel), { withFileTypes: true })) {
     if (e.name.startsWith(".") || SKIP.has(e.name) || e.isSymbolicLink()) continue;
     const r = rel ? `${rel}/${e.name}` : e.name;
     if (e.isDirectory()) out.push(...walk2(root, r));
@@ -10878,7 +17789,7 @@ function packFolder(dir) {
   const centrals = [];
   let offset = 0;
   for (const f of files) {
-    const data = import_node_fs5.default.readFileSync(import_node_path5.default.join(dir, f));
+    const data = import_node_fs6.default.readFileSync(import_node_path6.default.join(dir, f));
     const packed = import_node_zlib2.default.deflateRawSync(data, { level: 9 });
     const name = Buffer.from(f, "utf8");
     const crc = import_node_zlib2.default.crc32(data);
@@ -10959,7 +17870,7 @@ var requirement3 = (s) => {
   return minVersion ? { id, minVersion } : { id };
 };
 var readKey = (file) => {
-  const k = JSON.parse(import_node_fs6.default.readFileSync(file, "utf8"));
+  const k = JSON.parse(import_node_fs7.default.readFileSync(file, "utf8"));
   if (!k.publicKey || !k.privateKey) throw new Error("Fichier de cl\xE9 invalide.");
   return k;
 };
@@ -10975,7 +17886,7 @@ var deps = {
   },
   loopbackPort: port
 };
-var readChanges = (file) => JSON.parse(import_node_fs6.default.readFileSync(file, "utf8")).map((c) => ({ filename: String(c.filename), status: String(c.status) }));
+var readChanges = (file) => JSON.parse(import_node_fs7.default.readFileSync(file, "utf8")).map((c) => ({ filename: String(c.filename), status: String(c.status) }));
 async function github(method, url, body) {
   const r = await fetch("https://api.github.com" + url, {
     method,
@@ -10989,7 +17900,7 @@ async function main() {
   const [command, first] = args;
   switch (command) {
     case "entry": {
-      const bytes = import_node_fs6.default.readFileSync(need(first, "le fichier du paquet"));
+      const bytes = import_node_fs7.default.readFileSync(need(first, "le fichier du paquet"));
       const sub = await makeSubmission(
         bytes,
         {
@@ -11012,9 +17923,9 @@ async function main() {
       const text = JSON.stringify(sub, null, 2) + "\n";
       const out = flag("--out");
       if (out) {
-        const target = out.endsWith(".json") ? out : import_node_path6.default.join(out, "entries", sub.id, `${sub.version}.json`);
-        import_node_fs6.default.mkdirSync(import_node_path6.default.dirname(target), { recursive: true });
-        import_node_fs6.default.writeFileSync(target, text, "utf8");
+        const target = out.endsWith(".json") ? out : import_node_path7.default.join(out, "entries", sub.id, `${sub.version}.json`);
+        import_node_fs7.default.mkdirSync(import_node_path7.default.dirname(target), { recursive: true });
+        import_node_fs7.default.writeFileSync(target, text, "utf8");
         console.log(`Soumission \xE9crite : ${target}`);
       } else {
         process.stdout.write(text);
@@ -11024,8 +17935,8 @@ async function main() {
     }
     case "check": {
       const report = await checkPullRequest({ repoDir: need(flag("--repo"), "--repo"), prDir: need(flag("--pr"), "--pr"), changes: readChanges(need(flag("--files"), "--files")) }, deps);
-      import_node_fs6.default.writeFileSync(need(flag("--report"), "--report"), JSON.stringify(report, null, 2));
-      import_node_fs6.default.writeFileSync(need(flag("--markdown"), "--markdown"), renderReport(report));
+      import_node_fs7.default.writeFileSync(need(flag("--report"), "--report"), JSON.stringify(report, null, 2));
+      import_node_fs7.default.writeFileSync(need(flag("--markdown"), "--markdown"), renderReport(report));
       console.log(renderReport(report));
       if (!report.ok) process.exitCode = 1;
       return;
@@ -11034,7 +17945,7 @@ async function main() {
       const succFile = flag("--succession");
       let successionProblem = null;
       if (succFile) {
-        const p = parseSuccession(import_node_fs6.default.readFileSync(succFile));
+        const p = parseSuccession(import_node_fs7.default.readFileSync(succFile));
         successionProblem = p.ok ? successionMergeProblem(p.s, String(flag("--created-at") ?? ""), Date.now()) : p.reason;
       }
       const d = mergeDecision({ conclusion: String(flag("--conclusion")), checkedSha: String(flag("--checked-sha") ?? ""), headSha: String(flag("--head-sha") ?? ""), changes: readChanges(need(flag("--files"), "--files")), successionProblem });
@@ -11052,18 +17963,18 @@ async function main() {
           identity,
           rootKeys: need(flag("--pin"), "--pin").split(",").map((k) => k.trim()).filter(Boolean),
           links: flag("--links") === "all" ? "all" : "new",
-          previousIndex: prev && import_node_fs6.default.existsSync(prev) ? import_node_fs6.default.readFileSync(prev) : null
+          previousIndex: prev && import_node_fs7.default.existsSync(prev) ? import_node_fs7.default.readFileSync(prev) : null
         },
         deps
       );
-      import_node_fs6.default.writeFileSync(need(flag("--broken"), "--broken"), JSON.stringify(r.broken, null, 2));
+      import_node_fs7.default.writeFileSync(need(flag("--broken"), "--broken"), JSON.stringify(r.broken, null, 2));
       console.log(`Publi\xE9 : s\xE9quence ${r.sequence}, ${r.entries} paquets, ${r.hosted} fichiers chez nous, ${r.external} chez leurs cr\xE9ateurs, ${r.broken.length} lien(s) cass\xE9(s).`);
       return;
     }
     case "issues": {
       const repo = need(flag("--repo-name"), "--repo-name");
       if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repo)) throw new Error("Nom de d\xE9p\xF4t invalide.");
-      const broken = JSON.parse(import_node_fs6.default.readFileSync(need(flag("--broken"), "--broken"), "utf8"));
+      const broken = JSON.parse(import_node_fs7.default.readFileSync(need(flag("--broken"), "--broken"), "utf8"));
       const open = await github("GET", `/repos/${repo}/issues?labels=lien-casse&state=open&per_page=100`);
       const titleOf = (b) => `Lien cass\xE9 : ${b.id} ${b.version}`;
       for (const b of broken) {
@@ -11087,9 +17998,9 @@ The file is no longer available: the version is left out of the index until it c
     }
     case "gen-key": {
       const file = need(first, "le fichier de cl\xE9");
-      if (import_node_fs6.default.existsSync(file)) throw new Error(`${file} existe d\xE9j\xE0 : je ne l\u2019\xE9crase pas.`);
+      if (import_node_fs7.default.existsSync(file)) throw new Error(`${file} existe d\xE9j\xE0 : je ne l\u2019\xE9crase pas.`);
       const id = generateIdentity();
-      import_node_fs6.default.writeFileSync(file, JSON.stringify(id, null, 2), { mode: 384 });
+      import_node_fs7.default.writeFileSync(file, JSON.stringify(id, null, 2), { mode: 384 });
       console.log(`Cl\xE9 cr\xE9\xE9e : ${file}
 Cl\xE9 publique : ${id.publicKey}
 Garde ce fichier secret et sauvegard\xE9 : un paquet appartient \xE0 la cl\xE9 qui l\u2019a publi\xE9.`);
@@ -11098,19 +18009,19 @@ Garde ce fichier secret et sauvegard\xE9 : un paquet appartient \xE0 la cl\xE9 q
     case "sign-module": {
       const dir = need(first, "le dossier du module");
       const keyFile = need(flag("--key"), "--key");
-      if (import_node_path6.default.resolve(keyFile).startsWith(import_node_path6.default.resolve(dir) + import_node_path6.default.sep)) throw new Error("La cl\xE9 est DANS le dossier du module : elle serait publi\xE9e. D\xE9place-la.");
+      if (import_node_path7.default.resolve(keyFile).startsWith(import_node_path7.default.resolve(dir) + import_node_path7.default.sep)) throw new Error("La cl\xE9 est DANS le dossier du module : elle serait publi\xE9e. D\xE9place-la.");
       signPackage(dir, readKey(keyFile), flag("--name") || "\xC9diteur");
       console.log(`Sign\xE9 : ${dir}`);
       return;
     }
     case "pack": {
       const out = need(flag("--out"), "--out");
-      import_node_fs6.default.writeFileSync(out, packFolder(need(first, "le dossier")));
+      import_node_fs7.default.writeFileSync(out, packFolder(need(first, "le dossier")));
       console.log(`Archive \xE9crite : ${out}`);
       return;
     }
     case "sign-system": {
-      console.log(signPackageFile(import_node_fs6.default.readFileSync(need(first, "le fichier")), readKey(need(flag("--key"), "--key"))));
+      console.log(signPackageFile(import_node_fs7.default.readFileSync(need(first, "le fichier")), readKey(need(flag("--key"), "--key"))));
       return;
     }
     default:
