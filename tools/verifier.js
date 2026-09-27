@@ -19246,7 +19246,7 @@ async function publishCatalog(o, deps2) {
   }
   import_node_fs5.default.mkdirSync(import_node_path5.default.join(work, "entries"), { recursive: true });
   for (const [id, e] of entries) import_node_fs5.default.writeFileSync(import_node_path5.default.join(work, "entries", `${id}.json`), JSON.stringify(e, null, 2));
-  for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, "revoked.json", RECOVERY_DELEGATION_FILE]) {
+  for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, "revoked.json", RECOVERY_DELEGATION_FILE, LICENCE_DELEGATION_FILE]) {
     if (import_node_fs5.default.existsSync(import_node_path5.default.join(o.repoDir, f))) import_node_fs5.default.copyFileSync(import_node_path5.default.join(o.repoDir, f), import_node_path5.default.join(work, f));
   }
   const valid = readSuccessionFiles(o.repoDir).filter((f) => {
