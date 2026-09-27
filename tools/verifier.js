@@ -32,9 +32,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// ../VTT/tabletop-desktop/apps/desktop/i18n/fr.json
+// apps/desktop/i18n/fr.json
 var require_fr = __commonJS({
-  "../VTT/tabletop-desktop/apps/desktop/i18n/fr.json"(exports2, module2) {
+  "apps/desktop/i18n/fr.json"(exports2, module2) {
     module2.exports = {
       "app.lang": "fr",
       "app.name": "Ourdir",
@@ -619,6 +619,19 @@ var require_fr = __commonJS({
       "err.signing.whatDelegation": "la d\xE9l\xE9gation",
       "err.signing.whatSuccession": "le remplacement de cl\xE9",
       "err.signing.whatTiers": "le fichier des niveaux",
+      "err.licence.what": "la licence",
+      "err.licence.unreadable": "Ce fichier de licence est illisible.",
+      "err.licence.notOurdir": "Cette licence n\u2019a pas \xE9t\xE9 d\xE9livr\xE9e par Ourdir.",
+      "err.licence.otherIdentity": "Cette licence est rattach\xE9e \xE0 une autre identit\xE9 Ourdir.",
+      "err.versions.what": "la liste des versions d\u2019Ourdir",
+      "err.versions.tooBig": "La liste des versions d\u2019Ourdir est trop grande.",
+      "err.versions.unreadable": "La liste des versions d\u2019Ourdir est illisible.",
+      "err.versions.badEntry": "La liste des versions d\u2019Ourdir contient une version mal d\xE9crite.",
+      "err.versions.older": "La liste des versions d\u2019Ourdir est plus ancienne que celle d\xE9j\xE0 vue : elle est ignor\xE9e.",
+      "err.versions.download": "Le t\xE9l\xE9chargement a \xE9chou\xE9 ({reason}).",
+      "err.versions.checksum": "Le fichier t\xE9l\xE9charg\xE9 n\u2019est pas celui publi\xE9 par Ourdir : il n\u2019a pas \xE9t\xE9 lanc\xE9.",
+      "err.versions.unknown": "Cette version n\u2019est pas dans la liste.",
+      "err.versions.offline": "La liste des versions n\u2019a pas pu \xEAtre lue (hors ligne ?).",
       "err.social.noIdentity": "Identit\xE9 non initialis\xE9e.",
       "err.succession.already": "{key} : succ\xE8de d\xE9j\xE0 \xE0 une autre cl\xE9.",
       "err.succession.badDelegation": "D\xE9l\xE9gation du remplacement invalide.",
@@ -1302,7 +1315,7 @@ var require_fr = __commonJS({
       "ui.common.copy": "Copier",
       "ui.common.paste": "Coller",
       "ui.error.startup": "Ourdir n\u2019a pas pu d\xE9marrer. Les d\xE9tails sont dans le journal : {log}",
-      "ui.error.unexpected": "Quelque chose s\u2019est mal pass\xE9. Les d\xE9tails sont dans le journal (menu Aide \u2192 Ouvrir le dossier des journaux).",
+      "ui.error.unexpected": "Quelque chose s\u2019est mal pass\xE9. Les d\xE9tails sont dans le journal (Param\xE8tres \u2192 Ouvrir le dossier des journaux).",
       "ui.friends.accessBad": "Ta table n\u2019est probablement pas joignable depuis Internet pour l\u2019instant (voir Param\xE8tres). L\u2019invitation fonctionnera quand ce sera r\xE9gl\xE9.",
       "ui.friends.add": "Ajouter un ami",
       "ui.friends.addPlaceholder": "Colle son code d\u2019ami (td1_\u2026)",
@@ -1324,6 +1337,7 @@ var require_fr = __commonJS({
       "ui.friends.remove": "Supprimer",
       "ui.friends.save": "Enregistrer",
       "ui.friends.uninvite": "Retirer de ma table",
+      "ui.guide.arthur": "Moi, c\u2019est Arthur. Je te tiens compagnie pendant que ta table se pr\xE9pare.",
       "ui.guide.eyebrow": "Bienvenue",
       "ui.guide.lead": "Ourdir h\xE9berge ta partie chez toi : pas de compte, pas d\u2019abonnement pour jouer avec tes amis.",
       "ui.guide.s1": "Choisis ton nom",
@@ -1877,7 +1891,7 @@ var require_fr = __commonJS({
       "ui.settings.advanced": "Options avanc\xE9es",
       "ui.settings.data": "Donn\xE9es",
       "ui.settings.details": "D\xE9tails techniques",
-      "ui.settings.devTools": "Outils de d\xE9veloppement (menu Aide)",
+      "ui.settings.devTools": "Outils de d\xE9veloppement (Ctrl+Maj+I)",
       "ui.settings.devToolsHint": "Pour aider \xE0 comprendre un bug. Laisse-les \xE9teints sinon : une commande coll\xE9e dans ces outils peut tout faire dans Ourdir.",
       "ui.settings.display": "Affichage",
       "ui.settings.friendsAccess": "Mes amis peuvent me rejoindre par Internet",
@@ -2051,7 +2065,7 @@ var require_fr = __commonJS({
       "ui.tables.compendiumLabel": "Compendium",
       "ui.tables.compendiumRestart": "Le compendium changera au prochain lancement de la table.",
       "ui.tables.confirmDelete": "Supprimer la table \xAB {name} \xBB ? Elle est envoy\xE9e \xE0 la corbeille : tu peux la r\xE9cup\xE9rer de l\xE0.",
-      "ui.tables.crashed": "La table \xAB {name} \xBB s\u2019est arr\xEAt\xE9e de fa\xE7on inattendue. Tu peux la relancer ; les d\xE9tails sont dans le journal (menu Aide).",
+      "ui.tables.crashed": "La table \xAB {name} \xBB s\u2019est arr\xEAt\xE9e de fa\xE7on inattendue. Tu peux la relancer ; les d\xE9tails sont dans le journal (Param\xE8tres \u2192 Ouvrir le dossier des journaux).",
       "ui.tables.create": "Cr\xE9er une table",
       "ui.tables.createSubmit": "Cr\xE9er",
       "ui.tables.delete": "Supprimer",
@@ -2095,10 +2109,10 @@ var require_fr = __commonJS({
       "ui.tables.restored": "Table \xAB {name} \xBB restaur\xE9e.",
       "ui.tables.restoredNoSystem": "Table \xAB {name} \xBB restaur\xE9e, mais son syst\xE8me de jeu n\u2019est pas install\xE9 ici : elle utilise le syst\xE8me Generic. Importe le syst\xE8me puis change-le.",
       "ui.tables.serverMissing": "Des fichiers d\u2019Ourdir manquent : r\xE9installe l\u2019application.",
-      "ui.tables.serverStopped": "Le serveur de la table s\u2019est arr\xEAt\xE9 pendant le d\xE9marrage. Les d\xE9tails sont dans le journal (menu Aide \u2192 Ouvrir le dossier des journaux).",
+      "ui.tables.serverStopped": "Le serveur de la table s\u2019est arr\xEAt\xE9 pendant le d\xE9marrage. Les d\xE9tails sont dans le journal (Param\xE8tres \u2192 Ouvrir le dossier des journaux).",
       "ui.tables.settings": "Param\xE8tres",
-      "ui.tables.startFailed": "La table n\u2019a pas pu d\xE9marrer. Les d\xE9tails sont dans le journal (menu Aide \u2192 Ouvrir le dossier des journaux).",
-      "ui.tables.startTimeout": "La table ne r\xE9pond pas au bout de 30 secondes. Les d\xE9tails sont dans le journal (menu Aide \u2192 Ouvrir le dossier des journaux).",
+      "ui.tables.startFailed": "La table n\u2019a pas pu d\xE9marrer. Les d\xE9tails sont dans le journal (Param\xE8tres \u2192 Ouvrir le dossier des journaux).",
+      "ui.tables.startTimeout": "La table ne r\xE9pond pas au bout de 30 secondes. Les d\xE9tails sont dans le journal (Param\xE8tres \u2192 Ouvrir le dossier des journaux).",
       "ui.tables.starting": "D\xE9marrage\u2026",
       "ui.tables.status.changed": "Certificat modifi\xE9",
       "ui.tables.status.checking": "V\xE9rification\u2026",
@@ -2382,6 +2396,57 @@ var require_fr = __commonJS({
       "ui.req.closed": "Les demandes sont momentan\xE9ment ferm\xE9es : beaucoup de demandes attendent d\xE9j\xE0 une relecture. R\xE9essaie dans quelques jours.",
       "ui.req.tooRecent": "Publi\xE9 depuis moins de 30 jours : la demande sera possible ensuite.",
       "ui.req.already": "D\xE9j\xE0 {tier}.",
+      "ui.update.available": "Ourdir {version} est disponible",
+      "ui.update.see": "Voir",
+      "ui.update.silence": "Ne plus parler de cette version",
+      "ui.versions.title": "Versions et mises \xE0 jour",
+      "ui.versions.intro": "Tu choisis ta version d\u2019Ourdir : la plus r\xE9cente, ou une plus ancienne si un module ne suit pas encore.",
+      "ui.versions.notify": "M\u2019avertir des nouvelles versions",
+      "ui.versions.installedNow": "Install\xE9e : Ourdir {version}",
+      "ui.versions.none": "La liste des versions n\u2019a pas encore pu \xEAtre lue.",
+      "ui.versions.retry": "Relire la liste",
+      "ui.versions.tagInstalled": "install\xE9e",
+      "ui.versions.tagNewest": "la plus r\xE9cente",
+      "ui.versions.tagWithdrawn": "retir\xE9e",
+      "ui.versions.install": "Installer cette version",
+      "ui.versions.notes": "Ce qui change",
+      "ui.versions.downloading": "T\xE9l\xE9chargement\u2026 {percent} %",
+      "ui.versions.backingUp": "Sauvegarde des tables\u2026",
+      "ui.versions.starting": "L\u2019installation d\xE9marre : Ourdir va se fermer.",
+      "ui.versions.ready": "Pr\xEAt : l\u2019installeur a \xE9t\xE9 v\xE9rifi\xE9 ({file}).",
+      "ui.versions.upTitle": "Installer Ourdir {version} ?",
+      "ui.versions.upText": "Ourdir va t\xE9l\xE9charger la version {version}, v\xE9rifier qu\u2019elle est bien celle publi\xE9e, sauvegarder tes tables, puis lancer l\u2019installation. Tes tables, ton identit\xE9 et tes r\xE9glages sont gard\xE9s.",
+      "ui.versions.downTitle": "Revenir \xE0 Ourdir {version} ?",
+      "ui.versions.downText": "Tes tables ouvertes avec une version plus r\xE9cente peuvent mal fonctionner dans une version plus ancienne, et au pire \xEAtre ab\xEEm\xE9es. Ourdir va sauvegarder toutes tes tables avant. Si une table ne s\u2019ouvre plus, tu pourras la restaurer depuis la sauvegarde, ou revenir \xE0 une version r\xE9cente.",
+      "ui.versions.downPlayers": "Tes joueurs doivent avoir une version compatible pour te rejoindre.",
+      "ui.versions.downFormat": "Cette version enregistre les tables dans un format plus ancien que la tienne.",
+      "ui.versions.understood": "J\u2019ai compris : mes tables peuvent ne plus s\u2019ouvrir correctement",
+      "ui.versions.confirmUp": "Sauvegarder et installer {version}",
+      "ui.versions.confirmDown": "Sauvegarder et revenir \xE0 {version}",
+      "ui.versions.backupsAt": "Les sauvegardes sont dans : {dir}",
+      "ui.licence.title": "Licence",
+      "ui.licence.intro": "H\xE9berger une table demande une licence de MJ. Rejoindre la table d\u2019un ami n\u2019en demande jamais.",
+      "ui.licence.none": "Aucune licence : tu peux rejoindre les tables de tes amis. Pour h\xE9berger la tienne, entre ta cl\xE9 de licence.",
+      "ui.licence.notRequired": "Aucune licence (pas n\xE9cessaire ici : Ourdir lanc\xE9 depuis ses sources).",
+      "ui.licence.active": "Licence active : {plan}, n\xB0 {id}, au nom de {name}.",
+      "ui.licence.until": "Jusqu\u2019au {date}.",
+      "ui.licence.checked": "Dernier contr\xF4le en ligne : {date}. Ourdir la contr\xF4le chaque semaine ; hors ligne, elle tient trois semaines.",
+      "ui.licence.stale": "Ta licence n\u2019a pas pu \xEAtre contr\xF4l\xE9e en ligne depuis trois semaines : h\xE9berger une table reprendra au prochain contr\xF4le r\xE9ussi.",
+      "ui.licence.expired": "Ta licence est arriv\xE9e \xE0 sa fin le {date}.",
+      "ui.licence.key": "Ta cl\xE9 de licence",
+      "ui.licence.otherKey": "Une autre cl\xE9",
+      "ui.licence.activate": "Activer",
+      "ui.licence.checkNow": "Contr\xF4ler maintenant",
+      "ui.licence.activated": "Licence activ\xE9e : tu peux h\xE9berger tes tables.",
+      "ui.licence.badKey": "Cette cl\xE9 n\u2019a pas la forme OURDIR-XXXX-XXXX-XXXX.",
+      "ui.licence.offline": "Le service des licences ne r\xE9pond pas : v\xE9rifie ta connexion et r\xE9essaie.",
+      "ui.licence.hostNeeded": "H\xE9berger une table demande une licence de MJ : entre ta cl\xE9 dans Param\xE8tres \u2192 Licence.",
+      "ui.licence.hostStale": "Ta licence n\u2019a pas pu \xEAtre contr\xF4l\xE9e en ligne depuis trois semaines : connecte-toi \xE0 Internet, puis relance la table.",
+      "ui.licence.hostExpired": "Ta licence est arriv\xE9e \xE0 sa fin : h\xE9berger une table demande une licence valide.",
+      "ui.licence.plan.tester": "testeur",
+      "ui.licence.plan.lifetime": "\xE0 vie",
+      "ui.licence.plan.monthly": "au mois",
+      "ui.licence.plan.friend": "offerte",
       "ui.usage.title": "Aider Ourdir avec des statistiques anonymes ?",
       "ui.usage.text": "Une fois par jour au plus, Ourdir enverrait : un identifiant tir\xE9 au hasard, sa version, ton syst\xE8me d\u2019exploitation et ta langue, les syst\xE8mes de jeu jou\xE9s (\xAB fait-maison \xBB pour les tiens, sans nom), et si tu as h\xE9berg\xE9 ou rejoint une table.",
       "ui.usage.never": "Jamais tes tables, tes personnages, tes messages, ni ton adresse. Tu pourras changer d\u2019avis dans Param\xE8tres.",
@@ -2832,9 +2897,9 @@ var require_fr = __commonJS({
   }
 });
 
-// ../VTT/tabletop-desktop/apps/desktop/renderer/builder-theme.js
+// apps/desktop/renderer/builder-theme.js
 var require_builder_theme = __commonJS({
-  "../VTT/tabletop-desktop/apps/desktop/renderer/builder-theme.js"(exports2, module2) {
+  "apps/desktop/renderer/builder-theme.js"(exports2, module2) {
     "use strict";
     (function(root, factory) {
       if (typeof module2 === "object" && module2.exports) module2.exports = factory();
@@ -3721,9 +3786,9 @@ var require_builder_theme = __commonJS({
   }
 });
 
-// ../VTT/tabletop-desktop/apps/desktop/renderer/rules-core.js
+// apps/desktop/renderer/rules-core.js
 var require_rules_core = __commonJS({
-  "../VTT/tabletop-desktop/apps/desktop/renderer/rules-core.js"(exports2, module2) {
+  "apps/desktop/renderer/rules-core.js"(exports2, module2) {
     "use strict";
     (function(root, factory) {
       if (typeof module2 === "object" && module2.exports) module2.exports = factory();
@@ -7318,9 +7383,9 @@ var require_rules_core = __commonJS({
   }
 });
 
-// ../VTT/tabletop-desktop/apps/desktop/renderer/builder-core.js
+// apps/desktop/renderer/builder-core.js
 var require_builder_core = __commonJS({
-  "../VTT/tabletop-desktop/apps/desktop/renderer/builder-core.js"(exports2, module2) {
+  "apps/desktop/renderer/builder-core.js"(exports2, module2) {
     "use strict";
     (function(root, factory) {
       if (typeof module2 === "object" && module2.exports) module2.exports = factory();
@@ -9733,9 +9798,9 @@ var require_builder_core = __commonJS({
   }
 });
 
-// ../VTT/tabletop-desktop/product/client/i18n/fr.json
+// product/client/i18n/fr.json
 var require_fr2 = __commonJS({
-  "../VTT/tabletop-desktop/product/client/i18n/fr.json"(exports2, module2) {
+  "product/client/i18n/fr.json"(exports2, module2) {
     module2.exports = {
       "access.banner": "Lecture seule : tu peux voir cette fiche, pas la modifier.",
       "accessButton.allRead": "tous en lecture",
@@ -10026,14 +10091,12 @@ var require_fr2 = __commonJS({
       "dnd.monsters.failed": "La fiche n\u2019a pas pu \xEAtre cr\xE9\xE9e.",
       "dnd.monsters.placed": "\xAB {name} \xBB pos\xE9 sur la carte, avec sa fiche.",
       "effects.add": "Ajouter un \xE9tat",
-      "effects.adv": "Avantage",
       "effects.advDown": "d\xE9savantage",
       "effects.advNone": "rien",
       "effects.advUp": "avantage",
       "effects.advantage": "avantage aux jets de {res}",
       "effects.at.end": "compt\xE9 \xE0 la fin de son tour",
       "effects.at.start": "compt\xE9 au d\xE9but de son tour",
-      "effects.by": "De combien",
       "effects.cancel": "Annuler",
       "effects.disadvantage": "d\xE9savantage aux jets de {res}",
       "effects.free": "Effet libre",
@@ -10056,14 +10119,12 @@ var require_fr2 = __commonJS({
       "effects.resistTo": "R\xE9siste \xE0",
       "effects.restLabel": "Tombe au repos",
       "effects.restNone": "aucun",
-      "effects.rested": "{name} : {rest}",
       "effects.rollBonus": "{n} aux jets de {res}",
       "effects.rounds": "{n} round(s)",
       "effects.rounds.label": "Dure (rounds)",
       "effects.roundsOrRest": "{n} round(s), ou \xE0 {rest}",
       "effects.someone": "Quelqu\u2019un",
       "effects.states": "\xC9tats de la fiche",
-      "effects.title": "\xC9tats",
       "effects.untilRemoved": "jusqu\u2019\xE0 ce qu\u2019on le retire",
       "effects.untilRest": "jusqu\u2019\xE0 {rest}",
       "effects.value": "Valeur",
@@ -10168,6 +10229,9 @@ var require_fr2 = __commonJS({
       "host.combat.noWeapon": "Cette arme n\u2019est plus sur la fiche.",
       "host.common.badScene": "Sc\xE8ne invalide.",
       "host.common.badSceneOrFloor": "Sc\xE8ne ou \xE9tage invalide.",
+      "host.common.bodyTooBig": "Demande trop volumineuse.",
+      "host.common.serverError": "Erreur du serveur de la table.",
+      "host.common.untitled": "Sans titre",
       "host.common.gmOnly": "Seul le MJ peut changer cela.",
       "host.common.noData": "Donn\xE9es introuvables.",
       "host.common.noSheet": "Cette fiche n\u2019existe pas.",
@@ -10190,9 +10254,9 @@ var require_fr2 = __commonJS({
       "host.compendium.tableIntrouvable": "Table introuvable.",
       "host.contentFolders.dossierIntrouvable": "Dossier introuvable.",
       "host.contentFolders.dossierParentIntrouvable": "Dossier parent introuvable.",
+      "host.contentFolders.tooMany": "Tu as d\xE9j\xE0 {max} dossiers.",
       "host.craft.gmOnlyBulk": "Seul le MJ cr\xE9e des fiches en masse.",
       "host.craft.listFull": "Cette liste est pleine.",
-      "host.craftAdd.cibleIntrouvable": "Cible introuvable.",
       "host.craftAdd.contenuIntrouvable": "Contenu introuvable.",
       "host.creation.done": "Ce personnage est d\xE9j\xE0 cr\xE9\xE9.",
       "host.creation.gmOnly": "Seul le MJ d\xE9cide d\u2019une cr\xE9ation.",
@@ -10286,7 +10350,9 @@ var require_fr2 = __commonJS({
       "host.lobby.noPlayer": "Joueur introuvable.",
       "host.lobby.signIn": "Connecte-toi d\u2019abord.",
       "host.media.badType": "Type de fichier non autoris\xE9.",
-      "host.media.tooBig": "Requ\xEAte trop volumineuse.",
+      "host.media.tooBig": "Fichier trop gros pour son type (images et cartes : 4 Go au plus).",
+      "host.media.oneAtATime": "Un envoi est d\xE9j\xE0 en cours : attends qu\u2019il se termine.",
+      "host.media.diskFull": "Plus assez de place sur le disque du MJ pour ce fichier.",
       "host.music.gmOnlyClock": "Seul le MJ r\xE8gle l\u2019horloge de la musique.",
       "host.people.sheetN": "Fiche {id}",
       "host.progress.badChoice": "Ces choix ne correspondent pas \xE0 ce que ce niveau propose.",
@@ -10333,6 +10399,8 @@ var require_fr2 = __commonJS({
       "hud.previous": "Tour pr\xE9c\xE9dent",
       "hud.round": "Round",
       "hud.turnOf": "Au tour de {n}",
+      "hud.turnNotSaved": "Le tour n\u2019a pas pu \xEAtre chang\xE9 : r\xE9essayez.",
+      "gearEffects.notSaved": "La CA et les sauvegardes des objets \xE9quip\xE9s n\u2019ont pas pu \xEAtre mises \xE0 jour : elles le seront au prochain changement.",
       "journal.all": "Tout",
       "journal.books": "Livres",
       "journal.help": "Aide du journal",
@@ -10381,6 +10449,7 @@ var require_fr2 = __commonJS({
       "library.updated": "{name} mis \xE0 jour.",
       "lightEngine.lighter": "\xC9clairage all\xE9g\xE9 pour rester fluide.",
       "lightingPanel.asPlayers": "Voir comme les joueurs",
+      "lightingPanel.notSaved": "L\u2019\xE9clairage n\u2019a pas \xE9t\xE9 enregistr\xE9 par la table : il revient \xE0 son dernier \xE9tat enregistr\xE9.",
       "lightingPanel.auto": "Auto",
       "lightingPanel.autoHint": "Suit l\u2019\xE9clairage de la sc\xE8ne.",
       "lightingPanel.classic": "Classique",
@@ -11000,6 +11069,7 @@ var require_fr2 = __commonJS({
       "settings.reducedHint": "Les fen\xEAtres se replient en ic\xF4nes.",
       "settings.sheets": "Fiches",
       "settings.sheetsHint": "Les r\xE9glages d\u2019\xE9clairage que prend chaque nouvelle fiche (onglet Param\xE8tres). Les fiches existantes gardent les leurs.",
+      "settings.sheetsNotSaved": "Les r\xE9glages des fiches n\u2019ont pas \xE9t\xE9 enregistr\xE9s : r\xE9essayez.",
       "settings.theme": "Th\xE8me",
       "settings.themeHint": "L\u2019apparence de l\u2019interface pour toute la table. La carte ne change jamais.",
       "settings.title": "R\xE9glages",
@@ -11023,6 +11093,7 @@ var require_fr2 = __commonJS({
       "sheetTabs.moreInfo": "Autres informations",
       "sheetTabs.newOutfit": "Nouvelle tenue",
       "sheetTabs.notes": "Notes",
+      "sheetTabs.outfitNotSaved": "La table n\u2019a pas enregistr\xE9 la tenue : le personnage garde son ancienne apparence. R\xE9essayez.",
       "sheetTabs.occupation": "Occupation",
       "sheetTabs.origin": "Origine",
       "sheetTabs.outfitName": "Nom de la tenue",
@@ -11177,9 +11248,9 @@ var require_fr2 = __commonJS({
   }
 });
 
-// ../VTT/tabletop-desktop/apps/desktop/renderer/theme-core.js
+// apps/desktop/renderer/theme-core.js
 var require_theme_core = __commonJS({
-  "../VTT/tabletop-desktop/apps/desktop/renderer/theme-core.js"(exports2, module2) {
+  "apps/desktop/renderer/theme-core.js"(exports2, module2) {
     "use strict";
     (function(root, factory) {
       if (typeof module2 === "object" && module2.exports) module2.exports = factory(require_builder_theme());
@@ -11671,9 +11742,9 @@ var require_theme_core = __commonJS({
   }
 });
 
-// ../VTT/tabletop-desktop/apps/desktop/renderer/translation-core.js
+// apps/desktop/renderer/translation-core.js
 var require_translation_core = __commonJS({
-  "../VTT/tabletop-desktop/apps/desktop/renderer/translation-core.js"(exports2, module2) {
+  "apps/desktop/renderer/translation-core.js"(exports2, module2) {
     "use strict";
     (function(root, factory) {
       if (typeof module2 === "object" && module2.exports) module2.exports = factory();
@@ -11876,9 +11947,9 @@ var require_translation_core = __commonJS({
   }
 });
 
-// ../VTT/tabletop-desktop/product/i18n/engine/en.json
+// product/i18n/engine/en.json
 var require_en = __commonJS({
-  "../VTT/tabletop-desktop/product/i18n/engine/en.json"(exports2, module2) {
+  "product/i18n/engine/en.json"(exports2, module2) {
     module2.exports = {
       " -- shared by %{username}": " -- shared by %{username}",
       "${count} song": "${count} song",
@@ -11930,6 +12001,8 @@ var require_en = __commonJS({
       Apply: "Apply",
       Archive: "Archive",
       Archived: "Archived",
+      "Are you sure you want to clear all your drawings ?": "Are you sure you want to clear all your drawings ?",
+      "Are you sure you want to clear the turn order ?": "Are you sure you want to clear the turn order ?",
       "Are you sure you want to clone this craft?": "Are you sure you want to clone this craft?",
       "Are you sure you want to delete this craft?": "Are you sure you want to delete this craft?",
       "Are you sure you want to delete this entry?": "Are you sure you want to delete this entry?",
@@ -11981,6 +12054,9 @@ var require_en = __commonJS({
       Clear: "Clear",
       "Clear all my drawings": "Clear all my drawings",
       "Clear formula": "Clear formula",
+      "Clear the chat ?": "Clear the chat ?",
+      "Clear the dice log ?": "Clear the dice log ?",
+      "Click here": "Click here",
       "Click here to upload medias": "Click here to upload medias",
       "Click on a thumbnail to use that scene.": "Click on a thumbnail to use that scene.",
       "Click to add a custom roll, or drag'n drop an item from your character sheet here.": "Click to add a custom roll, or drag'n drop an item from your character sheet here.",
@@ -12065,6 +12141,7 @@ var require_en = __commonJS({
       "Drag'n drop onto the QuickBar": "Drag'n drop onto the QuickBar",
       Draw: "Draw",
       Drawing: "Drawing",
+      "Drawing Tool": "Drawing Tool",
       Drawings: "Drawings",
       Drop: "Drop",
       "Dynamic Lighting": "Dynamic Lighting",
@@ -12106,6 +12183,7 @@ var require_en = __commonJS({
       "Find something\u2026": "Find something\u2026",
       "Find your unlocked content packs - by purchase or Play Pass - in the left column.": "Find your unlocked content packs - by purchase or Play Pass - in the left column.",
       "Fog of War": "Fog of War",
+      "Fog of War Tool": "Fog of War Tool",
       "Fog of War enabled": "Fog of War enabled",
       Folder: "Folder",
       "Font Size": "Font Size",
@@ -12320,6 +12398,7 @@ var require_en = __commonJS({
       "Roll for GM only": "Roll for GM only",
       "Roll table": "Roll table",
       "Root folder": "Root folder",
+      "Ruler Tool": "Ruler Tool",
       Rulers: "Rulers",
       "Ruleset:": "Ruleset:",
       SFX: "SFX",
@@ -12423,6 +12502,7 @@ var require_en = __commonJS({
       Update: "Update",
       Upload: "Upload",
       "Upload PDF": "Upload PDF",
+      "Uploading and adding your media, please wait...": "Uploading and adding your media, please wait...",
       Use: "Use",
       "Use <kbd>Shift + click</kbd> to create waypoints.": "Use <kbd>Shift + click</kbd> to create waypoints.",
       "Use the Roll Maker": "Use the Roll Maker",
@@ -12448,6 +12528,7 @@ var require_en = __commonJS({
       Yard: "Yard",
       Yellow: "Yellow",
       "You are about to delete the folder <strong>%{name}</strong>": "You are about to delete the folder <strong>%{name}</strong>",
+      "You are using the": "You are using the",
       'You can force an entry to be displayed on the screen of players who are currently logged in. This will also share the entry in read-only mode. To do this, right-click on the entry > Reveal, or, for more control, open the entry and go to the "Sharing" tab.': 'You can force an entry to be displayed on the screen of players who are currently logged in. This will also share the entry in read-only mode. To do this, right-click on the entry > Reveal, or, for more control, open the entry and go to the "Sharing" tab.',
       'You can send a PDF or an image and turn it into a journal entry in the process with the "Upload" button. The usual weight limits apply (32MB for PDFs, 16MB for images), and the files will count against your disk space.': 'You can send a PDF or an image and turn it into a journal entry in the process with the "Upload" button. The usual weight limits apply (32MB for PDFs, 16MB for images), and the files will count against your disk space.',
       "You can simply drag and drop entries and folders in the list to reorganize them as you wish!": "You can simply drag and drop entries and folders in the list to reorganize them as you wish!",
@@ -12475,6 +12556,7 @@ var require_en = __commonJS({
       h: "h",
       "is equal to": "is equal to",
       m: "m",
+      "or press escape to disable it.": "or press escape to disable it.",
       s: "s",
       success: "success",
       successes: "successes",
@@ -12487,9 +12569,9 @@ var require_en = __commonJS({
   }
 });
 
-// ../VTT/tabletop-desktop/apps/desktop/i18n/en.json
+// apps/desktop/i18n/en.json
 var require_en2 = __commonJS({
-  "../VTT/tabletop-desktop/apps/desktop/i18n/en.json"(exports2, module2) {
+  "apps/desktop/i18n/en.json"(exports2, module2) {
     module2.exports = {
       "app.lang": "en",
       "app.name": "Ourdir",
@@ -13074,6 +13156,19 @@ var require_en2 = __commonJS({
       "err.signing.whatDelegation": "the delegation",
       "err.signing.whatSuccession": "the key replacement",
       "err.signing.whatTiers": "the tiers file",
+      "err.licence.what": "the licence",
+      "err.licence.unreadable": "This licence file cannot be read.",
+      "err.licence.notOurdir": "This licence was not issued by Ourdir.",
+      "err.licence.otherIdentity": "This licence is tied to another Ourdir identity.",
+      "err.versions.what": "Ourdir\u2019s list of versions",
+      "err.versions.tooBig": "Ourdir\u2019s list of versions is too big.",
+      "err.versions.unreadable": "Ourdir\u2019s list of versions cannot be read.",
+      "err.versions.badEntry": "Ourdir\u2019s list of versions has a badly described version.",
+      "err.versions.older": "Ourdir\u2019s list of versions is older than the one already seen: it is ignored.",
+      "err.versions.download": "The download failed ({reason}).",
+      "err.versions.checksum": "The downloaded file is not the one Ourdir published: it was not started.",
+      "err.versions.unknown": "This version is not in the list.",
+      "err.versions.offline": "The list of versions could not be read (offline?).",
       "err.social.noIdentity": "Identity not initialised.",
       "err.succession.already": "{key}: already succeeds another key.",
       "err.succession.badDelegation": "Invalid replacement delegation.",
@@ -13757,7 +13852,7 @@ var require_en2 = __commonJS({
       "ui.common.copy": "Copy",
       "ui.common.paste": "Paste",
       "ui.error.startup": "Ourdir could not start. The details are in the log: {log}",
-      "ui.error.unexpected": "Something went wrong. The details are in the log (Help menu \u2192 Open the logs folder).",
+      "ui.error.unexpected": "Something went wrong. The details are in the log (Settings \u2192 Open the logs folder).",
       "ui.friends.accessBad": "Your table is probably not reachable from the Internet yet (see Settings). The invitation will work once that is fixed.",
       "ui.friends.add": "Add a friend",
       "ui.friends.addPlaceholder": "Paste their friend code (td1_\u2026)",
@@ -13779,6 +13874,7 @@ var require_en2 = __commonJS({
       "ui.friends.remove": "Delete",
       "ui.friends.save": "Save",
       "ui.friends.uninvite": "Remove from my table",
+      "ui.guide.arthur": "I\u2019m Arthur. I keep you company while your table gets ready.",
       "ui.guide.eyebrow": "Welcome",
       "ui.guide.lead": "Ourdir hosts your game at home: no account, no subscription to play with your friends.",
       "ui.guide.s1": "Pick your name",
@@ -14332,7 +14428,7 @@ var require_en2 = __commonJS({
       "ui.settings.advanced": "Advanced options",
       "ui.settings.data": "Data",
       "ui.settings.details": "Technical details",
-      "ui.settings.devTools": "Developer tools (Help menu)",
+      "ui.settings.devTools": "Developer tools (Ctrl+Shift+I)",
       "ui.settings.devToolsHint": "To help understand a bug. Keep them off otherwise: a command pasted into these tools can do anything in Ourdir.",
       "ui.settings.display": "Display",
       "ui.settings.friendsAccess": "My friends can join me over the Internet",
@@ -14506,7 +14602,7 @@ var require_en2 = __commonJS({
       "ui.tables.compendiumLabel": "Compendium",
       "ui.tables.compendiumRestart": "The compendium changes the next time the table is launched.",
       "ui.tables.confirmDelete": "Delete the table \u201C{name}\u201D? It goes to the recycle bin: you can get it back from there.",
-      "ui.tables.crashed": "The table \u201C{name}\u201D stopped unexpectedly. You can start it again; details are in the log (Help menu).",
+      "ui.tables.crashed": "The table \u201C{name}\u201D stopped unexpectedly. You can start it again; details are in the log (Settings \u2192 Open the logs folder).",
       "ui.tables.create": "Create a table",
       "ui.tables.createSubmit": "Create",
       "ui.tables.delete": "Delete",
@@ -14550,10 +14646,10 @@ var require_en2 = __commonJS({
       "ui.tables.restored": "Table \u201C{name}\u201D restored.",
       "ui.tables.restoredNoSystem": "Table \u201C{name}\u201D restored, but its game system is not installed here: it uses the Generic system. Import the system first.",
       "ui.tables.serverMissing": "Some of Ourdir\u2019s files are missing: reinstall the application.",
-      "ui.tables.serverStopped": "The table\u2019s server stopped while starting. The details are in the log (Help menu \u2192 Open the logs folder).",
+      "ui.tables.serverStopped": "The table\u2019s server stopped while starting. The details are in the log (Settings \u2192 Open the logs folder).",
       "ui.tables.settings": "Settings",
-      "ui.tables.startFailed": "The table could not start. The details are in the log (Help menu \u2192 Open the logs folder).",
-      "ui.tables.startTimeout": "The table does not answer after 30 seconds. The details are in the log (Help menu \u2192 Open the logs folder).",
+      "ui.tables.startFailed": "The table could not start. The details are in the log (Settings \u2192 Open the logs folder).",
+      "ui.tables.startTimeout": "The table does not answer after 30 seconds. The details are in the log (Settings \u2192 Open the logs folder).",
       "ui.tables.starting": "Starting\u2026",
       "ui.tables.status.changed": "Certificate changed",
       "ui.tables.status.checking": "Checking\u2026",
@@ -14837,6 +14933,57 @@ var require_en2 = __commonJS({
       "ui.req.closed": "Requests are closed for now: many already wait for a review. Try again in a few days.",
       "ui.req.tooRecent": "Published less than 30 days ago: you can ask after that.",
       "ui.req.already": "Already {tier}.",
+      "ui.update.available": "Ourdir {version} is available",
+      "ui.update.see": "See",
+      "ui.update.silence": "Stop mentioning this version",
+      "ui.versions.title": "Versions and updates",
+      "ui.versions.intro": "You choose your version of Ourdir: the newest, or an older one if a module has not caught up yet.",
+      "ui.versions.notify": "Tell me about new versions",
+      "ui.versions.installedNow": "Installed: Ourdir {version}",
+      "ui.versions.none": "The list of versions could not be read yet.",
+      "ui.versions.retry": "Read the list again",
+      "ui.versions.tagInstalled": "installed",
+      "ui.versions.tagNewest": "newest",
+      "ui.versions.tagWithdrawn": "withdrawn",
+      "ui.versions.install": "Install this version",
+      "ui.versions.notes": "What changes",
+      "ui.versions.downloading": "Downloading\u2026 {percent} %",
+      "ui.versions.backingUp": "Backing up the tables\u2026",
+      "ui.versions.starting": "The installation starts: Ourdir will close.",
+      "ui.versions.ready": "Ready: the installer was checked ({file}).",
+      "ui.versions.upTitle": "Install Ourdir {version}?",
+      "ui.versions.upText": "Ourdir will download version {version}, check that it is the one published, back up your tables, then start the installation. Your tables, identity and settings are kept.",
+      "ui.versions.downTitle": "Go back to Ourdir {version}?",
+      "ui.versions.downText": "Your tables opened with a newer version may not work well in an older one, and at worst be damaged. Ourdir will back up all your tables first. If a table no longer opens, you can restore it from the backup, or go back to a newer version.",
+      "ui.versions.downPlayers": "Your players need a compatible version to join you.",
+      "ui.versions.downFormat": "This version saves tables in an older format than yours.",
+      "ui.versions.understood": "I understand: my tables may no longer open correctly",
+      "ui.versions.confirmUp": "Back up and install {version}",
+      "ui.versions.confirmDown": "Back up and go back to {version}",
+      "ui.versions.backupsAt": "The backups are in: {dir}",
+      "ui.licence.title": "Licence",
+      "ui.licence.intro": "Hosting a table needs a game master's licence. Joining a friend's table never does.",
+      "ui.licence.none": "No licence: you can join your friends' tables. To host your own, enter your licence key.",
+      "ui.licence.notRequired": "No licence (not needed here: Ourdir run from its sources).",
+      "ui.licence.active": "Licence active: {plan}, no. {id}, in the name of {name}.",
+      "ui.licence.until": "Until {date}.",
+      "ui.licence.checked": "Last checked online: {date}. Ourdir checks it every week; offline, it holds three weeks.",
+      "ui.licence.stale": "Your licence could not be checked online for three weeks: hosting a table resumes at the next successful check.",
+      "ui.licence.expired": "Your licence ended on {date}.",
+      "ui.licence.key": "Your licence key",
+      "ui.licence.otherKey": "Another key",
+      "ui.licence.activate": "Activate",
+      "ui.licence.checkNow": "Check now",
+      "ui.licence.activated": "Licence activated: you can host your tables.",
+      "ui.licence.badKey": "This key is not of the form OURDIR-XXXX-XXXX-XXXX.",
+      "ui.licence.offline": "The licence service does not answer: check your connection and try again.",
+      "ui.licence.hostNeeded": "Hosting a table needs a game master's licence: enter your key in Settings \u2192 Licence.",
+      "ui.licence.hostStale": "Your licence could not be checked online for three weeks: connect to the Internet, then start the table again.",
+      "ui.licence.hostExpired": "Your licence has ended: hosting a table needs a valid licence.",
+      "ui.licence.plan.tester": "tester",
+      "ui.licence.plan.lifetime": "lifetime",
+      "ui.licence.plan.monthly": "monthly",
+      "ui.licence.plan.friend": "gift",
       "ui.usage.title": "Help Ourdir with anonymous statistics?",
       "ui.usage.text": 'At most once a day, Ourdir would send: an id drawn at random, its version, your operating system and language, the game systems played ("fait-maison" for your own, unnamed), and whether you hosted or joined a table.',
       "ui.usage.never": "Never your tables, characters, messages, nor your address. You can change your mind in Settings.",
@@ -15287,9 +15434,9 @@ var require_en2 = __commonJS({
   }
 });
 
-// ../VTT/tabletop-desktop/product/client/i18n/en.json
+// product/client/i18n/en.json
 var require_en3 = __commonJS({
-  "../VTT/tabletop-desktop/product/client/i18n/en.json"(exports2, module2) {
+  "product/client/i18n/en.json"(exports2, module2) {
     module2.exports = {
       "access.banner": "Read only: you can see this sheet, not change it.",
       "accessButton.allRead": "everyone reads",
@@ -15580,14 +15727,12 @@ var require_en3 = __commonJS({
       "dnd.monsters.failed": "The sheet could not be created.",
       "dnd.monsters.placed": "\u201C{name}\u201D placed on the map, with its sheet.",
       "effects.add": "Add a state",
-      "effects.adv": "Advantage",
       "effects.advDown": "disadvantage",
       "effects.advNone": "nothing",
       "effects.advUp": "advantage",
       "effects.advantage": "advantage on {res} rolls",
       "effects.at.end": "counted at the end of their turn",
       "effects.at.start": "counted at the start of their turn",
-      "effects.by": "By how much",
       "effects.cancel": "Cancel",
       "effects.disadvantage": "disadvantage on {res} rolls",
       "effects.free": "Free effect",
@@ -15610,14 +15755,12 @@ var require_en3 = __commonJS({
       "effects.resistTo": "Resists",
       "effects.restLabel": "Ends at the rest",
       "effects.restNone": "none",
-      "effects.rested": "{name}: {rest}",
       "effects.rollBonus": "{n} to {res} rolls",
       "effects.rounds": "{n} round(s)",
       "effects.rounds.label": "Lasts (rounds)",
       "effects.roundsOrRest": "{n} round(s), or at {rest}",
       "effects.someone": "Someone",
       "effects.states": "The sheet\u2019s states",
-      "effects.title": "States",
       "effects.untilRemoved": "until removed",
       "effects.untilRest": "until {rest}",
       "effects.value": "Value",
@@ -15722,6 +15865,9 @@ var require_en3 = __commonJS({
       "host.combat.noWeapon": "This weapon is no longer on the sheet.",
       "host.common.badScene": "Invalid scene.",
       "host.common.badSceneOrFloor": "Invalid scene or floor.",
+      "host.common.bodyTooBig": "Request too large.",
+      "host.common.serverError": "The table's server failed.",
+      "host.common.untitled": "Untitled",
       "host.common.gmOnly": "Only the GM can change that.",
       "host.common.noData": "Data not found.",
       "host.common.noSheet": "This sheet does not exist.",
@@ -15744,9 +15890,9 @@ var require_en3 = __commonJS({
       "host.compendium.tableIntrouvable": "Table not found.",
       "host.contentFolders.dossierIntrouvable": "Folder not found.",
       "host.contentFolders.dossierParentIntrouvable": "Parent folder not found.",
+      "host.contentFolders.tooMany": "You already have {max} folders.",
       "host.craft.gmOnlyBulk": "Only the GM creates sheets in bulk.",
       "host.craft.listFull": "This list is full.",
-      "host.craftAdd.cibleIntrouvable": "Target not found.",
       "host.craftAdd.contenuIntrouvable": "Content not found.",
       "host.creation.done": "This character is already made.",
       "host.creation.gmOnly": "Only the game master decides a creation.",
@@ -15840,7 +15986,9 @@ var require_en3 = __commonJS({
       "host.lobby.noPlayer": "Player not found.",
       "host.lobby.signIn": "Sign in first.",
       "host.media.badType": "File type not allowed.",
-      "host.media.tooBig": "Request too large.",
+      "host.media.tooBig": "File too big for its kind (pictures and maps: 4 GB at most).",
+      "host.media.oneAtATime": "An upload is already running: wait for it to finish.",
+      "host.media.diskFull": "Not enough room left on the game master\u2019s disk for this file.",
       "host.music.gmOnlyClock": "Only the GM sets the music clock.",
       "host.people.sheetN": "Sheet {id}",
       "host.progress.badChoice": "These choices do not match what this level offers.",
@@ -15887,6 +16035,8 @@ var require_en3 = __commonJS({
       "hud.previous": "Previous turn",
       "hud.round": "Round",
       "hud.turnOf": "{n}\u2019s turn",
+      "hud.turnNotSaved": "The turn could not be changed: try again.",
+      "gearEffects.notSaved": "The armour class and saves of the equipped items could not be updated: they will be at the next change.",
       "journal.all": "All",
       "journal.books": "Books",
       "journal.help": "Journal help",
@@ -15935,6 +16085,7 @@ var require_en3 = __commonJS({
       "library.updated": "{name} updated.",
       "lightEngine.lighter": "Lighting lightened to stay smooth.",
       "lightingPanel.asPlayers": "See as the players do",
+      "lightingPanel.notSaved": "The table did not save the lighting: it goes back to its last saved state.",
       "lightingPanel.auto": "Auto",
       "lightingPanel.autoHint": "Follows the scene's lighting.",
       "lightingPanel.classic": "Classic",
@@ -16554,6 +16705,7 @@ var require_en3 = __commonJS({
       "settings.reducedHint": "Windows fold into icons.",
       "settings.sheets": "Sheets",
       "settings.sheetsHint": "The lighting settings every new sheet takes (its Settings tab). The sheets already made keep theirs.",
+      "settings.sheetsNotSaved": "The sheet settings were not saved: try again.",
       "settings.theme": "Theme",
       "settings.themeHint": "How the interface looks, for the whole table. The map never changes.",
       "settings.title": "Settings",
@@ -16577,6 +16729,7 @@ var require_en3 = __commonJS({
       "sheetTabs.moreInfo": "Other information",
       "sheetTabs.newOutfit": "New outfit",
       "sheetTabs.notes": "Notes",
+      "sheetTabs.outfitNotSaved": "The table did not save the outfit: the character keeps their old look. Try again.",
       "sheetTabs.occupation": "Occupation",
       "sheetTabs.origin": "Origin",
       "sheetTabs.outfitName": "Outfit name",
@@ -16731,7 +16884,7 @@ var require_en3 = __commonJS({
   }
 });
 
-// ../VTT/tabletop-desktop/apps/desktop/verifier/cli.ts
+// apps/desktop/verifier/cli.ts
 var cli_exports = {};
 __export(cli_exports, {
   sayFrench: () => sayFrench
@@ -16740,22 +16893,22 @@ module.exports = __toCommonJS(cli_exports);
 var import_node_fs7 = __toESM(require("node:fs"));
 var import_node_path7 = __toESM(require("node:path"));
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/pipeline.ts
+// apps/desktop/src/catalog/pipeline.ts
 var import_node_crypto3 = __toESM(require("node:crypto"));
 var import_node_fs5 = __toESM(require("node:fs"));
 var import_node_os2 = __toESM(require("node:os"));
 var import_node_path5 = __toESM(require("node:path"));
 
-// ../VTT/tabletop-desktop/apps/desktop/src/modules/install.ts
+// apps/desktop/src/modules/install.ts
 var import_node_crypto = __toESM(require("node:crypto"));
 var import_node_fs3 = __toESM(require("node:fs"));
 var import_node_os = __toESM(require("node:os"));
 var import_node_path3 = __toESM(require("node:path"));
 
-// ../VTT/tabletop-desktop/apps/desktop/src/identity.ts
+// apps/desktop/src/identity.ts
 var import_crypto = __toESM(require("crypto"));
 
-// ../VTT/tabletop-desktop/apps/desktop/src/say.ts
+// apps/desktop/src/say.ts
 var given = null;
 var french = null;
 function useTexts(fn) {
@@ -16783,7 +16936,7 @@ function say(key, vars) {
   return text;
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/identity.ts
+// apps/desktop/src/identity.ts
 var SPKI_ED25519_PREFIX = Buffer.from("302a300506032b6570032100", "hex");
 var MAX_NAME = 32;
 var b64u = (buf) => buf.toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
@@ -16830,7 +16983,7 @@ function verify(publicKey, context, data, signature) {
   }
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/modules/compat.ts
+// apps/desktop/src/modules/compat.ts
 var RULES = [
   // ---- shimmed
   { api: "Hooks", re: /\bHooks\.(on|once|off|call|callAll)\b/g, status: "supported", note: "err.compat.hooks", permission: "engine.hook" },
@@ -16950,10 +17103,10 @@ function withDependencies(report, requires, hasScripts) {
   return extra.length ? summarize([...report.apis, ...extra], hasScripts) : report;
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/modules/foundry.ts
+// apps/desktop/src/modules/foundry.ts
 var MAX_PACK_BYTES = 50 * 1024 * 1024;
 
-// ../VTT/tabletop-desktop/apps/desktop/src/modules/permissions.ts
+// apps/desktop/src/modules/permissions.ts
 var PERMISSIONS = [
   // interface
   { id: "ui.panel", risk: "low", group: "ui" },
@@ -17008,7 +17161,7 @@ function classify(requested) {
   return { known, reserved, unknown };
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/modules/manifest.ts
+// apps/desktop/src/modules/manifest.ts
 var MAX_MANIFEST_BYTES = 256 * 1024;
 var SUPPORTED_API = "1";
 var ID_RE = /^[a-z0-9_][a-z0-9_-]{1,63}$/;
@@ -17206,12 +17359,12 @@ function parseManifest(raw) {
   };
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/modules/bundle.ts
+// apps/desktop/src/modules/bundle.ts
 var MAX_BUNDLE_BYTES = 4 * 1024 * 1024;
 var MAX_FILE_BYTES = 2 * 1024 * 1024;
 var usesModuleSyntax = (text) => /^\s*(import\s*[\w{*"']|export\s)/m.test(text);
 
-// ../VTT/tabletop-desktop/apps/desktop/src/modules/zip.ts
+// apps/desktop/src/modules/zip.ts
 var import_node_fs = __toESM(require("node:fs"));
 var import_node_path = __toESM(require("node:path"));
 var import_node_zlib = __toESM(require("node:zlib"));
@@ -17371,10 +17524,10 @@ function extractZip(buf, dest, limits = DEFAULT_LIMITS) {
   return written;
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/licensed.ts
+// apps/desktop/src/catalog/licensed.ts
 var licensedRefusal = () => say("err.licensed.refusal");
 
-// ../VTT/tabletop-desktop/apps/desktop/src/removeFile.ts
+// apps/desktop/src/removeFile.ts
 var import_node_fs2 = __toESM(require("node:fs"));
 var import_node_path2 = __toESM(require("node:path"));
 function removeFile(file) {
@@ -17409,7 +17562,7 @@ function removeEntry(p) {
   import_node_fs2.default.rmdirSync(p);
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/modules/install.ts
+// apps/desktop/src/modules/install.ts
 var officialKeys = [];
 var SIGNATURE_FILE = "SIGNATURE.json";
 var GENERATED_DIR = ".tabletop";
@@ -17612,7 +17765,7 @@ function prepare(source, tmpBase = import_node_os.default.tmpdir(), opts = {}) {
   }
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/modules/safeFetch.ts
+// apps/desktop/src/modules/safeFetch.ts
 var import_node_dns = __toESM(require("node:dns"));
 var import_node_http = __toESM(require("node:http"));
 var import_node_https = __toESM(require("node:https"));
@@ -17743,12 +17896,12 @@ function once(u, opts, timeoutMs) {
   });
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/builder.ts
+// apps/desktop/src/catalog/builder.ts
 var import_node_crypto2 = __toESM(require("node:crypto"));
 var import_node_fs4 = __toESM(require("node:fs"));
 var import_node_path4 = __toESM(require("node:path"));
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/format.ts
+// apps/desktop/src/catalog/format.ts
 var CATALOG_FORMAT = "ourdir-catalog";
 var CATALOG_VERSION = 2;
 var INDEX_FILE = "index.json";
@@ -18006,7 +18159,7 @@ function parseIndex(bytes, opts = {}) {
   };
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/signing.ts
+// apps/desktop/src/catalog/signing.ts
 var INDEX_CONTEXT = "ourdir-catalog/v2";
 function signBytes(bytes, identity, context, now = /* @__PURE__ */ new Date()) {
   const body = { v: 1, publicKey: identity.publicKey, signature: sign(identity, context, bytes), signedAt: now.toISOString() };
@@ -18031,7 +18184,7 @@ function verifyBytes(bytes, signatureText, keys, context, what = say("err.signin
 var signIndex = (indexBytes, identity, now = /* @__PURE__ */ new Date()) => signBytes(indexBytes, identity, INDEX_CONTEXT, now);
 var verifyIndex = (indexBytes, signatureText, keys) => verifyBytes(indexBytes, signatureText, keys, INDEX_CONTEXT);
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/trust.ts
+// apps/desktop/src/catalog/trust.ts
 var DELEGATION_FILE = "delegation.json";
 var TIERS_FILE = "tiers.json";
 var TIERS_SIGNATURE_FILE = "tiers.json.sig";
@@ -18125,7 +18278,7 @@ function maySell(tiers, publisherKey) {
   return tiers.ourdir.includes(publisherKey) || tiers.official.some((o) => o.key === publisherKey) || tiers.sellers.some((s) => s.key === publisherKey);
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/succession.ts
+// apps/desktop/src/catalog/succession.ts
 var SUCCESSION_CONTEXT = "ourdir-succession/v1";
 var RECOVERY_DELEGATION_CONTEXT = "ourdir-recovery-delegation/v1";
 var RECOVERY_DELEGATION_FILE = "recovery-delegation.json";
@@ -18212,16 +18365,21 @@ function chainOf(list2) {
   return { next, prev, head, line, problems };
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/client.ts
+// apps/desktop/src/catalog/client.ts
 var MARKS = new RegExp("[" + String.fromCharCode(768) + "-" + String.fromCharCode(879) + "]", "g");
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/download.ts
+// apps/desktop/src/catalog/download.ts
 function requestedPermissions(p) {
   const m = p.manifest;
   return m.kind === "native" ? m.permissions : [.../* @__PURE__ */ new Set([...p.compat?.suggestedPermissions ?? [], ...m.files.styles.length ? ["ui.style"] : []])];
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/builder.ts
+// apps/desktop/src/licence.ts
+var LICENCE_DELEGATION_FILE = "licence-delegation.json";
+var CHECK_EVERY_MS = 7 * 864e5;
+var GRACE_MS = 14 * 864e5;
+
+// apps/desktop/src/catalog/builder.ts
 var dirs = (root) => ({
   entries: import_node_path4.default.join(root, "entries"),
   packages: import_node_path4.default.join(root, "packages"),
@@ -18284,7 +18442,7 @@ function build2(root, identity, opts = {}) {
   }
   import_node_fs4.default.writeFileSync(import_node_path4.default.join(d.out, INDEX_FILE), bytes);
   import_node_fs4.default.writeFileSync(import_node_path4.default.join(d.out, SIGNATURE_FILE2), signIndex(bytes, identity, now));
-  for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, RECOVERY_DELEGATION_FILE]) {
+  for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, RECOVERY_DELEGATION_FILE, LICENCE_DELEGATION_FILE]) {
     if (import_node_fs4.default.existsSync(import_node_path4.default.join(root, f))) import_node_fs4.default.copyFileSync(import_node_path4.default.join(root, f), import_node_path4.default.join(d.out, f));
   }
   writeJson(d.state, { sequence });
@@ -18342,7 +18500,7 @@ function verifyPublished(outDir, rootKeys, opts = {}) {
   return errors.length ? { ok: false, errors } : { ok: true, sequence: parsed.index.sequence, files, external };
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/package.ts
+// apps/desktop/src/catalog/package.ts
 var PACKAGE_CONTEXT = "ourdir-package/v1";
 function signPackageFile(bytes, identity) {
   return sign(identity, PACKAGE_CONTEXT, bytes);
@@ -18351,7 +18509,7 @@ function verifyPackageFile(bytes, publicKey, signature) {
   return isValidPublicKey(publicKey) && typeof signature === "string" && verify(publicKey, PACKAGE_CONTEXT, bytes, signature);
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/submission.ts
+// apps/desktop/src/catalog/submission.ts
 var OPEN_KINDS = ["module", "system", "theme", "translation", "compendium"];
 var MAX_SUBMISSIONS_PER_PR = 10;
 var SUBMISSION_PATH_RE = /^entries\/([a-z0-9][a-z0-9_-]{1,63})\/(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]{1,30})?)\.json$/;
@@ -18491,7 +18649,7 @@ function renderReport(r) {
   return lines.join("\n");
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/since.ts
+// apps/desktop/src/catalog/since.ts
 var APP_VERSION = "0.1.0";
 var SINCE_REV = 1;
 var AT_0_1_0 = [
@@ -18671,7 +18829,7 @@ function minAppOf(kind, bytes, declared) {
   return v;
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/pipeline.ts
+// apps/desktop/src/catalog/pipeline.ts
 var sha2563 = (b) => import_node_crypto3.default.createHash("sha256").update(b).digest("hex");
 var message = (err) => err instanceof Error ? err.message : String(err);
 var extOf = (kind) => kind === "module" ? "zip" : kind === "theme" ? "ourdir-theme.json" : kind === "translation" ? "ourdir-translation.json" : kind === "compendium" ? "ourdirlib" : "ttsystem.json";
@@ -19115,7 +19273,7 @@ function copyDir(from, to) {
   }
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/src/catalog/pack.ts
+// apps/desktop/src/catalog/pack.ts
 var import_node_fs6 = __toESM(require("node:fs"));
 var import_node_path6 = __toESM(require("node:path"));
 var import_node_zlib2 = __toESM(require("node:zlib"));
@@ -19180,7 +19338,7 @@ function packFolder(dir) {
   return Buffer.concat([...locals, centralBytes, end]);
 }
 
-// ../VTT/tabletop-desktop/apps/desktop/verifier/cli.ts
+// apps/desktop/verifier/cli.ts
 var core = require_builder_core();
 var FR_TEXTS = { ...require_fr2(), ...require_fr() };
 function sayFrench(key, vars) {
