@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.1.8. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.1.9. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -11330,7 +11330,7 @@ var require_fr2 = __commonJS({
       "shell.audio": "Audio",
       "shell.close": "Fermer",
       "shell.content": "Contenu",
-      "shell.craft": "Personnage",
+      "shell.craft": "Personnages",
       "shell.hidden": "Masqu\xE9e",
       "shell.hint": "Chaque fen\xEAtre est une ic\xF4ne de la barre de gauche, un onglet \xE0 droite, ou masqu\xE9e.",
       "shell.left": "Gauche",
@@ -11637,7 +11637,19 @@ var require_fr2 = __commonJS({
       "movement.notSaved": "Le r\xE9glage du d\xE9placement n\u2019a pas pu \xEAtre enregistr\xE9.",
       "pointerMode.group": "La souris sur la carte",
       "pointerMode.select": "S\xE9lection : glisse sur la carte pour entourer plusieurs jetons (clic molette pour d\xE9placer la vue)",
-      "pointerMode.pan": "Navigation : glisse sur la carte pour d\xE9placer la vue"
+      "pointerMode.pan": "Navigation : glisse sur la carte pour d\xE9placer la vue",
+      "shell.diceLog": "Jets",
+      "shell.turnOrder": "Tours",
+      "follow.menu": "Suivre un jeton\u2026",
+      "follow.stopMenu": "Ne plus suivre",
+      "follow.pick": "Clique le jeton que {name} doit suivre (\xC9chap pour annuler)",
+      "follow.cancel": "Annuler",
+      "follow.now": "{who} suit {whom}",
+      "follow.stop": "Arr\xEAter",
+      "flip.h": "Retourner horizontalement",
+      "flip.v": "Retourner verticalement",
+      "flip.failed": "Le jeton n\u2019a pas pu \xEAtre retourn\xE9.",
+      "people.more": "{n} autres personnes connect\xE9es"
     };
   }
 });
@@ -17362,7 +17374,7 @@ var require_en3 = __commonJS({
       "shell.audio": "Audio",
       "shell.close": "Close",
       "shell.content": "Content",
-      "shell.craft": "Character",
+      "shell.craft": "Characters",
       "shell.hidden": "Hidden",
       "shell.hint": "Each window is an icon of the bar on the left, a tab on the right, or hidden.",
       "shell.left": "Left",
@@ -17669,7 +17681,19 @@ var require_en3 = __commonJS({
       "movement.notSaved": "The movement setting could not be saved.",
       "pointerMode.group": "The mouse on the map",
       "pointerMode.select": "Select: drag on the map to surround several tokens (middle click to move the view)",
-      "pointerMode.pan": "Navigate: drag on the map to move the view"
+      "pointerMode.pan": "Navigate: drag on the map to move the view",
+      "shell.diceLog": "Rolls",
+      "shell.turnOrder": "Turns",
+      "follow.menu": "Follow a token\u2026",
+      "follow.stopMenu": "Stop following",
+      "follow.pick": "Click the token {name} is to follow (Esc to cancel)",
+      "follow.cancel": "Cancel",
+      "follow.now": "{who} follows {whom}",
+      "follow.stop": "Stop",
+      "flip.h": "Flip horizontally",
+      "flip.v": "Flip vertically",
+      "flip.failed": "The token could not be flipped.",
+      "people.more": "{n} more people online"
     };
   }
 });
@@ -19476,7 +19500,7 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.1.8";
+var APP_VERSION = "0.1.9";
 var SINCE_REV = 1;
 var AT_0_1_0 = [
   "component:Avatar",
