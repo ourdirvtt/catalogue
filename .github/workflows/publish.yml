@@ -81,7 +81,7 @@ jobs:
         with:
           name: catalogue-unsigned
           path: built
-      - name: Sign and check (the index only: no package is opened)
+      - name: "Sign and check (the index only, no package is opened)"
         env:
           CATALOG_CI_KEY: ${{ secrets.CATALOG_CI_KEY }}
         run: node tools/verifier.js sign --dir built/public --pin "$(tr -d '[:space:]' < root.pub)"
