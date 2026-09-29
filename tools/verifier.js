@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.1.7. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.1.8. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -11625,7 +11625,19 @@ var require_fr2 = __commonJS({
       "linkChooser.sub": "Ta fiche li\xE9e est celle de ton acc\xE8s rapide et de ton portrait. Tu pourras en changer dans ton portrait, en bas \xE0 gauche.",
       "linkChooser.later": "Plus tard",
       "linkChooser.done": "Tu joues {name}.",
-      "linkChooser.failed": "La fiche n\u2019a pas pu \xEAtre li\xE9e."
+      "linkChooser.failed": "La fiche n\u2019a pas pu \xEAtre li\xE9e.",
+      "movement.title": "D\xE9placement des jetons",
+      "movement.ruler": "R\xE8gle au d\xE9placement",
+      "movement.rulerOn": "Oui",
+      "movement.rulerOff": "Non",
+      "movement.live": "D\xE9placement vu par les autres",
+      "movement.direct": "En direct",
+      "movement.arrivee": "\xC0 l\u2019arriv\xE9e",
+      "movement.hint": "En direct, les autres voient le jeton bouger pendant qu\u2019on le glisse. \xC0 l\u2019arriv\xE9e, ils ne le voient qu\u2019une fois pos\xE9 : il parcourt alors le chemin, du d\xE9part \xE0 l\u2019arriv\xE9e.",
+      "movement.notSaved": "Le r\xE9glage du d\xE9placement n\u2019a pas pu \xEAtre enregistr\xE9.",
+      "pointerMode.group": "La souris sur la carte",
+      "pointerMode.select": "S\xE9lection : glisse sur la carte pour entourer plusieurs jetons (clic molette pour d\xE9placer la vue)",
+      "pointerMode.pan": "Navigation : glisse sur la carte pour d\xE9placer la vue"
     };
   }
 });
@@ -17645,7 +17657,19 @@ var require_en3 = __commonJS({
       "linkChooser.sub": "Your linked sheet is the one of your quick access and your portrait. Change it any time from your portrait, bottom left.",
       "linkChooser.later": "Later",
       "linkChooser.done": "You play {name}.",
-      "linkChooser.failed": "The sheet could not be linked."
+      "linkChooser.failed": "The sheet could not be linked.",
+      "movement.title": "Token movement",
+      "movement.ruler": "Ruler while moving",
+      "movement.rulerOn": "Yes",
+      "movement.rulerOff": "No",
+      "movement.live": "Movement seen by the others",
+      "movement.direct": "Live",
+      "movement.arrivee": "On arrival",
+      "movement.hint": "Live, the others see the token move while it is dragged. On arrival, they only see it once it is put down: it then travels the way, from start to finish.",
+      "movement.notSaved": "The movement setting could not be saved.",
+      "pointerMode.group": "The mouse on the map",
+      "pointerMode.select": "Select: drag on the map to surround several tokens (middle click to move the view)",
+      "pointerMode.pan": "Navigate: drag on the map to move the view"
     };
   }
 });
@@ -19452,7 +19476,7 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.1.7";
+var APP_VERSION = "0.1.8";
 var SINCE_REV = 1;
 var AT_0_1_0 = [
   "component:Avatar",
