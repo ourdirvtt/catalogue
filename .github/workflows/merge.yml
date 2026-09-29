@@ -38,6 +38,9 @@ jobs:
           PR="$(head -c 12 result/pr-number.txt | tr -dc '0-9')"
           [ -n "$PR" ] || { echo "no pull request number"; exit 1; }
           HEAD_SHA="$(gh api "repos/$REPO/pulls/$PR" --jq .head.sha)"
+          # The artifact is written by the workflow a pull request brings, so its number and its report are not to be believed (audit 29/09,
+          # F14): nothing is posted unless that pull request's head is the very commit this run checked. A newer commit gets its own run.
+          [ "$HEAD_SHA" = "$CHECKED_SHA" ] || { echo "the checked commit is not the head of pull request $PR: nothing posted"; exit 0; }
           gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '[.[] | {filename, status}]' | jq -s 'add' > files.json
           head -c 20000 result/report.md > body.md
           gh pr comment "$PR" --repo "$REPO" --body-file body.md

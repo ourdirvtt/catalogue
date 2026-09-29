@@ -31,7 +31,7 @@ Permis, à condition de porter l'étiquette `nsfw`. Un contenu adulte sans cette
 ## Grades
 
 - **Communautaire** : publié après les contrôles automatiques ; personne ne l'a encore relu. L'appli ne le montre qu'aux joueurs qui affichent le contenu communautaire.
-- **Validé** : une personne l'a relu. Soit une version précise (son fichier exact), soit un créateur de confiance : ses contenus sans code sont Validés, mises à jour comprises ; ses modules le restent tant qu'une mise à jour ne demande pas de nouvelle permission (la première version d'un module est toujours relue).
+- **Validé** : une personne l'a relu. Soit une version précise (son fichier exact), soit un créateur de confiance : ses contenus sans code sont Validés, mises à jour comprises ; un module contient du code : chaque version est relue, son fichier exact, quel que soit son créateur.
 - **Officiel** : les ayants droit d'une licence, sur accord du mainteneur. **Ourdir** : le mainteneur.
 - **Pourquoi monter en grade** : le contenu Validé est montré à tous dès l'ouverture du Catalogue ; le badge dit qu'une personne l'a relu et le fichier est hébergé par Ourdir ; un créateur Validé publie ses mises à jour sans attendre ; être Validé est la condition pour demander, plus tard, à vendre.
 - **Ce qu'on relit** : ça marche comme annoncé ; les droits sont respectés ; rien de nuisible ; une fiche claire ; pour un module, des permissions justifiées.
@@ -89,7 +89,7 @@ Allowed, with the `nsfw` tag. Adult content without it is removed.
 ## Grades
 
 - **Community**: published after the automatic checks; nobody has read it yet. The app shows it only to players who choose to see community content.
-- **Validated**: a person read it. Either one precise version (its exact file), or a trusted creator: their content without code is Validated, updates included; their modules stay Validated while an update asks for no new permission (a module's first version is always read).
+- **Validated**: a person read it. Either one precise version (its exact file), or a trusted creator: their content without code is Validated, updates included; a module contains code: every version is read, its exact file, whoever made it.
 - **Official**: rights holders of a licence, by agreement with the maintainer. **Ourdir**: the maintainer.
 - **Why move up**: Validated content is shown to everyone as soon as the Catalogue opens; the badge says a person read it and the file is hosted by Ourdir; a Validated creator publishes updates without waiting; being Validated is the condition to apply, later, to sell.
 - **What we review**: it works as described; rights are respected; nothing harmful; a clear sheet; for a module, justified permissions.

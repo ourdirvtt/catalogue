@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.1.0. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.1.6. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -401,6 +401,8 @@ var require_fr = __commonJS({
       "builderTheme.valeursCalculees": "Valeurs calcul\xE9es",
       "dialog.firewall.failed": "Le pare-feu Windows n\u2019a pas pu \xEAtre mis \xE0 jour. Accepte l\u2019invite administrateur (UAC) et r\xE9essaie.",
       "dialog.join.unknownSender": "Cette invitation vient de quelqu\u2019un qui n\u2019est pas dans tes amis. Ajoute son code d\u2019ami (menu Amis) avant de la r\xE9utiliser.",
+      "err.backup.space": "Pas assez de place sur le disque pour sauvegarder les tables avant la mise \xE0 jour ({need} Mo \xE0 pr\xE9voir). Lib\xE8re de l\u2019espace, puis r\xE9essaie.",
+      "err.backup.verify": "La sauvegarde de \xAB {name} \xBB n\u2019a pas pu \xEAtre relue correctement ({why}) : rien n\u2019a \xE9t\xE9 install\xE9.",
       "err.bundle.absolute": "chemin absolu (propre \xE0 Foundry)",
       "err.bundle.badType": "Type de fichier non assemblable : {name}.",
       "err.bundle.dynamicImport": "import() dynamique interdit dans un module.",
@@ -530,6 +532,7 @@ var require_fr = __commonJS({
       "err.install.needsDep": "D\xE9pend de \xAB {id} \xBB, qui doit \xEAtre install\xE9 et activ\xE9.",
       "err.install.needsDepVersion": "D\xE9pend de \xAB {id} \xBB {version} ou plus.",
       "err.install.newerInstalled": "Une version plus r\xE9cente ({version}) est d\xE9j\xE0 install\xE9e.",
+      "err.install.publisherChanged": "ATTENTION : cette version n\u2019est pas sign\xE9e par la m\xEAme cl\xE9 d\u2019\xE9diteur que celle d\xE9j\xE0 install\xE9e. Elle ne garde ni l\u2019activation ni les permissions accord\xE9es : v\xE9rifie d\u2019o\xF9 elle vient avant de l\u2019activer.",
       "err.install.noManifest": "module.json (ou system.json) introuvable.",
       "err.install.noManifestAtRoot": "module.json (ou system.json) introuvable, \xE0 la racine du dossier ou de l\u2019archive.",
       "err.install.notAsked": "Permission non demand\xE9e par le module : {list}",
@@ -630,6 +633,7 @@ var require_fr = __commonJS({
       "err.versions.older": "La liste des versions d\u2019Ourdir est plus ancienne que celle d\xE9j\xE0 vue : elle est ignor\xE9e.",
       "err.versions.download": "Le t\xE9l\xE9chargement a \xE9chou\xE9 ({reason}).",
       "err.versions.checksum": "Le fichier t\xE9l\xE9charg\xE9 n\u2019est pas celui publi\xE9 par Ourdir : il n\u2019a pas \xE9t\xE9 lanc\xE9.",
+      "err.versions.unpack": "La nouvelle version n\u2019a pas pu \xEAtre install\xE9e. Rien n\u2019a chang\xE9 : r\xE9essaie, ou t\xE9l\xE9charge l\u2019installeur sur ourdir.fr.",
       "err.versions.unknown": "Cette version n\u2019est pas dans la liste.",
       "err.versions.offline": "La liste des versions n\u2019a pas pu \xEAtre lue (hors ligne ?).",
       "err.social.noIdentity": "Identit\xE9 non initialis\xE9e.",
@@ -684,6 +688,7 @@ var require_fr = __commonJS({
       "err.userThemes.exists": "Un th\xE8me \xAB {id} \xBB existe d\xE9j\xE0.",
       "err.userThemes.fromCatalog": "Ce th\xE8me vient du catalogue : il sert \xE0 tes tables, mais ne se modifie, ne s\u2019exporte ni ne se partage.",
       "err.userThemes.notFound": "Th\xE8me introuvable.",
+      "err.worlds.dbMissing": "Cette sauvegarde est incompl\xE8te : la base de la table n\u2019y est pas.",
       "err.worlds.name": "Donne un nom d\u2019au moins 2 caract\xE8res \xE0 la table.",
       "err.worlds.notBackup": "Ce fichier n\u2019est pas une sauvegarde de table.",
       "err.worlds.notBackupOurdir": "Ce fichier n\u2019est pas une sauvegarde de table Ourdir.",
@@ -705,6 +710,7 @@ var require_fr = __commonJS({
       "err.zip.size": "Taille incoh\xE9rente : {name}",
       "err.zip.symlink": "Lien symbolique refus\xE9 : {name}",
       "err.zip.tooBig": "Archive trop volumineuse une fois d\xE9compress\xE9e.",
+      "err.zip.bombArchive": "Taux de compression suspect pour l\u2019archive enti\xE8re (bombe ?).",
       "err.zip.tooManyEntries": "Archive trop grosse : {n} fichiers (max {max}).",
       "menu.app": "Ourdir",
       "menu.edit": "\xC9dition",
@@ -1055,7 +1061,6 @@ var require_fr = __commonJS({
       "ui.access.relayDown": "Le relais ({relay}) ne r\xE9pond pas pour l\u2019instant, nouvel essai en cours. Tes amis peuvent quand m\xEAme te rejoindre en direct si ta box laisse passer.",
       "ui.access.sharedAddress": "Ton fournisseur partage ton adresse avec d\u2019autres abonn\xE9s : tes amis ne peuvent pas te joindre pour l\u2019instant.",
       "ui.access.sharedAddressIpv6": "Ton fournisseur partage ton adresse classique avec d\u2019autres abonn\xE9s, mais ton IPv6 peut suffire.",
-      "ui.app.tagline": "Tes tables de JDR, h\xE9berg\xE9es chez toi.",
       "ui.builder.add": "Ajouter",
       "ui.builder.addColumn": "Ajouter une colonne",
       "ui.builder.addHint": "Clique pour ajouter, ou glisse sur la fiche",
@@ -1313,30 +1318,45 @@ var require_fr = __commonJS({
       "ui.common.cancel": "Annuler",
       "ui.common.copied": "Copi\xE9",
       "ui.common.copy": "Copier",
-      "ui.common.paste": "Coller",
       "ui.error.startup": "Ourdir n\u2019a pas pu d\xE9marrer. Les d\xE9tails sont dans le journal : {log}",
       "ui.error.unexpected": "Quelque chose s\u2019est mal pass\xE9. Les d\xE9tails sont dans le journal (Param\xE8tres \u2192 Ouvrir le dossier des journaux).",
       "ui.friends.accessBad": "Ta table n\u2019est probablement pas joignable depuis Internet pour l\u2019instant (voir Param\xE8tres). L\u2019invitation fonctionnera quand ce sera r\xE9gl\xE9.",
       "ui.friends.add": "Ajouter un ami",
-      "ui.friends.addPlaceholder": "Colle son code d\u2019ami (td1_\u2026)",
+      "ui.friends.addPlaceholder": "Son code d\u2019ami : OURD-XXXX-XXXX-XXXX",
       "ui.friends.addSubmit": "Ajouter",
       "ui.friends.code": "Mon code d\u2019ami",
-      "ui.friends.codeHint": "Envoie ce code \xE0 quelqu\u2019un pour qu\u2019il t\u2019ajoute. Il n\u2019est pas secret : il ne contient que ta cl\xE9 publique.",
+      "ui.friends.codeHint": "Donne ce code \xE0 quelqu\u2019un : il le tape, tu acceptes sa demande, et c\u2019est fait. Il ne change jamais, m\xEAme si tu changes de pseudo.",
       "ui.friends.confirmRemove": "Supprimer {name} de tes amis ?",
       "ui.friends.invitation": "Invitation pour {name}",
       "ui.friends.invitationHint": "Chiffr\xE9e pour lui seul : personne d\u2019autre ne peut lire l\u2019adresse. Envoie-la (Discord, SMS\u2026). Valable 7 jours.",
-      "ui.friends.invite": "Inviter \xE0 ma table",
       "ui.friends.invited": "Invit\xE9 \xE0 ta table",
-      "ui.friends.list": "Mes amis",
+      "ui.friends.lobbyDownAdd": "Le relais ne r\xE9pond pas : r\xE9essaie, ou utilise \xAB Ajouter sans Internet \xBB.",
+      "ui.friends.already": "{name} est d\xE9j\xE0 ton ami.",
+      "ui.friends.unknownCode": "Personne n\u2019a ce code (v\xE9rifie-le : il est \xE0 12 caract\xE8res).",
+      "ui.friends.ownCode": "C\u2019est ton propre code.",
+      "ui.friends.accepted": "{name} a accept\xE9 : c\u2019est ton ami maintenant.",
+      "ui.friends.requestIn": "{name} veut t\u2019ajouter en ami (page Amis).",
+      "ui.friends.requestSent": "Demande envoy\xE9e \xE0 {name}.",
+      "ui.friends.cancelRequest": "Annuler",
+      "ui.friends.refuse": "Refuser",
+      "ui.friends.accept": "Accepter",
+      "ui.friends.waiting": "en attente de sa r\xE9ponse",
+      "ui.friends.wantsYou": "veut t\u2019ajouter en ami",
+      "ui.friends.requestsOut": "Demandes envoy\xE9es",
+      "ui.friends.requestsIn": "Demandes re\xE7ues",
+      "ui.friends.offlineHint": "Sans connexion au relais, l\u2019ancien code long ajoute un ami tout de suite (chacun doit coller celui de l\u2019autre).",
+      "ui.friends.offlineTitle": "Ajouter sans Internet",
       "ui.friends.localWarn": "Ton acc\xE8s r\xE9seau est \xAB Local \xBB : il ne pourra pas te joindre. Change-le dans Param\xE8tres, puis recr\xE9e l\u2019invitation.",
       "ui.friends.me": "Mon identit\xE9",
       "ui.friends.name": "Nom affich\xE9",
-      "ui.friends.needTable": "Lance une table pour inviter des amis.",
       "ui.friends.none": "Aucun ami pour l\u2019instant.",
-      "ui.friends.presence": "Il n\u2019y a pas de statut \xAB en ligne \xBB pour les amis : l\u2019application n\u2019utilise aucun serveur central. L\u2019\xE9tat d\u2019une table se voit dans l\u2019onglet Tables.",
+      "ui.friends.state.online": "En ligne",
+      "ui.friends.state.playing": "En partie",
+      "ui.friends.state.away": "Absent",
+      "ui.friends.appearOffline": "Appara\xEEtre hors ligne (mes amis ne me voient pas en ligne)",
+      "ui.friends.lobbyDown": "Pr\xE9sence indisponible pour l\u2019instant (pas de connexion au relais) : tes amis apparaissent absents.",
       "ui.friends.remove": "Supprimer",
       "ui.friends.save": "Enregistrer",
-      "ui.friends.uninvite": "Retirer de ma table",
       "ui.guide.arthur": "Moi, c\u2019est Arthur. Je te tiens compagnie pendant que ta table se pr\xE9pare.",
       "ui.guide.eyebrow": "Bienvenue",
       "ui.guide.lead": "Ourdir h\xE9berge ta partie chez toi : pas de compte, pas d\u2019abonnement pour jouer avec tes amis.",
@@ -1349,8 +1369,68 @@ var require_fr = __commonJS({
       "ui.guide.s3b": "Ajouter des amis",
       "ui.guide.s3t": "\xC9change ton code d\u2019ami avec eux, puis envoie-leur une invitation \xE0 ta table.",
       "ui.guide.title": "Ta premi\xE8re table en trois \xE9tapes",
-      "ui.hero.live": "En direct",
-      "ui.hero.resume": "Reprendre",
+      "ui.home.changeSystem": "Changer de syst\xE8me",
+      "ui.home.nav.play": "Jouer",
+      "ui.home.nav.create": "Cr\xE9er",
+      "ui.home.nav.more": "Plus",
+      "ui.home.nav.asks": "{n} demande(s) d\u2019ami en attente.",
+      "ui.home.nav.knocks": "{n} personne(s) demande(nt) \xE0 rejoindre ta table.",
+      "ui.home.nav.me": "{name} : mon profil et mes amis",
+      "ui.home.eyebrow.live": "En direct \xB7 ta table est ouverte",
+      "ui.home.eyebrow.last": "Derni\xE8re partie \xB7 {when}",
+      "ui.home.eyebrow.never": "Table jamais lanc\xE9e",
+      "ui.home.eyebrow.invite": "Ouverte par {name} en ce moment",
+      "ui.home.eyebrow.liveFriend": "En direct chez un ami",
+      "ui.home.invited.one": "{n} ami invit\xE9",
+      "ui.home.invited.other": "{n} amis invit\xE9s",
+      "ui.home.play": "Jouer",
+      "ui.home.join": "Rejoindre",
+      "ui.home.invite": "Inviter",
+      "ui.home.switch": "Changer de table",
+      "ui.home.tableMenu": "Actions de la table \xAB {name} \xBB",
+      "ui.home.launchOnly": "Lancer sans entrer",
+      "ui.home.stop": "Arr\xEAter la table",
+      "ui.home.confirmForget": "Oublier la table \xAB {name} \xBB ? Tu pourras la rejoindre de nouveau avec une invitation.",
+      "ui.home.net.aria": "\xC9tat du r\xE9seau : {state}. Ouvrir les r\xE9glages.",
+      "ui.home.net.open": "Voir le d\xE9tail dans Param\xE8tres",
+      "ui.home.posters.aria": "Tes tables",
+      "ui.home.poster.new": "Nouvelle table",
+      "ui.home.poster.orCode": "ou coller un code",
+      "ui.home.poster.last": "Derni\xE8re partie {when}",
+      "ui.home.poster.liveFriend": "En direct",
+      "ui.home.code.label": "Coller un code d\u2019ami, un code de table ou une invitation",
+      "ui.home.code.placeholder": "OURD-\u2026 TABLE-\u2026 td1i_\u2026",
+      "ui.home.code.go": "Valider",
+      "ui.home.code.hint": "Code d\u2019ami (OURD-\u2026), code de table (TABLE-\u2026) ou invitation (td1i_\u2026).",
+      "ui.home.code.unknown": "Ce texte n\u2019est ni un code d\u2019ami (OURD-\u2026), ni un code de table (TABLE-\u2026), ni une invitation (td1i_\u2026).",
+      "ui.home.code.friendDone": "Ami ajout\xE9.",
+      "ui.home.code.title": "Tu as re\xE7u un code ou une invitation ?",
+      "ui.home.alerts": "Demandes pour entrer \xE0 ta table",
+      "ui.home.friends.title": "Amis",
+      "ui.home.friends.aria": "Tes amis",
+      "ui.home.friends.none": "Personne pour l\u2019instant.",
+      "ui.home.friends.more": "et {n} autre(s)",
+      "ui.home.friends.manage": "G\xE9rer mes amis",
+      "ui.home.friends.add": "Ajouter un ami",
+      "ui.home.invite.eyebrow": "Inviter",
+      "ui.home.invite.title": "Inviter \xE0 ta table",
+      "ui.home.invite.friends": "Tes amis voient ta table dans leur Ourdir d\xE8s qu\u2019elle est lanc\xE9e. Tu les invites depuis la page Amis.",
+      "ui.home.invite.friendsGo": "Ouvrir la page Amis",
+      "ui.home.invite.needTable": "Lance ta table (Jouer) pour cr\xE9er un code.",
+      "ui.home.poster.title": "Image de l\u2019affiche",
+      "ui.home.poster.hint": "Sur l\u2019accueil, ta table est une affiche. Sans image, elle porte une couleur qui lui est propre. Une image est recadr\xE9e et assombrie sous le texte, pour qu\u2019il reste lisible.",
+      "ui.home.poster.choose": "Choisir une image\u2026",
+      "ui.home.poster.change": "Changer l\u2019image\u2026",
+      "ui.home.poster.remove": "Retirer l\u2019image",
+      "ui.home.poster.formats": "PNG, JPEG ou WebP, 8 Mo au plus. L\u2019image est copi\xE9e dans le dossier de la table.",
+      "ui.home.poster.pickTitle": "Choisir l\u2019image de l\u2019affiche",
+      "ui.home.poster.saved": "Image de l\u2019affiche enregistr\xE9e.",
+      "ui.home.poster.removed": "Image de l\u2019affiche retir\xE9e.",
+      "ui.home.poster.err.type": "Ce fichier n\u2019est pas une image PNG, JPEG ou WebP.",
+      "ui.home.poster.err.tooBig": "Cette image p\xE8se plus de 8 Mo.",
+      "ui.home.poster.err.unreadable": "Cette image n\u2019a pas pu \xEAtre lue.",
+      "ui.home.poster.err.tooSmall": "Cette image est trop petite (64 px au moins de chaque c\xF4t\xE9).",
+      "ui.home.poster.err.tooLarge": "Cette image est trop grande (8000 px au plus de chaque c\xF4t\xE9).",
       "ui.home.resume": "Reprendre un mod\xE8le",
       "ui.home.resumeNone": "Tu n\u2019as pas encore de fiche \xE0 toi.",
       "ui.home.resumeText": "Continuer une de tes fiches d\xE9j\xE0 commenc\xE9es.",
@@ -1446,6 +1526,24 @@ var require_fr = __commonJS({
       "ui.mod.packs": "Compendiums : {done} converti(s), {skipped} ignor\xE9(s).",
       "ui.mod.perms": "Permissions demand\xE9es",
       "ui.mod.permsNone": "Aucune permission demand\xE9e.",
+      "ui.mod.enableTitle": "Choisir les permissions",
+      "ui.mod.enableHint": "Coche ce que ce module a le droit de faire. Ce que tu autorises vaut pour tous les joueurs de la table ; les permissions risqu\xE9es sont d\xE9coch\xE9es.",
+      "ui.mod.notYet": "pas encore disponible : elle ne sera pas accord\xE9e",
+      "ui.mod.plain.ui.style": "changer l\u2019apparence de toute l\u2019interface (masquer ou rebaptiser des boutons)",
+      "ui.mod.plain.chat.write": "\xE9crire dans le chat \xE0 ton nom",
+      "ui.mod.plain.chat.read": "lire le chat",
+      "ui.mod.plain.chat.command": "r\xE9agir \xE0 des commandes /\u2026",
+      "ui.mod.plain.ui.panel": "ouvrir ses panneaux et ses notifications",
+      "ui.mod.plain.ui.toolbar": "ajouter ses boutons",
+      "ui.mod.plain.engine.hook": "observer ce qui se passe dans le jeu",
+      "ui.mod.plain.tokens.read": "voir les jetons",
+      "ui.mod.plain.storage.local": "garder ses r\xE9glages sur cet ordinateur",
+      "ui.mod.plain.ui.sheet": "ajouter des onglets aux fiches",
+      "ui.mod.plain.scene.read": "lire la sc\xE8ne",
+      "ui.mod.plain.scene.draw": "dessiner sur la carte",
+      "ui.mod.plain.sheet.read": "lire les fiches",
+      "ui.mod.plain.dice.formula": "ajouter des fonctions aux formules",
+      "ui.mod.plain.audio.play": "jouer des sons",
       "ui.mod.pickFile": "Choisir un module (.zip)",
       "ui.mod.pickFolder": "Choisir le dossier d\u2019un module",
       "ui.mod.plain.dice.intercept": "changer le r\xE9sultat des d\xE9s",
@@ -1472,7 +1570,7 @@ var require_fr = __commonJS({
       "ui.mod.trust.signed": "Sign\xE9 (communaut\xE9)",
       "ui.mod.trust.unsigned": "Non sign\xE9",
       "ui.mod.trustHint.official": "Sign\xE9 par une cl\xE9 officielle du projet ou d\u2019un ayant droit v\xE9rifi\xE9.",
-      "ui.mod.trustHint.signed": "L\u2019auteur est authentique ({name}) mais le contenu n\u2019a pas \xE9t\xE9 examin\xE9 par le projet.",
+      "ui.mod.trustHint.signed": "Sign\xE9 par un \xE9diteur qui se pr\xE9sente comme \xAB {name} \xBB : ce nom est d\xE9clar\xE9 par l\u2019auteur, seule sa cl\xE9 (empreinte dans les d\xE9tails) le prouve. Le contenu n\u2019a pas \xE9t\xE9 examin\xE9 par le projet.",
       "ui.mod.trustHint.unsigned": "Aucune garantie sur l\u2019auteur ni sur le contenu. Installe seulement ce que tu connais.",
       "ui.mod.uninstall": "D\xE9sinstaller",
       "ui.mod.upToDate": "\xAB {title} \xBB est \xE0 jour.",
@@ -1888,7 +1986,6 @@ var require_fr = __commonJS({
       "ui.rules.winPoolDice": "D\xE9s en plus ou en moins",
       "ui.rules.window": "Fen\xEAtre au clic",
       "ui.rules.yes": "oui",
-      "ui.settings.advanced": "Options avanc\xE9es",
       "ui.settings.data": "Donn\xE9es",
       "ui.settings.details": "D\xE9tails techniques",
       "ui.settings.devTools": "Outils de d\xE9veloppement (Ctrl+Maj+I)",
@@ -1922,8 +2019,6 @@ var require_fr = __commonJS({
       "ui.settings.openData": "Ouvrir le dossier de donn\xE9es",
       "ui.settings.publicHost": "Adresse personnalis\xE9e (nom DDNS)",
       "ui.settings.publicHostHint": "Pour les utilisateurs avanc\xE9s. Normalement l\u2019adresse est d\xE9tect\xE9e toute seule. Sans http:// ni port.",
-      "ui.settings.reachRun": "V\xE9rifier",
-      "ui.settings.recheck": "Rev\xE9rifier maintenant",
       "ui.settings.reduceMotion": "R\xE9duire les animations",
       "ui.settings.relay": "Relais",
       "ui.settings.relay.custom": "Un autre relais",
@@ -1942,8 +2037,7 @@ var require_fr = __commonJS({
       "ui.settings.uiMode": "Interface en partie",
       "ui.settings.uiMode.full": "Compl\xE8te : tous les menus et fen\xEAtres",
       "ui.settings.uiMode.hidden": "Masqu\xE9e : la carte seule (immersion)",
-      "ui.settings.uiMode.reduced": "R\xE9duite : seulement les ic\xF4nes",
-      "ui.settings.uiModeHint": "Pendant la partie : Alt+1 compl\xE8te, Alt+2 r\xE9duite, Alt+3 masqu\xE9e, Alt+H masque ou r\xE9affiche. Le menu du jeu propose les m\xEAmes choix. Quand l\u2019interface est masqu\xE9e, le bord haut de la fen\xEAtre fait r\xE9appara\xEEtre l\u2019onglet Menu.",
+      "ui.settings.uiModeHint": "Pendant la partie : Alt+1 compl\xE8te, Alt+2 masqu\xE9e, Alt+H masque ou r\xE9affiche. Le menu du jeu propose les m\xEAmes choix. Quand l\u2019interface est masqu\xE9e, le bord haut de la fen\xEAtre fait r\xE9appara\xEEtre l\u2019onglet Menu.",
       "ui.share.accept": "J\u2019ai le droit de partager ce contenu et j\u2019accepte les r\xE8gles du catalogue.",
       "ui.share.backupText": "Sans elle, tu ne pourras plus publier de nouvelle version de tes paquets. Range le fichier dans un endroit s\xFBr : gestionnaire de mots de passe, cl\xE9 USB.",
       "ui.share.backupTitle": "Sauvegarde ta cl\xE9",
@@ -2074,23 +2168,28 @@ var require_fr = __commonJS({
       "ui.tables.duplicateSuffix": "(copie)",
       "ui.tables.duplicated": "Copie cr\xE9\xE9e : \xAB {name} \xBB.",
       "ui.tables.forget": "Oublier",
-      "ui.tables.friends": "Tables de mes amis",
-      "ui.tables.friendsNone": "Tu n\u2019as rejoint aucune table. Colle une invitation ci-dessous.",
+      "ui.tables.tableOf": "Table de {name}",
+      "ui.tables.inviteOthers": "Inviter quelqu\u2019un qui n\u2019est pas ton ami",
+      "ui.tables.inviteOthersHint": "Tes amis voient d\xE9j\xE0 ta table dans leur Ourdir. Pour les autres : un code \xE0 leur donner ; chaque demande attend ton accord.",
+      "ui.tables.codeMake": "Cr\xE9er un code d\u2019invitation",
+      "ui.tables.codeStop": "Arr\xEAter ce code",
+      "ui.tables.codeUntil": "valable jusqu\u2019\xE0 {time}",
+      "ui.tables.knocks": "demande \xE0 rejoindre ta table",
+      "ui.tables.knockIn": "{name} demande \xE0 rejoindre ta table (page Tables).",
+      "ui.tables.knockAccepted": "{name} t\u2019a accept\xE9 : tu rejoins sa table.",
+      "ui.tables.knockSent": "Demande envoy\xE9e \xE0 {name} : attends qu\u2019il l\u2019accepte.",
+      "ui.tables.knockWaiting": "En attente de {name} ({table})\u2026",
+      "ui.tables.badCode": "Ce code n\u2019a pas la forme TABLE-XXX-XXX.",
+      "ui.tables.codeGone": "Ce code ne m\xE8ne \xE0 aucune table (il a peut-\xEAtre expir\xE9, ou la table est ferm\xE9e).",
+      "ui.tables.ownCode": "C\u2019est le code de ta propre table.",
       "ui.tables.host": "H\xE9berg\xE9e par {name}",
-      "ui.tables.join": "Rejoindre",
-      "ui.tables.joinHint": "Colle l\u2019invitation re\xE7ue d\u2019un ami (elle commence par td1i_). Il doit \xEAtre dans tes amis.",
-      "ui.tables.joinInvite": "Rejoindre avec une invitation",
-      "ui.tables.joinOwn": "Rejoindre",
-      "ui.tables.joinSubmit": "Rejoindre",
       "ui.tables.lastJoined": "Derni\xE8re visite : {date}",
-      "ui.tables.lastPlayed": "Derni\xE8re partie : {date}",
-      "ui.tables.launch": "Lancer",
-      "ui.tables.mine": "Mes tables",
       "ui.tables.name": "Nom de la table",
       "ui.tables.neverPlayed": "Jamais lanc\xE9e",
-      "ui.tables.none": "Tu n\u2019h\xE9berges aucune table pour l\u2019instant. Cr\xE9e-en une pour commencer.",
+      "ui.tables.newerFormat": "Cette table a \xE9t\xE9 ouverte par une version plus r\xE9cente d\u2019Ourdir.",
+      "ui.tables.newerFormatDetail": "Cette version peut ne pas lire tout ce que la plus r\xE9cente y a \xE9crit, et l\u2019ab\xEEmer. Une sauvegarde de la table est faite d\u2019abord dans le dossier des sauvegardes ; installe plut\xF4t la version la plus r\xE9cente.",
+      "ui.tables.newerFormatOpen": "Sauvegarder et ouvrir quand m\xEAme",
       "ui.tables.offlineHint": "Hors ligne : la table est arr\xEAt\xE9e ou injoignable, ou ton acc\xE8s a \xE9t\xE9 retir\xE9.",
-      "ui.tables.others": "Autres tables",
       "ui.tables.portBusy": "Le port {port} est d\xE9j\xE0 utilis\xE9 par un autre programme (peut-\xEAtre un autre Ourdir ouvert). Ferme-le, puis relance la table.",
       "ui.tables.preset.full": "Complet",
       "ui.tables.preset.lite": "Lite",
@@ -2120,7 +2219,6 @@ var require_fr = __commonJS({
       "ui.tables.status.offline": "Hors ligne",
       "ui.tables.status.online": "En ligne",
       "ui.tables.status.stopped": "Arr\xEAt\xE9e",
-      "ui.tables.stop": "Arr\xEAter",
       "ui.tables.stopFirst": "Arr\xEAte d\u2019abord cette table.",
       "ui.tables.system": "Syst\xE8me de jeu",
       "ui.tables.systemHint": "Les fiches d\xE9j\xE0 cr\xE9\xE9es gardent leur ancien format ; les nouvelles utiliseront ce syst\xE8me.",
@@ -2224,11 +2322,6 @@ var require_fr = __commonJS({
       "ui.themes.title": "Th\xE8mes de table",
       "ui.themes.unreadable": "Corrige la lisibilit\xE9 pour pouvoir enregistrer.",
       "ui.themes.useAsBase": "Utiliser comme base",
-      "ui.toile.aria": "Table {table} : {n} ami(s), dont {i} invit\xE9(s).",
-      "ui.toile.caption": "{n} ami(s) \xB7 {i} invit\xE9(s) \xE0 cette table",
-      "ui.toile.manage": "G\xE9rer mes amis",
-      "ui.toile.none": "Personne d\u2019invit\xE9 pour l\u2019instant.",
-      "ui.toile.you": "Toi",
       "ui.tr.delete": "Supprimer",
       "ui.tr.deleteConfirm": "Supprimer la traduction \xAB {name} \xBB ?",
       "ui.tr.err.badId": "Identifiant invalide (minuscules, chiffres, tirets).",
@@ -2368,7 +2461,7 @@ var require_fr = __commonJS({
       "ui.grades.intro": "Tout contenu publi\xE9 est d\u2019abord Communautaire : les contr\xF4les automatiques l\u2019ont accept\xE9, personne ne l\u2019a encore relu. Valid\xE9 veut dire qu\u2019une personne l\u2019a relu : c\u2019est la marque de qualit\xE9 d\u2019Ourdir.",
       "ui.grades.visibility": "Visibilit\xE9 : le contenu Valid\xE9 est montr\xE9 \xE0 tout le monde d\xE8s l\u2019ouverture du Catalogue ; le communautaire n\u2019est vu que par ceux qui l\u2019affichent.",
       "ui.grades.trust": "Confiance : le badge Valid\xE9 dit qu\u2019une personne l\u2019a relu, et le fichier est h\xE9berg\xE9 par Ourdir (il reste disponible m\xEAme si ton h\xE9bergement dispara\xEEt).",
-      "ui.grades.updates": "Mises \xE0 jour sans attente : un cr\xE9ateur Valid\xE9 publie ses mises \xE0 jour sans nouvelle relecture, sauf un module qui demande une nouvelle permission.",
+      "ui.grades.updates": "Mises \xE0 jour sans attente : un cr\xE9ateur Valid\xE9 publie ses mises \xE0 jour sans nouvelle relecture, sauf un module, dont chaque version est relue puisqu\u2019il contient du code.",
       "ui.grades.sales": "Vente, plus tard : \xEAtre Valid\xE9 est la condition pour demander \xE0 devenir vendeur agr\xE9\xE9, quand la vente ouvrira.",
       "ui.grades.criteriaTitle": "Ce qu\u2019on relit",
       "ui.grades.criteria": "\xC7a marche comme annonc\xE9 ; les droits sont respect\xE9s (pas de contenu prot\xE9g\xE9 sans licence) ; rien de nuisible ; une fiche claire (nom, r\xE9sum\xE9, langues) ; pour un module, des permissions justifi\xE9es.",
@@ -2381,7 +2474,7 @@ var require_fr = __commonJS({
       "ui.req.titleVersion": "{name} v{version}",
       "ui.req.titleAccount": "Mon compte de cr\xE9ateur",
       "ui.req.whatVersion": "Une personne relira cette version pr\xE9cise. Accept\xE9e, elle passe en Valid\xE9.",
-      "ui.req.whatAccount": "Une personne relira ton travail publi\xE9. Accept\xE9e, tous tes contenus sans code passent en Valid\xE9, et tes modules le restent tant qu\u2019une mise \xE0 jour ne demande pas de nouvelle permission.",
+      "ui.req.whatAccount": "Une personne relira ton travail publi\xE9. Accept\xE9e, tous tes contenus sans code passent en Valid\xE9, et tes modules sont relus version par version, puisqu\u2019ils contiennent du code.",
       "ui.req.message": "Un mot pour la personne qui relit (facultatif)",
       "ui.req.why": "Pourquoi monter en grade ?",
       "ui.req.read": "J\u2019ai lu ce qu\u2019on relit et les d\xE9lais",
@@ -2412,10 +2505,15 @@ var require_fr = __commonJS({
       "ui.versions.notes": "Ce qui change",
       "ui.versions.downloading": "T\xE9l\xE9chargement\u2026 {percent} %",
       "ui.versions.backingUp": "Sauvegarde des tables\u2026",
+      "ui.versions.unpacking": "Installation en arri\xE8re-plan\u2026 Tu peux continuer \xE0 utiliser Ourdir.",
+      "ui.versions.restartReady": "Ourdir {version} est install\xE9e : elle d\xE9marrera au prochain lancement d\u2019Ourdir.",
+      "ui.versions.restart": "Red\xE9marrer maintenant",
+      "ui.update.ready": "Ourdir {version} est pr\xEAte",
+      "ui.update.restart": "Red\xE9marrer",
       "ui.versions.starting": "L\u2019installation d\xE9marre : Ourdir va se fermer.",
       "ui.versions.ready": "Pr\xEAt : l\u2019installeur a \xE9t\xE9 v\xE9rifi\xE9 ({file}).",
       "ui.versions.upTitle": "Installer Ourdir {version} ?",
-      "ui.versions.upText": "Ourdir va t\xE9l\xE9charger la version {version}, v\xE9rifier qu\u2019elle est bien celle publi\xE9e, sauvegarder tes tables, puis lancer l\u2019installation. Tes tables, ton identit\xE9 et tes r\xE9glages sont gard\xE9s.",
+      "ui.versions.upText": "Ourdir va t\xE9l\xE9charger la version {version}, v\xE9rifier qu\u2019elle est bien celle publi\xE9e, sauvegarder tes tables, puis l\u2019installer en arri\xE8re-plan : tu continues \xE0 utiliser Ourdir, et tu red\xE9marres quand tu veux. Tes tables, ton identit\xE9 et tes r\xE9glages sont gard\xE9s.",
       "ui.versions.downTitle": "Revenir \xE0 Ourdir {version} ?",
       "ui.versions.downText": "Tes tables ouvertes avec une version plus r\xE9cente peuvent mal fonctionner dans une version plus ancienne, et au pire \xEAtre ab\xEEm\xE9es. Ourdir va sauvegarder toutes tes tables avant. Si une table ne s\u2019ouvre plus, tu pourras la restaurer depuis la sauvegarde, ou revenir \xE0 une version r\xE9cente.",
       "ui.versions.downPlayers": "Tes joueurs doivent avoir une version compatible pour te rejoindre.",
@@ -2638,6 +2736,64 @@ var require_fr = __commonJS({
       "ui.settings.portSaved": "Port de la table : {port}.",
       "ui.settings.portNext": "La table en cours garde le port {running} ; le port {port} servira \xE0 son prochain lancement.",
       "ui.settings.portHint": "Change-le si un autre programme utilise d\xE9j\xE0 ce port. Tes amis retrouvent la table par le relais et apprennent la nouvelle adresse \xE0 leur prochaine connexion ; une invitation envoy\xE9e avant garde l'ancien port : sans relais, renvoie-la.",
+      "ui.net.h.local": "L\u2019acc\xE8s de tes amis est coup\xE9",
+      "ui.net.h.ok": "Tout est bon",
+      "ui.net.h.idle": "Lance une table pour tester",
+      "ui.net.h.direct": "Tes amis passent par ta box",
+      "ui.net.h.relay": "Tes amis passent par le relais",
+      "ui.net.h.connecting": "Connexion en cours\u2026",
+      "ui.net.h.bad": "Un souci bloque tes amis",
+      "ui.net.s.local": "Toi seul peux te connecter \xE0 ta table.",
+      "ui.net.s.lan": "Tes amis du m\xEAme r\xE9seau peuvent te rejoindre.",
+      "ui.net.s.idle": "Ourdir v\xE9rifiera alors que tes amis peuvent entrer.",
+      "ui.net.s.direct": "Ta box laisse entrer tes amis, et le relais d\u2019Ourdir est pr\xEAt en secours.",
+      "ui.net.s.directNoRelay": "Ta box laisse entrer tes amis. Le relais d\u2019Ourdir ne r\xE9pond pas, mais tu n\u2019en as pas besoin pour l\u2019instant.",
+      "ui.net.s.relay": "Le relais d\u2019Ourdir fait passer tes amis : ils entrent sans rien changer, et tu n\u2019as rien \xE0 r\xE9gler.",
+      "ui.net.s.connecting": "Le relais d\u2019Ourdir se connecte, cela prend quelques secondes.",
+      "ui.net.s.bad": "Ni ta box ni le relais d\u2019Ourdir ne laissent entrer tes amis. Les r\xE9glages avanc\xE9s disent quoi essayer.",
+      "ui.net.table.ok": "Ma table d\xE9marre sur ce PC",
+      "ui.net.table.idle": "Aucune table n\u2019est lanc\xE9e",
+      "ui.net.table.idleHint": "Lance une table : Ourdir v\xE9rifiera le reste.",
+      "ui.net.friends.off": "L\u2019acc\xE8s de tes amis est coup\xE9",
+      "ui.net.friends.offHint": "Tu peux le remettre dans les r\xE9glages avanc\xE9s, section R\xE9seau.",
+      "ui.net.lan.ok": "Tes amis du m\xEAme r\xE9seau peuvent te rejoindre",
+      "ui.net.relay.ok": "Le relais d\u2019Ourdir r\xE9pond",
+      "ui.net.relay.none": "Le relais d\u2019Ourdir est d\xE9sactiv\xE9",
+      "ui.net.relay.noneHint": "Sans lui, tes amis ne passent que par ta box. Tu peux le remettre dans les r\xE9glages avanc\xE9s.",
+      "ui.net.relay.down": "Le relais d\u2019Ourdir ne r\xE9pond pas",
+      "ui.net.relay.downDetail": "R\xE9ponse re\xE7ue : {detail}. V\xE9rifie ta connexion \xE0 Internet.",
+      "ui.net.relay.downHint": "V\xE9rifie ta connexion \xE0 Internet, ou choisis un autre relais dans les r\xE9glages avanc\xE9s.",
+      "ui.net.relay.connecting": "Connexion au relais d\u2019Ourdir\u2026",
+      "ui.net.door.ok": "Ta box laisse entrer tes amis",
+      "ui.net.door.warn": "La box n\u2019ouvre pas la porte seule",
+      "ui.net.door.warnHint": "Tes amis passent par le relais, sans effet pour eux.",
+      "ui.net.door.wait": "Le relais se connecte : tes amis pourront entrer dans un instant.",
+      "ui.net.door.bad": "Ta box ne laisse pas entrer tes amis",
+      "ui.net.door.badHint": "Elle n\u2019ouvre pas la porte seule et rien d\u2019autre ne passe. Les r\xE9glages avanc\xE9s donnent les solutions.",
+      "ui.set.mode.label": "Niveau des r\xE9glages",
+      "ui.set.mode.essential": "Essentiel",
+      "ui.set.mode.advanced": "Avanc\xE9",
+      "ui.set.net.test": "Tester ma connexion",
+      "ui.set.net.testing": "V\xE9rification\u2026",
+      "ui.set.net.details": "D\xE9tails",
+      "ui.set.scaleHint": "Lisible \xE0 un m\xE8tre de l\u2019\xE9cran.",
+      "ui.set.motionHint": "Moins de mouvement \xE0 l\u2019\xE9cran.",
+      "ui.set.ver.title": "Ourdir {version}",
+      "ui.set.ver.new": "La version {version} est disponible.",
+      "ui.set.ver.ok": "Tu as la derni\xE8re version.",
+      "ui.set.ver.update": "Mettre \xE0 jour",
+      "ui.set.ver.ready": "La version {version} est pr\xEAte. Red\xE9marre Ourdir pour l\u2019utiliser.",
+      "ui.set.ver.busy": "Mise \xE0 jour en cours\u2026",
+      "ui.set.more": "R\xE9glages avanc\xE9s : port, relais, pare-feu, licence, confidentialit\xE9\u2026",
+      "ui.set.jump": "Aller \xE0 une section",
+      "ui.set.sec.net": "R\xE9seau",
+      "ui.set.sec.display": "Affichage",
+      "ui.set.sec.licence": "Licence",
+      "ui.set.sec.versions": "Versions",
+      "ui.set.sec.translations": "Traductions",
+      "ui.set.sec.usage-settings": "Confidentialit\xE9",
+      "ui.set.sec.about": "\xC0 propos",
+      "ui.set.sec.data": "Donn\xE9es",
       "ui.tables.portBusyOffer": "Le port {port} est d\xE9j\xE0 utilis\xE9 par un autre programme (peut-\xEAtre un autre Ourdir ouvert). Le port {free} est libre.",
       "ui.port.offerTitle": "Port d\xE9j\xE0 utilis\xE9",
       "ui.port.offerUse": "Utiliser le port {port}",
@@ -2892,7 +3048,27 @@ var require_fr = __commonJS({
       "ui.builder.viewAs.lockedTag": "verrouill\xE9",
       "builder.hurts": "Inflige des d\xE9g\xE2ts \xE0 la cible (son jet est retir\xE9 des points de vie de la fiche vis\xE9e)",
       "builder.hurtsBool": "\xAB Inflige des d\xE9g\xE2ts \xBB doit \xEAtre oui ou non.",
-      "builder.hurtsNeedsRoll": "Infliger des d\xE9g\xE2ts demande un texte cliquable qui a un jet."
+      "builder.hurtsNeedsRoll": "Infliger des d\xE9g\xE2ts demande un texte cliquable qui a un jet.",
+      "ui.friends.rule": "\xCAtre ami ne donne acc\xE8s \xE0 aucune de tes tables : invite chaque ami \xE0 celles o\xF9 il joue.",
+      "ui.friends.countPlaying": "{n} en partie",
+      "ui.friends.countOnline": "{n} en ligne",
+      "ui.friends.countNone": "{n} ami(s), personne en ligne",
+      "ui.friends.playingAt": "En partie \xB7 {table}",
+      "ui.friends.since": "Ami depuis le {date}",
+      "ui.friends.guestOf": "Invit\xE9 \xE0 : {list}",
+      "ui.friends.guestOfNone": "Invit\xE9 \xE0 aucune de tes tables",
+      "ui.friends.join": "Rejoindre",
+      "ui.friends.inviteBtn": "Inviter \xE0\u2026",
+      "ui.friends.inviteMenu": "Inviter {name} \xE0 une de tes tables",
+      "ui.friends.inviteTo": "Inviter \xE0 \xAB {table} \xBB",
+      "ui.friends.takeOff": "Retirer de \xAB {table} \xBB",
+      "ui.friends.noTables": "Cr\xE9e d\u2019abord une table",
+      "ui.friends.moreFor": "Plus d\u2019options pour {name}",
+      "ui.friends.invitedTo": "{name} est invit\xE9 \xE0 \xAB {table} \xBB : il re\xE7oit \xAB Rejoindre \xBB.",
+      "ui.friends.invitedLater": "{name} est invit\xE9 \xE0 \xAB {table} \xBB : il recevra \xAB Rejoindre \xBB quand tu la lanceras.",
+      "ui.friends.uninvitedFrom": "{name} n\u2019a plus acc\xE8s \xE0 \xAB {table} \xBB.",
+      "ui.home.invite.guest": "Invit\xE9 \u2713",
+      "ui.home.invite.add": "Inviter"
     };
   }
 });
@@ -10090,6 +10266,8 @@ var require_fr2 = __commonJS({
       "dnd.monsters.createdNoScene": "Fiche \xAB {name} \xBB cr\xE9\xE9e, mais il n\u2019y a pas de sc\xE8ne ouverte pour y poser le jeton.",
       "dnd.monsters.failed": "La fiche n\u2019a pas pu \xEAtre cr\xE9\xE9e.",
       "dnd.monsters.placed": "\xAB {name} \xBB pos\xE9 sur la carte, avec sa fiche.",
+      "dragRuler.cell": "case",
+      "dragRuler.cells": "cases",
       "effects.add": "Ajouter un \xE9tat",
       "effects.advDown": "d\xE9savantage",
       "effects.advNone": "rien",
@@ -10181,6 +10359,17 @@ var require_fr2 = __commonJS({
       "folders.rename": "Renommer",
       "folders.save": "Renommer",
       "folders.unfile": "Ressortir du dossier",
+      "grid.alignCancel": "Annuler",
+      "grid.alignNoMap": "Il n\u2019y a pas de carte sur cette sc\xE8ne.",
+      "grid.calibrate": "Caler la grille sur la carte\u2026",
+      "grid.calDone": "Grille cal\xE9e : cases de {px} unit\xE9s.",
+      "grid.calFound": "Cases trouv\xE9es sur la carte : {px} unit\xE9s.",
+      "grid.calHelp": "Molette sur la carte : cases plus grandes ou plus petites (Maj : plus fin). Glisser : d\xE9placer la carte sous la grille.",
+      "grid.calManual": "Aucune case n\u2019est dessin\xE9e sur cette carte : r\xE8gle la grille \xE0 la main ({px} unit\xE9s).",
+      "grid.calOk": "Valider",
+      "grid.hexFlat": "Type : hexagones en colonnes (pointes sur les c\xF4t\xE9s)",
+      "grid.hexPointy": "Type : hexagones en rang\xE9es (pointes en haut)",
+      "grid.notSaved": "L\u2019orientation de la grille n\u2019a pas \xE9t\xE9 enregistr\xE9e.",
       "host.access.creator": "Cette fiche est celle de son cr\xE9ateur : il la modifie toujours.",
       "host.access.editForAll": "On ne partage pas la modification avec tous : choisis des joueurs.",
       "host.access.gmOnly": "Seul le MJ r\xE8gle l\u2019acc\xE8s aux fiches.",
@@ -10349,6 +10538,7 @@ var require_fr2 = __commonJS({
       "host.lobby.gmOnlyOther": "Seul le MJ peut ouvrir un autre compte.",
       "host.lobby.noPlayer": "Joueur introuvable.",
       "host.lobby.signIn": "Connecte-toi d\u2019abord.",
+      "host.look.gmOnly": "Seul le MJ am\xE8ne le regard de la table.",
       "host.media.badType": "Type de fichier non autoris\xE9.",
       "host.media.tooBig": "Fichier trop gros pour son type (images et cartes : 4 Go au plus).",
       "host.media.oneAtATime": "Un envoi est d\xE9j\xE0 en cours : attends qu\u2019il se termine.",
@@ -10401,6 +10591,10 @@ var require_fr2 = __commonJS({
       "hud.turnOf": "Au tour de {n}",
       "hud.turnNotSaved": "Le tour n\u2019a pas pu \xEAtre chang\xE9 : r\xE9essayez.",
       "gearEffects.notSaved": "La CA et les sauvegardes des objets \xE9quip\xE9s n\u2019ont pas pu \xEAtre mises \xE0 jour : elles le seront au prochain changement.",
+      "intro.installing": "Ourdir pr\xE9pare la salle d\u2019Arthur\u2026",
+      "intro.ready": "Bienvenue dans la salle d\u2019Arthur. Arthur est s\xE9lectionn\xE9 : tu vois ce qu\u2019il voit. D\xE9place-le vers la grande porte, ouvre les portes, cherche la r\xE9serve dans le noir.",
+      "intro.readyLite": "Bienvenue dans la salle d\u2019Arthur. D\xE9place Arthur vers la grande porte, puis va voir le cristal de la biblioth\xE8que.",
+      "intro.failed": "La salle d\u2019Arthur n\u2019a pas pu \xEAtre pr\xE9par\xE9e : la table reste vide.",
       "journal.all": "Tout",
       "journal.books": "Livres",
       "journal.help": "Aide du journal",
@@ -10409,6 +10603,12 @@ var require_fr2 = __commonJS({
       "journal.notes": "Notes",
       "journal.openPdf": "Ouvrir le PDF",
       "journal.search": "Rechercher dans le journal\u2026",
+      "layerBar.down": "\xC9tage inf\xE9rieur",
+      "layerBar.drawings": "Dessins",
+      "layerBar.map": "Carte",
+      "layerBar.title": "Calques",
+      "layerBar.tokens": "Jetons",
+      "layerBar.up": "\xC9tage sup\xE9rieur",
       "library.action": "Action",
       "library.acts": "agit",
       "library.add": "Ajouter",
@@ -11049,6 +11249,9 @@ var require_fr2 = __commonJS({
       "rules.x.perLevel": "{base} + {per} \xD7 {level}",
       "rules.x.step": "jusqu\u2019\xE0 {upTo} \u2192 {value}",
       "rules.x.steps": "selon {of} : {list} ; sinon {other}",
+      "sceneDock.drawings": "Dessins",
+      "sceneDock.map": "Carte",
+      "sceneDock.tokens": "Jetons",
       "screenFilter.auto": "Selon le th\xE8me",
       "screenFilter.dread": "P\xE9nombre et d\xE9saturation",
       "screenFilter.failed": "Le filtre n\u2019a pas pu \xEAtre enregistr\xE9.",
@@ -11061,12 +11264,14 @@ var require_fr2 = __commonJS({
       "screenFilter.vignette": "Vignettage chaud",
       "settings.full": "Compl\xE8te",
       "settings.fullHint": "Toutes les fen\xEAtres.",
+      "settings.groupMe": "Pour moi",
+      "settings.groupTable": "La table",
+      "settings.groupRules": "R\xE8gles de jeu",
+      "settings.groupSheets": "Nouvelles fiches",
       "settings.hidden": "Masqu\xE9e",
       "settings.hiddenHint": "Rien que la carte, pour l\u2019immersion.",
       "settings.interface": "Interface",
-      "settings.keys": "Alt+1 compl\xE8te \xB7 Alt+2 r\xE9duite \xB7 Alt+3 masqu\xE9e \xB7 Alt+H masquer ou r\xE9tablir",
-      "settings.reduced": "R\xE9duite",
-      "settings.reducedHint": "Les fen\xEAtres se replient en ic\xF4nes.",
+      "settings.keys": "Alt+1 compl\xE8te \xB7 Alt+2 masqu\xE9e \xB7 Alt+H masquer ou r\xE9tablir",
       "settings.sheets": "Fiches",
       "settings.sheetsHint": "Les r\xE9glages d\u2019\xE9clairage que prend chaque nouvelle fiche (onglet Param\xE8tres). Les fiches existantes gardent les leurs.",
       "settings.sheetsNotSaved": "Les r\xE9glages des fiches n\u2019ont pas \xE9t\xE9 enregistr\xE9s : r\xE9essayez.",
@@ -11243,7 +11448,161 @@ var require_fr2 = __commonJS({
       "visionForm.steady": "stable",
       "visionForm.thermal": "Thermique",
       "visionForm.torch": "Torche",
-      "visionForm.unitHint": "ft et m se convertissent selon la grille de la sc\xE8ne."
+      "visionForm.unitHint": "ft et m se convertissent selon la grille de la sc\xE8ne.",
+      "host.turn.notYourTurn": "Ce n\u2019est pas le tour d\u2019un de tes personnages.",
+      "hud.pass": "Fin de mon tour",
+      "hud.passHint": "C\u2019est le tour de ton personnage : passe la main au suivant.",
+      "rollWriter.placeholder": "\xC9cris un jet : 2d6+3",
+      "rollWriter.label": "Le jet, \xE0 \xE9crire ou \xE0 composer avec les d\xE9s",
+      "sound.title": "Sons",
+      "sound.on": "Jouer les sons de la table",
+      "sound.master": "Volume g\xE9n\xE9ral",
+      "sound.dice": "D\xE9s",
+      "sound.chat": "Messages du tchat",
+      "sound.turn": "Mon tour",
+      "sound.try": "\xC9couter",
+      "host.lighting.comeCloser": "Approche-toi de la porte pour l\u2019ouvrir ou la fermer.",
+      "pause.title": "Jeu en pause",
+      "pause.gmHint": "Espace pour reprendre",
+      "pause.playerHint": "Le MJ a mis la partie en pause",
+      "pause.notSaved": "La pause n\u2019a pas pu \xEAtre chang\xE9e.",
+      "pause.noMove": "Le jeu est en pause : les jetons ne bougent pas.",
+      "host.scenes.unknown": "Cette carte n\u2019existe pas (ou plus) \xE0 cette table.",
+      "scenes.title": "Cartes",
+      "scenes.manage": "Cartes (S) : clic pour ouvrir ou fermer",
+      "scenes.youAreHere": "tu y es",
+      "scenes.clickToView": "clic pour y aller (seul)",
+      "scenes.view": "Y aller (seul)",
+      "scenes.sendGroup": "Y envoyer le groupe",
+      "scenes.everyone": "Tout le monde ici, moi compris",
+      "scenes.pin": "\xC9pingler",
+      "scenes.unpin": "D\xE9s\xE9pingler",
+      "scenes.group": "Le groupe",
+      "scenes.groupHint": "La carte du groupe : glisse cette marque sur une autre carte pour y emmener tout le groupe",
+      "scenes.away": "absent",
+      "scenes.untitled": "Sans titre",
+      "scenes.sort": "Trier",
+      "scenes.sortRecent": "R\xE9centes",
+      "scenes.sortName": "Nom",
+      "scenes.sortCreated": "Cr\xE9ation",
+      "scenes.asList": "En liste",
+      "scenes.asGrid": "En vignettes",
+      "scenes.archives": "Archives",
+      "scenes.newMap": "Nouvelle carte",
+      "scenes.newFolder": "Nouveau dossier",
+      "scenes.newSubfolder": "Nouveau sous-dossier",
+      "scenes.rename": "Renommer",
+      "scenes.archive": "Archiver",
+      "scenes.restore": "Restaurer",
+      "scenes.delete": "Supprimer",
+      "scenes.deleteFolder": "Supprimer le dossier",
+      "scenes.confirmDelete": "Supprimer la carte \xAB {n} \xBB ? Tout ce qu\u2019elle contient est perdu.",
+      "scenes.confirmDeleteFolder": "Supprimer le dossier \xAB {n} \xBB ? Ses cartes restent, hors dossier.",
+      "scenes.noMaps": "Aucune carte. \xAB + \xBB en cr\xE9e une.",
+      "scenes.noArchives": "Aucune carte archiv\xE9e.",
+      "scenes.nothingFound": "Aucune carte \xE0 ce nom.",
+      "scenes.noAnswer": "La table n\u2019a pas r\xE9pondu.",
+      "scenes.failed": "La carte n\u2019a pas pu \xEAtre chang\xE9e.",
+      "scenes.movedTo": "Tu passes sur : {n}",
+      "scenes.movedToUntitled": "Tu passes sur une autre carte.",
+      "scenes.close": "Fermer (\xC9chap)",
+      "scenes.searchAll": "Chercher dans toutes les cartes",
+      "scenes.folders": "Dossiers des cartes",
+      "scenes.all": "Toutes les cartes",
+      "scenes.loose": "Non class\xE9es",
+      "scenes.collapse": "Replier",
+      "scenes.expand": "D\xE9plier",
+      "scenes.toRoot": "Sortir \xE0 la racine",
+      "scenes.players": "Joueurs :",
+      "scenes.playersHint": "Les joueurs : glisse un portrait sur une carte pour y envoyer ce joueur",
+      "scenes.dragPlayer": "Glisse {n} sur une carte pour l\u2019y envoyer ; clic pour voir sa carte",
+      "scenes.select": "S\xE9lectionner",
+      "scenes.unselect": "D\xE9s\xE9lectionner",
+      "scenes.nSelected": "{n} s\xE9lectionn\xE9e(s)",
+      "scenes.nMaps": "{n} cartes",
+      "scenes.moveTo": "Ranger dans\u2026",
+      "scenes.results": "R\xE9sultats pour \xAB {q} \xBB",
+      "scenes.emptyFolder": "Dossier vide : glisse des cartes dessus.",
+      "scenes.pinned": "\xC9pingl\xE9es",
+      "scenes.noPins": "Aucune carte \xE9pingl\xE9e : la punaise d\u2019une carte l\u2019ajoute ici.",
+      "entry.label": "Guide de la table neuve",
+      "entry.title": "Ta table est pr\xEAte. Il lui manque un d\xE9cor.",
+      "entry.sub": "Trois gestes et tes joueurs peuvent entrer. Chacun dispara\xEEt d\xE8s que tu l\u2019as fait.",
+      "entry.waiting.title": "La table attend sa carte.",
+      "entry.waiting.text": "Le ma\xEEtre du jeu n\u2019a pas encore pos\xE9 de carte.",
+      "entry.map.title": "Pose une carte",
+      "entry.map.text": "Glisse une image ici, ou choisis-la sur ton ordinateur (jpg, png, webp, .dd2vtt).",
+      "entry.map.button": "Choisir une image\u2026",
+      "entry.map.sending": "Envoi de la carte\u2026",
+      "entry.map.done": "La carte \xAB {name} \xBB est pos\xE9e.",
+      "entry.map.failed": "La carte n\u2019a pas pu \xEAtre pos\xE9e.",
+      "entry.map.notMap": "Ce fichier n\u2019est ni une image, ni un fichier .dd2vtt.",
+      "entry.map.badUvtt": "Ce fichier .dd2vtt est illisible : il ne contient pas d\u2019image de carte.",
+      "entry.map.uvtt": "{w} murs et {l} lumi\xE8res lus dans le fichier.",
+      "entry.map.uvttLite": "Table Lite : la carte et sa grille sont pos\xE9es, pas les murs du fichier.",
+      "entry.char.title": "Cr\xE9e un personnage",
+      "entry.char.text": "Une fiche vierge du syst\xE8me de la table, \xE0 remplir tout de suite.",
+      "entry.char.button": "Nouvelle fiche",
+      "entry.friend.title": "Invite un ami",
+      "entry.friend.text": "Tes amis rejoignent ta table sur invitation, depuis leur lanceur. Aucun compte \xE0 cr\xE9er.",
+      "entry.friend.button": "Ouvrir mes amis",
+      "entry.known": "Tu connais d\xE9j\xE0 ?",
+      "entry.hide": "Masquer ce guide",
+      "entry.palette": "ouvre toutes les commandes",
+      "quickbar.empty": "Barre rapide vide \xB7 glisse un jet, un sort ou une fiche ici",
+      "quickbar.fold": "replier",
+      "quickbar.unfold": "d\xE9plier",
+      "quickbar.toggle": "Replier ou d\xE9plier la barre rapide",
+      "palette.title": "Commandes",
+      "palette.field": "Rechercher une commande",
+      "palette.placeholder": "Taper une commande, un jet, une fiche\u2026",
+      "palette.esc": "\xC9chap",
+      "palette.none": "Aucune commande ne correspond.",
+      "palette.count": "{n} r\xE9sultat(s)",
+      "palette.failed": "La commande n\u2019a pas pu s\u2019ex\xE9cuter.",
+      "palette.g.rolls": "Jets",
+      "palette.g.go": "Aller \xE0",
+      "palette.g.sheets": "Fiches",
+      "palette.g.scenes": "Cartes",
+      "palette.g.interface": "Interface",
+      "palette.rollsOf": "Jets de {name}",
+      "palette.roll": "Lancer {what}",
+      "palette.kw.roll": "jet d\xE9 lancer roll",
+      "palette.kw.sheet": "fiche personnage feuille sheet",
+      "palette.kw.window": "ouvrir fen\xEAtre onglet outil window",
+      "palette.kw.map": "carte sc\xE8ne map scene aller",
+      "palette.kw.interface": "interface mode affichage",
+      "palette.openSheet": "Ouvrir la fiche de {name}",
+      "palette.browseMaps": "Parcourir les cartes",
+      "palette.goMap": "Aller \xE0 la carte {name}",
+      "palette.here": "ici",
+      "palette.interfacePanel": "Ranger les fen\xEAtres (panneau Interface)",
+      "palette.modeFull": "Interface compl\xE8te",
+      "palette.modeHidden": "Masquer l\u2019interface (immersion)",
+      "palette.modeToggle": "Masquer ou r\xE9tablir l\u2019interface",
+      "pin.label": "Fiche \xE9pingl\xE9e",
+      "pin.open": "Fiche",
+      "pin.openHint": "Ouvrir la fiche compl\xE8te",
+      "pin.fold": "Replier la fiche \xE9pingl\xE9e",
+      "pin.unfold": "D\xE9plier la fiche \xE9pingl\xE9e",
+      "pin.less": "Retirer 1 point de vie",
+      "pin.more": "Ajouter 1 point de vie",
+      "pin.allRolls": "Tous les jets",
+      "pin.hpUnit": "PV",
+      "pin.defense": "D\xE9fense",
+      "pin.subtitle": "{class} niv. {level}",
+      "pin.refused": "Points de vie inchang\xE9s : {why}",
+      "host.spam.tooFast": "Doucement, c\u2019est trop rapide : attends quelques secondes avant de recommencer.",
+      "tokenNames.title": "Noms sous les jetons",
+      "tokenNames.off": "Jamais",
+      "tokenNames.hover": "Au survol",
+      "tokenNames.always": "Toujours",
+      "tokenNames.hint": "Le nom de la fiche sous son jeton, pour toute la table.",
+      "tokenNames.notSaved": "Le r\xE9glage des noms n\u2019a pas pu \xEAtre enregistr\xE9.",
+      "large.title": "Image en grand",
+      "large.hint": "Clic, \xC9chap ou I pour fermer",
+      "entry.demo.text": "Envie de voir une table pr\xEAte \xE0 jouer ?",
+      "entry.demo.button": "D\xE9couvrir la salle d\u2019Arthur"
     };
   }
 });
@@ -12459,6 +12818,8 @@ var require_en = __commonJS({
       "Text color": "Text color",
       "Text status...": "Text status...",
       Texture: "Texture",
+      "The GM gave you the control of {name}": "The GM gave you the control of {name}",
+      "The GM has revoked the control of {name}": "The GM has revoked the control of {name}",
       "The GM is not connected": "The GM is not connected",
       "The content of this entry is an uploaded PDF, so you can't edit it directly.": "The content of this entry is an uploaded PDF, so you can't edit it directly.",
       "The craft {name} is not shared anymore with user {username}": "The craft {name} is not shared anymore with user {username}",
@@ -12938,6 +13299,8 @@ var require_en2 = __commonJS({
       "builderTheme.valeursCalculees": "Computed values",
       "dialog.firewall.failed": "Windows Firewall could not be updated. Accept the administrator prompt (UAC) and try again.",
       "dialog.join.unknownSender": "This invitation comes from someone who is not in your friends. Add their friend code (Friends menu) first.",
+      "err.backup.space": "Not enough disk space to back up the tables before the update ({need} MB needed). Free some space, then try again.",
+      "err.backup.verify": "The backup of \u201C{name}\u201D could not be read back correctly ({why}): nothing was installed.",
       "err.bundle.absolute": "absolute path (Foundry's own)",
       "err.bundle.badType": "File type that cannot be bundled: {name}.",
       "err.bundle.dynamicImport": "Dynamic import() is forbidden in a module.",
@@ -13067,6 +13430,7 @@ var require_en2 = __commonJS({
       "err.install.needsDep": "Depends on \u201C{id}\u201D, which must be installed and enabled.",
       "err.install.needsDepVersion": "Depends on \u201C{id}\u201D {version} or later.",
       "err.install.newerInstalled": "A newer version ({version}) is already installed.",
+      "err.install.publisherChanged": "WARNING: this version is not signed by the same publisher key as the one installed. It keeps neither its activation nor the permissions granted: check where it comes from before enabling it.",
       "err.install.noManifest": "module.json (or system.json) not found.",
       "err.install.noManifestAtRoot": "module.json (or system.json) not found at the root of the folder or the archive.",
       "err.install.notAsked": "Permission the module did not ask for: {list}",
@@ -13167,6 +13531,7 @@ var require_en2 = __commonJS({
       "err.versions.older": "Ourdir\u2019s list of versions is older than the one already seen: it is ignored.",
       "err.versions.download": "The download failed ({reason}).",
       "err.versions.checksum": "The downloaded file is not the one Ourdir published: it was not started.",
+      "err.versions.unpack": "The new version could not be installed. Nothing changed: try again, or download the installer from ourdir.fr.",
       "err.versions.unknown": "This version is not in the list.",
       "err.versions.offline": "The list of versions could not be read (offline?).",
       "err.social.noIdentity": "Identity not initialised.",
@@ -13221,6 +13586,7 @@ var require_en2 = __commonJS({
       "err.userThemes.exists": "A theme \u201C{id}\u201D already exists.",
       "err.userThemes.fromCatalog": "This theme comes from the catalogue: it serves your tables, but is never edited, exported or shared.",
       "err.userThemes.notFound": "Theme not found.",
+      "err.worlds.dbMissing": "This backup is incomplete: the table's database is not in it.",
       "err.worlds.name": "Give the table a name of at least 2 characters.",
       "err.worlds.notBackup": "This file is not a table backup.",
       "err.worlds.notBackupOurdir": "This file is not an Ourdir table backup.",
@@ -13242,6 +13608,7 @@ var require_en2 = __commonJS({
       "err.zip.size": "Inconsistent size: {name}",
       "err.zip.symlink": "Symbolic link refused: {name}",
       "err.zip.tooBig": "Archive too large once decompressed.",
+      "err.zip.bombArchive": "Suspicious compression ratio for the whole archive (bomb?).",
       "err.zip.tooManyEntries": "Archive too big: {n} files (at most {max}).",
       "menu.app": "Ourdir",
       "menu.edit": "Edit",
@@ -13592,7 +13959,6 @@ var require_en2 = __commonJS({
       "ui.access.relayDown": "The relay ({relay}) is not answering right now, retrying. Friends can still join directly if your router lets them.",
       "ui.access.sharedAddress": "Your provider shares your address with other customers: your friends cannot reach you for now.",
       "ui.access.sharedAddressIpv6": "Your provider shares your regular address with other customers, but your IPv6 may be enough.",
-      "ui.app.tagline": "Your tabletop RPG tables, hosted at home.",
       "ui.builder.add": "Add",
       "ui.builder.addColumn": "Add a column",
       "ui.builder.addHint": "Click to add, or drag onto the sheet",
@@ -13850,30 +14216,45 @@ var require_en2 = __commonJS({
       "ui.common.cancel": "Cancel",
       "ui.common.copied": "Copied",
       "ui.common.copy": "Copy",
-      "ui.common.paste": "Paste",
       "ui.error.startup": "Ourdir could not start. The details are in the log: {log}",
       "ui.error.unexpected": "Something went wrong. The details are in the log (Settings \u2192 Open the logs folder).",
       "ui.friends.accessBad": "Your table is probably not reachable from the Internet yet (see Settings). The invitation will work once that is fixed.",
       "ui.friends.add": "Add a friend",
-      "ui.friends.addPlaceholder": "Paste their friend code (td1_\u2026)",
+      "ui.friends.addPlaceholder": "Their friend code: OURD-XXXX-XXXX-XXXX",
       "ui.friends.addSubmit": "Add",
       "ui.friends.code": "My friend code",
-      "ui.friends.codeHint": "Send this code to someone so they can add you. It is not secret: it only holds your public key.",
+      "ui.friends.codeHint": "Give this code to someone: they type it, you accept their request, you are friends. It never changes, even if you change your name.",
       "ui.friends.confirmRemove": "Remove {name} from your friends?",
       "ui.friends.invitation": "Invitation for {name}",
       "ui.friends.invitationHint": "Encrypted for them only: nobody else can read the address. Send it (Discord, SMS\u2026). Valid for 7 days.",
-      "ui.friends.invite": "Invite to my table",
       "ui.friends.invited": "Invited to your table",
-      "ui.friends.list": "My friends",
+      "ui.friends.lobbyDownAdd": "The relay does not answer: try again, or use \xAB Add without Internet \xBB.",
+      "ui.friends.already": "{name} is already your friend.",
+      "ui.friends.unknownCode": "Nobody has this code (check it: it has 12 characters).",
+      "ui.friends.ownCode": "This is your own code.",
+      "ui.friends.accepted": "{name} accepted: you are friends.",
+      "ui.friends.requestIn": "{name} wants to add you as a friend (Friends page).",
+      "ui.friends.requestSent": "Request sent to {name}.",
+      "ui.friends.cancelRequest": "Cancel",
+      "ui.friends.refuse": "Refuse",
+      "ui.friends.accept": "Accept",
+      "ui.friends.waiting": "waiting for their answer",
+      "ui.friends.wantsYou": "wants to add you as a friend",
+      "ui.friends.requestsOut": "Requests sent",
+      "ui.friends.requestsIn": "Requests received",
+      "ui.friends.offlineHint": "Without the relay, the old long code adds a friend at once (each pastes the other's).",
+      "ui.friends.offlineTitle": "Add without Internet",
       "ui.friends.localWarn": 'Your network access is "Local": they will not be able to reach you. Change it in Settings, then create the invitation again.',
       "ui.friends.me": "My identity",
       "ui.friends.name": "Display name",
-      "ui.friends.needTable": "Launch a table to invite friends.",
       "ui.friends.none": "No friends yet.",
-      "ui.friends.presence": `There is no "online" status for friends: the app uses no central server. A table's state is shown in the Tables tab.`,
+      "ui.friends.state.online": "Online",
+      "ui.friends.state.playing": "In a game",
+      "ui.friends.state.away": "Away",
+      "ui.friends.appearOffline": "Appear offline (my friends do not see me online)",
+      "ui.friends.lobbyDown": "Presence unavailable for now (no connection to the relay): your friends show as away.",
       "ui.friends.remove": "Delete",
       "ui.friends.save": "Save",
-      "ui.friends.uninvite": "Remove from my table",
       "ui.guide.arthur": "I\u2019m Arthur. I keep you company while your table gets ready.",
       "ui.guide.eyebrow": "Welcome",
       "ui.guide.lead": "Ourdir hosts your game at home: no account, no subscription to play with your friends.",
@@ -13886,8 +14267,68 @@ var require_en2 = __commonJS({
       "ui.guide.s3b": "Add friends",
       "ui.guide.s3t": "Swap friend codes with them, then send them an invitation to your table.",
       "ui.guide.title": "Your first table in three steps",
-      "ui.hero.live": "Live",
-      "ui.hero.resume": "Resume",
+      "ui.home.changeSystem": "Change game system",
+      "ui.home.nav.play": "Play",
+      "ui.home.nav.create": "Create",
+      "ui.home.nav.more": "More",
+      "ui.home.nav.asks": "{n} friend request(s) waiting.",
+      "ui.home.nav.knocks": "{n} person(s) asking to join your table.",
+      "ui.home.nav.me": "{name}: my profile and friends",
+      "ui.home.eyebrow.live": "Live \xB7 your table is open",
+      "ui.home.eyebrow.last": "Last session \xB7 {when}",
+      "ui.home.eyebrow.never": "Table never launched",
+      "ui.home.eyebrow.invite": "Opened by {name} right now",
+      "ui.home.eyebrow.liveFriend": "Live at a friend's",
+      "ui.home.invited.one": "{n} friend invited",
+      "ui.home.invited.other": "{n} friends invited",
+      "ui.home.play": "Play",
+      "ui.home.join": "Join",
+      "ui.home.invite": "Invite",
+      "ui.home.switch": "Switch table",
+      "ui.home.tableMenu": "Actions for table \u201C{name}\u201D",
+      "ui.home.launchOnly": "Launch without entering",
+      "ui.home.stop": "Stop the table",
+      "ui.home.confirmForget": "Forget the table \u201C{name}\u201D? You can join it again with an invitation.",
+      "ui.home.net.aria": "Network status: {state}. Open the settings.",
+      "ui.home.net.open": "See the detail in Settings",
+      "ui.home.posters.aria": "Your tables",
+      "ui.home.poster.new": "New table",
+      "ui.home.poster.orCode": "or paste a code",
+      "ui.home.poster.last": "Last session {when}",
+      "ui.home.poster.liveFriend": "Live",
+      "ui.home.code.label": "Paste a friend code, a table code or an invitation",
+      "ui.home.code.placeholder": "OURD-\u2026 TABLE-\u2026 td1i_\u2026",
+      "ui.home.code.go": "Go",
+      "ui.home.code.hint": "Friend code (OURD-\u2026), table code (TABLE-\u2026) or invitation (td1i_\u2026).",
+      "ui.home.code.unknown": "This is neither a friend code (OURD-\u2026), a table code (TABLE-\u2026), nor an invitation (td1i_\u2026).",
+      "ui.home.code.friendDone": "Friend added.",
+      "ui.home.code.title": "Did you receive a code or an invitation?",
+      "ui.home.alerts": "Requests to enter your table",
+      "ui.home.friends.title": "Friends",
+      "ui.home.friends.aria": "Your friends",
+      "ui.home.friends.none": "Nobody yet.",
+      "ui.home.friends.more": "and {n} more",
+      "ui.home.friends.manage": "Manage my friends",
+      "ui.home.friends.add": "Add a friend",
+      "ui.home.invite.eyebrow": "Invite",
+      "ui.home.invite.title": "Invite to your table",
+      "ui.home.invite.friends": "Your friends see your table in their Ourdir as soon as it is launched. You invite them from the Friends page.",
+      "ui.home.invite.friendsGo": "Open the Friends page",
+      "ui.home.invite.needTable": "Launch your table (Play) to make a code.",
+      "ui.home.poster.title": "Poster image",
+      "ui.home.poster.hint": "On the home screen your table is a poster. Without an image it wears a colour of its own. An image is cropped and darkened under the text, so that it stays readable.",
+      "ui.home.poster.choose": "Choose an image\u2026",
+      "ui.home.poster.change": "Change the image\u2026",
+      "ui.home.poster.remove": "Remove the image",
+      "ui.home.poster.formats": "PNG, JPEG or WebP, 8 MB at most. The image is copied into the table's folder.",
+      "ui.home.poster.pickTitle": "Choose the poster image",
+      "ui.home.poster.saved": "Poster image saved.",
+      "ui.home.poster.removed": "Poster image removed.",
+      "ui.home.poster.err.type": "This file is not a PNG, JPEG or WebP image.",
+      "ui.home.poster.err.tooBig": "This image is heavier than 8 MB.",
+      "ui.home.poster.err.unreadable": "This image could not be read.",
+      "ui.home.poster.err.tooSmall": "This image is too small (at least 64 px on each side).",
+      "ui.home.poster.err.tooLarge": "This image is too large (8000 px at most on each side).",
       "ui.home.resume": "Resume a template",
       "ui.home.resumeNone": "You have no sheet of your own yet.",
       "ui.home.resumeText": "Carry on with one of your own sheets.",
@@ -13983,6 +14424,24 @@ var require_en2 = __commonJS({
       "ui.mod.packs": "Compendiums: {done} converted, {skipped} skipped.",
       "ui.mod.perms": "Requested permissions",
       "ui.mod.permsNone": "No permission requested.",
+      "ui.mod.enableTitle": "Choose the permissions",
+      "ui.mod.enableHint": "Tick what this module may do. What you allow applies to every player at the table; risky permissions are unticked.",
+      "ui.mod.notYet": "not available yet: it will not be granted",
+      "ui.mod.plain.ui.style": "change the look of the whole interface (hide or rename buttons)",
+      "ui.mod.plain.chat.write": "write in the chat in your name",
+      "ui.mod.plain.chat.read": "read the chat",
+      "ui.mod.plain.chat.command": "answer /\u2026 commands",
+      "ui.mod.plain.ui.panel": "open its panels and notifications",
+      "ui.mod.plain.ui.toolbar": "add its buttons",
+      "ui.mod.plain.engine.hook": "watch what happens in the game",
+      "ui.mod.plain.tokens.read": "see the tokens",
+      "ui.mod.plain.storage.local": "keep its settings on this computer",
+      "ui.mod.plain.ui.sheet": "add tabs to sheets",
+      "ui.mod.plain.scene.read": "read the scene",
+      "ui.mod.plain.scene.draw": "draw on the map",
+      "ui.mod.plain.sheet.read": "read the sheets",
+      "ui.mod.plain.dice.formula": "add functions to formulas",
+      "ui.mod.plain.audio.play": "play sounds",
       "ui.mod.pickFile": "Choose a module (.zip)",
       "ui.mod.pickFolder": "Choose a module folder",
       "ui.mod.plain.dice.intercept": "change dice results",
@@ -14009,7 +14468,7 @@ var require_en2 = __commonJS({
       "ui.mod.trust.signed": "Signed (community)",
       "ui.mod.trust.unsigned": "Unsigned",
       "ui.mod.trustHint.official": "Signed by an official project key or a verified rights holder.",
-      "ui.mod.trustHint.signed": "The author is authentic ({name}) but the project has not reviewed the content.",
+      "ui.mod.trustHint.signed": "Signed by a publisher who presents themselves as \u201C{name}\u201D: the author declares that name, only their key (fingerprint in the details) proves anything. The project has not reviewed the content.",
       "ui.mod.trustHint.unsigned": "No guarantee about the author or the content. Only install what you know.",
       "ui.mod.uninstall": "Uninstall",
       "ui.mod.upToDate": '"{title}" is up to date.',
@@ -14425,7 +14884,6 @@ var require_en2 = __commonJS({
       "ui.rules.winPoolDice": "Extra or fewer dice",
       "ui.rules.window": "Window at click time",
       "ui.rules.yes": "yes",
-      "ui.settings.advanced": "Advanced options",
       "ui.settings.data": "Data",
       "ui.settings.details": "Technical details",
       "ui.settings.devTools": "Developer tools (Ctrl+Shift+I)",
@@ -14459,8 +14917,6 @@ var require_en2 = __commonJS({
       "ui.settings.openData": "Open the data folder",
       "ui.settings.publicHost": "Custom address (DDNS name)",
       "ui.settings.publicHostHint": "For advanced users. Normally the address is detected automatically. No http:// and no port.",
-      "ui.settings.reachRun": "Check",
-      "ui.settings.recheck": "Check again now",
       "ui.settings.reduceMotion": "Reduce animations",
       "ui.settings.relay": "Relay",
       "ui.settings.relay.custom": "Another relay",
@@ -14479,8 +14935,7 @@ var require_en2 = __commonJS({
       "ui.settings.uiMode": "Interface in game",
       "ui.settings.uiMode.full": "Full: every menu and window",
       "ui.settings.uiMode.hidden": "Hidden: the board alone (immersion)",
-      "ui.settings.uiMode.reduced": "Reduced: icons only",
-      "ui.settings.uiModeHint": "During a game: Alt+1 full, Alt+2 reduced, Alt+3 hidden, Alt+H hides or shows again. The game's menu offers the same choices. When the interface is hidden, the top edge of the window brings the Menu tab back.",
+      "ui.settings.uiModeHint": "During a game: Alt+1 full, Alt+2 hidden, Alt+H hides or shows again. The game's menu offers the same choices. When the interface is hidden, the top edge of the window brings the Menu tab back.",
       "ui.share.accept": "I have the right to share this content and I accept the catalogue's rules.",
       "ui.share.backupText": "Without it, you can no longer publish a new version of your packages. Keep the file somewhere safe: password manager, USB stick.",
       "ui.share.backupTitle": "Back up your key",
@@ -14611,23 +15066,28 @@ var require_en2 = __commonJS({
       "ui.tables.duplicateSuffix": "(copy)",
       "ui.tables.duplicated": "Copy created: \u201C{name}\u201D.",
       "ui.tables.forget": "Forget",
-      "ui.tables.friends": "My friends' tables",
-      "ui.tables.friendsNone": "You have not joined any table. Paste an invitation below.",
+      "ui.tables.tableOf": "{name}'s table",
+      "ui.tables.inviteOthers": "Invite someone who is not your friend",
+      "ui.tables.inviteOthersHint": "Your friends already see your table in their Ourdir. For others: a code to give them; each request waits for your yes.",
+      "ui.tables.codeMake": "Make an invitation code",
+      "ui.tables.codeStop": "Stop this code",
+      "ui.tables.codeUntil": "valid until {time}",
+      "ui.tables.knocks": "asks to join your table",
+      "ui.tables.knockIn": "{name} asks to join your table (Tables page).",
+      "ui.tables.knockAccepted": "{name} accepted you: joining their table.",
+      "ui.tables.knockSent": "Request sent to {name}: wait for them to accept.",
+      "ui.tables.knockWaiting": "Waiting for {name} ({table})\u2026",
+      "ui.tables.badCode": "This code is not of the form TABLE-XXX-XXX.",
+      "ui.tables.codeGone": "This code leads to no table (it may have expired, or the table is closed).",
+      "ui.tables.ownCode": "This is your own table's code.",
       "ui.tables.host": "Hosted by {name}",
-      "ui.tables.join": "Join",
-      "ui.tables.joinHint": "Paste the invitation a friend sent you (it starts with td1i_). They must be in your friends.",
-      "ui.tables.joinInvite": "Join with an invitation",
-      "ui.tables.joinOwn": "Join",
-      "ui.tables.joinSubmit": "Join",
       "ui.tables.lastJoined": "Last visit: {date}",
-      "ui.tables.lastPlayed": "Last session: {date}",
-      "ui.tables.launch": "Launch",
-      "ui.tables.mine": "My tables",
       "ui.tables.name": "Table name",
       "ui.tables.neverPlayed": "Never launched",
-      "ui.tables.none": "You are not hosting any table yet. Create one to get started.",
+      "ui.tables.newerFormat": "This table was opened by a newer version of Ourdir.",
+      "ui.tables.newerFormatDetail": "This version may not read everything the newer one wrote there, and could damage it. The table is backed up first in the backups folder; install the newest version instead.",
+      "ui.tables.newerFormatOpen": "Back up and open anyway",
       "ui.tables.offlineHint": "Offline: the table is stopped or unreachable, or your access was removed.",
-      "ui.tables.others": "Other tables",
       "ui.tables.portBusy": "Port {port} is already used by another program (maybe another Ourdir that is open). Close it, then start the table again.",
       "ui.tables.preset.full": "Full",
       "ui.tables.preset.lite": "Lite",
@@ -14657,7 +15117,6 @@ var require_en2 = __commonJS({
       "ui.tables.status.offline": "Offline",
       "ui.tables.status.online": "Online",
       "ui.tables.status.stopped": "Stopped",
-      "ui.tables.stop": "Stop",
       "ui.tables.stopFirst": "Stop this table first.",
       "ui.tables.system": "Game system",
       "ui.tables.systemHint": "Sheets already made keep their old layout; new ones will use this system.",
@@ -14761,11 +15220,6 @@ var require_en2 = __commonJS({
       "ui.themes.title": "Table themes",
       "ui.themes.unreadable": "Fix the readability to save.",
       "ui.themes.useAsBase": "Use as a base",
-      "ui.toile.aria": "Table {table}: {n} friend(s), {i} invited.",
-      "ui.toile.caption": "{n} friend(s) \xB7 {i} invited to this table",
-      "ui.toile.manage": "Manage friends",
-      "ui.toile.none": "No one invited yet.",
-      "ui.toile.you": "You",
       "ui.tr.delete": "Delete",
       "ui.tr.deleteConfirm": "Delete the translation \u201C{name}\u201D?",
       "ui.tr.err.badId": "Invalid id (lowercase letters, digits, hyphens).",
@@ -14905,7 +15359,7 @@ var require_en2 = __commonJS({
       "ui.grades.intro": "Everything published starts as Community: the automatic checks accepted it, nobody has read it yet. Validated means a person read it: it is Ourdir's mark of quality.",
       "ui.grades.visibility": "Visibility: Validated content is shown to everyone as soon as the Catalogue opens; community content only to those who choose to see it.",
       "ui.grades.trust": "Trust: the Validated badge says a person read it, and the file is hosted by Ourdir (it stays available even if your own hosting goes away).",
-      "ui.grades.updates": "Updates without waiting: a Validated creator publishes updates without a new review, except a module asking for a new permission.",
+      "ui.grades.updates": "Updates without waiting: a Validated creator publishes updates without a new review, except a module, whose every version is read since it contains code.",
       "ui.grades.sales": "Selling, later: being Validated is the condition to apply as an approved seller, once selling opens.",
       "ui.grades.criteriaTitle": "What we review",
       "ui.grades.criteria": "It works as described; rights are respected (no protected content without a licence); nothing harmful; a clear sheet (name, summary, languages); for a module, justified permissions.",
@@ -14918,7 +15372,7 @@ var require_en2 = __commonJS({
       "ui.req.titleVersion": "{name} v{version}",
       "ui.req.titleAccount": "My creator account",
       "ui.req.whatVersion": "A person will read this exact version. Accepted, it becomes Validated.",
-      "ui.req.whatAccount": "A person will read your published work. Accepted, all your content without code becomes Validated, and your modules stay so while an update asks for no new permission.",
+      "ui.req.whatAccount": "A person will read your published work. Accepted, all your content without code becomes Validated, and your modules are read version by version, since they contain code.",
       "ui.req.message": "A note for the reviewer (optional)",
       "ui.req.why": "Why move up a grade?",
       "ui.req.read": "I have read what is reviewed and the delays",
@@ -14949,10 +15403,15 @@ var require_en2 = __commonJS({
       "ui.versions.notes": "What changes",
       "ui.versions.downloading": "Downloading\u2026 {percent} %",
       "ui.versions.backingUp": "Backing up the tables\u2026",
+      "ui.versions.unpacking": "Installing in the background\u2026 You can keep using Ourdir.",
+      "ui.versions.restartReady": "Ourdir {version} is installed: it starts the next time Ourdir opens.",
+      "ui.versions.restart": "Restart now",
+      "ui.update.ready": "Ourdir {version} is ready",
+      "ui.update.restart": "Restart",
       "ui.versions.starting": "The installation starts: Ourdir will close.",
       "ui.versions.ready": "Ready: the installer was checked ({file}).",
       "ui.versions.upTitle": "Install Ourdir {version}?",
-      "ui.versions.upText": "Ourdir will download version {version}, check that it is the one published, back up your tables, then start the installation. Your tables, identity and settings are kept.",
+      "ui.versions.upText": "Ourdir will download version {version}, check that it is the one published, back up your tables, then install it in the background: you keep using Ourdir, and restart when you want. Your tables, identity and settings are kept.",
       "ui.versions.downTitle": "Go back to Ourdir {version}?",
       "ui.versions.downText": "Your tables opened with a newer version may not work well in an older one, and at worst be damaged. Ourdir will back up all your tables first. If a table no longer opens, you can restore it from the backup, or go back to a newer version.",
       "ui.versions.downPlayers": "Your players need a compatible version to join you.",
@@ -15175,6 +15634,64 @@ var require_en2 = __commonJS({
       "ui.settings.portSaved": "Table port: {port}.",
       "ui.settings.portNext": "The running table keeps port {running}; port {port} will be used the next time it starts.",
       "ui.settings.portHint": "Change it if another program already uses this port. Your friends find the table through the relay and learn the new address the next time they connect; an invitation sent before keeps the old port: without a relay, send it again.",
+      "ui.net.h.local": "Your friends\u2019 access is off",
+      "ui.net.h.ok": "All good",
+      "ui.net.h.idle": "Start a table to test",
+      "ui.net.h.direct": "Your friends come in through your router",
+      "ui.net.h.relay": "Your friends come in through the relay",
+      "ui.net.h.connecting": "Connecting\u2026",
+      "ui.net.h.bad": "A problem is keeping your friends out",
+      "ui.net.s.local": "Only you can connect to your table.",
+      "ui.net.s.lan": "Your friends on the same network can join you.",
+      "ui.net.s.idle": "Ourdir will then check that your friends can get in.",
+      "ui.net.s.direct": "Your router lets your friends in, and Ourdir\u2019s relay is ready as a backup.",
+      "ui.net.s.directNoRelay": "Your router lets your friends in. Ourdir\u2019s relay is not answering, but you do not need it for now.",
+      "ui.net.s.relay": "Ourdir\u2019s relay brings your friends in: they get in without changing anything, and you have nothing to set up.",
+      "ui.net.s.connecting": "Ourdir\u2019s relay is connecting, it takes a few seconds.",
+      "ui.net.s.bad": "Neither your router nor Ourdir\u2019s relay lets your friends in. The advanced settings say what to try.",
+      "ui.net.table.ok": "My table starts on this PC",
+      "ui.net.table.idle": "No table is running",
+      "ui.net.table.idleHint": "Start a table: Ourdir will check the rest.",
+      "ui.net.friends.off": "Your friends\u2019 access is off",
+      "ui.net.friends.offHint": "You can turn it back on in the advanced settings, Network section.",
+      "ui.net.lan.ok": "Your friends on the same network can join you",
+      "ui.net.relay.ok": "Ourdir\u2019s relay answers",
+      "ui.net.relay.none": "Ourdir\u2019s relay is turned off",
+      "ui.net.relay.noneHint": "Without it, your friends can only come in through your router. You can turn it back on in the advanced settings.",
+      "ui.net.relay.down": "Ourdir\u2019s relay does not answer",
+      "ui.net.relay.downDetail": "Answer received: {detail}. Check your Internet connection.",
+      "ui.net.relay.downHint": "Check your Internet connection, or choose another relay in the advanced settings.",
+      "ui.net.relay.connecting": "Connecting to Ourdir\u2019s relay\u2026",
+      "ui.net.door.ok": "Your router lets your friends in",
+      "ui.net.door.warn": "The router does not open the door by itself",
+      "ui.net.door.warnHint": "Your friends come in through the relay, at no cost to them.",
+      "ui.net.door.wait": "The relay is connecting: your friends will be able to get in shortly.",
+      "ui.net.door.bad": "Your router does not let your friends in",
+      "ui.net.door.badHint": "It does not open the door by itself and nothing else gets through. The advanced settings give the fixes.",
+      "ui.set.mode.label": "Settings level",
+      "ui.set.mode.essential": "Essential",
+      "ui.set.mode.advanced": "Advanced",
+      "ui.set.net.test": "Test my connection",
+      "ui.set.net.testing": "Checking\u2026",
+      "ui.set.net.details": "Details",
+      "ui.set.scaleHint": "Readable from a metre away.",
+      "ui.set.motionHint": "Less movement on screen.",
+      "ui.set.ver.title": "Ourdir {version}",
+      "ui.set.ver.new": "Version {version} is available.",
+      "ui.set.ver.ok": "You have the latest version.",
+      "ui.set.ver.update": "Update",
+      "ui.set.ver.ready": "Version {version} is ready. Restart Ourdir to use it.",
+      "ui.set.ver.busy": "Updating\u2026",
+      "ui.set.more": "Advanced settings: port, relay, firewall, licence, privacy\u2026",
+      "ui.set.jump": "Go to a section",
+      "ui.set.sec.net": "Network",
+      "ui.set.sec.display": "Display",
+      "ui.set.sec.licence": "Licence",
+      "ui.set.sec.versions": "Versions",
+      "ui.set.sec.translations": "Translations",
+      "ui.set.sec.usage-settings": "Privacy",
+      "ui.set.sec.about": "About",
+      "ui.set.sec.data": "Data",
       "ui.tables.portBusyOffer": "Port {port} is already used by another program (maybe another Ourdir). Port {free} is free.",
       "ui.port.offerTitle": "Port already in use",
       "ui.port.offerUse": "Use port {port}",
@@ -15429,7 +15946,27 @@ var require_en2 = __commonJS({
       "ui.builder.viewAs.lockedTag": "locked",
       "builder.hurts": "Deals damage to the target (its roll is taken from the hit points of the sheet aimed at)",
       "builder.hurtsBool": "\u201CDeals damage\u201D must be yes or no.",
-      "builder.hurtsNeedsRoll": "Dealing damage needs a clickable text with a roll."
+      "builder.hurtsNeedsRoll": "Dealing damage needs a clickable text with a roll.",
+      "ui.friends.rule": "Being friends opens none of your tables: invite each friend to the ones they play at.",
+      "ui.friends.countPlaying": "{n} in a game",
+      "ui.friends.countOnline": "{n} online",
+      "ui.friends.countNone": "{n} friend(s), nobody online",
+      "ui.friends.playingAt": "In a game \xB7 {table}",
+      "ui.friends.since": "Friends since {date}",
+      "ui.friends.guestOf": "Invited to: {list}",
+      "ui.friends.guestOfNone": "Invited to none of your tables",
+      "ui.friends.join": "Join",
+      "ui.friends.inviteBtn": "Invite to\u2026",
+      "ui.friends.inviteMenu": "Invite {name} to one of your tables",
+      "ui.friends.inviteTo": "Invite to \u201C{table}\u201D",
+      "ui.friends.takeOff": "Take off \u201C{table}\u201D",
+      "ui.friends.noTables": "Make a table first",
+      "ui.friends.moreFor": "More for {name}",
+      "ui.friends.invitedTo": "{name} is invited to \u201C{table}\u201D: they get \u201CJoin\u201D.",
+      "ui.friends.invitedLater": "{name} is invited to \u201C{table}\u201D: they will get \u201CJoin\u201D when you start it.",
+      "ui.friends.uninvitedFrom": "{name} no longer has access to \u201C{table}\u201D.",
+      "ui.home.invite.guest": "Invited \u2713",
+      "ui.home.invite.add": "Invite"
     };
   }
 });
@@ -15726,6 +16263,8 @@ var require_en3 = __commonJS({
       "dnd.monsters.createdNoScene": "Sheet \u201C{name}\u201D created, but there is no open scene to place its token on.",
       "dnd.monsters.failed": "The sheet could not be created.",
       "dnd.monsters.placed": "\u201C{name}\u201D placed on the map, with its sheet.",
+      "dragRuler.cell": "cell",
+      "dragRuler.cells": "cells",
       "effects.add": "Add a state",
       "effects.advDown": "disadvantage",
       "effects.advNone": "nothing",
@@ -15817,6 +16356,17 @@ var require_en3 = __commonJS({
       "folders.rename": "Rename",
       "folders.save": "Rename",
       "folders.unfile": "Take out of the folder",
+      "grid.alignCancel": "Cancel",
+      "grid.alignNoMap": "There is no map on this scene.",
+      "grid.calibrate": "Fit the grid to the map\u2026",
+      "grid.calDone": "Grid fitted: cells of {px} units.",
+      "grid.calFound": "Cells found on the map: {px} units.",
+      "grid.calHelp": "Wheel over the map: bigger or smaller cells (Shift: finer). Drag: move the map under the grid.",
+      "grid.calManual": "No cells are drawn on this map: set the grid by hand ({px} units).",
+      "grid.calOk": "Confirm",
+      "grid.hexFlat": "Type: hexagons in columns (points to the sides)",
+      "grid.hexPointy": "Type: hexagons in rows (points up)",
+      "grid.notSaved": "The grid's orientation was not saved.",
       "host.access.creator": "This sheet is its creator's: they always edit it.",
       "host.access.editForAll": "Editing is not shared with everyone: choose players.",
       "host.access.gmOnly": "Only the GM sets access to sheets.",
@@ -15985,6 +16535,7 @@ var require_en3 = __commonJS({
       "host.lobby.gmOnlyOther": "Only the GM can open another account.",
       "host.lobby.noPlayer": "Player not found.",
       "host.lobby.signIn": "Sign in first.",
+      "host.look.gmOnly": "Only the GM brings the table's eyes somewhere.",
       "host.media.badType": "File type not allowed.",
       "host.media.tooBig": "File too big for its kind (pictures and maps: 4 GB at most).",
       "host.media.oneAtATime": "An upload is already running: wait for it to finish.",
@@ -16037,6 +16588,10 @@ var require_en3 = __commonJS({
       "hud.turnOf": "{n}\u2019s turn",
       "hud.turnNotSaved": "The turn could not be changed: try again.",
       "gearEffects.notSaved": "The armour class and saves of the equipped items could not be updated: they will be at the next change.",
+      "intro.installing": "Ourdir is setting up Arthur\u2019s hall\u2026",
+      "intro.ready": "Welcome to Arthur\u2019s hall. Arthur is selected: you see what he sees. Move him to the great door, open the doors, find the storeroom in the dark.",
+      "intro.readyLite": "Welcome to Arthur\u2019s hall. Move Arthur to the great door, then go and see the crystal in the library.",
+      "intro.failed": "Arthur\u2019s hall could not be set up: the table stays empty.",
       "journal.all": "All",
       "journal.books": "Books",
       "journal.help": "Journal help",
@@ -16045,6 +16600,12 @@ var require_en3 = __commonJS({
       "journal.notes": "Notes",
       "journal.openPdf": "Open the PDF",
       "journal.search": "Search the journal\u2026",
+      "layerBar.down": "Floor below",
+      "layerBar.drawings": "Drawings",
+      "layerBar.map": "Map",
+      "layerBar.title": "Layers",
+      "layerBar.tokens": "Tokens",
+      "layerBar.up": "Floor above",
       "library.action": "Action",
       "library.acts": "acts",
       "library.add": "Add",
@@ -16685,6 +17246,9 @@ var require_en3 = __commonJS({
       "rules.x.perLevel": "{base} + {per} \xD7 {level}",
       "rules.x.step": "up to {upTo} \u2192 {value}",
       "rules.x.steps": "by {of}: {list}; otherwise {other}",
+      "sceneDock.drawings": "Drawings",
+      "sceneDock.map": "Map",
+      "sceneDock.tokens": "Tokens",
       "screenFilter.auto": "As the theme says",
       "screenFilter.dread": "Gloom and desaturation",
       "screenFilter.failed": "The filter could not be saved.",
@@ -16697,12 +17261,14 @@ var require_en3 = __commonJS({
       "screenFilter.vignette": "Warm vignette",
       "settings.full": "Full",
       "settings.fullHint": "All the windows.",
+      "settings.groupMe": "For me",
+      "settings.groupTable": "The table",
+      "settings.groupRules": "Game rules",
+      "settings.groupSheets": "New sheets",
       "settings.hidden": "Hidden",
       "settings.hiddenHint": "Only the map, for immersion.",
       "settings.interface": "Interface",
-      "settings.keys": "Alt+1 full \xB7 Alt+2 reduced \xB7 Alt+3 hidden \xB7 Alt+H hide or restore",
-      "settings.reduced": "Reduced",
-      "settings.reducedHint": "Windows fold into icons.",
+      "settings.keys": "Alt+1 full \xB7 Alt+2 hidden \xB7 Alt+H hide or restore",
       "settings.sheets": "Sheets",
       "settings.sheetsHint": "The lighting settings every new sheet takes (its Settings tab). The sheets already made keep theirs.",
       "settings.sheetsNotSaved": "The sheet settings were not saved: try again.",
@@ -16879,7 +17445,161 @@ var require_en3 = __commonJS({
       "visionForm.steady": "steady",
       "visionForm.thermal": "Thermal",
       "visionForm.torch": "Torch",
-      "visionForm.unitHint": "ft and m are converted by the scene's grid."
+      "visionForm.unitHint": "ft and m are converted by the scene's grid.",
+      "host.turn.notYourTurn": "It is not the turn of one of your characters.",
+      "hud.pass": "End my turn",
+      "hud.passHint": "It is your character's turn: hand over to the next one.",
+      "rollWriter.placeholder": "Write a roll: 2d6+3",
+      "rollWriter.label": "The roll, written or built with the dice",
+      "sound.title": "Sounds",
+      "sound.on": "Play the table's sounds",
+      "sound.master": "Overall volume",
+      "sound.dice": "Dice",
+      "sound.chat": "Chat messages",
+      "sound.turn": "My turn",
+      "sound.try": "Listen",
+      "host.lighting.comeCloser": "Come closer to the door to open or close it.",
+      "pause.title": "Game paused",
+      "pause.gmHint": "Space to resume",
+      "pause.playerHint": "The GM paused the game",
+      "pause.notSaved": "The pause could not be changed.",
+      "pause.noMove": "The game is paused: tokens do not move.",
+      "host.scenes.unknown": "This map does not exist (any more) at this table.",
+      "scenes.title": "Maps",
+      "scenes.manage": "Maps (S): click to open or close",
+      "scenes.youAreHere": "you are here",
+      "scenes.clickToView": "click to go there (alone)",
+      "scenes.view": "Go there (alone)",
+      "scenes.sendGroup": "Send the group there",
+      "scenes.everyone": "Everyone here, me included",
+      "scenes.pin": "Pin",
+      "scenes.unpin": "Unpin",
+      "scenes.group": "The group",
+      "scenes.groupHint": "The group's map: drag this mark onto another map to take the whole group there",
+      "scenes.away": "away",
+      "scenes.untitled": "Untitled",
+      "scenes.sort": "Sort",
+      "scenes.sortRecent": "Recent",
+      "scenes.sortName": "Name",
+      "scenes.sortCreated": "Created",
+      "scenes.asList": "As a list",
+      "scenes.asGrid": "As thumbnails",
+      "scenes.archives": "Archives",
+      "scenes.newMap": "New map",
+      "scenes.newFolder": "New folder",
+      "scenes.newSubfolder": "New subfolder",
+      "scenes.rename": "Rename",
+      "scenes.archive": "Archive",
+      "scenes.restore": "Restore",
+      "scenes.delete": "Delete",
+      "scenes.deleteFolder": "Delete the folder",
+      "scenes.confirmDelete": "Delete the map \u201C{n}\u201D? Everything on it is lost.",
+      "scenes.confirmDeleteFolder": "Delete the folder \u201C{n}\u201D? Its maps stay, outside any folder.",
+      "scenes.noMaps": "No map yet. \u201C+\u201D makes one.",
+      "scenes.noArchives": "No archived map.",
+      "scenes.nothingFound": "No map by that name.",
+      "scenes.noAnswer": "The table did not answer.",
+      "scenes.failed": "The map could not be changed.",
+      "scenes.movedTo": "You are now on: {n}",
+      "scenes.movedToUntitled": "You are now on another map.",
+      "scenes.close": "Close (Esc)",
+      "scenes.searchAll": "Search all maps",
+      "scenes.folders": "Map folders",
+      "scenes.all": "All maps",
+      "scenes.loose": "Unfiled",
+      "scenes.collapse": "Collapse",
+      "scenes.expand": "Expand",
+      "scenes.toRoot": "Move to the top level",
+      "scenes.players": "Players:",
+      "scenes.playersHint": "The players: drag a portrait onto a map to send that player there",
+      "scenes.dragPlayer": "Drag {n} onto a map to send them there; click to see their map",
+      "scenes.select": "Select",
+      "scenes.unselect": "Clear selection",
+      "scenes.nSelected": "{n} selected",
+      "scenes.nMaps": "{n} maps",
+      "scenes.moveTo": "File in\u2026",
+      "scenes.results": "Results for \u201C{q}\u201D",
+      "scenes.emptyFolder": "Empty folder: drag maps onto it.",
+      "scenes.pinned": "Pinned",
+      "scenes.noPins": "No pinned map: a map's pin adds it here.",
+      "entry.label": "Guide for a new table",
+      "entry.title": "Your table is ready. It just needs a setting.",
+      "entry.sub": "Three steps and your players can come in. Each one goes away once you have done it.",
+      "entry.waiting.title": "The table is waiting for its map.",
+      "entry.waiting.text": "The game master has not put a map down yet.",
+      "entry.map.title": "Put down a map",
+      "entry.map.text": "Drop a picture here, or choose one on your computer (jpg, png, webp, .dd2vtt).",
+      "entry.map.button": "Choose a picture\u2026",
+      "entry.map.sending": "Sending the map\u2026",
+      "entry.map.done": "The map \u201C{name}\u201D is down.",
+      "entry.map.failed": "The map could not be put down.",
+      "entry.map.notMap": "This file is neither a picture nor a .dd2vtt file.",
+      "entry.map.badUvtt": "This .dd2vtt file is unreadable: it holds no map picture.",
+      "entry.map.uvtt": "{w} walls and {l} lights read from the file.",
+      "entry.map.uvttLite": "Lite table: the map and its grid are down, not the walls of the file.",
+      "entry.char.title": "Make a character",
+      "entry.char.text": "A blank sheet of the table's system, ready to fill in.",
+      "entry.char.button": "New sheet",
+      "entry.friend.title": "Invite a friend",
+      "entry.friend.text": "Your friends join your table by invitation, from their launcher. No account to create.",
+      "entry.friend.button": "Open my friends",
+      "entry.known": "Already know your way?",
+      "entry.hide": "Hide this guide",
+      "entry.palette": "opens every command",
+      "quickbar.empty": "Quick bar empty \xB7 drop a roll, a spell or a sheet here",
+      "quickbar.fold": "fold",
+      "quickbar.unfold": "unfold",
+      "quickbar.toggle": "Fold or unfold the quick bar",
+      "palette.title": "Commands",
+      "palette.field": "Search a command",
+      "palette.placeholder": "Type a command, a roll, a sheet\u2026",
+      "palette.esc": "Esc",
+      "palette.none": "No command matches.",
+      "palette.count": "{n} result(s)",
+      "palette.failed": "The command could not run.",
+      "palette.g.rolls": "Rolls",
+      "palette.g.go": "Go to",
+      "palette.g.sheets": "Sheets",
+      "palette.g.scenes": "Maps",
+      "palette.g.interface": "Interface",
+      "palette.rollsOf": "{name}'s rolls",
+      "palette.roll": "Roll {what}",
+      "palette.kw.roll": "roll dice throw jet",
+      "palette.kw.sheet": "sheet character fiche",
+      "palette.kw.window": "open window tab tool fenetre",
+      "palette.kw.map": "map scene carte go",
+      "palette.kw.interface": "interface mode display",
+      "palette.openSheet": "Open {name}'s sheet",
+      "palette.browseMaps": "Browse the maps",
+      "palette.goMap": "Go to the map {name}",
+      "palette.here": "here",
+      "palette.interfacePanel": "Arrange the windows (Interface panel)",
+      "palette.modeFull": "Full interface",
+      "palette.modeHidden": "Hide the interface (immersion)",
+      "palette.modeToggle": "Hide or restore the interface",
+      "pin.label": "Pinned sheet",
+      "pin.open": "Sheet",
+      "pin.openHint": "Open the full sheet",
+      "pin.fold": "Fold the pinned sheet",
+      "pin.unfold": "Unfold the pinned sheet",
+      "pin.less": "Remove 1 hit point",
+      "pin.more": "Add 1 hit point",
+      "pin.allRolls": "All rolls",
+      "pin.hpUnit": "HP",
+      "pin.defense": "Defense",
+      "pin.subtitle": "{class} lvl {level}",
+      "pin.refused": "Hit points unchanged: {why}",
+      "host.spam.tooFast": "Easy, that is too fast: wait a few seconds before trying again.",
+      "tokenNames.title": "Names under tokens",
+      "tokenNames.off": "Never",
+      "tokenNames.hover": "On hover",
+      "tokenNames.always": "Always",
+      "tokenNames.hint": "The sheet's name under its token, for the whole table.",
+      "tokenNames.notSaved": "The names setting could not be saved.",
+      "large.title": "Picture in large",
+      "large.hint": "Click, Esc or I to close",
+      "entry.demo.text": "Want to see a table ready to play?",
+      "entry.demo.button": "Discover Arthur\u2019s hall"
     };
   }
 });
@@ -17113,8 +17833,8 @@ var PERMISSIONS = [
   // own panels / windows / dialogs
   { id: "ui.toolbar", risk: "low", group: "ui" },
   // buttons, menus, keybindings
-  { id: "ui.style", risk: "low", group: "ui" },
-  // CSS scoped to the app
+  { id: "ui.style", risk: "medium", group: "ui" },
+  // CSS applied to the whole page (audit 29/09, F7): can hide or relabel any element
   { id: "ui.sheet", risk: "medium", group: "ui" },
   // tabs and blocks on character sheets
   // events and interception
@@ -17362,7 +18082,7 @@ function parseManifest(raw) {
 // apps/desktop/src/modules/bundle.ts
 var MAX_BUNDLE_BYTES = 4 * 1024 * 1024;
 var MAX_FILE_BYTES = 2 * 1024 * 1024;
-var usesModuleSyntax = (text) => /^\s*(import\s*[\w{*"']|export\s)/m.test(text);
+var usesModuleSyntax = (text) => /^[ \t]*(?:import\s*[\w{*"']|export\s)/m.test(text);
 
 // apps/desktop/src/modules/zip.ts
 var import_node_fs = __toESM(require("node:fs"));
@@ -17389,6 +18109,9 @@ function safeEntryName(raw) {
   }
   const parts = name.split("/").filter((p, i, a) => !(p === "" && i === a.length - 1));
   if (parts.some((p) => p === "" || p === "." || p === ".." || /[<>:"|?*]/.test(p) || /[. ]$/.test(p))) {
+    return null;
+  }
+  if (parts.some((p) => /^(con|prn|aux|nul|com[1-9]|lpt[1-9])(\.|$)/i.test(p))) {
     return null;
   }
   return parts.join("/");
@@ -17499,6 +18222,10 @@ function readEntry(buf, e, limits) {
 }
 function extractZip(buf, dest, limits = DEFAULT_LIMITS) {
   const entries = listZip(buf, limits);
+  const inflated = entries.reduce((n, e) => n + (e.isDir ? 0 : e.size), 0);
+  if (inflated > limits.ratioFloor * 64 && inflated / Math.max(1, buf.length) > limits.maxRatio / 2) {
+    throw new ZipError(say("err.zip.bombArchive"));
+  }
   const root = import_node_path.default.resolve(dest);
   import_node_fs.default.mkdirSync(root, { recursive: true });
   let total = 0;
@@ -17788,9 +18515,35 @@ function isBlockedAddress(raw) {
     return p === 0 || p === 10 || p === 127 || p >= 224 || p === 100 && q >= 64 && q <= 127 || p === 169 && q === 254 || p === 172 && q >= 16 && q <= 31 || p === 192 && q === 168 || p === 192 && q === 0 && a[2] === 0 || p === 198 && (q === 18 || q === 19);
   }
   if (import_node_net.default.isIPv6(ip)) {
-    return ip === "::" || ip === "::1" || /^f[cd]/.test(ip) || /^fe[89ab]/.test(ip) || /^ff/.test(ip);
+    const b = v6bytes(ip);
+    if (!b) return true;
+    const zeros = (n) => b.slice(0, n).every((x) => x === 0);
+    const tail = () => `${b[12]}.${b[13]}.${b[14]}.${b[15]}`;
+    if (zeros(12)) return true;
+    if (zeros(10) && b[10] === 255 && b[11] === 255) return isBlockedAddress(tail());
+    if (b[0] === 0 && b[1] === 100 && b[2] === 255 && b[3] === 155 && b.slice(4, 12).every((x) => x === 0)) return isBlockedAddress(tail());
+    if (b[0] === 32 && b[1] === 2) return isBlockedAddress(`${b[2]}.${b[3]}.${b[4]}.${b[5]}`);
+    return (b[0] & 254) === 252 || b[0] === 254 && (b[1] & 192) === 128 || b[0] === 255;
   }
   return true;
+}
+function v6bytes(ip) {
+  let text = ip;
+  const dotted = /(\d+\.\d+\.\d+\.\d+)$/.exec(text);
+  if (dotted) {
+    const q = v4(dotted[1]);
+    if (!q || q.some((n) => n > 255)) return null;
+    text = text.slice(0, -dotted[1].length) + (q[0] << 8 | q[1]).toString(16) + ":" + (q[2] << 8 | q[3]).toString(16);
+  }
+  const halves = text.split("::");
+  if (halves.length > 2) return null;
+  const side = (h) => h === "" ? [] : h.split(":");
+  const head = side(halves[0]);
+  const rest = halves.length === 2 ? side(halves[1]) : [];
+  const fill = halves.length === 2 ? 8 - head.length - rest.length : 0;
+  const groups = [...head, ...Array(Math.max(0, fill)).fill("0"), ...rest];
+  if (groups.length !== 8 || groups.some((g) => !/^[0-9a-f]{1,4}$/.test(g))) return null;
+  return groups.flatMap((g) => [parseInt(g, 16) >> 8, parseInt(g, 16) & 255]);
 }
 function checkUrl(u, opts) {
   if (u.protocol !== "https:" && !(opts.allowHttp && u.protocol === "http:")) {
@@ -18266,12 +19019,8 @@ function tierOf(tiers, kind, id, publisherKey, version, line = [publisherKey], s
   if (tiers.official.some((o) => o.key === publisherKey)) return "official";
   const reviewed = (v) => tiers.validated.versions.some((x) => x.id === id && x.version === v.version && x.sha256 === v.sha256);
   if (reviewed(version)) return "validated";
-  if (!tiers.validated.publishers.some((p) => line.includes(p.key))) return "community";
-  if (kind !== "module") return "validated";
-  const ref = siblings.filter((s) => compareVersions(s.version, version.version) < 0 && reviewed(s)).sort((a, b) => compareVersions(b.version, a.version))[0];
-  if (!ref) return "community";
-  const allowed = new Set(ref.permissions ?? []);
-  return (version.permissions ?? []).every((p) => allowed.has(p)) ? "validated" : "community";
+  if (kind === "module") return "community";
+  return tiers.validated.publishers.some((p) => line.includes(p.key)) ? "validated" : "community";
 }
 function maySell(tiers, publisherKey) {
   if (!tiers) return false;
@@ -18317,12 +19066,14 @@ function parseSuccession(text) {
   return { ok: true, file, s: { v: 1, from: s.from, to: s.to, how: s.how, requestedAt: new Date(req).toISOString(), notBefore: new Date(nb).toISOString() } };
 }
 var guarded = (tiers, key) => !!tiers && (tiers.ourdir.includes(key) || tiers.official.some((o) => o.key === key) || tiers.sellers.some((x) => x.key === key));
+var mailGuarded = (tiers, key) => !!tiers && tiers.validated.publishers.some((x) => x.key === key);
 function checkSuccession(p, ctx) {
   const { file, s } = p;
   if (!file.sig) return bad2(say("err.succession.waiting", { date: s.notBefore }));
   const signedAt = Date.parse(String(file.sig.signedAt));
   if (!Number.isFinite(signedAt) || signedAt < Date.parse(s.notBefore) || ctx.now < Date.parse(s.notBefore)) return bad2(say("err.succession.early"));
   if (s.how !== "racine" && guarded(ctx.tiers, s.from)) return bad2(say("err.succession.guarded"));
+  if (s.how === "email" && mailGuarded(ctx.tiers, s.from)) return bad2(say("err.succession.guarded"));
   let keys;
   if (s.how === "cle") keys = [s.from];
   else if (s.how === "racine") keys = ctx.rootKeys;
@@ -18441,12 +19192,17 @@ function build2(root, identity, opts = {}) {
     }
   }
   import_node_fs4.default.writeFileSync(import_node_path4.default.join(d.out, INDEX_FILE), bytes);
-  import_node_fs4.default.writeFileSync(import_node_path4.default.join(d.out, SIGNATURE_FILE2), signIndex(bytes, identity, now));
+  if (identity) import_node_fs4.default.writeFileSync(import_node_path4.default.join(d.out, SIGNATURE_FILE2), signIndex(bytes, identity, now));
   for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, RECOVERY_DELEGATION_FILE, LICENCE_DELEGATION_FILE]) {
     if (import_node_fs4.default.existsSync(import_node_path4.default.join(root, f))) import_node_fs4.default.copyFileSync(import_node_path4.default.join(root, f), import_node_path4.default.join(d.out, f));
   }
   writeJson(d.state, { sequence });
   return { sequence, entries: entries.length, versions: entries.reduce((n, e) => n + e.versions.length, 0), expiresAt: index.expiresAt };
+}
+function signPublished(dir, identity, rootKeys, opts = {}) {
+  const bytes = import_node_fs4.default.readFileSync(import_node_path4.default.join(dir, INDEX_FILE));
+  import_node_fs4.default.writeFileSync(import_node_path4.default.join(dir, SIGNATURE_FILE2), signIndex(bytes, identity, opts.now ?? /* @__PURE__ */ new Date()));
+  return verifyPublished(dir, rootKeys, opts);
 }
 function verifyPublished(outDir, rootKeys, opts = {}) {
   const errors = [];
@@ -18650,7 +19406,7 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.1.0";
+var APP_VERSION = "0.1.6";
 var SINCE_REV = 1;
 var AT_0_1_0 = [
   "component:Avatar",
@@ -18834,6 +19590,8 @@ var sha2563 = (b) => import_node_crypto3.default.createHash("sha256").update(b).
 var message = (err) => err instanceof Error ? err.message : String(err);
 var extOf = (kind) => kind === "module" ? "zip" : kind === "theme" ? "ourdir-theme.json" : kind === "translation" ? "ourdir-translation.json" : kind === "compendium" ? "ourdirlib" : "ttsystem.json";
 var PUBLISH_MIN = 0.8;
+var MAX_PACKAGES_PER_KEY = 40;
+var FETCH_PARALLEL = 8;
 function fetcher(deps2) {
   if (deps2.fetchBytes) return deps2.fetchBytes;
   return async (url, maxBytes) => {
@@ -19100,7 +19858,13 @@ async function checkSubmission(file, text, repoDir, deps2) {
   const p = parseSubmission(file, text, { loopbackPort: deps2.loopbackPort });
   if (!p.ok) return { file, ok: false, errors: p.errors };
   const s = p.sub;
-  const errors = ownership(s, readSubmissions(repoDir, deps2).map((x) => ({ id: x.id, version: x.version, kind: x.kind, key: x.publisher.key })), repoChain(repoDir, Date.now()));
+  const chain = repoChain(repoDir, Date.now());
+  const existing = readSubmissions(repoDir, deps2).map((x) => ({ id: x.id, version: x.version, kind: x.kind, key: x.publisher.key }));
+  const errors = ownership(s, existing, chain);
+  const tiers = readTiers(repoDir);
+  const exempt = !!tiers && (tiers.ourdir.includes(s.publisher.key) || tiers.official.some((o) => o.key === s.publisher.key) || tiers.sellers.some((x) => x.key === s.publisher.key));
+  const mine = new Set(existing.filter((e) => chain.head(e.key) === chain.head(s.publisher.key)).map((e) => e.id));
+  if (!exempt && !mine.has(s.id) && mine.size >= MAX_PACKAGES_PER_KEY) errors.push(`Cette cl\xE9 publie d\xE9j\xE0 ${MAX_PACKAGES_PER_KEY} paquets, le maximum : \xE9cris \xE0 signalement@ourdir.fr pour en publier davantage.`);
   if (s.access === "licensed" && !maySell(readTiers(repoDir), s.publisher.key)) errors.push("Contenu payant : seuls Ourdir, les \xE9diteurs officiels et les vendeurs agr\xE9\xE9s peuvent vendre.");
   if (errors.length) return { file, id: s.id, version: s.version, ok: false, errors };
   let bytes;
@@ -19179,6 +19943,26 @@ async function publishCatalog(o, deps2) {
   let hosted = 0;
   let external = 0;
   const submissions = readSubmissions(o.repoDir, deps2);
+  const fetched = /* @__PURE__ */ new Map();
+  const fetchOnce = (s) => {
+    const k = `${s.id}@${s.version}`;
+    if (!fetched.has(k)) fetched.set(k, fetchChecked(fetch2, s));
+    return fetched.get(k);
+  };
+  const wanted = submissions.filter((s) => {
+    const key = `${s.id}@${s.version}`;
+    const siblings = submissions.filter((x) => x.id === s.id).map((x) => ({ version: x.version, sha256: x.sha256, permissions: x.permissions }));
+    const tier = tierOf(tiers, s.kind, s.id, s.publisher.key, s, chain.line(s.publisher.key), siblings);
+    if (tier !== "community") {
+      const mirror = import_node_path5.default.join(o.hostedDir, s.id, `${s.version}.${extOf(s.kind)}`);
+      return !(import_node_fs5.default.existsSync(mirror) && sha2563(import_node_fs5.default.readFileSync(mirror)) === s.sha256);
+    }
+    return o.links === "all" || o.links === "new" && !seen.has(key);
+  });
+  let next = 0;
+  await Promise.all(Array.from({ length: Math.min(FETCH_PARALLEL, wanted.length) }, async () => {
+    while (next < wanted.length) await fetchOnce(wanted[next++]);
+  }));
   for (const s of submissions) {
     const key = `${s.id}@${s.version}`;
     const siblings = submissions.filter((x) => x.id === s.id).map((x) => ({ version: x.version, sha256: x.sha256, permissions: x.permissions }));
@@ -19190,7 +19974,7 @@ async function publishCatalog(o, deps2) {
       const mirror = import_node_path5.default.join(o.hostedDir, s.id, `${s.version}.${extOf(s.kind)}`);
       let bytes = import_node_fs5.default.existsSync(mirror) ? import_node_fs5.default.readFileSync(mirror) : null;
       if (!bytes || sha2563(bytes) !== s.sha256) {
-        const got = await fetchChecked(fetch2, s);
+        const got = await fetchOnce(s);
         if ("why" in got) {
           broken.push({ id: s.id, version: s.version, reason: got.why });
           continue;
@@ -19204,8 +19988,9 @@ async function publishCatalog(o, deps2) {
       hosted++;
     } else {
       let bytes = null;
-      if (o.links === "all" || !seen.has(key)) {
-        const got = await fetchChecked(fetch2, s);
+      if (o.links === "none" && !seen.has(key)) continue;
+      if (o.links === "all" || o.links === "new" && !seen.has(key)) {
+        const got = await fetchOnce(s);
         if ("why" in got) {
           broken.push({ id: s.id, version: s.version, reason: got.why });
           continue;
@@ -19215,7 +20000,7 @@ async function publishCatalog(o, deps2) {
       minApp = reuse.get(key);
       if (!minApp) {
         if (!bytes) {
-          const got = await fetchChecked(fetch2, s);
+          const got = await fetchOnce(s);
           if ("bytes" in got) bytes = got.bytes;
         }
         if (bytes) minApp = minAppFor(s, bytes);
@@ -19255,9 +20040,11 @@ async function publishCatalog(o, deps2) {
   });
   import_node_fs5.default.writeFileSync(import_node_path5.default.join(work, "successions.json"), JSON.stringify(valid));
   const sequence = publishSequence(now);
-  build2(work, o.identity, { now, days: 7, sequence, loopbackPort: deps2.loopbackPort, sinceRev: SINCE_REV });
-  const check = verifyPublished(import_node_path5.default.join(work, "public"), o.rootKeys, { now, loopbackPort: deps2.loopbackPort });
-  if (!check.ok) throw new Error("Le catalogue produit serait refus\xE9 par l\u2019application : " + check.errors.join(" ; "));
+  build2(work, o.identity ?? null, { now, days: 7, sequence, loopbackPort: deps2.loopbackPort, sinceRev: SINCE_REV });
+  if (o.identity) {
+    const check = verifyPublished(import_node_path5.default.join(work, "public"), o.rootKeys, { now, loopbackPort: deps2.loopbackPort });
+    if (!check.ok) throw new Error("Le catalogue produit serait refus\xE9 par l\u2019application : " + check.errors.join(" ; "));
+  }
   removeTree(o.outDir);
   copyDir(import_node_path5.default.join(work, "public"), o.outDir);
   removeTree(work);
@@ -19357,7 +20144,8 @@ var USAGE = [
   "        [--out <repository folder>]      writes entries/<id>/<version>.json there (UTF-8)",
   "  check --repo <base> --pr <pr folder> --files <files.json> --report <report.json> --markdown <report.md>",
   "  merge-decision --conclusion C --checked-sha S --head-sha H --files <files.json> [--succession <file> --created-at <iso>]",
-  "  publish --repo <dir> --hosted <mirror> --out <dir> --links all|new [--previous <index.json>] --broken <broken.json> --pin <root key>",
+  "  publish --repo <dir> --hosted <mirror> --out <dir> --links all|new|none [--unsigned] [--previous <index.json>] --broken <broken.json> --pin <root key>",
+  "  sign --dir <public> --pin <root key>                 (signs a folder built with --unsigned; CATALOG_CI_KEY)",
   "  issues --broken <broken.json> --mode all|new --repo-name owner/name",
   "  sign-system <file> --key <key.json>"
 ].join("\n");
@@ -19458,8 +20246,16 @@ async function main() {
       console.log(d.merge ? "merge" : "skip: " + d.reason);
       return;
     }
-    case "publish": {
+    case "sign": {
       const identity = JSON.parse(need(process.env.CATALOG_CI_KEY, "CATALOG_CI_KEY"));
+      const r = signPublished(need(flag("--dir"), "--dir"), identity, need(flag("--pin"), "--pin").split(",").map((k) => k.trim()).filter(Boolean));
+      if (!r.ok) throw new Error("Le catalogue serait refus\xE9 par l\u2019application : " + r.errors.join(" ; "));
+      console.log(`Sign\xE9 : s\xE9quence ${r.sequence}, ${r.files} fichiers chez nous, ${r.external} chez leurs cr\xE9ateurs.`);
+      return;
+    }
+    case "publish": {
+      const unsigned = process.argv.includes("--unsigned");
+      const identity = unsigned ? void 0 : JSON.parse(need(process.env.CATALOG_CI_KEY, "CATALOG_CI_KEY"));
       const prev = flag("--previous");
       const r = await publishCatalog(
         {
@@ -19468,7 +20264,7 @@ async function main() {
           outDir: need(flag("--out"), "--out"),
           identity,
           rootKeys: need(flag("--pin"), "--pin").split(",").map((k) => k.trim()).filter(Boolean),
-          links: flag("--links") === "all" ? "all" : "new",
+          links: flag("--links") === "all" ? "all" : flag("--links") === "none" ? "none" : "new",
           previousIndex: prev && import_node_fs7.default.existsSync(prev) ? import_node_fs7.default.readFileSync(prev) : null
         },
         deps

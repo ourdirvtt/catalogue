@@ -1,5 +1,8 @@
 # Publishes the catalogue to R2: after each merge on main, every night (then every creator-hosted file is fetched
-# again), and on demand. The CI's key signs the index; the root key never comes here.
+# again), and on demand ("revocation": no creator file is fetched, so a revocation goes out at once).
+#
+# Two jobs (audit 29/09, F8). `build` opens what creators send (their zips, their files) and holds NO secret: it leaves an unsigned
+# folder. `publish` holds the R2 keys and the CI's signing key but only signs and uploads; it opens no package.
 name: publish
 on:
   push:
@@ -7,16 +10,59 @@ on:
   schedule:
     - cron: "17 3 * * *"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "normal, or revocation (no creator file fetched: the previous index's versions only)"
+        type: choice
+        options: [normal, revocation]
+        default: normal
 permissions:
   contents: read
-  issues: write
 concurrency:
   group: publish
   cancel-in-progress: false
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    outputs:
+      links: ${{ steps.mode.outputs.links }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Mode
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then echo "links=all" >> "$GITHUB_OUTPUT";
+          elif [ "${{ github.event.inputs.mode }}" = "revocation" ]; then echo "links=none" >> "$GITHUB_OUTPUT";
+          else echo "links=new" >> "$GITHUB_OUTPUT"; fi
+      - name: What is already published (public files, no key)
+        run: |
+          mkdir -p hosted
+          curl -fsS --max-time 60 https://catalogue.ourdir.fr/v2/index.json -o previous-index.json || true
+      - name: Build (unsigned)
+        run: node tools/verifier.js publish --repo . --hosted hosted --out public --unsigned --links "${{ steps.mode.outputs.links }}" --previous previous-index.json --broken broken.json --pin "$(tr -d '[:space:]' < root.pub)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalogue-unsigned
+          path: |
+            public
+            broken.json
+          retention-days: 1
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
     environment: publish
+    permissions:
+      contents: read
+      issues: write
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -31,22 +77,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: What is already published
-        run: |
-          mkdir -p hosted
-          aws s3 sync "$R2/packages" hosted --endpoint-url "${{ secrets.R2_ENDPOINT }}" --only-show-errors
-          aws s3 cp "$R2/index.json" previous-index.json --endpoint-url "${{ secrets.R2_ENDPOINT }}" --only-show-errors || true
-      - name: Build and sign
+      - uses: actions/download-artifact@v4
+        with:
+          name: catalogue-unsigned
+          path: built
+      - name: Sign and check (the index only: no package is opened)
         env:
           CATALOG_CI_KEY: ${{ secrets.CATALOG_CI_KEY }}
-        run: node tools/verifier.js publish --repo . --hosted hosted --out public --links "${{ github.event_name == 'schedule' && 'all' || 'new' }}" --previous previous-index.json --broken broken.json --pin "$(tr -d '[:space:]' < root.pub)"
+        run: node tools/verifier.js sign --dir built/public --pin "$(tr -d '[:space:]' < root.pub)"
       - name: Upload
         run: |
-          if [ -d public/packages ]; then aws s3 sync public/packages "$R2/packages" --endpoint-url "${{ secrets.R2_ENDPOINT }}" --only-show-errors; fi
+          if [ -d built/public/packages ]; then aws s3 sync built/public/packages "$R2/packages" --endpoint-url "${{ secrets.R2_ENDPOINT }}" --only-show-errors; fi
           for f in delegation.json recovery-delegation.json licence-delegation.json tiers.json tiers.json.sig index.json index.json.sig; do
-            if [ -f "public/$f" ]; then aws s3 cp "public/$f" "$R2/$f" --endpoint-url "${{ secrets.R2_ENDPOINT }}" --cache-control "max-age=300" --only-show-errors; fi
+            if [ -f "built/public/$f" ]; then aws s3 cp "built/public/$f" "$R2/$f" --endpoint-url "${{ secrets.R2_ENDPOINT }}" --cache-control "max-age=300" --only-show-errors; fi
           done
       - name: Broken links
         env:
           GH_TOKEN: ${{ github.token }}
-        run: node tools/verifier.js issues --broken broken.json --mode "${{ github.event_name == 'schedule' && 'all' || 'new' }}" --repo-name "${{ github.repository }}"
+        run: node tools/verifier.js issues --broken built/broken.json --mode "${{ github.event_name == 'schedule' && 'all' || 'new' }}" --repo-name "${{ github.repository }}"
