@@ -1,0 +1,28 @@
+{
+  "v": 1,
+  "id": "cpred-fr",
+  "version": "2.3.0",
+  "kind": "system",
+  "name": "Fiche Cyberpunk RED (non officielle)",
+  "url": "https://github.com/ourdirvtt/catalogue/releases/download/cpred-2.3.0/fiche-cyberpunk-red-fr.json",
+  "size": 810485,
+  "sha256": "13d3ee20dc2ff00e35c448ed8d38a2385ba62c31f3fea3129f6a73f69c510355",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "signature": "845uSXM7mNz3jYHSpJDXwj9dLCxlacsxDJiely6blnfqOuk_eKqwTlvbDXrUrAGydM9BwnBumt4UVdaSklOzDA",
+  "permissions": [],
+  "license": "Homebrew Content Policy (R. Talsorian Games)",
+  "summary": "Fiche de personnage non officielle pour Cyberpunk RED, en français : jauges, stats et compétences avec leurs modificateurs, compétences rangées par catégorie, armes, cybermatériel par type avec pièces mères et options, dégâts à la cible avec l'armure, trois skins.",
+  "description": "",
+  "tags": [
+    "cyberpunk",
+    "fiche"
+  ],
+  "languages": [
+    "fr"
+  ],
+  "changelog": "Modificateurs : celui d'une stat compte partout où elle compte, celui d'une compétence pour elle seule. Bandeau des stats aux cases de même forme. Les personnages déjà remplis gardent tout.",
+  "access": "free"
+}
