@@ -1,0 +1,28 @@
+{
+  "v": 1,
+  "id": "cpred-en",
+  "version": "2.2.0",
+  "kind": "system",
+  "name": "Cyberpunk RED sheet (unofficial)",
+  "url": "https://github.com/ourdirvtt/catalogue/releases/download/cpred-2.2.0/fiche-cyberpunk-red-en.json",
+  "size": 777120,
+  "sha256": "295716ca3d418f456b1c18598c39ebe2ffae413be6b3c4e872861bf02c0160c4",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "signature": "yhIi-N-3BBJ7SniysrRDktXqw1ZR9X_EjKpgVnqdi0MOoUqWKr0IHTbxKwpo1xazsDJ1qMWWkUjrKvt7kP65Bw",
+  "permissions": [],
+  "license": "Homebrew Content Policy (R. Talsorian Games)",
+  "summary": "Unofficial Cyberpunk RED character sheet, in English: gauges, skills sorted by category, weapons, cyberware by type with mother pieces and options, damage to the target with armour, three skins.",
+  "description": "",
+  "tags": [
+    "cyberpunk",
+    "fiche"
+  ],
+  "languages": [
+    "en"
+  ],
+  "changelog": "Luck and EMP with their max; skills in tabs and custom skills; cyberware remade. Characters already filled in keep everything.",
+  "access": "free"
+}
