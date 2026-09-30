@@ -1,0 +1,28 @@
+{
+  "v": 1,
+  "id": "cpred-fr",
+  "version": "2.2.0",
+  "kind": "system",
+  "name": "Fiche Cyberpunk RED (non officielle)",
+  "url": "https://github.com/ourdirvtt/catalogue/releases/download/cpred-2.2.0/fiche-cyberpunk-red-fr.json",
+  "size": 781508,
+  "sha256": "21434a264533fe3e702abbe3731879b18e434967aeefc97481163dafb69b5ef8",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "signature": "lANNZexppCdYWhZOz3lBG5KQztRF08Phe2lW69OTXW63EcIMmhFQgq1RNU8_B7peYnxJiE_F7gC2qdupzHxFDQ",
+  "permissions": [],
+  "license": "Homebrew Content Policy (R. Talsorian Games)",
+  "summary": "Fiche de personnage non officielle pour Cyberpunk RED, en français : jauges, compétences rangées par catégorie, armes, cybermatériel par type avec pièces mères et options, dégâts à la cible avec l'armure, trois skins.",
+  "description": "",
+  "tags": [
+    "cyberpunk",
+    "fiche"
+  ],
+  "languages": [
+    "fr"
+  ],
+  "changelog": "PRES ; CHA et EMP avec leur max ; compétences en onglets et personnalisées ; cybermatériel refait. Les personnages déjà remplis gardent tout.",
+  "access": "free"
+}
