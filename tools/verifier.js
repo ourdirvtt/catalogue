@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.1.11. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.2.0. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -457,6 +457,27 @@ var require_fr = __commonJS({
       "err.compat.templates": "Gabarits utilisables dans les panneaux du module.",
       "err.compat.user": "Nom, id et statut MJ seulement.",
       "err.compat.utils": "Utilitaires de donn\xE9es.",
+      "err.dice.catalogue": "Un jeu du catalogue ne s\u2019exporte pas : fais-en une copie.",
+      "err.dice.duplicate": "Tu as d\xE9j\xE0 ce jeu de d\xE9s.",
+      "err.dice.exportTitle": "Exporter un jeu de d\xE9s",
+      "err.dice.field": "Le fichier contient un champ invalide.",
+      "err.dice.format": "Ce n\u2019est pas un fichier de d\xE9s Ourdir.",
+      "err.dice.generic": "Ce fichier de d\xE9s n\u2019a pas pu \xEAtre utilis\xE9.",
+      "err.dice.id": "Ce jeu de d\xE9s n\u2019existe plus.",
+      "err.dice.images": "Le jeu contient trop d\u2019images ou des images trop lourdes.",
+      "err.dice.unknown": "Le jeu contient des champs inconnus ou non normalis\xE9s.",
+      "err.dice.importTitle": "Importer un jeu de d\xE9s",
+      "err.dice.limit": "Tu as atteint le nombre maximum de jeux de d\xE9s.",
+      "err.dice.name": "Le nom du jeu n\u2019est pas valide.",
+      "err.dice.provided": "Ce jeu fourni avec Ourdir ne s\u2019exporte pas.",
+      "err.dice.read": "Impossible de lire ce fichier.",
+      "err.dice.readonly": "Ce jeu de d\xE9s n\u2019est pas modifiable.",
+      "err.dice.received": "Un jeu re\xE7u ne se partage pas de nouveau : fais-en une copie.",
+      "err.dice.rulesCount": "Le jeu compte trop de r\xE8gles ({max} au maximum).",
+      "err.dice.size": "Ce fichier est trop volumineux (320 Ko au plus).",
+      "err.dice.skinInvalid": "Le jeu contient une valeur invalide.",
+      "err.dice.version": "Ce fichier de d\xE9s vient d\u2019une autre version d\u2019Ourdir.",
+      "err.dice.writeFailed": "Le fichier n\u2019a pas pu \xEAtre \xE9crit.",
       "err.download.external": "Le fichier est h\xE9berg\xE9 hors du catalogue : t\xE9l\xE9chargement refus\xE9.",
       "err.download.failed": "T\xE9l\xE9chargement impossible : {why}",
       "err.download.hash": "L\u2019empreinte du fichier ne correspond pas \xE0 celle du catalogue : t\xE9l\xE9chargement refus\xE9.",
@@ -546,10 +567,23 @@ var require_fr = __commonJS({
       "err.licensed.refusal": "Ce contenu s\u2019ach\xE8te : ouvre-le depuis le catalogue d\u2019Ourdir.",
       "err.main.aucuneAdresse": "Aucune adresse.",
       "err.main.aucuneVersionInstallable": "Aucune version installable.",
+      "err.main.badDice": "Ce jeu de d\xE9s n\u2019est pas valide : {why}",
       "err.main.badHost": "Adresse invalide : un nom de domaine ou une IP, sans http:// ni port.",
       "err.main.badSystem": "Ce syst\xE8me n\u2019est pas valide : {why}",
       "err.main.badTheme": "Ce th\xE8me n\u2019est pas valide : {why}",
       "err.main.catalogExpired": "Le catalogue est expir\xE9 : on ne peut plus rien y installer tant qu\u2019il n\u2019est pas mis \xE0 jour.",
+      "err.main.diceImages": "Un jeu de d\xE9s du catalogue ne porte pas d\u2019images.",
+      "err.main.diceNotCatalogue": "Ce jeu ne vient pas du catalogue : il se supprime depuis Mes d\xE9s.",
+      "err.main.diceOlder": "Une version plus r\xE9cente de ce jeu est d\xE9j\xE0 install\xE9e ({installed}) : la {version} n\u2019est pas install\xE9e.",
+      "err.main.diceSize": "Ce jeu est trop volumineux (64 Ko au plus).",
+      "err.main.diceShareReceived": "Un jeu re\xE7u d\u2019un fichier (ou sa copie) n\u2019a pas de licence connue : il ne se partage pas au catalogue.",
+      "err.main.diceShareCatalogue": "Ce jeu vient du catalogue : duplique-le et modifie-le pour partager ta propre version.",
+      "err.main.diceShareProvided": "Un jeu fourni par Ourdir ne se partage pas au catalogue.",
+      "err.main.diceShareLicence": "La licence du jeu du catalogue dont celui-ci est la copie n\u2019est pas connue ou n\u2019autorise pas d\u2019en publier une version modifi\xE9e : ce jeu ne se partage pas au catalogue.",
+      "err.main.diceShareSameReceived": "Ce jeu est identique (images mises \xE0 part) \xE0 \xAB {name} \xBB, un jeu re\xE7u d\u2019un fichier : il n\u2019est pas de toi. Modifie-le avant de le partager.",
+      "err.main.diceShareSameCatalogue": "Ce jeu est identique (images mises \xE0 part) \xE0 \xAB {name} \xBB, install\xE9 depuis le catalogue : il y est d\xE9j\xE0. Si c\u2019est ton jeu, modifie-le pour en publier une nouvelle version.",
+      "err.main.diceShareSameProvided": "Ce jeu est identique (images mises \xE0 part) \xE0 \xAB {name} \xBB, un jeu fourni par Ourdir. Modifie-le avant de le partager.",
+      "err.main.diceShareSameCopy": "Ce jeu est identique (images mises \xE0 part) \xE0 \xAB {name} \xBB, une autre de tes copies d\u2019un jeu qui n\u2019est pas de toi. Partage plut\xF4t cette copie-l\xE0, ou modifie celui-ci.",
       "err.main.entryGone": "Cette entr\xE9e n\u2019existe plus dans le catalogue.",
       "err.main.importFailed": "Import impossible.",
       "err.main.inspectionExpired": "Cette v\xE9rification a expir\xE9. Recommence.",
@@ -604,6 +638,7 @@ var require_fr = __commonJS({
       "err.safeFetch.redirectionInvalide": "Redirection invalide.",
       "err.safeFetch.tropRedirections": "Trop de redirections.",
       "err.share.badKeyFile": "Fichier de cl\xE9 invalide.",
+      "err.share.diceNoId": "Ce jeu de d\xE9s n\u2019a pas encore d\u2019identifiant ni de version pour le catalogue.",
       "err.share.keyExists": "Une cl\xE9 d\u2019\xE9diteur existe d\xE9j\xE0.",
       "err.share.nextWaiting": "Une nouvelle cl\xE9 attend d\xE9j\xE0 que le changement soit publi\xE9.",
       "err.share.noKey": "Aucune cl\xE9 d\u2019\xE9diteur.",
@@ -1267,6 +1302,26 @@ var require_fr = __commonJS({
       "ui.cat.kindOne.system": "Syst\xE8me",
       "ui.cat.kindOne.theme": "Th\xE8me de table",
       "ui.cat.kindOne.translation": "Traduction",
+      "ui.cat.kind.dice": "Jeux de d\xE9s",
+      "ui.cat.kindOne.dice": "Jeu de d\xE9s",
+      "ui.cat.reviewDice": "V\xE9rifie avant d\u2019installer \xB7 jeu de d\xE9s",
+      "ui.cat.diceSpin": "Tourner",
+      "ui.cat.diceCritical": "Voir une r\xE9ussite critique",
+      "ui.cat.diceDie": "Le d20 de \xAB {name} \xBB",
+      "ui.cat.diceContains.title": "Ce que contient ce jeu",
+      "ui.cat.diceContains.looks": "Mati\xE8re, couleurs et motif communs aux 7 d\xE9s",
+      "ui.cat.diceContains.looksOne": "Mati\xE8re, couleurs et motif pour les 7 d\xE9s, 1 d\xE9 avec r\xE9glage propre ({list})",
+      "ui.cat.diceContains.looksMany": "Mati\xE8re, couleurs et motif pour les 7 d\xE9s, {n} d\xE9s avec r\xE9glage propre ({list})",
+      "ui.cat.diceContains.rulesNone": "Aucune r\xE8gle d\u2019effets",
+      "ui.cat.diceContains.rulesOne": "{n} r\xE8gle d\u2019effets : {list}",
+      "ui.cat.diceContains.rulesMany": "{n} r\xE8gles d\u2019effets : {list}",
+      "ui.cat.diceContains.sounds": "Sons de choc synth\xE9tis\xE9s, aucun fichier",
+      "ui.cat.diceContains.nothingElse": "Aucune image, aucun code",
+      "ui.cat.diceNote": "Un jeu de d\xE9s ne peut pas modifier ton ordinateur ni tes tables. Il appara\xEEt dans Mes d\xE9s avec l\u2019\xE9tiquette \xAB Catalogue \xBB ; tu pourras le choisir pour une table ou le dupliquer pour le retoucher.",
+      "ui.cat.diceReplaces": "Cela remplace la version {v} d\xE9j\xE0 install\xE9e. Tes choix de tables sont conserv\xE9s.",
+      "ui.cat.diceSame": "Cette version est d\xE9j\xE0 install\xE9e : la r\xE9installer la remet telle que le catalogue la publie. Tes choix de tables sont conserv\xE9s.",
+      "ui.cat.diceReinstall": "R\xE9installer",
+      "ui.cat.diceInstalled": "Jeu de d\xE9s \xAB {name} \xBB install\xE9 : il est dans Mes d\xE9s, pr\xEAt \xE0 choisir pour une table.",
       "ui.cat.lang.all": "Toutes les langues",
       "ui.cat.langFilter": "Langue",
       "ui.cat.lead": "Des modules et des syst\xE8mes sign\xE9s, pr\xEAts \xE0 installer. Rien n\u2019est install\xE9 avant l\u2019\xE9cran de v\xE9rification.",
@@ -2542,13 +2597,23 @@ var require_fr = __commonJS({
       "ui.licence.badKey": "Cette cl\xE9 n\u2019a pas la forme OURDIR-XXXX-XXXX-XXXX.",
       "ui.licence.offline": "Le service des licences ne r\xE9pond pas : v\xE9rifie ta connexion et r\xE9essaie.",
       "ui.licence.certificate": "Le service des licences est joint, mais son certificat n\u2019est pas reconnu : un antivirus ou un r\xE9seau d\u2019entreprise lit sans doute les connexions HTTPS. Autorise Ourdir dans ses r\xE9glages HTTPS, ou essaie depuis un autre r\xE9seau.",
-      "ui.licence.hostNeeded": "H\xE9berger une table demande une licence de MJ : entre ta cl\xE9 dans Param\xE8tres \u2192 Licence.",
-      "ui.licence.hostStale": "Ta licence n\u2019a pas pu \xEAtre contr\xF4l\xE9e en ligne depuis trois semaines : connecte-toi \xE0 Internet, puis relance la table.",
       "ui.licence.hostExpired": "Ta licence est arriv\xE9e \xE0 sa fin : h\xE9berger une table demande une licence valide.",
       "ui.licence.plan.tester": "testeur",
       "ui.licence.plan.lifetime": "\xE0 vie",
       "ui.licence.plan.monthly": "au mois",
       "ui.licence.plan.friend": "offerte",
+      "ui.licence.gmOnly": "Cette fonction est r\xE9serv\xE9e aux MJ : entre ta cl\xE9 dans Param\xE8tres \u2192 Licence.",
+      "ui.licence.gmExpired": "Ta licence est arriv\xE9e \xE0 sa fin : cette fonction est r\xE9serv\xE9e aux MJ.",
+      "ui.licence.gmStale": "Ta licence n\u2019a pas pu \xEAtre contr\xF4l\xE9e en ligne depuis trois semaines : connecte-toi \xE0 Internet, puis r\xE9essaie.",
+      "ui.licence.locked.title": "R\xE9serv\xE9 aux MJ",
+      "ui.licence.locked.systems": "Cr\xE9er, modifier et importer des syst\xE8mes de jeu demande une licence de MJ.",
+      "ui.licence.locked.themes": "Cr\xE9er, modifier et importer des th\xE8mes de table demande une licence de MJ.",
+      "ui.licence.locked.modules": "Installer et g\xE9rer des modules demande une licence de MJ : ils servent \xE0 h\xE9berger une table.",
+      "ui.licence.locked.tables": "Rejoins les tables de tes amis avec ton code ou ton invitation. Cr\xE9er et h\xE9berger une table demande une licence de MJ.",
+      "ui.licence.locked.have": "J\u2019ai une licence",
+      "ui.licence.locked.buy": "Obtenir une licence",
+      "ui.licence.banner": "Ta licence n\u2019est plus valide : tu peux consulter et exporter tes tables, syst\xE8mes et th\xE8mes, pas les modifier.",
+      "ui.cat.playerOnly": "Sans licence de MJ, le catalogue ne montre que les traductions et les jeux de d\xE9s : les syst\xE8mes, th\xE8mes et modules servent \xE0 h\xE9berger une table.",
       "ui.usage.title": "Aider Ourdir avec des statistiques anonymes ?",
       "ui.usage.text": "Une fois par jour au plus, Ourdir enverrait : un identifiant tir\xE9 au hasard, sa version, ton syst\xE8me d\u2019exploitation et ta langue, les syst\xE8mes de jeu jou\xE9s (\xAB fait-maison \xBB pour les tiens, sans nom), et si tu as h\xE9berg\xE9 ou rejoint une table.",
       "ui.usage.never": "Jamais tes tables, tes personnages, tes messages, ni ton adresse. Tu pourras changer d\u2019avis dans Param\xE8tres.",
@@ -3072,7 +3137,274 @@ var require_fr = __commonJS({
       "ui.friends.invitedLater": "{name} est invit\xE9 \xE0 \xAB {table} \xBB : il recevra \xAB Rejoindre \xBB quand tu la lanceras.",
       "ui.friends.uninvitedFrom": "{name} n\u2019a plus acc\xE8s \xE0 \xAB {table} \xBB.",
       "ui.home.invite.guest": "Invit\xE9 \u2713",
-      "ui.home.invite.add": "Inviter"
+      "ui.home.invite.add": "Inviter",
+      "ui.nav.dice": "Mes d\xE9s",
+      "ui.dice.title": "Mes d\xE9s",
+      "ui.dice.lead": "Cr\xE9e tes jeux de d\xE9s : couleurs, mati\xE8re, chiffres, lueur, sons. Tes partenaires les voient rouler sur la carte. Tu en choisis un par table.",
+      "ui.dice.new": "Nouveau jeu",
+      "ui.dice.newName": "Nouveau jeu",
+      "ui.dice.surprise": "Surprends-moi",
+      "ui.dice.surpriseName": "Jeu surprise",
+      "ui.dice.default": "Par d\xE9faut",
+      "ui.dice.image": "Image",
+      "ui.dice.usedAt": "Sert \xE0 : {tables}",
+      "ui.dice.unused": "Pas encore utilis\xE9",
+      "ui.dice.fromOurdir": "Fourni avec Ourdir",
+      "ui.dice.edit": "Modifier",
+      "ui.dice.duplicate": "Dupliquer",
+      "ui.dice.copyName": "{name} (copie)",
+      "ui.dice.useAt": "Utiliser \xE0 une table",
+      "ui.dice.delete": "Supprimer",
+      "ui.dice.deleteConfirm": "Supprimer le jeu \xAB {name} \xBB ? Les tables qui l\u2019utilisaient reprendront ton jeu par d\xE9faut, ou Ivoire si tu n\u2019en as pas.",
+      "ui.dice.star": "Jeu par d\xE9faut",
+      "ui.dice.starNamed": "Jeu par d\xE9faut : {name}",
+      "ui.dice.close": "Fermer",
+      "ui.dice.empty": "Pas encore de jeu \xE0 toi. Duplique un jeu fourni, ou cr\xE9e le tien.",
+      "ui.dice.limit": "Tu as d\xE9j\xE0 {max} jeux : supprime-en un avant d\u2019en cr\xE9er.",
+      "ui.dice.preset.ivoire": "Ivoire",
+      "ui.dice.preset.obsidienne": "Obsidienne",
+      "ui.dice.preset.cristal-bleu": "Cristal bleu",
+      "ui.dice.preset.rubis": "Rubis",
+      "ui.dice.preset.emeraude": "\xC9meraude",
+      "ui.dice.preset.or": "Or",
+      "ui.dice.preset.os-ancien": "Os ancien",
+      "ui.dice.preset.neon": "N\xE9on",
+      "ui.dice.err.name": "Le nom doit faire de 1 \xE0 40 caract\xE8res.",
+      "ui.dice.err.image.type": "Ce fichier n\u2019est pas une image utilisable (PNG, JPEG ou WebP).",
+      "ui.dice.err.image.size": "L\u2019image est trop lourde : choisis-en une plus petite.",
+      "ui.dice.err.size": "Ce jeu est trop lourd : enl\xE8ve l\u2019image ou simplifie-le.",
+      "ui.dice.err.shape": "Ce jeu n\u2019est pas lisible.",
+      "ui.dice.err.limit": "Tu as atteint le nombre maximum de jeux : supprime-en un avant d\u2019en cr\xE9er.",
+      "ui.dice.err.id": "Ce jeu n\u2019existe plus.",
+      "ui.dice.err.provided": "Un jeu fourni ne se modifie pas : duplique-le d\u2019abord.",
+      "ui.dice.err.field": "Un r\xE9glage est hors limites.",
+      "ui.dice.err.readonly": "Ce jeu est en lecture seule : duplique-le pour le modifier.",
+      "ui.dice.save": "Enregistrer",
+      "ui.dice.saved": "Jeu enregistr\xE9.",
+      "ui.dice.leaveConfirm": "Ce jeu a des changements non enregistr\xE9s. Quitter quand m\xEAme ?",
+      "ui.dice.throw": "Lancer",
+      "ui.dice.knock": "\u25B6 \xC9couter un choc",
+      "ui.dice.previewLabel": "Aper\xE7u du d\xE9",
+      "ui.dice.reset": "r\xE9tablir",
+      "ui.dice.copied": "Copie cr\xE9\xE9e : {name}",
+      "ui.dice.readable": "Chiffres lisibles (contraste {ratio}:1)",
+      "ui.dice.unreadable": "Chiffres difficiles \xE0 lire (contraste {ratio}:1, vis\xE9 : 4,5:1)",
+      "ui.dice.weight": "Poids {kb} Ko / {max} Ko",
+      "ui.dice.weightOver": "Jeu trop lourd : {kb} Ko sur {max} Ko",
+      "ui.dice.weightNote": "{kb} Ko sur {max} Ko",
+      "ui.dice.unavailable": "L\u2019aper\xE7u 3D n\u2019est pas disponible sur cet ordinateur : voici le d\xE9 \xE0 plat.",
+      "ui.dice.follow": "Suit le look commun ({value})",
+      "ui.dice.tab.mat": "Mati\xE8re",
+      "ui.dice.tab.num": "Chiffres",
+      "ui.dice.tab.fx": "Effets",
+      "ui.dice.tab.img": "Image",
+      "ui.dice.tab.one": "Un d\xE9",
+      "ui.dice.tab.rules": "D\xE9clencheurs",
+      "ui.dice.nameLabel": "Nom du jeu",
+      "ui.dice.more": "Plus",
+      "ui.dice.origin.provided": "Fourni",
+      "ui.dice.origin.mine": "\xC0 moi",
+      "ui.dice.origin.catalogue": "Catalogue",
+      "ui.dice.origin.received": "Re\xE7u",
+      "ui.dice.origin.version": "v{version}",
+      "ui.dice.credit.by": "par {by}",
+      "ui.dice.credit.after": "d\u2019apr\xE8s {name}",
+      "ui.dice.credit.afterBy": "d\u2019apr\xE8s {name} de {by}",
+      "ui.dice.credit.received": "re\xE7u de {file}",
+      "ui.dice.credit.receivedUnknown": "re\xE7u d\u2019un fichier",
+      "ui.dice.import.button": "Importer un fichier\u2026",
+      "ui.dice.import.dropLead": "Glisse un fichier {ext} ici",
+      "ui.dice.import.dropMore": "pour l\u2019importer. Les jeux du catalogue s\u2019installent depuis la page Catalogue.",
+      "ui.dice.import.title": "Importer un fichier de d\xE9s",
+      "ui.dice.import.lead": "Un fichier {ext} re\xE7u d\u2019un ami. Il est lu strictement avant d\u2019entrer dans tes jeux.",
+      "ui.dice.import.add": "Ajouter",
+      "ui.dice.import.ignore": "Ignorer",
+      "ui.dice.import.close": "Fermer",
+      "ui.dice.import.back": "Retour \xE0 Mes d\xE9s",
+      "ui.dice.import.from": "de {file}",
+      "ui.dice.import.kb": "{kb} Ko",
+      "ui.dice.import.rules.none": "aucune r\xE8gle d\u2019effets",
+      "ui.dice.import.rules.one": "1 r\xE8gle d\u2019effets",
+      "ui.dice.import.rules.many": "{n} r\xE8gles d\u2019effets",
+      "ui.dice.import.images.one": "1 image",
+      "ui.dice.import.images.many": "{n} images",
+      "ui.dice.import.willAdd": "Il sera ajout\xE9 \xE0 Mes d\xE9s ({n} sur {max}).",
+      "ui.dice.import.imagesKept": "Les images du fichier sont gard\xE9es.",
+      "ui.dice.import.duplicate": "Tu as d\xE9j\xE0 ce jeu : il n\u2019est pas ajout\xE9 deux fois.",
+      "ui.dice.import.full": "Tu as d\xE9j\xE0 {max} jeux \xE0 toi : supprime-en un pour en ajouter un.",
+      "ui.dice.import.limitPill": "limite atteinte",
+      "ui.dice.import.noName": "Fichier sans nom",
+      "ui.dice.import.nothing": "Rien n\u2019a \xE9t\xE9 ajout\xE9 \xE0 tes jeux.",
+      "ui.dice.import.refused": "Refus\xE9 : {reason}",
+      "ui.dice.import.added": "Jeu ajout\xE9 : {name}",
+      "ui.dice.readonly.catalogueTitle": "Ce jeu vient du catalogue.",
+      "ui.dice.readonly.receivedTitle": "Ce jeu vient d\u2019un fichier re\xE7u.",
+      "ui.dice.readonly.catalogueText": "On ne le modifie pas : duplique-le pour en faire un jeu \xE0 toi. Le cr\xE9dit de l\u2019auteur et sa licence suivent la copie.",
+      "ui.dice.readonly.receivedText": "On ne le modifie pas : duplique-le pour en faire un jeu \xE0 toi. La copie garde le nom du fichier d\u2019origine.",
+      "ui.dice.readonly.hint": "Lecture seule : les champs sont gris\xE9s ; l\u2019aper\xE7u, \xAB Tester \xBB et \xAB Simuler \xBB restent actifs.",
+      "ui.dice.readonly.duplicate": "Dupliquer pour le modifier",
+      "ui.dice.readonly.back": "Retour \xE0 Mes d\xE9s",
+      "ui.dice.readonly.view": "Voir",
+      "ui.dice.more.export": "Exporter dans un fichier",
+      "ui.dice.more.exportSub": "Garde les images, pour un ami",
+      "ui.dice.more.exported": "Jeu export\xE9 dans un fichier.",
+      "ui.dice.more.share": "Partager au catalogue\u2026",
+      "ui.dice.more.shareSub": "Sans les images",
+      "ui.dice.share.noLicence": "Pas de partage au catalogue pour ce jeu : un jeu re\xE7u d\u2019un fichier n\u2019a pas de licence connue.",
+      "ui.dice.share.noDerivatives": "Pas de partage au catalogue pour ce jeu : la licence du jeu d\u2019origine n\u2019est pas connue ou n\u2019autorise pas les versions modifi\xE9es.",
+      "ui.dice.share.sheetTitle": "Fiche du jeu de d\xE9s",
+      "ui.dice.share.previewNote": "Ce que verront les autres. Les effets et les r\xE8gles voyagent avec le jeu.",
+      "ui.dice.share.imagesTitle": "Les images ne sont pas incluses.",
+      "ui.dice.share.imagesOne": "\xAB {name} \xBB porte 1 image. Publi\xE9 au catalogue, il part sans elle : les d\xE9s se voient avec leurs couleurs, leurs chiffres, leurs motifs et leurs effets. Ton image reste dans ton jeu et dans les fichiers export\xE9s.",
+      "ui.dice.share.imagesMany": "\xAB {name} \xBB porte {n} images. Publi\xE9 au catalogue, il part sans elles : les d\xE9s se voient avec leurs couleurs, leurs chiffres, leurs motifs et leurs effets. Tes images restent dans ton jeu et dans les fichiers export\xE9s.",
+      "ui.dice.share.licenseLocked": "Impos\xE9e : c\u2019est la licence de \xAB {name} \xBB, le jeu du catalogue dont celui-ci est la copie.",
+      "ui.dice.share.inspiredHint": "Ajout\xE9 \xE0 la fin de la description, non retirable :",
+      "ui.dice.share.inspired": "Inspir\xE9 de \xAB {name} \xBB de {by}.",
+      "ui.dice.share.inspiredNoBy": "Inspir\xE9 de \xAB {name} \xBB.",
+      "ui.dice.share.idLine": "Publi\xE9 sous l\u2019identifiant {id}, version {version}.",
+      "ui.dice.share.idAdjusted": "Un autre de tes jeux est d\xE9j\xE0 publi\xE9 sous l\u2019identifiant tir\xE9 de ce nom : celui-ci en prend un autre, pour ne pas le remplacer.",
+      "ui.dice.share.delay": "Un jeu partag\xE9 est v\xE9rifi\xE9 par le catalogue avant d\u2019appara\xEEtre : il sort d\u2019abord en Communautaire. La demande du niveau Valid\xE9 se fait ensuite depuis \xAB Mes partages \xBB. D\xE9lai de relecture humaine non garanti.",
+      "ui.dice.share.preparing": "Pr\xE9paration du jeu\u2026",
+      "ui.dice.more.uninstall": "D\xE9sinstaller",
+      "ui.dice.more.uninstallConfirm": "D\xE9sinstaller le jeu \xAB {name} \xBB ? Les tables qui l\u2019utilisaient reprendront ton jeu par d\xE9faut, ou Ivoire si tu n\u2019en as pas.",
+      "ui.dice.rules.title": "R\xE8gles du jeu",
+      "ui.dice.rules.add": "+ Ajouter une r\xE8gle",
+      "ui.dice.rules.classic": "Critiques classiques",
+      "ui.dice.rules.classicHint": "Remet le lot par d\xE9faut : flammes et carillon sur une r\xE9ussite critique, fum\xE9e, fissure et glas sur un \xE9chec critique",
+      "ui.dice.rules.classicConfirm": "Remplacer les r\xE8gles de ce jeu par les critiques classiques ?",
+      "ui.dice.rules.count": "{n} / {max} r\xE8gles",
+      "ui.dice.rules.countTitle": "Plafond de r\xE8gles par jeu",
+      "ui.dice.rules.legacyTitle": "Ce jeu utilise encore l\u2019anneau t\xE9moin.",
+      "ui.dice.rules.legacyText": "Les jeux d\u2019avant les d\xE9clencheurs n\u2019ont pas de r\xE8gles.",
+      "ui.dice.rules.legacyClassic": "Ajouter les critiques classiques",
+      "ui.dice.rules.legacyEmpty": "Partir d\u2019une liste vide",
+      "ui.dice.rules.none": "Aucune r\xE8gle enregistr\xE9e pour ce jeu.",
+      "ui.dice.rules.ringTitle": "Anneau t\xE9moin",
+      "ui.dice.rules.ringText": "un anneau dor\xE9 (r\xE9ussite) ou rouge (\xE9chec) autour du d\xE9, comme avant.",
+      "ui.dice.rules.empty": "Aucune r\xE8gle : ce jeu n\u2019a aucun effet.",
+      "ui.dice.rules.event": "\xC9v\xE9nement",
+      "ui.dice.rules.die": "D\xE9",
+      "ui.dice.rules.op": "Comparaison",
+      "ui.dice.rules.value": "Valeur",
+      "ui.dice.rules.anyDie": "tous",
+      "ui.dice.rules.noOp": "\u2014",
+      "ui.dice.rules.color": "Couleur",
+      "ui.dice.rules.intensity": "Intensit\xE9",
+      "ui.dice.rules.duration": "Dur\xE9e",
+      "ui.dice.rules.delay": "D\xE9calage",
+      "ui.dice.rules.sound": "Son",
+      "ui.dice.rules.screenNote": "effet d\u2019\xE9cran \xB7 0,4 s au plus",
+      "ui.dice.rules.changeEffect": "Changer l\u2019effet ({name})",
+      "ui.dice.rules.removeEffect": "Retirer cet effet",
+      "ui.dice.rules.addEffect": "+ Ajouter un effet ({n} / {max})",
+      "ui.dice.rules.test": "\u25B6 Tester",
+      "ui.dice.rules.duplicate": "Dupliquer",
+      "ui.dice.rules.delete": "Supprimer",
+      "ui.dice.rules.up": "Monter la r\xE8gle",
+      "ui.dice.rules.down": "Descendre la r\xE8gle",
+      "ui.dice.rules.sim": "Simuler",
+      "ui.dice.rules.simLead": "\u2014 jouer les r\xE8gles comme \xE0 table :",
+      "ui.dice.rules.sim.critical": "R\xE9ussite critique",
+      "ui.dice.rules.sim.fumble": "\xC9chec critique",
+      "ui.dice.rules.sim.min": "1 naturel",
+      "ui.dice.rules.sim.max": "Maximum",
+      "ui.dice.rules.sim.hit-wall": "Un choc",
+      "ui.dice.rules.invalid": "Ce jeu a une erreur (un nom vide, une r\xE8gle \xE0 corriger) : l\u2019aper\xE7u ne le joue pas.",
+      "ui.dice.trigger.critical": "R\xE9ussite critique",
+      "ui.dice.trigger.fumble": "\xC9chec critique",
+      "ui.dice.trigger.min": "Minimum du d\xE9",
+      "ui.dice.trigger.max": "Maximum du d\xE9",
+      "ui.dice.trigger.rest": "Le d\xE9 s\u2019arr\xEAte",
+      "ui.dice.trigger.hit-wall": "Choc contre un mur",
+      "ui.dice.trigger.hit-token": "Choc contre un pion",
+      "ui.dice.trigger.hit-floor": "Choc contre le sol",
+      "ui.dice.trigger.hit-die": "Choc contre un d\xE9",
+      "ui.dice.op.eq": "exactement",
+      "ui.dice.op.gte": "au moins",
+      "ui.dice.op.lte": "au plus",
+      "ui.dice.effect.sparks": "\xC9tincelles",
+      "ui.dice.effect.flames": "Flammes",
+      "ui.dice.effect.lightning": "\xC9clair",
+      "ui.dice.effect.aura": "Aura",
+      "ui.dice.effect.smoke": "Fum\xE9e",
+      "ui.dice.effect.coins": "Pi\xE8ces",
+      "ui.dice.effect.crack": "Fissure",
+      "ui.dice.effect.shock": "Onde de choc",
+      "ui.dice.effect.glare": "Tache de lumi\xE8re",
+      "ui.dice.effect.shake": "Secousse",
+      "ui.dice.effect.flash": "\xC9clair d\u2019\xE9cran",
+      "ui.dice.effect.sound": "Son d\u2019accent",
+      "ui.dice.effect.bell": "Cloche",
+      "ui.dice.effect.gong": "Gong",
+      "ui.dice.effect.knell": "Glas",
+      "ui.dice.effect.thud": "Coup sourd",
+      "ui.dice.effect.chime": "Carillon",
+      "ui.dice.effectWhere.die": "sur le d\xE9",
+      "ui.dice.effectWhere.map": "sur la carte",
+      "ui.dice.effectWhere.screen": "\xE9cran",
+      "ui.dice.effectWhere.sound": "cloche, gong, glas\u2026",
+      "ui.dice.picker.title": "Choisir un effet",
+      "ui.dice.picker.die": "Sur le d\xE9",
+      "ui.dice.picker.map": "Sur la carte",
+      "ui.dice.picker.screen": "Sur l\u2019\xE9cran (r\xE9glage local du joueur)",
+      "ui.dice.picker.sound": "Son",
+      "ui.dice.field.bodyColor": "Couleur du d\xE9",
+      "ui.dice.field.patternColor": "Couleur du motif",
+      "ui.dice.field.swatches": "Teintes rapides",
+      "ui.dice.field.metalness": "M\xE9tal",
+      "ui.dice.field.roughness": "Rugosit\xE9",
+      "ui.dice.field.opacity": "Transparence (100 = opaque)",
+      "ui.dice.field.patternKind": "Motif",
+      "ui.dice.field.patternScale": "Taille du motif",
+      "ui.dice.field.numColor": "Couleur des chiffres",
+      "ui.dice.field.outline": "Contour",
+      "ui.dice.field.font": "Police",
+      "ui.dice.field.weight": "Graisse",
+      "ui.dice.field.glowTitle": "Lueur",
+      "ui.dice.field.glow": "Lueur pendant le lancer",
+      "ui.dice.field.glowColor": "Couleur de la lueur",
+      "ui.dice.field.trailKind": "Tra\xEEn\xE9e",
+      "ui.dice.field.trailLength": "Longueur",
+      "ui.dice.field.soundTitle": "Son",
+      "ui.dice.field.soundMaterial": "Mati\xE8re du son",
+      "ui.dice.field.volume": "Volume",
+      "ui.dice.field.placement": "Placement",
+      "ui.dice.field.weightGauge": "Poids du jeu",
+      "ui.dice.field.typeLine": "Type de d\xE9",
+      "ui.dice.field.glowOne": "Lueur",
+      "ui.dice.field.bodyOne": "Couleur du d\xE9",
+      "ui.dice.field.numOne": "Chiffres",
+      "ui.dice.choice.pattern.plain": "Uni",
+      "ui.dice.choice.pattern.marble": "Marbre",
+      "ui.dice.choice.pattern.wood": "Bois",
+      "ui.dice.choice.pattern.veins": "Veines",
+      "ui.dice.choice.pattern.sparkle": "Paillettes",
+      "ui.dice.choice.font.serif": "Empatt\xE9e",
+      "ui.dice.choice.font.sans": "B\xE2ton",
+      "ui.dice.choice.font.mono": "Machine",
+      "ui.dice.choice.font.display": "Titre d\u2019Ourdir",
+      "ui.dice.choice.trail.none": "Aucune",
+      "ui.dice.choice.trail.spark": "\xC9tincelles",
+      "ui.dice.choice.trail.smoke": "Fum\xE9e",
+      "ui.dice.choice.trail.ribbon": "Ruban",
+      "ui.dice.choice.sound.wood": "Bois",
+      "ui.dice.choice.sound.stone": "Pierre",
+      "ui.dice.choice.sound.metal": "M\xE9tal",
+      "ui.dice.choice.sound.glass": "Verre",
+      "ui.dice.choice.sound.bone": "Os",
+      "ui.dice.choice.image.cover": "Couvre les faces",
+      "ui.dice.choice.image.stamp": "Tampon derri\xE8re le chiffre",
+      "ui.dice.hint.pattern": "\xC0 qualit\xE9 graphique basse, le motif est remplac\xE9 par la couleur. Le r\xE9sultat du jet ne change jamais.",
+      "ui.dice.hint.numbers": "Contour sombre : aide \xE0 lire sur un d\xE9 clair. Le contraste chiffres / d\xE9 est contr\xF4l\xE9 sous l\u2019aper\xE7u (au moins 4,5:1).",
+      "ui.dice.hint.fx": "Lueur et tra\xEEn\xE9e sont plafonn\xE9es par la qualit\xE9 graphique de la table (rien \xE0 qualit\xE9 basse). Les sons sont synth\xE9tis\xE9s : aucun fichier ; chacun r\xE8gle \xAB Sons des d\xE9s \xBB chez soi.",
+      "ui.dice.hint.image": "Les autres joueurs voient ton image, sauf si le MJ la coupe \xE0 sa table : ils voient alors la couleur du d\xE9.",
+      "ui.dice.hint.drop": "Ou glisse-la ici. PNG, JPG ou WebP.",
+      "ui.dice.hint.one": "Chaque d\xE9 suit le look commun. Choisis un d\xE9 pour ne changer que lui : \u25CF marque ce qui diff\xE8re.",
+      "ui.dice.hint.common": "Look commun : {value}",
+      "ui.dice.img.choose": "Choisir une image\u2026",
+      "ui.dice.img.remove": "Retirer l\u2019image",
+      "ui.dice.img.thumbAlt": "Aper\xE7u de l\u2019image",
+      "ui.dice.img.info": "{name} \xB7 r\xE9duite \xE0 256 \xD7 256 \xB7 {kb} Ko"
     };
   }
 });
@@ -3109,7 +3441,7 @@ var require_builder_theme = __commonJS({
       function useTexts2(fn) {
         given2 = typeof fn === "function" ? fn : null;
       }
-      var HEX = /^#[0-9a-fA-F]{6}$/;
+      var HEX2 = /^#[0-9a-fA-F]{6}$/;
       var SKIN_ID_RE = /^[a-z0-9_]{1,24}$/;
       var FONTS = {
         system: { get label() {
@@ -3342,7 +3674,7 @@ var require_builder_theme = __commonJS({
         var seen = {}, total = 0;
         assets.forEach(function(a) {
           var label = a && typeof a.id === "string" ? "\xAB " + a.id + " \xBB" : "";
-          if (!isObj6(a) || typeof a.id !== "string" || !ASSET_ID_RE.test(a.id)) return errors.push(say2("builderTheme.identifiantFichierEmbarqueInvalide"));
+          if (!isObj7(a) || typeof a.id !== "string" || !ASSET_ID_RE.test(a.id)) return errors.push(say2("builderTheme.identifiantFichierEmbarqueInvalide"));
           if (seen[a.id]) return errors.push(say2("builderTheme.assets.duplicate", { name: label }));
           seen[a.id] = true;
           var type = ASSET_TYPES[a.mime];
@@ -3364,7 +3696,7 @@ var require_builder_theme = __commonJS({
       }
       var assetOf = function(assets, id) {
         return (Array.isArray(assets) ? assets : []).filter(function(a) {
-          return isObj6(a) && a.id === id;
+          return isObj7(a) && a.id === id;
         })[0] || null;
       };
       var assetFontId = function(v) {
@@ -3373,7 +3705,7 @@ var require_builder_theme = __commonJS({
       var dataUrl = function(a) {
         return 'url("data:' + a.mime + ";base64," + a.data + '")';
       };
-      var isObj6 = function(v) {
+      var isObj7 = function(v) {
         return v !== null && typeof v === "object" && !Array.isArray(v);
       };
       var isInt = function(v, r) {
@@ -3399,10 +3731,10 @@ var require_builder_theme = __commonJS({
       }
       var DEFAULTS = { frame: "none", spacing: "none", stat: { style: "plain" }, gauge: { style: "bar", color: "accent" }, tag: { style: "paper" } };
       function withDefaults(t) {
-        if (!isObj6(t)) return t;
+        if (!isObj7(t)) return t;
         var out = JSON.parse(JSON.stringify(t));
-        if (isObj6(out.shape) && out.shape.frame === void 0) out.shape.frame = DEFAULTS.frame;
-        if (isObj6(out.shape) && out.shape.spacing === void 0) out.shape.spacing = DEFAULTS.spacing;
+        if (isObj7(out.shape) && out.shape.frame === void 0) out.shape.frame = DEFAULTS.frame;
+        if (isObj7(out.shape) && out.shape.spacing === void 0) out.shape.spacing = DEFAULTS.spacing;
         ["stat", "gauge", "tag"].forEach(function(k) {
           if (out[k] === void 0) out[k] = JSON.parse(JSON.stringify(DEFAULTS[k]));
         });
@@ -3573,17 +3905,17 @@ var require_builder_theme = __commonJS({
       function validateTheme(t, assets) {
         var errors = [];
         if (t === null || t === void 0) return errors;
-        if (!isObj6(t)) return [say2("builderTheme.themeIllisible")];
+        if (!isObj7(t)) return [say2("builderTheme.themeIllisible")];
         t = withDefaults(t);
         var e = function(m) {
           errors.push(m);
         };
         if (t.name !== void 0 && (typeof t.name !== "string" || t.name.length > 60)) e(say2("builderTheme.nomThemeInvalide"));
-        if (!isObj6(t.colors)) e("Couleurs manquantes.");
+        if (!isObj7(t.colors)) e("Couleurs manquantes.");
         else COLOR_KEYS.forEach(function(c) {
-          if (typeof t.colors[c.k] !== "string" || !HEX.test(t.colors[c.k])) e(say2("builderTheme.badColor", { name: c.label }));
+          if (typeof t.colors[c.k] !== "string" || !HEX2.test(t.colors[c.k])) e(say2("builderTheme.badColor", { name: c.label }));
         });
-        if (!isObj6(t.fonts)) e("Polices manquantes.");
+        if (!isObj7(t.fonts)) e("Polices manquantes.");
         else {
           var fontOk = function(v) {
             if (FONTS[v]) return true;
@@ -3596,11 +3928,11 @@ var require_builder_theme = __commonJS({
           if (ENUMS.fonts.headingCase.indexOf(t.fonts.headingCase) < 0) e(say2("builderTheme.casseTitresInvalide"));
           if (!isInt(t.fonts.headingSpacing, RANGES.headingSpacing)) e(say2("builderTheme.range.spacing", { min: RANGES.headingSpacing[0], max: RANGES.headingSpacing[1] }));
         }
-        if (!isObj6(t.background)) e("Fond manquant.");
+        if (!isObj7(t.background)) e("Fond manquant.");
         else {
           if (ENUMS.background.kind.indexOf(t.background.kind) < 0) e(say2("builderTheme.typeFondInconnu"));
-          if (typeof t.background.color2 !== "string" || !HEX.test(t.background.color2)) e(say2("builderTheme.secondeCouleurFondInvalide"));
-          if (typeof t.background.patternColor !== "string" || !HEX.test(t.background.patternColor)) e(say2("builderTheme.couleurMotifInvalide"));
+          if (typeof t.background.color2 !== "string" || !HEX2.test(t.background.color2)) e(say2("builderTheme.secondeCouleurFondInvalide"));
+          if (typeof t.background.patternColor !== "string" || !HEX2.test(t.background.patternColor)) e(say2("builderTheme.couleurMotifInvalide"));
           if (!isInt(t.background.angle, RANGES.angle)) e(say2("builderTheme.angleDegrade0360"));
           if (!isInt(t.background.patternSize, RANGES.patternSize)) e(say2("builderTheme.range.patternSize", { min: RANGES.patternSize[0], max: RANGES.patternSize[1] }));
           if (!isInt(t.background.patternOpacity, RANGES.patternOpacity)) e(say2("builderTheme.range.patternOpacity", { min: RANGES.patternOpacity[0], max: RANGES.patternOpacity[1] }));
@@ -3610,7 +3942,7 @@ var require_builder_theme = __commonJS({
             if (!img || img.kind !== "image") e(say2("builderTheme.choisisImageFondParmi"));
           }
         }
-        if (!isObj6(t.shape)) e("Formes manquantes.");
+        if (!isObj7(t.shape)) e("Formes manquantes.");
         else {
           if (!isInt(t.shape.radius, RANGES.radius)) e("Arrondi : " + RANGES.radius.join(" \xE0 ") + " px.");
           if (!isInt(t.shape.borderWidth, RANGES.borderWidth)) e(say2("builderTheme.range.borderWidth", { min: RANGES.borderWidth[0], max: RANGES.borderWidth[1] }));
@@ -3620,16 +3952,16 @@ var require_builder_theme = __commonJS({
           if (ENUMS.shape.frame.indexOf(t.shape.frame) < 0) e(say2("builderTheme.cadreInconnu"));
           if (ENUMS.shape.spacing.indexOf(t.shape.spacing) < 0) e(say2("builderTheme.espacementInconnu"));
         }
-        if (!isObj6(t.header)) e("Bandeau manquant.");
+        if (!isObj7(t.header)) e("Bandeau manquant.");
         else {
           if (ENUMS.header.style.indexOf(t.header.style) < 0) e(say2("builderTheme.styleBandeauInconnu"));
           if (ENUMS.header.align.indexOf(t.header.align) < 0) e(say2("builderTheme.alignementBandeauInvalide"));
         }
-        if (!isObj6(t.fields) || ENUMS.fields.style.indexOf(t.fields.style) < 0) e(say2("builderTheme.styleChampsInconnu"));
+        if (!isObj7(t.fields) || ENUMS.fields.style.indexOf(t.fields.style) < 0) e(say2("builderTheme.styleChampsInconnu"));
         if (ENUMS.titleRule.indexOf(t.titleRule) < 0) e(say2("builderTheme.ornementTitresInconnu"));
-        if (!isObj6(t.stat) || ENUMS.stat.style.indexOf(t.stat.style) < 0) e(say2("builderTheme.styleBlocsStatInconnu"));
-        if (!isObj6(t.gauge) || ENUMS.gauge.style.indexOf(t.gauge.style) < 0 || ENUMS.gauge.color.indexOf(t.gauge.color) < 0) e(say2("builderTheme.styleJaugeInconnu"));
-        if (!isObj6(t.tag) || ENUMS.tag.style.indexOf(t.tag.style) < 0) e(say2("builderTheme.styleEtiquetteJetInconnu"));
+        if (!isObj7(t.stat) || ENUMS.stat.style.indexOf(t.stat.style) < 0) e(say2("builderTheme.styleBlocsStatInconnu"));
+        if (!isObj7(t.gauge) || ENUMS.gauge.style.indexOf(t.gauge.style) < 0 || ENUMS.gauge.color.indexOf(t.gauge.color) < 0) e(say2("builderTheme.styleJaugeInconnu"));
+        if (!isObj7(t.tag) || ENUMS.tag.style.indexOf(t.tag.style) < 0) e(say2("builderTheme.styleEtiquetteJetInconnu"));
         return errors;
       }
       function rgba(hex, alpha) {
@@ -3947,7 +4279,7 @@ var require_builder_theme = __commonJS({
         PRESETS,
         VARIANTS,
         TEXT_SIZES,
-        HEX,
+        HEX: HEX2,
         SKIN_ID_RE,
         withDefaults,
         DEFAULTS,
@@ -4008,10 +4340,10 @@ var require_rules_core = __commonJS({
       var TONES = ["crit", "success", "partial", "fail", "fumble"];
       var ASKS = ["always", "shift", "never"];
       var WHENS = ["natural", "doubles", "maxCount", "zeroWithOne", "total"];
-      var isObj6 = function(x) {
+      var isObj7 = function(x) {
         return !!x && typeof x === "object" && !Array.isArray(x);
       };
-      var has = function(o, k) {
+      var has2 = function(o, k) {
         return typeof k === "string" && Object.prototype.hasOwnProperty.call(o, k);
       };
       var isInt = function(x, lo, hi) {
@@ -4124,52 +4456,52 @@ var require_rules_core = __commonJS({
         var e = function(p, key, vars) {
           errs.push({ path: at + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj6(r)) return e("", "rules.v.notResolution");
+        if (!isObj7(r)) return e("", "rules.v.notResolution");
         if (typeof r.id !== "string" || !ID_RE3.test(r.id)) e("id", "rules.v.id");
         if (!cleanName(r.name)) e("name", "rules.v.name");
         if (FAMILIES.indexOf(r.family) < 0) e("family", "rules.v.family");
         var d = r.dice;
-        if (!isObj6(d)) return e("dice", "rules.v.dice");
+        if (!isObj7(d)) return e("dice", "rules.v.dice");
         var pool = d.count === "pool";
         if (!pool && !isInt(d.count, 1, LIMITS2.count)) e("dice.count", "rules.v.count", { max: LIMITS2.count });
         if (SIDES.indexOf(d.sides) < 0) e("dice.sides", "rules.v.sides", { list: SIDES.join(", ") });
         if (d.fate !== true && d.fate !== false) e("dice.fate", "rules.v.bool");
         if (d.fate === true && (d.sides !== 3 || pool)) e("dice.fate", "rules.v.fate");
-        if (d.reroll !== null && !(isObj6(d.reroll) && isInt(d.reroll.on, 1, 100) && d.reroll.on <= d.sides && (d.reroll.once === true || d.reroll.once === false))) e("dice.reroll", "rules.v.reroll");
-        if (d.explode !== null && !(isObj6(d.explode) && d.explode.on === "max" && isInt(d.explode.limit, 0, 10) && d.sides > 1)) e("dice.explode", "rules.v.explode");
-        if (d.keep !== null && !(isObj6(d.keep) && (d.keep.which === "high" || d.keep.which === "low") && isInt(d.keep.n, 1, LIMITS2.count) && (pool || d.keep.n < d.count))) e("dice.keep", "rules.v.keep");
+        if (d.reroll !== null && !(isObj7(d.reroll) && isInt(d.reroll.on, 1, 100) && d.reroll.on <= d.sides && (d.reroll.once === true || d.reroll.once === false))) e("dice.reroll", "rules.v.reroll");
+        if (d.explode !== null && !(isObj7(d.explode) && d.explode.on === "max" && isInt(d.explode.limit, 0, 10) && d.sides > 1)) e("dice.explode", "rules.v.explode");
+        if (d.keep !== null && !(isObj7(d.keep) && (d.keep.which === "high" || d.keep.which === "low") && isInt(d.keep.n, 1, LIMITS2.count) && (pool || d.keep.n < d.count))) e("dice.keep", "rules.v.keep");
         if (!isInt(r.bonus, -LIMITS2.add, LIMITS2.add)) e("bonus", "rules.v.bonus");
         var t = r.target;
-        if (!isObj6(t) || TARGETS.indexOf(t.kind) < 0) e("target.kind", "rules.v.target");
+        if (!isObj7(t) || TARGETS.indexOf(t.kind) < 0) e("target.kind", "rules.v.target");
         else {
           if (!Array.isArray(t.difficulties) || t.difficulties.length > LIMITS2.difficulties) e("target.difficulties", "rules.v.difficulties", { max: LIMITS2.difficulties });
           else t.difficulties.forEach(function(x, i) {
-            if (!isObj6(x) || !cleanName(x.name)) e("target.difficulties." + i + ".name", "rules.v.name");
-            if (!isObj6(x) || !isInt(x.value, -LIMITS2.add, LIMITS2.add)) e("target.difficulties." + i + ".value", "rules.v.difficultyValue");
+            if (!isObj7(x) || !cleanName(x.name)) e("target.difficulties." + i + ".name", "rules.v.name");
+            if (!isObj7(x) || !isInt(x.value, -LIMITS2.add, LIMITS2.add)) e("target.difficulties." + i + ".value", "rules.v.difficultyValue");
           });
           var diffs = Array.isArray(t.difficulties) ? t.difficulties : [];
           if (t.kind === "difficulty" && !diffs.length) e("target.difficulties", "rules.v.noDifficulty");
           if (t.kind === "difficulty" && t["default"] && !diffs.some(function(x) {
-            return isObj6(x) && x.name === t["default"];
+            return isObj7(x) && x.name === t["default"];
           })) e("target.default", "rules.v.default");
           if (t.kind === "fixed" && !isInt(t.fixed, -LIMITS2.add, LIMITS2.add)) e("target.fixed", "rules.v.fixed");
         }
         var rd = r.read;
-        if (!isObj6(rd) || READS.indexOf(rd.kind) < 0) return e("read.kind", "rules.v.read");
+        if (!isObj7(rd) || READS.indexOf(rd.kind) < 0) return e("read.kind", "rules.v.read");
         if (rd.tie !== "success" && rd.tie !== "fail") e("read.tie", "rules.v.tie");
         if (rd.margin !== true && rd.margin !== false) e("read.margin", "rules.v.bool");
         if ((rd.kind === "count" || rd.kind === "best") && !pool) e("dice.count", "rules.v.needPool");
         if (rd.kind === "count") {
           var c = rd.count;
-          if (!isObj6(c) || !isInt(c.at, 1, 100) || c.at > d.sides) e("read.count.at", "rules.v.countAt", { sides: d.sides });
-          if (!isObj6(c) || !isInt(c.need, 1, LIMITS2.pool)) e("read.count.need", "rules.v.need");
-          if (!isObj6(c) || !(c["double"] === 0 || isInt(c["double"], 1, 100) && c["double"] <= d.sides)) e("read.count.double", "rules.v.double");
+          if (!isObj7(c) || !isInt(c.at, 1, 100) || c.at > d.sides) e("read.count.at", "rules.v.countAt", { sides: d.sides });
+          if (!isObj7(c) || !isInt(c.need, 1, LIMITS2.pool)) e("read.count.need", "rules.v.need");
+          if (!isObj7(c) || !(c["double"] === 0 || isInt(c["double"], 1, 100) && c["double"] <= d.sides)) e("read.count.double", "rules.v.double");
         }
         if (rd.kind === "bands" || rd.kind === "best") {
           var b = rd.bands, ok = Array.isArray(b) && b.length >= 2 && b.length <= LIMITS2.bands;
           if (ok) b.forEach(function(x, i) {
             var last = i === b.length - 1;
-            if (!isObj6(x) || !cleanName(x.name) || TONES.indexOf(x.tone) < 0) ok = false;
+            if (!isObj7(x) || !cleanName(x.name) || TONES.indexOf(x.tone) < 0) ok = false;
             else if (last ? x.max !== null : !isInt(x.max, -LIMITS2.add, LIMITS2.add)) ok = false;
             else if (i > 0 && !last && x.max <= b[i - 1].max) ok = false;
           });
@@ -4177,11 +4509,11 @@ var require_rules_core = __commonJS({
         }
         if (rd.degrees !== null) {
           var g = rd.degrees;
-          var steps = isObj6(g) && isInt(g.steps, 1, LIMITS2.add) && Array.isArray(g.names) && g.names.length >= 1 && g.names.length <= LIMITS2.bands && g.names.every(function(n) {
+          var steps = isObj7(g) && isInt(g.steps, 1, LIMITS2.add) && Array.isArray(g.names) && g.names.length >= 1 && g.names.length <= LIMITS2.bands && g.names.every(function(n) {
             return !!cleanName(n);
           });
-          var fr = isObj6(g) && Array.isArray(g.fractions) && g.fractions.length >= 1 && g.fractions.length <= 4 && g.fractions.every(function(f, i) {
-            return isObj6(f) && typeof f.at === "number" && f.at > 0 && f.at < 1 && !!cleanName(f.name) && (i === 0 || f.at > g.fractions[i - 1].at);
+          var fr = isObj7(g) && Array.isArray(g.fractions) && g.fractions.length >= 1 && g.fractions.length <= 4 && g.fractions.every(function(f, i) {
+            return isObj7(f) && typeof f.at === "number" && f.at > 0 && f.at < 1 && !!cleanName(f.name) && (i === 0 || f.at > g.fractions[i - 1].at);
           });
           if (!(steps && rd.kind === "over") && !(fr && rd.kind === "under")) e("read.degrees", "rules.v.degrees");
         }
@@ -4189,7 +4521,7 @@ var require_rules_core = __commonJS({
           var list2 = r[k];
           if (!Array.isArray(list2) || list2.length > LIMITS2.conditions) return e(k, "rules.v.conditions");
           list2.forEach(function(c2, i) {
-            var good = isObj6(c2) && WHENS.indexOf(c2.when) >= 0 && Array.isArray(c2.values) && c2.values.length <= LIMITS2.values && c2.values.every(function(v) {
+            var good = isObj7(c2) && WHENS.indexOf(c2.when) >= 0 && Array.isArray(c2.values) && c2.values.length <= LIMITS2.values && c2.values.every(function(v) {
               return isInt(v, -LIMITS2.add, LIMITS2.add);
             }) && (c2.name === "" || !!cleanName(c2.name));
             if (good && (c2.when === "natural" || c2.when === "total") && !c2.values.length) good = false;
@@ -4200,28 +4532,28 @@ var require_rules_core = __commonJS({
           });
         });
         var w = r.window;
-        if (!isObj6(w) || ASKS.indexOf(w.ask) < 0 || ["advantage", "bonus", "difficulty", "poolDice"].some(function(k) {
+        if (!isObj7(w) || ASKS.indexOf(w.ask) < 0 || ["advantage", "bonus", "difficulty", "poolDice"].some(function(k) {
           return w[k] !== true && w[k] !== false;
         })) e("window", "rules.v.window");
         else {
           if (w.poolDice && !pool) e("window.poolDice", "rules.v.needPool");
-          if (w.difficulty && (!isObj6(t) || t.kind !== "difficulty")) e("window.difficulty", "rules.v.windowDifficulty");
+          if (w.difficulty && (!isObj7(t) || t.kind !== "difficulty")) e("window.difficulty", "rules.v.windowDifficulty");
           if (w.advantage && (pool || d.fate || rd.kind === "bands")) e("window.advantage", "rules.v.advantage");
         }
       }
       function validateRules(rules) {
         var errs = [];
-        if (!isObj6(rules)) return [{ path: "", message: say2("rules.v.notRules") }];
+        if (!isObj7(rules)) return [{ path: "", message: say2("rules.v.notRules") }];
         validateResolution(rules.resolution, "resolution", errs);
         var rolls = rules.rolls === void 0 ? [] : rules.rolls;
         if (!Array.isArray(rolls) || rolls.length > LIMITS2.rolls) errs.push({ path: "rolls", message: say2("rules.v.rolls", { max: LIMITS2.rolls }) });
         else {
           var seen = {};
-          if (isObj6(rules.resolution)) seen[rules.resolution.id] = true;
+          if (isObj7(rules.resolution)) seen[rules.resolution.id] = true;
           rolls.forEach(function(r, i) {
             validateResolution(r, "rolls." + i, errs);
-            if (isObj6(r) && seen[r.id]) errs.push({ path: "rolls." + i + ".id", message: say2("rules.v.sameId", { id: r.id }) });
-            if (isObj6(r)) seen[r.id] = true;
+            if (isObj7(r) && seen[r.id]) errs.push({ path: "rolls." + i + ".id", message: say2("rules.v.sameId", { id: r.id }) });
+            if (isObj7(r)) seen[r.id] = true;
           });
         }
         if (rules.stats !== void 0) validateStats(rules, errs);
@@ -4248,10 +4580,10 @@ var require_rules_core = __commonJS({
       }
       function resolutionsOf(rules) {
         var out = {};
-        if (!isObj6(rules)) return out;
-        if (isObj6(rules.resolution)) out[rules.resolution.id] = rules.resolution;
+        if (!isObj7(rules)) return out;
+        if (isObj7(rules.resolution)) out[rules.resolution.id] = rules.resolution;
         (Array.isArray(rules.rolls) ? rules.rolls : []).forEach(function(r) {
-          if (isObj6(r)) out[r.id] = r;
+          if (isObj7(r)) out[r.id] = r;
         });
         return out;
       }
@@ -4292,7 +4624,7 @@ var require_rules_core = __commonJS({
         autre: "rules.icon.autre"
       };
       function iconName(id) {
-        return has(ICON_TEXT, id) ? say2(ICON_TEXT[id]) : String(id);
+        return has2(ICON_TEXT, id) ? say2(ICON_TEXT[id]) : String(id);
       }
       var FX = { states: 24, mods: 8, rolls: 4, rests: 4, restore: 24, n: 99, roll: 20, rounds: 100, fixed: 999 };
       var PROG = { xp: 1e6, marks: 40, gains: 24, give: 4, at: 20, onFail: 4, purchases: 20, features: 200, text: 1e3, among: 60, points: 20, n: 1e3, times: 20, useRes: 8 };
@@ -4330,25 +4662,25 @@ var require_rules_core = __commonJS({
       function libraryPools(rules) {
         var resources = {}, states = {}, types = [], stats = [];
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (isObj6(d) && d.resource && typeof d.id === "string") resources[d.id] = true;
+          if (isObj7(d) && d.resource && typeof d.id === "string") resources[d.id] = true;
         });
-        if (isObj6(rules.effects) && Array.isArray(rules.effects.states)) rules.effects.states.forEach(function(s) {
-          if (isObj6(s) && typeof s.id === "string") states[s.id] = true;
+        if (isObj7(rules.effects) && Array.isArray(rules.effects.states)) rules.effects.states.forEach(function(s) {
+          if (isObj7(s) && typeof s.id === "string") states[s.id] = true;
         });
-        var cb = isObj6(rules.combat) && isObj6(rules.combat.attack) && isObj6(rules.combat.damage) ? rules.combat : null;
+        var cb = isObj7(rules.combat) && isObj7(rules.combat.attack) && isObj7(rules.combat.damage) ? rules.combat : null;
         if (cb) {
-          types = (Array.isArray(cb.damage.types) ? cb.damage.types : []).filter(isObj6).map(function(t) {
+          types = (Array.isArray(cb.damage.types) ? cb.damage.types : []).filter(isObj7).map(function(t) {
             return t.id;
           });
-          stats = (Array.isArray(cb.attack.stats) && cb.attack.stats.length ? cb.attack.stats : isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj6).map(function(x) {
+          stats = (Array.isArray(cb.attack.stats) && cb.attack.stats.length ? cb.attack.stats : isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj7).map(function(x) {
             return x.id;
           }) : []).slice();
           if (Array.isArray(cb.attack.finesse)) stats.push("finesse");
         }
-        return { res: resolutionsOf(rules), resources, states, combat: !!cb, types, stats, progression: isObj6(rules.progression) };
+        return { res: resolutionsOf(rules), resources, states, combat: !!cb, types, stats, progression: isObj7(rules.progression) };
       }
       function fieldsOf(genre, pools) {
-        if (!isObj6(genre)) return [];
+        if (!isObj7(genre)) return [];
         if (genre.kind === "weapon") return [
           { id: "arm_carac", name: say2("rules.w.stat"), type: "choice", options: pools.stats.slice() },
           { id: "arm_bonus", name: say2("rules.w.bonus"), type: "number", min: -20, max: 30 },
@@ -4359,7 +4691,7 @@ var require_rules_core = __commonJS({
           { id: "arm_etiquettes", name: say2("rules.w.tags"), type: "text" }
         ];
         if (genre.kind === "feature") return [{ id: "text", name: say2("rules.l.featText"), type: "long" }];
-        return genre.kind === "custom" && Array.isArray(genre.fields) ? genre.fields.filter(isObj6) : [];
+        return genre.kind === "custom" && Array.isArray(genre.fields) ? genre.fields.filter(isObj7) : [];
       }
       var bool = function(x) {
         return x === true || x === false;
@@ -4385,7 +4717,7 @@ var require_rules_core = __commonJS({
         return t.sign < 0 ? "(0-" + termText(t) + ")" : termText(t);
       };
       var readKind = function(rules) {
-        return isObj6(rules.resolution) && isObj6(rules.resolution.read) ? rules.resolution.read.kind : "over";
+        return isObj7(rules.resolution) && isObj7(rules.resolution.read) ? rules.resolution.read.kind : "over";
       };
       function statAdd(rules, id) {
         var k = readKind(rules);
@@ -4426,33 +4758,33 @@ var require_rules_core = __commonJS({
       }
       function modKeys(rules) {
         var out = {};
-        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj6(x) && typeof x.id === "string") out[x.id] = true;
+        (isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj7(x) && typeof x.id === "string") out[x.id] = true;
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (isObj6(d) && typeof d.id === "string" && isObj6(d.recipe) && d.recipe.kind !== "input" && !d.resource) out[d.id] = true;
+          if (isObj7(d) && typeof d.id === "string" && isObj7(d.recipe) && d.recipe.kind !== "input" && !d.resource) out[d.id] = true;
         });
         var sk = rules.skills;
-        if (isObj6(sk) && sk.mode === "fixed" && Array.isArray(sk.list)) sk.list.forEach(function(x) {
-          if (isObj6(x) && typeof x.id === "string") out["sk_" + x.id + "_t"] = true;
+        if (isObj7(sk) && sk.mode === "fixed" && Array.isArray(sk.list)) sk.list.forEach(function(x) {
+          if (isObj7(x) && typeof x.id === "string") out["sk_" + x.id + "_t"] = true;
         });
         return out;
       }
       function effectKeys(rules) {
-        if (!isObj6(rules) || !isObj6(rules.effects)) return [];
+        if (!isObj7(rules) || !isObj7(rules.effects)) return [];
         var ok = modKeys(rules), out = [];
         var add = function(k) {
-          if (typeof k === "string" && has(ok, k) && out.indexOf(k) < 0) out.push(k);
+          if (typeof k === "string" && has2(ok, k) && out.indexOf(k) < 0) out.push(k);
         };
-        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj6(x)) add(x.id);
+        (isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj7(x)) add(x.id);
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (isObj6(d) && d.show !== "hidden") add(d.id);
+          if (isObj7(d) && d.show !== "hidden") add(d.id);
         });
         (Array.isArray(rules.effects.states) ? rules.effects.states : []).forEach(function(s) {
-          (isObj6(s) && Array.isArray(s.mods) ? s.mods : []).forEach(function(m) {
-            if (isObj6(m)) add(m.key);
+          (isObj7(s) && Array.isArray(s.mods) ? s.mods : []).forEach(function(m) {
+            if (isObj7(m)) add(m.key);
           });
         });
         return out;
@@ -4461,37 +4793,37 @@ var require_rules_core = __commonJS({
         return effectKeys(rules).indexOf(key) >= 0;
       };
       function progTargets(rules) {
-        var out = {}, prog = isObj6(rules) && isObj6(rules.progression) ? rules.progression : {};
-        var levelKey = isObj6(prog.levels) ? prog.levels.key : null;
-        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj6(x) && typeof x.id === "string") out[x.id] = "stat";
+        var out = {}, prog = isObj7(rules) && isObj7(rules.progression) ? rules.progression : {};
+        var levelKey = isObj7(prog.levels) ? prog.levels.key : null;
+        (isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj7(x) && typeof x.id === "string") out[x.id] = "stat";
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (!isObj6(d) || typeof d.id !== "string" || !isObj6(d.recipe) || d.id === levelKey) return;
+          if (!isObj7(d) || typeof d.id !== "string" || !isObj7(d.recipe) || d.id === levelKey) return;
           out[d.id] = d.resource ? "resource" : d.recipe.kind === "input" ? "input" : "computed";
         });
         var sk = rules.skills;
-        if (isObj6(sk) && sk.mode === "fixed" && Array.isArray(sk.list)) sk.list.forEach(function(x) {
-          if (isObj6(x) && typeof x.id === "string") out["sk_" + x.id] = "skill";
+        if (isObj7(sk) && sk.mode === "fixed" && Array.isArray(sk.list)) sk.list.forEach(function(x) {
+          if (isObj7(x) && typeof x.id === "string") out["sk_" + x.id] = "skill";
         });
         return out;
       }
       function progKeys(rules) {
-        var prog = isObj6(rules) ? rules.progression : null;
-        if (!isObj6(prog)) return [];
+        var prog = isObj7(rules) ? rules.progression : null;
+        if (!isObj7(prog)) return [];
         var t = progTargets(rules), out = [];
         var add = function(k) {
           if (typeof k === "string" && t[k] === "computed" && out.indexOf(k) < 0) out.push(k);
         };
-        (isObj6(prog.levels) && Array.isArray(prog.levels.gains) ? prog.levels.gains : []).forEach(function(g) {
-          (isObj6(g) && Array.isArray(g.give) ? g.give : []).forEach(function(x) {
-            if (!isObj6(x)) return;
+        (isObj7(prog.levels) && Array.isArray(prog.levels.gains) ? prog.levels.gains : []).forEach(function(g) {
+          (isObj7(g) && Array.isArray(g.give) ? g.give : []).forEach(function(x) {
+            if (!isObj7(x)) return;
             if (x.kind === "add") add(x.key);
             if (x.kind === "spread" && Array.isArray(x.among)) x.among.forEach(add);
           });
         });
         (Array.isArray(prog.purchases) ? prog.purchases : []).forEach(function(b) {
-          if (isObj6(b) && b.what === "value") (Array.isArray(b.keys) ? b.keys : Object.keys(t)).forEach(add);
+          if (isObj7(b) && b.what === "value") (Array.isArray(b.keys) ? b.keys : Object.keys(t)).forEach(add);
         });
         return out;
       }
@@ -4520,9 +4852,9 @@ var require_rules_core = __commonJS({
         Object.keys(resolutionsOf(rules)).forEach(function(id) {
           m.owner[id] = "resolution";
         });
-        var s = isObj6(rules.stats) ? rules.stats : null;
+        var s = isObj7(rules.stats) ? rules.stats : null;
         (s && Array.isArray(s.list) ? s.list : []).forEach(function(x, i) {
-          if (!isObj6(x)) return;
+          if (!isObj7(x)) return;
           var at = "stats.list." + i + ".id";
           own(x.id, at);
           if (s.form === "dots") {
@@ -4539,7 +4871,7 @@ var require_rules_core = __commonJS({
           }
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d, i) {
-          if (!isObj6(d) || !isObj6(d.recipe)) return;
+          if (!isObj7(d) || !isObj7(d.recipe)) return;
           var at = "derived." + i + ".id";
           own(d.id, at);
           if (d.recipe.kind === "input") m.typed[d.id] = d.recipe["default"];
@@ -4555,9 +4887,9 @@ var require_rules_core = __commonJS({
             m.raw[d.id] = text;
           }
         });
-        var sk = isObj6(rules.skills) ? rules.skills : null;
+        var sk = isObj7(rules.skills) ? rules.skills : null;
         if (sk && sk.mode === "fixed") (Array.isArray(sk.list) ? sk.list : []).forEach(function(x, i) {
-          if (!isObj6(x)) return;
+          if (!isObj7(x)) return;
           var at = "skills.list." + i + ".id", k = "sk_" + x.id;
           own(k, at);
           if (sk.rank === "dots") pips(k, SKILL_DOTS);
@@ -4580,13 +4912,13 @@ var require_rules_core = __commonJS({
             m.raw[k + "_p"] = chain([{ sign: 1, text: "10" }, { sign: 1, text: "@" + k + "_t" }]);
           }
         });
-        if (isObj6(rules.combat)) {
+        if (isObj7(rules.combat)) {
           WEAPON_KEYS.concat(DEFENSE_KEYS).forEach(function(k) {
             own(k, "combat");
           });
           m.typed.def_reduction = 0;
         }
-        if (isObj6(rules.effects) || Array.isArray(rules.rests)) {
+        if (isObj7(rules.effects) || Array.isArray(rules.rests)) {
           own("fx", "effects");
           own("effets_actifs", "effects");
           Object.keys(fx).forEach(function(k) {
@@ -4594,15 +4926,15 @@ var require_rules_core = __commonJS({
             m.typed["fx_" + k] = 0;
           });
           (Array.isArray(rules.rests) ? rules.rests : []).forEach(function(r) {
-            if (isObj6(r) && typeof r.id === "string") own("repos_" + r.id, "rests");
+            if (isObj7(r) && typeof r.id === "string") own("repos_" + r.id, "rests");
           });
         }
-        if (isObj6(rules.progression)) {
+        if (isObj7(rules.progression)) {
           var P = rules.progression;
           own("prog", "progression");
           own("progression_etat", "progression");
           own("aptitudes_liste", "progression");
-          if (isObj6(P.xp) && typeof P.xp.id === "string") {
+          if (isObj7(P.xp) && typeof P.xp.id === "string") {
             own(P.xp.id, "progression.xp.id");
             m.typed[P.xp.id] = 0;
           }
@@ -4610,13 +4942,13 @@ var require_rules_core = __commonJS({
             own("prog_" + k, "progression");
             m.typed["prog_" + k] = 0;
           });
-          if (isObj6(P.use) && sk && sk.mode === "fixed") (Array.isArray(sk.list) ? sk.list : []).forEach(function(x) {
-            if (isObj6(x)) own("tick_" + x.id, "progression");
+          if (isObj7(P.use) && sk && sk.mode === "fixed") (Array.isArray(sk.list) ? sk.list : []).forEach(function(x) {
+            if (isObj7(x)) own("tick_" + x.id, "progression");
           });
         }
-        if (isObj6(rules.library) && Array.isArray(rules.library.genres)) {
+        if (isObj7(rules.library) && Array.isArray(rules.library.genres)) {
           rules.library.genres.forEach(function(g) {
-            if (!isObj6(g) || typeof g.id !== "string") return;
+            if (!isObj7(g) || typeof g.id !== "string") return;
             if (g.kind === "weapon") {
               own("arm_origine", "library");
               return;
@@ -4628,7 +4960,7 @@ var require_rules_core = __commonJS({
               own(pre + "_" + k, "library");
             });
             (Array.isArray(g.fields) ? g.fields : []).forEach(function(f) {
-              if (isObj6(f) && typeof f.id === "string") own(pre + "_" + f.id, "library");
+              if (isObj7(f) && typeof f.id === "string") own(pre + "_" + f.id, "library");
             });
           });
         }
@@ -4678,41 +5010,41 @@ var require_rules_core = __commonJS({
         return typeof bind === "string" && bind.indexOf("derived:") === 0 ? "derived" : typeof bind === "string" && bind.indexOf("library:") === 0 ? "library" : bind;
       };
       function bindKnown(rules, bind) {
-        if (!isObj6(rules) || typeof bind !== "string") return false;
-        if (bind === "stats") return isObj6(rules.stats) && Array.isArray(rules.stats.list) && rules.stats.list.length > 0;
-        if (bind === "skills") return isObj6(rules.skills) && rules.skills.mode === "fixed";
+        if (!isObj7(rules) || typeof bind !== "string") return false;
+        if (bind === "stats") return isObj7(rules.stats) && Array.isArray(rules.stats.list) && rules.stats.list.length > 0;
+        if (bind === "skills") return isObj7(rules.skills) && rules.skills.mode === "fixed";
         if (bind === "derived") return Array.isArray(rules.derived) && rules.derived.length > 0;
         if (bind.indexOf("derived:") === 0) {
           var id = bind.slice(8);
           return Array.isArray(rules.derived) && rules.derived.some(function(d) {
-            return isObj6(d) && d.id === id && d.show !== "hidden";
+            return isObj7(d) && d.id === id && d.show !== "hidden";
           });
         }
-        if (bind === "weapons" || bind === "defenses") return isObj6(rules.combat) && isObj6(rules.combat.attack) && isObj6(rules.combat.damage);
-        if (bind === "effects") return isObj6(rules.effects);
+        if (bind === "weapons" || bind === "defenses") return isObj7(rules.combat) && isObj7(rules.combat.attack) && isObj7(rules.combat.damage);
+        if (bind === "effects") return isObj7(rules.effects);
         if (bind === "rests") return Array.isArray(rules.rests) && rules.rests.length > 0;
         if (bind.indexOf("library:") === 0) {
           var lg = bind.slice(8);
-          return isObj6(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
-            return isObj6(g) && g.id === lg && g.kind === "custom";
+          return isObj7(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
+            return isObj7(g) && g.id === lg && g.kind === "custom";
           });
         }
-        if (bind === "progression") return isObj6(rules.progression);
-        if (bind === "features") return isObj6(rules.progression) && Array.isArray(rules.progression.features) && rules.progression.features.length > 0;
+        if (bind === "progression") return isObj7(rules.progression);
+        if (bind === "features") return isObj7(rules.progression) && Array.isArray(rules.progression.features) && rules.progression.features.length > 0;
         return false;
       }
       function layoutProblem(bind, layout) {
         if (layout === void 0 || layout === null) return false;
-        var allowed = has(BIND_LAYOUTS, bindKind(bind)) ? BIND_LAYOUTS[bindKind(bind)] : null;
-        if (!isObj6(layout) || !allowed) return true;
+        var allowed = has2(BIND_LAYOUTS, bindKind(bind)) ? BIND_LAYOUTS[bindKind(bind)] : null;
+        if (!isObj7(layout) || !allowed) return true;
         return Object.keys(layout).some(function(k) {
-          return !has(allowed, k) || allowed[k].indexOf(layout[k]) < 0;
+          return !has2(allowed, k) || allowed[k].indexOf(layout[k]) < 0;
         });
       }
       function boundChildren(rules, bind, layout, opts) {
         if (!bindKnown(rules, bind) || layoutProblem(bind, layout)) return null;
         opts = opts || {};
-        var L = isObj6(layout) ? layout : {};
+        var L = isObj7(layout) ? layout : {};
         var flat = flatFormulas(rules);
         var evaluate = typeof opts.evaluate === "function" ? opts.evaluate : function() {
           return 0;
@@ -4769,7 +5101,7 @@ var require_rules_core = __commonJS({
           var one = bind === "derived" ? null : bind.slice(8), own = opts.own || {};
           var fields = L.style === "fields";
           var list2 = rules.derived.filter(function(d) {
-            return one ? d.id === one : d.show !== "hidden" && !has(own, d.id);
+            return one ? d.id === one : d.show !== "hidden" && !has2(own, d.id);
           });
           var dcells = list2.map(function(d) {
             var name = cleanName(d.name), roll = null;
@@ -4795,7 +5127,7 @@ var require_rules_core = __commonJS({
         }
         if (bind === "progression") {
           var P = rules.progression, pk = [{ className: "Label", id: "rbl_progression", text: say2("rules.p.title"), variant: "muted" }];
-          if (isObj6(P.xp)) pk.push(number(P.xp.id, cleanName(P.xp.name), { defaultValue: "0", min: 0, max: PROG.xp, align: "Center" }));
+          if (isObj7(P.xp)) pk.push(number(P.xp.id, cleanName(P.xp.name), { defaultValue: "0", min: 0, max: PROG.xp, align: "Center" }));
           pk.push({ className: "Label", id: "progression_etat", text: "" });
           return [row("rbr_progression", [col("rbc_progression", 12, pk)])];
         }
@@ -4819,7 +5151,7 @@ var require_rules_core = __commonJS({
         }
         if (bindKind(bind) === "library") {
           var lg = bind.slice(8), G = rules.library.genres.filter(function(x) {
-            return isObj6(x) && x.id === lg;
+            return isObj7(x) && x.id === lg;
           })[0];
           var pre = "lib_" + lg + "_";
           var lcell = function(key, size, title, node) {
@@ -4849,7 +5181,7 @@ var require_rules_core = __commonJS({
         }
         if (bind === "weapons" || bind === "defenses") {
           var cb = rules.combat;
-          var types = (Array.isArray(cb.damage.types) ? cb.damage.types : []).filter(isObj6).map(function(t) {
+          var types = (Array.isArray(cb.damage.types) ? cb.damage.types : []).filter(isObj7).map(function(t) {
             return { id: t.id, label: cleanName(t.name) };
           });
           var muted = function(id, text) {
@@ -4867,7 +5199,7 @@ var require_rules_core = __commonJS({
             }
             return [row("rbr_def", dcells)];
           }
-          var statIds = Array.isArray(cb.attack.stats) && cb.attack.stats.length ? cb.attack.stats : isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.map(function(x) {
+          var statIds = Array.isArray(cb.attack.stats) && cb.attack.stats.length ? cb.attack.stats : isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.map(function(x) {
             return x.id;
           }) : [];
           var caracs = statIds.map(function(id) {
@@ -4886,8 +5218,8 @@ var require_rules_core = __commonJS({
           var shown = { className: "Label", id: "arm_ligne", text: '#arm_nom + " \xB7 " + #arm_degats', computed: true };
           var attack = { className: "Label", id: "arm_attaquer", text: say2("rules.attack"), variant: "button", align: "Center" };
           var armRows = [row("rbr_arm_f", form), row("rbr_arm_g", more)];
-          if (isObj6(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
-            return isObj6(g) && g.kind === "weapon";
+          if (isObj7(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
+            return isObj7(g) && g.kind === "weapon";
           })) armRows.push(row("rbr_arm_o", [col("rbc_arm_origine", 12, [{ className: "TextInput", id: "arm_origine", name: "arm_origine", defaultValue: "" }])]));
           var list2 = { className: "Repeater", id: "arm", layout: "vertical", noAdd: false, children: armRows, readChildren: [row("rbr_arm_r", [col("rbc_arm_l", 9, [shown]), col("rbc_arm_a", 3, [attack])])] };
           return [row("rbr_w", [col("rbc_w", 12, [muted("rbl_w", say2("rules.weapons")), list2])])];
@@ -4935,13 +5267,13 @@ var require_rules_core = __commonJS({
       function boundBlock(rules, bind, layout, opts) {
         var kids = boundChildren(rules, bind, layout, opts);
         if (!kids) return null;
-        return { className: "Container", id: "rb_" + bind.replace(":", "_"), layout: "vertical", bind, bindLayout: isObj6(layout) ? layout : {}, children: kids };
+        return { className: "Container", id: "rb_" + bind.replace(":", "_"), layout: "vertical", bind, bindLayout: isObj7(layout) ? layout : {}, children: kids };
       }
       function lockedKeys(rules) {
-        var s = isObj6(rules) ? rules.stats : null, out = [];
-        if (!isObj6(s) || !Array.isArray(s.list)) return out;
+        var s = isObj7(rules) ? rules.stats : null, out = [];
+        if (!isObj7(s) || !Array.isArray(s.list)) return out;
         s.list.forEach(function(x) {
-          if (!isObj6(x) || x.playerEdit !== false || typeof x.id !== "string" || !KEY_RE.test(x.id)) return;
+          if (!isObj7(x) || x.playerEdit !== false || typeof x.id !== "string" || !KEY_RE.test(x.id)) return;
           if (s.form === "dots") {
             if (isInt(s.max, 1, LIMITS2.dots)) for (var k = 1; k <= s.max; k++) out.push(x.id + "__" + k);
           } else out.push(x.id);
@@ -4950,18 +5282,18 @@ var require_rules_core = __commonJS({
       }
       function valueKeys(rules) {
         var keys = {};
-        var s = isObj6(rules.stats) ? rules.stats : null;
+        var s = isObj7(rules.stats) ? rules.stats : null;
         (s && Array.isArray(s.list) ? s.list : []).forEach(function(x) {
-          if (!isObj6(x) || typeof x.id !== "string") return;
+          if (!isObj7(x) || typeof x.id !== "string") return;
           keys[x.id] = true;
           if (s.form === "score") keys[x.id + "_mod"] = true;
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (!isObj6(d) || typeof d.id !== "string") return;
+          if (!isObj7(d) || typeof d.id !== "string") return;
           keys[d.id] = true;
           if (d.resource) keys[d.id + "_max"] = true;
         });
-        if (isObj6(rules.combat)) keys.def_reduction = true;
+        if (isObj7(rules.combat)) keys.def_reduction = true;
         return keys;
       }
       function validateStats(rules, errs) {
@@ -4969,18 +5301,18 @@ var require_rules_core = __commonJS({
         var e = function(p, key, vars) {
           errs.push({ path: "stats" + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj6(s)) return e("", "rules.v.stats");
+        if (!isObj7(s)) return e("", "rules.v.stats");
         if (STAT_FORMS.indexOf(s.form) < 0) e("form", "rules.v.statForm");
         if (!isInt(s.min, -LIMITS2.add, LIMITS2.add) || !isInt(s.max, -LIMITS2.add, LIMITS2.add) || s.min >= s.max) e("min", "rules.v.statRange");
         else if (!isInt(s["default"], s.min, s.max)) e("default", "rules.v.statDefault");
         if (s.form === "dots" && !(s.min === 0 && isInt(s.max, 1, LIMITS2.dots))) e("max", "rules.v.dotsRange", { max: LIMITS2.dots });
         if (s.form === "percent" && !(s.min >= 0 && s.max <= 100)) e("max", "rules.v.percentRange");
-        if (s.generation !== void 0 && !(isObj6(s.generation) && GENERATIONS.indexOf(s.generation.method) >= 0)) e("generation", "rules.v.generation");
+        if (s.generation !== void 0 && !(isObj7(s.generation) && GENERATIONS.indexOf(s.generation.method) >= 0)) e("generation", "rules.v.generation");
         else if (s.generation !== void 0 && Array.isArray(s.list)) genProblems(s.generation, s.list.length, s.min, s.max, s.form, e);
         if (!Array.isArray(s.list) || !s.list.length || s.list.length > LIMITS2.stats) return e("list", "rules.v.statList", { max: LIMITS2.stats });
         s.list.forEach(function(x, i) {
           var at = "list." + i;
-          if (!isObj6(x)) return e(at, "rules.v.notResolution");
+          if (!isObj7(x)) return e(at, "rules.v.notResolution");
           if (typeof x.id !== "string" || !KEY_RE.test(x.id)) e(at + ".id", "rules.v.key");
           else if (s.form === "dots" && x.id.length > 12) e(at + ".id", "rules.v.dotsKey", { max: 12 });
           if (!cleanName(x.name)) e(at + ".name", "rules.v.name");
@@ -4996,9 +5328,9 @@ var require_rules_core = __commonJS({
           return isInt(x, -LIMITS2.add, LIMITS2.add);
         };
         var term = function(t) {
-          return isObj6(t) && (t.sign === 1 || t.sign === -1) && (t.ref !== void 0 ? ref(t.ref) && t.n === void 0 : int(t.n));
+          return isObj7(t) && (t.sign === 1 || t.sign === -1) && (t.ref !== void 0 ? ref(t.ref) && t.n === void 0 : int(t.n));
         };
-        if (!isObj6(r)) return false;
+        if (!isObj7(r)) return false;
         switch (r.kind) {
           case "input":
             return int(r.min) && int(r.max) && r.min < r.max && isInt(r["default"], r.min, r.max);
@@ -5012,7 +5344,7 @@ var require_rules_core = __commonJS({
             return ref(r.source) && isInt(r.by, 1, 100) && !!ROUNDS[r.round];
           case "steps":
             return ref(r.source) && int(r["else"]) && Array.isArray(r.steps) && r.steps.length >= 1 && r.steps.length <= LIMITS2.steps && r.steps.every(function(x, i) {
-              return isObj6(x) && int(x.upTo) && int(x.value) && (i === 0 || x.upTo > r.steps[i - 1].upTo);
+              return isObj7(x) && int(x.upTo) && int(x.value) && (i === 0 || x.upTo > r.steps[i - 1].upTo);
             });
           case "max":
           case "min":
@@ -5040,18 +5372,18 @@ var require_rules_core = __commonJS({
         var keys = valueKeys(rules), res = rules.resolution;
         list2.forEach(function(d, i) {
           var at = String(i);
-          if (!isObj6(d)) return e(at, "rules.v.notResolution");
+          if (!isObj7(d)) return e(at, "rules.v.notResolution");
           if (typeof d.id !== "string" || !KEY_RE.test(d.id)) e(at + ".id", "rules.v.key");
           if (!cleanName(d.name)) e(at + ".name", "rules.v.name");
-          if (!isObj6(d.recipe) || RECIPES.indexOf(d.recipe.kind) < 0 || !recipeOk(d.recipe, keys)) e(at + ".recipe", "rules.v.recipe");
+          if (!isObj7(d.recipe) || RECIPES.indexOf(d.recipe.kind) < 0 || !recipeOk(d.recipe, keys)) e(at + ".recipe", "rules.v.recipe");
           if (SHOWS.indexOf(d.show) < 0) e(at + ".show", "rules.v.show");
           if (!optBool(d.resource) || !optBool(d.rollable)) e(at, "rules.v.bool");
-          var input = isObj6(d.recipe) && d.recipe.kind === "input";
+          var input = isObj7(d.recipe) && d.recipe.kind === "input";
           if (d.show === "hidden" && (d.rollable || d.resource || input)) e(at + ".show", "rules.v.hidden");
           if (d.show === "gauge" && !d.resource) e(at + ".show", "rules.v.gauge");
           if (d.resource && (input || d.rollable)) e(at + ".resource", "rules.v.resource");
-          if (d.rollWith !== void 0 && d.rollWith !== null && !has(resolutionsOf(rules), d.rollWith)) e(at + ".rollWith", "rules.v.rollWith", { id: String(d.rollWith) });
-          if (d.rollable && d.id === "initiative" && !(isObj6(res) && isObj6(res.dice) && typeof res.dice.count === "number")) e(at + ".rollable", "rules.v.initiative");
+          if (d.rollWith !== void 0 && d.rollWith !== null && !has2(resolutionsOf(rules), d.rollWith)) e(at + ".rollWith", "rules.v.rollWith", { id: String(d.rollWith) });
+          if (d.rollable && d.id === "initiative" && !(isObj7(res) && isObj7(res.dice) && typeof res.dice.count === "number")) e(at + ".rollable", "rules.v.initiative");
         });
       }
       function validateSkills(rules, errs) {
@@ -5059,34 +5391,34 @@ var require_rules_core = __commonJS({
         var e = function(p, key, vars) {
           errs.push({ path: "skills" + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj6(sk)) return e("", "rules.v.skills");
+        if (!isObj7(sk)) return e("", "rules.v.skills");
         if (SKILL_MODES.indexOf(sk.mode) < 0) e("mode", "rules.v.skillMode");
         if (RANKS.indexOf(sk.rank) < 0) e("rank", "rules.v.skillRank");
         var derived = {};
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (isObj6(d)) derived[d.id] = true;
+          if (isObj7(d)) derived[d.id] = true;
         });
-        if (sk.rank === "trained" && !(typeof sk.proficiency === "string" && has(derived, sk.proficiency))) e("proficiency", "rules.v.proficiency");
+        if (sk.rank === "trained" && !(typeof sk.proficiency === "string" && has2(derived, sk.proficiency))) e("proficiency", "rules.v.proficiency");
         if (sk.rank !== "trained" && sk.proficiency !== null && sk.proficiency !== void 0) e("proficiency", "rules.v.proficiency");
         if (!bool(sk.expertise) || sk.expertise && sk.rank !== "trained") e("expertise", "rules.v.expertise");
         var stats = {};
-        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj6(x)) stats[x.id] = true;
+        (isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj7(x)) stats[x.id] = true;
         });
         if (!Array.isArray(sk.list) || sk.list.length > LIMITS2.skills || sk.mode === "fixed" && !sk.list.length) return e("list", "rules.v.skillList", { max: LIMITS2.skills });
         sk.list.forEach(function(x, i) {
           var at = "list." + i;
-          if (!isObj6(x)) return e(at, "rules.v.notResolution");
+          if (!isObj7(x)) return e(at, "rules.v.notResolution");
           if (typeof x.id !== "string" || !KEY_RE.test(x.id)) e(at + ".id", "rules.v.key");
           else if (sk.rank === "dots" && x.id.length > 9) e(at + ".id", "rules.v.dotsKey", { max: 9 });
           if (!cleanName(x.name)) e(at + ".name", "rules.v.name");
-          if (x.stat !== null && x.stat !== void 0 && !has(stats, x.stat)) e(at + ".stat", "rules.v.skillStat", { id: String(x.stat) });
+          if (x.stat !== null && x.stat !== void 0 && !has2(stats, x.stat)) e(at + ".stat", "rules.v.skillStat", { id: String(x.stat) });
           if (x.group !== void 0 && (typeof x.group !== "string" || x.group.length > LIMITS2.name)) e(at + ".group", "rules.v.group");
           if (!optBool(x.passive)) e(at + ".passive", "rules.v.bool");
         });
       }
       function cleanRules(raw) {
-        if (!isObj6(raw)) return null;
+        if (!isObj7(raw)) return null;
         var pick = function(o, keys) {
           var x = {};
           keys.forEach(function(k) {
@@ -5095,12 +5427,12 @@ var require_rules_core = __commonJS({
           return x;
         };
         var copyRes = function(r) {
-          if (!isObj6(r) || Object.getPrototypeOf(r) !== Object.prototype) return null;
+          if (!isObj7(r) || Object.getPrototypeOf(r) !== Object.prototype) return null;
           var o = pick(r, ["id", "name", "family", "bonus", "crit", "fumble"]);
-          o.dice = isObj6(r.dice) ? pick(r.dice, ["count", "sides", "fate", "reroll", "explode", "keep"]) : null;
-          o.target = isObj6(r.target) ? pick(r.target, ["kind", "difficulties", "default", "fixed"]) : null;
-          o.read = isObj6(r.read) ? pick(r.read, ["kind", "tie", "margin", "degrees", "bands", "count"]) : null;
-          o.window = isObj6(r.window) ? pick(r.window, ["ask", "advantage", "bonus", "difficulty", "poolDice"]) : null;
+          o.dice = isObj7(r.dice) ? pick(r.dice, ["count", "sides", "fate", "reroll", "explode", "keep"]) : null;
+          o.target = isObj7(r.target) ? pick(r.target, ["kind", "difficulties", "default", "fixed"]) : null;
+          o.read = isObj7(r.read) ? pick(r.read, ["kind", "tie", "margin", "degrees", "bands", "count"]) : null;
+          o.window = isObj7(r.window) ? pick(r.window, ["ask", "advantage", "bonus", "difficulty", "poolDice"]) : null;
           return JSON.parse(JSON.stringify(o));
         };
         var rules = { resolution: copyRes(raw.resolution), rolls: Array.isArray(raw.rolls) ? raw.rolls.slice(0, LIMITS2.rolls + 1).map(copyRes) : [] };
@@ -5283,37 +5615,37 @@ var require_rules_core = __commonJS({
         var e = function(p, key2, vars) {
           errs.push({ path: "combat" + (p ? "." + p : ""), message: say2(key2, vars) });
         };
-        if (!isObj6(c) || !isObj6(c.attack) || !isObj6(c.damage)) return e("", "rules.v.combat");
+        if (!isObj7(c) || !isObj7(c.attack) || !isObj7(c.damage)) return e("", "rules.v.combat");
         var a = c.attack, d = c.damage, keys = valueKeys(rules), stats = {}, derived = {};
-        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj6(x) && typeof x.id === "string") stats[x.id] = true;
+        (isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj7(x) && typeof x.id === "string") stats[x.id] = true;
         });
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(x) {
-          if (isObj6(x) && typeof x.id === "string") derived[x.id] = x;
+          if (isObj7(x) && typeof x.id === "string") derived[x.id] = x;
         });
         var key = function(k) {
-          return has(keys, k);
+          return has2(keys, k);
         };
-        if (!has(resolutionsOf(rules), a.rollWith)) e("attack.rollWith", "rules.v.combatRoll", { id: String(a.rollWith) });
+        if (!has2(resolutionsOf(rules), a.rollWith)) e("attack.rollWith", "rules.v.combatRoll", { id: String(a.rollWith) });
         if (a.defense !== null && !key(a.defense)) e("attack.defense", "rules.v.combatKey");
-        if (a.proficiency !== null && !has(derived, a.proficiency)) e("attack.proficiency", "rules.v.combatKey");
+        if (a.proficiency !== null && !has2(derived, a.proficiency)) e("attack.proficiency", "rules.v.combatKey");
         if (!Array.isArray(a.stats) || a.stats.length > LIMITS2.stats || !a.stats.every(function(s) {
-          return has(stats, s);
+          return has2(stats, s);
         })) e("attack.stats", "rules.v.combatStats");
-        if (a.finesse !== null && !(Array.isArray(a.finesse) && a.finesse.length === 2 && has(stats, a.finesse[0]) && has(stats, a.finesse[1]) && a.finesse[0] !== a.finesse[1])) e("attack.finesse", "rules.v.finesse");
+        if (a.finesse !== null && !(Array.isArray(a.finesse) && a.finesse.length === 2 && has2(stats, a.finesse[0]) && has2(stats, a.finesse[1]) && a.finesse[0] !== a.finesse[1])) e("attack.finesse", "rules.v.finesse");
         if (!bool(d.addStat)) e("damage.addStat", "rules.v.bool");
         if (CRITICALS.indexOf(d.critical) < 0) e("damage.critical", "rules.v.critical");
         if (!Array.isArray(d.types) || d.types.length > MAX_TYPES) e("damage.types", "rules.v.types", { max: MAX_TYPES });
         else {
           var seen = {};
           d.types.forEach(function(t, i) {
-            if (!isObj6(t) || typeof t.id !== "string" || !TYPE_RE.test(t.id)) e("damage.types." + i + ".id", "rules.v.typeKey");
-            else if (has(seen, t.id)) e("damage.types." + i + ".id", "rules.v.sameId", { id: t.id });
+            if (!isObj7(t) || typeof t.id !== "string" || !TYPE_RE.test(t.id)) e("damage.types." + i + ".id", "rules.v.typeKey");
+            else if (has2(seen, t.id)) e("damage.types." + i + ".id", "rules.v.sameId", { id: t.id });
             else seen[t.id] = true;
-            if (!isObj6(t) || !cleanName(t.name)) e("damage.types." + i + ".name", "rules.v.name");
+            if (!isObj7(t) || !cleanName(t.name)) e("damage.types." + i + ".name", "rules.v.name");
           });
         }
-        if (!has(derived, d.health) || !derived[d.health].resource) e("damage.health", "rules.v.health");
+        if (!has2(derived, d.health) || !derived[d.health].resource) e("damage.health", "rules.v.health");
         if (d.reduction !== null && !key(d.reduction)) e("damage.reduction", "rules.v.combatKey");
       }
       function attackParts(rules, row, values) {
@@ -5323,11 +5655,11 @@ var require_rules_core = __commonJS({
           return isFinite(x) ? x : 0;
         };
         var stats = {};
-        (isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
-          if (isObj6(x) && typeof x.id === "string") stats[x.id] = true;
+        (isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : []).forEach(function(x) {
+          if (isObj7(x) && typeof x.id === "string") stats[x.id] = true;
         });
         var of = function(id) {
-          return has(stats, id) ? v(statAdd(rules, id).slice(1)) : 0;
+          return has2(stats, id) ? v(statAdd(rules, id).slice(1)) : 0;
         };
         var carac = row && row.carac;
         var stat = carac === "finesse" && Array.isArray(a.finesse) ? Math.max(of(a.finesse[0]), of(a.finesse[1])) : of(carac);
@@ -5360,7 +5692,7 @@ var require_rules_core = __commonJS({
         return "(" + dice + ")[" + tag + "]" + (flat > 0 ? "+" + flat : flat < 0 ? "-" + -flat : "");
       }
       function damageOf(total, type, target) {
-        var tg = isObj6(target) ? target : {};
+        var tg = isObj7(target) ? target : {};
         var raw = Math.max(0, Math.round(Number(total) || 0));
         var red = Math.max(0, Math.round(Number(tg.reduction) || 0));
         var after = Math.max(0, raw - red);
@@ -5385,11 +5717,11 @@ var require_rules_core = __commonJS({
         return { raw, reduction: Math.min(red, raw), factor, why, final: Math.floor(after * factor) };
       }
       function cleanCombat(raw, resolutions) {
-        if (!isObj6(raw) || !isObj6(raw.combat) || !isObj6(raw.combat.attack) || !isObj6(raw.combat.damage) || !isObj6(resolutions)) return null;
+        if (!isObj7(raw) || !isObj7(raw.combat) || !isObj7(raw.combat.attack) || !isObj7(raw.combat.damage) || !isObj7(resolutions)) return null;
         var named2 = function(x) {
-          return isObj6(x) && typeof x.id === "string" && KEY_RE.test(x.id);
+          return isObj7(x) && typeof x.id === "string" && KEY_RE.test(x.id);
         };
-        var s = isObj6(raw.stats) ? raw.stats : {};
+        var s = isObj7(raw.stats) ? raw.stats : {};
         var stats = { form: typeof s.form === "string" ? s.form : "score", list: (Array.isArray(s.list) ? s.list : []).filter(named2).slice(0, LIMITS2.stats).map(function(x) {
           return { id: x.id, name: cleanName(x.name) || x.id };
         }) };
@@ -5408,7 +5740,7 @@ var require_rules_core = __commonJS({
             addStat: d.addStat,
             critical: d.critical,
             types: Array.isArray(d.types) ? d.types.slice(0, MAX_TYPES + 1).map(function(t) {
-              return isObj6(t) ? { id: t.id, name: cleanName(t.name) } : t;
+              return isObj7(t) ? { id: t.id, name: cleanName(t.name) } : t;
             }) : d.types,
             health: d.health,
             reduction: d.reduction === void 0 ? null : d.reduction
@@ -5419,13 +5751,13 @@ var require_rules_core = __commonJS({
           if (!main2) main2 = resolutions[k];
           else rolls.push(resolutions[k]);
         });
-        if (!isObj6(main2)) return null;
+        if (!isObj7(main2)) return null;
         var rules = { resolution: main2, rolls, stats, derived: derived.map(function(x) {
           return { id: x.id, name: x.name, resource: x.resource, recipe: { kind: "input", min: 0, max: 1, "default": 0 } };
         }), combat };
         var errs = [];
         validateCombat(rules, errs);
-        if (errs.length || !has(resolutions, combat.attack.rollWith)) return null;
+        if (errs.length || !has2(resolutions, combat.attack.rollWith)) return null;
         return JSON.parse(JSON.stringify({ stats, derived, combat }));
       }
       function combatKeys(ctx) {
@@ -5454,7 +5786,7 @@ var require_rules_core = __commonJS({
         }).slice(0, MAX_TYPES);
       }
       function weaponOf(ctx, row) {
-        var r = isObj6(row) ? row : {};
+        var r = isObj7(row) ? row : {};
         var a = ctx.combat.attack, types = ctx.combat.damage.types;
         var caracs = (a.stats.length ? a.stats : ctx.stats.list.map(function(x) {
           return x.id;
@@ -5480,36 +5812,36 @@ var require_rules_core = __commonJS({
         var e = function(p, key, vars) {
           errs.push({ path: "effects" + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj6(fx) || !Array.isArray(fx.states)) return e("", "rules.v.effects");
+        if (!isObj7(fx) || !Array.isArray(fx.states)) return e("", "rules.v.effects");
         if (fx.states.length > FX.states) return e("states", "rules.v.tooMany", { max: FX.states });
         var keys = modKeys(rules), res = resolutionsOf(rules), rests = {}, types = {}, seen = {};
         (Array.isArray(rules.rests) ? rules.rests : []).forEach(function(r) {
-          if (isObj6(r) && typeof r.id === "string") rests[r.id] = true;
+          if (isObj7(r) && typeof r.id === "string") rests[r.id] = true;
         });
-        (isObj6(rules.combat) && isObj6(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types : []).forEach(function(t) {
-          if (isObj6(t) && typeof t.id === "string") types[t.id] = true;
+        (isObj7(rules.combat) && isObj7(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types : []).forEach(function(t) {
+          if (isObj7(t) && typeof t.id === "string") types[t.id] = true;
         });
         var intIn2 = function(x, lo, hi) {
           return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
         };
         fx.states.forEach(function(s, i) {
           var at = "states." + i;
-          if (!isObj6(s)) return e(at, "rules.v.effects");
+          if (!isObj7(s)) return e(at, "rules.v.effects");
           if (typeof s.id !== "string" || !TYPE_RE.test(s.id)) e(at + ".id", "rules.v.typeKey");
-          else if (has(seen, s.id)) e(at + ".id", "rules.v.sameId", { id: s.id });
+          else if (has2(seen, s.id)) e(at + ".id", "rules.v.sameId", { id: s.id });
           else seen[s.id] = true;
           if (!cleanName(s.name)) e(at + ".name", "rules.v.name");
           if (EFFECT_ICONS.indexOf(s.icon) < 0) e(at + ".icon", "rules.v.icon");
           if (!Array.isArray(s.mods) || s.mods.length > FX.mods) e(at + ".mods", "rules.v.tooMany", { max: FX.mods });
           else s.mods.forEach(function(m, j) {
-            if (!isObj6(m) || !has(keys, m.key)) e(at + ".mods." + j + ".key", "rules.v.modKey");
-            if (!isObj6(m) || !intIn2(m.n, -FX.n, FX.n) || m.n === 0) e(at + ".mods." + j + ".n", "rules.v.modN", { max: FX.n });
+            if (!isObj7(m) || !has2(keys, m.key)) e(at + ".mods." + j + ".key", "rules.v.modKey");
+            if (!isObj7(m) || !intIn2(m.n, -FX.n, FX.n) || m.n === 0) e(at + ".mods." + j + ".n", "rules.v.modN", { max: FX.n });
           });
           if (!Array.isArray(s.rolls) || s.rolls.length > FX.rolls) e(at + ".rolls", "rules.v.tooMany", { max: FX.rolls });
           else s.rolls.forEach(function(r, j) {
             var rp = at + ".rolls." + j;
-            if (!isObj6(r)) return e(rp, "rules.v.effects");
-            if (!has(res, r.res)) e(rp + ".res", "rules.v.combatRoll", { id: String(r.res) });
+            if (!isObj7(r)) return e(rp, "rules.v.effects");
+            if (!has2(res, r.res)) e(rp + ".res", "rules.v.combatRoll", { id: String(r.res) });
             if (!intIn2(r.n, -FX.roll, FX.roll)) e(rp + ".n", "rules.v.modN", { max: FX.roll });
             if ([-1, 0, 1].indexOf(r.adv) < 0) e(rp + ".adv", "rules.v.adv");
             else if (r.n === 0 && r.adv === 0) e(rp, "rules.v.rollNothing");
@@ -5517,14 +5849,14 @@ var require_rules_core = __commonJS({
           ["resist", "vuln"].forEach(function(k) {
             var l = s[k];
             if (!Array.isArray(l) || l.length > MAX_TYPES || !l.every(function(t) {
-              return has(types, t);
+              return has2(types, t);
             })) e(at + "." + k, "rules.v.effectTypes");
           });
           var end = s.end;
-          if (!isObj6(end)) return e(at + ".end", "rules.v.effects");
+          if (!isObj7(end)) return e(at + ".end", "rules.v.effects");
           if (end.rounds !== null && !intIn2(end.rounds, 1, FX.rounds)) e(at + ".end.rounds", "rules.v.rounds", { max: FX.rounds });
           if (end.at !== "start" && end.at !== "end") e(at + ".end.at", "rules.v.effects");
-          if (end.rest !== null && !has(rests, end.rest)) e(at + ".end.rest", "rules.v.restUnknown");
+          if (end.rest !== null && !has2(rests, end.rest)) e(at + ".end.rest", "rules.v.restUnknown");
         });
       }
       function validateRests(rules, errs) {
@@ -5535,32 +5867,32 @@ var require_rules_core = __commonJS({
         if (!Array.isArray(list2) || list2.length < 1 || list2.length > FX.rests) return e("", "rules.v.rests", { max: FX.rests });
         var resources = {}, keys = valueKeys(rules), seen = {};
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (isObj6(d) && d.resource && typeof d.id === "string") resources[d.id] = true;
+          if (isObj7(d) && d.resource && typeof d.id === "string") resources[d.id] = true;
         });
         list2.forEach(function(r, i) {
           var at = String(i);
-          if (!isObj6(r)) return e(at, "rules.v.rests", { max: FX.rests });
+          if (!isObj7(r)) return e(at, "rules.v.rests", { max: FX.rests });
           if (typeof r.id !== "string" || !TYPE_RE.test(r.id)) e(at + ".id", "rules.v.typeKey");
-          else if (has(seen, r.id)) e(at + ".id", "rules.v.sameId", { id: r.id });
+          else if (has2(seen, r.id)) e(at + ".id", "rules.v.sameId", { id: r.id });
           else seen[r.id] = true;
           if (!cleanName(r.name)) e(at + ".name", "rules.v.name");
           if (!Array.isArray(r.restore) || r.restore.length > FX.restore) return e(at + ".restore", "rules.v.tooMany", { max: FX.restore });
           r.restore.forEach(function(x, j) {
             var p = at + ".restore." + j;
-            if (!isObj6(x)) return e(p, "rules.v.rests", { max: FX.rests });
-            if (!has(resources, x.res)) e(p + ".res", "rules.v.health");
+            if (!isObj7(x)) return e(p, "rules.v.rests", { max: FX.rests });
+            if (!has2(resources, x.res)) e(p + ".res", "rules.v.health");
             if (RESTORES.indexOf(x.how) < 0) e(p + ".how", "rules.v.restHow");
             else if (x.how === "fixed" && !(typeof x.n === "number" && Math.floor(x.n) === x.n && x.n >= 1 && x.n <= FX.fixed)) e(p + ".n", "rules.v.modN", { max: FX.fixed });
-            else if (x.how === "formula" && !has(keys, x.key)) e(p + ".key", "rules.v.combatKey");
+            else if (x.how === "formula" && !has2(keys, x.key)) e(p + ".key", "rules.v.combatKey");
           });
         });
       }
       var onFailOk = function(r) {
-        return isObj6(r) && isObj6(r.target) && (r.target.kind === "none" || r.target.kind === "fixed");
+        return isObj7(r) && isObj7(r.target) && (r.target.kind === "none" || r.target.kind === "fixed");
       };
       function libraryHasFeatures(rules) {
-        return isObj6(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
-          return isObj6(g) && g.kind === "feature";
+        return isObj7(rules.library) && Array.isArray(rules.library.genres) && rules.library.genres.some(function(g) {
+          return isObj7(g) && g.kind === "feature";
         });
       }
       function validateProgression(rules, errs, pools) {
@@ -5568,17 +5900,17 @@ var require_rules_core = __commonJS({
         var e = function(at, key, vars) {
           errs.push({ path: "progression" + (at ? "." + at : ""), message: say2(key, vars) });
         };
-        if (!isObj6(p)) return e("", "rules.v.prog");
+        if (!isObj7(p)) return e("", "rules.v.prog");
         var P0 = pools || null;
         var targets = P0 ? P0.targets : progTargets(rules), res = P0 ? P0.res : resolutionsOf(rules), values = P0 ? P0.values : valueKeys(rules);
-        var rank = P0 ? P0.rank : isObj6(rules.skills) ? rules.skills.rank : null;
+        var rank = P0 ? P0.rank : isObj7(rules.skills) ? rules.skills.rank : null;
         var libFeat = P0 ? P0.libFeat === true : libraryHasFeatures(rules);
         var intIn2 = function(x, lo, hi) {
           return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
         };
         var skills = P0 ? P0.skills.map(function(id) {
           return { id };
-        }) : isObj6(rules.skills) && rules.skills.mode === "fixed" && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj6) : [];
+        }) : isObj7(rules.skills) && rules.skills.mode === "fixed" && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj7) : [];
         var skillIds = {}, statIds = {}, valueTargets = {}, feats = {};
         skills.forEach(function(x) {
           skillIds[x.id] = true;
@@ -5589,7 +5921,7 @@ var require_rules_core = __commonJS({
         });
         var list2 = function(l, pool, max) {
           return Array.isArray(l) && l.length >= 1 && l.length <= max && l.every(function(k) {
-            return has(pool, k);
+            return has2(pool, k);
           }) && l.every(function(k, i) {
             return l.indexOf(k) === i;
           });
@@ -5597,35 +5929,35 @@ var require_rules_core = __commonJS({
         if (!Array.isArray(p.features) || p.features.length > PROG.features) e("features", "rules.v.tooMany", { max: PROG.features });
         else p.features.forEach(function(f, i) {
           var at = "features." + i;
-          if (!isObj6(f)) return e(at, "rules.v.prog");
+          if (!isObj7(f)) return e(at, "rules.v.prog");
           if (typeof f.id !== "string" || !TYPE_RE.test(f.id)) e(at + ".id", "rules.v.typeKey");
-          else if (has(feats, f.id)) e(at + ".id", "rules.v.sameId", { id: f.id });
+          else if (has2(feats, f.id)) e(at + ".id", "rules.v.sameId", { id: f.id });
           else feats[f.id] = true;
           if (!cleanName(f.name)) e(at + ".name", "rules.v.name");
           if (typeof f.text !== "string" || f.text.length > PROG.text) e(at + ".text", "rules.v.featText", { max: PROG.text });
         });
         if (p.xp !== null) {
-          if (!isObj6(p.xp)) e("xp", "rules.v.prog");
+          if (!isObj7(p.xp)) e("xp", "rules.v.prog");
           else {
             if (typeof p.xp.id !== "string" || !KEY_RE.test(p.xp.id)) e("xp.id", "rules.v.typeKey");
             if (!cleanName(p.xp.name)) e("xp.name", "rules.v.name");
             if (!Array.isArray(p.xp.onFail) || p.xp.onFail.length > PROG.onFail) e("xp.onFail", "rules.v.tooMany", { max: PROG.onFail });
             else p.xp.onFail.forEach(function(x, i) {
-              if (!isObj6(x) || !has(res, x.res)) e("xp.onFail." + i + ".res", "rules.v.progRoll", { id: String(isObj6(x) ? x.res : "") });
+              if (!isObj7(x) || !has2(res, x.res)) e("xp.onFail." + i + ".res", "rules.v.progRoll", { id: String(isObj7(x) ? x.res : "") });
               else if (!onFailOk(res[x.res])) e("xp.onFail." + i + ".res", "rules.v.onFailTarget");
-              if (!isObj6(x) || !intIn2(x.n, 1, 100)) e("xp.onFail." + i + ".n", "rules.v.progN", { min: 1, max: 100 });
+              if (!isObj7(x) || !intIn2(x.n, 1, 100)) e("xp.onFail." + i + ".n", "rules.v.progN", { min: 1, max: 100 });
             });
           }
         }
         var validateGive = function(x, at) {
-          if (!isObj6(x) || GIVES.indexOf(x.kind) < 0) return e(at, "rules.v.giveKind");
+          if (!isObj7(x) || GIVES.indexOf(x.kind) < 0) return e(at, "rules.v.giveKind");
           if (x.kind === "add") {
-            if (!has(targets, x.key)) e(at + ".key", "rules.v.progKey");
+            if (!has2(targets, x.key)) e(at + ".key", "rules.v.progKey");
             if (x.dice === void 0) {
               if (!intIn2(x.n, -PROG.n, PROG.n) || x.n === 0) e(at + ".n", "rules.v.modN", { max: PROG.n });
             } else {
               if (!dicePart(x.dice)) e(at + ".dice", "rules.v.progDice");
-              if (x.plus !== null && !has(values, x.plus)) e(at + ".plus", "rules.v.combatKey");
+              if (x.plus !== null && !has2(values, x.plus)) e(at + ".plus", "rules.v.combatKey");
               if (HOWS.indexOf(x.how) < 0) e(at + ".how", "rules.v.prog");
             }
           } else if (x.kind === "spread") {
@@ -5638,7 +5970,7 @@ var require_rules_core = __commonJS({
             if (!intIn2(x.pick, 1, PROG.points)) e(at + ".pick", "rules.v.progN", { min: 1, max: PROG.points });
             if (x.among !== "any" && !list2(x.among, skillIds, PROG.among)) e(at + ".among", "rules.v.progAmong");
           } else if (x.kind === "feature") {
-            if (!has(feats, x.id)) e(at + ".id", "rules.v.featUnknown");
+            if (!has2(feats, x.id)) e(at + ".id", "rules.v.featUnknown");
           } else {
             if (x.among === "library") {
               if (!libFeat) e(at + ".among", "rules.v.pickLibrary");
@@ -5649,23 +5981,23 @@ var require_rules_core = __commonJS({
         };
         if (p.levels !== null) {
           var L = p.levels;
-          if (!isObj6(L)) e("levels", "rules.v.prog");
+          if (!isObj7(L)) e("levels", "rules.v.prog");
           else {
             var lv = P0 ? null : (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
-              return isObj6(d) && d.id === L.key;
+              return isObj7(d) && d.id === L.key;
             })[0];
             var top = LIMITS2.add;
             if (P0) {
               if (P0.levelKey !== L.key || !isInt(P0.levelMax, 2, LIMITS2.add)) e("levels.key", "rules.v.levelKey");
               else top = P0.levelMax;
-            } else if (!lv || !isObj6(lv.recipe) || lv.recipe.kind !== "input" || lv.resource) e("levels.key", "rules.v.levelKey");
+            } else if (!lv || !isObj7(lv.recipe) || lv.recipe.kind !== "input" || lv.resource) e("levels.key", "rules.v.levelKey");
             else if (lv.recipe.min !== 1 || !(lv.recipe.max >= 2)) e("levels.key", "rules.v.levelRange");
             else top = lv.recipe.max;
             if (!bool(L.spend)) e("levels.spend", "rules.v.prog");
             var c = L.cost;
             if (p.xp === null) {
               if (c !== null) e("levels.cost", "rules.v.costNoXp");
-            } else if (!isObj6(c)) e("levels.cost", "rules.v.cost");
+            } else if (!isObj7(c)) e("levels.cost", "rules.v.cost");
             else if (c.kind === "fixed") {
               if (!intIn2(c.n, 1, PROG.xp)) e("levels.cost.n", "rules.v.progN", { min: 1, max: PROG.xp });
             } else if (c.kind === "formula") {
@@ -5680,7 +6012,7 @@ var require_rules_core = __commonJS({
             if (!Array.isArray(L.gains) || L.gains.length > PROG.gains) e("levels.gains", "rules.v.tooMany", { max: PROG.gains });
             else L.gains.forEach(function(g, i) {
               var at = "levels.gains." + i;
-              if (!isObj6(g) || !isObj6(g.when)) return e(at, "rules.v.prog");
+              if (!isObj7(g) || !isObj7(g.when)) return e(at, "rules.v.prog");
               var w = g.when;
               if (w.at !== void 0) {
                 if (!Array.isArray(w.at) || w.at.length < 1 || w.at.length > PROG.at || !w.at.every(function(x) {
@@ -5701,9 +6033,9 @@ var require_rules_core = __commonJS({
             var seenBuy = {};
             p.purchases.forEach(function(b, i) {
               var at = "purchases." + i;
-              if (!isObj6(b)) return e(at, "rules.v.prog");
+              if (!isObj7(b)) return e(at, "rules.v.prog");
               if (typeof b.id !== "string" || !TYPE_RE.test(b.id)) e(at + ".id", "rules.v.typeKey");
-              else if (has(seenBuy, b.id)) e(at + ".id", "rules.v.sameId", { id: b.id });
+              else if (has2(seenBuy, b.id)) e(at + ".id", "rules.v.sameId", { id: b.id });
               else seenBuy[b.id] = true;
               if (!cleanName(b.name)) e(at + ".name", "rules.v.name");
               if (BUYS.indexOf(b.what) < 0) return e(at + ".what", "rules.v.prog");
@@ -5716,7 +6048,7 @@ var require_rules_core = __commonJS({
         }
         if (p.use !== null) {
           var u = p.use;
-          if (!isObj6(u)) e("use", "rules.v.prog");
+          if (!isObj7(u)) e("use", "rules.v.prog");
           else {
             if (!skills.length) e("use", "rules.v.useNeeds");
             if (!list2(u.res, res, PROG.useRes)) e("use.res", "rules.v.progRoll", { id: String(u.res) });
@@ -5729,7 +6061,7 @@ var require_rules_core = __commonJS({
         if (p.xp === null && p.levels === null && p.purchases === null && p.use === null) e("", "rules.v.progEmpty");
       }
       function actionProblems(a, fields, pools, e) {
-        if (!isObj6(a)) return e("", "rules.v.lib");
+        if (!isObj7(a)) return e("", "rules.v.lib");
         var numField = function(v) {
           return typeof v === "string" && fields.some(function(f) {
             return "@" + f.id === v && f.type === "number";
@@ -5743,37 +6075,37 @@ var require_rules_core = __commonJS({
         if (a.roll !== null && a.roll !== void 0) {
           any = true;
           var r = a.roll;
-          if (!isObj6(r)) e("roll", "rules.v.lib");
-          else if (isObj6(r.attack)) {
+          if (!isObj7(r)) e("roll", "rules.v.lib");
+          else if (isObj7(r.attack)) {
             if (!pools.combat) e("roll.attack", "rules.v.libNoCombat");
             if (typeof r.attack.damage !== "string" || !parseDamage(r.attack.damage)) e("roll.attack.damage", "rules.v.libDamage");
             if (r.attack.type !== void 0 && r.attack.type !== null && pools.types.indexOf(r.attack.type) < 0) e("roll.attack.type", "rules.v.effectTypes");
             if (r.attack.bonus !== void 0 && !intOr(r.attack.bonus, -LIB.bonus, LIB.bonus)) e("roll.attack.bonus", "rules.v.libBonus", { max: LIB.bonus });
           } else {
-            if (!has(pools.res, r.res)) e("roll.res", "rules.v.progRoll", { id: String(r.res) });
+            if (!has2(pools.res, r.res)) e("roll.res", "rules.v.progRoll", { id: String(r.res) });
             if (!intOr(r.bonus, -LIB.bonus, LIB.bonus)) e("roll.bonus", "rules.v.libBonus", { max: LIB.bonus });
           }
         }
         if (a.cost !== null && a.cost !== void 0) {
           any = true;
-          if (!isObj6(a.cost) || !has(pools.resources, a.cost.res)) e("cost.res", "rules.v.libCost");
-          if (!isObj6(a.cost) || !intOr(a.cost.n, 1, LIB.cost)) e("cost.n", "rules.v.progN", { min: 1, max: LIB.cost });
+          if (!isObj7(a.cost) || !has2(pools.resources, a.cost.res)) e("cost.res", "rules.v.libCost");
+          if (!isObj7(a.cost) || !intOr(a.cost.n, 1, LIB.cost)) e("cost.n", "rules.v.progN", { min: 1, max: LIB.cost });
         }
         if (a.state !== null && a.state !== void 0) {
           any = true;
-          if (!isObj6(a.state) || !has(pools.states, a.state.id)) e("state.id", "rules.v.libState");
-          if (!isObj6(a.state) || a.state.on !== "self" && a.state.on !== "target") e("state.on", "rules.v.lib");
+          if (!isObj7(a.state) || !has2(pools.states, a.state.id)) e("state.id", "rules.v.libState");
+          if (!isObj7(a.state) || a.state.on !== "self" && a.state.on !== "target") e("state.on", "rules.v.lib");
         }
         if (!any) e("", "rules.v.libActionEmpty");
       }
       function entryProblems(x, genre, fields, pools, e) {
-        if (!isObj6(x.values)) return e("values", "rules.v.lib");
+        if (!isObj7(x.values)) return e("values", "rules.v.lib");
         var known = {};
         fields.forEach(function(f) {
           known[f.id] = f;
         });
         Object.keys(x.values).forEach(function(k) {
-          var f = has(known, k) ? known[k] : null, v = x.values[k];
+          var f = has2(known, k) ? known[k] : null, v = x.values[k];
           if (!f) return e("values." + k, "rules.v.libField");
           if (f.type === "number") {
             if (!isInt(v, typeof f.min === "number" ? f.min : -LIB.n, typeof f.max === "number" ? f.max : LIB.n)) e("values." + k, "rules.v.libNumber");
@@ -5802,19 +6134,19 @@ var require_rules_core = __commonJS({
         var e = function(at, key, vars) {
           errs.push({ path: "library" + (at ? "." + at : ""), message: say2(key, vars) });
         };
-        if (!isObj6(L) || !Array.isArray(L.genres) || !Array.isArray(L.entries)) return e("", "rules.v.lib");
+        if (!isObj7(L) || !Array.isArray(L.genres) || !Array.isArray(L.entries)) return e("", "rules.v.lib");
         if (L.genres.length > LIB.genres) return e("genres", "rules.v.tooMany", { max: LIB.genres });
         var pools = given3 || libraryPools(rules), genres = {}, kinds = {};
         L.genres.forEach(function(g, i) {
           var at = "genres." + i;
-          if (!isObj6(g)) return e(at, "rules.v.lib");
+          if (!isObj7(g)) return e(at, "rules.v.lib");
           if (typeof g.id !== "string" || !GENRE_RE.test(g.id)) e(at + ".id", "rules.v.libGenreKey");
-          else if (has(genres, g.id)) e(at + ".id", "rules.v.sameId", { id: g.id });
+          else if (has2(genres, g.id)) e(at + ".id", "rules.v.sameId", { id: g.id });
           else genres[g.id] = g;
           if (!cleanName(g.name)) e(at + ".name", "rules.v.name");
           if (GENRE_KINDS.indexOf(g.kind) < 0) return e(at + ".kind", "rules.v.lib");
           if (g.kind !== "custom") {
-            if (has(kinds, g.kind)) e(at + ".kind", "rules.v.libOneKind");
+            if (has2(kinds, g.kind)) e(at + ".kind", "rules.v.libOneKind");
             kinds[g.kind] = true;
             if (g.kind === "weapon" && !pools.combat) e(at + ".kind", "rules.v.libNoCombat");
             if (g.kind === "feature" && !pools.progression) e(at + ".kind", "rules.v.libNoProgress");
@@ -5825,9 +6157,9 @@ var require_rules_core = __commonJS({
           var seen = {};
           g.fields.forEach(function(f, j) {
             var fp = at + ".fields." + j;
-            if (!isObj6(f)) return e(fp, "rules.v.lib");
+            if (!isObj7(f)) return e(fp, "rules.v.lib");
             if (typeof f.id !== "string" || !FIELD_RE.test(f.id) || LIB_RESERVED.indexOf(f.id) >= 0) e(fp + ".id", "rules.v.libFieldKey");
-            else if (has(seen, f.id)) e(fp + ".id", "rules.v.sameId", { id: f.id });
+            else if (has2(seen, f.id)) e(fp + ".id", "rules.v.sameId", { id: f.id });
             else seen[f.id] = true;
             if (!cleanName(f.name)) e(fp + ".name", "rules.v.name");
             if (FIELD_TYPES.indexOf(f.type) < 0) return e(fp + ".type", "rules.v.lib");
@@ -5845,12 +6177,12 @@ var require_rules_core = __commonJS({
         var ids = {};
         L.entries.forEach(function(x, i) {
           var at = "entries." + i;
-          if (!isObj6(x)) return e(at, "rules.v.lib");
+          if (!isObj7(x)) return e(at, "rules.v.lib");
           if (typeof x.id !== "string" || !ENTRY_RE.test(x.id)) e(at + ".id", "rules.v.typeKey");
-          else if (has(ids, x.id)) e(at + ".id", "rules.v.sameId", { id: x.id });
+          else if (has2(ids, x.id)) e(at + ".id", "rules.v.sameId", { id: x.id });
           else ids[x.id] = true;
           if (!cleanName(x.name)) e(at + ".name", "rules.v.name");
-          var g = typeof x.genre === "string" && has(genres, x.genre) ? genres[x.genre] : null;
+          var g = typeof x.genre === "string" && has2(genres, x.genre) ? genres[x.genre] : null;
           if (!g) return e(at + ".genre", "rules.v.libGenre");
           if (g.kind === "feature") return e(at + ".genre", "rules.v.libFeatureEntry");
           entryProblems(x, g, fieldsOf(g, pools), pools, function(p, key, vars) {
@@ -5860,10 +6192,10 @@ var require_rules_core = __commonJS({
       }
       function entryHash(x) {
         var vals = {};
-        Object.keys(isObj6(x) && isObj6(x.values) ? x.values : {}).sort().forEach(function(k) {
+        Object.keys(isObj7(x) && isObj7(x.values) ? x.values : {}).sort().forEach(function(k) {
           vals[k] = x.values[k];
         });
-        var s = JSON.stringify([isObj6(x) ? x.genre : null, isObj6(x) ? x.name : null, vals, isObj6(x) && x.action !== void 0 ? x.action : null]);
+        var s = JSON.stringify([isObj7(x) ? x.genre : null, isObj7(x) ? x.name : null, vals, isObj7(x) && x.action !== void 0 ? x.action : null]);
         var h = 2166136261;
         for (var i = 0; i < s.length; i++) {
           h ^= s.charCodeAt(i);
@@ -5881,15 +6213,15 @@ var require_rules_core = __commonJS({
         var seen = {};
         return (Array.isArray(options) ? options : []).map(function(o, i) {
           var k = slugKey(o) || "option" + (i + 1), base2 = k, n = 2;
-          while (has(seen, k)) k = base2 + "_" + n++;
+          while (has2(seen, k)) k = base2 + "_" + n++;
           seen[k] = true;
           return k;
         });
       }
       function pasteEntries(rules, genreId, text) {
-        var L = isObj6(rules.library) ? rules.library : { genres: [], entries: [] };
+        var L = isObj7(rules.library) ? rules.library : { genres: [], entries: [] };
         var g = (Array.isArray(L.genres) ? L.genres : []).filter(function(x) {
-          return isObj6(x) && x.id === genreId;
+          return isObj7(x) && x.id === genreId;
         })[0];
         var out = { entries: [], errors: [] };
         if (!g || g.kind === "feature") {
@@ -5917,7 +6249,7 @@ var require_rules_core = __commonJS({
         }
         var taken = {};
         (Array.isArray(L.entries) ? L.entries : []).forEach(function(x) {
-          if (isObj6(x)) taken[x.id] = true;
+          if (isObj7(x)) taken[x.id] = true;
         });
         lines.slice(1).forEach(function(line, i) {
           var cells = line.split("	"), x = { id: "", genre: g.id, name: "", values: {}, action: null };
@@ -5943,7 +6275,7 @@ var require_rules_core = __commonJS({
           if (!cleanName(x.name)) problems.push(say2("rules.v.name"));
           else {
             var base2 = slugKey(x.name) || "entree", id = base2, k = 2;
-            while (has(taken, id)) id = base2 + "_" + k++;
+            while (has2(taken, id)) id = base2 + "_" + k++;
             x.id = id;
             x.name = cleanName(x.name);
             entryProblems(x, g, fields, pools, function(p, key, vars) {
@@ -5966,8 +6298,8 @@ var require_rules_core = __commonJS({
         Object.keys(pools.resources).forEach(function(k) {
           names.resources[k] = nameOf(rules, k);
         });
-        (isObj6(rules.effects) && Array.isArray(rules.effects.states) ? rules.effects.states : []).forEach(function(s) {
-          if (isObj6(s) && typeof s.id === "string") names.states[s.id] = cleanName(s.name) || s.id;
+        (isObj7(rules.effects) && Array.isArray(rules.effects.states) ? rules.effects.states : []).forEach(function(s) {
+          if (isObj7(s) && typeof s.id === "string") names.states[s.id] = cleanName(s.name) || s.id;
         });
         return names;
       }
@@ -5977,10 +6309,10 @@ var require_rules_core = __commonJS({
       function libraryCtx(rules) {
         var L = rules.library, pools = libraryPools(rules);
         return JSON.parse(JSON.stringify({
-          genres: L.genres.filter(isObj6).map(function(g) {
+          genres: L.genres.filter(isObj7).map(function(g) {
             return { id: g.id, name: cleanName(g.name), kind: g.kind, fields: fieldsOf(g, pools) };
           }),
-          entries: L.entries.filter(isObj6).map(function(x) {
+          entries: L.entries.filter(isObj7).map(function(x) {
             return { id: x.id, genre: x.genre, name: x.name, values: x.values, action: x.action === void 0 ? null : x.action, hash: entryHash(x) };
           }),
           res: Object.keys(pools.res),
@@ -5994,19 +6326,19 @@ var require_rules_core = __commonJS({
         }));
       }
       function actionWords(ctx, a) {
-        if (!isObj6(a) || !isObj6(ctx)) return "";
-        var nm = isObj6(ctx.names) ? ctx.names : {};
-        var of = function(group, id) {
-          return isObj6(nm[group]) && typeof nm[group][id] === "string" ? nm[group][id] : String(id);
+        if (!isObj7(a) || !isObj7(ctx)) return "";
+        var nm = isObj7(ctx.names) ? ctx.names : {};
+        var of = function(group2, id) {
+          return isObj7(nm[group2]) && typeof nm[group2][id] === "string" ? nm[group2][id] : String(id);
         };
         var num2 = function(v) {
           return typeof v === "string" ? v.slice(1) : (v > 0 ? "+" : "") + v;
         };
         var parts = [];
-        if (isObj6(a.roll) && isObj6(a.roll.attack)) parts.push(say2("rules.l.attack", { dice: a.roll.attack.damage + (a.roll.attack.type ? " " + a.roll.attack.type : "") }));
-        else if (isObj6(a.roll)) parts.push(say2("rules.l.roll", { res: of("res", a.roll.res), bonus: a.roll.bonus ? " " + num2(a.roll.bonus) : "" }));
-        if (isObj6(a.cost)) parts.push(say2("rules.l.cost", { n: typeof a.cost.n === "string" ? a.cost.n.slice(1) : a.cost.n, res: of("resources", a.cost.res) }));
-        if (isObj6(a.state)) parts.push(say2(a.state.on === "self" ? "rules.l.stateSelf" : "rules.l.stateTarget", { state: of("states", a.state.id) }));
+        if (isObj7(a.roll) && isObj7(a.roll.attack)) parts.push(say2("rules.l.attack", { dice: a.roll.attack.damage + (a.roll.attack.type ? " " + a.roll.attack.type : "") }));
+        else if (isObj7(a.roll)) parts.push(say2("rules.l.roll", { res: of("res", a.roll.res), bonus: a.roll.bonus ? " " + num2(a.roll.bonus) : "" }));
+        if (isObj7(a.cost)) parts.push(say2("rules.l.cost", { n: typeof a.cost.n === "string" ? a.cost.n.slice(1) : a.cost.n, res: of("resources", a.cost.res) }));
+        if (isObj7(a.state)) parts.push(say2(a.state.on === "self" ? "rules.l.stateSelf" : "rules.l.stateTarget", { state: of("states", a.state.id) }));
         return (cleanName(a.label) || "") + " : " + parts.join(" \xB7 ");
       }
       function poolsOfCtx(ctx) {
@@ -6020,7 +6352,7 @@ var require_rules_core = __commonJS({
         return { res: set(ctx.res), resources: set(ctx.resources), states: set(ctx.states), combat: ctx.combat === true, types: Array.isArray(ctx.types) ? ctx.types.slice() : [], stats: Array.isArray(ctx.stats) ? ctx.stats.slice() : [], progression: ctx.progression === true };
       }
       function cleanLibraryCtx(raw, resolutions) {
-        if (!isObj6(raw) || !isObj6(resolutions) || !Array.isArray(raw.genres) || !Array.isArray(raw.entries)) return null;
+        if (!isObj7(raw) || !isObj7(resolutions) || !Array.isArray(raw.genres) || !Array.isArray(raw.entries)) return null;
         var KEY = /^[a-z][a-z0-9_]{0,40}$/;
         var ids = function(l, max) {
           return Array.isArray(l) && l.length <= max && l.every(function(x) {
@@ -6029,26 +6361,26 @@ var require_rules_core = __commonJS({
         };
         var res = ids(raw.res, LIMITS2.rolls + 1), resources = ids(raw.resources, LIMITS2.derived), states = ids(raw.states, FX.states), types = ids(raw.types, MAX_TYPES), stats = ids(raw.stats, LIMITS2.stats + 1);
         if (!res || !resources || !states || !types || !stats || !res.every(function(id) {
-          return has(resolutions, id);
+          return has2(resolutions, id);
         })) return null;
         var ctx0 = { res, resources, states, types, stats, combat: raw.combat === true, progression: raw.progression === true };
         var pools = poolsOfCtx(ctx0);
         var genres = raw.genres.slice(0, LIB.genres + 1).map(function(g) {
-          return isObj6(g) ? { id: g.id, name: g.name, kind: g.kind, fields: g.kind === "custom" ? g.fields : [] } : g;
+          return isObj7(g) ? { id: g.id, name: g.name, kind: g.kind, fields: g.kind === "custom" ? g.fields : [] } : g;
         });
         var entries = raw.entries.slice(0, LIB.entries + 1).map(function(x) {
-          return isObj6(x) ? { id: x.id, genre: x.genre, name: x.name, values: x.values, action: x.action === void 0 ? null : x.action } : x;
+          return isObj7(x) ? { id: x.id, genre: x.genre, name: x.name, values: x.values, action: x.action === void 0 ? null : x.action } : x;
         });
         var errs = [];
         validateLibrary({ library: { genres, entries } }, errs, pools);
         if (errs.length) return null;
-        var nm = isObj6(raw.names) ? raw.names : {};
+        var nm = isObj7(raw.names) ? raw.names : {};
         var names = {};
-        ["res", "resources", "states"].forEach(function(group) {
-          names[group] = {};
-          ctx0[group].forEach(function(id) {
-            var v = isObj6(nm[group]) && typeof nm[group][id] === "string" ? cleanName(nm[group][id]) : "";
-            names[group][id] = v || id;
+        ["res", "resources", "states"].forEach(function(group2) {
+          names[group2] = {};
+          ctx0[group2].forEach(function(id) {
+            var v = isObj7(nm[group2]) && typeof nm[group2][id] === "string" ? cleanName(nm[group2][id]) : "";
+            names[group2][id] = v || id;
           });
         });
         return JSON.parse(JSON.stringify({
@@ -6069,9 +6401,9 @@ var require_rules_core = __commonJS({
         }));
       }
       function cleanEntryIn(ctx, raw) {
-        if (!isObj6(ctx) || !isObj6(raw) || !Array.isArray(ctx.genres)) return null;
+        if (!isObj7(ctx) || !isObj7(raw) || !Array.isArray(ctx.genres)) return null;
         var g = ctx.genres.filter(function(x2) {
-          return isObj6(x2) && x2.id === raw.genre;
+          return isObj7(x2) && x2.id === raw.genre;
         })[0];
         if (!g) return null;
         var x = { id: raw.id, genre: raw.genre, name: raw.name, values: raw.values, action: raw.action === void 0 ? null : raw.action };
@@ -6090,7 +6422,7 @@ var require_rules_core = __commonJS({
       }
       function rowOf(ctx, entry, source) {
         var g = (Array.isArray(ctx.genres) ? ctx.genres : []).filter(function(x) {
-          return isObj6(x) && x.id === entry.genre;
+          return isObj7(x) && x.id === entry.genre;
         })[0];
         if (!g || g.kind === "feature") return null;
         var origin = source + ":" + entry.id + ":" + entryHash(entry);
@@ -6098,7 +6430,7 @@ var require_rules_core = __commonJS({
         if (g.kind === "weapon") {
           row.arm_nom = entry.name;
           g.fields.forEach(function(f) {
-            if (has(entry.values, f.id)) row[f.id] = entry.values[f.id];
+            if (has2(entry.values, f.id)) row[f.id] = entry.values[f.id];
           });
           row.arm_origine = origin;
           return { list: "arm", row };
@@ -6106,7 +6438,7 @@ var require_rules_core = __commonJS({
         var pre = "lib_" + g.id + "_";
         row[pre + "nom"] = entry.name;
         g.fields.forEach(function(f) {
-          if (!has(entry.values, f.id)) return;
+          if (!has2(entry.values, f.id)) return;
           var v = entry.values[f.id];
           if (f.type === "choice") {
             var i = (f.options || []).indexOf(v);
@@ -6119,8 +6451,8 @@ var require_rules_core = __commonJS({
       }
       var STARTER_SPELLS = { fantasy: true, horror: true };
       function starterLibrary(rules) {
-        var tone = isObj6(rules.identity) && typeof rules.identity.tone === "string" ? rules.identity.tone : "fantasy";
-        var pools = libraryPools(rules), spells = has(STARTER_SPELLS, tone);
+        var tone = isObj7(rules.identity) && typeof rules.identity.tone === "string" ? rules.identity.tone : "fantasy";
+        var pools = libraryPools(rules), spells = has2(STARTER_SPELLS, tone);
         var g1 = spells ? { id: "sort", name: say2("rules.l.spells"), kind: "custom", fields: [
           { id: "niveau", name: say2("rules.l.level"), type: "number", min: 0, max: 9 },
           { id: "portee", name: say2("rules.l.range"), type: "text" },
@@ -6134,14 +6466,14 @@ var require_rules_core = __commonJS({
         var e = function(g, id, values, action) {
           entries.push({ id, genre: g.id, name: say2("rules.l.e." + id), values, action });
         };
-        var main2 = isObj6(rules.resolution) ? rules.resolution.id : null;
+        var main2 = isObj7(rules.resolution) ? rules.resolution.id : null;
         var fire = pools.types.indexOf("feu") >= 0 ? "feu" : null;
         var mana = Object.keys(pools.resources).filter(function(k) {
           return /^(pm|mana|magie|pouvoir)/.test(k);
         })[0] || null;
         if (spells) {
           e(g1, "trait_de_feu", { niveau: 0, portee: say2("rules.l.far"), description: say2("rules.l.e.trait_de_feu.text") }, pools.combat ? { label: say2("rules.l.cast"), roll: { attack: fire ? { damage: "1d10", type: fire } : { damage: "1d10" } }, cost: null, state: null } : null);
-          e(g1, "benediction", { niveau: 1, portee: say2("rules.l.touch"), description: say2("rules.l.e.benediction.text") }, has(pools.states, "benediction") ? { label: say2("rules.l.cast"), roll: null, cost: mana ? { res: mana, n: 1 } : null, state: { id: "benediction", on: "target" } } : null);
+          e(g1, "benediction", { niveau: 1, portee: say2("rules.l.touch"), description: say2("rules.l.e.benediction.text") }, has2(pools.states, "benediction") ? { label: say2("rules.l.cast"), roll: null, cost: mana ? { res: mana, n: 1 } : null, state: { id: "benediction", on: "target" } } : null);
           e(g1, "lumiere", { niveau: 0, portee: say2("rules.l.touch"), description: say2("rules.l.e.lumiere.text") }, null);
         } else e(g1, "sang_froid", { description: say2("rules.l.e.sang_froid.text") }, main2 ? { label: say2("rules.l.use"), roll: { res: main2, bonus: 2 }, cost: null, state: null } : null);
         e(g2, "corde", { poids: 5, description: say2("rules.l.e.corde.text") }, null);
@@ -6153,8 +6485,8 @@ var require_rules_core = __commonJS({
         return errs.length ? null : trial.library;
       }
       function levelCost(prog, n, evaluate) {
-        var L = isObj6(prog) ? prog.levels : null;
-        if (!isObj6(L) || !isObj6(L.cost)) return null;
+        var L = isObj7(prog) ? prog.levels : null;
+        if (!isObj7(L) || !isObj7(L.cost)) return null;
         if (!(n >= 2)) return 0;
         var c = L.cost, v;
         if (c.kind === "fixed") v = c.n;
@@ -6165,9 +6497,9 @@ var require_rules_core = __commonJS({
         return Math.max(0, Math.min(PROG.xp, Math.round(v)));
       }
       function gainsAt(prog, n) {
-        var L = isObj6(prog) ? prog.levels : null, out = [];
-        (isObj6(L) && Array.isArray(L.gains) ? L.gains : []).forEach(function(g, i) {
-          if (!isObj6(g) || !isObj6(g.when)) return;
+        var L = isObj7(prog) ? prog.levels : null, out = [];
+        (isObj7(L) && Array.isArray(L.gains) ? L.gains : []).forEach(function(g, i) {
+          if (!isObj7(g) || !isObj7(g.when)) return;
           var w = g.when;
           var hit = Array.isArray(w.at) ? w.at.indexOf(n) >= 0 : n >= w.from && (n - w.from) % w.every === 0;
           if (hit) (Array.isArray(g.give) ? g.give : []).forEach(function(x, j) {
@@ -6178,8 +6510,8 @@ var require_rules_core = __commonJS({
       }
       function describeGive(rules, x) {
         var feats = {};
-        (isObj6(rules.progression) && Array.isArray(rules.progression.features) ? rules.progression.features : []).forEach(function(f) {
-          if (isObj6(f)) feats[f.id] = cleanName(f.name);
+        (isObj7(rules.progression) && Array.isArray(rules.progression.features) ? rules.progression.features : []).forEach(function(f) {
+          if (isObj7(f)) feats[f.id] = cleanName(f.name);
         });
         var names = function(l, of) {
           return l.map(of).join(", ");
@@ -6188,7 +6520,7 @@ var require_rules_core = __commonJS({
           return nameOf(rules, "sk_" + id);
         };
         var featName = function(id) {
-          return has(feats, id) ? feats[id] : id;
+          return has2(feats, id) ? feats[id] : id;
         };
         if (x.kind === "add" && x.dice === void 0) return say2("rules.p.addN", { n: (x.n > 0 ? "+" : "") + x.n, name: nameOf(rules, x.key) });
         if (x.kind === "add") return say2("rules.p.addDice", { dice: x.dice, plus: x.plus ? " + " + nameOf(rules, x.plus) : "", name: nameOf(rules, x.key), how: say2("rules.p.how." + x.how) });
@@ -6220,14 +6552,14 @@ var require_rules_core = __commonJS({
       }
       function levelPlan(rules, sheet, n) {
         var prog = rules.progression, auto = [], choices = [];
-        var trained = isObj6(sheet) && isObj6(sheet.trained) ? sheet.trained : {};
-        var taken = isObj6(sheet) && isObj6(sheet.features) ? sheet.features : {};
-        var skills = isObj6(rules.skills) && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj6).map(function(x) {
+        var trained = isObj7(sheet) && isObj7(sheet.trained) ? sheet.trained : {};
+        var taken = isObj7(sheet) && isObj7(sheet.features) ? sheet.features : {};
+        var skills = isObj7(rules.skills) && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj7).map(function(x) {
           return x.id;
         }) : [];
         var feats = {};
         (Array.isArray(prog.features) ? prog.features : []).forEach(function(f) {
-          if (isObj6(f)) feats[f.id] = true;
+          if (isObj7(f)) feats[f.id] = true;
         });
         gainsAt(prog, n).forEach(function(g) {
           var x = g.give;
@@ -6236,12 +6568,12 @@ var require_rules_core = __commonJS({
           else if (x.kind === "spread") choices.push({ at: g.at, kind: "spread", points: x.points, maxEach: x.maxEach, among: x.among.slice() });
           else if (x.kind === "train") {
             var open = (x.among === "any" ? skills : x.among).filter(function(id) {
-              return !has(trained, id) || !trained[id];
+              return !has2(trained, id) || !trained[id];
             });
             if (open.length) choices.push({ at: g.at, kind: "train", pick: Math.min(x.pick, open.length), among: open });
           } else {
             var left = (x.among === "library" ? Object.keys(feats) : x.among).filter(function(id) {
-              return has(feats, id) && (has(taken, id) ? Number(taken[id]) || 0 : 0) < x.times;
+              return has2(feats, id) && (has2(taken, id) ? Number(taken[id]) || 0 : 0) < x.times;
             });
             if (left.length) choices.push({ at: g.at, kind: "pick", pick: Math.min(x.pick, left.length), among: left });
           }
@@ -6249,7 +6581,7 @@ var require_rules_core = __commonJS({
         return { level: n, auto, choices };
       }
       function readChoices(plan, raw) {
-        if (!isObj6(plan) || !Array.isArray(plan.choices) || !isObj6(raw)) return null;
+        if (!isObj7(plan) || !Array.isArray(plan.choices) || !isObj7(raw)) return null;
         if (Object.keys(raw).some(function(k) {
           return !plan.choices.some(function(c) {
             return c.at === k;
@@ -6257,14 +6589,14 @@ var require_rules_core = __commonJS({
         })) return null;
         var out = {}, used = {};
         var ok = plan.choices.every(function(c) {
-          var a = has(raw, c.at) ? raw[c.at] : void 0;
+          var a = has2(raw, c.at) ? raw[c.at] : void 0;
           if (c.kind === "how") {
             if (a !== "average" && a !== "roll") return false;
             out[c.at] = a;
             return true;
           }
           if (c.kind === "spread") {
-            if (!isObj6(a)) return false;
+            if (!isObj7(a)) return false;
             var sum = 0, clean2 = {};
             var fine = Object.keys(a).every(function(k) {
               var v = a[k];
@@ -6280,7 +6612,7 @@ var require_rules_core = __commonJS({
           if (!Array.isArray(a) || a.length !== c.pick) return false;
           var each = a.every(function(id) {
             var tag = c.kind + ":" + id;
-            if (typeof id !== "string" || c.among.indexOf(id) < 0 || has(used, tag)) return false;
+            if (typeof id !== "string" || c.among.indexOf(id) < 0 || has2(used, tag)) return false;
             used[tag] = true;
             return true;
           });
@@ -6295,10 +6627,10 @@ var require_rules_core = __commonJS({
         Object.keys(t).forEach(function(k) {
           names[k] = nameOf(rules, k);
         });
-        if (isObj6(P.xp)) names[P.xp.id] = cleanName(P.xp.name);
-        var L = isObj6(P.levels) ? P.levels : null;
+        if (isObj7(P.xp)) names[P.xp.id] = cleanName(P.xp.name);
+        var L = isObj7(P.levels) ? P.levels : null;
         var lv = L ? (rules.derived || []).filter(function(d) {
-          return isObj6(d) && d.id === L.key;
+          return isObj7(d) && d.id === L.key;
         })[0] : null;
         if (lv) names[lv.id] = cleanName(lv.name);
         return JSON.parse(JSON.stringify({
@@ -6312,8 +6644,8 @@ var require_rules_core = __commonJS({
           targets: t,
           keys: progKeys(rules),
           names,
-          skillRank: isObj6(rules.skills) ? rules.skills.rank : null,
-          skills: isObj6(rules.skills) && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj6).map(function(x) {
+          skillRank: isObj7(rules.skills) ? rules.skills.rank : null,
+          skills: isObj7(rules.skills) && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj7).map(function(x) {
             return x.id;
           }) : [],
           values: Object.keys(valueKeys(rules)),
@@ -6321,10 +6653,10 @@ var require_rules_core = __commonJS({
         }));
       }
       function cleanProgressCtx(raw, resolutions) {
-        if (!isObj6(raw) || !isObj6(resolutions)) return null;
+        if (!isObj7(raw) || !isObj7(resolutions)) return null;
         var KEY = /^[a-z][a-z0-9_]{0,40}$/, KINDS2 = ["stat", "skill", "input", "resource", "computed"];
         var t = raw.targets;
-        if (!isObj6(t) || Object.keys(t).length > 400) return null;
+        if (!isObj7(t) || Object.keys(t).length > 400) return null;
         var targets = {};
         var tk = Object.keys(t);
         for (var i = 0; i < tk.length; i++) {
@@ -6353,8 +6685,8 @@ var require_rules_core = __commonJS({
         validateProgression({ progression: prog }, errs, { targets, values, res: resolutions, skills, rank, levelKey, levelMax: levelKey === null ? null : raw.levelMax, libFeat: raw.libFeat === true });
         if (errs.length) return null;
         var names = {};
-        var nm = isObj6(raw.names) ? raw.names : {};
-        Object.keys(targets).concat(levelKey ? [levelKey] : [], isObj6(prog.xp) ? [prog.xp.id] : []).forEach(function(k) {
+        var nm = isObj7(raw.names) ? raw.names : {};
+        Object.keys(targets).concat(levelKey ? [levelKey] : [], isObj7(prog.xp) ? [prog.xp.id] : []).forEach(function(k) {
           names[k] = typeof nm[k] === "string" && cleanName(nm[k]) ? cleanName(nm[k]) : k;
         });
         return JSON.parse(JSON.stringify({ xp: prog.xp, levels: prog.levels, levelKey, levelMax: levelKey === null ? null : raw.levelMax, purchases: prog.purchases, use: prog.use, features: prog.features, targets, keys, names, skillRank: rank, skills, values: valuesList, libFeat: raw.libFeat === true }));
@@ -6363,11 +6695,11 @@ var require_rules_core = __commonJS({
         return JSON.parse(JSON.stringify({
           keys: effectKeys(rules),
           res: Object.keys(resolutionsOf(rules)),
-          types: isObj6(rules.combat) && isObj6(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types.map(function(t) {
+          types: isObj7(rules.combat) && isObj7(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types.map(function(t) {
             return t.id;
           }) : [],
           rests: Array.isArray(rules.rests) ? rules.rests : [],
-          states: isObj6(rules.effects) && Array.isArray(rules.effects.states) ? rules.effects.states : [],
+          states: isObj7(rules.effects) && Array.isArray(rules.effects.states) ? rules.effects.states : [],
           // the names the page shows (lot D3): of the values an effect changes, of the resolutions, of the damage types
           names: {
             keys: effectKeys(rules).reduce(function(o, k) {
@@ -6378,7 +6710,7 @@ var require_rules_core = __commonJS({
               o[k] = cleanName(resolutionsOf(rules)[k].name) || k;
               return o;
             }, {}),
-            types: (isObj6(rules.combat) && isObj6(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types : []).reduce(function(o, t) {
+            types: (isObj7(rules.combat) && isObj7(rules.combat.damage) && Array.isArray(rules.combat.damage.types) ? rules.combat.damage.types : []).reduce(function(o, t) {
               o[t.id] = cleanName(t.name) || t.id;
               return o;
             }, {})
@@ -6389,30 +6721,30 @@ var require_rules_core = __commonJS({
         return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
       };
       function cleanEffectIn(ctx, raw) {
-        if (!isObj6(ctx) || !isObj6(raw)) return null;
+        if (!isObj7(ctx) || !isObj7(raw)) return null;
         var src = null, stateId = null;
         if (typeof raw.state === "string") {
           src = (Array.isArray(ctx.states) ? ctx.states : []).filter(function(s) {
-            return isObj6(s) && s.id === raw.state;
+            return isObj7(s) && s.id === raw.state;
           })[0] || null;
           if (!src) return null;
           stateId = src.id;
-        } else if (isObj6(raw.effect)) src = raw.effect;
+        } else if (isObj7(raw.effect)) src = raw.effect;
         else return null;
         var keys = Array.isArray(ctx.keys) ? ctx.keys : [], res = Array.isArray(ctx.res) ? ctx.res : [], types = Array.isArray(ctx.types) ? ctx.types : [];
         var rests = (Array.isArray(ctx.rests) ? ctx.rests : []).map(function(r) {
-          return isObj6(r) ? r.id : null;
+          return isObj7(r) ? r.id : null;
         });
         var name = cleanName(src.name);
         if (!name) return null;
         var mods = src.mods, rolls = src.rolls, resist = src.resist, vuln = src.vuln, end = src.end;
         if (!Array.isArray(mods) || mods.length > FX.mods || !Array.isArray(rolls) || rolls.length > FX.rolls) return null;
-        if (!Array.isArray(resist) || resist.length > MAX_TYPES || !Array.isArray(vuln) || vuln.length > MAX_TYPES || !isObj6(end)) return null;
+        if (!Array.isArray(resist) || resist.length > MAX_TYPES || !Array.isArray(vuln) || vuln.length > MAX_TYPES || !isObj7(end)) return null;
         if (!mods.every(function(m) {
-          return isObj6(m) && keys.indexOf(m.key) >= 0 && intIn(m.n, -FX.n, FX.n) && m.n !== 0;
+          return isObj7(m) && keys.indexOf(m.key) >= 0 && intIn(m.n, -FX.n, FX.n) && m.n !== 0;
         })) return null;
         if (!rolls.every(function(r) {
-          return isObj6(r) && res.indexOf(r.res) >= 0 && intIn(r.n, -FX.roll, FX.roll) && [-1, 0, 1].indexOf(r.adv) >= 0 && !(r.n === 0 && r.adv === 0);
+          return isObj7(r) && res.indexOf(r.res) >= 0 && intIn(r.n, -FX.roll, FX.roll) && [-1, 0, 1].indexOf(r.adv) >= 0 && !(r.n === 0 && r.adv === 0);
         })) return null;
         if (!resist.concat(vuln).every(function(t) {
           return types.indexOf(t) >= 0;
@@ -6438,7 +6770,7 @@ var require_rules_core = __commonJS({
         };
       }
       function cleanEffectCtx(raw, resolutions) {
-        if (!isObj6(raw) || !isObj6(resolutions)) return null;
+        if (!isObj7(raw) || !isObj7(resolutions)) return null;
         var strs = function(l, re, max) {
           return Array.isArray(l) && l.length <= max && l.every(function(x) {
             return typeof x === "string" && re.test(x);
@@ -6446,15 +6778,15 @@ var require_rules_core = __commonJS({
         };
         var keys = strs(raw.keys, /^[a-z][a-z0-9_]{0,40}$/, 400), res = strs(raw.res, ID_RE3, LIMITS2.rolls + 1), types = strs(raw.types, TYPE_RE, MAX_TYPES);
         if (!keys || !res || !types || !res.every(function(id) {
-          return has(resolutions, id);
+          return has2(resolutions, id);
         })) return null;
         var rests = [];
         if (!Array.isArray(raw.rests) || raw.rests.length > FX.rests) return null;
         for (var i = 0; i < raw.rests.length; i++) {
           var r = raw.rests[i];
-          if (!isObj6(r) || typeof r.id !== "string" || !TYPE_RE.test(r.id) || !cleanName(r.name) || !Array.isArray(r.restore) || r.restore.length > FX.restore) return null;
+          if (!isObj7(r) || typeof r.id !== "string" || !TYPE_RE.test(r.id) || !cleanName(r.name) || !Array.isArray(r.restore) || r.restore.length > FX.restore) return null;
           var restore = r.restore.filter(function(x) {
-            return isObj6(x) && typeof x.res === "string" && KEY_RE.test(x.res) && RESTORES.indexOf(x.how) >= 0 && (x.how !== "fixed" || intIn(x.n, 1, FX.fixed)) && (x.how !== "formula" || typeof x.key === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(x.key));
+            return isObj7(x) && typeof x.res === "string" && KEY_RE.test(x.res) && RESTORES.indexOf(x.how) >= 0 && (x.how !== "fixed" || intIn(x.n, 1, FX.fixed)) && (x.how !== "formula" || typeof x.key === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(x.key));
           }).map(function(x) {
             var o = { res: x.res, how: x.how };
             if (x.how === "fixed") o.n = x.n;
@@ -6464,18 +6796,18 @@ var require_rules_core = __commonJS({
           });
           rests.push({ id: r.id, name: cleanName(r.name), restore });
         }
-        var nm = isObj6(raw.names) ? raw.names : {};
+        var nm = isObj7(raw.names) ? raw.names : {};
         var pick = function(src, ids) {
           var o = {};
           ids.forEach(function(id) {
-            var v = isObj6(src) && typeof src[id] === "string" ? cleanName(src[id]) : "";
+            var v = isObj7(src) && typeof src[id] === "string" ? cleanName(src[id]) : "";
             o[id] = v || id;
           });
           return o;
         };
         var ctx = { keys, res, types, rests, states: [], names: { keys: pick(nm.keys, keys), res: pick(nm.res, res), types: pick(nm.types, types) } };
         (Array.isArray(raw.states) ? raw.states.slice(0, FX.states) : []).forEach(function(s) {
-          if (!isObj6(s) || typeof s.id !== "string" || !TYPE_RE.test(s.id)) return;
+          if (!isObj7(s) || typeof s.id !== "string" || !TYPE_RE.test(s.id)) return;
           var clean2 = cleanEffectIn(ctx, { effect: s, asState: true });
           if (!clean2 || EFFECT_ICONS.indexOf(s.icon) < 0) return;
           var st = { id: s.id, name: clean2.name, icon: s.icon, mods: clean2.mods, rolls: clean2.rolls, resist: clean2.resist, vuln: clean2.vuln, end: clean2.end };
@@ -6485,14 +6817,14 @@ var require_rules_core = __commonJS({
         return ctx;
       }
       function cleanEffect(rules, raw) {
-        return isObj6(rules) && isObj6(rules.effects) ? cleanEffectIn(effectCtx(rules), raw) : null;
+        return isObj7(rules) && isObj7(rules.effects) ? cleanEffectIn(effectCtx(rules), raw) : null;
       }
       function sumMods(effects) {
         var out = {};
         (Array.isArray(effects) ? effects : []).forEach(function(e) {
-          (isObj6(e) && Array.isArray(e.mods) ? e.mods : []).forEach(function(m) {
-            if (!isObj6(m) || typeof m.key !== "string" || typeof m.n !== "number") return;
-            out[m.key] = Math.max(-FX.n, Math.min(FX.n, (has(out, m.key) ? out[m.key] : 0) + m.n));
+          (isObj7(e) && Array.isArray(e.mods) ? e.mods : []).forEach(function(m) {
+            if (!isObj7(m) || typeof m.key !== "string" || typeof m.n !== "number") return;
+            out[m.key] = Math.max(-FX.n, Math.min(FX.n, (has2(out, m.key) ? out[m.key] : 0) + m.n));
           });
         });
         return out;
@@ -6500,8 +6832,8 @@ var require_rules_core = __commonJS({
       function rollsFor(effects, resId) {
         var n = 0, up = false, down = false;
         (Array.isArray(effects) ? effects : []).forEach(function(e) {
-          (isObj6(e) && Array.isArray(e.rolls) ? e.rolls : []).forEach(function(r) {
-            if (!isObj6(r) || r.res !== resId) return;
+          (isObj7(e) && Array.isArray(e.rolls) ? e.rolls : []).forEach(function(r) {
+            if (!isObj7(r) || r.res !== resId) return;
             n += Number(r.n) || 0;
             if (r.adv > 0) up = true;
             if (r.adv < 0) down = true;
@@ -6521,19 +6853,19 @@ var require_rules_core = __commonJS({
       var IDENTITY = { tone: ["fantasy", "horror", "cyber", "scifi", "modern", "narrative"], audience: ["beginner", "veteran"], complexity: ["oneshot", "campaign"] };
       function validateIdentity(rules, errs) {
         var x = rules.identity;
-        if (!isObj6(x)) return errs.push({ path: "identity", message: say2("rules.v.identity") });
+        if (!isObj7(x)) return errs.push({ path: "identity", message: say2("rules.v.identity") });
         Object.keys(IDENTITY).forEach(function(k) {
           if (IDENTITY[k].indexOf(x[k]) < 0) errs.push({ path: "identity." + k, message: say2("rules.v.identity") });
         });
       }
       var byId = function(list2, id) {
         return (Array.isArray(list2) ? list2 : []).filter(function(x) {
-          return isObj6(x) && x.id === id;
+          return isObj7(x) && x.id === id;
         })[0];
       };
       function nameOf(rules, key) {
-        if (key === "def_reduction" && isObj6(rules.combat)) return say2("rules.reduction");
-        var stats = isObj6(rules.stats) ? rules.stats.list : [], skills = isObj6(rules.skills) ? rules.skills.list : [];
+        if (key === "def_reduction" && isObj7(rules.combat)) return say2("rules.reduction");
+        var stats = isObj7(rules.stats) ? rules.stats.list : [], skills = isObj7(rules.skills) ? rules.skills.list : [];
         var hit = byId(stats, key) || byId(rules.derived, key);
         if (hit) return cleanName(hit.name) || key;
         var m = /^(.+)_(mod|max)$/.exec(String(key));
@@ -6551,9 +6883,9 @@ var require_rules_core = __commonJS({
         });
       }
       function renameKey(rules, kind, from, to) {
-        if (!isObj6(rules) || typeof to !== "string" || from === to) return [];
+        if (!isObj7(rules) || typeof to !== "string" || from === to) return [];
         if (!(kind === "resolution" ? ID_RE3 : KEY_RE).test(to)) return [];
-        var item = kind === "resolution" ? has(resolutionsOf(rules), from) ? resolutionsOf(rules)[from] : null : byId(kind === "stats" ? (rules.stats || {}).list : kind === "derived" ? rules.derived : (rules.skills || {}).list, from);
+        var item = kind === "resolution" ? has2(resolutionsOf(rules), from) ? resolutionsOf(rules)[from] : null : byId(kind === "stats" ? (rules.stats || {}).list : kind === "derived" ? rules.derived : (rules.skills || {}).list, from);
         if (!item) return [];
         var pairs = [];
         if (kind === "stats") {
@@ -6569,8 +6901,8 @@ var require_rules_core = __commonJS({
         var owners = model(rules).owner, olds = pairs.map(function(p) {
           return p[0];
         });
-        if (kind === "resolution" ? has(owners, to) : pairs.some(function(p) {
-          return has(owners, p[1]) && olds.indexOf(p[1]) < 0;
+        if (kind === "resolution" ? has2(owners, to) : pairs.some(function(p) {
+          return has2(owners, p[1]) && olds.indexOf(p[1]) < 0;
         })) return [];
         item.id = to;
         var map = {};
@@ -6578,30 +6910,30 @@ var require_rules_core = __commonJS({
           map[p[0]] = p[1];
         });
         var fix = function(k2) {
-          return has(map, k2) ? map[k2] : k2;
+          return has2(map, k2) ? map[k2] : k2;
         };
         (Array.isArray(rules.derived) ? rules.derived : []).forEach(function(d) {
-          if (!isObj6(d)) return;
+          if (!isObj7(d)) return;
           if (kind === "resolution" && d.rollWith === from) d.rollWith = to;
           var r = d.recipe;
-          if (!isObj6(r)) return;
+          if (!isObj7(r)) return;
           ["source", "level"].forEach(function(key) {
             if (typeof r[key] === "string") r[key] = fix(r[key]);
           });
           (Array.isArray(r.terms) ? r.terms : []).forEach(function(t) {
-            if (isObj6(t) && typeof t.ref === "string") t.ref = fix(t.ref);
+            if (isObj7(t) && typeof t.ref === "string") t.ref = fix(t.ref);
           });
           if (typeof r.formula === "string") r.formula = r.formula.replace(/@([a-z0-9_]+)/g, function(all, key) {
             return "@" + fix(key);
           });
         });
-        if (isObj6(rules.skills)) {
+        if (isObj7(rules.skills)) {
           if (kind === "derived" && rules.skills.proficiency === from) rules.skills.proficiency = to;
           if (kind === "stats") (Array.isArray(rules.skills.list) ? rules.skills.list : []).forEach(function(x) {
-            if (isObj6(x) && x.stat === from) x.stat = to;
+            if (isObj7(x) && x.stat === from) x.stat = to;
           });
         }
-        if (isObj6(rules.combat) && isObj6(rules.combat.attack) && isObj6(rules.combat.damage)) {
+        if (isObj7(rules.combat) && isObj7(rules.combat.attack) && isObj7(rules.combat.damage)) {
           var a = rules.combat.attack, dmg = rules.combat.damage;
           if (kind === "resolution" && a.rollWith === from) a.rollWith = to;
           if (typeof a.defense === "string") a.defense = fix(a.defense);
@@ -6611,23 +6943,23 @@ var require_rules_core = __commonJS({
           if (typeof dmg.health === "string") dmg.health = fix(dmg.health);
           if (typeof dmg.reduction === "string") dmg.reduction = fix(dmg.reduction);
         }
-        if (isObj6(rules.effects) && Array.isArray(rules.effects.states)) rules.effects.states.forEach(function(st) {
-          if (!isObj6(st)) return;
+        if (isObj7(rules.effects) && Array.isArray(rules.effects.states)) rules.effects.states.forEach(function(st) {
+          if (!isObj7(st)) return;
           (Array.isArray(st.mods) ? st.mods : []).forEach(function(mo) {
-            if (isObj6(mo) && typeof mo.key === "string") mo.key = fix(mo.key);
+            if (isObj7(mo) && typeof mo.key === "string") mo.key = fix(mo.key);
           });
           (Array.isArray(st.rolls) ? st.rolls : []).forEach(function(ro) {
-            if (isObj6(ro) && kind === "resolution" && ro.res === from) ro.res = to;
+            if (isObj7(ro) && kind === "resolution" && ro.res === from) ro.res = to;
           });
         });
         (Array.isArray(rules.rests) ? rules.rests : []).forEach(function(re) {
-          (isObj6(re) && Array.isArray(re.restore) ? re.restore : []).forEach(function(x) {
-            if (!isObj6(x)) return;
+          (isObj7(re) && Array.isArray(re.restore) ? re.restore : []).forEach(function(x) {
+            if (!isObj7(x)) return;
             if (typeof x.res === "string") x.res = fix(x.res);
             if (typeof x.key === "string") x.key = fix(x.key);
           });
         });
-        if (isObj6(rules.progression)) {
+        if (isObj7(rules.progression)) {
           var P = rules.progression;
           var skillId = function(k2) {
             return kind === "skills" && k2 === from ? to : k2;
@@ -6638,14 +6970,14 @@ var require_rules_core = __commonJS({
           var same = function(k2) {
             return k2;
           };
-          if (isObj6(P.xp) && Array.isArray(P.xp.onFail)) P.xp.onFail.forEach(function(x) {
-            if (isObj6(x)) x.res = resId(x.res);
+          if (isObj7(P.xp) && Array.isArray(P.xp.onFail)) P.xp.onFail.forEach(function(x) {
+            if (isObj7(x)) x.res = resId(x.res);
           });
-          if (isObj6(P.levels)) {
+          if (isObj7(P.levels)) {
             if (typeof P.levels.key === "string") P.levels.key = fix(P.levels.key);
             (Array.isArray(P.levels.gains) ? P.levels.gains : []).forEach(function(g) {
-              (isObj6(g) && Array.isArray(g.give) ? g.give : []).forEach(function(x) {
-                if (!isObj6(x)) return;
+              (isObj7(g) && Array.isArray(g.give) ? g.give : []).forEach(function(x) {
+                if (!isObj7(x)) return;
                 if (typeof x.key === "string") x.key = fix(x.key);
                 if (typeof x.plus === "string") x.plus = fix(x.plus);
                 if (Array.isArray(x.among)) x.among = x.among.map(x.kind === "train" ? skillId : x.kind === "pick" ? same : fix);
@@ -6653,29 +6985,29 @@ var require_rules_core = __commonJS({
             });
           }
           (Array.isArray(P.purchases) ? P.purchases : []).forEach(function(b) {
-            if (isObj6(b) && Array.isArray(b.keys)) b.keys = b.keys.map(b.what === "skill" ? skillId : b.what === "feature" ? same : fix);
+            if (isObj7(b) && Array.isArray(b.keys)) b.keys = b.keys.map(b.what === "skill" ? skillId : b.what === "feature" ? same : fix);
           });
-          if (isObj6(P.use) && Array.isArray(P.use.res)) P.use.res = P.use.res.map(resId);
+          if (isObj7(P.use) && Array.isArray(P.use.res)) P.use.res = P.use.res.map(resId);
         }
-        if (isObj6(rules.bar) && Array.isArray(rules.bar.items)) rules.bar.items.forEach(function(x) {
-          if (isObj6(x) && typeof x.key === "string") x.key = fix(x.key);
+        if (isObj7(rules.bar) && Array.isArray(rules.bar.items)) rules.bar.items.forEach(function(x) {
+          if (isObj7(x) && typeof x.key === "string") x.key = fix(x.key);
         });
-        if (kind === "skills" && isObj6(rules.creation) && isObj6(rules.creation.skills) && Array.isArray(rules.creation.skills.among)) rules.creation.skills.among = rules.creation.skills.among.map(function(k2) {
+        if (kind === "skills" && isObj7(rules.creation) && isObj7(rules.creation.skills) && Array.isArray(rules.creation.skills.among)) rules.creation.skills.among = rules.creation.skills.among.map(function(k2) {
           return k2 === from ? to : k2;
         });
-        if (isObj6(rules.library) && Array.isArray(rules.library.entries)) rules.library.entries.forEach(function(x) {
-          if (!isObj6(x)) return;
-          if (kind === "stats" && isObj6(x.values) && x.values.arm_carac === from) x.values.arm_carac = to;
+        if (isObj7(rules.library) && Array.isArray(rules.library.entries)) rules.library.entries.forEach(function(x) {
+          if (!isObj7(x)) return;
+          if (kind === "stats" && isObj7(x.values) && x.values.arm_carac === from) x.values.arm_carac = to;
           var ac = x.action;
-          if (!isObj6(ac)) return;
-          if (isObj6(ac.roll) && kind === "resolution" && ac.roll.res === from) ac.roll.res = to;
-          if (isObj6(ac.cost) && typeof ac.cost.res === "string") ac.cost.res = fix(ac.cost.res);
+          if (!isObj7(ac)) return;
+          if (isObj7(ac.roll) && kind === "resolution" && ac.roll.res === from) ac.roll.res = to;
+          if (isObj7(ac.cost) && typeof ac.cost.res === "string") ac.cost.res = fix(ac.cost.res);
         });
         return kind === "resolution" ? [[from, to]] : pairs;
       }
       var ROUND_TEXT = { down: "rules.x.fractionDown", up: "rules.x.fractionUp", near: "rules.x.fractionNear" };
       function explain(rules, key, valueOf) {
-        if (!isObj6(rules)) return "";
+        if (!isObj7(rules)) return "";
         var val = typeof valueOf === "function" ? valueOf : null;
         var ref = function(k) {
           return val ? String(val(k)) + " (" + nameOf(rules, k) + ")" : nameOf(rules, k);
@@ -6691,7 +7023,7 @@ var require_rules_core = __commonJS({
         var words = "";
         var d = byId(rules.derived, key);
         var mod = /^(.+)_mod$/.exec(String(key)), total = /^sk_(.+)_t$/.exec(String(key));
-        if (d && isObj6(d.recipe)) {
+        if (d && isObj7(d.recipe)) {
           var r = d.recipe;
           if (r.kind === "modifier") words = say2("rules.x.modifier", { of: ref(r.source) });
           else if (r.kind === "sum") words = joined(r.terms);
@@ -6705,10 +7037,10 @@ var require_rules_core = __commonJS({
           else if (r.kind === "raw") words = String(r.formula).replace(/@([a-z0-9_]+)/g, function(all, k) {
             return ref(k);
           });
-        } else if (mod && isObj6(rules.stats) && byId(rules.stats.list, mod[1])) words = say2("rules.x.modifier", { of: ref(mod[1]) });
-        else if (total && isObj6(rules.skills) && byId(rules.skills.list, total[1])) {
+        } else if (mod && isObj7(rules.stats) && byId(rules.stats.list, mod[1])) words = say2("rules.x.modifier", { of: ref(mod[1]) });
+        else if (total && isObj7(rules.skills) && byId(rules.skills.list, total[1])) {
           var x = byId(rules.skills.list, total[1]), parts = [];
-          if (x.stat && readKind(rules) !== "under" && isObj6(rules.stats)) parts.push(ref(statAdd(rules, x.stat).slice(1)));
+          if (x.stat && readKind(rules) !== "under" && isObj7(rules.stats)) parts.push(ref(statAdd(rules, x.stat).slice(1)));
           if (rules.skills.rank === "trained") {
             parts.push(say2("rules.x.ifTrained", { prof: ref(rules.skills.proficiency) }));
             if (rules.skills.expertise) parts.push(say2("rules.x.ifExpert", { prof: ref(rules.skills.proficiency) }));
@@ -6736,8 +7068,8 @@ var require_rules_core = __commonJS({
         ] };
       }
       function starterDerived(rules) {
-        var fam = isObj6(rules.resolution) ? rules.resolution.family : "custom";
-        var stats = isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : [];
+        var fam = isObj7(rules.resolution) ? rules.resolution.family : "custom";
+        var stats = isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : [];
         var add = function(x) {
           return x ? rules.stats.form === "score" ? x.id + "_mod" : x.id : null;
         };
@@ -6769,10 +7101,10 @@ var require_rules_core = __commonJS({
         });
       }
       function starterSkills(rules) {
-        var fam = isObj6(rules.resolution) ? rules.resolution.family : "custom";
-        var stats = isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : [];
+        var fam = isObj7(rules.resolution) ? rules.resolution.family : "custom";
+        var stats = isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list : [];
         var prof = (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
-          return isObj6(d) && d.id === "maitrise";
+          return isObj7(d) && d.id === "maitrise";
         })[0];
         var rank = prof ? "trained" : fam === "d100" || fam === "d100deg" ? "percent" : fam === "pool10" || fam === "pool6best" ? "dots" : "bonus";
         return { mode: "fixed", rank, proficiency: prof ? "maitrise" : null, expertise: false, list: [
@@ -6824,15 +7156,15 @@ var require_rules_core = __commonJS({
         energie: "rules.dt.energie"
       };
       function starterCombat(rules) {
-        var derived = Array.isArray(rules.derived) ? rules.derived.filter(isObj6) : [];
+        var derived = Array.isArray(rules.derived) ? rules.derived.filter(isObj7) : [];
         var health = derived.filter(function(d) {
           return d.resource;
         })[0];
-        if (!health || !isObj6(rules.resolution)) return null;
-        var stats = isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj6).map(function(x) {
+        if (!health || !isObj7(rules.resolution)) return null;
+        var stats = isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj7).map(function(x) {
           return x.id;
         }) : [];
-        var tone = isObj6(rules.identity) && has(STARTER_TYPES, rules.identity.tone) ? rules.identity.tone : "fantasy";
+        var tone = isObj7(rules.identity) && has2(STARTER_TYPES, rules.identity.tone) ? rules.identity.tone : "fantasy";
         return {
           attack: {
             rollWith: rules.resolution.id,
@@ -6846,7 +7178,7 @@ var require_rules_core = __commonJS({
             finesse: stats.length >= 2 ? [stats[0], stats[1]] : null
           },
           damage: {
-            addStat: isObj6(rules.stats) && rules.stats.form === "score",
+            addStat: isObj7(rules.stats) && rules.stats.form === "score",
             critical: "double",
             types: STARTER_TYPES[tone].map(function(id) {
               return { id, name: say2(TYPE_TEXT[id]) };
@@ -6865,14 +7197,14 @@ var require_rules_core = __commonJS({
         narrative: []
       };
       function starterEffects(rules) {
-        if (!isObj6(rules.resolution)) return null;
-        var tone = isObj6(rules.identity) && has(STARTER_STATES, rules.identity.tone) ? rules.identity.tone : "fantasy";
+        if (!isObj7(rules.resolution)) return null;
+        var tone = isObj7(rules.identity) && has2(STARTER_STATES, rules.identity.tone) ? rules.identity.tone : "fantasy";
         var res = rules.resolution, k = res.read ? res.read.kind : "over";
         var step = res.dice && res.dice.count === "pool" ? 1 : k === "under" ? 20 : 2;
         var main2 = res.id, rests = Array.isArray(rules.rests) ? rules.rests : [];
         var last = rests.length ? rests[rests.length - 1].id : null;
         var defence = (Array.isArray(rules.derived) ? rules.derived : []).some(function(d) {
-          return isObj6(d) && d.id === "defense" && d.recipe && d.recipe.kind !== "input" && !d.resource;
+          return isObj7(d) && d.id === "defense" && d.recipe && d.recipe.kind !== "input" && !d.resource;
         });
         var s = function(id, mods, rolls, end) {
           return { id, name: say2("rules.state." + id), icon: id, mods, rolls, resist: [], vuln: [], end: { rounds: end.rounds || null, at: "end", rest: end.rest || null } };
@@ -6915,7 +7247,7 @@ var require_rules_core = __commonJS({
       }
       function starterRests(rules) {
         var res = (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
-          return isObj6(d) && d.resource;
+          return isObj7(d) && d.resource;
         });
         if (!res.length) return null;
         return [
@@ -6930,31 +7262,31 @@ var require_rules_core = __commonJS({
       var PROG_KINDS = ["levels", "points", "use", "advances"];
       var PROG_BY_FAMILY = { d20: "levels", d20adv: "levels", d100: "use", d100deg: "use", pool10: "points", pool6best: "points", "3d6under": "points", fate: "points", pbta: "advances" };
       function progKindOf(fam) {
-        return has(PROG_BY_FAMILY, fam) ? PROG_BY_FAMILY[fam] : null;
+        return has2(PROG_BY_FAMILY, fam) ? PROG_BY_FAMILY[fam] : null;
       }
       function starterProgression(rules, kind) {
-        var fam = isObj6(rules.resolution) ? rules.resolution.family : "custom";
+        var fam = isObj7(rules.resolution) ? rules.resolution.family : "custom";
         kind = kind || progKindOf(fam);
         if (PROG_KINDS.indexOf(kind) < 0) return null;
-        var derived = Array.isArray(rules.derived) ? rules.derived.filter(isObj6) : [];
+        var derived = Array.isArray(rules.derived) ? rules.derived.filter(isObj7) : [];
         var level = derived.filter(function(d) {
           return d.id === "niveau";
         })[0] || null;
-        var stats = isObj6(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj6).map(function(x) {
+        var stats = isObj7(rules.stats) && Array.isArray(rules.stats.list) ? rules.stats.list.filter(isObj7).map(function(x) {
           return x.id;
         }) : [];
-        var sk = isObj6(rules.skills) && rules.skills.mode === "fixed" && Array.isArray(rules.skills.list) && rules.skills.list.length ? rules.skills : null;
+        var sk = isObj7(rules.skills) && rules.skills.mode === "fixed" && Array.isArray(rules.skills.list) && rules.skills.list.length ? rules.skills : null;
         var hp = derived.filter(function(d) {
           return d.resource;
         })[0] || null;
-        var main2 = isObj6(rules.resolution) ? rules.resolution.id : "test";
+        var main2 = isObj7(rules.resolution) ? rules.resolution.id : "test";
         var xp = { id: "xp", name: say2("rules.p.xp"), onFail: [] };
         var feature = function(id) {
           return { id, name: say2("rules.p.f." + id), text: say2("rules.p.f." + id + ".text") };
         };
         var add = [], prog = null;
         if (kind === "levels" || kind === "advances") {
-          if (level && (!isObj6(level.recipe) || level.recipe.kind !== "input")) return null;
+          if (level && (!isObj7(level.recipe) || level.recipe.kind !== "input")) return null;
           if (!level) {
             level = { id: "niveau", name: say2("rules.der.level"), recipe: { kind: "input", min: 1, max: kind === "levels" ? 20 : 10, "default": 1 }, show: "field" };
             add.push(level);
@@ -6963,8 +7295,8 @@ var require_rules_core = __commonJS({
         if (kind === "levels") {
           var gains = [];
           if (hp) {
-            var ref = isObj6(hp.recipe) && Array.isArray(hp.recipe.terms) ? hp.recipe.terms.filter(function(t) {
-              return isObj6(t) && typeof t.ref === "string";
+            var ref = isObj7(hp.recipe) && Array.isArray(hp.recipe.terms) ? hp.recipe.terms.filter(function(t) {
+              return isObj7(t) && typeof t.ref === "string";
             })[0] : null;
             gains.push({ when: { every: 1, from: 2 }, give: [{ kind: "add", key: hp.id, dice: "1d8", plus: ref ? ref.ref : null, how: "player" }] });
           }
@@ -6980,7 +7312,7 @@ var require_rules_core = __commonJS({
           prog = { xp: null, levels: null, purchases: null, use: { res: [main2], on: "success", test: "1d100", beat: "value", gain: "1d10" }, features: [] };
         } else {
           var buys = [];
-          var statMax = isObj6(rules.stats) && isInt(rules.stats.max, 1, LIMITS2.add) ? rules.stats.max : 5;
+          var statMax = isObj7(rules.stats) && isInt(rules.stats.max, 1, LIMITS2.add) ? rules.stats.max : 5;
           if (stats.length) buys.push({ id: "carac", name: say2("rules.p.buyStat"), what: "stat", keys: "any", price: fam === "fate" ? "@r*2" : "@r*5", max: statMax });
           if (sk) buys.push({ id: "competence", name: say2("rules.p.buySkill"), what: "skill", keys: "any", price: fam === "fate" ? "@r" : "@r*3", max: sk.rank === "trained" ? 1 : sk.rank === "dots" ? 5 : sk.rank === "percent" ? 100 : 5 });
           buys.push({ id: "aptitude", name: say2("rules.p.buyFeature"), what: "feature", keys: "any", price: 7, max: 1 });
@@ -7055,7 +7387,7 @@ var require_rules_core = __commonJS({
         var out = { crit: 0, success: 0, partial: 0, fail: 0, fumble: 0 }, times = Math.max(1, Math.min(1e5, n || 1e3));
         for (var i = 0; i < times; i++) {
           var tone = simulate(res, input, rng).outcome.tone;
-          if (tone && has(out, tone)) out[tone]++;
+          if (tone && has2(out, tone)) out[tone]++;
         }
         Object.keys(out).forEach(function(k) {
           out[k] = out[k] / times;
@@ -7066,26 +7398,26 @@ var require_rules_core = __commonJS({
       var BAR_MAX = 6;
       function resourceIds(rules) {
         return (Array.isArray(rules.derived) ? rules.derived : []).filter(function(d) {
-          return isObj6(d) && d.resource === true && typeof d.id === "string";
+          return isObj7(d) && d.resource === true && typeof d.id === "string";
         }).map(function(d) {
           return d.id;
         });
       }
       function hasInitiative(rules) {
         return (Array.isArray(rules.derived) ? rules.derived : []).some(function(d) {
-          return isObj6(d) && d.id === "initiative" && d.rollable === true;
+          return isObj7(d) && d.id === "initiative" && d.rollable === true;
         });
       }
       function hasStates(rules) {
-        return isObj6(rules.effects) && Array.isArray(rules.effects.states) && rules.effects.states.length > 0;
+        return isObj7(rules.effects) && Array.isArray(rules.effects.states) && rules.effects.states.length > 0;
       }
       function barItems(rules) {
-        if (!isObj6(rules)) return [];
-        if (isObj6(rules.bar)) return rules.bar.on === false ? [] : Array.isArray(rules.bar.items) ? rules.bar.items.filter(isObj6).slice(0, BAR_MAX) : [];
-        var out = [], c = isObj6(rules.combat) ? rules.combat : null;
-        var health = c && isObj6(c.damage) && typeof c.damage.health === "string" ? c.damage.health : null;
+        if (!isObj7(rules)) return [];
+        if (isObj7(rules.bar)) return rules.bar.on === false ? [] : Array.isArray(rules.bar.items) ? rules.bar.items.filter(isObj7).slice(0, BAR_MAX) : [];
+        var out = [], c = isObj7(rules.combat) ? rules.combat : null;
+        var health = c && isObj7(c.damage) && typeof c.damage.health === "string" ? c.damage.health : null;
         if (health) out.push({ kind: "health", key: health });
-        if (c && isObj6(c.attack) && typeof c.attack.defense === "string") out.push({ kind: "value", key: c.attack.defense });
+        if (c && isObj7(c.attack) && typeof c.attack.defense === "string") out.push({ kind: "value", key: c.attack.defense });
         if (hasInitiative(rules)) out.push({ kind: "initiative" });
         resourceIds(rules).filter(function(k) {
           return k !== health;
@@ -7100,21 +7432,21 @@ var require_rules_core = __commonJS({
         var e = function(p, key, vars) {
           errs.push({ path: "bar" + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj6(b)) return e("", "rules.v.bar");
+        if (!isObj7(b)) return e("", "rules.v.bar");
         if (b.on !== void 0 && typeof b.on !== "boolean") e("on", "rules.v.bar");
         if (!Array.isArray(b.items)) return e("items", "rules.v.bar");
         if (b.items.length > BAR_MAX) return e("items", "rules.v.tooMany", { max: BAR_MAX });
         var res = resourceIds(rules), values = valueKeys(rules), seen = {};
         b.items.forEach(function(x, i) {
           var at = "items." + i;
-          if (!isObj6(x) || BAR_KINDS.indexOf(x.kind) < 0) return e(at + ".kind", "rules.v.bar");
+          if (!isObj7(x) || BAR_KINDS.indexOf(x.kind) < 0) return e(at + ".kind", "rules.v.bar");
           var id = x.kind + ":" + (x.key || "");
-          if (has(seen, id)) e(at, "rules.v.barTwice");
+          if (has2(seen, id)) e(at, "rules.v.barTwice");
           seen[id] = true;
           if (x.kind === "health" || x.kind === "resource") {
             if (res.indexOf(x.key) < 0) e(at + ".key", "rules.v.barResource");
           } else if (x.kind === "value") {
-            if (!has(values, x.key)) e(at + ".key", "rules.v.barValue");
+            if (!has2(values, x.key)) e(at + ".key", "rules.v.barValue");
           } else if (x.kind === "initiative") {
             if (!hasInitiative(rules)) e(at + ".kind", "rules.v.barInitiative");
           } else if (!hasStates(rules)) e(at + ".kind", "rules.v.barStates");
@@ -7134,7 +7466,7 @@ var require_rules_core = __commonJS({
       var STANDARD_ARRAY = [15, 14, 13, 12, 10, 8];
       var STANDARD_COSTS = { "8": 0, "9": 1, "10": 2, "11": 3, "12": 4, "13": 5, "14": 7, "15": 9 };
       function genSettings(s) {
-        if (!isObj6(s) || !isObj6(s.generation) || GENERATIONS.indexOf(s.generation.method) < 0) return null;
+        if (!isObj7(s) || !isObj7(s.generation) || GENERATIONS.indexOf(s.generation.method) < 0) return null;
         var g = s.generation, n = Array.isArray(s.list) ? s.list.length : 0, lo = s.min, hi = s.max;
         var inBounds = function(v2) {
           return isInt(v2, lo, hi);
@@ -7146,7 +7478,7 @@ var require_rules_core = __commonJS({
           return { method: "array", values: std };
         }
         if (g.method === "pointbuy") {
-          if (isObj6(g.costs) && isInt(g.budget, 1, CREA.budget)) return { method: "pointbuy", budget: g.budget, costs: JSON.parse(JSON.stringify(g.costs)) };
+          if (isObj7(g.costs) && isInt(g.budget, 1, CREA.budget)) return { method: "pointbuy", budget: g.budget, costs: JSON.parse(JSON.stringify(g.costs)) };
           if (Object.keys(STANDARD_COSTS).every(function(k) {
             return inBounds(Number(k));
           })) return { method: "pointbuy", budget: 27, costs: JSON.parse(JSON.stringify(STANDARD_COSTS)) };
@@ -7158,14 +7490,14 @@ var require_rules_core = __commonJS({
         return { method: g.method };
       }
       function genProblems(g, n, lo, hi, form, e) {
-        if (!isObj6(g)) return;
+        if (!isObj7(g)) return;
         var inBounds = function(v) {
           return isInt(v, lo, hi);
         };
         if ((g.method === "4d6drop" || g.method === "3d6") && form !== "score") e("generation.method", "rules.v.genScore");
         if (g.method === "array" && g.values !== void 0 && !(Array.isArray(g.values) && g.values.length === n && g.values.every(inBounds))) e("generation.values", "rules.v.genValues", { n, min: lo, max: hi });
         if (g.method === "pointbuy" && (g.costs !== void 0 || g.budget !== void 0)) {
-          var keys = isObj6(g.costs) ? Object.keys(g.costs) : [];
+          var keys = isObj7(g.costs) ? Object.keys(g.costs) : [];
           if (!isInt(g.budget, 1, CREA.budget)) e("generation.budget", "rules.v.genBudget", { max: CREA.budget });
           if (keys.length < 2 || keys.length > CREA.costs || !keys.every(function(k) {
             return /^-?\d+$/.test(k) && inBounds(Number(k)) && isInt(g.costs[k], 0, CREA.cost);
@@ -7174,22 +7506,22 @@ var require_rules_core = __commonJS({
         if (g.method === "free" && g.total !== void 0 && !isInt(g.total, lo * n, hi * n)) e("generation.total", "rules.v.genTotal", { min: lo * n, max: hi * n });
       }
       function levelBounds(rules) {
-        var P = rules.progression, L = isObj6(P) && isObj6(P.levels) ? P.levels : null;
+        var P = rules.progression, L = isObj7(P) && isObj7(P.levels) ? P.levels : null;
         var d = L ? byId(rules.derived, L.key) : null;
-        return d && isObj6(d.recipe) && isInt(d.recipe.max, 2, LIMITS2.add) ? { key: L.key, max: d.recipe.max } : null;
+        return d && isObj7(d.recipe) && isInt(d.recipe.max, 2, LIMITS2.add) ? { key: L.key, max: d.recipe.max } : null;
       }
       function validateCreation(rules, errs) {
         var c = rules.creation;
         var e = function(p, key, vars) {
           errs.push({ path: "creation" + (p ? "." + p : ""), message: say2(key, vars) });
         };
-        if (!isObj6(c)) return e("", "rules.v.crea");
+        if (!isObj7(c)) return e("", "rules.v.crea");
         if (c.order !== void 0 && ORDERS.indexOf(c.order) < 0) e("order", "rules.v.creaOrder");
         if (c.skills !== void 0 && c.skills !== null) {
-          var sk = isObj6(rules.skills) && rules.skills.rank === "trained" && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj6).map(function(x) {
+          var sk = isObj7(rules.skills) && rules.skills.rank === "trained" && Array.isArray(rules.skills.list) ? rules.skills.list.filter(isObj7).map(function(x) {
             return x.id;
           }) : null;
-          if (!sk || !isObj6(c.skills)) e("skills", "rules.v.creaSkills");
+          if (!sk || !isObj7(c.skills)) e("skills", "rules.v.creaSkills");
           else {
             var among = c.skills.among === "any" ? sk : c.skills.among;
             if (!Array.isArray(among) || !among.length || !among.every(function(id) {
@@ -7208,11 +7540,11 @@ var require_rules_core = __commonJS({
           var pools = libraryPools(rules), seen = {};
           c.picks.forEach(function(p, i) {
             var at = "picks." + i;
-            var g = isObj6(p) && isObj6(rules.library) && Array.isArray(rules.library.genres) ? rules.library.genres.filter(function(x) {
-              return isObj6(x) && x.id === p.genre;
+            var g = isObj7(p) && isObj7(rules.library) && Array.isArray(rules.library.genres) ? rules.library.genres.filter(function(x) {
+              return isObj7(x) && x.id === p.genre;
             })[0] : null;
             if (!g || g.kind === "feature") return e(at + ".genre", "rules.v.creaPick");
-            if (has(seen, g.id)) e(at + ".genre", "rules.v.creaPickTwice");
+            if (has2(seen, g.id)) e(at + ".genre", "rules.v.creaPickTwice");
             seen[g.id] = true;
             if (!isInt(p.n, 1, CREA.pickN)) e(at + ".n", "rules.v.progN", { min: 1, max: CREA.pickN });
             var fields = fieldsOf(g, pools), byField = {};
@@ -7220,7 +7552,7 @@ var require_rules_core = __commonJS({
               byField[f.id] = f;
             });
             if (p.filter !== void 0 && p.filter !== null) {
-              if (!isObj6(p.filter) || !Object.keys(p.filter).every(function(k) {
+              if (!isObj7(p.filter) || !Object.keys(p.filter).every(function(k) {
                 var f = byField[k];
                 return f && f.type === "choice" && Array.isArray(p.filter[k]) && p.filter[k].length > 0 && p.filter[k].every(function(o) {
                   return (f.options || []).indexOf(o) >= 0;
@@ -7228,7 +7560,7 @@ var require_rules_core = __commonJS({
               })) e(at + ".filter", "rules.v.creaFilter");
             }
             if (p.max !== void 0 && p.max !== null) {
-              if (!isObj6(p.max) || !Object.keys(p.max).every(function(k) {
+              if (!isObj7(p.max) || !Object.keys(p.max).every(function(k) {
                 var f = byField[k];
                 return f && f.type === "number" && isInt(p.max[k], -LIB.n, LIB.n);
               })) e(at + ".max", "rules.v.creaFilter");
@@ -7237,11 +7569,11 @@ var require_rules_core = __commonJS({
         }
       }
       function creationCtx(rules, ask) {
-        var c = isObj6(rules.creation) ? rules.creation : {};
-        var s = isObj6(rules.stats) ? rules.stats : null;
+        var c = isObj7(rules.creation) ? rules.creation : {};
+        var s = isObj7(rules.stats) ? rules.stats : null;
         var skills = null;
-        if (isObj6(c.skills) && isObj6(rules.skills) && Array.isArray(rules.skills.list)) {
-          var all = rules.skills.list.filter(isObj6);
+        if (isObj7(c.skills) && isObj7(rules.skills) && Array.isArray(rules.skills.list)) {
+          var all = rules.skills.list.filter(isObj7);
           var among = c.skills.among === "any" ? all.map(function(x) {
             return x.id;
           }) : c.skills.among.slice();
@@ -7253,56 +7585,56 @@ var require_rules_core = __commonJS({
         }
         var lb = levelBounds(rules);
         return JSON.parse(JSON.stringify({
-          stats: s ? { form: s.form, min: s.min, max: s.max, list: s.list.filter(isObj6).map(function(x) {
+          stats: s ? { form: s.form, min: s.min, max: s.max, list: s.list.filter(isObj7).map(function(x) {
             return { id: x.id, name: cleanName(x.name) || x.id };
           }), gen: genSettings(s) } : null,
           order: ORDERS.indexOf(c.order) >= 0 ? c.order : "assign",
           skills,
           level: isInt(c.level, 1, LIMITS2.add) ? c.level : 1,
           levelKey: lb ? lb.key : null,
-          picks: Array.isArray(c.picks) ? c.picks.filter(isObj6).map(function(p) {
-            return { genre: p.genre, n: p.n, filter: isObj6(p.filter) ? p.filter : null, max: isObj6(p.max) ? p.max : null };
+          picks: Array.isArray(c.picks) ? c.picks.filter(isObj7).map(function(p) {
+            return { genre: p.genre, n: p.n, filter: isObj7(p.filter) ? p.filter : null, max: isObj7(p.max) ? p.max : null };
           }) : [],
           ask: (Array.isArray(ask) ? ask : []).filter(function(a) {
-            return isObj6(a) && typeof a.id === "string" && KEY_RE.test(a.id);
+            return isObj7(a) && typeof a.id === "string" && KEY_RE.test(a.id);
           }).slice(0, CREA.ask).map(function(a) {
             return { id: a.id, name: cleanName(a.name) || a.id };
           })
         }));
       }
       function cleanCreationCtx(raw) {
-        if (!isObj6(raw)) return null;
+        if (!isObj7(raw)) return null;
         var ok = true, bad3 = function() {
           ok = false;
         };
-        var st = raw.stats === null ? null : isObj6(raw.stats) ? raw.stats : void 0;
+        var st = raw.stats === null ? null : isObj7(raw.stats) ? raw.stats : void 0;
         if (st === void 0) return null;
         if (st) {
           if (STAT_FORMS.indexOf(st.form) < 0 || !isInt(st.min, -LIMITS2.add, LIMITS2.add) || !isInt(st.max, -LIMITS2.add, LIMITS2.add) || st.min >= st.max) return null;
           if (!Array.isArray(st.list) || !st.list.length || st.list.length > LIMITS2.stats || !st.list.every(function(x) {
-            return isObj6(x) && typeof x.id === "string" && KEY_RE.test(x.id);
+            return isObj7(x) && typeof x.id === "string" && KEY_RE.test(x.id);
           })) return null;
-          if (st.gen !== null && !(isObj6(st.gen) && GENERATIONS.indexOf(st.gen.method) >= 0)) return null;
+          if (st.gen !== null && !(isObj7(st.gen) && GENERATIONS.indexOf(st.gen.method) >= 0)) return null;
           if (st.gen) genProblems(st.gen, st.list.length, st.min, st.max, st.form, bad3);
-          if (st.gen && (st.gen.method === "array" && !Array.isArray(st.gen.values) || st.gen.method === "pointbuy" && !isObj6(st.gen.costs) || st.gen.method === "free" && !isInt(st.gen.total, -LIMITS2.add * LIMITS2.stats, LIMITS2.add * LIMITS2.stats))) return null;
+          if (st.gen && (st.gen.method === "array" && !Array.isArray(st.gen.values) || st.gen.method === "pointbuy" && !isObj7(st.gen.costs) || st.gen.method === "free" && !isInt(st.gen.total, -LIMITS2.add * LIMITS2.stats, LIMITS2.add * LIMITS2.stats))) return null;
         }
         if (ORDERS.indexOf(raw.order) < 0 || !isInt(raw.level, 1, LIMITS2.add)) return null;
         if (raw.levelKey !== null && !(typeof raw.levelKey === "string" && KEY_RE.test(raw.levelKey))) return null;
         if (raw.level > 1 && raw.levelKey === null) return null;
         var sk = raw.skills;
-        if (sk !== null && !(isObj6(sk) && Array.isArray(sk.among) && sk.among.length && sk.among.length <= LIMITS2.skills && sk.among.every(function(id) {
+        if (sk !== null && !(isObj7(sk) && Array.isArray(sk.among) && sk.among.length && sk.among.length <= LIMITS2.skills && sk.among.every(function(id) {
           return typeof id === "string" && KEY_RE.test(id);
         }) && isInt(sk.pick, 1, sk.among.length))) return null;
         if (!Array.isArray(raw.picks) || raw.picks.length > CREA.picks || !raw.picks.every(function(p) {
-          return isObj6(p) && typeof p.genre === "string" && /^[a-z][a-z0-9]{0,11}$/.test(p.genre) && isInt(p.n, 1, CREA.pickN) && (p.filter === null || isObj6(p.filter)) && (p.max === null || isObj6(p.max));
+          return isObj7(p) && typeof p.genre === "string" && /^[a-z][a-z0-9]{0,11}$/.test(p.genre) && isInt(p.n, 1, CREA.pickN) && (p.filter === null || isObj7(p.filter)) && (p.max === null || isObj7(p.max));
         })) return null;
         if (!Array.isArray(raw.ask) || raw.ask.length > CREA.ask || !raw.ask.every(function(a) {
-          return isObj6(a) && typeof a.id === "string" && KEY_RE.test(a.id);
+          return isObj7(a) && typeof a.id === "string" && KEY_RE.test(a.id);
         })) return null;
         if (!ok) return null;
         var names = {};
         if (sk) sk.among.forEach(function(id) {
-          names[id] = isObj6(sk.names) && typeof sk.names[id] === "string" ? cleanName(sk.names[id]) || id : id;
+          names[id] = isObj7(sk.names) && typeof sk.names[id] === "string" ? cleanName(sk.names[id]) || id : id;
         });
         return JSON.parse(JSON.stringify({
           stats: st ? { form: st.form, min: st.min, max: st.max, list: st.list.map(function(x) {
@@ -7322,7 +7654,7 @@ var require_rules_core = __commonJS({
       }
       function creationPlan(ctx) {
         var steps = [{ id: "identity", ask: ctx.ask }];
-        if (ctx.stats && ctx.stats.gen) steps.push({ id: "stats", method: ctx.stats.gen.method, gen: ctx.stats.gen, order: ctx.order, list: ctx.stats.list, min: ctx.stats.min, max: ctx.stats.max, rolled: has(ROLLED, ctx.stats.gen.method) });
+        if (ctx.stats && ctx.stats.gen) steps.push({ id: "stats", method: ctx.stats.gen.method, gen: ctx.stats.gen, order: ctx.order, list: ctx.stats.list, min: ctx.stats.min, max: ctx.stats.max, rolled: has2(ROLLED, ctx.stats.gen.method) });
         if (ctx.skills) steps.push({ id: "skills", pick: ctx.skills.pick, among: ctx.skills.among, names: ctx.skills.names });
         if (ctx.level > 1) steps.push({ id: "start", level: ctx.level, levelKey: ctx.levelKey });
         if (ctx.picks.length) steps.push({ id: "library", picks: ctx.picks });
@@ -7354,13 +7686,13 @@ var require_rules_core = __commonJS({
         });
       }
       function readCreation(ctx, answers, rolled, visible) {
-        var a = isObj6(answers) ? answers : {}, errors = [], writes = { name: "", identity: {}, stats: {}, skills: [], picks: [] };
+        var a = isObj7(answers) ? answers : {}, errors = [], writes = { name: "", identity: {}, stats: {}, skills: [], picks: [] };
         var fault = function(key, vars) {
           errors.push(say2(key, vars));
         };
         writes.name = cleanName(a.name);
         if (!writes.name) fault("rules.c.noName");
-        var idn = isObj6(a.identity) ? a.identity : {};
+        var idn = isObj7(a.identity) ? a.identity : {};
         ctx.ask.forEach(function(f) {
           var v = idn[f.id];
           if (v === void 0 || v === null || v === "") return;
@@ -7372,24 +7704,24 @@ var require_rules_core = __commonJS({
           var ids = st.list.map(function(x) {
             return x.id;
           });
-          var got = isObj6(a.stats) ? a.stats : {};
+          var got = isObj7(a.stats) ? a.stats : {};
           var vals = ids.map(function(id) {
             return got[id];
           });
           var g = st.gen;
-          if (has(ROLLED, g.method) && !(Array.isArray(rolled) && rolled.length === ids.length)) fault("rules.c.rollFirst");
-          else if (has(ROLLED, g.method) && ctx.order === "inOrder") ids.forEach(function(id, i) {
+          if (has2(ROLLED, g.method) && !(Array.isArray(rolled) && rolled.length === ids.length)) fault("rules.c.rollFirst");
+          else if (has2(ROLLED, g.method) && ctx.order === "inOrder") ids.forEach(function(id, i) {
             writes.stats[id] = rolled[i];
           });
           else if (!vals.every(function(v) {
             return isInt(v, st.min, st.max);
           })) fault("rules.c.statBounds", { min: st.min, max: st.max });
-          else if (has(ROLLED, g.method) && !sameValues(vals, rolled)) fault("rules.c.rolledOnce");
+          else if (has2(ROLLED, g.method) && !sameValues(vals, rolled)) fault("rules.c.rolledOnce");
           else if (g.method === "array" && !sameValues(vals, g.values)) fault("rules.c.arrayOnce");
           else if (g.method === "pointbuy") {
             var spent = 0, priced = true;
             vals.forEach(function(v) {
-              if (!has(g.costs, String(v))) priced = false;
+              if (!has2(g.costs, String(v))) priced = false;
               else spent += g.costs[String(v)];
             });
             if (!priced) fault("rules.c.notPriced");
@@ -7397,7 +7729,7 @@ var require_rules_core = __commonJS({
           } else if (g.method === "free" && vals.reduce(function(s, v) {
             return s + v;
           }, 0) !== g.total) fault("rules.c.freeTotal", { total: g.total });
-          if (!errors.length && !(has(ROLLED, g.method) && ctx.order === "inOrder")) ids.forEach(function(id, i) {
+          if (!errors.length && !(has2(ROLLED, g.method) && ctx.order === "inOrder")) ids.forEach(function(id, i) {
             writes.stats[id] = vals[i];
           });
         }
@@ -7412,12 +7744,12 @@ var require_rules_core = __commonJS({
           else writes.skills = sk.slice();
         }
         var list2 = Array.isArray(visible) ? visible : [];
-        var chosen = Array.isArray(a.picks) ? a.picks.filter(isObj6) : [];
+        var chosen = Array.isArray(a.picks) ? a.picks.filter(isObj7) : [];
         var taken = {};
         ctx.picks.forEach(function(p) {
           var allowed = list2.filter(function(x) {
             if (x.genre !== p.genre) return false;
-            var v = isObj6(x.values) ? x.values : {};
+            var v = isObj7(x.values) ? x.values : {};
             if (p.filter && !Object.keys(p.filter).every(function(k) {
               return p.filter[k].indexOf(v[k]) >= 0;
             })) return false;
@@ -7441,7 +7773,7 @@ var require_rules_core = __commonJS({
           });
         });
         if (chosen.some(function(c) {
-          return !has(taken, c.source + ":" + c.id);
+          return !has2(taken, c.source + ":" + c.id);
         })) fault("rules.c.pickOutside");
         if (Object.keys(taken).some(function(k) {
           return taken[k] > 1;
@@ -7984,7 +8316,7 @@ var require_builder_core = __commonJS({
       };
       function slots(n) {
         if (!n) return [];
-        if (n.className === "Tab") return (Array.isArray(n.tabs) ? n.tabs : []).filter(isObj6).map(function(t) {
+        if (n.className === "Tab") return (Array.isArray(n.tabs) ? n.tabs : []).filter(isObj7).map(function(t) {
           return { list: Array.isArray(t.children) ? t.children : [], key: "tab:" + t.id, tab: t };
         });
         if (n.className === "Repeater") return [{ list: Array.isArray(n.children) ? n.children : [], key: "edit", area: "edit" }, { list: Array.isArray(n.readChildren) ? n.readChildren : [], key: "read", area: "read" }];
@@ -7994,7 +8326,7 @@ var require_builder_core = __commonJS({
         var out = {};
         function visit(list2) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-            if (!isObj6(n)) return;
+            if (!isObj7(n)) return;
             if (n.className === "NumberInput" && (withComputed || !n.computed) && typeof n.id === "string") out[n.id] = n;
             if (n.className === "Repeater") return;
             slots(n).forEach(function(sl) {
@@ -8003,14 +8335,14 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj6(v)) visit(v.children);
+          if (isObj7(v)) visit(v.children);
         });
         return out;
       }
       function hasValue(n) {
         return !!(n && (COMPONENTS[n.className].value || n.className === "Label" && n.computed));
       }
-      var isObj6 = function(v) {
+      var isObj7 = function(v) {
         return v !== null && typeof v === "object" && !Array.isArray(v);
       };
       var own = function(o, k) {
@@ -8346,7 +8678,7 @@ var require_builder_core = __commonJS({
         };
       }
       function upgradeDoc(doc) {
-        if (!isObj6(doc) || !("theme" in doc)) return doc;
+        if (!isObj7(doc) || !("theme" in doc)) return doc;
         var out = Object.assign({}, doc);
         out.skins = doc.theme ? [{ id: "defaut", get name() {
           return say2("builder.parDefaut");
@@ -8361,12 +8693,12 @@ var require_builder_core = __commonJS({
         var seen = {};
         skins.forEach(function(s, i) {
           var label = "Skin " + (i + 1);
-          if (!isObj6(s)) return err("theme", label + " illisible.");
+          if (!isObj7(s)) return err("theme", label + " illisible.");
           if (typeof s.id !== "string" || !Theme.SKIN_ID_RE.test(s.id)) err("theme", say2("builder.skin.badId", { label }));
           else if (seen[s.id]) err("theme", say2("builder.skin.duplicate", { id: s.id }));
           else seen[s.id] = true;
           if (typeof s.name !== "string" || !cleanText2(s.name, 100).trim() || s.name.length > 40) err("theme", say2("builder.skin.badName", { label }));
-          if (!isObj6(s.theme)) return err("theme", label + " : apparence manquante.");
+          if (!isObj7(s.theme)) return err("theme", label + " : apparence manquante.");
           Theme.validateTheme(s.theme, doc.assets).forEach(function(m) {
             err("theme", label + " : " + m);
           });
@@ -8435,9 +8767,9 @@ var require_builder_core = __commonJS({
         }
       }
       function syncBound(doc, opts) {
-        if (!isObj6(doc) || !isObj6(doc.rules) || !allNodes(doc).some(function(n) {
+        if (!isObj7(doc) || !isObj7(doc.rules) || !allNodes(doc).some(function(n) {
           return typeof n.bind === "string";
-        }) && !isObj6(doc.rules.effects) && !isObj6(doc.rules.progression)) return doc;
+        }) && !isObj7(doc.rules.effects) && !isObj7(doc.rules.progression)) return doc;
         if (Rules.validateRules(doc.rules).length) return doc;
         var copy = opts && opts.inPlace ? doc : JSON.parse(JSON.stringify(doc));
         var alone = {};
@@ -8513,7 +8845,7 @@ var require_builder_core = __commonJS({
         var warn = function(id, message2) {
           warnings.push({ id: id || null, message: message2 });
         };
-        if (!isObj6(doc) || doc.v !== 1 && doc.v !== 2) {
+        if (!isObj7(doc) || doc.v !== 1 && doc.v !== 2) {
           err(null, "Document illisible.");
           return { ok: false, errors, warnings };
         }
@@ -8525,12 +8857,12 @@ var require_builder_core = __commonJS({
             errors.push({ id: "rules", path: e.path, message: e.message });
           });
           resolutions = Rules.resolutionsOf(doc.rules);
-          var PR = isObj6(doc.rules) && isObj6(doc.rules.progression) ? doc.rules.progression : null;
+          var PR = isObj7(doc.rules) && isObj7(doc.rules.progression) ? doc.rules.progression : null;
           if (PR) {
             var progFormulas = [];
-            if (isObj6(PR.levels) && isObj6(PR.levels.cost)) progFormulas.push(PR.levels.cost.f, PR.levels.cost.then);
+            if (isObj7(PR.levels) && isObj7(PR.levels.cost)) progFormulas.push(PR.levels.cost.f, PR.levels.cost.then);
             (Array.isArray(PR.purchases) ? PR.purchases : []).forEach(function(b) {
-              if (isObj6(b)) progFormulas.push(b.price);
+              if (isObj7(b)) progFormulas.push(b.price);
             });
             progFormulas.forEach(function(f) {
               if (typeof f === "string" && !parseFormula(f).ok) err(null, say2("builder.prog.formula", { f }));
@@ -8565,7 +8897,7 @@ var require_builder_core = __commonJS({
         function check(n, depth, parent, scope) {
           count++;
           if (count > maxNodes) return;
-          if (!isObj6(n) || !COMPONENTS[n.className]) {
+          if (!isObj7(n) || !COMPONENTS[n.className]) {
             err(n && n.id, say2("builder.unknownComponent", { name: n && n.className }));
             return;
           }
@@ -8587,7 +8919,7 @@ var require_builder_core = __commonJS({
             else if (typeof n.bind !== "string" || seenBind[n.bind]) err(n.id, say2("builder.bind.twice", { bind: String(n.bind) }));
             else {
               seenBind[n.bind] = true;
-              if (!isObj6(doc.rules) || !Rules.bindKnown(doc.rules, n.bind)) warn(n.id, say2("builder.bind.orphan", { bind: n.bind }));
+              if (!isObj7(doc.rules) || !Rules.bindKnown(doc.rules, n.bind)) warn(n.id, say2("builder.bind.orphan", { bind: n.bind }));
               else if (Rules.layoutProblem(n.bind, n.bindLayout)) err(n.id, say2("builder.bind.layout"));
             }
           }
@@ -8631,15 +8963,15 @@ var require_builder_core = __commonJS({
             if (tabs.length > LIMITS2.tabs) err(n.id, say2("builder.tabs.tooMany", { max: LIMITS2.tabs }));
             if (n.verticalWidth != null && !(Number.isInteger(n.verticalWidth) && n.verticalWidth >= 1 && n.verticalWidth <= 11)) err(n.id, say2("builder.largeurOngletsVerticauxVa"));
             tabs.forEach(function(t2) {
-              if (!isObj6(t2) || typeof t2.id !== "string" || !ID_RE3.test(t2.id)) err(n.id, say2("builder.cleOngletInvalide"));
+              if (!isObj7(t2) || typeof t2.id !== "string" || !ID_RE3.test(t2.id)) err(n.id, say2("builder.cleOngletInvalide"));
               else if (seenTab[t2.id]) err(n.id, say2("builder.tabs.duplicate", { id: t2.id }));
               else {
                 seenTab[t2.id] = true;
                 if (idOwner[n.id + "__" + t2.id]) err(n.id, say2("builder.key.taken", { id: n.id + "__" + t2.id }));
                 idOwner[n.id + "__" + t2.id] = true;
               }
-              if (!isObj6(t2) || typeof t2.label !== "string" || !cleanText2(t2.label, 1e5).trim() || t2.label.length > LIMITS2.tabTitle) err(n.id, say2("builder.titreOngletVideTrop"));
-              if (isObj6(t2) && !Array.isArray(t2.children)) err(n.id, say2("builder.contenuOngletIllisible"));
+              if (!isObj7(t2) || typeof t2.label !== "string" || !cleanText2(t2.label, 1e5).trim() || t2.label.length > LIMITS2.tabTitle) err(n.id, say2("builder.titreOngletVideTrop"));
+              if (isObj7(t2) && !Array.isArray(t2.children)) err(n.id, say2("builder.contenuOngletIllisible"));
             });
           }
           if (n.className === "Repeater") {
@@ -8718,10 +9050,10 @@ var require_builder_core = __commonJS({
               if (opts2.length > LIMITS2.options) err(n.id, say2("builder.options.tooMany", { max: LIMITS2.options }));
               var seen = {};
               opts2.forEach(function(o) {
-                if (!isObj6(o) || typeof o.id !== "string" || !ID_RE3.test(o.id)) err(n.id, say2("builder.cleOptionInvalide"));
+                if (!isObj7(o) || typeof o.id !== "string" || !ID_RE3.test(o.id)) err(n.id, say2("builder.cleOptionInvalide"));
                 else if (seen[o.id]) err(n.id, say2("builder.options.duplicate", { id: o.id }));
                 else seen[o.id] = true;
-                if (!isObj6(o) || typeof o.label !== "string" || !cleanText2(o.label, 1e5).trim() || o.label.length > LIMITS2.optionLabel) err(n.id, say2("builder.libelleOptionVideTrop"));
+                if (!isObj7(o) || typeof o.label !== "string" || !cleanText2(o.label, 1e5).trim() || o.label.length > LIMITS2.optionLabel) err(n.id, say2("builder.libelleOptionVideTrop"));
               });
             } else if (!(doc.tables && doc.tables[n.tableId])) err(n.id, say2("builder.table.notFound", { id: n.tableId }));
           }
@@ -8747,7 +9079,7 @@ var require_builder_core = __commonJS({
         var vars = {};
         if (doc.variables !== void 0 && !Array.isArray(doc.variables)) err(null, "Variables illisibles.");
         (Array.isArray(doc.variables) ? doc.variables : []).forEach(function(v) {
-          if (!isObj6(v) || typeof v.id !== "string" || !ID_RE3.test(v.id)) err(null, say2("builder.nomVariableInvalide"));
+          if (!isObj7(v) || typeof v.id !== "string" || !ID_RE3.test(v.id)) err(null, say2("builder.nomVariableInvalide"));
           else if (vars[v.id] !== void 0) err(null, say2("builder.var.duplicate", { id: v.id }));
           else {
             vars[v.id] = String(v.value);
@@ -9230,7 +9562,7 @@ var require_builder_core = __commonJS({
         var all = {};
         function visit(list2) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n2) {
-            if (!isObj6(n2)) return;
+            if (!isObj7(n2)) return;
             if (typeof n2.id === "string") all[n2.id] = n2;
             if (n2.className === "Repeater") return;
             slots(n2).forEach(function(sl) {
@@ -9239,11 +9571,11 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj6(v)) visit(v.children);
+          if (isObj7(v)) visit(v.children);
         });
         var variables = {};
         (doc && doc.variables || []).forEach(function(v) {
-          if (isObj6(v) && typeof v.id === "string") variables[v.id] = String(v.value);
+          if (isObj7(v) && typeof v.id === "string") variables[v.id] = String(v.value);
         });
         var nodes = {}, vars = {}, todo = (wanted || []).slice(), guard = 0;
         function reads(formula2) {
@@ -9283,7 +9615,7 @@ var require_builder_core = __commonJS({
         var r = compileRules(doc) || {};
         var present = {};
         allNodes(doc || {}).forEach(function(n) {
-          if (isObj6(n) && typeof n.id === "string") present[n.id] = true;
+          if (isObj7(n) && typeof n.id === "string") present[n.id] = true;
         });
         var hidden = {}, locked = {};
         (r.gmOnly || []).forEach(function(p) {
@@ -9310,7 +9642,7 @@ var require_builder_core = __commonJS({
         var allNumbers = spendableIds(doc, true);
         function visit(list2, prefix) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-            if (!isObj6(n)) return;
+            if (!isObj7(n)) return;
             if (n.gmOnly === true && COMPONENTS[n.className] && COMPONENTS[n.className].value && typeof n.id === "string") gmOnly.push(prefix + n.id);
             if (n.className === "Label" && !prefix && n.clickable && n.roll && typeof n.spendField === "string" && spendable[n.spendField]) {
               var target = spendable[n.spendField];
@@ -9334,11 +9666,11 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj6(v)) visit(v.children, "");
+          if (isObj7(v)) visit(v.children, "");
         });
         var out = { v: 1 };
         if (gmOnly.length) out.gmOnly = gmOnly.slice(0, 200);
-        if (doc && isObj6(doc.rules)) {
+        if (doc && isObj7(doc.rules)) {
           var present = {};
           allNodes(doc).forEach(function(n) {
             present[n.id] = true;
@@ -9352,7 +9684,7 @@ var require_builder_core = __commonJS({
           var sites = {}, known = Rules.resolutionsOf(doc.rules);
           (function visitSites(list2) {
             (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-              if (!isObj6(n)) return;
+              if (!isObj7(n)) return;
               if (n.className === "Label" && n.clickable && typeof n.follows === "string" && own(known, n.follows)) sites[n.id] = n.follows;
               slots(n).forEach(function(sl) {
                 visitSites(sl.list);
@@ -9362,7 +9694,7 @@ var require_builder_core = __commonJS({
           out.resolve = { rules: { resolution: doc.rules.resolution, rolls: doc.rules.rolls || [] }, sites };
         }
         var wanted = [];
-        if (doc && isObj6(doc.rules) && isObj6(doc.rules.combat) && !Rules.validateRules(doc.rules).length) {
+        if (doc && isObj7(doc.rules) && isObj7(doc.rules.combat) && !Rules.validateRules(doc.rules).length) {
           var cr = doc.rules;
           out.combat = {
             stats: { form: cr.stats ? cr.stats.form : "score", list: (cr.stats ? cr.stats.list : []).map(function(x) {
@@ -9376,7 +9708,7 @@ var require_builder_core = __commonJS({
           var keys = Rules.combatKeys(Object.assign({ resolution: Rules.resolutionsOf(cr)[cr.combat.attack.rollWith] }, out.combat));
           wanted = keys.attacker.concat(keys.target);
         }
-        if (doc && isObj6(doc.rules) && (isObj6(doc.rules.effects) || Array.isArray(doc.rules.rests)) && !Rules.validateRules(doc.rules).length) {
+        if (doc && isObj7(doc.rules) && (isObj7(doc.rules.effects) || Array.isArray(doc.rules.rests)) && !Rules.validateRules(doc.rules).length) {
           var keysFx = Rules.effectKeys(doc.rules);
           out.sealed = ["fx"].concat(keysFx.map(function(k) {
             return "fx_" + k;
@@ -9392,18 +9724,18 @@ var require_builder_core = __commonJS({
             });
           });
         }
-        if (doc && isObj6(doc.rules) && isObj6(doc.rules.progression) && !Rules.validateRules(doc.rules).length) {
+        if (doc && isObj7(doc.rules) && isObj7(doc.rules.progression) && !Rules.validateRules(doc.rules).length) {
           var P = doc.rules.progression, pk = Rules.progKeys(doc.rules), targets = Rules.progTargets(doc.rules);
           var sealedP = ["prog"].concat(pk.map(function(k) {
             return "prog_" + k;
           }));
-          if (isObj6(P.xp)) sealedP.push(P.xp.id);
-          if (isObj6(P.levels)) sealedP.push(P.levels.key);
-          if (isObj6(P.use)) ((doc.rules.skills || {}).list || []).forEach(function(x) {
-            if (isObj6(x)) sealedP.push("tick_" + x.id);
+          if (isObj7(P.xp)) sealedP.push(P.xp.id);
+          if (isObj7(P.levels)) sealedP.push(P.levels.key);
+          if (isObj7(P.use)) ((doc.rules.skills || {}).list || []).forEach(function(x) {
+            if (isObj7(x)) sealedP.push("tick_" + x.id);
           });
-          if (isObj6(P.use)) ((doc.rules.skills || {}).list || []).forEach(function(x) {
-            if (isObj6(x)) wanted.push("sk_" + x.id + "_t");
+          if (isObj7(P.use)) ((doc.rules.skills || {}).list || []).forEach(function(x) {
+            if (isObj7(x)) wanted.push("sk_" + x.id + "_t");
           });
           out.sealed = (out.sealed || []).concat(sealedP);
           out.progress = Rules.progressCtx(doc.rules);
@@ -9414,30 +9746,30 @@ var require_builder_core = __commonJS({
           wanted = wanted.concat(sealedP.filter(function(k) {
             return k !== "prog" && k.indexOf("tick_") !== 0;
           }));
-          (isObj6(P.levels) ? P.levels.gains : []).forEach(function(g) {
+          (isObj7(P.levels) ? P.levels.gains : []).forEach(function(g) {
             g.give.forEach(function(x) {
               if (typeof x.plus === "string") wanted.push(x.plus);
             });
           });
         }
-        if (doc && isObj6(doc.rules) && isObj6(doc.rules.library) && !Rules.validateRules(doc.rules).length) {
+        if (doc && isObj7(doc.rules) && isObj7(doc.rules.library) && !Rules.validateRules(doc.rules).length) {
           out.library = Rules.libraryCtx(doc.rules);
           out.library.resources.forEach(function(k) {
             wanted.push(k, k + "_max");
           });
         }
-        if (doc && isObj6(doc.rules) && !Rules.validateRules(doc.rules).length) {
+        if (doc && isObj7(doc.rules) && !Rules.validateRules(doc.rules).length) {
           var ask = [];
           (doc && doc.views || []).forEach(function(v) {
             (function walk4(list2) {
               (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-                if (!isObj6(n)) return;
+                if (!isObj7(n)) return;
                 if ((n.className === "TextInput" || n.className === "Textarea") && n.askAtCreation === true && typeof n.id === "string") ask.push({ id: n.id, name: cleanText2(n.name, 40) || n.id });
                 if (n.className !== "Repeater") slots(n).forEach(function(sl) {
                   walk4(sl.list);
                 });
               });
-            })(isObj6(v) ? v.children : []);
+            })(isObj7(v) ? v.children : []);
           });
           out.creation = Rules.creationCtx(doc.rules, ask);
           out.sealed = (out.sealed || []).concat(["crea"]);
@@ -9448,15 +9780,15 @@ var require_builder_core = __commonJS({
           });
         }
         if (doc && DENSITIES.indexOf(doc.density) >= 0 && doc.density !== "normal") out.density = doc.density;
-        if (doc && isObj6(doc.roles)) {
+        if (doc && isObj7(doc.roles)) {
           var inDoc = {};
           allNodes(doc).forEach(function(n) {
-            if (isObj6(n) && typeof n.id === "string") inDoc[n.id] = true;
+            if (isObj7(n) && typeof n.id === "string") inDoc[n.id] = true;
           });
           var roles = {};
           Object.keys(doc.roles).slice(0, 8).forEach(function(view) {
             var r = doc.roles[view];
-            if (!/^[A-Za-z0-9_-]{1,40}$/.test(view) || !isObj6(r)) return;
+            if (!/^[A-Za-z0-9_-]{1,40}$/.test(view) || !isObj7(r)) return;
             var one = {};
             ["health", "healthMax", "defense"].forEach(function(k) {
               if (typeof r[k] === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(r[k]) && inDoc[r[k]]) {
@@ -9466,7 +9798,7 @@ var require_builder_core = __commonJS({
             });
             if (Array.isArray(r.armor)) {
               var armor = r.armor.slice(0, 4).filter(function(a) {
-                return isObj6(a) && typeof a.key === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(a.key) && inDoc[a.key];
+                return isObj7(a) && typeof a.key === "string" && /^[a-z][a-z0-9_]{0,40}$/.test(a.key) && inDoc[a.key];
               }).map(function(a) {
                 wanted.push(a.key);
                 return { key: a.key, name: cleanText2(a.name, 40) || a.key, factor: typeof a.factor === "number" && a.factor >= 0.5 && a.factor <= 4 ? a.factor : 1 };
@@ -9497,7 +9829,7 @@ var require_builder_core = __commonJS({
         };
         function visit(list2) {
           (Array.isArray(list2) ? list2 : []).forEach(function(n) {
-            if (!isObj6(n)) return;
+            if (!isObj7(n)) return;
             if (n.className === "Gauge") add(n.name, n.valueField, n.maxField);
             if (n.className === "Repeater") return;
             slots(n).forEach(function(sl) {
@@ -9506,7 +9838,7 @@ var require_builder_core = __commonJS({
           });
         }
         (doc && doc.views || []).forEach(function(v) {
-          if (isObj6(v)) visit(v.children);
+          if (isObj7(v)) visit(v.children);
         });
         Object.keys(typed).forEach(function(id) {
           if (typed[id + "_max"]) add(typed[id].name, id, id + "_max");
@@ -9753,7 +10085,7 @@ var require_builder_core = __commonJS({
         if (!views.length) throw new Error(say2("builder.cetteFicheNPas"));
         var src = views[0];
         var unknown = {};
-        var tables = isObj6(system.tables) ? JSON.parse(JSON.stringify(system.tables)) : {};
+        var tables = isObj7(system.tables) ? JSON.parse(JSON.stringify(system.tables)) : {};
         if (Array.isArray(system.tables)) {
           tables = {};
           system.tables.forEach(function(t) {
@@ -11649,7 +11981,53 @@ var require_fr2 = __commonJS({
       "flip.h": "Retourner horizontalement",
       "flip.v": "Retourner verticalement",
       "flip.failed": "Le jeton n\u2019a pas pu \xEAtre retourn\xE9.",
-      "people.more": "{n} autres personnes connect\xE9es"
+      "people.more": "{n} autres personnes connect\xE9es",
+      "connection.lost": "Connexion \xE0 la table perdue : reconnexion en cours\u2026",
+      "connection.back": "Reconnect\xE9 \xE0 la table.",
+      "host.floors.noPassage": "Ce jeton n\u2019a pas pris d\u2019escalier : le tien ne peut pas le suivre d\u2019un \xE9tage \xE0 l\u2019autre.",
+      "dice.title": "D\xE9s",
+      "dice.enabled": "D\xE9s 3D",
+      "dice.enabledHint": "Coup\xE9s, aucun d\xE9 n\u2019est dessin\xE9 ; les r\xE9sultats restent dans le chat.",
+      "dice.on": "Oui",
+      "dice.off": "Non",
+      "dice.size": "Taille des d\xE9s",
+      "dice.size.small": "Petits",
+      "dice.size.normal": "Moyens",
+      "dice.size.large": "Grands",
+      "dice.mine": "Mes d\xE9s",
+      "dice.tableDefault": "D\xE9s de la table",
+      "dice.tableDefaultHint": "Les d\xE9s de ceux qui n\u2019ont pas choisi les leurs.",
+      "dice.offscreen": "Jet de {name}",
+      "dice.offscreenAnon": "Un jet",
+      "dice.notSaved": "Le choix des d\xE9s n\u2019a pas pu \xEAtre enregistr\xE9.",
+      "dice.atThisTable": "\xE0 cette table",
+      "dice.editInLauncher": "Pour cr\xE9er ou modifier un jeu, quitte la table : Cr\xE9er \u25BE \u203A Mes d\xE9s.",
+      "dice.sounds": "Sons des d\xE9s",
+      "dice.soundsOn": "Activ\xE9s",
+      "dice.soundsOff": "Coup\xE9s",
+      "dice.soundVolume": "Volume",
+      "dice.gmGroup": "D\xE9s de la table (MJ)",
+      "dice.images": "Images sur les d\xE9s",
+      "dice.imagesOn": "Montr\xE9es",
+      "dice.imagesCut": "Coup\xE9es \xE0 cette table",
+      "dice.imagesHint": "Les d\xE9s gardent leur couleur ; les images des joueurs ne sont pas montr\xE9es.",
+      "dice.effects": "Effets",
+      "dice.effectsHint": "Flammes, \xE9clairs, fissures\u2026 jou\xE9es par le jeu de d\xE9s de celui qui lance.",
+      "dice.screenEffects": "Effets d\u2019\xE9cran",
+      "dice.screenEffectsHint": "Secousse et \xE9clair courts. Coup\xE9s d\u2019office si ton syst\xE8me demande de r\xE9duire les animations.",
+      "dice.reducedWhy": "Coup\xE9s parce que ton syst\xE8me demande de r\xE9duire les animations.",
+      "dice.tableEffects": "Effets sur les d\xE9s",
+      "dice.tableEffectsOn": "Montr\xE9s \xE0 cette table",
+      "dice.tableEffectsOff": "Coup\xE9s \xE0 cette table",
+      "dice.tableEffectsHint": "Coup\xE9s, aucun effet de r\xE8gle ne se joue \xE0 ta table (les d\xE9s et leurs r\xE9sultats restent).",
+      "dice.preset.ivoire": "Ivoire",
+      "dice.preset.obsidienne": "Obsidienne",
+      "dice.preset.cristal-bleu": "Cristal bleu",
+      "dice.preset.rubis": "Rubis",
+      "dice.preset.emeraude": "\xC9meraude",
+      "dice.preset.or": "Or",
+      "dice.preset.os-ancien": "Os ancien",
+      "dice.preset.neon": "N\xE9on"
     };
   }
 });
@@ -11751,20 +12129,20 @@ var require_theme_core = __commonJS({
       };
       var MINIMA = { "text-bg": 4.5, "text-panel": 4.5, "muted-panel": 3, "ink-paper": 4.5 };
       var TOP = ["format", "v", "id", "name", "version", "author", "license", "description", "base", "colors", "fonts", "shape", "effects", "filter"];
-      var isObj6 = function(v) {
+      var isObj7 = function(v) {
         return v !== null && typeof v === "object" && !Array.isArray(v);
       };
-      var has = function(list2, v) {
+      var has2 = function(list2, v) {
         return list2.indexOf(v) >= 0;
       };
       var strictKeys = function(o, allowed, where, out) {
         Object.keys(o).forEach(function(k) {
-          if (!has(allowed, k)) out.push(say2("tableTheme.unknownField", { where, name: String(k).slice(0, 30) }));
+          if (!has2(allowed, k)) out.push(say2("tableTheme.unknownField", { where, name: String(k).slice(0, 30) }));
         });
       };
       function validate(d) {
         var out = [];
-        if (!isObj6(d)) return [say2("tableTheme.ceNEstPas")];
+        if (!isObj7(d)) return [say2("tableTheme.ceNEstPas")];
         strictKeys(d, TOP, say2("tableTheme.theme"), out);
         if (d.format !== FORMAT || d.v !== 1) out.push(say2("tableTheme.notTheme"));
         if (typeof d.id !== "string" || !ID_RE3.test(d.id)) out.push(say2("tableTheme.badId"));
@@ -11774,8 +12152,8 @@ var require_theme_core = __commonJS({
           if (d[k] !== void 0 && (typeof d[k] !== "string" || d[k].length > 80)) out.push(say2("tableTheme.tooLong80", { name: k }));
         });
         if (d.description !== void 0 && (typeof d.description !== "string" || d.description.length > 300)) out.push(say2("tableTheme.badDescription"));
-        if (!has(BUILTIN, d.base)) out.push(say2("tableTheme.badBase"));
-        if (!isObj6(d.colors)) out.push(say2("tableTheme.noColors"));
+        if (!has2(BUILTIN, d.base)) out.push(say2("tableTheme.badBase"));
+        if (!isObj7(d.colors)) out.push(say2("tableTheme.noColors"));
         else {
           strictKeys(d.colors, COLOR_KEYS.map(function(c) {
             return c.k;
@@ -11784,30 +12162,30 @@ var require_theme_core = __commonJS({
             if (typeof d.colors[c.k] !== "string" || !COLOR_RE.test(d.colors[c.k])) out.push(say2("tableTheme.badColor", { name: c.label }));
           });
         }
-        if (!isObj6(d.fonts)) out.push(say2("tableTheme.noFonts"));
+        if (!isObj7(d.fonts)) out.push(say2("tableTheme.noFonts"));
         else {
           strictKeys(d.fonts, ["display", "body", "mono"], say2("tableTheme.fonts"), out);
           ["display", "body", "mono"].forEach(function(k) {
-            if (!has(FONT_KEYS, d.fonts[k])) out.push(say2("tableTheme.badFont", { name: k }));
+            if (!has2(FONT_KEYS, d.fonts[k])) out.push(say2("tableTheme.badFont", { name: k }));
           });
         }
-        if (!isObj6(d.shape)) out.push(say2("tableTheme.noShape"));
+        if (!isObj7(d.shape)) out.push(say2("tableTheme.noShape"));
         else {
           strictKeys(d.shape, ["corners", "cut", "tabs", "knots"], say2("tableTheme.shape"), out);
-          if (!has(Object.keys(CHOICES.corners), d.shape.corners)) out.push(say2("tableTheme.badCorners"));
-          if (!has(Object.keys(CHOICES.cut), d.shape.cut)) out.push(say2("tableTheme.badCut"));
-          if (!has(CHOICES.tabs, d.shape.tabs)) out.push(say2("tableTheme.badTabs"));
-          if (!has(CHOICES.knots, d.shape.knots)) out.push(say2("tableTheme.badKnots"));
+          if (!has2(Object.keys(CHOICES.corners), d.shape.corners)) out.push(say2("tableTheme.badCorners"));
+          if (!has2(Object.keys(CHOICES.cut), d.shape.cut)) out.push(say2("tableTheme.badCut"));
+          if (!has2(CHOICES.tabs, d.shape.tabs)) out.push(say2("tableTheme.badTabs"));
+          if (!has2(CHOICES.knots, d.shape.knots)) out.push(say2("tableTheme.badKnots"));
         }
-        if (!isObj6(d.effects)) out.push(say2("tableTheme.noEffects"));
+        if (!isObj7(d.effects)) out.push(say2("tableTheme.noEffects"));
         else {
           strictKeys(d.effects, ["glow", "texture", "grain", "capitals"], say2("tableTheme.effects"), out);
-          if (!has(CHOICES.glow, d.effects.glow)) out.push(say2("tableTheme.badGlow"));
-          if (!has(CHOICES.texture, d.effects.texture)) out.push(say2("tableTheme.badTexture"));
-          if (!has(CHOICES.grain, d.effects.grain)) out.push(say2("tableTheme.badGrain"));
+          if (!has2(CHOICES.glow, d.effects.glow)) out.push(say2("tableTheme.badGlow"));
+          if (!has2(CHOICES.texture, d.effects.texture)) out.push(say2("tableTheme.badTexture"));
+          if (!has2(CHOICES.grain, d.effects.grain)) out.push(say2("tableTheme.badGrain"));
           if (typeof d.effects.capitals !== "boolean") out.push(say2("tableTheme.badCapitals"));
         }
-        if (!has(CHOICES.filter, d.filter)) out.push(say2("tableTheme.badFilter"));
+        if (!has2(CHOICES.filter, d.filter)) out.push(say2("tableTheme.badFilter"));
         return out;
       }
       function parse(text) {
@@ -11944,7 +12322,7 @@ var require_theme_core = __commonJS({
           author: "",
           license: "CC-BY-4.0",
           description: "",
-          base: has(BUILTIN, base) ? base : o && o.from && o.from.base || "metier",
+          base: has2(BUILTIN, base) ? base : o && o.from && o.from.base || "metier",
           colors: copy.colors,
           fonts: copy.fonts,
           shape: copy.shape,
@@ -12172,7 +12550,7 @@ var require_translation_core = __commonJS({
       var own = function(o, k) {
         return Object.prototype.hasOwnProperty.call(o, k);
       };
-      var isObj6 = function(v) {
+      var isObj7 = function(v) {
         return !!v && typeof v === "object" && !Array.isArray(v);
       };
       var err = function(code, params) {
@@ -12199,7 +12577,7 @@ var require_translation_core = __commonJS({
         return markers(v) === markers(english) && tags(v) === tags(english);
       };
       function validate(d) {
-        if (!isObj6(d) || d.format !== FORMAT || d.v !== 1) return [err("notTranslation")];
+        if (!isObj7(d) || d.format !== FORMAT || d.v !== 1) return [err("notTranslation")];
         var e = [];
         Object.keys(d).forEach(function(k) {
           if (TOP.indexOf(k) < 0) e.push(err("unknownField", { field: k }));
@@ -12211,14 +12589,14 @@ var require_translation_core = __commonJS({
           if (d[f[0]] !== void 0 && (typeof d[f[0]] !== "string" || d[f[0]].length > f[1])) e.push(err("badMeta", { field: f[0] }));
         });
         if (typeof d.language !== "string" || !LANG_RE2.test(d.language)) e.push(err("badLanguage"));
-        if (isObj6(d.target) && LATER.indexOf(d.target.kind) >= 0) e.push(err("targetLater", { kind: d.target.kind }));
-        else if (!isObj6(d.target) || d.target.kind !== "ourdir" || Object.keys(d.target).length !== 1) e.push(err("badTarget"));
-        if (!isObj6(d.texts)) e.push(err("badTexts"));
+        if (isObj7(d.target) && LATER.indexOf(d.target.kind) >= 0) e.push(err("targetLater", { kind: d.target.kind }));
+        else if (!isObj7(d.target) || d.target.kind !== "ourdir" || Object.keys(d.target).length !== 1) e.push(err("badTarget"));
+        if (!isObj7(d.texts)) e.push(err("badTexts"));
         else {
           Object.keys(d.texts).forEach(function(s) {
             if (SECTIONS.indexOf(s) < 0) return e.push(err("unknownSection", { section: s }));
             var sec = d.texts[s];
-            if (!isObj6(sec)) return e.push(err("badSection", { section: s }));
+            if (!isObj7(sec)) return e.push(err("badSection", { section: s }));
             Object.keys(sec).forEach(function(k) {
               var v = sec[k];
               if (typeof v !== "string") e.push(err("notString", { section: s, key: k }));
@@ -12227,7 +12605,7 @@ var require_translation_core = __commonJS({
             });
           });
         }
-        if (d.source !== void 0 && !isObj6(d.source)) e.push(err("badSource"));
+        if (d.source !== void 0 && !isObj7(d.source)) e.push(err("badSource"));
         return e.slice(0, 50);
       }
       function parse(text) {
@@ -13402,6 +13780,27 @@ var require_en2 = __commonJS({
       "err.compat.templates": "Templates usable in the module's panels.",
       "err.compat.user": "Name, id and GM status only.",
       "err.compat.utils": "Data utilities.",
+      "err.dice.catalogue": "A catalogue set cannot be exported: make a copy of it.",
+      "err.dice.duplicate": "You already have this dice set.",
+      "err.dice.exportTitle": "Export a dice set",
+      "err.dice.field": "The file contains an invalid field.",
+      "err.dice.format": "This is not an Ourdir dice file.",
+      "err.dice.generic": "This dice file could not be used.",
+      "err.dice.id": "This dice set no longer exists.",
+      "err.dice.images": "The set holds too many images, or images that are too heavy.",
+      "err.dice.unknown": "The set contains unknown or non-normalised fields.",
+      "err.dice.importTitle": "Import a dice set",
+      "err.dice.limit": "You have reached the maximum number of dice sets.",
+      "err.dice.name": "The set's name is not valid.",
+      "err.dice.provided": "This set that comes with Ourdir cannot be exported.",
+      "err.dice.read": "This file could not be read.",
+      "err.dice.readonly": "This dice set cannot be edited.",
+      "err.dice.received": "A received set cannot be shared again: make a copy of it.",
+      "err.dice.rulesCount": "The set has too many rules ({max} at most).",
+      "err.dice.size": "This file is too large (320 KB at most).",
+      "err.dice.skinInvalid": "The set contains an invalid value.",
+      "err.dice.version": "This dice file comes from another version of Ourdir.",
+      "err.dice.writeFailed": "The file could not be written.",
       "err.download.external": "The file is hosted outside the catalogue: download refused.",
       "err.download.failed": "Download failed: {why}",
       "err.download.hash": "The file's fingerprint does not match the catalogue's: download refused.",
@@ -13491,10 +13890,23 @@ var require_en2 = __commonJS({
       "err.licensed.refusal": "This content is for sale: open it from Ourdir's catalogue.",
       "err.main.aucuneAdresse": "No address.",
       "err.main.aucuneVersionInstallable": "No installable version.",
+      "err.main.badDice": "This dice set is not valid: {why}",
       "err.main.badHost": "Invalid address: a domain name or an IP, without http:// or port.",
       "err.main.badSystem": "This system is not valid: {why}",
       "err.main.badTheme": "This theme is not valid: {why}",
       "err.main.catalogExpired": "The catalogue has expired: nothing can be installed from it until it is updated.",
+      "err.main.diceImages": "A catalogue dice set carries no images.",
+      "err.main.diceNotCatalogue": "This set does not come from the catalogue: delete it from My dice.",
+      "err.main.diceOlder": "A newer version of this set is already installed ({installed}): {version} is not installed.",
+      "err.main.diceSize": "This set is too large (64 KB at most).",
+      "err.main.diceShareReceived": "A set received as a file (or a copy of one) has no known licence: it cannot be shared to the catalogue.",
+      "err.main.diceShareCatalogue": "This set comes from the catalogue: duplicate it and change it to share your own version.",
+      "err.main.diceShareProvided": "A set provided by Ourdir cannot be shared to the catalogue.",
+      "err.main.diceShareLicence": "The licence of the catalogue set this one is a copy of is unknown or does not allow publishing a changed version: this set cannot be shared to the catalogue.",
+      "err.main.diceShareSameReceived": "This set is the same (images aside) as \u201C{name}\u201D, a set received as a file: it is not yours. Change it before sharing it.",
+      "err.main.diceShareSameCatalogue": "This set is the same (images aside) as \u201C{name}\u201D, installed from the catalogue: it is already there. If it is your set, change it to publish a new version.",
+      "err.main.diceShareSameProvided": "This set is the same (images aside) as \u201C{name}\u201D, a set provided by Ourdir. Change it before sharing it.",
+      "err.main.diceShareSameCopy": "This set is the same (images aside) as \u201C{name}\u201D, another of your copies of a set that is not yours. Share that copy instead, or change this one.",
       "err.main.entryGone": "This entry no longer exists in the catalogue.",
       "err.main.importFailed": "Import failed.",
       "err.main.inspectionExpired": "This check has expired. Start again.",
@@ -13549,6 +13961,7 @@ var require_en2 = __commonJS({
       "err.safeFetch.redirectionInvalide": "Invalid redirection.",
       "err.safeFetch.tropRedirections": "Too many redirections.",
       "err.share.badKeyFile": "Invalid key file.",
+      "err.share.diceNoId": "This set of dice has no id or version for the catalogue yet.",
       "err.share.keyExists": "A publisher key already exists.",
       "err.share.nextWaiting": "A new key is already waiting for the change to be published.",
       "err.share.noKey": "No publisher key.",
@@ -14212,6 +14625,26 @@ var require_en2 = __commonJS({
       "ui.cat.kindOne.system": "System",
       "ui.cat.kindOne.theme": "Table theme",
       "ui.cat.kindOne.translation": "Translation",
+      "ui.cat.kind.dice": "Dice sets",
+      "ui.cat.kindOne.dice": "Dice set",
+      "ui.cat.reviewDice": "Check before installing \xB7 dice set",
+      "ui.cat.diceSpin": "Roll it",
+      "ui.cat.diceCritical": "See a critical success",
+      "ui.cat.diceDie": "The d20 of \u201C{name}\u201D",
+      "ui.cat.diceContains.title": "What this set holds",
+      "ui.cat.diceContains.looks": "Material, colours and pattern shared by the 7 dice",
+      "ui.cat.diceContains.looksOne": "Material, colours and pattern for the 7 dice, 1 die with its own settings ({list})",
+      "ui.cat.diceContains.looksMany": "Material, colours and pattern for the 7 dice, {n} dice with their own settings ({list})",
+      "ui.cat.diceContains.rulesNone": "No effect rule",
+      "ui.cat.diceContains.rulesOne": "{n} effect rule: {list}",
+      "ui.cat.diceContains.rulesMany": "{n} effect rules: {list}",
+      "ui.cat.diceContains.sounds": "Synthesised impact sounds, no audio file",
+      "ui.cat.diceContains.nothingElse": "No image, no code",
+      "ui.cat.diceNote": "A dice set cannot change your computer or your tables. It appears in My dice with the \u201CCatalogue\u201D label; you can pick it for a table or duplicate it to touch it up.",
+      "ui.cat.diceReplaces": "This replaces version {v}, already installed. Your tables keep their choice.",
+      "ui.cat.diceSame": "This version is already installed: reinstalling puts it back as the catalogue publishes it. Your tables keep their choice.",
+      "ui.cat.diceReinstall": "Reinstall",
+      "ui.cat.diceInstalled": "Dice set \u201C{name}\u201D installed: it is in My dice, ready to pick for a table.",
       "ui.cat.lang.all": "All languages",
       "ui.cat.langFilter": "Language",
       "ui.cat.lead": "Signed modules and systems, ready to install. Nothing is installed before the review screen.",
@@ -15487,13 +15920,23 @@ var require_en2 = __commonJS({
       "ui.licence.badKey": "This key is not of the form OURDIR-XXXX-XXXX-XXXX.",
       "ui.licence.offline": "The licence service does not answer: check your connection and try again.",
       "ui.licence.certificate": "The licence service answered, but its certificate is not recognised: an antivirus or a company network is probably reading HTTPS connections. Allow Ourdir in its HTTPS settings, or try from another network.",
-      "ui.licence.hostNeeded": "Hosting a table needs a game master's licence: enter your key in Settings \u2192 Licence.",
-      "ui.licence.hostStale": "Your licence could not be checked online for three weeks: connect to the Internet, then start the table again.",
       "ui.licence.hostExpired": "Your licence has ended: hosting a table needs a valid licence.",
       "ui.licence.plan.tester": "tester",
       "ui.licence.plan.lifetime": "lifetime",
       "ui.licence.plan.monthly": "monthly",
       "ui.licence.plan.friend": "gift",
+      "ui.licence.gmOnly": "This is for game masters: enter your key in Settings \u2192 Licence.",
+      "ui.licence.gmExpired": "Your licence has ended: this is for game masters.",
+      "ui.licence.gmStale": "Your licence could not be checked online for three weeks: connect to the Internet, then try again.",
+      "ui.licence.locked.title": "For game masters",
+      "ui.licence.locked.systems": "Making, changing and importing game systems needs a game master's licence.",
+      "ui.licence.locked.themes": "Making, changing and importing table themes needs a game master's licence.",
+      "ui.licence.locked.modules": "Installing and managing modules needs a game master's licence: they are for hosting a table.",
+      "ui.licence.locked.tables": "Join your friends' tables with a code or an invitation. Making and hosting a table needs a game master's licence.",
+      "ui.licence.locked.have": "I have a licence",
+      "ui.licence.locked.buy": "Get a licence",
+      "ui.licence.banner": "Your licence is no longer valid: you can look at and export your tables, systems and themes, not change them.",
+      "ui.cat.playerOnly": "Without a game master's licence the catalogue only shows translations and dice sets: systems, themes and modules are for hosting a table.",
       "ui.usage.title": "Help Ourdir with anonymous statistics?",
       "ui.usage.text": 'At most once a day, Ourdir would send: an id drawn at random, its version, your operating system and language, the game systems played ("fait-maison" for your own, unnamed), and whether you hosted or joined a table.',
       "ui.usage.never": "Never your tables, characters, messages, nor your address. You can change your mind in Settings.",
@@ -16017,7 +16460,274 @@ var require_en2 = __commonJS({
       "ui.friends.invitedLater": "{name} is invited to \u201C{table}\u201D: they will get \u201CJoin\u201D when you start it.",
       "ui.friends.uninvitedFrom": "{name} no longer has access to \u201C{table}\u201D.",
       "ui.home.invite.guest": "Invited \u2713",
-      "ui.home.invite.add": "Invite"
+      "ui.home.invite.add": "Invite",
+      "ui.nav.dice": "My dice",
+      "ui.dice.title": "My dice",
+      "ui.dice.lead": "Make your own dice sets: colours, material, numbers, glow, sounds. Your partners see them roll on the map. You pick one per table.",
+      "ui.dice.new": "New set",
+      "ui.dice.newName": "New set",
+      "ui.dice.surprise": "Surprise me",
+      "ui.dice.surpriseName": "Surprise set",
+      "ui.dice.default": "Default",
+      "ui.dice.image": "Image",
+      "ui.dice.usedAt": "Used at: {tables}",
+      "ui.dice.unused": "Not used yet",
+      "ui.dice.fromOurdir": "Provided with Ourdir",
+      "ui.dice.edit": "Edit",
+      "ui.dice.duplicate": "Duplicate",
+      "ui.dice.copyName": "{name} (copy)",
+      "ui.dice.useAt": "Use at a table",
+      "ui.dice.delete": "Delete",
+      "ui.dice.deleteConfirm": "Delete the set \u201C{name}\u201D? Tables that used it will go back to your default set, or Ivory if you have none.",
+      "ui.dice.star": "Default set",
+      "ui.dice.starNamed": "Default set: {name}",
+      "ui.dice.close": "Close",
+      "ui.dice.empty": "No set of your own yet. Duplicate a provided set, or make your own.",
+      "ui.dice.limit": "You already have {max} sets: delete one before making another.",
+      "ui.dice.preset.ivoire": "Ivory",
+      "ui.dice.preset.obsidienne": "Obsidian",
+      "ui.dice.preset.cristal-bleu": "Blue crystal",
+      "ui.dice.preset.rubis": "Ruby",
+      "ui.dice.preset.emeraude": "Emerald",
+      "ui.dice.preset.or": "Gold",
+      "ui.dice.preset.os-ancien": "Ancient bone",
+      "ui.dice.preset.neon": "Neon",
+      "ui.dice.err.name": "The name must be 1 to 40 characters long.",
+      "ui.dice.err.image.type": "This file is not a usable image (PNG, JPEG or WebP).",
+      "ui.dice.err.image.size": "The image is too heavy: pick a smaller one.",
+      "ui.dice.err.size": "This set is too heavy: remove the image or simplify it.",
+      "ui.dice.err.shape": "This set cannot be read.",
+      "ui.dice.err.limit": "You reached the maximum number of sets: delete one before making another.",
+      "ui.dice.err.id": "This set no longer exists.",
+      "ui.dice.err.provided": "A provided set cannot be edited: duplicate it first.",
+      "ui.dice.err.field": "A setting is out of bounds.",
+      "ui.dice.err.readonly": "This set is read only: duplicate it to change it.",
+      "ui.dice.save": "Save",
+      "ui.dice.saved": "Set saved.",
+      "ui.dice.leaveConfirm": "This set has unsaved changes. Leave anyway?",
+      "ui.dice.throw": "Throw",
+      "ui.dice.knock": "\u25B6 Hear an impact",
+      "ui.dice.previewLabel": "Die preview",
+      "ui.dice.reset": "restore",
+      "ui.dice.copied": "Copy made: {name}",
+      "ui.dice.readable": "Readable numbers (contrast {ratio}:1)",
+      "ui.dice.unreadable": "Numbers hard to read (contrast {ratio}:1, aim for 4.5:1)",
+      "ui.dice.weight": "Weight {kb} KB / {max} KB",
+      "ui.dice.weightOver": "Set too heavy: {kb} KB of {max} KB",
+      "ui.dice.weightNote": "{kb} KB of {max} KB",
+      "ui.dice.unavailable": "The 3D preview is not available on this computer: here is the die, flat.",
+      "ui.dice.follow": "Follows the common look ({value})",
+      "ui.dice.tab.mat": "Material",
+      "ui.dice.tab.num": "Numbers",
+      "ui.dice.tab.fx": "Effects",
+      "ui.dice.tab.img": "Image",
+      "ui.dice.tab.one": "One die",
+      "ui.dice.tab.rules": "Triggers",
+      "ui.dice.nameLabel": "Set name",
+      "ui.dice.more": "More",
+      "ui.dice.origin.provided": "Provided",
+      "ui.dice.origin.mine": "Mine",
+      "ui.dice.origin.catalogue": "Catalogue",
+      "ui.dice.origin.received": "Received",
+      "ui.dice.origin.version": "v{version}",
+      "ui.dice.credit.by": "by {by}",
+      "ui.dice.credit.after": "after {name}",
+      "ui.dice.credit.afterBy": "after {name} by {by}",
+      "ui.dice.credit.received": "received from {file}",
+      "ui.dice.credit.receivedUnknown": "received from a file",
+      "ui.dice.import.button": "Import a file\u2026",
+      "ui.dice.import.dropLead": "Drop a {ext} file here",
+      "ui.dice.import.dropMore": "to import it. Catalogue sets are installed from the Catalogue page.",
+      "ui.dice.import.title": "Import a dice file",
+      "ui.dice.import.lead": "A {ext} file from a friend. It is read strictly before it joins your sets.",
+      "ui.dice.import.add": "Add",
+      "ui.dice.import.ignore": "Ignore",
+      "ui.dice.import.close": "Close",
+      "ui.dice.import.back": "Back to My dice",
+      "ui.dice.import.from": "from {file}",
+      "ui.dice.import.kb": "{kb} KB",
+      "ui.dice.import.rules.none": "no effect rules",
+      "ui.dice.import.rules.one": "1 effect rule",
+      "ui.dice.import.rules.many": "{n} effect rules",
+      "ui.dice.import.images.one": "1 image",
+      "ui.dice.import.images.many": "{n} images",
+      "ui.dice.import.willAdd": "It will join My dice ({n} of {max}).",
+      "ui.dice.import.imagesKept": "The file\u2019s images are kept.",
+      "ui.dice.import.duplicate": "You already have this set: it is not added twice.",
+      "ui.dice.import.full": "You already have {max} sets of your own: delete one to add another.",
+      "ui.dice.import.limitPill": "limit reached",
+      "ui.dice.import.noName": "Unnamed file",
+      "ui.dice.import.nothing": "Nothing was added to your sets.",
+      "ui.dice.import.refused": "Refused: {reason}",
+      "ui.dice.import.added": "Set added: {name}",
+      "ui.dice.readonly.catalogueTitle": "This set comes from the catalogue.",
+      "ui.dice.readonly.receivedTitle": "This set comes from a received file.",
+      "ui.dice.readonly.catalogueText": "It cannot be edited: duplicate it to make a set of your own. The author\u2019s credit and licence follow the copy.",
+      "ui.dice.readonly.receivedText": "It cannot be edited: duplicate it to make a set of your own. The copy keeps the name of the file it came from.",
+      "ui.dice.readonly.hint": "Read only: the fields are greyed out; the preview, \u201CTest\u201D and \u201CSimulate\u201D still work.",
+      "ui.dice.readonly.duplicate": "Duplicate to edit",
+      "ui.dice.readonly.back": "Back to My dice",
+      "ui.dice.readonly.view": "View",
+      "ui.dice.more.export": "Export to a file",
+      "ui.dice.more.exportSub": "Keeps the images, for a friend",
+      "ui.dice.more.exported": "Set exported to a file.",
+      "ui.dice.more.share": "Share to the catalogue\u2026",
+      "ui.dice.more.shareSub": "Without the images",
+      "ui.dice.share.noLicence": "No sharing to the catalogue for this set: a set received as a file has no known licence.",
+      "ui.dice.share.noDerivatives": "No sharing to the catalogue for this set: the original set\u2019s licence is unknown or does not allow changed versions.",
+      "ui.dice.share.sheetTitle": "The dice set\u2019s sheet",
+      "ui.dice.share.previewNote": "What others will see. The effects and the rules travel with the set.",
+      "ui.dice.share.imagesTitle": "The images are not included.",
+      "ui.dice.share.imagesOne": "\u201C{name}\u201D carries 1 image. Published to the catalogue, it goes without it: the dice show with their colours, numbers, patterns and effects. Your image stays in your set and in exported files.",
+      "ui.dice.share.imagesMany": "\u201C{name}\u201D carries {n} images. Published to the catalogue, it goes without them: the dice show with their colours, numbers, patterns and effects. Your images stay in your set and in exported files.",
+      "ui.dice.share.licenseLocked": "Imposed: it is the licence of \u201C{name}\u201D, the catalogue set this one is a copy of.",
+      "ui.dice.share.inspiredHint": "Added at the end of the description, cannot be removed:",
+      "ui.dice.share.inspired": "Inspired by \u201C{name}\u201D by {by}.",
+      "ui.dice.share.inspiredNoBy": "Inspired by \u201C{name}\u201D.",
+      "ui.dice.share.idLine": "Published under the id {id}, version {version}.",
+      "ui.dice.share.idAdjusted": "Another of your sets is already published under the id taken from this name: this one gets another, so as not to replace it.",
+      "ui.dice.share.delay": "A shared set is checked by the catalogue before it appears: it first comes out as Community. The Validated grade is asked for afterwards from \u201CMy shares\u201D. The human review delay is not guaranteed.",
+      "ui.dice.share.preparing": "Preparing the set\u2026",
+      "ui.dice.more.uninstall": "Uninstall",
+      "ui.dice.more.uninstallConfirm": "Uninstall the set \u201C{name}\u201D? Tables that used it will go back to your default set, or Ivory if you have none.",
+      "ui.dice.rules.title": "Rules of the set",
+      "ui.dice.rules.add": "+ Add a rule",
+      "ui.dice.rules.classic": "Classic criticals",
+      "ui.dice.rules.classicHint": "Puts back the default rules: flames and a chime on a critical success, smoke, a crack and a knell on a critical failure",
+      "ui.dice.rules.classicConfirm": "Replace this set\u2019s rules with the classic criticals?",
+      "ui.dice.rules.count": "{n} / {max} rules",
+      "ui.dice.rules.countTitle": "Most rules a set can have",
+      "ui.dice.rules.legacyTitle": "This set still uses the witness ring.",
+      "ui.dice.rules.legacyText": "Sets made before triggers have no rules.",
+      "ui.dice.rules.legacyClassic": "Add the classic criticals",
+      "ui.dice.rules.legacyEmpty": "Start from an empty list",
+      "ui.dice.rules.none": "No rule saved for this set.",
+      "ui.dice.rules.ringTitle": "Witness ring",
+      "ui.dice.rules.ringText": "a gold (success) or red (failure) ring around the die, as before.",
+      "ui.dice.rules.empty": "No rules: this set has no effect.",
+      "ui.dice.rules.event": "Event",
+      "ui.dice.rules.die": "Die",
+      "ui.dice.rules.op": "Comparison",
+      "ui.dice.rules.value": "Value",
+      "ui.dice.rules.anyDie": "any",
+      "ui.dice.rules.noOp": "\u2014",
+      "ui.dice.rules.color": "Colour",
+      "ui.dice.rules.intensity": "Intensity",
+      "ui.dice.rules.duration": "Duration",
+      "ui.dice.rules.delay": "Delay",
+      "ui.dice.rules.sound": "Sound",
+      "ui.dice.rules.screenNote": "screen effect \xB7 0.4 s at most",
+      "ui.dice.rules.changeEffect": "Change the effect ({name})",
+      "ui.dice.rules.removeEffect": "Remove this effect",
+      "ui.dice.rules.addEffect": "+ Add an effect ({n} / {max})",
+      "ui.dice.rules.test": "\u25B6 Test",
+      "ui.dice.rules.duplicate": "Duplicate",
+      "ui.dice.rules.delete": "Delete",
+      "ui.dice.rules.up": "Move the rule up",
+      "ui.dice.rules.down": "Move the rule down",
+      "ui.dice.rules.sim": "Simulate",
+      "ui.dice.rules.simLead": "\u2014 play the rules as at a table:",
+      "ui.dice.rules.sim.critical": "Critical success",
+      "ui.dice.rules.sim.fumble": "Critical failure",
+      "ui.dice.rules.sim.min": "Natural 1",
+      "ui.dice.rules.sim.max": "Maximum",
+      "ui.dice.rules.sim.hit-wall": "A knock",
+      "ui.dice.rules.invalid": "This set has an error (an empty name, a rule to fix): the preview does not play it.",
+      "ui.dice.trigger.critical": "Critical success",
+      "ui.dice.trigger.fumble": "Critical failure",
+      "ui.dice.trigger.min": "Die\u2019s minimum",
+      "ui.dice.trigger.max": "Die\u2019s maximum",
+      "ui.dice.trigger.rest": "The die stops",
+      "ui.dice.trigger.hit-wall": "Hits a wall",
+      "ui.dice.trigger.hit-token": "Hits a token",
+      "ui.dice.trigger.hit-floor": "Hits the floor",
+      "ui.dice.trigger.hit-die": "Hits a die",
+      "ui.dice.op.eq": "exactly",
+      "ui.dice.op.gte": "at least",
+      "ui.dice.op.lte": "at most",
+      "ui.dice.effect.sparks": "Sparks",
+      "ui.dice.effect.flames": "Flames",
+      "ui.dice.effect.lightning": "Lightning",
+      "ui.dice.effect.aura": "Aura",
+      "ui.dice.effect.smoke": "Smoke",
+      "ui.dice.effect.coins": "Coins",
+      "ui.dice.effect.crack": "Crack",
+      "ui.dice.effect.shock": "Shockwave",
+      "ui.dice.effect.glare": "Light spot",
+      "ui.dice.effect.shake": "Shake",
+      "ui.dice.effect.flash": "Screen flash",
+      "ui.dice.effect.sound": "Accent sound",
+      "ui.dice.effect.bell": "Bell",
+      "ui.dice.effect.gong": "Gong",
+      "ui.dice.effect.knell": "Knell",
+      "ui.dice.effect.thud": "Thud",
+      "ui.dice.effect.chime": "Chime",
+      "ui.dice.effectWhere.die": "on the die",
+      "ui.dice.effectWhere.map": "on the map",
+      "ui.dice.effectWhere.screen": "screen",
+      "ui.dice.effectWhere.sound": "bell, gong, knell\u2026",
+      "ui.dice.picker.title": "Choose an effect",
+      "ui.dice.picker.die": "On the die",
+      "ui.dice.picker.map": "On the map",
+      "ui.dice.picker.screen": "On the screen (the player\u2019s own setting)",
+      "ui.dice.picker.sound": "Sound",
+      "ui.dice.field.bodyColor": "Die colour",
+      "ui.dice.field.patternColor": "Pattern colour",
+      "ui.dice.field.swatches": "Quick colours",
+      "ui.dice.field.metalness": "Metal",
+      "ui.dice.field.roughness": "Roughness",
+      "ui.dice.field.opacity": "Transparency (100 = opaque)",
+      "ui.dice.field.patternKind": "Pattern",
+      "ui.dice.field.patternScale": "Pattern size",
+      "ui.dice.field.numColor": "Number colour",
+      "ui.dice.field.outline": "Outline",
+      "ui.dice.field.font": "Font",
+      "ui.dice.field.weight": "Boldness",
+      "ui.dice.field.glowTitle": "Glow",
+      "ui.dice.field.glow": "Glow while rolling",
+      "ui.dice.field.glowColor": "Glow colour",
+      "ui.dice.field.trailKind": "Trail",
+      "ui.dice.field.trailLength": "Length",
+      "ui.dice.field.soundTitle": "Sound",
+      "ui.dice.field.soundMaterial": "Sound material",
+      "ui.dice.field.volume": "Volume",
+      "ui.dice.field.placement": "Placement",
+      "ui.dice.field.weightGauge": "Set weight",
+      "ui.dice.field.typeLine": "Die type",
+      "ui.dice.field.glowOne": "Glow",
+      "ui.dice.field.bodyOne": "Die colour",
+      "ui.dice.field.numOne": "Numbers",
+      "ui.dice.choice.pattern.plain": "Plain",
+      "ui.dice.choice.pattern.marble": "Marble",
+      "ui.dice.choice.pattern.wood": "Wood",
+      "ui.dice.choice.pattern.veins": "Veins",
+      "ui.dice.choice.pattern.sparkle": "Sparkle",
+      "ui.dice.choice.font.serif": "Serif",
+      "ui.dice.choice.font.sans": "Sans",
+      "ui.dice.choice.font.mono": "Monospace",
+      "ui.dice.choice.font.display": "Ourdir title",
+      "ui.dice.choice.trail.none": "None",
+      "ui.dice.choice.trail.spark": "Sparks",
+      "ui.dice.choice.trail.smoke": "Smoke",
+      "ui.dice.choice.trail.ribbon": "Ribbon",
+      "ui.dice.choice.sound.wood": "Wood",
+      "ui.dice.choice.sound.stone": "Stone",
+      "ui.dice.choice.sound.metal": "Metal",
+      "ui.dice.choice.sound.glass": "Glass",
+      "ui.dice.choice.sound.bone": "Bone",
+      "ui.dice.choice.image.cover": "Covers the faces",
+      "ui.dice.choice.image.stamp": "Stamp behind the number",
+      "ui.dice.hint.pattern": "At low graphics quality the pattern is replaced by the colour. The result of a roll never changes.",
+      "ui.dice.hint.numbers": "A dark outline helps reading on a light die. The contrast between numbers and die is checked under the preview (at least 4.5:1).",
+      "ui.dice.hint.fx": "Glow and trail are capped by the table\u2019s graphics quality (nothing at low quality). Sounds are synthesised: no file; everyone sets \xAB Dice sounds \xBB on their own.",
+      "ui.dice.hint.image": "Other players see your image, unless the GM turns it off at their table: they then see the die\u2019s colour.",
+      "ui.dice.hint.drop": "Or drop it here. PNG, JPG or WebP.",
+      "ui.dice.hint.one": "Every die follows the common look. Pick a die to change only that one: \u25CF marks what differs.",
+      "ui.dice.hint.common": "Common look: {value}",
+      "ui.dice.img.choose": "Choose an image\u2026",
+      "ui.dice.img.remove": "Remove the image",
+      "ui.dice.img.thumbAlt": "Image preview",
+      "ui.dice.img.info": "{name} \xB7 reduced to 256 \xD7 256 \xB7 {kb} KB"
     };
   }
 });
@@ -17693,7 +18403,53 @@ var require_en3 = __commonJS({
       "flip.h": "Flip horizontally",
       "flip.v": "Flip vertically",
       "flip.failed": "The token could not be flipped.",
-      "people.more": "{n} more people online"
+      "people.more": "{n} more people online",
+      "connection.lost": "Connection to the table lost: reconnecting\u2026",
+      "connection.back": "Reconnected to the table.",
+      "host.floors.noPassage": "That token did not take a stair: yours cannot follow it from one floor to another.",
+      "dice.title": "Dice",
+      "dice.enabled": "3D dice",
+      "dice.enabledHint": "Turned off, no die is drawn; results stay in the chat.",
+      "dice.on": "On",
+      "dice.off": "Off",
+      "dice.size": "Dice size",
+      "dice.size.small": "Small",
+      "dice.size.normal": "Medium",
+      "dice.size.large": "Large",
+      "dice.mine": "My dice",
+      "dice.tableDefault": "Table dice",
+      "dice.tableDefaultHint": "The dice of those who have not chosen their own.",
+      "dice.offscreen": "{name} rolled",
+      "dice.offscreenAnon": "A roll",
+      "dice.notSaved": "The dice choice could not be saved.",
+      "dice.atThisTable": "at this table",
+      "dice.editInLauncher": "To create or edit a set, leave the table: Create \u25BE \u203A My dice.",
+      "dice.sounds": "Dice sounds",
+      "dice.soundsOn": "On",
+      "dice.soundsOff": "Off",
+      "dice.soundVolume": "Volume",
+      "dice.gmGroup": "Table dice (GM)",
+      "dice.images": "Pictures on the dice",
+      "dice.imagesOn": "Shown",
+      "dice.imagesCut": "Cut at this table",
+      "dice.imagesHint": "Dice keep their colour; players\u2019 pictures are not shown.",
+      "dice.effects": "Effects",
+      "dice.effectsHint": "Flames, lightning, cracks\u2026 played by the dice set of whoever rolls.",
+      "dice.screenEffects": "Screen effects",
+      "dice.screenEffectsHint": "A short shake and flash. Turned off automatically if your system asks to reduce motion.",
+      "dice.reducedWhy": "Off because your system asks to reduce motion.",
+      "dice.tableEffects": "Effects on dice",
+      "dice.tableEffectsOn": "Shown at this table",
+      "dice.tableEffectsOff": "Cut at this table",
+      "dice.tableEffectsHint": "When cut, no rule effect plays at your table (the dice and their results stay).",
+      "dice.preset.ivoire": "Ivory",
+      "dice.preset.obsidienne": "Obsidian",
+      "dice.preset.cristal-bleu": "Blue crystal",
+      "dice.preset.rubis": "Ruby",
+      "dice.preset.emeraude": "Emerald",
+      "dice.preset.or": "Gold",
+      "dice.preset.os-ancien": "Old bone",
+      "dice.preset.neon": "Neon"
     };
   }
 });
@@ -18753,7 +19509,9 @@ var CATALOG_FORMAT = "ourdir-catalog";
 var CATALOG_VERSION = 2;
 var INDEX_FILE = "index.json";
 var SIGNATURE_FILE2 = "index.json.sig";
-var KINDS = ["system", "theme", "compendium", "maps", "adventure", "translation", "module"];
+var KINDS = ["system", "theme", "compendium", "maps", "adventure", "translation", "module", "dice"];
+var KIND_EXTENSIONS = { module: "zip", system: "ttsystem.json", theme: "ourdir-theme.json", translation: "ourdir-translation.json", compendium: "ourdirlib", dice: "ourdir-dice.json" };
+var extOf = (kind) => Object.prototype.hasOwnProperty.call(KIND_EXTENSIONS, kind) ? KIND_EXTENSIONS[kind] : "ttsystem.json";
 var MB = 1024 * 1024;
 var LIMITS = {
   indexBytes: 8 * MB,
@@ -18782,6 +19540,8 @@ var KIND_BYTES = {
   // texts only (spec « traductions » §2): 1 MB without its English column
   compendium: MB,
   // a library package: entries only (spec « bibliothèques » §7), 1 MB like the launcher reads it
+  dice: 64 * 1024,
+  // a set of dice without images is a small document (spec « partager les jeux de dés » §5)
   maps: 512 * MB,
   adventure: 512 * MB
 };
@@ -18862,10 +19622,11 @@ function parseIndex(bytes, opts = {}) {
     }
     seenIds.add(id);
     const kind = e.kind;
-    if (typeof kind !== "string" || !KINDS.includes(kind)) {
+    if (typeof kind !== "string") {
       err(say("err.format.badKind", { id }));
       continue;
     }
+    if (!KINDS.includes(kind)) continue;
     const system = e.system === void 0 ? void 0 : requirement(e.system);
     if (system === null) {
       err(say("err.format.badSystem", { id }));
@@ -19219,6 +19980,344 @@ function requestedPermissions(p) {
   return m.kind === "native" ? m.permissions : [.../* @__PURE__ */ new Set([...p.compat?.suggestedPermissions ?? [], ...m.files.styles.length ? ["ui.style"] : []])];
 }
 
+// apps/desktop/src/skinCore.ts
+var DIE_KEYS = ["d4", "d6", "d8", "d10", "d12", "d20", "d100"];
+var MAX_SKIN_CHARS = 300 * 1024;
+var MAX_IMAGE_BYTES = 200 * 1024;
+var TRIGGERS = ["critical", "fumble", "min", "max", "rest", "hit-wall", "hit-token", "hit-floor", "hit-die"];
+var VALUE_TRIGGERS = ["critical", "fumble", "min", "max", "rest"];
+var EFFECT_KINDS = ["sparks", "flames", "lightning", "aura", "smoke", "coins", "crack", "shock", "glare", "shake", "flash", "bell", "gong", "knell", "thud", "chime"];
+var MAX_RULES = 12;
+var MAX_EFFECTS = 4;
+var C = { t: "color" };
+var I = (min, max) => ({ t: "int", min, max });
+var E = (values) => ({ t: "enum", values });
+var RULES2 = {
+  body: { color: C, metalness: I(0, 100), roughness: I(0, 100), opacity: I(20, 100), emissive: C, emissiveStrength: I(0, 100) },
+  pattern: { kind: E(["plain", "marble", "wood", "veins", "sparkle"]), color2: C, scale: I(0, 100), seed: I(0, 999999) },
+  numbers: { color: C, outline: C, font: E(["serif", "sans", "mono", "display"]), weight: I(0, 100) },
+  glow: { color: C, strength: I(0, 20) },
+  trail: { kind: E(["none", "spark", "smoke", "ribbon"]), color: C, length: I(0, 100) },
+  sound: { material: E(["wood", "stone", "metal", "glass", "bone"]), volume: I(0, 100) }
+};
+var GROUPS = Object.keys(RULES2);
+function defaultLook() {
+  return {
+    body: { color: "#f0e8d2", metalness: 5, roughness: 45, opacity: 100, emissive: "#000000", emissiveStrength: 0 },
+    pattern: { kind: "plain", color2: "#8a7a5a", scale: 50, seed: 1 },
+    numbers: { color: "#3a2a1a", outline: "#1a1408", font: "serif", weight: 70 },
+    glow: { color: "#ffb45a", strength: 0 },
+    trail: { kind: "none", color: "#ffb45a", length: 40 },
+    sound: { material: "wood", volume: 60 },
+    image: null
+  };
+}
+var HEX = /^#[0-9a-f]{6}$/;
+var CONTROL2 = new RegExp("[" + String.fromCharCode(0) + "-" + String.fromCharCode(31) + "]", "g");
+var isObj4 = (x) => !!x && typeof x === "object" && !Array.isArray(x);
+var has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+function okValue(r, v) {
+  if (r.t === "color") return typeof v === "string" && HEX.test(v);
+  if (r.t === "int") return typeof v === "number" && Number.isInteger(v) && v >= r.min && v <= r.max;
+  return typeof v === "string" && r.values.includes(v);
+}
+function group(name, input, base) {
+  if (input !== void 0 && !isObj4(input)) return { ok: false, error: `look.${name}` };
+  const src = isObj4(input) ? input : {};
+  const out = {};
+  for (const [k, rule] of Object.entries(RULES2[name])) {
+    if (has(src, k)) {
+      if (!okValue(rule, src[k])) return { ok: false, error: `look.${name}.${k}` };
+      out[k] = src[k];
+    } else if (base) out[k] = base[k];
+  }
+  return { ok: true, value: out };
+}
+function b64Bytes(b64) {
+  try {
+    const s = atob(b64);
+    const a = new Uint8Array(s.length);
+    for (let i = 0; i < s.length; i++) a[i] = s.charCodeAt(i);
+    return a;
+  } catch {
+    return null;
+  }
+}
+var startsWith = (a, sig) => sig.every((b, i) => a[i] === b);
+function checkImage(data) {
+  if (typeof data !== "string" || data.length > 300 * 1024) return typeof data === "string" && /^data:image\/(png|webp|jpeg);base64,/.test(data) ? "image.size" : "image.type";
+  const m = /^data:image\/(png|webp|jpeg);base64,([A-Za-z0-9+/]+={0,2})$/.exec(data);
+  if (!m) return "image.type";
+  const bytes = b64Bytes(m[2]);
+  if (!bytes) return "image.type";
+  if (bytes.length > MAX_IMAGE_BYTES) return "image.size";
+  const sig = m[1] === "png" ? startsWith(bytes, [137, 80, 78, 71, 13, 10, 26, 10]) : m[1] === "jpeg" ? startsWith(bytes, [255, 216, 255]) : startsWith(bytes, [82, 73, 70, 70]) && startsWith(bytes.subarray(8), [87, 69, 66, 80]);
+  return sig ? null : "image.type";
+}
+function imageOf(input) {
+  if (input === null || input === void 0) return { ok: true, value: null };
+  if (!isObj4(input)) return { ok: false, error: "look.image.mode" };
+  if (input.mode !== "cover" && input.mode !== "stamp") return { ok: false, error: "look.image.mode" };
+  const bad3 = checkImage(input.data);
+  if (bad3) return { ok: false, error: bad3 };
+  return { ok: true, value: { mode: input.mode, data: input.data } };
+}
+function partial(input) {
+  if (!isObj4(input)) return { ok: false, error: "shape" };
+  const out = {};
+  for (const g of GROUPS) {
+    if (has(input, g)) {
+      const r = group(g, input[g], null);
+      if (r.ok === false) return { ok: false, error: r.error };
+      if (Object.keys(r.value).length > 0) out[g] = r.value;
+    }
+  }
+  if (has(input, "image")) {
+    const r = imageOf(input.image);
+    if (r.ok === false) return { ok: false, error: r.error };
+    out.image = r.value;
+  }
+  return { ok: true, value: out };
+}
+var get = (o, k) => has(o, k) ? o[k] : void 0;
+var int100 = (v) => typeof v === "number" && Number.isInteger(v) && v >= 0 && v <= 100;
+function effectOf(x) {
+  if (!isObj4(x)) return { ok: false, error: "rules.effect.shape" };
+  const kind = get(x, "kind");
+  if (typeof kind !== "string" || !EFFECT_KINDS.includes(kind)) return { ok: false, error: "rules.effect.kind" };
+  const color = get(x, "color");
+  if (typeof color !== "string" || !HEX.test(color)) return { ok: false, error: "rules.effect.color" };
+  const intensity = get(x, "intensity");
+  const duration = get(x, "duration");
+  const delay = get(x, "delay");
+  if (!int100(intensity) || !int100(duration) || !int100(delay)) return { ok: false, error: "rules.effect.range" };
+  return { ok: true, value: { kind, color, intensity, duration, delay } };
+}
+function whenOf(x) {
+  if (!isObj4(x)) return { ok: false, error: "rules.when" };
+  const die = get(x, "die");
+  const op = get(x, "op");
+  const value = get(x, "value");
+  if (typeof die !== "string" || !(die === "any" || DIE_KEYS.includes(die))) return { ok: false, error: "rules.when" };
+  if (op !== "eq" && op !== "gte" && op !== "lte") return { ok: false, error: "rules.when" };
+  if (!int100(value)) return { ok: false, error: "rules.when" };
+  return { ok: true, value: { die, op, value } };
+}
+function ruleOf(x) {
+  if (!isObj4(x)) return { ok: false, error: "rules.shape" };
+  const on = get(x, "on");
+  if (typeof on !== "string" || !TRIGGERS.includes(on)) return { ok: false, error: "rules.trigger" };
+  const list2 = get(x, "do");
+  if (!Array.isArray(list2) || list2.length < 1 || list2.length > MAX_EFFECTS) return { ok: false, error: "rules.effects" };
+  const effects = [];
+  for (const e of list2) {
+    const r = effectOf(e);
+    if (r.ok === false) return { ok: false, error: r.error };
+    effects.push(r.value);
+  }
+  const rule = { on, do: effects };
+  if (has(x, "when") && x.when !== void 0) {
+    if (!VALUE_TRIGGERS.includes(on)) return { ok: false, error: "rules.when" };
+    const w = whenOf(x.when);
+    if (w.ok === false) return { ok: false, error: w.error };
+    rule.when = w.value;
+  }
+  return { ok: true, value: rule };
+}
+function rulesOf(x) {
+  if (!Array.isArray(x)) return { ok: false, error: "rules.shape" };
+  if (x.length > MAX_RULES) return { ok: false, error: "rules.count" };
+  const out = [];
+  for (const r of x) {
+    const one = ruleOf(r);
+    if (one.ok === false) return { ok: false, error: one.error };
+    out.push(one.value);
+  }
+  return { ok: true, value: out };
+}
+function checkSkin(x) {
+  if (!isObj4(x) || x.v !== 2) return { ok: false, error: "shape" };
+  const name = typeof x.name === "string" && x.name.length <= 200 ? x.name.replace(CONTROL2, "").trim() : "";
+  if (name.length < 1 || name.length > 40) return { ok: false, error: "name" };
+  if (!isObj4(x.look)) return { ok: false, error: "shape" };
+  const base = defaultLook();
+  const look = {};
+  for (const g of GROUPS) {
+    const r = group(g, x.look[g], base[g]);
+    if (r.ok === false) return { ok: false, error: r.error };
+    look[g] = r.value;
+  }
+  const img = imageOf(x.look.image);
+  if (img.ok === false) return { ok: false, error: img.error };
+  look.image = img.value;
+  const perType = {};
+  if (x.perType !== void 0 && !isObj4(x.perType)) return { ok: false, error: "shape" };
+  if (isObj4(x.perType)) {
+    for (const k of DIE_KEYS) {
+      if (has(x.perType, k)) {
+        const r = partial(x.perType[k]);
+        if (r.ok === false) return { ok: false, error: r.error };
+        if (Object.keys(r.value).length > 0) perType[k] = r.value;
+      }
+    }
+  }
+  let rules;
+  if (has(x, "rules") && x.rules !== void 0) {
+    const rr = rulesOf(x.rules);
+    if (rr.ok === false) return { ok: false, error: rr.error };
+    rules = rr.value;
+  }
+  const skin = rules ? { v: 2, name, look, perType, rules } : { v: 2, name, look, perType };
+  if (JSON.stringify(skin).length > MAX_SKIN_CHARS) return { ok: false, error: "size" };
+  return { ok: true, skin };
+}
+var DOC_ID_RE = /^[a-z0-9][a-z0-9_-]{1,63}$/;
+var DOC_VERSION_RE = /^\d+\.\d+\.\d+(-[0-9A-Za-z.-]{1,30})?$/;
+var DICE_FORMAT = "ourdir-dice";
+var FILE_BYTES = 320 * 1024;
+var CATALOGUE_BYTES = 64 * 1024;
+var DOC_KEYS = ["format", "v", "id", "version", "skin"];
+function countImages(skin) {
+  let n = skin.look && skin.look.image ? 1 : 0;
+  for (const k of Object.keys(skin.perType)) {
+    const o = skin.perType[k];
+    if (o && o.image) n++;
+  }
+  return n;
+}
+var MAX_DOC_DEPTH = 12;
+function canonicalText(v, depth) {
+  if (depth > MAX_DOC_DEPTH) return null;
+  if (Array.isArray(v)) {
+    const parts = [];
+    for (const x of v) {
+      const t = canonicalText(x, depth + 1);
+      if (t === null) return null;
+      parts.push(t);
+    }
+    return "[" + parts.join(",") + "]";
+  }
+  if (isObj4(v)) {
+    const parts = [];
+    for (const k of Object.keys(v).sort()) {
+      if (v[k] === void 0) continue;
+      const t = canonicalText(v[k], depth + 1);
+      if (t === null) return null;
+      parts.push(JSON.stringify(k) + ":" + t);
+    }
+    return "{" + parts.join(",") + "}";
+  }
+  return v === void 0 ? "null" : JSON.stringify(v);
+}
+function isCanonical(raw, clean2) {
+  try {
+    const a = canonicalText(raw, 0);
+    return a !== null && a === canonicalText(clean2, 0);
+  } catch {
+    return false;
+  }
+}
+function checkDiceDocument(input, opts) {
+  try {
+    return readDiceDocument(input, opts);
+  } catch {
+    return { ok: false, error: "doc.shape" };
+  }
+}
+function readDiceDocument(input, opts) {
+  const catalogue = !!(opts && opts.catalogue);
+  let raw = input;
+  let bytes = opts && typeof opts.bytes === "number" ? opts.bytes : -1;
+  if (typeof input === "string") {
+    if (bytes < 0) bytes = input.length;
+    try {
+      raw = JSON.parse(input);
+    } catch {
+      return { ok: false, error: "doc.shape" };
+    }
+  } else if (bytes < 0) {
+    try {
+      bytes = JSON.stringify(input).length;
+    } catch {
+      return { ok: false, error: "doc.shape" };
+    }
+  }
+  if (!isObj4(raw) || Array.isArray(raw)) return { ok: false, error: "doc.shape" };
+  if (bytes > (catalogue ? CATALOGUE_BYTES : FILE_BYTES)) return { ok: false, error: "doc.size" };
+  if (raw.format !== DICE_FORMAT) return { ok: false, error: "doc.format" };
+  if (raw.v !== 1) return { ok: false, error: "doc.v" };
+  for (const k of Object.keys(raw)) if (!DOC_KEYS.includes(k)) return { ok: false, error: "doc.field" };
+  const id = has(raw, "id") ? raw.id : void 0;
+  const version = has(raw, "version") ? raw.version : void 0;
+  if (id !== void 0 && (typeof id !== "string" || !DOC_ID_RE.test(id))) return { ok: false, error: "doc.id" };
+  if (version !== void 0 && (typeof version !== "string" || !DOC_VERSION_RE.test(version))) return { ok: false, error: "doc.version" };
+  if (catalogue && id === void 0) return { ok: false, error: "doc.id" };
+  if (catalogue && version === void 0) return { ok: false, error: "doc.version" };
+  const s = checkSkin(has(raw, "skin") ? raw.skin : void 0);
+  if (s.ok === false) return { ok: false, error: "doc.skin." + s.error };
+  const images = countImages(s.skin);
+  if (catalogue && images > 0) return { ok: false, error: "doc.images" };
+  if (catalogue && !isCanonical(raw.skin, s.skin)) return { ok: false, error: "doc.unknown" };
+  const doc = { format: "ourdir-dice", v: 1, skin: s.skin };
+  if (id !== void 0) doc.id = id;
+  if (version !== void 0) doc.version = version;
+  return { ok: true, doc, images };
+}
+var CLASSIC_RULES = [
+  { on: "critical", do: [{ kind: "flames", color: "#ffcf3a", intensity: 70, duration: 50, delay: 0 }, { kind: "chime", color: "#ece4d0", intensity: 60, duration: 40, delay: 20 }] },
+  { on: "fumble", do: [{ kind: "smoke", color: "#6a6f88", intensity: 60, duration: 60, delay: 0 }, { kind: "crack", color: "#c9c2b0", intensity: 60, duration: 60, delay: 10 }, { kind: "knell", color: "#ece4d0", intensity: 60, duration: 50, delay: 25 }] }
+];
+function classicRules() {
+  return JSON.parse(JSON.stringify(CLASSIC_RULES));
+}
+var mk = (id, name, color, numbers, body = {}, pattern = {}) => {
+  const look = defaultLook();
+  Object.assign(look.body, { color }, body);
+  Object.assign(look.numbers, { color: numbers });
+  Object.assign(look.pattern, pattern);
+  return { id, skin: { v: 2, name, look, perType: {}, rules: classicRules() } };
+};
+var PROVIDED = [
+  mk("ivoire", "Ivoire", "#f0e8d2", "#3a2a1a"),
+  mk("obsidienne", "Obsidienne", "#1d1d24", "#d9d2ff", { roughness: 18, metalness: 20 }),
+  mk("cristal-bleu", "Cristal bleu", "#7fb8ff", "#0a2a55", { roughness: 8, opacity: 82 }),
+  mk("rubis", "Rubis", "#b3122b", "#ffe9c2", { roughness: 15, opacity: 90, emissive: "#3a0008", emissiveStrength: 30 }, { kind: "veins", color2: "#e0687b" }),
+  mk("emeraude", "\xC9meraude", "#0f8f5a", "#eafff2", { roughness: 15, opacity: 90, emissive: "#022a18", emissiveStrength: 30 }),
+  // i18n-ok
+  mk("or", "Or", "#d4a72c", "#3b2600", { metalness: 90, roughness: 28 }),
+  mk("os-ancien", "Os ancien", "#cbbf9f", "#4a3b22", { roughness: 80 }),
+  mk("neon", "N\xE9on", "#0b0f1a", "#39ff9c", { roughness: 30, emissive: "#0a2b1c", emissiveStrength: 40 })
+  // i18n-ok
+];
+
+// apps/desktop/src/catalog/dice.ts
+var REASONS = {
+  "doc.shape": "Ce fichier n\u2019est pas un jeu de d\xE9s Ourdir.",
+  "doc.format": "Ce fichier n\u2019est pas un jeu de d\xE9s Ourdir.",
+  "doc.v": "Ce jeu de d\xE9s vient d\u2019une autre version d\u2019Ourdir (format inconnu).",
+  "doc.size": "Jeu de d\xE9s trop volumineux (64 Ko au plus).",
+  "doc.field": "Le jeu de d\xE9s contient un champ inconnu.",
+  "doc.id": "Le jeu de d\xE9s doit porter un identifiant valide (id).",
+  "doc.version": "Le jeu de d\xE9s doit porter une version valide (version).",
+  "doc.images": "Un jeu de d\xE9s du catalogue ne porte pas d\u2019images.",
+  "doc.unknown": "Le jeu de d\xE9s contient des champs inconnus ou non normalis\xE9s."
+};
+function diceCatalogueReason(code) {
+  if (code === "doc.skin.rules.count") return `Le jeu de d\xE9s compte trop de r\xE8gles (${MAX_RULES} au plus).`;
+  if (code.startsWith("doc.skin.")) return `Le jeu de d\xE9s contient une valeur invalide (${code.slice(4)}).`;
+  return Object.prototype.hasOwnProperty.call(REASONS, code) ? REASONS[code] : "Jeu de d\xE9s invalide.";
+}
+function readCatalogueDice(bytes) {
+  let r;
+  try {
+    r = checkDiceDocument(bytes.toString("utf8"), { catalogue: true, bytes: bytes.length });
+  } catch {
+    r = { ok: false, error: "doc.shape" };
+  }
+  if (r.ok === false) return { ok: false, error: diceCatalogueReason(r.error) };
+  return { ok: true, doc: r.doc };
+}
+
 // apps/desktop/src/licence.ts
 var LICENCE_DELEGATION_FILE = "licence-delegation.json";
 var CHECK_EVERY_MS = 7 * 864e5;
@@ -19360,14 +20459,14 @@ function verifyPackageFile(bytes, publicKey, signature) {
 }
 
 // apps/desktop/src/catalog/submission.ts
-var OPEN_KINDS = ["module", "system", "theme", "translation", "compendium"];
+var OPEN_KINDS = ["module", "system", "theme", "translation", "compendium", "dice"];
 var MAX_SUBMISSIONS_PER_PR = 10;
 var SUBMISSION_PATH_RE = /^entries\/([a-z0-9][a-z0-9_-]{1,63})\/(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]{1,30})?)\.json$/;
 var PERM_RE2 = /^[a-z][a-z0-9]*(\.[a-z][a-z0-9]*){1,3}$/;
 var MAX_SUBMISSION_BYTES = 64 * 1024;
-var isObj4 = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+var isObj5 = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
 function requirement2(v) {
-  if (!isObj4(v) || typeof v.id !== "string" || !ID_RE2.test(v.id)) return null;
+  if (!isObj5(v) || typeof v.id !== "string" || !ID_RE2.test(v.id)) return null;
   if (v.minVersion === void 0) return { id: v.id };
   return typeof v.minVersion === "string" && VERSION_RE2.test(v.minVersion) ? { id: v.id, minVersion: v.minVersion } : null;
 }
@@ -19381,7 +20480,7 @@ function parseSubmission(file, text, opts = {}) {
   } catch {
     return { ok: false, errors: ["Soumission illisible (JSON invalide, ou pas en UTF-8)."] };
   }
-  if (!isObj4(raw) || raw.v !== 1) return { ok: false, errors: ["Soumission invalide (format)."] };
+  if (!isObj5(raw) || raw.v !== 1) return { ok: false, errors: ["Soumission invalide (format)."] };
   const errors = [];
   const [, id, version] = where;
   if (raw.id !== id || raw.version !== version) errors.push("Le nom du fichier ne correspond pas \xE0 l\u2019identifiant et \xE0 la version.");
@@ -19397,12 +20496,13 @@ function parseSubmission(file, text, opts = {}) {
   const size = raw.size;
   if (!(typeof size === "number" && Number.isInteger(size) && size > 0 && size <= cap)) errors.push("Taille invalide.");
   if (typeof raw.sha256 !== "string" || !SHA_RE.test(raw.sha256)) errors.push("Empreinte SHA-256 invalide.");
-  const pub = isObj4(raw.publisher) ? raw.publisher : {};
+  const pub = isObj5(raw.publisher) ? raw.publisher : {};
   if (!isValidPublicKey(pub.key)) errors.push("Cl\xE9 d\u2019\xE9diteur invalide.");
   const publisherName = cleanText(pub.name, LIMITS.name);
   if (!publisherName) errors.push("Nom d\u2019\xE9diteur manquant.");
   if (kind === "system" && typeof raw.signature !== "string") errors.push("Un syst\xE8me doit porter sa signature (node scripts/sign-module.js --system).");
   if (kind === "theme" && typeof raw.signature !== "string") errors.push("Un th\xE8me doit porter sa signature (tools/verifier.js entry \u2026 --key).");
+  if (kind === "dice" && typeof raw.signature !== "string") errors.push("Un jeu de d\xE9s doit porter sa signature (tools/verifier.js entry \u2026 --key).");
   if (kind === "translation" && typeof raw.signature !== "string") errors.push("Une traduction doit porter sa signature (tools/verifier.js entry \u2026 --key).");
   if (kind === "compendium" && typeof raw.signature !== "string") errors.push("Un paquet de biblioth\xE8que doit porter sa signature (tools/verifier.js entry \u2026 --key).");
   if (kind === "compendium" && raw.system === void 0) errors.push("Un paquet de biblioth\xE8que dit son syst\xE8me (system).");
@@ -19500,8 +20600,8 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.1.11";
-var SINCE_REV = 1;
+var APP_VERSION = "0.2.0";
+var SINCE_REV = 2;
 var AT_0_1_0 = [
   "component:Avatar",
   "component:Checkbox",
@@ -19624,15 +20724,16 @@ var AT_0_1_0 = [
   "theme:v1",
   "view:Main"
 ];
-var SINCE = Object.freeze(Object.fromEntries(AT_0_1_0.map((k) => [k, "0.1.0"])));
-var isObj5 = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
+var AT_0_2_0 = ["dice:rules", "dice:v1"];
+var SINCE = Object.freeze(Object.fromEntries([...AT_0_1_0.map((k) => [k, "0.1.0"]), ...AT_0_2_0.map((k) => [k, "0.2.0"])]));
+var isObj6 = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
 var THEME_IDENTITY = /* @__PURE__ */ new Set(["format", "v", "id", "name", "version", "author", "license", "description"]);
 var NODE_KEYS = /* @__PURE__ */ new Set(["className", "id", "children"]);
 function systemFeatures(doc, out) {
   out.add(`doc:v${Number(doc.v) || 1}`);
   const walk3 = (x) => {
     if (Array.isArray(x)) return x.forEach(walk3);
-    if (!isObj5(x)) return;
+    if (!isObj6(x)) return;
     if (typeof x.className === "string") {
       out.add("component:" + x.className);
       for (const k of Object.keys(x)) if (!NODE_KEYS.has(k)) out.add(`prop:${x.className}.${k}`);
@@ -19640,12 +20741,12 @@ function systemFeatures(doc, out) {
     Object.values(x).forEach(walk3);
   };
   for (const v of Array.isArray(doc.views) ? doc.views : []) {
-    if (isObj5(v) && typeof v.type === "string") out.add("view:" + v.type);
+    if (isObj6(v) && typeof v.type === "string") out.add("view:" + v.type);
     walk3(v);
   }
-  if (isObj5(doc.rules)) for (const b of Object.keys(doc.rules)) out.add("rules:" + b);
-  if (isObj5(doc.roles)) {
-    for (const r of Object.values(doc.roles)) if (isObj5(r)) for (const k of Object.keys(r)) out.add("role:" + k);
+  if (isObj6(doc.rules)) for (const b of Object.keys(doc.rules)) out.add("rules:" + b);
+  if (isObj6(doc.roles)) {
+    for (const r of Object.values(doc.roles)) if (isObj6(r)) for (const k of Object.keys(r)) out.add("role:" + k);
   }
   if (Array.isArray(doc.skins) && doc.skins.length) out.add("skins");
 }
@@ -19657,15 +20758,18 @@ function featuresOf(kind, bytes) {
   } catch {
     return [];
   }
-  if (!isObj5(raw)) return [];
+  if (!isObj6(raw)) return [];
   const out = /* @__PURE__ */ new Set();
-  if (kind === "system" && isObj5(raw.doc)) systemFeatures(raw.doc, out);
+  if (kind === "system" && isObj6(raw.doc)) systemFeatures(raw.doc, out);
   else if (kind === "theme") {
     out.add(`theme:v${Number(raw.v) || 1}`);
     for (const k of Object.keys(raw)) if (!THEME_IDENTITY.has(k)) out.add("theme:" + k);
+  } else if (kind === "dice") {
+    out.add(`dice:v${Number(raw.v) || 1}`);
+    if (isObj6(raw.skin) && raw.skin.rules !== void 0) out.add("dice:rules");
   } else if (kind === "compendium") {
     out.add(`library:v${Number(raw.v) || 1}`);
-    if (Array.isArray(raw.entries) && raw.entries.some((e) => isObj5(e) && e.action !== void 0 && e.action !== null)) out.add("library:action");
+    if (Array.isArray(raw.entries) && raw.entries.some((e) => isObj6(e) && e.action !== void 0 && e.action !== null)) out.add("library:action");
   }
   return [...out].sort();
 }
@@ -19682,7 +20786,6 @@ function minAppOf(kind, bytes, declared) {
 // apps/desktop/src/catalog/pipeline.ts
 var sha2563 = (b) => import_node_crypto3.default.createHash("sha256").update(b).digest("hex");
 var message = (err) => err instanceof Error ? err.message : String(err);
-var extOf = (kind) => kind === "module" ? "zip" : kind === "theme" ? "ourdir-theme.json" : kind === "translation" ? "ourdir-translation.json" : kind === "compendium" ? "ourdirlib" : "ttsystem.json";
 var PUBLISH_MIN = 0.8;
 var MAX_PACKAGES_PER_KEY = 40;
 var FETCH_PARALLEL = 8;
@@ -19833,6 +20936,15 @@ async function makeSubmission(bytes, o, _deps) {
     access = "free";
     publisher = { name: o.publisherName || "\xC9diteur", key: o.identity.publicKey };
     signature = signPackageFile(bytes, o.identity);
+  } else if (JSON.parse(bytes.toString("utf8"))?.format === "ourdir-dice") {
+    kind = "dice";
+    const doc = JSON.parse(bytes.toString("utf8"));
+    if (!o.identity) throw new Error("Un jeu de d\xE9s se signe avec la cl\xE9 de son \xE9diteur (--key).");
+    id = String(doc.id);
+    version = String(doc.version);
+    access = "free";
+    publisher = { name: o.publisherName || "\xC9diteur", key: o.identity.publicKey };
+    signature = signPackageFile(bytes, o.identity);
   } else {
     kind = "system";
     const file = JSON.parse(bytes.toString("utf8"));
@@ -19899,6 +21011,16 @@ function checkTheme(bytes, s, deps2) {
     out.push(message(err));
   }
   return out;
+}
+function checkDice(bytes, s) {
+  try {
+    if (!verifyPackageFile(bytes, s.publisher.key, s.signature)) return ["La signature du jeu de d\xE9s ne correspond pas \xE0 la cl\xE9 de l\u2019\xE9diteur."];
+    const r = readCatalogueDice(bytes);
+    if (r.ok === false) return [r.error];
+    return r.doc.id !== s.id || r.doc.version !== s.version ? ["Le jeu de d\xE9s annonce un autre identifiant ou une autre version que la soumission."] : [];
+  } catch {
+    return ["Ce fichier n\u2019est pas un jeu de d\xE9s Ourdir lisible."];
+  }
 }
 function checkTranslation(bytes, s, deps2) {
   if (!verifyPackageFile(bytes, s.publisher.key, s.signature)) return ["La signature de la traduction ne correspond pas \xE0 la cl\xE9 de l\u2019\xE9diteur."];
@@ -19969,7 +21091,7 @@ async function checkSubmission(file, text, repoDir, deps2) {
   }
   if (bytes.length !== s.size) errors.push(`Taille : ${bytes.length} octets au lieu de ${s.size}.`);
   else if (sha2563(bytes) !== s.sha256) errors.push("Empreinte SHA-256 diff\xE9rente de celle d\xE9clar\xE9e.");
-  else errors.push(...s.kind === "system" ? checkSystem(bytes, s, deps2) : s.kind === "theme" ? checkTheme(bytes, s, deps2) : s.kind === "translation" ? checkTranslation(bytes, s, deps2) : s.kind === "compendium" ? checkLibrary(bytes, s, readSubmissions(repoDir, deps2).filter((x) => x.kind === "system").map((x) => x.id)) : checkModule(bytes, s));
+  else errors.push(...s.kind === "system" ? checkSystem(bytes, s, deps2) : s.kind === "theme" ? checkTheme(bytes, s, deps2) : s.kind === "dice" ? checkDice(bytes, s) : s.kind === "translation" ? checkTranslation(bytes, s, deps2) : s.kind === "compendium" ? checkLibrary(bytes, s, readSubmissions(repoDir, deps2).filter((x) => x.kind === "system").map((x) => x.id)) : checkModule(bytes, s));
   const minApp = errors.length === 0 ? minAppFor(s, bytes) : void 0;
   return { file, id: s.id, version: s.version, ok: errors.length === 0, errors, ...minApp ? { minApp } : {} };
 }
