@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.2.0. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.2.1. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -3339,6 +3339,15 @@ var require_fr = __commonJS({
       "ui.dice.effect.knell": "Glas",
       "ui.dice.effect.thud": "Coup sourd",
       "ui.dice.effect.chime": "Carillon",
+      "ui.dice.effect.embers": "Braises",
+      "ui.dice.effect.debris": "\xC9clats de pierre",
+      "ui.dice.effect.dust": "Souffle de poussi\xE8re",
+      "ui.dice.effect.heat": "Lueur chaude",
+      "ui.dice.effect.runes": "Cercle de runes",
+      "ui.dice.effect.arcs": "Arcs d\u2019\xE9nergie",
+      "ui.dice.effect.shards": "\xC9clats de cristal",
+      "ui.dice.effect.wisp": "Flamme spectrale",
+      "ui.dice.effect.stars": "Halo d\u2019\xE9toiles",
       "ui.dice.effectWhere.die": "sur le d\xE9",
       "ui.dice.effectWhere.map": "sur la carte",
       "ui.dice.effectWhere.screen": "\xE9cran",
@@ -3350,6 +3359,14 @@ var require_fr = __commonJS({
       "ui.dice.picker.sound": "Son",
       "ui.dice.field.bodyColor": "Couleur du d\xE9",
       "ui.dice.field.patternColor": "Couleur du motif",
+      "ui.dice.field.patternColor3": "Troisi\xE8me couleur",
+      "ui.dice.effect.family.realistic": "R\xE9aliste",
+      "ui.dice.effect.family.magic": "Magique",
+      "ui.dice.effect.family.screen": "\xC9cran et son",
+      "ui.dice.img.frame": "Cadrage",
+      "ui.dice.img.frameHint": "Glisse l\u2019image pour la d\xE9placer, molette pour zoomer.",
+      "ui.dice.img.rotate": "Rotation",
+      "ui.dice.img.reset": "Recentrer",
       "ui.dice.field.swatches": "Teintes rapides",
       "ui.dice.field.metalness": "M\xE9tal",
       "ui.dice.field.roughness": "Rugosit\xE9",
@@ -3379,10 +3396,31 @@ var require_fr = __commonJS({
       "ui.dice.choice.pattern.wood": "Bois",
       "ui.dice.choice.pattern.veins": "Veines",
       "ui.dice.choice.pattern.sparkle": "Paillettes",
+      "ui.dice.choice.pattern.granite": "Granit",
+      "ui.dice.choice.pattern.resin": "R\xE9sine",
+      "ui.dice.choice.pattern.pearl": "Nacre",
+      "ui.dice.choice.pattern.nebula": "N\xE9buleuse",
+      "ui.dice.choice.pattern.brushed": "M\xE9tal bross\xE9",
+      "ui.dice.choice.pattern.bone": "Os",
       "ui.dice.choice.font.serif": "Empatt\xE9e",
       "ui.dice.choice.font.sans": "B\xE2ton",
       "ui.dice.choice.font.mono": "Machine",
       "ui.dice.choice.font.display": "Titre d\u2019Ourdir",
+      "ui.dice.choice.font.alegreya": "Alegreya (livre)",
+      "ui.dice.choice.font.barlow": "Barlow (affiche)",
+      "ui.dice.choice.font.inter": "Inter (net)",
+      "ui.dice.choice.font.exo2": "Exo 2 (science-fiction)",
+      "ui.dice.choice.font.michroma": "Michroma (techno)",
+      "ui.dice.choice.font.fell": "IM Fell (grimoire)",
+      "ui.dice.choice.font.crimson": "Crimson (romain)",
+      "ui.dice.choice.font.playfair": "Playfair (\xE9l\xE9gant)",
+      "ui.dice.choice.font.courierprime": "Courier Prime (machine)",
+      "ui.dice.choice.font.specialelite": "Special Elite (machine us\xE9e)",
+      "ui.dice.choice.font.chakra": "Chakra Petch (HUD)",
+      "ui.dice.choice.font.sharetech": "Share Tech (terminal)",
+      "ui.dice.choice.font.stencil": "Saira Stencil (pochoir)",
+      "ui.dice.choice.font.caveat": "Caveat (manuscrite)",
+      "ui.dice.choice.font.jetbrains": "JetBrains Mono (code)",
       "ui.dice.choice.trail.none": "Aucune",
       "ui.dice.choice.trail.spark": "\xC9tincelles",
       "ui.dice.choice.trail.smoke": "Fum\xE9e",
@@ -3404,7 +3442,7 @@ var require_fr = __commonJS({
       "ui.dice.img.choose": "Choisir une image\u2026",
       "ui.dice.img.remove": "Retirer l\u2019image",
       "ui.dice.img.thumbAlt": "Aper\xE7u de l\u2019image",
-      "ui.dice.img.info": "{name} \xB7 r\xE9duite \xE0 256 \xD7 256 \xB7 {kb} Ko"
+      "ui.dice.img.info": "{name} \xB7 {kb} Ko"
     };
   }
 });
@@ -12027,7 +12065,28 @@ var require_fr2 = __commonJS({
       "dice.preset.emeraude": "\xC9meraude",
       "dice.preset.or": "Or",
       "dice.preset.os-ancien": "Os ancien",
-      "dice.preset.neon": "N\xE9on"
+      "dice.preset.neon": "N\xE9on",
+      "ask.no": "Annuler",
+      "ask.yes": "Confirmer",
+      "ask.save": "Enregistrer",
+      "ask.delete": "Supprimer",
+      "sheetHead.settings": "Param\xE8tres",
+      "sheetHead.title": "Fiche : ",
+      "craftMenu.open": "Ouvrir",
+      "craftMenu.rename": "Renommer",
+      "craftMenu.renameTitle": "Renommer la fiche",
+      "craftMenu.duplicate": "Dupliquer",
+      "craftMenu.delete": "Supprimer",
+      "craftMenu.deleteAsk": "Supprimer \xAB {name} \xBB ? La fiche dispara\xEEt pour toute la table, sans retour possible.",
+      "folders.newItem": "Nouvelle fiche dans ce dossier",
+      "craftFolders.untitled": "Sans titre",
+      "favs.title": "Jets favoris",
+      "favs.hint": "Les jets coch\xE9s sont ceux de l'acc\xE8s rapide, en haut \xE0 droite. Sans choix, il montre les actions de la fiche.",
+      "favs.of": "Jets de {name}",
+      "favs.none": "S\xE9lectionne le jeton d'un personnage pour choisir ses jets.",
+      "favs.noRolls": "La fiche de {name} n'a pas de jet.",
+      "favs.filter": "Chercher un jet",
+      "favs.count": "{n} sur {max}"
     };
   }
 });
@@ -12788,7 +12847,7 @@ var require_en = __commonJS({
       "Are you sure you want to clear all your drawings ?": "Are you sure you want to clear all your drawings ?",
       "Are you sure you want to clear the turn order ?": "Are you sure you want to clear the turn order ?",
       "Are you sure you want to clone this craft?": "Are you sure you want to clone this craft?",
-      "Are you sure you want to delete this craft?": "Are you sure you want to delete this craft?",
+      "Are you sure you want to delete this craft?": "Delete this sheet? It is gone for the whole table, for good.",
       "Are you sure you want to delete this entry?": "Are you sure you want to delete this entry?",
       "Are you sure you want to delete this folder? All folders and entries inside will be deleted.": "Are you sure you want to delete this folder? All folders and entries inside will be deleted.",
       "Are you sure you want to delete this media?": "Are you sure you want to delete this media?",
@@ -13281,7 +13340,7 @@ var require_en = __commonJS({
       "Unlock layer": "Unlock layer",
       Unlocked: "Unlocked",
       Untitled: "Untitled",
-      "Untitled %{type}": "Untitled %{type}",
+      "Untitled %{type}": "Untitled",
       "Untitled playlist": "Untitled playlist",
       "Untitled recording": "Untitled recording",
       "Untitled scene": "Untitled scene",
@@ -16662,6 +16721,15 @@ var require_en2 = __commonJS({
       "ui.dice.effect.knell": "Knell",
       "ui.dice.effect.thud": "Thud",
       "ui.dice.effect.chime": "Chime",
+      "ui.dice.effect.embers": "Embers",
+      "ui.dice.effect.debris": "Stone chips",
+      "ui.dice.effect.dust": "Dust burst",
+      "ui.dice.effect.heat": "Warm glow",
+      "ui.dice.effect.runes": "Rune circle",
+      "ui.dice.effect.arcs": "Energy arcs",
+      "ui.dice.effect.shards": "Crystal shards",
+      "ui.dice.effect.wisp": "Spectral flame",
+      "ui.dice.effect.stars": "Star halo",
       "ui.dice.effectWhere.die": "on the die",
       "ui.dice.effectWhere.map": "on the map",
       "ui.dice.effectWhere.screen": "screen",
@@ -16673,6 +16741,14 @@ var require_en2 = __commonJS({
       "ui.dice.picker.sound": "Sound",
       "ui.dice.field.bodyColor": "Die colour",
       "ui.dice.field.patternColor": "Pattern colour",
+      "ui.dice.field.patternColor3": "Third colour",
+      "ui.dice.effect.family.realistic": "Realistic",
+      "ui.dice.effect.family.magic": "Magic",
+      "ui.dice.effect.family.screen": "Screen and sound",
+      "ui.dice.img.frame": "Framing",
+      "ui.dice.img.frameHint": "Drag the picture to move it, wheel to zoom.",
+      "ui.dice.img.rotate": "Rotation",
+      "ui.dice.img.reset": "Centre",
       "ui.dice.field.swatches": "Quick colours",
       "ui.dice.field.metalness": "Metal",
       "ui.dice.field.roughness": "Roughness",
@@ -16702,10 +16778,31 @@ var require_en2 = __commonJS({
       "ui.dice.choice.pattern.wood": "Wood",
       "ui.dice.choice.pattern.veins": "Veins",
       "ui.dice.choice.pattern.sparkle": "Sparkle",
+      "ui.dice.choice.pattern.granite": "Granite",
+      "ui.dice.choice.pattern.resin": "Resin",
+      "ui.dice.choice.pattern.pearl": "Mother of pearl",
+      "ui.dice.choice.pattern.nebula": "Nebula",
+      "ui.dice.choice.pattern.brushed": "Brushed metal",
+      "ui.dice.choice.pattern.bone": "Bone",
       "ui.dice.choice.font.serif": "Serif",
       "ui.dice.choice.font.sans": "Sans",
       "ui.dice.choice.font.mono": "Monospace",
       "ui.dice.choice.font.display": "Ourdir title",
+      "ui.dice.choice.font.alegreya": "Alegreya (book)",
+      "ui.dice.choice.font.barlow": "Barlow (poster)",
+      "ui.dice.choice.font.inter": "Inter (clean)",
+      "ui.dice.choice.font.exo2": "Exo 2 (science fiction)",
+      "ui.dice.choice.font.michroma": "Michroma (techno)",
+      "ui.dice.choice.font.fell": "IM Fell (grimoire)",
+      "ui.dice.choice.font.crimson": "Crimson (roman)",
+      "ui.dice.choice.font.playfair": "Playfair (elegant)",
+      "ui.dice.choice.font.courierprime": "Courier Prime (typewriter)",
+      "ui.dice.choice.font.specialelite": "Special Elite (worn typewriter)",
+      "ui.dice.choice.font.chakra": "Chakra Petch (HUD)",
+      "ui.dice.choice.font.sharetech": "Share Tech (terminal)",
+      "ui.dice.choice.font.stencil": "Saira Stencil (stencil)",
+      "ui.dice.choice.font.caveat": "Caveat (handwritten)",
+      "ui.dice.choice.font.jetbrains": "JetBrains Mono (code)",
       "ui.dice.choice.trail.none": "None",
       "ui.dice.choice.trail.spark": "Sparks",
       "ui.dice.choice.trail.smoke": "Smoke",
@@ -16727,7 +16824,7 @@ var require_en2 = __commonJS({
       "ui.dice.img.choose": "Choose an image\u2026",
       "ui.dice.img.remove": "Remove the image",
       "ui.dice.img.thumbAlt": "Image preview",
-      "ui.dice.img.info": "{name} \xB7 reduced to 256 \xD7 256 \xB7 {kb} KB"
+      "ui.dice.img.info": "{name} \xB7 {kb} KB"
     };
   }
 });
@@ -18449,7 +18546,28 @@ var require_en3 = __commonJS({
       "dice.preset.emeraude": "Emerald",
       "dice.preset.or": "Gold",
       "dice.preset.os-ancien": "Old bone",
-      "dice.preset.neon": "Neon"
+      "dice.preset.neon": "Neon",
+      "ask.no": "Cancel",
+      "ask.yes": "Confirm",
+      "ask.save": "Save",
+      "ask.delete": "Delete",
+      "sheetHead.settings": "Settings",
+      "sheetHead.title": "Sheet: ",
+      "craftMenu.open": "Open",
+      "craftMenu.rename": "Rename",
+      "craftMenu.renameTitle": "Rename the sheet",
+      "craftMenu.duplicate": "Duplicate",
+      "craftMenu.delete": "Delete",
+      "craftMenu.deleteAsk": "Delete \u201C{name}\u201D? The sheet is gone for the whole table, for good.",
+      "folders.newItem": "New sheet in this folder",
+      "craftFolders.untitled": "Untitled",
+      "favs.title": "Favourite rolls",
+      "favs.hint": "The ticked rolls are the quick access ones, top right. With none chosen, it shows the sheet's actions.",
+      "favs.of": "{name}'s rolls",
+      "favs.none": "Select a character's token to choose its rolls.",
+      "favs.noRolls": "{name}'s sheet has no roll.",
+      "favs.filter": "Find a roll",
+      "favs.count": "{n} of {max}"
     };
   }
 });
@@ -19984,9 +20102,40 @@ function requestedPermissions(p) {
 var DIE_KEYS = ["d4", "d6", "d8", "d10", "d12", "d20", "d100"];
 var MAX_SKIN_CHARS = 300 * 1024;
 var MAX_IMAGE_BYTES = 200 * 1024;
+var DICE_FONTS = ["serif", "sans", "mono", "display", "alegreya", "barlow", "inter", "exo2", "michroma", "fell", "crimson", "playfair", "courierprime", "specialelite", "chakra", "sharetech", "stencil", "caveat", "jetbrains"];
+var PATTERNS = ["plain", "marble", "wood", "veins", "sparkle", "granite", "resin", "pearl", "nebula", "brushed", "bone"];
+var SINCE_021 = { fonts: DICE_FONTS.slice(4), patterns: PATTERNS.slice(5) };
 var TRIGGERS = ["critical", "fumble", "min", "max", "rest", "hit-wall", "hit-token", "hit-floor", "hit-die"];
 var VALUE_TRIGGERS = ["critical", "fumble", "min", "max", "rest"];
-var EFFECT_KINDS = ["sparks", "flames", "lightning", "aura", "smoke", "coins", "crack", "shock", "glare", "shake", "flash", "bell", "gong", "knell", "thud", "chime"];
+var EFFECT_KINDS = [
+  "sparks",
+  "flames",
+  "lightning",
+  "aura",
+  "smoke",
+  "coins",
+  "crack",
+  "shock",
+  "glare",
+  "shake",
+  "flash",
+  "bell",
+  "gong",
+  "knell",
+  "thud",
+  "chime",
+  // 0.2.1: the « realistic » family (embers, debris, dust, heat) and the « magic » one (runes, arcs, shards, wisp, stars)
+  "embers",
+  "debris",
+  "dust",
+  "heat",
+  "runes",
+  "arcs",
+  "shards",
+  "wisp",
+  "stars"
+];
+var EFFECTS_SINCE_021 = ["embers", "debris", "dust", "heat", "runes", "arcs", "shards", "wisp", "stars"];
 var MAX_RULES = 12;
 var MAX_EFFECTS = 4;
 var C = { t: "color" };
@@ -19994,8 +20143,9 @@ var I = (min, max) => ({ t: "int", min, max });
 var E = (values) => ({ t: "enum", values });
 var RULES2 = {
   body: { color: C, metalness: I(0, 100), roughness: I(0, 100), opacity: I(20, 100), emissive: C, emissiveStrength: I(0, 100) },
-  pattern: { kind: E(["plain", "marble", "wood", "veins", "sparkle"]), color2: C, scale: I(0, 100), seed: I(0, 999999) },
-  numbers: { color: C, outline: C, font: E(["serif", "sans", "mono", "display"]), weight: I(0, 100) },
+  // (an optional field is never filled in: a set of before keeps its exact text, its fingerprint, its place in the catalogue)
+  pattern: { kind: E(PATTERNS), color2: C, scale: I(0, 100), seed: I(0, 999999), color3: { t: "color", optional: true } },
+  numbers: { color: C, outline: C, font: E(DICE_FONTS), weight: I(0, 100) },
   glow: { color: C, strength: I(0, 20) },
   trail: { kind: E(["none", "spark", "smoke", "ribbon"]), color: C, length: I(0, 100) },
   sound: { material: E(["wood", "stone", "metal", "glass", "bone"]), volume: I(0, 100) }
@@ -20029,7 +20179,7 @@ function group(name, input, base) {
     if (has(src, k)) {
       if (!okValue(rule, src[k])) return { ok: false, error: `look.${name}.${k}` };
       out[k] = src[k];
-    } else if (base) out[k] = base[k];
+    } else if (base && !rule.optional) out[k] = base[k];
   }
   return { ok: true, value: out };
 }
@@ -20054,13 +20204,21 @@ function checkImage(data) {
   const sig = m[1] === "png" ? startsWith(bytes, [137, 80, 78, 71, 13, 10, 26, 10]) : m[1] === "jpeg" ? startsWith(bytes, [255, 216, 255]) : startsWith(bytes, [82, 73, 70, 70]) && startsWith(bytes.subarray(8), [87, 69, 66, 80]);
   return sig ? null : "image.type";
 }
+var FRAMING = [["x", -100, 100], ["y", -100, 100], ["zoom", 25, 400], ["rotate", 0, 359]];
 function imageOf(input) {
   if (input === null || input === void 0) return { ok: true, value: null };
   if (!isObj4(input)) return { ok: false, error: "look.image.mode" };
   if (input.mode !== "cover" && input.mode !== "stamp") return { ok: false, error: "look.image.mode" };
   const bad3 = checkImage(input.data);
   if (bad3) return { ok: false, error: bad3 };
-  return { ok: true, value: { mode: input.mode, data: input.data } };
+  const value = { mode: input.mode, data: input.data };
+  for (const [k, min, max] of FRAMING) {
+    if (!has(input, k)) continue;
+    const v = input[k];
+    if (typeof v !== "number" || !Number.isInteger(v) || v < min || v > max) return { ok: false, error: "look.image." + k };
+    value[k] = v;
+  }
+  return { ok: true, value };
 }
 function partial(input) {
   if (!isObj4(input)) return { ok: false, error: "shape" };
@@ -20600,8 +20758,8 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.2.0";
-var SINCE_REV = 2;
+var APP_VERSION = "0.2.1";
+var SINCE_REV = 3;
 var AT_0_1_0 = [
   "component:Avatar",
   "component:Checkbox",
@@ -20725,7 +20883,8 @@ var AT_0_1_0 = [
   "view:Main"
 ];
 var AT_0_2_0 = ["dice:rules", "dice:v1"];
-var SINCE = Object.freeze(Object.fromEntries([...AT_0_1_0.map((k) => [k, "0.1.0"]), ...AT_0_2_0.map((k) => [k, "0.2.0"])]));
+var AT_0_2_1 = ["dice:effects2", "dice:fonts2", "dice:framing", "dice:patterns2"];
+var SINCE = Object.freeze(Object.fromEntries([...AT_0_1_0.map((k) => [k, "0.1.0"]), ...AT_0_2_0.map((k) => [k, "0.2.0"]), ...AT_0_2_1.map((k) => [k, "0.2.1"])]));
 var isObj6 = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
 var THEME_IDENTITY = /* @__PURE__ */ new Set(["format", "v", "id", "name", "version", "author", "license", "description"]);
 var NODE_KEYS = /* @__PURE__ */ new Set(["className", "id", "children"]);
@@ -20750,6 +20909,18 @@ function systemFeatures(doc, out) {
   }
   if (Array.isArray(doc.skins) && doc.skins.length) out.add("skins");
 }
+function diceFeatures(skin, out) {
+  const looks = [skin.look, ...isObj6(skin.perType) ? Object.values(skin.perType) : []];
+  for (const l of looks) {
+    if (!isObj6(l)) continue;
+    if (isObj6(l.numbers) && SINCE_021.fonts.includes(String(l.numbers.font))) out.add("dice:fonts2");
+    if (isObj6(l.pattern) && (SINCE_021.patterns.includes(String(l.pattern.kind)) || l.pattern.color3 !== void 0)) out.add("dice:patterns2");
+    if (isObj6(l.image) && ["x", "y", "zoom", "rotate"].some((k) => l.image[k] !== void 0)) out.add("dice:framing");
+  }
+  for (const r of Array.isArray(skin.rules) ? skin.rules : []) {
+    if (isObj6(r) && Array.isArray(r.do) && r.do.some((e) => isObj6(e) && EFFECTS_SINCE_021.includes(String(e.kind)))) out.add("dice:effects2");
+  }
+}
 function featuresOf(kind, bytes) {
   if (kind === "module" || kind === "translation") return [];
   let raw;
@@ -20767,6 +20938,7 @@ function featuresOf(kind, bytes) {
   } else if (kind === "dice") {
     out.add(`dice:v${Number(raw.v) || 1}`);
     if (isObj6(raw.skin) && raw.skin.rules !== void 0) out.add("dice:rules");
+    if (isObj6(raw.skin)) diceFeatures(raw.skin, out);
   } else if (kind === "compendium") {
     out.add(`library:v${Number(raw.v) || 1}`);
     if (Array.isArray(raw.entries) && raw.entries.some((e) => isObj6(e) && e.action !== void 0 && e.action !== null)) out.add("library:action");
