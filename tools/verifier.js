@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.2.1. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.2.2. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -12081,12 +12081,15 @@ var require_fr2 = __commonJS({
       "folders.newItem": "Nouvelle fiche dans ce dossier",
       "craftFolders.untitled": "Sans titre",
       "favs.title": "Jets favoris",
-      "favs.hint": "Les jets coch\xE9s sont ceux de l'acc\xE8s rapide, en haut \xE0 droite. Sans choix, il montre les actions de la fiche.",
-      "favs.of": "Jets de {name}",
-      "favs.none": "S\xE9lectionne le jeton d'un personnage pour choisir ses jets.",
-      "favs.noRolls": "La fiche de {name} n'a pas de jet.",
-      "favs.filter": "Chercher un jet",
-      "favs.count": "{n} sur {max}"
+      "favs.hint": "Les jets de l'acc\xE8s rapide, en haut \xE0 droite, dans cet ordre. Huit au plus ; gard\xE9s sur cet ordinateur.",
+      "favs.noRolls": "Cette fiche n'a pas de jet.",
+      "favs.reset": "R\xE9tablir les actions de la fiche",
+      "favs.slot": "Jet favori {n}",
+      "favs.empty": "\u2014 vide \u2014",
+      "host.media.folderMap": "Cartes",
+      "host.media.folderToken": "Jetons",
+      "host.media.folderImage": "Images",
+      "host.media.folderOther": "Autre"
     };
   }
 });
@@ -18562,12 +18565,15 @@ var require_en3 = __commonJS({
       "folders.newItem": "New sheet in this folder",
       "craftFolders.untitled": "Untitled",
       "favs.title": "Favourite rolls",
-      "favs.hint": "The ticked rolls are the quick access ones, top right. With none chosen, it shows the sheet's actions.",
-      "favs.of": "{name}'s rolls",
-      "favs.none": "Select a character's token to choose its rolls.",
-      "favs.noRolls": "{name}'s sheet has no roll.",
-      "favs.filter": "Find a roll",
-      "favs.count": "{n} of {max}"
+      "favs.hint": "The rolls of the quick access, top right, in this order. Eight at most; kept on this computer.",
+      "favs.noRolls": "This sheet has no roll.",
+      "favs.reset": "Back to the sheet's actions",
+      "favs.slot": "Favourite roll {n}",
+      "favs.empty": "\u2014 empty \u2014",
+      "host.media.folderMap": "Maps",
+      "host.media.folderToken": "Tokens",
+      "host.media.folderImage": "Pictures",
+      "host.media.folderOther": "Other"
     };
   }
 });
@@ -20758,7 +20764,7 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.2.1";
+var APP_VERSION = "0.2.2";
 var SINCE_REV = 3;
 var AT_0_1_0 = [
   "component:Avatar",
