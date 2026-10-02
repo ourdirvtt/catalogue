@@ -1,0 +1,31 @@
+{
+  "v": 1,
+  "id": "orc-remaster-rules-fr",
+  "version": "1.0.0",
+  "kind": "module",
+  "name": "Règles Remaster ORC (français)",
+  "url": "https://github.com/ourdirvtt/modules/releases/download/orc-remaster-rules-fr-1.0.0/orc-remaster-rules-fr.zip",
+  "size": 872311,
+  "sha256": "f8689aa36036d3419eb0d0a28b0ca998073f6e20b969f3f8003fe23a924a0a30",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "permissions": [
+    "ui.panel",
+    "ui.toolbar",
+    "chat.write",
+    "chat.command"
+  ],
+  "license": "ORC",
+  "summary": "Création de personnage et règles du jeu Remaster ORC, en français",
+  "description": "",
+  "tags": [
+    "orc",
+    "compendium"
+  ],
+  "languages": [
+    "fr"
+  ],
+  "access": "free"
+}
