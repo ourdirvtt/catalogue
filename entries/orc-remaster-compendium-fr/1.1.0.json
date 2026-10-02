@@ -1,0 +1,34 @@
+{
+  "v": 1,
+  "id": "orc-remaster-compendium-fr",
+  "version": "1.1.0",
+  "kind": "module",
+  "name": "Compendium Remaster ORC (français)",
+  "url": "https://github.com/ourdirvtt/modules/releases/download/orc-remaster-compendium-fr-1.1.0/orc-remaster-compendium-fr.zip",
+  "size": 676032,
+  "sha256": "99d32becd621692d4bb90db2c5b364401cdfb37762186f47f4c779079340f97f",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "permissions": [
+    "ui.panel",
+    "ui.toolbar",
+    "chat.write",
+    "chat.command",
+    "sheet.read",
+    "sheet.write"
+  ],
+  "license": "ORC",
+  "summary": "Compendium Remaster ORC en français",
+  "description": "",
+  "tags": [
+    "orc",
+    "compendium",
+    "fr"
+  ],
+  "languages": [
+    "fr"
+  ],
+  "access": "free"
+}
