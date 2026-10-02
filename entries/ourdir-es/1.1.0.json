@@ -1,0 +1,24 @@
+{
+  "v": 1,
+  "id": "ourdir-es",
+  "version": "1.1.0",
+  "kind": "translation",
+  "name": "Español",
+  "url": "https://catalogue.ourdir.fr/v2/partages/ourdir-es/1.1.0.ourdir-translation.json",
+  "size": 335094,
+  "sha256": "36e7a58e1b73d6940af47e9ae9a42f1082d096a3009848796b3e4d93e1bebdbd",
+  "publisher": {
+    "name": "Talep",
+    "key": "HqAxfszWwKwBvbmN40udBqtgKQEcPyw72Cyc2R6_0JM"
+  },
+  "signature": "fVXkkl5M-J1t_EB3EyRpzoP5OF5hWPJ-svpdm_IXC394ETHsYcxOgx-uI489F7EzPNLxwz3UPCjZ_MTvbrx4Dg",
+  "permissions": [],
+  "license": "CC-BY-4.0",
+  "summary": "0.2.3",
+  "description": "",
+  "tags": [],
+  "languages": [
+    "es"
+  ],
+  "access": "free"
+}
