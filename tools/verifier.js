@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.2.3. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.2.4. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -11136,6 +11136,21 @@ var require_fr2 = __commonJS({
       "music.errGone": "Cette vid\xE9o n\u2019existe plus ou est priv\xE9e (code {code}).",
       "music.errOther": "YouTube n\u2019a pas pu lire cette vid\xE9o (code {code}).",
       "music.errReferrer": "YouTube refuse la lecture : il ne reconna\xEEt pas la page qui l\u2019int\xE8gre (code {code}).",
+      "palette.act.damage": "Blesser {name} de {n} points de vie",
+      "palette.act.damageMany": "Blesser les {count} jetons s\xE9lectionn\xE9s de {n} points de vie",
+      "palette.act.heal": "Soigner {name} de {n} points de vie",
+      "palette.act.healMany": "Soigner les {count} jetons s\xE9lectionn\xE9s de {n} points de vie",
+      "palette.act.state": "Mettre \xAB {state} \xBB sur {name}",
+      "palette.act.target": "Cibler {name}",
+      "palette.g.actions": "Action",
+      "palette.g.recent": "R\xE9cents",
+      "palette.g.token": "Jeton",
+      "palette.kw.token": "jeton token carte",
+      "palette.loading": "Chargement de la fiche\u2026",
+      "palette.placeholderScope": "Jets de {name} : taper un jet\u2026",
+      "palette.scopeOff": "Quitter cette fiche (Retour arri\xE8re)",
+      "palette.scopeTo": "Jets de {name}\u2026",
+      "palette.tokenOf": "Jeton : {name}",
       "people.colour": "Ma couleur",
       "people.failed": "Le choix n\u2019a pas pu \xEAtre enregistr\xE9.",
       "people.me": "Toi",
@@ -11793,6 +11808,7 @@ var require_fr2 = __commonJS({
       "themes.horreur": "Horreur",
       "themes.metier": "M\xE9tier",
       "themes.noir": "Film noir",
+      "tokenBars.health": "Points de vie",
       "uvtt.notUvtt": "Ce fichier n\u2019est pas une carte Universal VTT (.dd2vtt, .uvtt, .df2vtt).",
       "vision.gpuLost": "\xC9clairage : la carte graphique a d\xE9croch\xE9, rendu simplifi\xE9.",
       "vision.gpuLostRetry": "\xC9clairage : la carte graphique a d\xE9croch\xE9, rendu simplifi\xE9 le temps de la retrouver.",
@@ -11942,7 +11958,7 @@ var require_fr2 = __commonJS({
       "quickbar.toggle": "Replier ou d\xE9plier la barre rapide",
       "palette.title": "Commandes",
       "palette.field": "Rechercher une commande",
-      "palette.placeholder": "Taper une commande, un jet, une fiche\u2026",
+      "palette.placeholder": "Une commande, un jet, une fiche\u2026 ou \xAB d\xE9g\xE2ts 8 gobelin \xBB",
       "palette.esc": "\xC9chap",
       "palette.none": "Aucune commande ne correspond.",
       "palette.count": "{n} r\xE9sultat(s)",
@@ -17631,6 +17647,21 @@ var require_en3 = __commonJS({
       "music.errGone": "This video no longer exists or is private (code {code}).",
       "music.errOther": "YouTube could not play this video (code {code}).",
       "music.errReferrer": "YouTube refuses to play: it does not recognise the page embedding it (code {code}).",
+      "palette.act.damage": "Hurt {name} for {n} hit points",
+      "palette.act.damageMany": "Hurt the {count} selected tokens for {n} hit points each",
+      "palette.act.heal": "Heal {name} for {n} hit points",
+      "palette.act.healMany": "Heal the {count} selected tokens for {n} hit points each",
+      "palette.act.state": "Put \u201C{state}\u201D on {name}",
+      "palette.act.target": "Target {name}",
+      "palette.g.actions": "Action",
+      "palette.g.recent": "Recent",
+      "palette.g.token": "Token",
+      "palette.kw.token": "token map",
+      "palette.loading": "Loading the sheet\u2026",
+      "palette.placeholderScope": "Rolls of {name}: type a roll\u2026",
+      "palette.scopeOff": "Leave this sheet (Backspace)",
+      "palette.scopeTo": "Rolls of {name}\u2026",
+      "palette.tokenOf": "Token: {name}",
       "people.colour": "My colour",
       "people.failed": "The choice could not be saved.",
       "people.me": "You",
@@ -18288,6 +18319,7 @@ var require_en3 = __commonJS({
       "themes.horreur": "Horror",
       "themes.metier": "Loom",
       "themes.noir": "Film noir",
+      "tokenBars.health": "Hit points",
       "uvtt.notUvtt": "This file is not a Universal VTT map (.dd2vtt, .uvtt, .df2vtt).",
       "vision.gpuLost": "Lighting: the graphics card dropped out, simplified rendering.",
       "vision.gpuLostRetry": "Lighting: the graphics card dropped out, simplified rendering while it comes back.",
@@ -18437,7 +18469,7 @@ var require_en3 = __commonJS({
       "quickbar.toggle": "Fold or unfold the quick bar",
       "palette.title": "Commands",
       "palette.field": "Search a command",
-      "palette.placeholder": "Type a command, a roll, a sheet\u2026",
+      "palette.placeholder": "A command, a roll, a sheet\u2026 or \u201Churt 8 goblin\u201D",
       "palette.esc": "Esc",
       "palette.none": "No command matches.",
       "palette.count": "{n} result(s)",
@@ -20786,7 +20818,7 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.2.3";
+var APP_VERSION = "0.2.4";
 var SINCE_REV = 3;
 var AT_0_1_0 = [
   "component:Avatar",
