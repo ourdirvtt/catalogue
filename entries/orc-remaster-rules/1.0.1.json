@@ -1,0 +1,35 @@
+{
+  "v": 1,
+  "id": "orc-remaster-rules",
+  "version": "1.0.1",
+  "kind": "module",
+  "name": "Règles Remaster ORC (anglais)",
+  "url": "https://github.com/ourdirvtt/modules/releases/download/orc-remaster-rules-1.0.1/orc-remaster-rules.zip",
+  "size": 792679,
+  "sha256": "51cc70346ae3f72f4433ce6309371d599a91dd72a8f3ef670a48471e322f8999",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "permissions": [
+    "ui.panel",
+    "ui.toolbar",
+    "chat.write",
+    "chat.command"
+  ],
+  "license": "ORC",
+  "summary": "Création de personnage et règles du jeu Remaster ORC, en anglais",
+  "description": "",
+  "tags": [
+    "orc",
+    "compendium"
+  ],
+  "system": {
+    "id": "orc-remaster-en",
+    "minVersion": "1.0.0"
+  },
+  "languages": [
+    "en"
+  ],
+  "access": "free"
+}

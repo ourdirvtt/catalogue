@@ -1,0 +1,37 @@
+{
+  "v": 1,
+  "id": "orc-remaster-compendium",
+  "version": "1.0.1",
+  "kind": "module",
+  "name": "Compendium Remaster ORC (anglais)",
+  "url": "https://github.com/ourdirvtt/modules/releases/download/orc-remaster-compendium-1.0.1/orc-remaster-compendium.zip",
+  "size": 609098,
+  "sha256": "63ace1efc363406a1cb2a549fda8d29f0494b77b9297cae536047c79372b8ed2",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "permissions": [
+    "ui.panel",
+    "ui.toolbar",
+    "chat.write",
+    "chat.command",
+    "sheet.read",
+    "sheet.write"
+  ],
+  "license": "ORC",
+  "summary": "Créatures, PNJ, dons, sorts, objets et traits du jeu Remaster ORC, en anglais",
+  "description": "",
+  "tags": [
+    "orc",
+    "compendium"
+  ],
+  "system": {
+    "id": "orc-remaster-en",
+    "minVersion": "1.0.0"
+  },
+  "languages": [
+    "en"
+  ],
+  "access": "free"
+}
