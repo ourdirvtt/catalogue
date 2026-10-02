@@ -1,0 +1,25 @@
+{
+  "id": "orc-remaster",
+  "name": "Remaster ORC",
+  "aliases": [
+    "orc",
+    "remaster",
+    "remaster orc",
+    "trois actions",
+    "3 actions",
+    "d20 trois actions",
+    "pathfinder second edition"
+  ],
+  "edition": "Remaster (livres sous licence ORC)",
+  "languages": [
+    "fr",
+    "en"
+  ],
+  "licenseSummary": "Mécaniques sous licence ORC ; non officiel, non approuvé par Paizo Inc. Aucun nom, logo ni illustration de l'éditeur.",
+  "systems": [
+    "orc-remaster-fr",
+    "orc-remaster-en",
+    "orc-remaster-creature-fr",
+    "orc-remaster-creature-en"
+  ]
+}
