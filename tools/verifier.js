@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.2.2. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.2.3. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -10371,6 +10371,11 @@ var require_fr2 = __commonJS({
       "actions.noRoll": "Le jet n\u2019a pas eu lieu : rien n\u2019est d\xE9pens\xE9.",
       "actions.notSaved": "La d\xE9pense n\u2019a pas pu \xEAtre enregistr\xE9e.",
       "actions.tooFast": "Trop de clics : patiente un instant.",
+      "across.copiedItems": "{n} \xE9l\xE9ment(s) copi\xE9(s)",
+      "across.copiedTokens": "{n} jeton(s) copi\xE9(s)",
+      "across.cutItems": "{n} \xE9l\xE9ment(s) coup\xE9(s)",
+      "across.cutTokens": "{n} jeton(s) coup\xE9(s)",
+      "across.pastedItems": "{n} \xE9l\xE9ment(s) coll\xE9(s)",
       "ambiencePanel.dark": "Sombre",
       "ambiencePanel.darkHint": "Presque noir : on ne voit qu\u2019\xE0 c\xF4t\xE9 de soi.",
       "ambiencePanel.day": "Jour",
@@ -10551,6 +10556,8 @@ var require_fr2 = __commonJS({
       "compendium.title": "Compendium",
       "compendium.window": "Fen\xEAtre",
       "compendium.windowHint": "Ouvrir dans une fen\xEAtre",
+      "contextMenu.groupPlace": "Disposition",
+      "contextMenu.groupState": "Jauges et \xE9tats",
       "contextMenu.makeManyMany": "Cr\xE9ation de masse ({n} images)",
       "contextMenu.makeManyOne": "Cr\xE9ation de masse ({n} image)",
       "contextMenu.makeOne": "Cr\xE9er un PNJ avec cette image",
@@ -11125,6 +11132,10 @@ var require_fr2 = __commonJS({
       "massCreate.noPath": "Une des images n\u2019est pas dans la m\xE9diath\xE8que de la table : elle ne peut pas devenir une fiche.",
       "massCreate.none": "S\xE9lectionnez d\u2019abord des images de la carte.",
       "massCreate.working": "Cr\xE9ation de masse : {done} sur {total}\u2026",
+      "music.errEmbed": "Cette vid\xE9o ne se joue pas ici : son auteur interdit la lecture hors de YouTube (code {code}).",
+      "music.errGone": "Cette vid\xE9o n\u2019existe plus ou est priv\xE9e (code {code}).",
+      "music.errOther": "YouTube n\u2019a pas pu lire cette vid\xE9o (code {code}).",
+      "music.errReferrer": "YouTube refuse la lecture : il ne reconna\xEEt pas la page qui l\u2019int\xE8gre (code {code}).",
       "people.colour": "Ma couleur",
       "people.failed": "Le choix n\u2019a pas pu \xEAtre enregistr\xE9.",
       "people.me": "Toi",
@@ -16855,6 +16866,11 @@ var require_en3 = __commonJS({
       "actions.noRoll": "The roll did not happen: nothing is spent.",
       "actions.notSaved": "The spending could not be saved.",
       "actions.tooFast": "Too many clicks: wait a moment.",
+      "across.copiedItems": "{n} item(s) copied",
+      "across.copiedTokens": "{n} token(s) copied",
+      "across.cutItems": "{n} item(s) cut",
+      "across.cutTokens": "{n} token(s) cut",
+      "across.pastedItems": "{n} item(s) pasted",
       "ambiencePanel.dark": "Dark",
       "ambiencePanel.darkHint": "Nearly black: you only see right next to you.",
       "ambiencePanel.day": "Day",
@@ -17035,6 +17051,8 @@ var require_en3 = __commonJS({
       "compendium.title": "Compendium",
       "compendium.window": "Window",
       "compendium.windowHint": "Open in a window",
+      "contextMenu.groupPlace": "Arrangement",
+      "contextMenu.groupState": "Gauges and states",
       "contextMenu.makeManyMany": "Mass creation ({n} images)",
       "contextMenu.makeManyOne": "Mass creation ({n} image)",
       "contextMenu.makeOne": "Create an NPC with this image",
@@ -17609,6 +17627,10 @@ var require_en3 = __commonJS({
       "massCreate.noPath": "One of the images is not in the table's media library: it cannot become a sheet.",
       "massCreate.none": "First select images on the map.",
       "massCreate.working": "Mass creation: {done} of {total}\u2026",
+      "music.errEmbed": "This video cannot play here: its owner forbids playing it outside YouTube (code {code}).",
+      "music.errGone": "This video no longer exists or is private (code {code}).",
+      "music.errOther": "YouTube could not play this video (code {code}).",
+      "music.errReferrer": "YouTube refuses to play: it does not recognise the page embedding it (code {code}).",
       "people.colour": "My colour",
       "people.failed": "The choice could not be saved.",
       "people.me": "You",
@@ -20764,7 +20786,7 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.2.2";
+var APP_VERSION = "0.2.3";
 var SINCE_REV = 3;
 var AT_0_1_0 = [
   "component:Avatar",
