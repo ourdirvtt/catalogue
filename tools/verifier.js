@@ -497,6 +497,7 @@ var require_fr = __commonJS({
       "err.format.badDate": "{id} {version} : date de publication invalide.",
       "err.format.badDep": "{id} : d\xE9pendance invalide.",
       "err.format.badEntryId": "Identifiant d\u2019entr\xE9e invalide : {id}.",
+      "err.format.badGames": "Liste des jeux illisible.",
       "err.format.badKind": "{id} : type inconnu.",
       "err.format.badPublisherKey": "{id} : cl\xE9 d\u2019\xE9diteur invalide.",
       "err.format.badSha": "{id} {version} : empreinte invalide.",
@@ -510,6 +511,10 @@ var require_fr = __commonJS({
       "err.format.duplicate": "Entr\xE9e en double : {id}.",
       "err.format.expires": "Date d\u2019expiration invalide.",
       "err.format.expiresFirst": "L\u2019index expire avant d\u2019\xEAtre g\xE9n\xE9r\xE9.",
+      "err.format.gameNoName": "Jeu \xAB {id} \xBB : il faut un nom.",
+      "err.format.gameSystemTwice": "Jeu \xAB {id} \xBB : la fiche \xAB {system} \xBB appartient d\xE9j\xE0 au jeu \xAB {other} \xBB.",
+      "err.format.gameSystems": "Jeu \xAB {id} \xBB : sa liste de fiches est vide, trop longue ou invalide.",
+      "err.format.gameTwice": "Jeu \xAB {id} \xBB en double.",
       "err.format.generated": "Date de g\xE9n\xE9ration invalide.",
       "err.format.indexIllisibleJsonInvalide": "Index illisible (JSON invalide).",
       "err.format.indexTropVolumineux": "Index trop volumineux.",
@@ -521,6 +526,7 @@ var require_fr = __commonJS({
       "err.format.sequence": "Num\xE9ro de s\xE9quence invalide.",
       "err.format.tooMany": "Trop d\u2019entr\xE9es.",
       "err.format.tooManyDeps": "{id} : trop de d\xE9pendances.",
+      "err.format.tooManyGames": "Trop de jeux dans l\u2019index.",
       "err.format.tooManyVersions": "{id} : trop de versions.",
       "err.format.unknownPublisher": "\xC9diteur inconnu",
       "err.format.unreadable": "Entr\xE9e illisible.",
@@ -2514,6 +2520,19 @@ var require_fr = __commonJS({
       "ui.cat.showCommunity": "Afficher le contenu communautaire",
       "ui.cat.verifiedOnly": "Seul le contenu v\xE9rifi\xE9 est montr\xE9 (Ourdir, Officiel, Valid\xE9).",
       "ui.cat.hiddenOne": "1 contenu communautaire correspond : l\u2019afficher",
+      "ui.cat.games": "Jeux",
+      "ui.cat.gamesMore": "Voir les {n} jeux",
+      "ui.cat.gamesLess": "R\xE9duire",
+      "ui.cat.gameOpen": "Ouvrir",
+      "ui.cat.gameBack": "\u2190 Tous les jeux",
+      "ui.cat.gameRecommended": "Fiche recommand\xE9e",
+      "ui.cat.gameOthers": "Autres fiches",
+      "ui.cat.gameContents": "Contenus",
+      "ui.cat.gameNoSheet": "Aucune fiche lisible par cette version d\u2019Ourdir pour ce jeu.",
+      "ui.cat.gameCount": "{n} \xE9l\xE9ments",
+      "ui.cat.gameCountOne": "1 \xE9l\xE9ment",
+      "ui.cat.allContent": "Tout le contenu",
+      "ui.cat.gameEmpty": "Rien \xE0 montrer pour ce jeu avec les r\xE9glages actuels.",
       "ui.cat.hiddenMany": "{n} contenus communautaires correspondent : les afficher",
       "ui.grades.title": "Pourquoi monter en grade ?",
       "ui.grades.intro": "Tout contenu publi\xE9 est d\u2019abord Communautaire : les contr\xF4les automatiques l\u2019ont accept\xE9, personne ne l\u2019a encore relu. Valid\xE9 veut dire qu\u2019une personne l\u2019a relu : c\u2019est la marque de qualit\xE9 d\u2019Ourdir.",
@@ -13909,6 +13928,7 @@ var require_en2 = __commonJS({
       "err.format.badDate": "{id} {version}: invalid publication date.",
       "err.format.badDep": "{id}: invalid dependency.",
       "err.format.badEntryId": "Invalid entry id: {id}.",
+      "err.format.badGames": "The list of games cannot be read.",
       "err.format.badKind": "{id}: unknown kind.",
       "err.format.badPublisherKey": "{id}: invalid publisher key.",
       "err.format.badSha": "{id} {version}: invalid fingerprint.",
@@ -13922,6 +13942,10 @@ var require_en2 = __commonJS({
       "err.format.duplicate": "Duplicate entry: {id}.",
       "err.format.expires": "Invalid expiry date.",
       "err.format.expiresFirst": "The index expires before it is generated.",
+      "err.format.gameNoName": "Game \u201C{id}\u201D: it needs a name.",
+      "err.format.gameSystemTwice": "Game \u201C{id}\u201D: the sheet \u201C{system}\u201D already belongs to the game \u201C{other}\u201D.",
+      "err.format.gameSystems": "Game \u201C{id}\u201D: its list of sheets is empty, too long or invalid.",
+      "err.format.gameTwice": "Game \u201C{id}\u201D appears twice.",
       "err.format.generated": "Invalid generation date.",
       "err.format.indexIllisibleJsonInvalide": "Unreadable index (invalid JSON).",
       "err.format.indexTropVolumineux": "Index too large.",
@@ -13933,6 +13957,7 @@ var require_en2 = __commonJS({
       "err.format.sequence": "Invalid sequence number.",
       "err.format.tooMany": "Too many entries.",
       "err.format.tooManyDeps": "{id}: too many dependencies.",
+      "err.format.tooManyGames": "Too many games in the index.",
       "err.format.tooManyVersions": "{id}: too many versions.",
       "err.format.unknownPublisher": "Unknown publisher",
       "err.format.unreadable": "Unreadable entry.",
@@ -15926,6 +15951,19 @@ var require_en2 = __commonJS({
       "ui.cat.showCommunity": "Show community content",
       "ui.cat.verifiedOnly": "Only verified content is shown (Ourdir, Official, Validated).",
       "ui.cat.hiddenOne": "1 community item matches: show it",
+      "ui.cat.games": "Games",
+      "ui.cat.gamesMore": "Show all {n} games",
+      "ui.cat.gamesLess": "Show fewer",
+      "ui.cat.gameOpen": "Open",
+      "ui.cat.gameBack": "\u2190 All games",
+      "ui.cat.gameRecommended": "Recommended sheet",
+      "ui.cat.gameOthers": "Other sheets",
+      "ui.cat.gameContents": "Contents",
+      "ui.cat.gameNoSheet": "No sheet for this game that this version of Ourdir can read.",
+      "ui.cat.gameCount": "{n} items",
+      "ui.cat.gameCountOne": "1 item",
+      "ui.cat.allContent": "All content",
+      "ui.cat.gameEmpty": "Nothing to show for this game with the current settings.",
       "ui.cat.hiddenMany": "{n} community items match: show them",
       "ui.grades.title": "Why move up a grade?",
       "ui.grades.intro": "Everything published starts as Community: the automatic checks accepted it, nobody has read it yet. Validated means a person read it: it is Ourdir's mark of quality.",
@@ -19706,6 +19744,12 @@ var LIMITS = {
   successions: 500,
   languages: 12,
   dependencies: 20,
+  games: 500,
+  gameAliases: 12,
+  gameAlias: 40,
+  gameEdition: 40,
+  licenseSummary: 500,
+  gameSystems: 200,
   packageBytes: 256 * MB,
   systemBytes: 10 * MB
 };
@@ -19756,6 +19800,54 @@ function requirement(v) {
   if (!isObj(v) || typeof v.id !== "string" || !ID_RE2.test(v.id)) return null;
   if (v.minVersion === void 0) return { id: v.id };
   return typeof v.minVersion === "string" && VERSION_RE2.test(v.minVersion) ? { id: v.id, minVersion: v.minVersion } : null;
+}
+function readGames(raw, err) {
+  if (raw === void 0) return [];
+  if (!Array.isArray(raw)) {
+    err(say("err.format.badGames"));
+    return [];
+  }
+  if (raw.length > LIMITS.games) {
+    err(say("err.format.tooManyGames"));
+    return [];
+  }
+  const games = [];
+  const ids = /* @__PURE__ */ new Set();
+  const owner = /* @__PURE__ */ new Map();
+  for (const g of raw) {
+    if (!isObj(g) || typeof g.id !== "string" || !ID_RE2.test(g.id)) {
+      err(say("err.format.badGames"));
+      continue;
+    }
+    const id = g.id;
+    if (ids.has(id)) {
+      err(say("err.format.gameTwice", { id }));
+      continue;
+    }
+    ids.add(id);
+    const name = cleanText(g.name, LIMITS.name);
+    if (name.length < 2) {
+      err(say("err.format.gameNoName", { id }));
+      continue;
+    }
+    const aliases = [...new Set((Array.isArray(g.aliases) ? g.aliases : []).map((a) => cleanText(a, LIMITS.gameAlias)).filter(Boolean))].slice(0, LIMITS.gameAliases);
+    const edition = cleanText(g.edition, LIMITS.gameEdition) || void 0;
+    const languages = (Array.isArray(g.languages) ? g.languages : []).filter((l) => typeof l === "string" && LANG_RE.test(l)).slice(0, LIMITS.languages);
+    const rawSystems = Array.isArray(g.systems) ? g.systems : [];
+    const systems = rawSystems.filter((s) => typeof s === "string" && ID_RE2.test(s));
+    if (!systems.length || systems.length !== rawSystems.length || systems.length > LIMITS.gameSystems || new Set(systems).size !== systems.length) {
+      err(say("err.format.gameSystems", { id }));
+      continue;
+    }
+    const taken = systems.find((s) => owner.has(s));
+    if (taken) {
+      err(say("err.format.gameSystemTwice", { id, system: taken, other: owner.get(taken) }));
+      continue;
+    }
+    for (const s of systems) owner.set(s, id);
+    games.push({ id, name, aliases, ...edition ? { edition } : {}, languages, licenseSummary: cleanText(g.licenseSummary, LIMITS.licenseSummary), systems });
+  }
+  return games;
 }
 function parseIndex(bytes, opts = {}) {
   const errors = [];
@@ -19938,10 +20030,11 @@ function parseIndex(bytes, opts = {}) {
   const packages = (Array.isArray(rev.packages) ? rev.packages : []).filter(isObj).filter((p) => typeof p.id === "string" && ID_RE2.test(p.id) && (p.version === void 0 || typeof p.version === "string" && VERSION_RE2.test(p.version))).slice(0, LIMITS.revokedPackages).map((p) => ({ id: p.id, version: p.version }));
   const successions = (Array.isArray(raw.successions) ? raw.successions : []).filter(isObj).filter((f) => typeof f.body === "string" && f.body.length <= 1024 && (f.sig === null || isObj(f.sig)) && (f.delegation === void 0 || typeof f.delegation === "string" && f.delegation.length <= 4096)).slice(0, LIMITS.successions).map((f) => ({ body: f.body, sig: f.sig, ...typeof f.delegation === "string" ? { delegation: f.delegation } : {} }));
   const sinceRev = typeof raw.sinceRev === "number" && Number.isSafeInteger(raw.sinceRev) && raw.sinceRev > 0 ? raw.sinceRev : void 0;
+  const games = readGames(raw.games, err);
   if (errors.length) return { ok: false, errors };
   return {
     ok: true,
-    index: { format: CATALOG_FORMAT, v: CATALOG_VERSION, sequence, generatedAt, expiresAt, entries, revoked: { keys, packages }, successions, ...sinceRev ? { sinceRev } : {} }
+    index: { format: CATALOG_FORMAT, v: CATALOG_VERSION, sequence, generatedAt, expiresAt, entries, revoked: { keys, packages }, successions, ...sinceRev ? { sinceRev } : {}, ...games.length ? { games } : {} }
   };
 }
 
@@ -20545,6 +20638,7 @@ var GRACE_MS = 14 * 864e5;
 var dirs = (root) => ({
   entries: import_node_path4.default.join(root, "entries"),
   packages: import_node_path4.default.join(root, "packages"),
+  games: import_node_path4.default.join(root, "games"),
   revoked: import_node_path4.default.join(root, "revoked.json"),
   state: import_node_path4.default.join(root, "state.json"),
   out: import_node_path4.default.join(root, "public")
@@ -20563,11 +20657,22 @@ var writeJson = (file, data) => {
 };
 var CatalogError = class extends Error {
 };
+function readGameFiles(dir) {
+  if (!import_node_fs4.default.existsSync(dir)) return [];
+  const out = [];
+  for (const f of import_node_fs4.default.readdirSync(dir).filter((x) => x.endsWith(".json")).sort()) {
+    const g = readJson(import_node_path4.default.join(dir, f), null);
+    if (!g || typeof g !== "object" || `${g.id}.json` !== f) throw new CatalogError(`Le jeu \xAB ${f} \xBB : le nom du fichier doit \xEAtre l\u2019identifiant du jeu, suivi de .json.`);
+    out.push(g);
+  }
+  return out;
+}
 function build2(root, identity, opts = {}) {
   const d = dirs(root);
   const now = opts.now ?? /* @__PURE__ */ new Date();
   const days = opts.days ?? 30;
   const entries = import_node_fs4.default.existsSync(d.entries) ? import_node_fs4.default.readdirSync(d.entries).filter((f) => f.endsWith(".json")).sort().map((f) => readJson(import_node_path4.default.join(d.entries, f), null)) : [];
+  const games = readGameFiles(d.games);
   const tiersFile = import_node_path4.default.join(root, TIERS_FILE);
   const tiers = import_node_fs4.default.existsSync(tiersFile) ? parseTiers(import_node_fs4.default.readFileSync(tiersFile)) : null;
   for (const e of entries) {
@@ -20587,7 +20692,9 @@ function build2(root, identity, opts = {}) {
     // key replacements the CI kept (spec « clé perdue » §2.4); a maintainer's folder has none
     successions: readJson(import_node_path4.default.join(root, "successions.json"), []),
     // the table that computed each version's minApp (catalog/since.ts): the CI reuses them while it stays the same
-    ...opts.sinceRev ? { sinceRev: opts.sinceRev } : {}
+    ...opts.sinceRev ? { sinceRev: opts.sinceRev } : {},
+    // the maintainer's games (spec « catalogue par jeu » §3), as written
+    ...games.length ? { games } : {}
   };
   const bytes = Buffer.from(JSON.stringify(index, null, 2) + "\n", "utf8");
   const parsed = parseIndex(bytes, { loopbackPort: opts.loopbackPort });
@@ -21479,6 +21586,11 @@ async function publishCatalog(o, deps2) {
   }
   import_node_fs5.default.mkdirSync(import_node_path5.default.join(work, "entries"), { recursive: true });
   for (const [id, e] of entries) import_node_fs5.default.writeFileSync(import_node_path5.default.join(work, "entries", `${id}.json`), JSON.stringify(e, null, 2));
+  const gamesFrom = import_node_path5.default.join(o.repoDir, "games");
+  if (import_node_fs5.default.existsSync(gamesFrom)) {
+    import_node_fs5.default.mkdirSync(import_node_path5.default.join(work, "games"), { recursive: true });
+    for (const f of import_node_fs5.default.readdirSync(gamesFrom).filter((x) => x.endsWith(".json"))) import_node_fs5.default.copyFileSync(import_node_path5.default.join(gamesFrom, f), import_node_path5.default.join(work, "games", f));
+  }
   for (const f of [DELEGATION_FILE, TIERS_FILE, TIERS_SIGNATURE_FILE, "revoked.json", RECOVERY_DELEGATION_FILE, LICENCE_DELEGATION_FILE]) {
     if (import_node_fs5.default.existsSync(import_node_path5.default.join(o.repoDir, f))) import_node_fs5.default.copyFileSync(import_node_path5.default.join(o.repoDir, f), import_node_path5.default.join(work, f));
   }
