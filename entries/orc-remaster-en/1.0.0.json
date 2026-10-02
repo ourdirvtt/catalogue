@@ -1,0 +1,27 @@
+{
+  "v": 1,
+  "id": "orc-remaster-en",
+  "version": "1.0.0",
+  "kind": "system",
+  "name": "Remaster ORC (unofficial)",
+  "url": "https://github.com/ourdirvtt/modules/releases/download/orc-remaster-en-1.0.0/fiche-remaster-orc-en.json",
+  "size": 398195,
+  "sha256": "f6bd1c8dc826a4b503704cf0df0bc1c25c277c9abcc45b6918859410c41523a6",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "signature": "XHvApAwf9NQLYNnswt1AmTG4EIBOfnGRuYMUhwYlb1hhAmd6y_Me_xGJKy3ZmnYKNlVUNF87kdFWqcR1r_RWAw",
+  "permissions": [],
+  "license": "ORC",
+  "summary": "Unofficial character sheet for the Remaster ORC game, in English: skills, three actions, spells, six skins.",
+  "description": "",
+  "tags": [
+    "orc",
+    "fiche"
+  ],
+  "languages": [
+    "en"
+  ],
+  "access": "free"
+}

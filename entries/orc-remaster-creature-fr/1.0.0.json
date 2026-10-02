@@ -1,0 +1,27 @@
+{
+  "v": 1,
+  "id": "orc-remaster-creature-fr",
+  "version": "1.0.0",
+  "kind": "system",
+  "name": "Remaster ORC : créature (non officiel)",
+  "url": "https://github.com/ourdirvtt/modules/releases/download/orc-remaster-creature-fr-1.0.0/fiche-remaster-orc-creature-fr.json",
+  "size": 111894,
+  "sha256": "e12251b4c79aa198243bce1f3e2c2436745ab7e475147d4c35a69a35f9b3ce23",
+  "publisher": {
+    "name": "Ourdir",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "signature": "ZvPICI-zMZePjWpBWJE8lO6OjdTRjHlxN7_ok9AZT7I7zajQXNOl5LVs1xrsL_aPK-FXpugtYxVUnxTHtAVcBw",
+  "permissions": [],
+  "license": "ORC",
+  "summary": "Fiche de créature non officielle du jeu Remaster ORC, en français.",
+  "description": "",
+  "tags": [
+    "orc",
+    "fiche"
+  ],
+  "languages": [
+    "fr"
+  ],
+  "access": "free"
+}
