@@ -1,0 +1,21 @@
+{
+  "id": "cyberpunk-red",
+  "name": "Cyberpunk RED",
+  "aliases": [
+    "cyberpunk",
+    "cpred",
+    "red",
+    "cyberpunk 2020",
+    "night city"
+  ],
+  "edition": "RED",
+  "languages": [
+    "fr",
+    "en"
+  ],
+  "licenseSummary": "Fiche non officielle, gratuite, sans texte ni règle du jeu. Contenu non approuvé par R. Talsorian Games, publié sous leur politique de contenu amateur (Homebrew Content Policy).",
+  "systems": [
+    "cpred-fr",
+    "cpred-en"
+  ]
+}
