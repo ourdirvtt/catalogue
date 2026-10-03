@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.3.0. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.3.1. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -3406,6 +3406,7 @@ var require_fr = __commonJS({
       "ui.dice.field.outline": "Contour",
       "ui.dice.field.font": "Police",
       "ui.dice.field.weight": "Graisse",
+      "ui.dice.field.size": "Taille des chiffres",
       "ui.dice.field.glowTitle": "Lueur",
       "ui.dice.field.glow": "Lueur pendant le lancer",
       "ui.dice.field.glowColor": "Couleur de la lueur",
@@ -10809,6 +10810,12 @@ var require_fr2 = __commonJS({
       "grid.alignCancel": "Annuler",
       "grid.alignNoMap": "Il n\u2019y a pas de carte sur cette sc\xE8ne.",
       "grid.calibrate": "Caler la grille sur la carte\u2026",
+      "tokenScale.label": "Taille de tous les jetons et images (calques de jetons)",
+      "tokenScale.apply": "Appliquer",
+      "tokenScale.hint": "100 % ne change rien ; 120 % agrandit tout d\u2019un cinqui\xE8me, 50 % r\xE9duit de moiti\xE9. Chacun grandit autour de son centre.",
+      "tokenScale.range": "Entre 10 % et 500 %.",
+      "tokenScale.done": "{n} jeton(s) ou image(s) redimensionn\xE9(s).",
+      "tokenScale.none": "Aucun jeton sur cette sc\xE8ne.",
       "grid.calDone": "Grille cal\xE9e : cases de {px} unit\xE9s.",
       "grid.calFound": "Cases trouv\xE9es sur la carte : {px} unit\xE9s.",
       "grid.calHelp": "Molette sur la carte : cases plus grandes ou plus petites (Maj : plus fin). Glisser : d\xE9placer la carte sous la grille.",
@@ -11809,7 +11816,7 @@ var require_fr2 = __commonJS({
       "sheetTabs.origin": "Origine",
       "sheetTabs.outfitName": "Nom de la tenue",
       "sheetTabs.outfits": "Tenues",
-      "sheetTabs.outfitsHint": "Cliquez une tenue pour la porter : le jeton pos\xE9 sur la carte suit. Glissez les vignettes pour les ordonner. Maintenez Q sur votre jeton pour la roue des favoris.",
+      "sheetTabs.outfitsHint": "Cliquez une tenue pour la porter : le jeton pos\xE9 sur la carte suit. Glissez les vignettes pour les ordonner : les cinq premi\xE8res (Q1 \xE0 Q5) forment la roue que vous ouvrez en maintenant Q sur votre jeton.",
       "sheetTabs.params": "Param\xE8tres",
       "sheetTabs.personality": "Personnalit\xE9",
       "sheetTabs.portrait": "Image",
@@ -12253,7 +12260,11 @@ var require_fr2 = __commonJS({
       "skyPanel.tipSeason": "La hauteur du soleil et la dur\xE9e du jour",
       "skyPanel.tipMoon": "La lune des nuits de cette sc\xE8ne",
       "skyPanel.tipWeather": "{name} : tous les joueurs voient le m\xEAme temps, il change en fondu de 4 s",
-      "skyPanel.tipClouds": "La part du ciel couverte par temps clair : leurs ombres glissent sur la carte",
+      "skyPanel.tipClouds": "Plus ou moins de nuages : un ciel voil\xE9, gris ou charg\xE9 de pluie",
+      "skyPanel.rain": "Intensit\xE9 de la pluie",
+      "skyPanel.fog": "\xC9paisseur du brouillard",
+      "skyPanel.tipRain": "Du crachin \xE0 l\u2019averse : la densit\xE9 des gouttes",
+      "skyPanel.tipFog": "Plus ou moins de brouillard sur la carte",
       "skyPanel.tipLightning": "Coupe les \xE9clairs de l\u2019orage (pour les personnes sensibles \xE0 la lumi\xE8re)",
       "skyPanel.tipSpectacle": "Rayons dans l\u2019air, poussi\xE8re, nuages qui passent ; plus l\xE9ger s\u2019il est coup\xE9",
       "skyPanel.tipLit": "La nuit, les fen\xEAtres des b\xE2timents s\u2019allument et s\u2019\xE9teignent d\u2019elles-m\xEAmes",
@@ -12265,6 +12276,8 @@ var require_fr2 = __commonJS({
       "host.scene.skySeason": "Ciel : saison inconnue.",
       "host.scene.skyLitWindows": "Ciel : fen\xEAtres allum\xE9es, oui ou non.",
       "host.scene.skyClouds": "Ciel : la couverture nuageuse va de 0 \xE0 1.",
+      "host.scene.skyRain": "Ciel : la pluie va de 0 \xE0 1.",
+      "host.scene.skyFog": "Ciel : le brouillard va de 0 \xE0 1.",
       "host.scene.skySpectacle": "Ciel : rayons, poussi\xE8re et nuages qui passent, oui ou non.",
       "host.scene.skyWeather": "Ciel : la m\xE9t\xE9o est clair, voile, couvert, pluie, brouillard ou orage.",
       "host.scene.skyLightning": "Ciel : les \xE9clairs, oui ou non.",
@@ -16991,6 +17004,7 @@ var require_en2 = __commonJS({
       "ui.dice.field.outline": "Outline",
       "ui.dice.field.font": "Font",
       "ui.dice.field.weight": "Boldness",
+      "ui.dice.field.size": "Number size",
       "ui.dice.field.glowTitle": "Glow",
       "ui.dice.field.glow": "Glow while rolling",
       "ui.dice.field.glowColor": "Glow colour",
@@ -17456,6 +17470,12 @@ var require_en3 = __commonJS({
       "grid.alignCancel": "Cancel",
       "grid.alignNoMap": "There is no map on this scene.",
       "grid.calibrate": "Fit the grid to the map\u2026",
+      "tokenScale.label": "Size of every token and picture (token layers)",
+      "tokenScale.apply": "Apply",
+      "tokenScale.hint": "100% changes nothing; 120% makes everything a fifth bigger, 50% halves it. Each grows about its own centre.",
+      "tokenScale.range": "Between 10% and 500%.",
+      "tokenScale.done": "{n} token(s) or picture(s) resized.",
+      "tokenScale.none": "No token on this scene.",
       "grid.calDone": "Grid fitted: cells of {px} units.",
       "grid.calFound": "Cells found on the map: {px} units.",
       "grid.calHelp": "Wheel over the map: bigger or smaller cells (Shift: finer). Drag: move the map under the grid.",
@@ -18456,7 +18476,7 @@ var require_en3 = __commonJS({
       "sheetTabs.origin": "Origin",
       "sheetTabs.outfitName": "Outfit name",
       "sheetTabs.outfits": "Outfits",
-      "sheetTabs.outfitsHint": "Click an outfit to put it on: the token on the map follows. Drag the thumbnails to order them. Hold Q over your token for the wheel of favourites.",
+      "sheetTabs.outfitsHint": "Click an outfit to put it on: the token on the map follows. Drag the thumbnails to order them: the first five (Q1 to Q5) make the wheel you open by holding Q over your token.",
       "sheetTabs.params": "Settings",
       "sheetTabs.personality": "Personality",
       "sheetTabs.portrait": "Picture",
@@ -18900,7 +18920,11 @@ var require_en3 = __commonJS({
       "skyPanel.tipSeason": "How high the sun climbs and how long the day lasts",
       "skyPanel.tipMoon": "The moon of this scene\u2019s nights",
       "skyPanel.tipWeather": "{name}: every player sees the same weather, it fades in over 4 s",
-      "skyPanel.tipClouds": "How much of a clear sky is cloud: their shadows drift across the map",
+      "skyPanel.tipClouds": "More or less cloud: a veiled, grey or rainy sky",
+      "skyPanel.rain": "Rain strength",
+      "skyPanel.fog": "Fog thickness",
+      "skyPanel.tipRain": "From a drizzle to a downpour: how dense the drops are",
+      "skyPanel.tipFog": "More or less fog over the map",
       "skyPanel.tipLightning": "Turns the storm\u2019s flashes off (for people sensitive to light)",
       "skyPanel.tipSpectacle": "Shafts in the air, dust, drifting clouds; lighter when off",
       "skyPanel.tipLit": "At night, the buildings\u2019 windows light up and go dark by themselves",
@@ -18912,6 +18936,8 @@ var require_en3 = __commonJS({
       "host.scene.skySeason": "Sky: unknown season.",
       "host.scene.skyLitWindows": "Sky: lit windows must be on or off.",
       "host.scene.skyClouds": "Sky: the cloud cover goes from 0 to 1.",
+      "host.scene.skyRain": "Sky: the rain goes from 0 to 1.",
+      "host.scene.skyFog": "Sky: the fog goes from 0 to 1.",
       "host.scene.skySpectacle": "Sky: shafts, dust and drifting clouds must be on or off.",
       "host.scene.skyWeather": "Sky: the weather is clair, voile, couvert, pluie, brouillard or orage.",
       "host.scene.skyLightning": "Sky: the lightning must be on or off.",
@@ -20569,7 +20595,7 @@ var RULES2 = {
   body: { color: C, metalness: I(0, 100), roughness: I(0, 100), opacity: I(20, 100), emissive: C, emissiveStrength: I(0, 100) },
   // (an optional field is never filled in: a set of before keeps its exact text, its fingerprint, its place in the catalogue)
   pattern: { kind: E(PATTERNS), color2: C, scale: I(0, 100), seed: I(0, 999999), color3: { t: "color", optional: true } },
-  numbers: { color: C, outline: C, font: E(DICE_FONTS), weight: I(0, 100) },
+  numbers: { color: C, outline: C, font: E(DICE_FONTS), weight: I(0, 100), size: { ...I(50, 140), optional: true } },
   glow: { color: C, strength: I(0, 20) },
   trail: { kind: E(["none", "spark", "smoke", "ribbon"]), color: C, length: I(0, 100) },
   sound: { material: E(["wood", "stone", "metal", "glass", "bone"]), volume: I(0, 100) }
@@ -21196,7 +21222,7 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.3.0";
+var APP_VERSION = "0.3.1";
 var SINCE_REV = 3;
 var AT_0_1_0 = [
   "component:Avatar",
