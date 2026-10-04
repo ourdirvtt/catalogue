@@ -2,9 +2,9 @@
 
 *English below.*
 
-Types ouverts pour l'instant : **module**, **système**, **thème de table**, **traduction d'Ourdir** et **jeu de dés**. Les compendiums, packs de cartes et aventures arrivent plus tard. Une traduction est un fichier `.ourdir-translation.json` fait depuis le modèle d'Ourdir (Paramètres → Traductions, « Exporter le modèle ») : elle se signe et se soumet comme un thème, et la CI la lit avec les règles de l'appli (texte seul, mêmes variables que l'anglais) et exige 80 % des textes d'Ourdir. Un thème est un fichier `.ourdir-theme.json` fait avec l'éditeur de thèmes d'Ourdir (page **Thèmes**, « Exporter ») : il se signe et se soumet comme un système (`entry <fichier> … --key <clé.json>`), et la CI le lit avec les mêmes règles que l'appli (listes fermées, lisibilité). Un jeu de dés est un fichier `.ourdir-dice.json` fait dans **Mes dés** : il se signe et se soumet comme un thème, 64 Ko au plus, **sans images**, avec son `id` et sa `version` ; la CI le lit avec les mêmes règles que l'appli.
+Types ouverts pour l'instant : **module**, **système**, **thème de table** et **traduction d'Ourdir**. Les compendiums, packs de cartes et aventures arrivent plus tard. Une traduction est un fichier `.ourdir-translation.json` fait depuis le modèle d'Ourdir (Paramètres → Traductions, « Exporter le modèle ») : elle se signe et se soumet comme un thème, et la CI la lit avec les règles de l'appli (texte seul, mêmes variables que l'anglais) et exige 80 % des textes d'Ourdir. Un thème est un fichier `.ourdir-theme.json` fait avec l'éditeur de thèmes d'Ourdir (page **Thèmes**, « Exporter ») : il se signe et se soumet comme un système (`entry <fichier> … --key <clé.json>`), et la CI le lit avec les mêmes règles que l'appli (listes fermées, lisibilité).
 
-Tu n'as pas GitHub ? Pour un système, un thème, une traduction ou un jeu de dés faits dans l'appli Ourdir : page **Systèmes de jeu**, **Thèmes** ou **Mes dés**, ou Paramètres → Traductions, bouton « Partager au catalogue ». L'appli signe, envoie et suit le contrôle pour toi (voir [RULES.md](RULES.md#partager-depuis-lappli)).
+Tu n'as pas GitHub ? Pour un système, un thème ou une traduction faits dans l'appli Ourdir : page **Systèmes de jeu** ou **Thèmes**, ou Paramètres → Traductions, bouton « Partager au catalogue ». L'appli signe, envoie et suit le contrôle pour toi (voir [RULES.md](RULES.md#partager-depuis-lappli)).
 
 Tout se fait avec l'outil de ce dépôt, `tools/verifier.js` (Node 20 ou plus, aucune installation) : clone le dépôt, ou télécharge ce seul fichier.
 
@@ -44,15 +44,31 @@ Elle ne doit **ajouter que** ce fichier (jusqu'à 10 soumissions à la fois). La
 
 Validé veut dire qu'une personne a relu ton contenu : c'est la marque de qualité d'Ourdir, montrée à tous dès l'ouverture du Catalogue. Demande-le depuis l'appli (Catalogue → *Mes publications*, « Demander la validation », pour une version ou pour ton compte), ou avec le formulaire « Demande de validation » des issues. Les grades, ce qu'ils apportent, ce qu'on relit et les délais sont dans les [règles](RULES.md#grades) : chaque demande est relue par une personne, au cas par cas, et cela peut prendre plusieurs jours, voire quelques semaines.
 
+## Quelle licence mettre (champ `license`)
+
+Le champ `license` est l'identifiant SPDX de ta licence (`MIT`, `CC-BY-4.0`…). Les utilisateurs se servent du paquet sous cette licence ; Ourdir ne reçoit que le droit de l'héberger. **Les licences non commerciales (NC) sont refusées**, pour le paquet comme pour tout ce qu'il contient.
+
+| Type | Ce qu'on attend |
+|---|---|
+| Module (code) | Ta licence. Le code tiers que tu embarques garde ses mentions. |
+| Système de jeu | Ta licence pour le code et la mise en page. Les textes de règles seulement sous licence libre (SRD en CC BY 4.0, ORC, OGL 1.0a), avec leurs mentions dans le paquet. Aucun texte, logo ni illustration officiels sans l'accord de l'éditeur. |
+| Compendium | La licence de la source (CC BY 4.0, ORC…). Une source CC BY-SA oblige le paquet à rester en CC BY-SA. |
+| Thème de table | Ta licence pour le CSS. Polices en OFL ou Apache 2.0, images en CC0 ou CC BY. |
+| Pack de cartes | CC0, CC BY, CC BY-SA, ou ta création. Les packs d'assets du commerce ne se redistribuent pas. |
+| Aventure | Ta création, ou un contenu sous licence libre. Pas d'aventure publiée par un éditeur. |
+| Traduction | Ta licence. La traduction d'un livre suit la licence du livre. |
+
+En ouvrant une pull request, tu acceptes que ce que tu y ajoutes à ce dépôt (règles, outils, workflows) soit sous la licence de la partie concernée (voir [LICENSE](LICENSE)). Les fiches `entries/` sont publiées en CC0.
+
 Lis aussi les [règles](RULES.md).
 
 ---
 
 # Submitting a package
 
-Open kinds for now: **module**, **system**, **table theme**, **Ourdir translation** and **set of dice**. Compendiums, map packs and adventures come later. A translation is an `.ourdir-translation.json` file made from Ourdir's template (Settings → Translations, "Export the template"): it is signed and submitted like a theme, and the CI reads it with the app's rules (text only, the English text's variables) and asks for 80 % of Ourdir's texts. A theme is an `.ourdir-theme.json` file made with Ourdir's theme editor (**Themes** page, "Export"): it is signed and submitted like a system (`entry <file> … --key <key.json>`), and the CI reads it with the app's own rules (closed lists, readability). A set of dice is an `.ourdir-dice.json` file made in **My dice**: it is signed and submitted like a theme, 64 KB at most, **no images**, with its `id` and `version`; the CI reads it with the app's own rules.
+Open kinds for now: **module**, **system**, **table theme** and **Ourdir translation**. Compendiums, map packs and adventures come later. A translation is an `.ourdir-translation.json` file made from Ourdir's template (Settings → Translations, "Export the template"): it is signed and submitted like a theme, and the CI reads it with the app's rules (text only, the English text's variables) and asks for 80 % of Ourdir's texts. A theme is an `.ourdir-theme.json` file made with Ourdir's theme editor (**Themes** page, "Export"): it is signed and submitted like a system (`entry <file> … --key <key.json>`), and the CI reads it with the app's own rules (closed lists, readability).
 
-No GitHub account? For a system, a theme, a translation or a set of dice made in the Ourdir app: **Game systems**, **Themes** or **My dice** page, or Settings → Translations, "Share to the catalogue" button. The app signs, uploads and follows the checks for you (see [RULES.md](RULES.md#sharing-from-the-app)).
+No GitHub account? For a system, a theme or a translation made in the Ourdir app: **Game systems** or **Themes** page, or Settings → Translations, "Share to the catalogue" button. The app signs, uploads and follows the checks for you (see [RULES.md](RULES.md#sharing-from-the-app)).
 
 Everything is done with this repository's tool, `tools/verifier.js` (Node 20+, nothing to install).
 
@@ -64,3 +80,19 @@ Everything is done with this repository's tool, `tools/verifier.js` (Node 20+, n
 4. **Open a pull request** that only adds that file (up to 10 at once). The CI checks the package like the app would install it, posts its report, and merges on its own when everything is right. The package shows up as **Community** a few minutes later.
 
 **Validated** means a person read your content: Ourdir's mark of quality, shown to everyone as soon as the Catalog opens. Request it from the app (Catalog → *My publications*, "Request validation", for a version or for your account), or with the "Validation request" issue form. Grades, what they bring, what we review and the delays are in the [rules](RULES.md#grades): every request is read by a person, case by case, and it can take several days, even a few weeks.
+
+## Which licence to use (`license` field)
+
+The `license` field is the SPDX identifier of your licence (`MIT`, `CC-BY-4.0`…). Users use the package under that licence; Ourdir only receives the right to host it. **Non-commercial (NC) licences are refused**, for the package and for anything inside it.
+
+| Kind | What we expect |
+|---|---|
+| Module (code) | Your licence. Third-party code you bundle keeps its notices. |
+| Game system | Your licence for your code and layout. Rules text only under an open licence (SRD under CC BY 4.0, ORC, OGL 1.0a), with its notices inside the package. No official text, logo or artwork without the publisher's agreement. |
+| Compendium | The source's licence (CC BY 4.0, ORC…). A CC BY-SA source keeps the package CC BY-SA. |
+| Table theme | Your licence for the CSS. Fonts under OFL or Apache 2.0, images under CC0 or CC BY. |
+| Map pack | CC0, CC BY, CC BY-SA, or your own creation. Commercial asset packs cannot be redistributed. |
+| Adventure | Your own creation, or openly licensed content. No publisher-released adventure. |
+| Translation | Your licence. A translation of a book follows the book's licence. |
+
+By opening a pull request you agree that what you add to this repository (rules, tools, workflows) is under the licence of the part it belongs to (see [LICENSE](LICENSE)). `entries/` sheets are released under CC0.

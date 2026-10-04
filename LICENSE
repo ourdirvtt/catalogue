@@ -1,0 +1,43 @@
+Catalogue Ourdir — licences de ce dépôt / Licences of this repository
+=====================================================================
+
+Ce dépôt n'a pas une seule licence : chaque partie a la sienne.
+This repository has no single licence: each part has its own.
+
+1. Textes / Texts : README.md, RULES.md, CONTRIBUTING.md, ISSUE_TEMPLATE
+   Creative Commons Attribution 4.0 International (CC BY 4.0)
+   https://creativecommons.org/licenses/by/4.0/legalcode
+   Copyright (c) Ourdir. Tu peux les reprendre en citant Ourdir. / Reuse them, crediting Ourdir.
+
+2. Automatisation / Automation : .github/workflows/*
+   MIT License. Copyright (c) Ourdir.
+   Permission is hereby granted, free of charge, to any person obtaining a copy of these files, to deal in them
+   without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute,
+   sublicense, and/or sell copies, provided the above copyright notice and this permission notice are included in
+   all copies. THE FILES ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+3. Soumissions / Submissions : entries/**/*.json
+   Le texte des fiches (nom, résumé, description, étiquettes, empreinte, adresse) est publié en CC0 1.0
+   (domaine public) par son éditeur : en soumettant, il accepte que n'importe qui les lise, les copie et les
+   réutilise, par exemple pour un autre catalogue. Cela ne concerne PAS le paquet qu'elles décrivent.
+   Submission sheets (name, summary, description, tags, hash, address) are released under CC0 1.0 by their
+   publisher. This does NOT cover the package they describe.
+
+4. Données de confiance / Trust data : root.pub, delegation.json, recovery-delegation.json, tiers.json(.sig),
+   tiers-source.json, revoked.json
+   Données de signature et de grades, sans droit d'auteur propre : elles servent à vérifier le catalogue.
+   Signature and grade data, without copyright of their own: they exist to verify the catalogue.
+
+5. Outil / Tool : tools/verifier.js
+   Tous droits réservés, voir tools/LICENSE. / All rights reserved, see tools/LICENSE.
+
+6. Les paquets / Packages
+   Les paquets (modules, systèmes, thèmes, cartes, compendiums, aventures, traductions) ne sont pas dans ce
+   dépôt : ils sont hébergés par leur éditeur ou par Ourdir. Chacun est sous la licence que son éditeur déclare
+   dans le champ `license` de sa fiche (identifiant SPDX, par exemple MIT, CC-BY-4.0). Ourdir n'a que le droit de
+   les héberger, signer et distribuer (voir RULES.md). Les licences non commerciales (NC) sont refusées.
+   Packages are not in this repository. Each one is under the licence its publisher declares in the `license`
+   field. Ourdir only has the right to host, sign and distribute them (see RULES.md). Non-commercial (NC)
+   licences are refused.
+
+L'application Ourdir elle-même n'est pas open source. / The Ourdir application itself is not open source.
