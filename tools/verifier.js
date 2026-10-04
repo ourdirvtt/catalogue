@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.3.5. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.3.6. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -12110,6 +12110,10 @@ var require_fr2 = __commonJS({
       "sound.waiting": "En attente : {n} sur {max}",
       "sound.withdraw": "Retirer",
       "sound.accepted": "Ta proposition \xAB\xA0{title}\xA0\xBB a \xE9t\xE9 ajout\xE9e \xE0 {playlist}.",
+      "sound.playNow": "Jouer maintenant",
+      "sound.addToPlaylist": "Ajouter \xE0 une playlist",
+      "sound.addedTo": "Ajout\xE9e \xE0 \xAB\xA0{title}\xA0\xBB.",
+      "sound.played": "Ta proposition \xAB\xA0{title}\xA0\xBB passe maintenant pour toute la table.",
       "sound.proposals": "Propositions ({n})",
       "sound.by": "propos\xE9e par {name}",
       "sound.addTo": "Ajouter \xE0",
@@ -18922,6 +18926,10 @@ var require_en3 = __commonJS({
       "sound.waiting": "Waiting: {n} of {max}",
       "sound.withdraw": "Withdraw",
       "sound.accepted": "Your suggestion \u201C{title}\u201D was added to {playlist}.",
+      "sound.playNow": "Play now",
+      "sound.addToPlaylist": "Add to a playlist",
+      "sound.addedTo": "Added to \u201C{title}\u201D.",
+      "sound.played": "Your suggestion \u201C{title}\u201D is playing now for the whole table.",
       "sound.proposals": "Suggestions ({n})",
       "sound.by": "suggested by {name}",
       "sound.addTo": "Add to",
@@ -21526,7 +21534,7 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.3.5";
+var APP_VERSION = "0.3.6";
 var SINCE_REV = 3;
 var AT_0_1_0 = [
   "component:Avatar",
@@ -21723,6 +21731,27 @@ function minAppOf(kind, bytes, declared) {
   return v;
 }
 
+// apps/desktop/src/catalog/licence.ts
+var NC_PATTERNS = [
+  /(^|[^a-z])nc([^a-z]|$)/,
+  // CC-BY-NC-4.0, CC BY NC, NC
+  /non[^a-z]{0,2}commerc/,
+  // non-commercial, noncommercial, non commercial, non-commerciale
+  /(^|[^a-z])(no|pas|sans)[^a-z]+(d[a-z]?[^a-z]+)?(usage |utilisation |use )?commerc/,
+  // no commercial use, pas d'usage commercial
+  /not for[^a-z]+commerc/,
+  /(personal|private)[^a-z]+use[^a-z]+only/,
+  /usage[^a-z]+(personnel|prive)[^a-z]+(uniquement|seulement|exclusif)/,
+  /prosperity/
+  // Prosperity Public License: non-commercial
+];
+function forbidsCommercialUse(license) {
+  if (typeof license !== "string") return false;
+  const t = license.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return NC_PATTERNS.some((re) => re.test(t));
+}
+var NC_REFUSAL = "Licence non commerciale refus\xE9e : Ourdir est un produit payant, le catalogue n\u2019h\xE9berge pas ce que sa licence r\xE9serve \xE0 un usage non commercial (voir RULES.md).";
+
 // apps/desktop/src/catalog/pipeline.ts
 var sha2563 = (b) => import_node_crypto3.default.createHash("sha256").update(b).digest("hex");
 var message = (err) => err instanceof Error ? err.message : String(err);
@@ -21825,6 +21854,7 @@ function withPackage(bytes, fn) {
   }
 }
 async function makeSubmission(bytes, o, _deps) {
+  if (forbidsCommercialUse(o.license)) throw new Error(NC_REFUSAL);
   let id;
   let version;
   let permissions = [];
@@ -21930,6 +21960,7 @@ function checkSystem(bytes, s, deps2) {
   }
   if (!file || file.format !== "tabletop-system" || file.v !== 1 || !file.doc || typeof file.doc !== "object") return ["Ce fichier n\u2019est pas un syst\xE8me Ourdir."];
   const out = [];
+  if (forbidsCommercialUse(file.doc.license)) out.push(NC_REFUSAL);
   if (file.doc.id !== s.id || file.doc.version !== s.version) out.push("Le syst\xE8me annonce un autre identifiant ou une autre version que la soumission.");
   if (file.doc.access === "licensed" !== (s.access === "licensed")) out.push("L\u2019acc\xE8s d\xE9clar\xE9 ne correspond pas \xE0 celui du syst\xE8me.");
   const invalid = deps2.validateSystem(file.doc);
@@ -21998,6 +22029,7 @@ function checkModule(bytes, s) {
   try {
     return withPackage(bytes, (p) => {
       const out = [];
+      if (forbidsCommercialUse(p.manifest.license)) out.push(NC_REFUSAL);
       if (p.manifest.id !== s.id || p.manifest.version !== s.version) out.push("Le module annonce un autre identifiant ou une autre version que la soumission.");
       if (p.trust === "unsigned" || !p.publisher) out.push("Le module n\u2019est pas sign\xE9 (node scripts/sign-module.js).");
       else if (p.publisher.publicKey !== s.publisher.key) out.push("Le module est sign\xE9 par une autre cl\xE9 que celle d\xE9clar\xE9e.");
@@ -22022,6 +22054,7 @@ async function checkSubmission(file, text, repoDir, deps2) {
   const mine = new Set(existing.filter((e) => chain.head(e.key) === chain.head(s.publisher.key)).map((e) => e.id));
   if (!exempt && !mine.has(s.id) && mine.size >= MAX_PACKAGES_PER_KEY) errors.push(`Cette cl\xE9 publie d\xE9j\xE0 ${MAX_PACKAGES_PER_KEY} paquets, le maximum : \xE9cris \xE0 signalement@ourdir.fr pour en publier davantage.`);
   if (s.access === "licensed" && !maySell(readTiers(repoDir), s.publisher.key)) errors.push("Contenu payant : seuls Ourdir, les \xE9diteurs officiels et les vendeurs agr\xE9\xE9s peuvent vendre.");
+  if (forbidsCommercialUse(s.license)) errors.push(NC_REFUSAL);
   if (errors.length) return { file, id: s.id, version: s.version, ok: false, errors };
   let bytes;
   try {
