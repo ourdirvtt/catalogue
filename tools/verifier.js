@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.3.6. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.3.7. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -400,6 +400,9 @@ var require_fr = __commonJS({
       "builderTheme.ui.terminal": "Terminal",
       "builderTheme.valeursCalculees": "Valeurs calcul\xE9es",
       "dialog.firewall.failed": "Le pare-feu Windows n\u2019a pas pu \xEAtre mis \xE0 jour. Accepte l\u2019invite administrateur (UAC) et r\xE9essaie.",
+      "dialog.leaveTable.message": "Quitter la table et revenir \xE0 l\u2019accueil ?",
+      "dialog.leaveTable.leave": "Quitter la table",
+      "dialog.leaveTable.stay": "Rester",
       "dialog.join.unknownSender": "Cette invitation vient de quelqu\u2019un qui n\u2019est pas dans tes amis. Ajoute son code d\u2019ami (menu Amis) avant de la r\xE9utiliser.",
       "err.backup.space": "Pas assez de place sur le disque pour sauvegarder les tables avant la mise \xE0 jour ({need} Mo \xE0 pr\xE9voir). Lib\xE8re de l\u2019espace, puis r\xE9essaie.",
       "err.backup.verify": "La sauvegarde de \xAB {name} \xBB n\u2019a pas pu \xEAtre relue correctement ({why}) : rien n\u2019a \xE9t\xE9 install\xE9.",
@@ -1086,7 +1089,13 @@ var require_fr = __commonJS({
       "ui.about.licencesTitle": "Licences et cr\xE9dits",
       "ui.about.report": "Pr\xE9parer un rapport de bug\u2026",
       "ui.about.reportDone": "Rapport enregistr\xE9 : {file}",
-      "ui.about.reportHint": "Le rapport contient les journaux et les r\xE9glages de l\u2019appli, jamais tes cl\xE9s, ton identit\xE9, tes amis ni tes tables. Les journaux peuvent citer les noms de tes amis et des adresses IP. Envoie-le \xE0 contact@ourdir.fr en racontant ce qui s\u2019est pass\xE9.",
+      "ui.about.reportHint": "Le rapport contient les journaux et les r\xE9glages de l\u2019appli, jamais tes cl\xE9s, ton identit\xE9, tes amis ni tes tables. Les journaux peuvent citer les noms de tes amis et des adresses IP. Envoie-le \xE0 contact@ourdir.fr ou sur le Discord d\u2019Ourdir en racontant ce qui s\u2019est pass\xE9. \xAB Copier le r\xE9sum\xE9 \xBB met dans le presse-papiers la version, ton syst\xE8me et la fin des journaux (adresses coup\xE9es), \xE0 coller dans Discord.",
+      "ui.about.summary": "Copier le r\xE9sum\xE9",
+      "ui.summary.lastErrors": "Derni\xE8res erreurs :",
+      "ui.summary.noError": "Aucune erreur.",
+      "ui.summary.lastLines": "Derni\xE8res lignes :",
+      "ui.summary.missing": "Introuvable.",
+      "ui.about.summaryDone": "R\xE9sum\xE9 copi\xE9 : colle-le dans ta discussion.",
       "ui.about.title": "\xC0 propos d\u2019Ourdir",
       "ui.about.version": "Ourdir {version} \xB7 version alpha",
       "ui.access.closed": "Ta box n\u2019a pas ouvert la porte : tes amis ne pourront pas te rejoindre pour l\u2019instant.",
@@ -14154,6 +14163,9 @@ var require_en2 = __commonJS({
       "builderTheme.ui.terminal": "Terminal",
       "builderTheme.valeursCalculees": "Computed values",
       "dialog.firewall.failed": "Windows Firewall could not be updated. Accept the administrator prompt (UAC) and try again.",
+      "dialog.leaveTable.message": "Leave the table and go back to the home screen?",
+      "dialog.leaveTable.leave": "Leave the table",
+      "dialog.leaveTable.stay": "Stay",
       "dialog.join.unknownSender": "This invitation comes from someone who is not in your friends. Add their friend code (Friends menu) first.",
       "err.backup.space": "Not enough disk space to back up the tables before the update ({need} MB needed). Free some space, then try again.",
       "err.backup.verify": "The backup of \u201C{name}\u201D could not be read back correctly ({why}): nothing was installed.",
@@ -14840,7 +14852,13 @@ var require_en2 = __commonJS({
       "ui.about.licencesTitle": "Licenses and credits",
       "ui.about.report": "Prepare a bug report\u2026",
       "ui.about.reportDone": "Report saved: {file}",
-      "ui.about.reportHint": "The report holds the logs and the app\u2019s settings, never your keys, identity, friends or tables. The logs may name your friends and show IP addresses. Send it to contact@ourdir.fr with what happened.",
+      "ui.about.reportHint": "The report holds the logs and the app\u2019s settings, never your keys, identity, friends or tables. The logs may name your friends and show IP addresses. Send it to contact@ourdir.fr or on Ourdir\u2019s Discord with what happened. \u201CCopy the summary\u201D puts the version, your system and the end of the logs (addresses cut) on the clipboard, to paste in Discord.",
+      "ui.about.summary": "Copy the summary",
+      "ui.summary.lastErrors": "Last errors:",
+      "ui.summary.noError": "No error.",
+      "ui.summary.lastLines": "Last lines:",
+      "ui.summary.missing": "Not found.",
+      "ui.about.summaryDone": "Summary copied: paste it in your conversation.",
       "ui.about.title": "About Ourdir",
       "ui.about.version": "Ourdir {version} \xB7 alpha version",
       "ui.access.closed": "Your router did not open the door: your friends cannot reach you for now.",
@@ -21534,7 +21552,7 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.3.6";
+var APP_VERSION = "0.3.7";
 var SINCE_REV = 3;
 var AT_0_1_0 = [
   "component:Avatar",
