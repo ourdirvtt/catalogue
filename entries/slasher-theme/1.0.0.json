@@ -1,0 +1,28 @@
+{
+  "v": 1,
+  "id": "slasher-theme",
+  "version": "1.0.0",
+  "kind": "module",
+  "name": "Slasher Theme",
+  "url": "https://github.com/TalepTV/catalogue/releases/download/slasher-1.0.0/slasher-theme.zip",
+  "size": 6750,
+  "sha256": "b6a7ca26c5c3b0951f2c5aaa87927b69e158454cfaef268717b0c549db8d30a7",
+  "publisher": {
+    "name": "Talep",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "permissions": [
+    "ui.style",
+    "ui.fx",
+    "ui.panel",
+    "ui.toolbar",
+    "storage.local",
+    "engine.hook"
+  ],
+  "license": "MIT",
+  "summary": "Habillage cassette VHS années 80, indépendant du jeu",
+  "description": "",
+  "tags": [],
+  "languages": [],
+  "access": "free"
+}
