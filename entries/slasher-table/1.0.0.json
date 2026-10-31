@@ -1,0 +1,22 @@
+{
+  "v": 1,
+  "id": "slasher-table",
+  "version": "1.0.0",
+  "kind": "theme",
+  "name": "Slasher",
+  "url": "https://github.com/TalepTV/catalogue/releases/download/slasher-1.1.0/slasher-table.ourdir-theme.json",
+  "size": 1013,
+  "sha256": "edf8a6b2451870aab47cf5402ed0e769baa75214a86b5837663f38bb9792b1f7",
+  "publisher": {
+    "name": "Talep",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "signature": "IkO0ORdfLE5TbVsP_MHZ-Mctt7jhz-oUDfO0P4kQ11W_r-8BpYFXP1_3U2pbCn6UiQwaiU9mqklz9EvUt3jmBw",
+  "permissions": [],
+  "license": "MIT",
+  "summary": "Thème de table cassette VHS années 80 : noir, rouge sang, blanc cassé",
+  "description": "",
+  "tags": [],
+  "languages": [],
+  "access": "free"
+}
