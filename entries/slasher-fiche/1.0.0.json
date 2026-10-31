@@ -1,0 +1,24 @@
+{
+  "v": 1,
+  "id": "slasher-fiche",
+  "version": "1.0.0",
+  "kind": "system",
+  "name": "Slasher (fiche)",
+  "url": "https://github.com/TalepTV/catalogue/releases/download/slasher-1.1.0/fiche-slasher-fr.json",
+  "size": 14988,
+  "sha256": "09202de05494e0f6f071874ea8d559c36abd30213afac0c5fa66f4bf9bc2ab34",
+  "publisher": {
+    "name": "Talep",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "signature": "ZDJE_zrG0siLVmW6IPcqpFqEwoQL7QwUEwH6vbA9oBcuoEMy-unT7G80DQDlOA7ANUOSbWXni4KmbojVcm3dDg",
+  "permissions": [],
+  "license": "MIT",
+  "summary": "La fiche du jeu Slasher : état, trois caractéristiques, pouvoir, faiblesse, secret",
+  "description": "",
+  "tags": [],
+  "languages": [
+    "fr"
+  ],
+  "access": "free"
+}

@@ -1,0 +1,38 @@
+{
+  "v": 1,
+  "id": "slasher",
+  "version": "1.1.0",
+  "kind": "module",
+  "name": "Slasher",
+  "url": "https://github.com/TalepTV/catalogue/releases/download/slasher-1.1.0/slasher-1.1.0.zip",
+  "size": 21211,
+  "sha256": "5f5136a0a0b36bd7c91b49c4c3c83d9b95c6d68d4dc966f29a727fc4c6695375",
+  "publisher": {
+    "name": "Talep",
+    "key": "yvNrNkb4_pGRrXSQ--eUc4acAU8h-RQF9jjNLu1gsBE"
+  },
+  "permissions": [
+    "ui.panel",
+    "ui.toolbar",
+    "ui.style",
+    "ui.hud",
+    "ui.fx",
+    "ui.media",
+    "shared.state",
+    "chat.write",
+    "chat.command",
+    "dice.roll",
+    "tokens.read",
+    "tokens.modify",
+    "engine.hook",
+    "chat.read",
+    "sheet.read",
+    "sheet.write"
+  ],
+  "license": "MIT",
+  "summary": "Jeu d'horreur façon slasher : Peur partagée, fiches, sacrifices héroïques",
+  "description": "",
+  "tags": [],
+  "languages": [],
+  "access": "free"
+}
