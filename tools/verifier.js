@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ourdir catalogue verifier 0.4.2. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
+// Ourdir catalogue verifier 0.5.0. (c) Ourdir. Usage limited to the Ourdir catalogue: see LICENSE next to this file.
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -626,6 +626,9 @@ var require_fr = __commonJS({
       "err.manifest.badStyle": "feuille de style refus\xE9e : {path}",
       "err.manifest.moduleVideAucunScript": "module vide : aucun script, style, langue ni compendium.",
       "err.manifest.needStyle": 'Le module a des feuilles de style : il doit demander la permission "ui.style".',
+      "err.manifest.sharedInvalid": "Le bloc tabletop.shared est invalide : chaque cl\xE9 a besoin d'un acc\xE8s en lecture et d'un acc\xE8s en \xE9criture (all, gm ou owner).",
+      "err.manifest.sharedNeedsPermission": "tabletop.shared demande la permission shared.state.",
+      "err.manifest.permissionNeedsShared": "La permission shared.state demande un bloc tabletop.shared.",
       "err.manifest.notObject": "module.json doit \xEAtre un objet JSON.",
       "err.manifest.sockets": "Le module d\xE9clare des sockets : la communication entre clients n\u2019est pas prise en charge.",
       "err.manifest.tabletopEntryManquantInvalide": "tabletop.entry manquant ou invalide.",
@@ -980,7 +983,7 @@ var require_fr = __commonJS({
       "rules.v.sameId": "La cl\xE9 \xAB {id} \xBB est d\xE9j\xE0 prise.",
       "rules.v.short": "Abr\xE9viation : 6 caract\xE8res au plus.",
       "rules.v.show": "Affichage inconnu.",
-      "rules.v.sides": "Faces du d\xE9 : {list}.",
+      "rules.v.sides": "Faces du d\xE9 : un nombre entier de 2 \xE0 1 000 000 000 000.",
       "rules.v.skillList": "Comp\xE9tences : de 1 \xE0 {max}.",
       "rules.v.skillMode": "Mode des comp\xE9tences inconnu.",
       "rules.v.skillRank": "Rang des comp\xE9tences inconnu.",
@@ -1986,6 +1989,9 @@ var require_fr = __commonJS({
       "ui.rules.show.hidden": "cach\xE9 (sert aux calculs)",
       "ui.rules.show.tile": "en tuile",
       "ui.rules.sides": "Faces",
+      "ui.rules.sidesHint": "Un d\xE9 sur mesure : de 2 \xE0 {max} faces. Il n\u2019a pas de d\xE9 en 3D : son r\xE9sultat s\u2019\xE9crit dans le tchat.",
+      "ui.rules.sidesN": "Nombre de faces",
+      "ui.rules.sidesOther": "Autre\u2026",
       "ui.rules.sign": "Signe",
       "ui.rules.skillAdd": "Ajouter une comp\xE9tence",
       "ui.rules.skillList": "La liste",
@@ -2679,7 +2685,7 @@ var require_fr = __commonJS({
       "rules.v.progRoll": "Ce jet n\u2019existe pas dans les r\xE8gles : \xAB {id} \xBB.",
       "rules.v.progN": "Un nombre entier, de {min} \xE0 {max}.",
       "rules.v.progKey": "Une caract\xE9ristique, une comp\xE9tence ou une valeur de la fiche, jamais le niveau.",
-      "rules.v.progDice": "Un d\xE9 comme 1d8 ou 2d6.",
+      "rules.v.progDice": "Un d\xE9 comme 1d8, 2d6 ou 1d100000 (2 \xE0 1 000 000 000 000 faces).",
       "rules.v.progAmong": "Une liste de ce qui existe, chacun une fois.",
       "rules.v.spreadRoom": "Pas assez de place pour tous les points : plus de choix, ou un maximum plus haut.",
       "rules.v.trainNeeds": "Former une comp\xE9tence demande des comp\xE9tences \xAB form\xE9es \xBB.",
@@ -3787,7 +3793,7 @@ var require_builder_theme = __commonJS({
       var isObj7 = function(v) {
         return v !== null && typeof v === "object" && !Array.isArray(v);
       };
-      var isInt = function(v, r) {
+      var isInt2 = function(v, r) {
         return typeof v === "number" && Number.isInteger(v) && v >= r[0] && v <= r[1];
       };
       function makeTheme(o) {
@@ -4003,18 +4009,18 @@ var require_builder_theme = __commonJS({
           };
           if (!fontOk(t.fonts.body)) e(say2("builderTheme.policeTexteInconnue"));
           if (!fontOk(t.fonts.heading)) e(say2("builderTheme.policeTitresInconnue"));
-          if (!isInt(t.fonts.size, RANGES.fontSize)) e(say2("builderTheme.range.fontSize", { min: RANGES.fontSize[0], max: RANGES.fontSize[1] }));
+          if (!isInt2(t.fonts.size, RANGES.fontSize)) e(say2("builderTheme.range.fontSize", { min: RANGES.fontSize[0], max: RANGES.fontSize[1] }));
           if (ENUMS.fonts.headingCase.indexOf(t.fonts.headingCase) < 0) e(say2("builderTheme.casseTitresInvalide"));
-          if (!isInt(t.fonts.headingSpacing, RANGES.headingSpacing)) e(say2("builderTheme.range.spacing", { min: RANGES.headingSpacing[0], max: RANGES.headingSpacing[1] }));
+          if (!isInt2(t.fonts.headingSpacing, RANGES.headingSpacing)) e(say2("builderTheme.range.spacing", { min: RANGES.headingSpacing[0], max: RANGES.headingSpacing[1] }));
         }
         if (!isObj7(t.background)) e("Fond manquant.");
         else {
           if (ENUMS.background.kind.indexOf(t.background.kind) < 0) e(say2("builderTheme.typeFondInconnu"));
           if (typeof t.background.color2 !== "string" || !HEX2.test(t.background.color2)) e(say2("builderTheme.secondeCouleurFondInvalide"));
           if (typeof t.background.patternColor !== "string" || !HEX2.test(t.background.patternColor)) e(say2("builderTheme.couleurMotifInvalide"));
-          if (!isInt(t.background.angle, RANGES.angle)) e(say2("builderTheme.angleDegrade0360"));
-          if (!isInt(t.background.patternSize, RANGES.patternSize)) e(say2("builderTheme.range.patternSize", { min: RANGES.patternSize[0], max: RANGES.patternSize[1] }));
-          if (!isInt(t.background.patternOpacity, RANGES.patternOpacity)) e(say2("builderTheme.range.patternOpacity", { min: RANGES.patternOpacity[0], max: RANGES.patternOpacity[1] }));
+          if (!isInt2(t.background.angle, RANGES.angle)) e(say2("builderTheme.angleDegrade0360"));
+          if (!isInt2(t.background.patternSize, RANGES.patternSize)) e(say2("builderTheme.range.patternSize", { min: RANGES.patternSize[0], max: RANGES.patternSize[1] }));
+          if (!isInt2(t.background.patternOpacity, RANGES.patternOpacity)) e(say2("builderTheme.range.patternOpacity", { min: RANGES.patternOpacity[0], max: RANGES.patternOpacity[1] }));
           if (t.background.imageMode !== void 0 && ENUMS.background.imageMode.indexOf(t.background.imageMode) < 0) e(say2("builderTheme.modeImageFondInconnu"));
           if (t.background.kind === "image") {
             var img = assetOf(assets, t.background.image);
@@ -4023,9 +4029,9 @@ var require_builder_theme = __commonJS({
         }
         if (!isObj7(t.shape)) e("Formes manquantes.");
         else {
-          if (!isInt(t.shape.radius, RANGES.radius)) e("Arrondi : " + RANGES.radius.join(" \xE0 ") + " px.");
-          if (!isInt(t.shape.borderWidth, RANGES.borderWidth)) e(say2("builderTheme.range.borderWidth", { min: RANGES.borderWidth[0], max: RANGES.borderWidth[1] }));
-          if (!isInt(t.shape.chamfer, RANGES.chamfer)) e(say2("builderTheme.range.chamfer", { min: RANGES.chamfer[0], max: RANGES.chamfer[1] }));
+          if (!isInt2(t.shape.radius, RANGES.radius)) e("Arrondi : " + RANGES.radius.join(" \xE0 ") + " px.");
+          if (!isInt2(t.shape.borderWidth, RANGES.borderWidth)) e(say2("builderTheme.range.borderWidth", { min: RANGES.borderWidth[0], max: RANGES.borderWidth[1] }));
+          if (!isInt2(t.shape.chamfer, RANGES.chamfer)) e(say2("builderTheme.range.chamfer", { min: RANGES.chamfer[0], max: RANGES.chamfer[1] }));
           if (ENUMS.shape.borderStyle.indexOf(t.shape.borderStyle) < 0) e(say2("builderTheme.styleBordureInconnu"));
           if (ENUMS.shape.shadow.indexOf(t.shape.shadow) < 0) e(say2("builderTheme.ombreInconnue"));
           if (ENUMS.shape.frame.indexOf(t.shape.frame) < 0) e(say2("builderTheme.cadreInconnu"));
@@ -4413,6 +4419,7 @@ var require_rules_core = __commonJS({
       var LIMITS2 = { rolls: 8, difficulties: 12, bands: 12, conditions: 6, values: 20, name: 40, count: 20, pool: 50, add: 1e3, stats: 12, derived: 20, skills: 60, steps: 12, terms: 8, flat: 400, dots: 10 };
       var ID_RE3 = /^[a-z][a-z_]{0,29}$/;
       var SIDES = [2, 3, 4, 6, 8, 10, 12, 20, 100];
+      var MAX_SIDES = 1e12;
       var FAMILIES = ["d20", "d20adv", "d100", "d100deg", "pool10", "pbta", "fate", "3d6under", "pool6best", "custom"];
       var TARGETS = ["difficulty", "value", "defense", "fixed", "none"];
       var READS = ["over", "under", "bands", "count", "best"];
@@ -4425,7 +4432,7 @@ var require_rules_core = __commonJS({
       var has2 = function(o, k) {
         return typeof k === "string" && Object.prototype.hasOwnProperty.call(o, k);
       };
-      var isInt = function(x, lo, hi) {
+      var isInt2 = function(x, lo, hi) {
         return typeof x === "number" && Math.floor(x) === x && x >= lo && x <= hi;
       };
       var cleanName = function(s) {
@@ -4542,28 +4549,28 @@ var require_rules_core = __commonJS({
         var d = r.dice;
         if (!isObj7(d)) return e("dice", "rules.v.dice");
         var pool = d.count === "pool";
-        if (!pool && !isInt(d.count, 1, LIMITS2.count)) e("dice.count", "rules.v.count", { max: LIMITS2.count });
-        if (SIDES.indexOf(d.sides) < 0) e("dice.sides", "rules.v.sides", { list: SIDES.join(", ") });
+        if (!pool && !isInt2(d.count, 1, LIMITS2.count)) e("dice.count", "rules.v.count", { max: LIMITS2.count });
+        if (!isInt2(d.sides, 2, MAX_SIDES)) e("dice.sides", "rules.v.sides");
         if (d.fate !== true && d.fate !== false) e("dice.fate", "rules.v.bool");
         if (d.fate === true && (d.sides !== 3 || pool)) e("dice.fate", "rules.v.fate");
-        if (d.reroll !== null && !(isObj7(d.reroll) && isInt(d.reroll.on, 1, 100) && d.reroll.on <= d.sides && (d.reroll.once === true || d.reroll.once === false))) e("dice.reroll", "rules.v.reroll");
-        if (d.explode !== null && !(isObj7(d.explode) && d.explode.on === "max" && isInt(d.explode.limit, 0, 10) && d.sides > 1)) e("dice.explode", "rules.v.explode");
-        if (d.keep !== null && !(isObj7(d.keep) && (d.keep.which === "high" || d.keep.which === "low") && isInt(d.keep.n, 1, LIMITS2.count) && (pool || d.keep.n < d.count))) e("dice.keep", "rules.v.keep");
-        if (!isInt(r.bonus, -LIMITS2.add, LIMITS2.add)) e("bonus", "rules.v.bonus");
+        if (d.reroll !== null && !(isObj7(d.reroll) && isInt2(d.reroll.on, 1, MAX_SIDES) && d.reroll.on <= d.sides && (d.reroll.once === true || d.reroll.once === false))) e("dice.reroll", "rules.v.reroll");
+        if (d.explode !== null && !(isObj7(d.explode) && d.explode.on === "max" && isInt2(d.explode.limit, 0, 10) && d.sides > 1)) e("dice.explode", "rules.v.explode");
+        if (d.keep !== null && !(isObj7(d.keep) && (d.keep.which === "high" || d.keep.which === "low") && isInt2(d.keep.n, 1, LIMITS2.count) && (pool || d.keep.n < d.count))) e("dice.keep", "rules.v.keep");
+        if (!isInt2(r.bonus, -LIMITS2.add, LIMITS2.add)) e("bonus", "rules.v.bonus");
         var t = r.target;
         if (!isObj7(t) || TARGETS.indexOf(t.kind) < 0) e("target.kind", "rules.v.target");
         else {
           if (!Array.isArray(t.difficulties) || t.difficulties.length > LIMITS2.difficulties) e("target.difficulties", "rules.v.difficulties", { max: LIMITS2.difficulties });
           else t.difficulties.forEach(function(x, i) {
             if (!isObj7(x) || !cleanName(x.name)) e("target.difficulties." + i + ".name", "rules.v.name");
-            if (!isObj7(x) || !isInt(x.value, -LIMITS2.add, LIMITS2.add)) e("target.difficulties." + i + ".value", "rules.v.difficultyValue");
+            if (!isObj7(x) || !isInt2(x.value, -MAX_SIDES, MAX_SIDES)) e("target.difficulties." + i + ".value", "rules.v.difficultyValue");
           });
           var diffs = Array.isArray(t.difficulties) ? t.difficulties : [];
           if (t.kind === "difficulty" && !diffs.length) e("target.difficulties", "rules.v.noDifficulty");
           if (t.kind === "difficulty" && t["default"] && !diffs.some(function(x) {
             return isObj7(x) && x.name === t["default"];
           })) e("target.default", "rules.v.default");
-          if (t.kind === "fixed" && !isInt(t.fixed, -LIMITS2.add, LIMITS2.add)) e("target.fixed", "rules.v.fixed");
+          if (t.kind === "fixed" && !isInt2(t.fixed, -MAX_SIDES, MAX_SIDES)) e("target.fixed", "rules.v.fixed");
         }
         var rd = r.read;
         if (!isObj7(rd) || READS.indexOf(rd.kind) < 0) return e("read.kind", "rules.v.read");
@@ -4572,23 +4579,23 @@ var require_rules_core = __commonJS({
         if ((rd.kind === "count" || rd.kind === "best") && !pool) e("dice.count", "rules.v.needPool");
         if (rd.kind === "count") {
           var c = rd.count;
-          if (!isObj7(c) || !isInt(c.at, 1, 100) || c.at > d.sides) e("read.count.at", "rules.v.countAt", { sides: d.sides });
-          if (!isObj7(c) || !isInt(c.need, 1, LIMITS2.pool)) e("read.count.need", "rules.v.need");
-          if (!isObj7(c) || !(c["double"] === 0 || isInt(c["double"], 1, 100) && c["double"] <= d.sides)) e("read.count.double", "rules.v.double");
+          if (!isObj7(c) || !isInt2(c.at, 1, MAX_SIDES) || c.at > d.sides) e("read.count.at", "rules.v.countAt", { sides: d.sides });
+          if (!isObj7(c) || !isInt2(c.need, 1, LIMITS2.pool)) e("read.count.need", "rules.v.need");
+          if (!isObj7(c) || !(c["double"] === 0 || isInt2(c["double"], 1, MAX_SIDES) && c["double"] <= d.sides)) e("read.count.double", "rules.v.double");
         }
         if (rd.kind === "bands" || rd.kind === "best") {
           var b = rd.bands, ok = Array.isArray(b) && b.length >= 2 && b.length <= LIMITS2.bands;
           if (ok) b.forEach(function(x, i) {
             var last = i === b.length - 1;
             if (!isObj7(x) || !cleanName(x.name) || TONES.indexOf(x.tone) < 0) ok = false;
-            else if (last ? x.max !== null : !isInt(x.max, -LIMITS2.add, LIMITS2.add)) ok = false;
+            else if (last ? x.max !== null : !isInt2(x.max, -MAX_SIDES, MAX_SIDES)) ok = false;
             else if (i > 0 && !last && x.max <= b[i - 1].max) ok = false;
           });
           if (!ok) e("read.bands", "rules.v.bands");
         }
         if (rd.degrees !== null) {
           var g = rd.degrees;
-          var steps = isObj7(g) && isInt(g.steps, 1, LIMITS2.add) && Array.isArray(g.names) && g.names.length >= 1 && g.names.length <= LIMITS2.bands && g.names.every(function(n) {
+          var steps = isObj7(g) && isInt2(g.steps, 1, MAX_SIDES) && Array.isArray(g.names) && g.names.length >= 1 && g.names.length <= LIMITS2.bands && g.names.every(function(n) {
             return !!cleanName(n);
           });
           var fr = isObj7(g) && Array.isArray(g.fractions) && g.fractions.length >= 1 && g.fractions.length <= 4 && g.fractions.every(function(f, i) {
@@ -4601,7 +4608,7 @@ var require_rules_core = __commonJS({
           if (!Array.isArray(list2) || list2.length > LIMITS2.conditions) return e(k, "rules.v.conditions");
           list2.forEach(function(c2, i) {
             var good = isObj7(c2) && WHENS.indexOf(c2.when) >= 0 && Array.isArray(c2.values) && c2.values.length <= LIMITS2.values && c2.values.every(function(v) {
-              return isInt(v, -LIMITS2.add, LIMITS2.add);
+              return isInt2(v, -MAX_SIDES, MAX_SIDES);
             }) && (c2.name === "" || !!cleanName(c2.name));
             if (good && (c2.when === "natural" || c2.when === "total") && !c2.values.length) good = false;
             if (good && c2.when === "maxCount" && !(c2.values.length === 1 && c2.values[0] >= 1)) good = false;
@@ -4710,11 +4717,11 @@ var require_rules_core = __commonJS({
       var GIVES = ["add", "spread", "train", "feature", "pick"];
       var HOWS = ["average", "roll", "player"];
       var BUYS = ["stat", "skill", "value", "feature"];
-      var DICE_RE = /^([1-9]\d?)d([1-9]\d{0,2})$/;
+      var DICE_RE = /^([1-9]\d?)d([1-9]\d{0,12})$/;
       var PROG_FORMULA_RE = /^[0-9a-z_@+\-*\/%()., ]*$/;
       function dicePart(text) {
         var m = typeof text === "string" ? DICE_RE.exec(text) : null;
-        return m && Number(m[2]) >= 2 ? { count: Number(m[1]), sides: Number(m[2]) } : null;
+        return m && isInt2(Number(m[2]), 2, MAX_SIDES) ? { count: Number(m[1]), sides: Number(m[2]) } : null;
       }
       function diceAverage(d) {
         return Math.ceil(d.count * (d.sides + 1) / 2);
@@ -5354,7 +5361,7 @@ var require_rules_core = __commonJS({
         s.list.forEach(function(x) {
           if (!isObj7(x) || x.playerEdit !== false || typeof x.id !== "string" || !KEY_RE.test(x.id)) return;
           if (s.form === "dots") {
-            if (isInt(s.max, 1, LIMITS2.dots)) for (var k = 1; k <= s.max; k++) out.push(x.id + "__" + k);
+            if (isInt2(s.max, 1, LIMITS2.dots)) for (var k = 1; k <= s.max; k++) out.push(x.id + "__" + k);
           } else out.push(x.id);
         });
         return out;
@@ -5382,9 +5389,9 @@ var require_rules_core = __commonJS({
         };
         if (!isObj7(s)) return e("", "rules.v.stats");
         if (STAT_FORMS.indexOf(s.form) < 0) e("form", "rules.v.statForm");
-        if (!isInt(s.min, -LIMITS2.add, LIMITS2.add) || !isInt(s.max, -LIMITS2.add, LIMITS2.add) || s.min >= s.max) e("min", "rules.v.statRange");
-        else if (!isInt(s["default"], s.min, s.max)) e("default", "rules.v.statDefault");
-        if (s.form === "dots" && !(s.min === 0 && isInt(s.max, 1, LIMITS2.dots))) e("max", "rules.v.dotsRange", { max: LIMITS2.dots });
+        if (!isInt2(s.min, -LIMITS2.add, LIMITS2.add) || !isInt2(s.max, -LIMITS2.add, LIMITS2.add) || s.min >= s.max) e("min", "rules.v.statRange");
+        else if (!isInt2(s["default"], s.min, s.max)) e("default", "rules.v.statDefault");
+        if (s.form === "dots" && !(s.min === 0 && isInt2(s.max, 1, LIMITS2.dots))) e("max", "rules.v.dotsRange", { max: LIMITS2.dots });
         if (s.form === "percent" && !(s.min >= 0 && s.max <= 100)) e("max", "rules.v.percentRange");
         if (s.generation !== void 0 && !(isObj7(s.generation) && GENERATIONS.indexOf(s.generation.method) >= 0)) e("generation", "rules.v.generation");
         else if (s.generation !== void 0 && Array.isArray(s.list)) genProblems(s.generation, s.list.length, s.min, s.max, s.form, e);
@@ -5404,7 +5411,7 @@ var require_rules_core = __commonJS({
           return typeof k === "string" && keys[k] === true;
         };
         var int = function(x) {
-          return isInt(x, -LIMITS2.add, LIMITS2.add);
+          return isInt2(x, -LIMITS2.add, LIMITS2.add);
         };
         var term = function(t) {
           return isObj7(t) && (t.sign === 1 || t.sign === -1) && (t.ref !== void 0 ? ref(t.ref) && t.n === void 0 : int(t.n));
@@ -5412,7 +5419,7 @@ var require_rules_core = __commonJS({
         if (!isObj7(r)) return false;
         switch (r.kind) {
           case "input":
-            return int(r.min) && int(r.max) && r.min < r.max && isInt(r["default"], r.min, r.max);
+            return int(r.min) && int(r.max) && r.min < r.max && isInt2(r["default"], r.min, r.max);
           case "modifier":
             return ref(r.source);
           case "sum":
@@ -5420,7 +5427,7 @@ var require_rules_core = __commonJS({
           case "perLevel":
             return int(r.base) && int(r.per) && ref(r.level);
           case "fraction":
-            return ref(r.source) && isInt(r.by, 1, 100) && !!ROUNDS[r.round];
+            return ref(r.source) && isInt2(r.by, 1, 100) && !!ROUNDS[r.round];
           case "steps":
             return ref(r.source) && int(r["else"]) && Array.isArray(r.steps) && r.steps.length >= 1 && r.steps.length <= LIMITS2.steps && r.steps.every(function(x, i) {
               return isObj7(x) && int(x.upTo) && int(x.value) && (i === 0 || x.upTo > r.steps[i - 1].upTo);
@@ -5746,7 +5753,7 @@ var require_rules_core = __commonJS({
         var bonus = Math.round(Math.max(-LIMITS2.add, Math.min(LIMITS2.add, Number(row && row.bonus) || 0)));
         return { stat, proficiency, bonus, total: stat + proficiency + bonus };
       }
-      var DAMAGE_RE = /^(\d{1,2})d(\d{1,3})(?:\+(\d{1,2})d(\d{1,3}))?([+-]\d{1,3})?$|^([+-]?\d{1,3})$/;
+      var DAMAGE_RE = /^(\d{1,2})d(\d{1,13})(?:\+(\d{1,2})d(\d{1,13}))?([+-]\d{1,3})?$|^([+-]?\d{1,3})$/;
       function parseDamage(text) {
         var m = DAMAGE_RE.exec(String(text == null ? "" : text).replace(/\s+/g, ""));
         if (!m) return null;
@@ -5754,7 +5761,7 @@ var require_rules_core = __commonJS({
         var dice = [{ n: Number(m[1]), s: Number(m[2]) }];
         if (m[3] !== void 0) dice.push({ n: Number(m[3]), s: Number(m[4]) });
         if (!dice.every(function(d) {
-          return d.n >= 1 && d.n <= LIMITS2.count && SIDES.indexOf(d.s) >= 0;
+          return d.n >= 1 && d.n <= LIMITS2.count && isInt2(d.s, 2, MAX_SIDES);
         })) return null;
         return { dice, flat: m[5] ? Number(m[5]) : 0 };
       }
@@ -6067,7 +6074,7 @@ var require_rules_core = __commonJS({
             })[0];
             var top = LIMITS2.add;
             if (P0) {
-              if (P0.levelKey !== L.key || !isInt(P0.levelMax, 2, LIMITS2.add)) e("levels.key", "rules.v.levelKey");
+              if (P0.levelKey !== L.key || !isInt2(P0.levelMax, 2, LIMITS2.add)) e("levels.key", "rules.v.levelKey");
               else top = P0.levelMax;
             } else if (!lv || !isObj7(lv.recipe) || lv.recipe.kind !== "input" || lv.resource) e("levels.key", "rules.v.levelKey");
             else if (lv.recipe.min !== 1 || !(lv.recipe.max >= 2)) e("levels.key", "rules.v.levelRange");
@@ -6147,7 +6154,7 @@ var require_rules_core = __commonJS({
           });
         };
         var intOr = function(v, lo, hi) {
-          return isInt(v, lo, hi) || numField(v);
+          return isInt2(v, lo, hi) || numField(v);
         };
         if (!cleanName(a.label)) e("label", "rules.v.name");
         var any = false;
@@ -6187,7 +6194,7 @@ var require_rules_core = __commonJS({
           var f = has2(known, k) ? known[k] : null, v = x.values[k];
           if (!f) return e("values." + k, "rules.v.libField");
           if (f.type === "number") {
-            if (!isInt(v, typeof f.min === "number" ? f.min : -LIB.n, typeof f.max === "number" ? f.max : LIB.n)) e("values." + k, "rules.v.libNumber");
+            if (!isInt2(v, typeof f.min === "number" ? f.min : -LIB.n, typeof f.max === "number" ? f.max : LIB.n)) e("values." + k, "rules.v.libNumber");
           } else if (f.type === "choice") {
             if ((f.options || []).indexOf(v) < 0) e("values." + k, "rules.v.libChoice");
           } else {
@@ -6243,9 +6250,9 @@ var require_rules_core = __commonJS({
             if (!cleanName(f.name)) e(fp + ".name", "rules.v.name");
             if (FIELD_TYPES.indexOf(f.type) < 0) return e(fp + ".type", "rules.v.lib");
             if (f.type === "number") {
-              if (f.min !== void 0 && !isInt(f.min, -LIB.n, LIB.n)) e(fp + ".min", "rules.v.progN", { min: -LIB.n, max: LIB.n });
-              if (f.max !== void 0 && !isInt(f.max, -LIB.n, LIB.n)) e(fp + ".max", "rules.v.progN", { min: -LIB.n, max: LIB.n });
-              if (isInt(f.min, -LIB.n, LIB.n) && isInt(f.max, -LIB.n, LIB.n) && f.min >= f.max) e(fp + ".max", "rules.v.libRange");
+              if (f.min !== void 0 && !isInt2(f.min, -LIB.n, LIB.n)) e(fp + ".min", "rules.v.progN", { min: -LIB.n, max: LIB.n });
+              if (f.max !== void 0 && !isInt2(f.max, -LIB.n, LIB.n)) e(fp + ".max", "rules.v.progN", { min: -LIB.n, max: LIB.n });
+              if (isInt2(f.min, -LIB.n, LIB.n) && isInt2(f.max, -LIB.n, LIB.n) && f.min >= f.max) e(fp + ".max", "rules.v.libRange");
             }
             if (f.type === "choice" && !(Array.isArray(f.options) && f.options.length >= 2 && f.options.length <= LIB.options && f.options.every(function(o, k) {
               return typeof o === "string" && cleanName(o) === o && o.length > 0 && f.options.indexOf(o) === k;
@@ -6754,7 +6761,7 @@ var require_rules_core = __commonJS({
         var rank = raw.skillRank === null || RANKS.indexOf(raw.skillRank) >= 0 ? raw.skillRank : void 0;
         if (rank === void 0) return null;
         var levelKey = raw.levelKey === null ? null : typeof raw.levelKey === "string" && KEY_RE.test(raw.levelKey) ? raw.levelKey : void 0;
-        if (levelKey === void 0 || levelKey !== null && !isInt(raw.levelMax, 2, LIMITS2.add)) return null;
+        if (levelKey === void 0 || levelKey !== null && !isInt2(raw.levelMax, 2, LIMITS2.add)) return null;
         var values = {};
         valuesList.forEach(function(k) {
           values[k] = true;
@@ -6970,7 +6977,7 @@ var require_rules_core = __commonJS({
         if (kind === "stats") {
           pairs.push([from, to]);
           if (rules.stats.form === "score") pairs.push([from + "_mod", to + "_mod"]);
-          if (rules.stats.form === "dots" && isInt(rules.stats.max, 1, LIMITS2.dots)) for (var k = 1; k <= rules.stats.max; k++) pairs.push([from + "__" + k, to + "__" + k]);
+          if (rules.stats.form === "dots" && isInt2(rules.stats.max, 1, LIMITS2.dots)) for (var k = 1; k <= rules.stats.max; k++) pairs.push([from + "__" + k, to + "__" + k]);
         } else if (kind === "derived") {
           pairs.push([from, to]);
           if (item.resource) pairs.push([from + "_max", to + "_max"]);
@@ -7391,7 +7398,7 @@ var require_rules_core = __commonJS({
           prog = { xp: null, levels: null, purchases: null, use: { res: [main2], on: "success", test: "1d100", beat: "value", gain: "1d10" }, features: [] };
         } else {
           var buys = [];
-          var statMax = isObj7(rules.stats) && isInt(rules.stats.max, 1, LIMITS2.add) ? rules.stats.max : 5;
+          var statMax = isObj7(rules.stats) && isInt2(rules.stats.max, 1, LIMITS2.add) ? rules.stats.max : 5;
           if (stats.length) buys.push({ id: "carac", name: say2("rules.p.buyStat"), what: "stat", keys: "any", price: fam === "fate" ? "@r*2" : "@r*5", max: statMax });
           if (sk) buys.push({ id: "competence", name: say2("rules.p.buySkill"), what: "skill", keys: "any", price: fam === "fate" ? "@r" : "@r*3", max: sk.rank === "trained" ? 1 : sk.rank === "dots" ? 5 : sk.rank === "percent" ? 100 : 5 });
           buys.push({ id: "aptitude", name: say2("rules.p.buyFeature"), what: "feature", keys: "any", price: 7, max: 1 });
@@ -7548,7 +7555,7 @@ var require_rules_core = __commonJS({
         if (!isObj7(s) || !isObj7(s.generation) || GENERATIONS.indexOf(s.generation.method) < 0) return null;
         var g = s.generation, n = Array.isArray(s.list) ? s.list.length : 0, lo = s.min, hi = s.max;
         var inBounds = function(v2) {
-          return isInt(v2, lo, hi);
+          return isInt2(v2, lo, hi);
         };
         if (g.method === "array") {
           if (Array.isArray(g.values)) return { method: "array", values: g.values.slice() };
@@ -7557,7 +7564,7 @@ var require_rules_core = __commonJS({
           return { method: "array", values: std };
         }
         if (g.method === "pointbuy") {
-          if (isObj7(g.costs) && isInt(g.budget, 1, CREA.budget)) return { method: "pointbuy", budget: g.budget, costs: JSON.parse(JSON.stringify(g.costs)) };
+          if (isObj7(g.costs) && isInt2(g.budget, 1, CREA.budget)) return { method: "pointbuy", budget: g.budget, costs: JSON.parse(JSON.stringify(g.costs)) };
           if (Object.keys(STANDARD_COSTS).every(function(k) {
             return inBounds(Number(k));
           })) return { method: "pointbuy", budget: 27, costs: JSON.parse(JSON.stringify(STANDARD_COSTS)) };
@@ -7565,29 +7572,29 @@ var require_rules_core = __commonJS({
           for (var v = s["default"]; v <= hi && Object.keys(costs).length < CREA.costs; v++) costs[String(v)] = v - s["default"];
           return { method: "pointbuy", budget: Math.max(1, Math.min(CREA.budget, n * 2)), costs };
         }
-        if (g.method === "free") return { method: "free", total: isInt(g.total, lo * n, hi * n) ? g.total : s["default"] * n };
+        if (g.method === "free") return { method: "free", total: isInt2(g.total, lo * n, hi * n) ? g.total : s["default"] * n };
         return { method: g.method };
       }
       function genProblems(g, n, lo, hi, form, e) {
         if (!isObj7(g)) return;
         var inBounds = function(v) {
-          return isInt(v, lo, hi);
+          return isInt2(v, lo, hi);
         };
         if ((g.method === "4d6drop" || g.method === "3d6") && form !== "score") e("generation.method", "rules.v.genScore");
         if (g.method === "array" && g.values !== void 0 && !(Array.isArray(g.values) && g.values.length === n && g.values.every(inBounds))) e("generation.values", "rules.v.genValues", { n, min: lo, max: hi });
         if (g.method === "pointbuy" && (g.costs !== void 0 || g.budget !== void 0)) {
           var keys = isObj7(g.costs) ? Object.keys(g.costs) : [];
-          if (!isInt(g.budget, 1, CREA.budget)) e("generation.budget", "rules.v.genBudget", { max: CREA.budget });
+          if (!isInt2(g.budget, 1, CREA.budget)) e("generation.budget", "rules.v.genBudget", { max: CREA.budget });
           if (keys.length < 2 || keys.length > CREA.costs || !keys.every(function(k) {
-            return /^-?\d+$/.test(k) && inBounds(Number(k)) && isInt(g.costs[k], 0, CREA.cost);
+            return /^-?\d+$/.test(k) && inBounds(Number(k)) && isInt2(g.costs[k], 0, CREA.cost);
           })) e("generation.costs", "rules.v.genCosts", { min: lo, max: hi });
         }
-        if (g.method === "free" && g.total !== void 0 && !isInt(g.total, lo * n, hi * n)) e("generation.total", "rules.v.genTotal", { min: lo * n, max: hi * n });
+        if (g.method === "free" && g.total !== void 0 && !isInt2(g.total, lo * n, hi * n)) e("generation.total", "rules.v.genTotal", { min: lo * n, max: hi * n });
       }
       function levelBounds(rules) {
         var P = rules.progression, L = isObj7(P) && isObj7(P.levels) ? P.levels : null;
         var d = L ? byId(rules.derived, L.key) : null;
-        return d && isObj7(d.recipe) && isInt(d.recipe.max, 2, LIMITS2.add) ? { key: L.key, max: d.recipe.max } : null;
+        return d && isObj7(d.recipe) && isInt2(d.recipe.max, 2, LIMITS2.add) ? { key: L.key, max: d.recipe.max } : null;
       }
       function validateCreation(rules, errs) {
         var c = rules.creation;
@@ -7606,13 +7613,13 @@ var require_rules_core = __commonJS({
             if (!Array.isArray(among) || !among.length || !among.every(function(id) {
               return sk.indexOf(id) >= 0;
             })) e("skills.among", "rules.v.creaSkills");
-            else if (!isInt(c.skills.pick, 1, among.length)) e("skills.pick", "rules.v.progN", { min: 1, max: among.length });
+            else if (!isInt2(c.skills.pick, 1, among.length)) e("skills.pick", "rules.v.progN", { min: 1, max: among.length });
           }
         }
         if (c.level !== void 0 && c.level !== 1) {
           var lb = levelBounds(rules);
           if (!lb) e("level", "rules.v.creaLevel");
-          else if (!isInt(c.level, 1, lb.max)) e("level", "rules.v.progN", { min: 1, max: lb.max });
+          else if (!isInt2(c.level, 1, lb.max)) e("level", "rules.v.progN", { min: 1, max: lb.max });
         }
         if (c.picks !== void 0) {
           if (!Array.isArray(c.picks) || c.picks.length > CREA.picks) return e("picks", "rules.v.tooMany", { max: CREA.picks });
@@ -7625,7 +7632,7 @@ var require_rules_core = __commonJS({
             if (!g || g.kind === "feature") return e(at + ".genre", "rules.v.creaPick");
             if (has2(seen, g.id)) e(at + ".genre", "rules.v.creaPickTwice");
             seen[g.id] = true;
-            if (!isInt(p.n, 1, CREA.pickN)) e(at + ".n", "rules.v.progN", { min: 1, max: CREA.pickN });
+            if (!isInt2(p.n, 1, CREA.pickN)) e(at + ".n", "rules.v.progN", { min: 1, max: CREA.pickN });
             var fields = fieldsOf(g, pools), byField = {};
             fields.forEach(function(f) {
               byField[f.id] = f;
@@ -7641,7 +7648,7 @@ var require_rules_core = __commonJS({
             if (p.max !== void 0 && p.max !== null) {
               if (!isObj7(p.max) || !Object.keys(p.max).every(function(k) {
                 var f = byField[k];
-                return f && f.type === "number" && isInt(p.max[k], -LIB.n, LIB.n);
+                return f && f.type === "number" && isInt2(p.max[k], -LIB.n, LIB.n);
               })) e(at + ".max", "rules.v.creaFilter");
             }
           });
@@ -7669,7 +7676,7 @@ var require_rules_core = __commonJS({
           }), gen: genSettings(s) } : null,
           order: ORDERS.indexOf(c.order) >= 0 ? c.order : "assign",
           skills,
-          level: isInt(c.level, 1, LIMITS2.add) ? c.level : 1,
+          level: isInt2(c.level, 1, LIMITS2.add) ? c.level : 1,
           levelKey: lb ? lb.key : null,
           picks: Array.isArray(c.picks) ? c.picks.filter(isObj7).map(function(p) {
             return { genre: p.genre, n: p.n, filter: isObj7(p.filter) ? p.filter : null, max: isObj7(p.max) ? p.max : null };
@@ -7689,23 +7696,23 @@ var require_rules_core = __commonJS({
         var st = raw.stats === null ? null : isObj7(raw.stats) ? raw.stats : void 0;
         if (st === void 0) return null;
         if (st) {
-          if (STAT_FORMS.indexOf(st.form) < 0 || !isInt(st.min, -LIMITS2.add, LIMITS2.add) || !isInt(st.max, -LIMITS2.add, LIMITS2.add) || st.min >= st.max) return null;
+          if (STAT_FORMS.indexOf(st.form) < 0 || !isInt2(st.min, -LIMITS2.add, LIMITS2.add) || !isInt2(st.max, -LIMITS2.add, LIMITS2.add) || st.min >= st.max) return null;
           if (!Array.isArray(st.list) || !st.list.length || st.list.length > LIMITS2.stats || !st.list.every(function(x) {
             return isObj7(x) && typeof x.id === "string" && KEY_RE.test(x.id);
           })) return null;
           if (st.gen !== null && !(isObj7(st.gen) && GENERATIONS.indexOf(st.gen.method) >= 0)) return null;
           if (st.gen) genProblems(st.gen, st.list.length, st.min, st.max, st.form, bad3);
-          if (st.gen && (st.gen.method === "array" && !Array.isArray(st.gen.values) || st.gen.method === "pointbuy" && !isObj7(st.gen.costs) || st.gen.method === "free" && !isInt(st.gen.total, -LIMITS2.add * LIMITS2.stats, LIMITS2.add * LIMITS2.stats))) return null;
+          if (st.gen && (st.gen.method === "array" && !Array.isArray(st.gen.values) || st.gen.method === "pointbuy" && !isObj7(st.gen.costs) || st.gen.method === "free" && !isInt2(st.gen.total, -LIMITS2.add * LIMITS2.stats, LIMITS2.add * LIMITS2.stats))) return null;
         }
-        if (ORDERS.indexOf(raw.order) < 0 || !isInt(raw.level, 1, LIMITS2.add)) return null;
+        if (ORDERS.indexOf(raw.order) < 0 || !isInt2(raw.level, 1, LIMITS2.add)) return null;
         if (raw.levelKey !== null && !(typeof raw.levelKey === "string" && KEY_RE.test(raw.levelKey))) return null;
         if (raw.level > 1 && raw.levelKey === null) return null;
         var sk = raw.skills;
         if (sk !== null && !(isObj7(sk) && Array.isArray(sk.among) && sk.among.length && sk.among.length <= LIMITS2.skills && sk.among.every(function(id) {
           return typeof id === "string" && KEY_RE.test(id);
-        }) && isInt(sk.pick, 1, sk.among.length))) return null;
+        }) && isInt2(sk.pick, 1, sk.among.length))) return null;
         if (!Array.isArray(raw.picks) || raw.picks.length > CREA.picks || !raw.picks.every(function(p) {
-          return isObj7(p) && typeof p.genre === "string" && /^[a-z][a-z0-9]{0,11}$/.test(p.genre) && isInt(p.n, 1, CREA.pickN) && (p.filter === null || isObj7(p.filter)) && (p.max === null || isObj7(p.max));
+          return isObj7(p) && typeof p.genre === "string" && /^[a-z][a-z0-9]{0,11}$/.test(p.genre) && isInt2(p.n, 1, CREA.pickN) && (p.filter === null || isObj7(p.filter)) && (p.max === null || isObj7(p.max));
         })) return null;
         if (!Array.isArray(raw.ask) || raw.ask.length > CREA.ask || !raw.ask.every(function(a) {
           return isObj7(a) && typeof a.id === "string" && KEY_RE.test(a.id);
@@ -7793,7 +7800,7 @@ var require_rules_core = __commonJS({
             writes.stats[id] = rolled[i];
           });
           else if (!vals.every(function(v) {
-            return isInt(v, st.min, st.max);
+            return isInt2(v, st.min, st.max);
           })) fault("rules.c.statBounds", { min: st.min, max: st.max });
           else if (has2(ROLLED, g.method) && !sameValues(vals, rolled)) fault("rules.c.rolledOnce");
           else if (g.method === "array" && !sameValues(vals, g.values)) fault("rules.c.arrayOnce");
@@ -7887,6 +7894,7 @@ var require_rules_core = __commonJS({
         lockedKeys,
         IDENTITY,
         SIDES,
+        MAX_SIDES,
         nameOf,
         valueChoices,
         renameKey,
@@ -10950,6 +10958,7 @@ var require_fr2 = __commonJS({
       "host.httpApp.imageIntrouvable": "Image introuvable.",
       "host.httpApp.tourInvalide": "Tour invalide.",
       "host.httpApp.tropDemandesPatienteInstant": "Trop de demandes : patiente un instant.",
+      "host.journal.notFound": "Cette page du journal est introuvable, ou n\u2019est pas partag\xE9e avec toi.",
       "host.keyAuth.impossibleTrouverNomLibre": "Impossible de trouver un nom libre.",
       "host.keyring.gmOnly": "Seul le MJ donne les cl\xE9s de la carte.",
       "host.keyring.invalid": "Demande de cl\xE9s invalide.",
@@ -11683,7 +11692,7 @@ var require_fr2 = __commonJS({
       "rules.v.proficiency": "\xAB Form\xE9 \xBB ajoute un d\xE9riv\xE9 de ma\xEEtrise : choisis-le (et seulement avec \xAB form\xE9 \xBB).",
       "rules.v.prog": "Progression illisible.",
       "rules.v.progAmong": "Une liste de ce qui existe, chacun une fois.",
-      "rules.v.progDice": "Un d\xE9 comme 1d8 ou 2d6.",
+      "rules.v.progDice": "Un d\xE9 comme 1d8, 2d6 ou 1d100000 (2 \xE0 1 000 000 000 000 faces).",
       "rules.v.progEmpty": "Rien ne fait progresser : de l\u2019exp\xE9rience, des niveaux, des achats ou l\u2019usage.",
       "rules.v.progKey": "Une caract\xE9ristique, une comp\xE9tence ou une valeur de la fiche, jamais le niveau.",
       "rules.v.progN": "Un nombre entier, de {min} \xE0 {max}.",
@@ -11702,7 +11711,7 @@ var require_fr2 = __commonJS({
       "rules.v.sameId": "La cl\xE9 \xAB {id} \xBB est d\xE9j\xE0 prise.",
       "rules.v.short": "Abr\xE9viation : 6 caract\xE8res au plus.",
       "rules.v.show": "Affichage inconnu.",
-      "rules.v.sides": "Faces du d\xE9 : {list}.",
+      "rules.v.sides": "Faces du d\xE9 : un nombre entier de 2 \xE0 1 000 000 000 000.",
       "rules.v.skillList": "Comp\xE9tences : de 1 \xE0 {max}.",
       "rules.v.skillMode": "Mode des comp\xE9tences inconnu.",
       "rules.v.skillRank": "Rang des comp\xE9tences inconnu.",
@@ -14630,6 +14639,9 @@ var require_en2 = __commonJS({
       "err.manifest.badStyle": "stylesheet refused: {path}",
       "err.manifest.moduleVideAucunScript": "empty module: no script, style, language nor compendium.",
       "err.manifest.needStyle": 'The module has stylesheets: it must ask for the "ui.style" permission.',
+      "err.manifest.sharedInvalid": "The tabletop.shared block is invalid: each key needs a read access and a write access (all, gm or owner).",
+      "err.manifest.sharedNeedsPermission": "tabletop.shared needs the shared.state permission.",
+      "err.manifest.permissionNeedsShared": "The shared.state permission needs a tabletop.shared block.",
       "err.manifest.notObject": "module.json must be a JSON object.",
       "err.manifest.sockets": "The module declares sockets: communication between clients is not supported.",
       "err.manifest.tabletopEntryManquantInvalide": "tabletop.entry missing or invalid.",
@@ -14984,7 +14996,7 @@ var require_en2 = __commonJS({
       "rules.v.sameId": "The key \xAB {id} \xBB is already taken.",
       "rules.v.short": "Abbreviation: 6 characters at most.",
       "rules.v.show": "Unknown display.",
-      "rules.v.sides": "Die faces: {list}.",
+      "rules.v.sides": "Die faces: a whole number from 2 to 1,000,000,000,000.",
       "rules.v.skillList": "Skills: 1 to {max}.",
       "rules.v.skillMode": "Unknown skill mode.",
       "rules.v.skillRank": "Unknown skill rank.",
@@ -15990,6 +16002,9 @@ var require_en2 = __commonJS({
       "ui.rules.show.hidden": "hidden (used in calculations)",
       "ui.rules.show.tile": "as a tile",
       "ui.rules.sides": "Faces",
+      "ui.rules.sidesHint": "A custom die: 2 to {max} faces. It has no 3D die: its result is written in the chat.",
+      "ui.rules.sidesN": "Number of faces",
+      "ui.rules.sidesOther": "Other\u2026",
       "ui.rules.sign": "Sign",
       "ui.rules.skillAdd": "Add a skill",
       "ui.rules.skillList": "The list",
@@ -16683,7 +16698,7 @@ var require_en2 = __commonJS({
       "rules.v.progRoll": "This roll does not exist in the rules: \u201C{id}\u201D.",
       "rules.v.progN": "A whole number, from {min} to {max}.",
       "rules.v.progKey": "A characteristic, a skill or a value of the sheet, never the level.",
-      "rules.v.progDice": "A die such as 1d8 or 2d6.",
+      "rules.v.progDice": "A die such as 1d8, 2d6 or 1d100000 (2 to 1,000,000,000,000 faces).",
       "rules.v.progAmong": "A list of what exists, each once.",
       "rules.v.spreadRoom": "Not enough room for all the points: more choices, or a higher maximum.",
       "rules.v.trainNeeds": "Training a skill needs \u201Ctrained\u201D skills.",
@@ -18016,6 +18031,7 @@ var require_en3 = __commonJS({
       "host.httpApp.imageIntrouvable": "Image not found.",
       "host.httpApp.tourInvalide": "Invalid turn.",
       "host.httpApp.tropDemandesPatienteInstant": "Too many requests: wait a moment.",
+      "host.journal.notFound": "This journal page cannot be found, or it is not shared with you.",
       "host.keyAuth.impossibleTrouverNomLibre": "Could not find a free name.",
       "host.keyring.gmOnly": "Only the GM gives out the keys of the map.",
       "host.keyring.invalid": "Invalid key request.",
@@ -18749,7 +18765,7 @@ var require_en3 = __commonJS({
       "rules.v.proficiency": "\xAB Trained \xBB adds a proficiency derived value: choose it (and only with \xAB trained \xBB).",
       "rules.v.prog": "Unreadable progression.",
       "rules.v.progAmong": "A list of what exists, each once.",
-      "rules.v.progDice": "A die such as 1d8 or 2d6.",
+      "rules.v.progDice": "A die such as 1d8, 2d6 or 1d100000 (2 to 1,000,000,000,000 faces).",
       "rules.v.progEmpty": "Nothing makes one progress: experience, levels, purchases or use.",
       "rules.v.progKey": "A characteristic, a skill or a value of the sheet, never the level.",
       "rules.v.progN": "A whole number, from {min} to {max}.",
@@ -18768,7 +18784,7 @@ var require_en3 = __commonJS({
       "rules.v.sameId": "The key \xAB {id} \xBB is already taken.",
       "rules.v.short": "Abbreviation: 6 characters at most.",
       "rules.v.show": "Unknown display.",
-      "rules.v.sides": "Die faces: {list}.",
+      "rules.v.sides": "Die faces: a whole number from 2 to 1,000,000,000,000.",
       "rules.v.skillList": "Skills: 1 to {max}.",
       "rules.v.skillMode": "Unknown skill mode.",
       "rules.v.skillRank": "Unknown skill rank.",
@@ -20012,6 +20028,12 @@ var PERMISSIONS = [
   // CSS applied to the whole page (audit 29/09, F7): can hide or relabel any element
   { id: "ui.sheet", risk: "medium", group: "ui" },
   // tabs and blocks on character sheets
+  { id: "ui.fx", risk: "medium", group: "ui" },
+  // full-screen effects drawn by the page from a closed catalogue (flash, shake, cards, credits, sounds, VHS layer)
+  { id: "ui.hud", risk: "low", group: "ui" },
+  // one pinned strip in the game's own frame
+  { id: "ui.media", risk: "low", group: "ui" },
+  // the picture of a token of the table inside its panels
   // events and interception
   { id: "engine.hook", risk: "low", group: "engine" },
   // observe events
@@ -20025,6 +20047,8 @@ var PERMISSIONS = [
   // new functions / modifiers in formulas
   { id: "dice.intercept", risk: "high", group: "dice" },
   // alter roll results
+  { id: "dice.roll", risk: "low", group: "dice" },
+  // roll NdF+M, the result comes from the host
   // scene and tokens
   { id: "scene.read", risk: "low", group: "scene" },
   { id: "scene.draw", risk: "medium", group: "scene" },
@@ -20038,6 +20062,8 @@ var PERMISSIONS = [
   // misc
   { id: "storage.local", risk: "low", group: "misc" },
   // its own key/value store
+  { id: "shared.state", risk: "medium", group: "misc" },
+  // key/value state shared by the whole table, rights enforced by the host
   { id: "audio.play", risk: "low", group: "misc" },
   { id: "host.script", risk: "high", group: "misc" }
   // run code in the GM's host sandbox
@@ -20054,6 +20080,35 @@ function classify(requested) {
     else unknown.push(id);
   }
   return { known, reserved, unknown };
+}
+
+// apps/desktop/src/modules/sharedPolicy.ts
+var ACCESS = /* @__PURE__ */ new Set(["all", "gm", "owner"]);
+var MAX_PATTERNS = 20;
+var PATTERN_RE = /^[a-z0-9][a-z0-9_.-]{0,57}(\.\*)?$/;
+var isInt = (v) => typeof v === "number" && Number.isInteger(v) && Math.abs(v) <= 1e6;
+function parsePolicies(raw) {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
+  const keys = Object.keys(raw);
+  if (keys.length === 0 || keys.length > MAX_PATTERNS) return null;
+  const out = /* @__PURE__ */ Object.create(null);
+  for (const pattern of keys) {
+    if (!PATTERN_RE.test(pattern)) return null;
+    const p = raw[pattern];
+    if (!p || typeof p !== "object" || Array.isArray(p)) return null;
+    const { read, write, add } = p;
+    if (typeof read !== "string" || typeof write !== "string" || !ACCESS.has(read) || !ACCESS.has(write)) return null;
+    const policy = { read, write };
+    if (add !== void 0) {
+      if (!add || typeof add !== "object" || Array.isArray(add)) return null;
+      const { player, min, max } = add;
+      if (!Array.isArray(player) || player.length !== 2 || !isInt(player[0]) || !isInt(player[1]) || player[0] > player[1]) return null;
+      if (!isInt(min) || !isInt(max) || min > max) return null;
+      policy.add = { player: [player[0], player[1]], min, max };
+    }
+    out[pattern] = policy;
+  }
+  return { ...out };
 }
 
 // apps/desktop/src/modules/manifest.ts
@@ -20202,6 +20257,7 @@ function parseManifest(raw) {
   ].filter(Boolean);
   let api;
   let permissions = [];
+  let shared;
   if (tt) {
     const apiVersion = clean(tt.api, 8);
     if (apiVersion !== SUPPORTED_API) errors.push(say("err.manifest.api", { api: SUPPORTED_API }));
@@ -20213,6 +20269,13 @@ function parseManifest(raw) {
     if (split.unknown.length) errors.push("permissions inconnues : " + split.unknown.join(", "));
     if (split.reserved.length) errors.push("permissions non disponibles : " + split.reserved.join(", "));
     permissions = split.known;
+    if (tt.shared !== void 0) {
+      const parsed = parsePolicies(tt.shared);
+      if (!parsed) errors.push(say("err.manifest.sharedInvalid"));
+      else shared = parsed;
+    }
+    if (shared && !permissions.includes("shared.state")) errors.push(say("err.manifest.sharedNeedsPermission"));
+    if (permissions.includes("shared.state") && !shared) errors.push(say("err.manifest.permissionNeedsShared"));
     if (styles.length && !permissions.includes("ui.style")) {
       errors.push(say("err.manifest.needStyle"));
     }
@@ -20243,6 +20306,7 @@ function parseManifest(raw) {
       requiresSystem,
       conflicts,
       permissions,
+      shared,
       access: tt && tt.access === "licensed" ? "licensed" : "free",
       ourdir: tt && typeof m.ourdir === "string" && /^\d+\.\d+\.\d+$/.test(m.ourdir) ? m.ourdir : void 0,
       foundryCompat: kind === "foundry" ? {
@@ -22034,8 +22098,8 @@ function renderReport(r) {
 }
 
 // apps/desktop/src/catalog/since.ts
-var APP_VERSION = "0.4.2";
-var SINCE_REV = 3;
+var APP_VERSION = "0.5.0";
+var SINCE_REV = 4;
 var AT_0_1_0 = [
   "component:Avatar",
   "component:Checkbox",
@@ -22160,10 +22224,29 @@ var AT_0_1_0 = [
 ];
 var AT_0_2_0 = ["dice:rules", "dice:v1"];
 var AT_0_2_1 = ["dice:effects2", "dice:fonts2", "dice:framing", "dice:patterns2"];
-var SINCE = Object.freeze(Object.fromEntries([...AT_0_1_0.map((k) => [k, "0.1.0"]), ...AT_0_2_0.map((k) => [k, "0.2.0"]), ...AT_0_2_1.map((k) => [k, "0.2.1"])]));
+var AT_0_4_3 = ["rules:customDice"];
+var SINCE = Object.freeze(Object.fromEntries([...AT_0_1_0.map((k) => [k, "0.1.0"]), ...AT_0_2_0.map((k) => [k, "0.2.0"]), ...AT_0_2_1.map((k) => [k, "0.2.1"]), ...AT_0_4_3.map((k) => [k, "0.4.3"])]));
 var isObj6 = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
 var THEME_IDENTITY = /* @__PURE__ */ new Set(["format", "v", "id", "name", "version", "author", "license", "description"]);
 var NODE_KEYS = /* @__PURE__ */ new Set(["className", "id", "children"]);
+var USUAL_SIDES = [2, 3, 4, 6, 8, 10, 12, 20, 100];
+var DAMAGE_KEYS = /* @__PURE__ */ new Set(["damage", "arm_degats"]);
+var GAIN_KEYS = /* @__PURE__ */ new Set(["dice", "gain"]);
+function usesCustomDice(x) {
+  if (Array.isArray(x)) return x.some(usesCustomDice);
+  if (!isObj6(x)) return false;
+  for (const [k, v] of Object.entries(x)) {
+    if (k === "dice" && isObj6(v) && typeof v.sides === "number" && !USUAL_SIDES.includes(v.sides)) return true;
+    if (typeof v === "string" && (DAMAGE_KEYS.has(k) || GAIN_KEYS.has(k))) {
+      for (const m of v.matchAll(/\d+d(\d+)/g)) {
+        const sides = Number(m[1]);
+        if (DAMAGE_KEYS.has(k) ? !USUAL_SIDES.includes(sides) : sides > 999) return true;
+      }
+    }
+    if (typeof v === "object" && usesCustomDice(v)) return true;
+  }
+  return false;
+}
 function systemFeatures(doc, out) {
   out.add(`doc:v${Number(doc.v) || 1}`);
   const walk3 = (x) => {
@@ -22184,6 +22267,7 @@ function systemFeatures(doc, out) {
     for (const r of Object.values(doc.roles)) if (isObj6(r)) for (const k of Object.keys(r)) out.add("role:" + k);
   }
   if (Array.isArray(doc.skins) && doc.skins.length) out.add("skins");
+  if (isObj6(doc.rules) && usesCustomDice(doc.rules)) out.add("rules:customDice");
 }
 function diceFeatures(skin, out) {
   const looks = [skin.look, ...isObj6(skin.perType) ? Object.values(skin.perType) : []];
@@ -22218,6 +22302,7 @@ function featuresOf(kind, bytes) {
   } else if (kind === "compendium") {
     out.add(`library:v${Number(raw.v) || 1}`);
     if (Array.isArray(raw.entries) && raw.entries.some((e) => isObj6(e) && e.action !== void 0 && e.action !== null)) out.add("library:action");
+    if (usesCustomDice(raw.entries)) out.add("rules:customDice");
   }
   return [...out].sort();
 }
